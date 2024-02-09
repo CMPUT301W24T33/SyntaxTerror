@@ -1,0 +1,22 @@
+Classes:
+
+User <<Abstract>>
+  - Attendee
+  - Organizer
+  - Admin
+
+Database
+QR Code
+Event
+Event Manager
+Profile
+GPSLocator
+Profile Picture?
+Homepage?
+
+“Message”?
+  - Notification
+  - Announcement
+  - Alert
+Map
+Event Poster?
