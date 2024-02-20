@@ -2,6 +2,10 @@ package com.example.eventalate;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+
+/**
+ *
+ */
 public class Event {
 
     protected SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE.LLLL.yyyy KK:mm:ss aaa z");
