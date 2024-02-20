@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="439e6507-0aa7-4163-884d-949875ef143c" name="Changes" comment="Initialize project">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+    <list default="true" id="439e6507-0aa7-4163-884d-949875ef143c" name="Changes" comment="Database Creation">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="database-creation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -59,11 +60,16 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "database-creation",
+    "git-widget-placeholder": "32-sp-8-initialize-and-connect-to-database",
     "last_opened_file_path": "C:/Users/ian_m/AndroidStudioProjects/Eventalate",
     "settings.editor.selected.configurable": "experimental"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\java\com\example\eventalate" />
+    </key>
+  </component>
   <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Eventalate.app.main" />
@@ -190,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708451821939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Database Creation">
+      <option name="closed" value="true" />
+      <created>1708462523803</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708462523803</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +220,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialize project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialize project" />
+    <MESSAGE value="Database Creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Database Creation" />
   </component>
 </project>

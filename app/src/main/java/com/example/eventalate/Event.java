@@ -1,4 +1,4 @@
-package com.example.syntaxterror;
+package com.example.eventalate;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
