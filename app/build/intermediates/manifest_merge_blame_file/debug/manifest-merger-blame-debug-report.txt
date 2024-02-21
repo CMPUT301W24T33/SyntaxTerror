@@ -29,43 +29,43 @@
 20-->[androidx.core:core:1.9.0] C:\Users\ian_m\.gradle\caches\transforms-3\862bc1cdce1c01a860ed8e456f464169\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 21
 22    <application
-22-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:5:5-24:19
+22-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:5:5-24:19
 23        android:allowBackup="true"
-23-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:6:9-35
+23-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:6:9-35
 24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 24-->[androidx.core:core:1.9.0] C:\Users\ian_m\.gradle\caches\transforms-3\862bc1cdce1c01a860ed8e456f464169\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 25        android:dataExtractionRules="@xml/data_extraction_rules"
-25-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:7:9-65
+25-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:7:9-65
 26        android:debuggable="true"
 27        android:extractNativeLibs="false"
 28        android:fullBackupContent="@xml/backup_rules"
-28-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:8:9-54
+28-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:8:9-54
 29        android:icon="@mipmap/ic_launcher"
-29-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:9:9-43
+29-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:9:9-43
 30        android:label="@string/app_name"
-30-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:10:9-41
+30-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:10:9-41
 31        android:roundIcon="@mipmap/ic_launcher_round"
-31-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:11:9-54
+31-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:11:9-54
 32        android:supportsRtl="true"
-32-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:12:9-35
+32-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:12:9-35
 33        android:testOnly="true"
 34        android:theme="@style/Theme.Eventalate" >
-34-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:13:9-48
+34-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:13:9-48
 35        <activity
-35-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:15:9-23:20
+35-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:15:9-23:20
 36            android:name="com.example.eventalate.MainActivity"
-36-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:16:13-41
+36-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:16:13-41
 37            android:exported="true" >
-37-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:17:13-36
+37-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:17:13-36
 38            <intent-filter>
-38-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:18:13-22:29
+38-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:18:13-22:29
 39                <action android:name="android.intent.action.MAIN" />
-39-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:19:17-69
-39-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:19:25-66
+39-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:19:17-69
+39-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:19:25-66
 40
 41                <category android:name="android.intent.category.LAUNCHER" />
-41-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:21:17-77
-41-->C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\AndroidManifest.xml:21:27-74
+41-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:21:17-77
+41-->C:\Users\ian_m\Android-301\doop\SyntaxTerror\app\src\main\AndroidManifest.xml:21:27-74
 42            </intent-filter>
 43        </activity>
 44
