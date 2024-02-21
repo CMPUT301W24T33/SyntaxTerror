@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,9 +31,8 @@ public class AnonymousAuthActivity extends Activity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
-
     }
-    private void signInAnonymously() {
+    public void signInAnonymously() {
         // [START signin_anonymously]
         mAuth.signInAnonymously()
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -77,7 +77,7 @@ public class AnonymousAuthActivity extends Activity {
         // [END link_credential]
     }
     private void updateUI(FirebaseUser user) {
-
+        Log.d(TAG, "User authenticated " + user.getUid());
     }
 
 
