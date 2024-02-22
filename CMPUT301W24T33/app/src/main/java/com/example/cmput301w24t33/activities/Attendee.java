@@ -13,7 +13,6 @@ import android.widget.ImageView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
-import com.example.cmput301w24t33.attendeeFragments.NotificationsAttendee;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
