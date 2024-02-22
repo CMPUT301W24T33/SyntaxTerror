@@ -49,18 +49,18 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
 
     private void setEvents(){
         organizedEvents = new ArrayList<>();
-        organizedEvents.add(new Event("Test1"));
-        organizedEvents.add(new Event("Test2"));
-        organizedEvents.add(new Event("Test3"));
-        organizedEvents.add(new Event("Test4"));
-        organizedEvents.add(new Event("Test5"));
-        organizedEvents.add(new Event("Test6"));
-        organizedEvents.add(new Event("Test7"));
-        organizedEvents.add(new Event("Test8"));
-        organizedEvents.add(new Event("Test9"));
-        organizedEvents.add(new Event("Test10"));
-        organizedEvents.add(new Event("Test11"));
-        organizedEvents.add(new Event("Test12"));
+        organizedEvents.add(new Event("Test1", "Party"));
+        organizedEvents.add(new Event("Test2", "Party"));
+        organizedEvents.add(new Event("Test3", "Party"));
+        organizedEvents.add(new Event("Test4", "Party"));
+        organizedEvents.add(new Event("Test5", "Party"));
+        organizedEvents.add(new Event("Test6", "Party"));
+        organizedEvents.add(new Event("Test7", "Party"));
+        organizedEvents.add(new Event("Test8", "Party"));
+        organizedEvents.add(new Event("Test9", "Party"));
+        organizedEvents.add(new Event("Test10", "Party"));
+        organizedEvents.add(new Event("Test11", "Party"));
+        organizedEvents.add(new Event("Test12", "Party"));
     }
 
     private void setAdapter(){
