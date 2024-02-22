@@ -1,4 +1,4 @@
-package com.example.cmput301w24t33;
+package com.example.cmput301w24t33.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +11,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cmput301w24t33.profile.Profile;
+import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.AdapterEventClickListener;
+import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.EventAdapter;
+
 import java.util.ArrayList;
 
-public class OrganizerActivity extends AppCompatActivity implements AdapterEventClickListener{
+public class Organizer extends AppCompatActivity implements AdapterEventClickListener {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
     
@@ -28,7 +34,7 @@ public class OrganizerActivity extends AppCompatActivity implements AdapterEvent
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new ProfileFragment());
+                replaceFragment(new Profile());
             }
         });
     }

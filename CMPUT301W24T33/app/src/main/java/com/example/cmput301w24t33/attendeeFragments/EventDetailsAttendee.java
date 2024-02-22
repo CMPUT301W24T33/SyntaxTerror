@@ -1,6 +1,5 @@
-package com.example.cmput301w24t33;
+package com.example.cmput301w24t33.attendeeFragments;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,16 +9,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cmput301w24t33.profile.Profile;
+import com.example.cmput301w24t33.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AttendeeEventFragment#newInstance} factory method to
+ * Use the {@link EventDetailsAttendee#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AttendeeEventFragment extends Fragment {
+public class EventDetailsAttendee extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +31,7 @@ public class AttendeeEventFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AttendeeEventFragment() {
+    public EventDetailsAttendee() {
         // Required empty public constructor
     }
 
@@ -43,8 +44,8 @@ public class AttendeeEventFragment extends Fragment {
      * @return A new instance of fragment AttendeeEvent.
      */
     // TODO: Rename and change types and number of parameters
-    public static AttendeeEventFragment newInstance(String param1, String param2) {
-        AttendeeEventFragment fragment = new AttendeeEventFragment();
+    public static EventDetailsAttendee newInstance(String param1, String param2) {
+        EventDetailsAttendee fragment = new EventDetailsAttendee();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -97,7 +98,7 @@ public class AttendeeEventFragment extends Fragment {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new ProfileFragment());
+                replaceFragment(new Profile());
             }
         });
 
@@ -106,7 +107,7 @@ public class AttendeeEventFragment extends Fragment {
         notificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new AttendeeNotificationsFragment());
+                replaceFragment(new NotificationsAttendee());
             }
         });
     }

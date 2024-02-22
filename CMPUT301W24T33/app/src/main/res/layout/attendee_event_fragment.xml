@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:background="#FFFFFF"
-    tools:context=".AttendeeEventFragment">
+    tools:context=".attendeeFragments.EventDetailsAttendee">
 
     <RelativeLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/general_actionbar">
+        <include layout="@layout/actionbar_general">
         </include>
     </RelativeLayout>
 

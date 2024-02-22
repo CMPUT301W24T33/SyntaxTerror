@@ -1,4 +1,4 @@
-package com.example.cmput301w24t33;
+package com.example.cmput301w24t33.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -7,19 +7,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.fragment.app.Fragment;
 
-import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+
+import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
+import com.example.cmput301w24t33.attendeeFragments.NotificationsAttendee;
+import com.example.cmput301w24t33.events.AdapterEventClickListener;
+import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.EventAdapter;
+import com.example.cmput301w24t33.profile.Profile;
 
 import java.util.ArrayList;
 
-public class AttendeeActivity extends AppCompatActivity implements AdapterEventClickListener {
+public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
 
     private ArrayList<Event> eventList;
     private RecyclerView eventRecyclerView;
@@ -38,7 +40,7 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new ProfileFragment());
+                replaceFragment(new Profile());
             }
         });
 
@@ -77,7 +79,7 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
     }
 
     public void onEventClickListener(Event event, int position){
-        replaceFragment(new AttendeeEventFragment());
+        replaceFragment(new EventDetailsAttendee());
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.cmput301w24t33;
+package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.cmput301w24t33.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OrganizerEventFragment#newInstance} factory method to
+ * Use the {@link EventDetailsOrganizer#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrganizerEventFragment extends Fragment {
+public class EventDetailsOrganizer extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class OrganizerEventFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public OrganizerEventFragment() {
+    public EventDetailsOrganizer() {
         // Required empty public constructor
     }
 
@@ -37,8 +39,8 @@ public class OrganizerEventFragment extends Fragment {
      * @return A new instance of fragment OrganizerEventFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OrganizerEventFragment newInstance(String param1, String param2) {
-        OrganizerEventFragment fragment = new OrganizerEventFragment();
+    public static EventDetailsOrganizer newInstance(String param1, String param2) {
+        EventDetailsOrganizer fragment = new EventDetailsOrganizer();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

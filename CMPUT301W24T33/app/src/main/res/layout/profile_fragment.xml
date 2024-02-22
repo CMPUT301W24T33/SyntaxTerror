@@ -6,13 +6,13 @@
     android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F4EFEF"
-    tools:context=".ProfileFragment">
+    tools:context=".profile.Profile">
 
     <RelativeLayout
         android:id="@+id/profile_back_actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/edit_profile_actionbar">
+        <include layout="@layout/actionbar_editprofile">
         </include>
     </RelativeLayout>
 
