@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/attendee_organizer_actionbar"></include>
+            <include layout="@layout/actionbar_attendee_organizer"></include>
 
             <TextView
                 android:layout_below="@id/organizer_attendee_layout"

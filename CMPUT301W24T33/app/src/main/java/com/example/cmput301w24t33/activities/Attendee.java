@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.cmput301w24t33.R;
@@ -50,7 +51,6 @@ import java.util.ArrayList;
 public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
     private FirebaseFirestore db;
     private CollectionReference events;
-
     private ArrayList<Event> eventList;
     private RecyclerView eventRecyclerView;
 
@@ -88,6 +88,17 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
                 // fill in a fragment or whatever is decided for checkin
             }
         });
+
+        ImageButton userMode = findViewById(R.id.button_user_mode);
+        userMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Attendee.this, Organizer.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     @Override
