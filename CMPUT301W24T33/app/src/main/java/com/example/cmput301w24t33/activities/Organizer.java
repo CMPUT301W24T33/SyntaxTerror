@@ -1,7 +1,9 @@
 package com.example.cmput301w24t33.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         eventRecyclerView = findViewById(R.id.organized_events);
         setEvents();
         setAdapter();
+
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,12 +40,22 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
                 replaceFragment(new Profile());
             }
         });
+
+        ImageButton userMode = findViewById(R.id.button_user_mode);
+        userMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Organizer.this, Attendee.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.attendee_layout,fragment);
+        transaction.replace(R.id.organizer_layout,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
