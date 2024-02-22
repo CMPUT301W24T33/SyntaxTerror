@@ -3,14 +3,20 @@ package com.example.cmput301w24t33.organizerFragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.organizerFragments.NotificationsOrganizer;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +73,15 @@ public class EventDetailsOrganizer extends Fragment {
         setOnClickListeners(view);
         return view;
     }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.organizer_layout,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     private void setOnClickListeners(View view){
         ImageButton shareButton = view.findViewById(R.id.share_button);
         shareButton.setOnClickListener(new View.OnClickListener() {
@@ -76,5 +91,12 @@ public class EventDetailsOrganizer extends Fragment {
             }
         });
 
+        ImageView notificationButton = view.findViewById(R.id.notifications_arrow_image);
+        notificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new NotificationsOrganizer());
+            }
+        });
     }
 }
