@@ -16,9 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <include layout="@layout/attendee_organizer_actionbar"></include>
-
             <TextView
                 android:layout_below="@id/organizer_attendee_layout"
                 android:layout_width="match_parent"
@@ -27,12 +25,31 @@
                 android:textSize="40dp"
                 android:textAlignment="center">
             </TextView>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/event_recyclerview"
+                android:layout_weight="1000"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </androidx.recyclerview.widget.RecyclerView>
+
+            <!-- CHANGE IMAGE FOR CHECK IN BUTTON HERE-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                app:cardCornerRadius="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/check_in_img"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/check_in_img"
+                    >
+                </ImageView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

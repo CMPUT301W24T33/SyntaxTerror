@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1087289880922",
+    "firebase_url": "https://syntax-terror-f783b-default-rtdb.firebaseio.com",
+    "project_id": "syntax-terror-f783b",
+    "storage_bucket": "syntax-terror-f783b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087289880922:android:9aad77801068ca53288363",
+        "android_client_info": {
+          "package_name": "com.example.cmput301w24t33"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087289880922:android:b3f57032ff45aa61288363",
+        "android_client_info": {
+          "package_name": "com.example.eventalate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087289880922:android:f0ce4b2ef64fbf04288363",
+        "android_client_info": {
+          "package_name": "com.example.syntaxterror"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
