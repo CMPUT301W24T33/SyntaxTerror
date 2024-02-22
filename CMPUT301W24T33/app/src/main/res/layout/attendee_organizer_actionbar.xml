@@ -50,13 +50,4 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_below="@id/organizer_attendee_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Attend Events"
-        android:textSize="40dp"
-        android:textAlignment="center">
-    </TextView>
-
 </RelativeLayout>

@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AttendeeActivity">
+    tools:context=".OrganizerActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/attendee_layout">
+        android:id="@+id/organizer_layout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,13 +23,13 @@
                 android:layout_below="@id/organizer_attendee_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Attend Events"
+                android:text="Organize Events"
                 android:textSize="40dp"
                 android:textAlignment="center">
             </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/event_recyclerview"
+                android:id="@+id/organized_events"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </androidx.recyclerview.widget.RecyclerView>
