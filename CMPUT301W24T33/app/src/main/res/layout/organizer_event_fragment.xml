@@ -33,11 +33,11 @@
             android:layout_weight="1">
         </TextView>
         <ImageButton
+            android:id="@+id/button_user_mode"
             android:layout_width="70dp"
-            android:layout_height="53dp"
-            android:layout_weight="1"
-            android:background="@drawable/share_img">
-        </ImageButton>
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/share_img"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
