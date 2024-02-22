@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -84,31 +85,16 @@ public class EventDetailsAttendee extends Fragment {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Event Details");
 
-        // Back button to go back to previous view/activity
-        ImageView backButton = view.findViewById(R.id.back_arrow_img);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getParentFragmentManager().popBackStack();
-            }
-        });
+        // Back button click listener
+        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
+        backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
-        // Profile button to edit profile
+        // Profile button click listener
         ImageView profileButton = view.findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Profile());
-            }
-        });
+        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
 
-        // Notifications arrow for attendee to view notifications
+        // Notifications button click listener
         ImageView notificationButton = view.findViewById(R.id.notifications_arrow_image);
-        notificationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new NotificationsAttendee());
-            }
-        });
+        notificationButton.setOnClickListener(v -> replaceFragment(new NotificationsAttendee()));
     }
 }

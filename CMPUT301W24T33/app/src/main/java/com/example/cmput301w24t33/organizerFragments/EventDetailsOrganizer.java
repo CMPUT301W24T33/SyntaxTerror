@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.organizerFragments.NotificationsOrganizer;
+import com.example.cmput301w24t33.profile.Profile;
 
 import java.util.Objects;
 
@@ -83,21 +85,26 @@ public class EventDetailsOrganizer extends Fragment {
     }
 
     private void setOnClickListeners(View view){
+        // Set title
+        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
+        actionBarText.setText("Event Details");
+
+        // Share button click listener
         ImageButton shareButton = view.findViewById(R.id.share_button);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // set share functionality here
-                Log.d("share","working");
-            }
+        shareButton.setOnClickListener(v -> {
+            // set share functionality here
         });
 
+        // Notifications button click listener
         ImageView notificationButton = view.findViewById(R.id.notifications_arrow_image);
-        notificationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new NotificationsOrganizer());
-            }
-        });
+        notificationButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
+
+        // Back button click listener
+        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
+        backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+
+        // Profile button click listener
+        ImageView profileButton = view.findViewById(R.id.profile_image);
+        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 }

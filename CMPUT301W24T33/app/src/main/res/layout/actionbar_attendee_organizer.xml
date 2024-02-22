@@ -31,7 +31,9 @@
             android:id="@+id/button_user_mode"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/switch_user_mode" />
+            app:srcCompat="@drawable/switch_user_mode"
+            android:background="?selectableItemBackgroundBorderless"
+            android:layout_marginLeft="5dp"/>
 
         <!--THIS TOGGLE SWITCH MAY NOT BE THE BEST WAY TO SWITCH ACTIVITIES-->
         <!--<Switch

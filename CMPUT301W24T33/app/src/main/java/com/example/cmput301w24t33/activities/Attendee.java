@@ -67,38 +67,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         mAuth.signOut();
         setEvents();
         setAdapter();
-
-
-        // Profile button to edit profile
-        // Profile button to edit profile
-        ImageView profileButton = findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Profile());
-            }
-        });
-
-        // Check in button for an attendee to check in
-        // used reviewgrower.com/button-and-badge-generator/ to quickly make a button
-        ImageView checkInButton = findViewById(R.id.check_in_img);
-        checkInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // fill in a fragment or whatever is decided for checkin
-            }
-        });
-
-        ImageButton userMode = findViewById(R.id.button_user_mode);
-        userMode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Attendee.this, Organizer.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
+        setOnClickListeners();
     }
 
     @Override
@@ -192,5 +161,26 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         replaceFragment(new EventDetailsAttendee());
     }
 
+    private void setOnClickListeners(){
+
+        // Profile button click listener
+        ImageView profileButton = findViewById(R.id.profile_image);
+        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
+
+        // Check in button click listener
+        // used reviewgrower.com/button-and-badge-generator/ to quickly make a button
+        ImageView checkInButton = findViewById(R.id.check_in_img);
+        checkInButton.setOnClickListener(v -> {
+            // fill in a fragment or whatever is decided for checkin
+        });
+
+        // Usermode click listener
+        ImageButton userMode = findViewById(R.id.button_user_mode);
+        userMode.setOnClickListener(v -> {
+            Intent intent = new Intent(Attendee.this, Organizer.class);
+            startActivity(intent);
+            finish();
+        });
+    }
 
 }
