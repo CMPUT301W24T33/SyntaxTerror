@@ -65,6 +65,8 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         // Signs user out so to test new user sign-in
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signOut();
+        setEvents();
+        setAdapter();
 
 
         // Profile button to edit profile
@@ -87,32 +89,15 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             }
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "RESUME");
-
-        LocalBroadcastManager.getInstance(this)
-                .registerReceiver(anonymousSignInReceiver, new IntentFilter("ANONYMOUS_SIGN_IN_COMPLETE"));
         authorizeUser();
     }
 
-    @Override
-    protected void onPause() {
-        Log.d(TAG, "PAUSE");
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(anonymousSignInReceiver);
-        super.onPause();
-    }
-    private BroadcastReceiver anonymousSignInReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
 
-            Log.d(TAG, "CAUGHT");
-            String userId = intent.getStringExtra("USER_ID");
-            Log.d(TAG, "Received user ID: ");
-            registerAttendee(userId);
-        }
-    };
     /**
      *
      */
@@ -132,7 +117,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        // If user is no signed in, launch AnonymousAuthActivity to sign user in
+        // If user is not signed in, launch AnonymousAuthActivity to sign user in
         if (currentUser == null) {
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
@@ -153,6 +138,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     }
 
     private void setEvents(){
+        Log.d(TAG, "setEvent");
         eventList = new ArrayList<>();
         eventList.add(new Event("Event 1", "Party"));
         setDB("Event 1", "Party");
@@ -173,6 +159,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     // Adds events to DB
     private void setDB(String name, String description) {
         Event event = new Event(name, description);
+        Log.d(TAG, "setDB");
 
         db.collection("events")
                 .add(event)
