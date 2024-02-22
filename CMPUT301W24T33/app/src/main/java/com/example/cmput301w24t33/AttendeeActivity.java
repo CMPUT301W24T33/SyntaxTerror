@@ -63,9 +63,9 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
 
     private void setEvents(){
         eventList = new ArrayList<>();
-        eventList.add(new Event("Event 1"));
-        eventList.add(new Event("Event 2"));
-        eventList.add(new Event("Event 3"));
+        eventList.add(new Event("Event 1", "Party"));
+        eventList.add(new Event("Event 2", "BIG Party"));
+        eventList.add(new Event("Event 3", "Smol Party"));
     }
 
     private void setAdapter(){
