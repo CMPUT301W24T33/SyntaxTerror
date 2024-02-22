@@ -66,23 +66,7 @@ public class AttendeeEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = LayoutInflater.from(getContext()).inflate(R.layout.attendee_event_fragment,null);
-        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
-        actionBarText.setText("Event Details");
-        ImageView backButton = view.findViewById(R.id.back_arrow_img);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getParentFragmentManager().popBackStack();
-            }
-        });
-
-        ImageView profileButton = view.findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new ProfileFragment());
-            }
-        });
+        setOnClickListeners(view);
         return view;
     }
 
@@ -92,5 +76,38 @@ public class AttendeeEventFragment extends Fragment {
         transaction.replace(R.id.attendee_layout,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    // Sets all on click listeners to buttons
+    private void setOnClickListeners(View view){
+        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
+        actionBarText.setText("Event Details");
+
+        // Back button to go back to previous view/activity
+        ImageView backButton = view.findViewById(R.id.back_arrow_img);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getParentFragmentManager().popBackStack();
+            }
+        });
+
+        // Profile button to edit profile
+        ImageView profileButton = view.findViewById(R.id.profile_image);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new ProfileFragment());
+            }
+        });
+
+        // Notifications arrow for attendee to view notifications
+        ImageView notificationButton = view.findViewById(R.id.notifications_arrow_image);
+        notificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new AttendeeNotificationsFragment());
+            }
+        });
     }
 }

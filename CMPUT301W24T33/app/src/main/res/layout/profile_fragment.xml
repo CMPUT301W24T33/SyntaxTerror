@@ -107,7 +107,33 @@
         </EditText>
     </LinearLayout>
 
-
-
-
+    <LinearLayout
+        android:id="@+id/cancel_save_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/profile_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_marginRight="3dp"
+            >
+        </Button>
+        <Button
+            android:id="@+id/profile_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_marginLeft="3dp"
+            >
+        </Button>
+    </LinearLayout>
 </RelativeLayout>

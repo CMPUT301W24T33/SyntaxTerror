@@ -32,11 +32,23 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         setEvents();
         setAdapter();
+
+        // Profile button to edit profile
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new ProfileFragment());
+            }
+        });
+
+        // Check in button for an attendee to check in
+        // used reviewgrower.com/button-and-badge-generator/ to quickly make a button
+        ImageView checkInButton = findViewById(R.id.check_in_img);
+        checkInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // fill in a fragment or whatever is decided for checkin
             }
         });
     }
@@ -51,18 +63,9 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
 
     private void setEvents(){
         eventList = new ArrayList<>();
-        eventList.add(new Event("Test1"));
-        eventList.add(new Event("Test2"));
-        eventList.add(new Event("Test3"));
-        eventList.add(new Event("Test4"));
-        eventList.add(new Event("Test5"));
-        eventList.add(new Event("Test6"));
-        eventList.add(new Event("Test7"));
-        eventList.add(new Event("Test8"));
-        eventList.add(new Event("Test9"));
-        eventList.add(new Event("Test10"));
-        eventList.add(new Event("Test11"));
-        eventList.add(new Event("Test12"));
+        eventList.add(new Event("Event 1"));
+        eventList.add(new Event("Event 2"));
+        eventList.add(new Event("Event 3"));
     }
 
     private void setAdapter(){
