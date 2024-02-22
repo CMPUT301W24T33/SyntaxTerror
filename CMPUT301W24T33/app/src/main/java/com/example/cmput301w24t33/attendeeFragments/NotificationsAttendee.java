@@ -1,6 +1,8 @@
 package com.example.cmput301w24t33.attendeeFragments;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,8 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,26 +26,28 @@ public class NotificationsAttendee extends Fragment {
         // Required empty public constructor
     }
 
+    @NonNull
+    @Contract(" -> new")
     public static NotificationsAttendee newInstance() {
         return new NotificationsAttendee();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.attendee_notifications_fragment, container, false);
         setupActionBar(view);
         setupNotificationsList(view);
         return view;
     }
 
-    private void setupActionBar(View view) {
+    private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
         ImageView backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
-    private void setupNotificationsList(View view) {
+    private void setupNotificationsList(@NonNull View view) {
         RecyclerView recyclerView = view.findViewById(R.id.notifications_attendee);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -50,6 +56,7 @@ public class NotificationsAttendee extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
+    @NonNull
     private List<Notification> createSampleNotifications() {
         List<Notification> notifications = new ArrayList<>();
         notifications.add(new Notification("Welcome", "Thanks for joining our event!", "10:00 AM"));

@@ -1,6 +1,8 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,8 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.jetbrains.annotations.Contract;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,12 +36,14 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         // Required empty public constructor
     }
 
+    @NonNull
+    @Contract(" -> new")
     public static NotificationsOrganizer newInstance() {
         return new NotificationsOrganizer();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_notifications_fragment, container, false);
         setupActionBar(view);
         setupNotificationsList(view);
@@ -45,7 +51,7 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         return view;
     }
 
-    private void setupFloatingActionButtons(View view) {
+    private void setupFloatingActionButtons(@NonNull View view) {
         FloatingActionButton fabNewNotification = view.findViewById(R.id.button_new_notification);
         fabNewNotification.setOnClickListener(v -> newNotificationDialog());
 
@@ -62,14 +68,14 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         });
     }
 
-    private void setupActionBar(View view) {
+    private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
         ImageView backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
-    private void setupNotificationsList(View view) {
+    private void setupNotificationsList(@NonNull View view) {
         RecyclerView recyclerView = view.findViewById(R.id.notifications_organizer);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -106,6 +112,7 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         adapter.notifyDataSetChanged();
     }
 
+    @NonNull
     private List<Notification> createSampleNotifications() {
         List<Notification> sampleNotifications = new ArrayList<>();
         sampleNotifications.add(new Notification("Welcome", "Thanks for joining our event!", "10:00 AM"));
