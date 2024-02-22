@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.app.AlertDialog;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.cmput301w24t33.R;
@@ -49,7 +50,7 @@ public class NotificationsOrganizer extends Fragment {
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
-        ImageView backButton = view.findViewById(R.id.back_arrow_img);
+        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 

@@ -33,24 +33,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         eventRecyclerView = findViewById(R.id.organized_events);
         setEvents();
         setAdapter();
-
-        ImageView profileButton = findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new Profile());
-            }
-        });
-
-        ImageButton userMode = findViewById(R.id.button_user_mode);
-        userMode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Organizer.this, Attendee.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        setOnClickListeners(); // function to set on click listeners to keep oncreate clean
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -88,5 +71,16 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     @Override
     public void onEventClickListener(Event event, int position) {
        replaceFragment(new EventDetailsOrganizer());
+    }
+    private void setOnClickListeners(){
+        ImageView profileButton = findViewById(R.id.profile_image);
+        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
+
+        ImageButton userMode = findViewById(R.id.button_user_mode);
+        userMode.setOnClickListener(v -> {
+            Intent intent = new Intent(Organizer.this, Attendee.class);
+            startActivity(intent);
+            finish();
+        });
     }
 }

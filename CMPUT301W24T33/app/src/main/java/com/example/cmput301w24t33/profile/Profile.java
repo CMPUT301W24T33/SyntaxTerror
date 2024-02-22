@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -69,7 +70,7 @@ public class Profile extends Fragment {
         actionBarText.setText("Edit Profile");  // Fragment name in actionbar
 
         // Back button to go back to previous view/activity
-        ImageView backButton = view.findViewById(R.id.back_arrow_img);
+        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
