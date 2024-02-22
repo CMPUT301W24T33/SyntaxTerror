@@ -3,7 +3,6 @@ package com.example.cmput301w24t33.events;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
 /**
  *
  */

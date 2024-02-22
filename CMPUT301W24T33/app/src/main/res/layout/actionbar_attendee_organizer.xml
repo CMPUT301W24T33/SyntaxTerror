@@ -27,7 +27,13 @@
             </ImageView>
         </androidx.cardview.widget.CardView>
 
-<!--THIS TOGGLE SWITCH MAY NOT BE THE BEST WAY TO SWITCH ACTIVITIES-->
+        <ImageButton
+            android:id="@+id/button_user_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/switch_user_mode" />
+
+        <!--THIS TOGGLE SWITCH MAY NOT BE THE BEST WAY TO SWITCH ACTIVITIES-->
         <!--<Switch
             android:id="@+id/organizer_attendee_switch"
             android:layout_width="wrap_content"
