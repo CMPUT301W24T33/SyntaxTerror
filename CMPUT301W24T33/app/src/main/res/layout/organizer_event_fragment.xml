@@ -16,7 +16,7 @@
         </include>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/event_name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,12 +34,15 @@
         </TextView>
         <ImageButton
             android:id="@+id/share_button"
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="?selectableItemBackgroundBorderless"
             app:srcCompat="@drawable/share_img"
+            android:scaleType="fitCenter"
+            android:layout_toRightOf="@+id/event_name_textview"
             android:layout_weight="1"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <!-- might need to change this for proper image scale -->
     <ImageView

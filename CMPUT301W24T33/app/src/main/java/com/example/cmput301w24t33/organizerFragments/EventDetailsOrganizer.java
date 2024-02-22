@@ -73,7 +73,6 @@ public class EventDetailsOrganizer extends Fragment {
             @Override
             public void onClick(View v) {
                 // set share functionality here
-                Log.d("share","working");
             }
         });
 
