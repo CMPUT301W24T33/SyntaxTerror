@@ -15,5 +15,87 @@
         </include>
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/event_name_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout"
+        android:text="Event Name Here"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="40dp">
+    </TextView>
+
+    <!-- might need to change this for proper image scale -->
+    <ImageView
+        android:id="@+id/poster_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/test_profile"
+        android:layout_below="@id/event_name_textview">
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poster_imageview"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:id="@+id/start_time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/poster_imageview"
+            android:clickable="false">
+            <TextView
+                android:id="@+id/start_text"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Start: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+            <TextView
+                android:id="@+id/start_time_textview"
+                android:text="yyyy/mm/dd/ hr:min"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/end_time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/start_time_layout"
+            android:clickable="false">
+            <TextView
+                android:id="@+id/end_text"
+                android:textStyle="bold"
+                android:text="End:"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+            <TextView
+                android:id="@+id/end_time_text"
+                android:textSize="20dp"
+                android:text="yyyy/mm/dd/ hr:min"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>
