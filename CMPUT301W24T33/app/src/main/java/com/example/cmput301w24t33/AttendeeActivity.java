@@ -117,18 +117,26 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
             registerAttendee(userId);
         }
     };
+    /**
+     *
+     */
     private ActivityResultLauncher<Intent> anonymousAuthLauncher = 
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 Intent data = result.getData();
                 String userId = data.getStringExtra("USER_ID");
                 Log.d(TAG, "Received user ID: " + userId);
+                // Use userId to create user in database
             });
-    private void authorizeUser() {
-        // Checks if Attendee is already signed in
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
+    /**
+     * This method checks to see if user is signed in and authorized.
+     * If not, it launched AnonymousAuthActivity to authorize and sign in user
+     */
+    private void authorizeUser() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        
+
+        // If user is no signed in, launch AnonymousAuthActivity to sign user in
         if (currentUser == null) {
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
