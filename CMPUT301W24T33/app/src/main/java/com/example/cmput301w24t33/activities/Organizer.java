@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cmput301w24t33.organizerFragments.EventDetailsOrganizer;
 import com.example.cmput301w24t33.profile.Profile;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
@@ -86,6 +87,6 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     
     @Override
     public void onEventClickListener(Event event, int position) {
-//        replaceFragment(new OrganizerEventFragment());
+       replaceFragment(new EventDetailsOrganizer());
     }
 }
