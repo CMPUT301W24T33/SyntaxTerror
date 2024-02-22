@@ -67,6 +67,6 @@ public class OrganizerActivity extends AppCompatActivity implements AdapterEvent
     
     @Override
     public void onEventClickListener(Event event, int position) {
-        replaceFragment(new OrganizerEventFragment());
+//        replaceFragment(new OrganizerEventFragment());
     }
 }

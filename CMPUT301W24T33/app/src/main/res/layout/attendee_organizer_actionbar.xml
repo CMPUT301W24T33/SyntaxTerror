@@ -36,17 +36,16 @@
             android:layout_centerInParent="true"
             android:checked="true"
             android:switchMinWidth="75dp" />
+
         <TextView
             android:id="@+id/switch_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
             android:text="Organizer     Attendee"
-            android:textStyle="bold"
             android:textSize="17dp"
-            >
-        </TextView>
+            android:textStyle="bold"></TextView>
 
     </RelativeLayout>
 
