@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -65,12 +66,31 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = LayoutInflater.from(getContext()).inflate(R.layout.profile_fragment,null);
         TextView actionBarText = view.findViewById(R.id.back_actionbar_textview);
-        actionBarText.setText("Edit Profile");
+        actionBarText.setText("Edit Profile");  // Fragment name in actionbar
+
+        // Back button to go back to previous view/activity
         ImageView backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getParentFragmentManager().popBackStack();
+            }
+        });
+
+        // Cancel button to cancel profile editing
+        Button cancelButton = view.findViewById(R.id.profile_cancel_button);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add code to cancel profile editing here
+            }
+        });
+
+        Button saveButton = view.findViewById(R.id.profile_save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add code to save profile editing here
             }
         });
 
