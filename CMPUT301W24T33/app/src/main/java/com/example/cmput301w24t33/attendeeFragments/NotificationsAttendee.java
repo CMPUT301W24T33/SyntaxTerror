@@ -17,24 +17,12 @@ import com.example.cmput301w24t33.notifications.NotificationAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Fragment for displaying notifications to attendees.
- * Handles UI setup for a custom action bar and a RecyclerView for notifications.
- */
 public class NotificationsAttendee extends Fragment {
 
-    /**
-     * Required empty constructor for fragment initialization.
-     */
     public NotificationsAttendee() {
         // Required empty public constructor
     }
 
-    /**
-     * Factory method to create a new instance of AttendeeNotificationsFragment.
-     *
-     * @return A new instance of fragment AttendeeNotificationsFragment.
-     */
     public static NotificationsAttendee newInstance() {
         return new NotificationsAttendee();
     }
@@ -47,11 +35,6 @@ public class NotificationsAttendee extends Fragment {
         return view;
     }
 
-    /**
-     * Sets up the custom action bar with a title and back button for navigation.
-     *
-     * @param view The root view of the fragment.
-     */
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
@@ -59,24 +42,15 @@ public class NotificationsAttendee extends Fragment {
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
-    /**
-     * Prepares and initializes the RecyclerView for displaying notifications.
-     * Note: Actual data binding will depend on future implementation details.
-     *
-     * @param view The root view of the fragment.
-     */
     private void setupNotificationsList(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.notifications_attendee);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Create sample notifications. To be replaced/modified.
         List<Notification> notifications = createSampleNotifications();
-
-        NotificationAdapter adapter = new NotificationAdapter(notifications);
+        NotificationAdapter adapter = new NotificationAdapter(notifications, null); // Pass null for listener
         recyclerView.setAdapter(adapter);
     }
 
-    // SAMPLE NOTIFICATIONS - DELETE WHEN ACTUAL NOTIFICATIONS FROM DATABASE ARE IMPLMEMENTED
     private List<Notification> createSampleNotifications() {
         List<Notification> notifications = new ArrayList<>();
         notifications.add(new Notification("Welcome", "Thanks for joining our event!", "10:00 AM"));

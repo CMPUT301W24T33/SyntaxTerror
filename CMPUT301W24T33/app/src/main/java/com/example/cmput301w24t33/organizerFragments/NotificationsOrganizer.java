@@ -23,10 +23,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class NotificationsOrganizer extends Fragment {
+public class NotificationsOrganizer extends Fragment implements NotificationAdapter.OnNotificationListener {
 
     private List<Notification> notifications;
     private NotificationAdapter adapter;
+    private int selectedNotificationPosition = -1;
 
     public NotificationsOrganizer() {
         // Required empty public constructor
@@ -41,10 +42,25 @@ public class NotificationsOrganizer extends Fragment {
         View view = inflater.inflate(R.layout.organizer_notifications_fragment, container, false);
         setupActionBar(view);
         setupNotificationsList(view);
-
-        FloatingActionButton fab = view.findViewById(R.id.button_new_notification);
-        fab.setOnClickListener(v -> newNotificationDialog());
+        setupFloatingActionButtons(view);
         return view;
+    }
+
+    private void setupFloatingActionButtons(View view) {
+        FloatingActionButton fabNewNotification = view.findViewById(R.id.button_new_notification);
+        fabNewNotification.setOnClickListener(v -> newNotificationDialog());
+
+        FloatingActionButton fabDeleteNotification = view.findViewById(R.id.button_delete_notification);
+        fabDeleteNotification.setVisibility(View.GONE); // Initially hide the delete button
+        fabDeleteNotification.setOnClickListener(v -> {
+            if (selectedNotificationPosition != -1 && selectedNotificationPosition < notifications.size()) {
+                notifications.remove(selectedNotificationPosition);
+                adapter.notifyItemRemoved(selectedNotificationPosition);
+                adapter.notifyItemRangeChanged(selectedNotificationPosition, notifications.size());
+                fabDeleteNotification.setVisibility(View.GONE); // Hide the delete button after deletion
+                selectedNotificationPosition = -1; // Reset selection
+            }
+        });
     }
 
     private void setupActionBar(View view) {
@@ -59,7 +75,7 @@ public class NotificationsOrganizer extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         notifications = createSampleNotifications();
-        adapter = new NotificationAdapter(notifications);
+        adapter = new NotificationAdapter(notifications, this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -74,12 +90,12 @@ public class NotificationsOrganizer extends Fragment {
         builder.setView(dialogView)
                 .setTitle("New Notification")
                 .setPositiveButton("Create", (dialog, id) -> {
-                    String title = titleInput.getText().toString();
-                    String message = messageInput.getText().toString();
+                    String title = titleInput.getText().toString().trim();
+                    String message = messageInput.getText().toString().trim();
                     String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
                     createNotification(title, message, timestamp);
                 })
-                .setNegativeButton("Cancel", (dialog, id) -> dialog.dismiss());
+                .setNegativeButton("Cancel", (dialog, id) -> dialog.cancel());
 
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -91,12 +107,21 @@ public class NotificationsOrganizer extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-    // SAMPLE NOTIFICATIONS - DELETE WHEN ACTUAL NOTIFICATIONS FROM DATABASE ARE IMPLMEMENTED
     private List<Notification> createSampleNotifications() {
         List<Notification> sampleNotifications = new ArrayList<>();
         sampleNotifications.add(new Notification("Welcome", "Thanks for joining our event!", "10:00 AM"));
         sampleNotifications.add(new Notification("Session Start", "Don't miss the keynote speech.", "11:00 AM"));
         sampleNotifications.add(new Notification("Lunch Break", "Lunch is served at the main hall.", "1:00 PM"));
         return sampleNotifications;
+    }
+
+    @Override
+    public void onNotificationClick(int position) {
+        selectedNotificationPosition = position;
+        View view = getView();
+        if (view != null) {
+            FloatingActionButton fabDeleteNotification = view.findViewById(R.id.button_delete_notification);
+            fabDeleteNotification.setVisibility(View.VISIBLE); // Show the delete button when an item is selected
+        }
     }
 }
