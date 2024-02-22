@@ -1,0 +1,280 @@
+Index: app/src/main/java/com/example/eventalate/Organizer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eventalate;public class Organizer {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/eventalate/Organizer.java b/app/src/main/java/com/example/eventalate/Organizer.java
+--- a/app/src/main/java/com/example/eventalate/Organizer.java	(revision 7e1bdb6d1d59dc0862b86e67f7afe0c445c7b6bc)
++++ b/app/src/main/java/com/example/eventalate/Organizer.java	(date 1708471602809)
+@@ -1,2 +1,8 @@
+-package com.example.eventalate;public class Organizer {
++package com.example.eventalate;
++
++public class Organizer extends User {
++    public Organizer(String fName, String lName) {
++
++        super(fName, lName);
++    }
+ }
+Index: app/src/main/java/com/example/eventalate/Attendee.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eventalate;public class Attendee {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/eventalate/Attendee.java b/app/src/main/java/com/example/eventalate/Attendee.java
+--- a/app/src/main/java/com/example/eventalate/Attendee.java	(revision 7e1bdb6d1d59dc0862b86e67f7afe0c445c7b6bc)
++++ b/app/src/main/java/com/example/eventalate/Attendee.java	(date 1708471222122)
+@@ -1,2 +1,7 @@
+-package com.example.eventalate;public class Attendee {
++package com.example.eventalate;
++
++public class Attendee extends User {
++    public Attendee(String fName, String lName) {
++        super(fName, lName);
++    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"NONE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"439e6507-0aa7-4163-884d-949875ef143c\" name=\"Changes\" comment=\"Database Creation\">\r\n      <change afterPath=\"$PROJECT_DIR$/app/google-services.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build.gradle.kts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build.gradle.kts\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_manifest/debug/AndroidManifest.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/merged_manifest/debug/AndroidManifest.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-night-v8.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-night-v8.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/single/debug.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/single/debug.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/packaged_manifests/debug/AndroidManifest.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/packaged_manifests/debug/AndroidManifest.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/mipmap-anydpi-v26/ic_launcher.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/mipmap-anydpi-v26/ic_launcher_round.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/stableIds.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/stableIds.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Event.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Event.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build.gradle.kts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build.gradle.kts\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ClangdSettings\">\r\n    <option name=\"formatViaClangd\" value=\"false\" />\r\n  </component>\r\n  <component name=\"ExecutionTargetManager\" SELECTED_TARGET=\"device_and_snapshot_combo_box_target[C:\\Users\\ian_m\\.android\\avd\\Pixel_3a_API_34_extension_level_7_x86_64.avd]\" />\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand />\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"database-creation\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2cdlUffZ9HIpdm6PM02iY5OM4MF\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.cidr.known.project.marker\": \"true\",\r\n    \"cf.first.check.clang-format\": \"false\",\r\n    \"cidr.known.project.marker\": \"true\",\r\n    \"git-widget-placeholder\": \"32-sp-8-initialize-and-connect-to-database\",\r\n    \"last_opened_file_path\": \"C:/Users/ian_m/AndroidStudioProjects/Eventalate\",\r\n    \"settings.editor.selected.configurable\": \"experimental\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\ian_m\\AndroidStudio-301\\Eventalate\\app\\src\\main\\java\\com\\example\\eventalate\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Android App.app\">\r\n    <configuration name=\"app\" type=\"AndroidRunConfigurationType\" factoryName=\"Android App\">\r\n      <module name=\"Eventalate.app.main\" />\r\n      <option name=\"DEPLOY\" value=\"true\" />\r\n      <option name=\"DEPLOY_APK_FROM_BUNDLE\" value=\"false\" />\r\n      <option name=\"DEPLOY_AS_INSTANT\" value=\"false\" />\r\n      <option name=\"ARTIFACT_NAME\" value=\"\" />\r\n      <option name=\"PM_INSTALL_OPTIONS\" value=\"\" />\r\n      <option name=\"ALL_USERS\" value=\"false\" />\r\n      <option name=\"ALWAYS_INSTALL_WITH_PM\" value=\"false\" />\r\n      <option name=\"CLEAR_APP_STORAGE\" value=\"false\" />\r\n      <option name=\"DYNAMIC_FEATURES_DISABLED_LIST\" value=\"\" />\r\n      <option name=\"ACTIVITY_EXTRA_FLAGS\" value=\"\" />\r\n      <option name=\"MODE\" value=\"default_activity\" />\r\n      <option name=\"CLEAR_LOGCAT\" value=\"false\" />\r\n      <option name=\"SHOW_LOGCAT_AUTOMATICALLY\" value=\"false\" />\r\n      <option name=\"INSPECTION_WITHOUT_ACTIVITY_RESTART\" value=\"false\" />\r\n      <option name=\"TARGET_SELECTION_MODE\" value=\"DEVICE_AND_SNAPSHOT_COMBO_BOX\" />\r\n      <option name=\"SELECTED_CLOUD_MATRIX_CONFIGURATION_ID\" value=\"-1\" />\r\n      <option name=\"SELECTED_CLOUD_MATRIX_PROJECT_ID\" value=\"\" />\r\n      <option name=\"DEBUGGER_TYPE\" value=\"Auto\" />\r\n      <Auto>\r\n        <option name=\"USE_JAVA_AWARE_DEBUGGER\" value=\"false\" />\r\n        <option name=\"SHOW_STATIC_VARS\" value=\"true\" />\r\n        <option name=\"WORKING_DIR\" value=\"\" />\r\n        <option name=\"TARGET_LOGGING_CHANNELS\" value=\"lldb process:gdb-remote packets\" />\r\n        <option name=\"SHOW_OPTIMIZED_WARNING\" value=\"true\" />\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Auto>\r\n      <Hybrid>\r\n        <option name=\"USE_JAVA_AWARE_DEBUGGER\" value=\"false\" />\r\n        <option name=\"SHOW_STATIC_VARS\" value=\"true\" />\r\n        <option name=\"WORKING_DIR\" value=\"\" />\r\n        <option name=\"TARGET_LOGGING_CHANNELS\" value=\"lldb process:gdb-remote packets\" />\r\n        <option name=\"SHOW_OPTIMIZED_WARNING\" value=\"true\" />\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Hybrid>\r\n      <Java>\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Java>\r\n      <Native>\r\n        <option name=\"USE_JAVA_AWARE_DEBUGGER\" value=\"false\" />\r\n        <option name=\"SHOW_STATIC_VARS\" value=\"true\" />\r\n        <option name=\"WORKING_DIR\" value=\"\" />\r\n        <option name=\"TARGET_LOGGING_CHANNELS\" value=\"lldb process:gdb-remote packets\" />\r\n        <option name=\"SHOW_OPTIMIZED_WARNING\" value=\"true\" />\r\n        <option name=\"ATTACH_ON_WAIT_FOR_DEBUGGER\" value=\"false\" />\r\n        <option name=\"DEBUG_SANDBOX_SDK\" value=\"false\" />\r\n      </Native>\r\n      <Profilers>\r\n        <option name=\"ADVANCED_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"STARTUP_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"STARTUP_CPU_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"STARTUP_CPU_PROFILING_CONFIGURATION_NAME\" value=\"Java/Kotlin Method Sample (legacy)\" />\r\n        <option name=\"STARTUP_NATIVE_MEMORY_PROFILING_ENABLED\" value=\"false\" />\r\n        <option name=\"NATIVE_MEMORY_SAMPLE_RATE_BYTES\" value=\"2048\" />\r\n      </Profilers>\r\n      <option name=\"DEEP_LINK\" value=\"\" />\r\n      <option name=\"ACTIVITY_CLASS\" value=\"\" />\r\n      <option name=\"SEARCH_ACTIVITY_IN_GLOBAL_SCOPE\" value=\"false\" />\r\n      <option name=\"SKIP_ACTIVITY_VALIDATION\" value=\"false\" />\r\n      <method v=\"2\">\r\n        <option name=\"Android.Gradle.BeforeRunTask\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"AndroidStudio-301\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"AndroidStudio-301\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"gradlew\" type=\"ShConfigurationType\" temporary=\"true\">\r\n      <option name=\"SCRIPT_TEXT\" value=\"\" />\r\n      <option name=\"INDEPENDENT_SCRIPT_PATH\" value=\"true\" />\r\n      <option name=\"SCRIPT_PATH\" value=\"$PROJECT_DIR$/gradlew\" />\r\n      <option name=\"SCRIPT_OPTIONS\" value=\"\" />\r\n      <option name=\"INDEPENDENT_SCRIPT_WORKING_DIRECTORY\" value=\"true\" />\r\n      <option name=\"SCRIPT_WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"INDEPENDENT_INTERPRETER_PATH\" value=\"true\" />\r\n      <option name=\"INTERPRETER_PATH\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"EXECUTE_IN_TERMINAL\" value=\"true\" />\r\n      <option name=\"EXECUTE_SCRIPT_FILE\" value=\"true\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Shell Script.gradlew\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"StandaloneScriptsStorage\">\r\n    <option name=\"files\">\r\n      <set>\r\n        <option value=\"$PROJECT_DIR$/settings.gradle.kts\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"439e6507-0aa7-4163-884d-949875ef143c\" name=\"Changes\" comment=\"\" />\r\n      <created>1708449353048</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1708449353048</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initialize project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1708451821939</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708451821939</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Database Creation\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1708462523803</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1708462523803</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initialize project\" />\r\n    <MESSAGE value=\"Database Creation\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Database Creation\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7e1bdb6d1d59dc0862b86e67f7afe0c445c7b6bc)
++++ b/.idea/workspace.xml	(date 1708537105407)
+@@ -5,37 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="439e6507-0aa7-4163-884d-949875ef143c" name="Changes" comment="Database Creation">
+-      <change afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifest/debug/AndroidManifest.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-night-v8.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-night-v8.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/single/debug.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Attendee.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Attendee.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/DatabaseManager.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Event.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Organizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/Organizer.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/eventalate/User.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -62,6 +38,13 @@
+         </projects_view>
+       </state>
+     </system>
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+@@ -75,24 +58,29 @@
+     <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectId" id="2cdlUffZ9HIpdm6PM02iY5OM4MF" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.cidr.known.project.marker": "true",
+-    "cf.first.check.clang-format": "false",
+-    "cidr.known.project.marker": "true",
+-    "git-widget-placeholder": "32-sp-8-initialize-and-connect-to-database",
+-    "last_opened_file_path": "C:/Users/ian_m/AndroidStudioProjects/Eventalate",
+-    "settings.editor.selected.configurable": "experimental"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
++    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
++    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;32-sp-8-initialize-and-connect-to-database&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/ian_m/AndroidStudioProjects/Eventalate&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
++    <key name="CreateClassDialog.RecentsKey">
++      <recent name="com.example.eventalate" />
++    </key>
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\ian_m\AndroidStudio-301\Eventalate\app\src\main\java\com\example\eventalate" />
+     </key>
+Index: app/src/main/java/com/example/eventalate/DatabaseManager.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eventalate;public class DatabaseManager {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/eventalate/DatabaseManager.java b/app/src/main/java/com/example/eventalate/DatabaseManager.java
+--- a/app/src/main/java/com/example/eventalate/DatabaseManager.java	(revision 7e1bdb6d1d59dc0862b86e67f7afe0c445c7b6bc)
++++ b/app/src/main/java/com/example/eventalate/DatabaseManager.java	(date 1708472963826)
+@@ -1,2 +1,16 @@
+-package com.example.eventalate;public class DatabaseManager {
++package com.example.eventalate;
++import androidx.annotation.NonNull;
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++import android.util.Log;
++
++import com.google.android.gms.tasks.OnFailureListener;
++import com.google.android.gms.tasks.OnSuccessListener;
++import com.google.firebase.firestore.CollectionReference;
++import com.google.firebase.firestore.DocumentReference;
++import com.google.firebase.firestore.FirebaseFirestore;
++public class DatabaseManager {
++    private static final String DATABASE_NAME = "eventalate";
++    private static FirebaseFirestore db;
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_17\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 7e1bdb6d1d59dc0862b86e67f7afe0c445c7b6bc)
++++ b/.idea/misc.xml	(date 1708536995613)
+@@ -1,7 +1,6 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/eventalate/Event.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eventalate;\r\nimport java.text.SimpleDateFormat;\r\nimport java.util.*;\r\n\r\n\r\n/**\r\n *\r\n */\r\npublic class Event {\r\n\r\n    protected SimpleDateFormat dateFormat = new SimpleDateFormat(\"EEEE.LLLL.yyyy KK:mm:ss aaa z\");\r\n    private String startDateTime;\r\n    private String endDateTime;\r\n    private String name;\r\n    private String eventDescription;\r\n    private String posterQR;\r\n    private String checkInQR;\r\n    private String locationData;    // Not sure if this is the correct date type\r\n    private boolean geoTracking;\r\n    private boolean active;\r\n    private int maxOccupancy;\r\n    private int maxSignup;\r\n    private ArrayList<String> attendees = new ArrayList<>();\r\n\r\n    public Event(String name, String eventDescription) {\r\n        this.name = name;\r\n        this.eventDescription = eventDescription;\r\n    }\r\n\r\n    public String getStartDateTime() {\r\n        return startDateTime;\r\n    }\r\n\r\n    public void setStartDateTime(String startDateTime) {\r\n        this.startDateTime = startDateTime;\r\n    }\r\n\r\n    public String getEndDateTime() {\r\n        return endDateTime;\r\n    }\r\n\r\n    public void setEndDateTime(String endDateTime) {\r\n        this.endDateTime = endDateTime;\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public String getEventDescription() {\r\n        return eventDescription;\r\n    }\r\n\r\n    public void setEventDescription(String eventDescription) {\r\n        this.eventDescription = eventDescription;\r\n    }\r\n\r\n    public String getPosterQR() {\r\n        return posterQR;\r\n    }\r\n\r\n    public void setPosterQR(String posterQR) {\r\n        this.posterQR = posterQR;\r\n    }\r\n\r\n    public String getCheckInQR() {\r\n        return checkInQR;\r\n    }\r\n\r\n    public void setCheckInQR(String checkInQR) {\r\n        this.checkInQR = checkInQR;\r\n    }\r\n\r\n    public String getLocationData() {\r\n        return locationData;\r\n    }\r\n\r\n    public void setLocationData(String locationData) {\r\n        this.locationData = locationData;\r\n    }\r\n\r\n    public boolean isGeoTracking() {\r\n        return geoTracking;\r\n    }\r\n\r\n    public void setGeoTracking(boolean geoTracking) {\r\n        this.geoTracking = geoTracking;\r\n    }\r\n\r\n    public boolean isActive() {\r\n        return active;\r\n    }\r\n\r\n    public void setActive(boolean active) {\r\n        this.active = active;\r\n    }\r\n\r\n    public int getMaxOccupancy() {\r\n        return maxOccupancy;\r\n    }\r\n\r\n    public void setMaxOccupancy(int maxOccupancy) {\r\n        this.maxOccupancy = maxOccupancy;\r\n    }\r\n\r\n    public int getMaxSignup() {\r\n        return maxSignup;\r\n    }\r\n\r\n    public void setMaxSignup(int maxSignup) {\r\n        this.maxSignup = maxSignup;\r\n    }\r\n\r\n    public ArrayList<String> getAttendees() {\r\n        return attendees;\r\n    }\r\n\r\n    public void setAttendees(ArrayList<String> attendees) {\r\n        this.attendees = attendees;\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/eventalate/Event.java b/app/src/main/java/com/example/eventalate/Event.java
+--- a/app/src/main/java/com/example/eventalate/Event.java	(revision 7e1bdb6d1d59dc0862b86e67f7afe0c445c7b6bc)
++++ b/app/src/main/java/com/example/eventalate/Event.java	(date 1708471602844)
+@@ -20,7 +20,8 @@
+     private boolean active;
+     private int maxOccupancy;
+     private int maxSignup;
+-    private ArrayList<String> attendees = new ArrayList<>();
++    private ArrayList<User> attendees = new ArrayList<>();
++    private ArrayList<User> signedUpUsers = new ArrayList<>();
+ 
+     public Event(String name, String eventDescription) {
+         this.name = name;
+@@ -115,13 +116,20 @@
+         this.maxSignup = maxSignup;
+     }
+ 
+-    public ArrayList<String> getAttendees() {
++    public ArrayList<User> getAttendees() {
+         return attendees;
+     }
+ 
+-    public void setAttendees(ArrayList<String> attendees) {
++    public void setAttendees(ArrayList<User> attendees) {
+         this.attendees = attendees;
+     }
+ 
+ 
++    public ArrayList<User> getSignedUpUsers() {
++        return signedUpUsers;
++    }
++
++    public void setSignedUpUsers(ArrayList<User> signedUpUsers) {
++        this.signedUpUsers = signedUpUsers;
++    }
+ }
+Index: app/src/main/java/com/example/eventalate/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.eventalate;public class User {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/eventalate/User.java b/app/src/main/java/com/example/eventalate/User.java
+--- a/app/src/main/java/com/example/eventalate/User.java	(revision 7e1bdb6d1d59dc0862b86e67f7afe0c445c7b6bc)
++++ b/app/src/main/java/com/example/eventalate/User.java	(date 1708471602867)
+@@ -1,2 +1,29 @@
+-package com.example.eventalate;public class User {
++package com.example.eventalate;
++
++/**
++ *
++ */
++public abstract class User {
++    private String fName;
++    private String lName;
++
++    public User(String fName, String lName) {
++        this.fName = fName;
++        this.lName = lName;
++    }
++    public String getFName() {
++        return this.fName;
++    }
++    public String getLName() {
++        return this.lName;
++    }
++    public String getFullName() {
++        return this.fName + ' ' + this.lName;
++    }
++    public void setFName(String fName) {
++        this.fName = fName;
++    }
++    public void setlName(String lName) {
++        this.lName = lName;
++    }
+ }
