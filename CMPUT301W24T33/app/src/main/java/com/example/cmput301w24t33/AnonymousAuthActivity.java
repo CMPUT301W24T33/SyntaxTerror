@@ -2,12 +2,14 @@
 
 package com.example.cmput301w24t33;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +31,7 @@ public class AnonymousAuthActivity extends Activity {
     @Override
     public void onStart() {
         super.onStart();
+        signInAnonymously();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
     }
@@ -78,6 +81,11 @@ public class AnonymousAuthActivity extends Activity {
     }
     private void updateUI(FirebaseUser user) {
         Log.d(TAG, "User authenticated " + user.getUid());
+        // Notify AttendeeActivity that authentication is complete
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("USER_ID", user.getUid());
+        setResult(RESULT_OK, resultIntent);
+        finish();
     }
 
 

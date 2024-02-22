@@ -1,13 +1,23 @@
 package com.example.cmput301w24t33;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.fragment.app.Fragment;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,9 +27,22 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 public class AttendeeActivity extends AppCompatActivity implements AdapterEventClickListener {
+    private FirebaseFirestore db;
+    private CollectionReference events;
 
     private ArrayList<Event> eventList;
     private RecyclerView eventRecyclerView;
@@ -30,8 +53,20 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.attendee_activity);
         eventRecyclerView = findViewById(R.id.event_recyclerview);
-        setEvents();
-        setAdapter();
+        db = FirebaseFirestore.getInstance();
+
+        // Signs user out so to test new user sign-in
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
+
+        // Checks if user is signed in, else registers new attendee
+        //authorizeUser();
+
+        // Creates new collection for Events
+        //events = db.collection("events");
+        //setEvents();
+        //setAdapter();
+
 
         // Profile button to edit profile
         ImageView profileButton = findViewById(R.id.profile_image);
@@ -44,6 +79,8 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
 
         // Check in button for an attendee to check in
         // used reviewgrower.com/button-and-badge-generator/ to quickly make a button
+            // I was in the pool
+            // I'm a grower not a shower
         ImageView checkInButton = findViewById(R.id.check_in_img);
         checkInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +88,56 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
                 // fill in a fragment or whatever is decided for checkin
             }
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "RESUME");
+
+        LocalBroadcastManager.getInstance(this)
+                .registerReceiver(anonymousSignInReceiver, new IntentFilter("ANONYMOUS_SIGN_IN_COMPLETE"));
+        authorizeUser();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d(TAG, "PAUSE");
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(anonymousSignInReceiver);
+        super.onPause();
+    }
+    private BroadcastReceiver anonymousSignInReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Handle the sign-in completion, e.g., refresh UI or continue initialization
+            //setEvents();
+            //setAdapter();
+            Log.d(TAG, "CAUGHT");
+            String userId = intent.getStringExtra("USER_ID");
+            Log.d(TAG, "Received user ID: ");
+            registerAttendee(userId);
+        }
+    };
+    private ActivityResultLauncher<Intent> anonymousAuthLauncher = 
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                Intent data = result.getData();
+                String userId = data.getStringExtra("USER_ID");
+                Log.d(TAG, "Received user ID: " + userId);
+            });
+    private void authorizeUser() {
+        // Checks if Attendee is already signed in
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        
+        if (currentUser == null) {
+            Intent intent = new Intent(this, AnonymousAuthActivity.class);
+            anonymousAuthLauncher.launch(intent);
+        }
+    }
+    private void registerAttendee(String uID) {
+        //Attendee newUser = new Attendee();
+        //replaceFragment(new ProfileFragment());
+
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -64,8 +151,11 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
     private void setEvents(){
         eventList = new ArrayList<>();
         eventList.add(new Event("Event 1", "Party"));
+        setDB("Event 1", "Party");
         eventList.add(new Event("Event 2", "BIG Party"));
-        eventList.add(new Event("Event 3", "Smol Party"));
+        setDB("Event 2", "BIG Party");
+        eventList.add(new Event("Event 3", "smol Party"));
+        setDB("Event 3", "smol Party");
     }
 
     private void setAdapter(){
@@ -76,8 +166,29 @@ public class AttendeeActivity extends AppCompatActivity implements AdapterEventC
         eventAdapter.notifyDataSetChanged();
     }
 
+    // Adds events to DB
+    private void setDB(String name, String description) {
+        Event event = new Event(name, description);
+
+        db.collection("events")
+                .add(event)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+    }
+
     public void onEventClickListener(Event event, int position){
         replaceFragment(new AttendeeEventFragment());
     }
+
 
 }
