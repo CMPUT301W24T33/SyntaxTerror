@@ -32,10 +32,10 @@
             android:id="@+id/organizer_attendee_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:switchMinWidth="75dp"
+            android:layout_below="@+id/switch_text"
             android:layout_centerInParent="true"
             android:checked="true"
-            android:layout_below="@+id/switch_text"/>
+            android:switchMinWidth="75dp" />
         <TextView
             android:id="@+id/switch_text"
             android:layout_width="wrap_content"
