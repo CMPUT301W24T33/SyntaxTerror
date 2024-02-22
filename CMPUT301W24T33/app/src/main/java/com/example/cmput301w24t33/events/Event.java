@@ -1,4 +1,4 @@
-package com.example.cmput301w24t33;
+package com.example.cmput301w24t33.events;
 
 public class Event {
     String eventText;

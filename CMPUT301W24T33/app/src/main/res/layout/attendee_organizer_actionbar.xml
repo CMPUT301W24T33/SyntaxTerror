@@ -27,8 +27,8 @@
             </ImageView>
         </androidx.cardview.widget.CardView>
 
-
-        <Switch
+<!--THIS TOGGLE SWITCH MAY NOT BE THE BEST WAY TO SWITCH ACTIVITIES-->
+        <!--<Switch
             android:id="@+id/organizer_attendee_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:layout_centerInParent="true"
             android:text="Organizer     Attendee"
             android:textSize="17dp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"></TextView>-->
 
     </RelativeLayout>
 

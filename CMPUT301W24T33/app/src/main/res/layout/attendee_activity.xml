@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AttendeeActivity">
+    tools:context=".activities.Attendee">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/check_in_img"
-                    >
+                    android:focusable="true">
                 </ImageView>
             </androidx.cardview.widget.CardView>
 
