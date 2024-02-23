@@ -172,6 +172,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/latest_notification_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/notifications_layout"
