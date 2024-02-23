@@ -29,8 +29,7 @@
             android:text="Event Name Here"
             android:textAlignment="center"
             android:textStyle="bold"
-            android:textSize="40dp"
-       >
+            android:textSize="40dp">
         </TextView>
 
         <ImageButton
@@ -76,13 +75,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </TextView>
-            <TextView
+            <EditText
                 android:id="@+id/start_time_textview"
-                android:text="yyyy/mm/dd/ hr:min"
+                android:hint="yyyy/mm/dd/ hr:min"
                 android:textSize="20dp"
+                android:background="?selectableItemBackgroundBorderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            </TextView>
+            </EditText>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/end_time_layout"
@@ -95,17 +95,17 @@
                 android:id="@+id/end_string"
                 android:textStyle="bold"
                 android:text="End:"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </TextView>
-            <TextView
+            <EditText
                 android:id="@+id/end_time_text"
-                android:textSize="20dp"
-                android:text="yyyy/mm/dd/ hr:min"
+                android:textSize="20sp"
+                android:hint="yyyy/mm/dd/ hr:min"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            </TextView>
+            </EditText>
         </LinearLayout>
     </LinearLayout>
 
@@ -123,15 +123,15 @@
             android:textStyle="bold"
             android:text="Event Description:">
         </TextView>
-
-        <!-- will need to change this for event details overflow-->
-        <TextView
+        <EditText
             android:id="@+id/event_description_textview"
             android:layout_width="match_parent"
-            android:layout_height="162dp"
-            android:text="Event description here"
-            android:textSize="18dp">
-        </TextView>
+            android:layout_height="198sp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:hint="Event description here"
+            android:textSize="18dp"
+            android:gravity="top">
+        </EditText>
     </LinearLayout>
 
 
@@ -223,17 +223,4 @@
         </Switch>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/edit_event_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:textColor="@color/black"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5sp"
-        android:backgroundTint="#A8A2A2"
-        android:text="Edit Event"
-        android:textAlignment="center"
-        android:textSize="25dp"></Button>
 </RelativeLayout>
