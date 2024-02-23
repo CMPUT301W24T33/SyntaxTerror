@@ -61,6 +61,6 @@ public class EventChooseQR extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.event_choose_qr_fragment, container, false);
+        return inflater.inflate(R.layout.organizer_choose_qr_fragment, container, false);
     }
 }

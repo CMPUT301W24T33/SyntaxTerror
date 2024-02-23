@@ -164,7 +164,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         checkInButton.setOnClickListener(v -> {
             // fill in a fragment or whatever is decided for checkin
             qrScanner.scanQRCode(Attendee.this);
-        });
+       });
 
         // Usermode click listener
         ImageButton userMode = findViewById(R.id.button_user_mode);
