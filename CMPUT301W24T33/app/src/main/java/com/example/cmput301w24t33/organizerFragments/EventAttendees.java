@@ -1,66 +1,82 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.users.Profile;
+import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.AttendeeAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EventAttendees#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class EventAttendees extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private RecyclerView attendeesRecyclerView;
+    private final ArrayList<User> attendeesList = new ArrayList<>();
+    private AttendeeAdapter attendeeAdapter;
 
     public EventAttendees() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EventAttendees.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EventAttendees newInstance(String param1, String param2) {
-        EventAttendees fragment = new EventAttendees();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static EventAttendees newInstance() {
+        return new EventAttendees();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
+        setupActionBar(view);
+        setupClickListeners(view);
+        setupAttendeesRecyclerView(view);
+        loadSampleAttendees();
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
+    private void setupAttendeesRecyclerView(@NonNull View view) {
+        attendeesRecyclerView = view.findViewById(R.id.event_attendees_list);
+        attendeesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // Updated to reflect the removal of the click listener from the adapter's constructor
+        attendeeAdapter = new AttendeeAdapter(attendeesList);
+
+        attendeesRecyclerView.setAdapter(attendeeAdapter);
+    }
+
+    private void loadSampleAttendees() {
+        attendeesList.add(new User("John", "Doe", "1"));
+        attendeesList.add(new User("Jane", "Smith", "2"));
+        // Notify the adapter of data changes
+        attendeeAdapter.notifyDataSetChanged();
+    }
+
+    private void setupActionBar(@NonNull View view) {
+        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
+        actionBarText.setText("Attendees");
+    }
+
+    private void setupClickListeners(@NonNull View view) {
+        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
+        backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+
+        ImageView profileButton = view.findViewById(R.id.profile_image);
+        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
+    }
+
+    // Method to replace the current fragment with another, specified by the 'fragment' parameter
+    private void replaceFragment(Fragment fragment) {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.organizer_layout, fragment) // Ensure this container ID matches your layout
+                .addToBackStack(null)
+                .commit();
     }
 }

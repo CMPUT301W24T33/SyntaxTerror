@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  *
  */
-public abstract class User {
+public class User {
     private String firstName;
     private String lastName;
     private String uID;
