@@ -15,7 +15,8 @@ public class QRScanner{
     private Barcode barcode;
 
     /**
-     * */
+     * Opens camera to scan QR code and stores contents
+     * @param context parent context*/
     public void scanQRCode(@NonNull Context context){
         GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(context);
         scanner
@@ -38,10 +39,18 @@ public class QRScanner{
                         });
     }
 
+    /**
+     * Sets QR code to scanned code
+     * @param barcode scanned Barcode
+     * @see Barcode*/
     private void setQRCode(Barcode barcode){
         this.barcode = barcode;
     }
 
+    /**
+     * returns scanned barcode
+     * @return scanned Barcode
+     * @see Barcode*/
     public Barcode getBarcode(){
         return barcode;
     }
