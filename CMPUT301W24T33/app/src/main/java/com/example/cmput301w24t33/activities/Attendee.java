@@ -159,6 +159,9 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         ImageView checkInButton = findViewById(R.id.check_in_img);
         checkInButton.setOnClickListener(v -> {
             // fill in a fragment or whatever is decided for checkin
+            Intent intent = new Intent(Attendee.this, Admin.class);
+            startActivity(intent);
+            finish();
         });
 
         // Usermode click listener

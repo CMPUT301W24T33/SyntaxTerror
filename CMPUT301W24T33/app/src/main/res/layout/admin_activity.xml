@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Organizer">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/admin_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/actionbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#F35F5F">
+                <TextView
+                    android:id="@+id/actionbar_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:text="Admin"
+                    android:background="@null"
+                    android:clickable="false"
+                    android:textSize="40dp"
+                    android:textStyle="bold">
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/event_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_layout"
+                android:layout_marginTop="100sp">
+
+                <TextView
+                    android:id="@+id/event_string"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Event List"
+                    android:gravity="center_vertical"
+                    android:textSize="50dp">
+                </TextView>
+                <ImageButton
+                    android:id="@+id/event_arrow_button"
+                    android:layout_width="50sp"
+                    android:layout_height="67sp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/forward_arrow_img"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/profile_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_layout"
+                android:layout_marginTop="100sp">
+                <TextView
+                    android:id="@+id/profile_string"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Profile List"
+                    android:gravity="center_vertical"
+                    android:textSize="50dp">
+                </TextView>
+                <ImageButton
+                    android:id="@+id/profile_arrow_button"
+                    android:layout_width="50sp"
+                    android:layout_height="67sp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/forward_arrow_img"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/image_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_layout"
+                android:layout_marginTop="100sp">
+                <TextView
+                    android:id="@+id/image_string"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Image List"
+                    android:gravity="center_vertical"
+                    android:textSize="50dp">
+                </TextView>
+                <ImageButton
+                    android:id="@+id/image_arrow_button"
+                    android:layout_width="50sp"
+                    android:layout_height="67sp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/forward_arrow_img"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
