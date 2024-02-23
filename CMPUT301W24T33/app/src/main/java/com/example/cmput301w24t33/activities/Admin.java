@@ -31,9 +31,10 @@ public class Admin extends AppCompatActivity {
         });
 
         ImageButton imageButton = findViewById(R.id.image_arrow_button);
-        eventButton.setOnClickListener(v -> {
+        imageButton.setOnClickListener(v -> {
         });
     }
+    
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
