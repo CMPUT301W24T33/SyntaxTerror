@@ -128,7 +128,7 @@
         <TextView
             android:id="@+id/event_description_textview"
             android:layout_width="match_parent"
-            android:layout_height="198dp"
+            android:layout_height="162dp"
             android:text="Event description here"
             android:textSize="18dp">
         </TextView>
@@ -199,15 +199,41 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/geo_tracking_layout"
+        android:layout_below="@+id/notifications_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp">
+        <TextView
+            android:id="@+id/geo_tracking_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Geo-Tracking   ">
+        </TextView>
+        <Switch
+            android:id="@+id/geo_location_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:switchMinWidth="60sp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/geo_tracking_string"
+            >
+        </Switch>
+    </RelativeLayout>
+
     <Button
+        android:id="@+id/edit_event_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/notifications_layout"
-
+        android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
+        android:textColor="@color/black"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5sp"
         android:backgroundTint="#A8A2A2"
-        android:text="Latest Notification"
+        android:text="Edit Event"
         android:textAlignment="center"
-        android:textSize="30dp" />
+        android:textSize="25dp"></Button>
 </RelativeLayout>

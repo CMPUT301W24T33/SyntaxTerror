@@ -116,7 +116,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
+    
     private void setEvents(){
         Log.d(TAG, "setEvent");
         eventList = new ArrayList<>();
