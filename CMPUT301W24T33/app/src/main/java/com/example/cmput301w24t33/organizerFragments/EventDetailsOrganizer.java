@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.organizerFragments.NotificationsOrganizer;
-import com.example.cmput301w24t33.profile.Profile;
-
-import java.util.Objects;
+import com.example.cmput301w24t33.users.Profile;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,6 +69,7 @@ public class EventDetailsOrganizer extends Fragment {
         // Inflate the layout for this fragment
         View view = LayoutInflater.from(getContext()).inflate(R.layout.organizer_event_fragment,null);
         setOnClickListeners(view);
+        setupActionBar(view);
         return view;
     }
 
@@ -83,12 +80,12 @@ public class EventDetailsOrganizer extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
-    private void setOnClickListeners(View view){
+    private void setupActionBar(View view) {
         // Set title
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Event Details");
-
+    }
+    private void setOnClickListeners(View view){
         // Share button click listener
         ImageButton shareButton = view.findViewById(R.id.share_button);
         shareButton.setOnClickListener(v -> {
@@ -106,5 +103,9 @@ public class EventDetailsOrganizer extends Fragment {
         // Profile button click listener
         ImageView profileButton = view.findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
+
+        // Attendee arrow button lister
+        ImageButton attendeesButton = view.findViewById(R.id.attendees_Button);
+        notificationButton.setOnClickListener(v -> replaceFragment(new EventAttendees()));
     }
 }
