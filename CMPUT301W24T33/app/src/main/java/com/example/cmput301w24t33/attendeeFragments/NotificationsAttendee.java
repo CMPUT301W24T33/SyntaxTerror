@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
+import com.example.cmput301w24t33.users.Profile;
 
 import org.jetbrains.annotations.Contract;
 
@@ -37,6 +38,7 @@ public class NotificationsAttendee extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.attendee_notifications_fragment, container, false);
         setupActionBar(view);
+        setupClickListeners(view);
         setupNotificationsList(view);
         return view;
     }
@@ -44,8 +46,14 @@ public class NotificationsAttendee extends Fragment {
     private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
+    }
+
+    private void setupClickListeners(@NonNull View view) {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+
+        ImageView profileButton = view.findViewById(R.id.profile_image);
+        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
     private void setupNotificationsList(@NonNull View view) {
@@ -64,5 +72,11 @@ public class NotificationsAttendee extends Fragment {
         notifications.add(new Notification("Session Start", "Don't miss the keynote speech.", "11:00 AM"));
         notifications.add(new Notification("Lunch Break", "Lunch is served at the main hall.", "1:00 PM"));
         return notifications;
+    }
+    private void replaceFragment(Fragment fragment) {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.attendee_layout, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

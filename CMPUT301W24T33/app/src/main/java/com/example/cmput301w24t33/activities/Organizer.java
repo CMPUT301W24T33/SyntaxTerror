@@ -2,7 +2,6 @@ package com.example.cmput301w24t33.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.organizerFragments.EventDetailsOrganizer;
-import com.example.cmput301w24t33.profile.Profile;
+import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;

@@ -1,4 +1,4 @@
-package com.example.cmput301w24t33.profile;
+package com.example.cmput301w24t33.users;
 
 import com.example.cmput301w24t33.events.Event;
 

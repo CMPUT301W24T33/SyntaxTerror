@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
+import com.example.cmput301w24t33.users.Profile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.jetbrains.annotations.Contract;
 import java.text.SimpleDateFormat;
@@ -47,6 +48,7 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         setupActionBar(view);
         setupNotificationsList(view);
         setupFloatingActionButtons(view);
+        setupClickListeners(view);
         return view;
     }
 
@@ -70,8 +72,14 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
     private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
+    }
+
+    private void setupClickListeners(@NonNull View view) {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+
+        ImageView profileButton = view.findViewById(R.id.profile_image);
+        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
     private void setupNotificationsList(@NonNull View view) {
@@ -128,5 +136,12 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
             FloatingActionButton fabDeleteNotification = view.findViewById(R.id.button_delete_notification);
             fabDeleteNotification.setVisibility(View.VISIBLE); // Show the delete button when an item is selected
         }
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.organizer_layout, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

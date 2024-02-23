@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.profile.Profile;
+import com.example.cmput301w24t33.users.Profile;
 
 public class EventDetailsAttendee extends Fragment {
 

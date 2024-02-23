@@ -6,7 +6,7 @@
     android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F4EFEF"
-    tools:context=".profile.Profile">
+    tools:context=".users.Profile">
 
     <RelativeLayout
         android:id="@+id/profile_back_actionbar"
