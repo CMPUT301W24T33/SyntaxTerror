@@ -134,34 +134,41 @@
         </TextView>
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/attendees_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@+id/event_description_layout"
-        android:weightSum="2">
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
         <TextView
-            android:id="@+id/attendees_string"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="Attendees: "
-            android:textSize="20dp">
-        </TextView>
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Attendee#"
-            android:textSize="20dp">
-        </TextView>
-        <ImageView
-            android:id="@+id/attendees_arrow_layout"
-            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="Attendees# "
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/attendees_Button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/forward_arrow_img"
-            android:layout_weight="4">
-        </ImageView>
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="View Attendees"
+            android:src="@drawable/forward_arrow_img" />
     </LinearLayout>
 
     <LinearLayout
@@ -170,24 +177,26 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/attendees_layout"
-        android:layout_marginTop="2dp"
-        android:weightSum="2">
+        android:layout_marginTop="2dp">
+
         <TextView
             android:id="@+id/notification_string"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="Notifications: "
-            android:textSize="20dp">
+            android:gravity="center_vertical"
+            android:textSize="20sp">
         </TextView>
 
-        <ImageView
-            android:id="@+id/notifications_arrow_image"
-            android:layout_alignParentRight="true"
+        <ImageButton
+            android:id="@+id/notifications_button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/forward_arrow_img"
-            android:layout_weight="4">
-        </ImageView>
+            android:contentDescription="notifications_arrow" />
+
     </LinearLayout>
 
     <RelativeLayout
@@ -226,5 +235,9 @@
         android:backgroundTint="#A8A2A2"
         android:text="Edit Event"
         android:textAlignment="center"
+<<<<<<< HEAD
         android:textSize="25dp"></Button>
+=======
+        android:textSize="30dp" />
+>>>>>>> main
 </RelativeLayout>
