@@ -18,9 +18,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.jetbrains.annotations.Contract;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
