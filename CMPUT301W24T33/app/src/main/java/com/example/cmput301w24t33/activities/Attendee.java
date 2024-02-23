@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.fragment.app.Fragment;
+import android.content.Context;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
+import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.Profile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,6 +42,8 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private CollectionReference events;
     private ArrayList<Event> eventList;
     private RecyclerView eventRecyclerView;
+
+    private QRScanner qrScanner = new QRScanner();
 
 
     @Override
@@ -159,6 +163,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         ImageView checkInButton = findViewById(R.id.check_in_img);
         checkInButton.setOnClickListener(v -> {
             // fill in a fragment or whatever is decided for checkin
+            qrScanner.scanQRCode(Attendee.this);
         });
 
         // Usermode click listener
