@@ -106,6 +106,6 @@ public class EventDetailsOrganizer extends Fragment {
 
         // Attendee arrow button lister
         ImageButton attendeesButton = view.findViewById(R.id.attendees_Button);
-        notificationButton.setOnClickListener(v -> replaceFragment(new EventAttendees()));
+        attendeesButton.setOnClickListener(v -> replaceFragment(new EventAttendees()));
     }
 }
