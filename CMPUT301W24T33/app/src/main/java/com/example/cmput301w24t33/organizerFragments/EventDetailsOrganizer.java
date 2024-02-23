@@ -96,7 +96,7 @@ public class EventDetailsOrganizer extends Fragment {
         });
 
         // Notifications button click listener
-        ImageView notificationButton = view.findViewById(R.id.notifications_arrow_image);
+        ImageButton notificationButton = view.findViewById(R.id.notifications_button);
         notificationButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
 
         // Back button click listener

@@ -44,7 +44,7 @@ public class EventDetailsAttendee extends Fragment {
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
 
         // Notifications button to navigate to the NotificationsAttendee fragment
-        ImageView notificationButton = view.findViewById(R.id.notifications_arrow_image);
+        ImageButton notificationButton = view.findViewById(R.id.notifications_button);
         notificationButton.setOnClickListener(v -> replaceFragment(NotificationsAttendee.newInstance()));
     }
 

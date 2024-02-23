@@ -235,9 +235,5 @@
         android:backgroundTint="#A8A2A2"
         android:text="Edit Event"
         android:textAlignment="center"
-<<<<<<< HEAD
         android:textSize="25dp"></Button>
-=======
-        android:textSize="30dp" />
->>>>>>> main
 </RelativeLayout>
