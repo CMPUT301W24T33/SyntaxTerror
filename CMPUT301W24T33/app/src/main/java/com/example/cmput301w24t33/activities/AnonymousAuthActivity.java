@@ -73,7 +73,7 @@ public class AnonymousAuthActivity extends Activity {
                             Log.w(TAG, "linkWithCredential:failure", task.getException());
                             Toast.makeText(AnonymousAuthActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                            //updateUI(null);
                         }
                     }
                 });

@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -26,13 +27,18 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.Profile;
+import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
@@ -41,6 +47,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private FirebaseFirestore db;
     private CollectionReference events;
     private ArrayList<Event> eventList;
+    private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
 
     private QRScanner qrScanner = new QRScanner();
@@ -52,13 +59,17 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         setContentView(R.layout.attendee_activity);
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         db = FirebaseFirestore.getInstance();
+        eventList = new ArrayList<>();
+        //eventAdapter = new EventAdapter(eventList,this);
 
         // Signs user out so to test new user sign-in
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        mAuth.signOut();
-        setEvents();
-        setAdapter();
+        //FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        //mAuth.signOut();
+        //setEvents();
+        //setAdapter();
+        //testUsers();
         setOnClickListeners();
+        setDbListeners();
     }
 
     @Override
@@ -66,6 +77,11 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         super.onResume();
         Log.d(TAG, "RESUME");
         authorizeUser();
+    }
+
+    private void testUsers() {
+        setUser("Jeff", "daddy", "123");
+        setUser("Diane", "Mommie", "456");
     }
 
 
@@ -97,7 +113,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private void registerAttendee(String uID) {
         //Attendee newUser = new Attendee();
         //replaceFragment(new ProfileFragment());
-
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -122,9 +137,28 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        EventAdapter eventAdapter = new EventAdapter(eventList,this);
+        eventAdapter = new EventAdapter(eventList,this);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
+    }
+    private void setUser(String fName, String lName, String uId) {
+        User event = new User(fName, lName, uId);
+        Log.d(TAG, "setUser");
+
+        db.collection("users")
+                .add(event)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
     }
 
     // Adds events to DB
@@ -150,6 +184,30 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
 
     public void onEventClickListener(Event event, int position){
         replaceFragment(new EventDetailsAttendee());
+    }
+
+    public void setDbListeners() {
+        setAdapter();
+        db.collection("events").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    Log.e("Firestore", error.toString());
+                    return;
+                }
+                if (querySnapshots != null) {
+                    if (eventList != null) { eventList.clear(); }
+                    for (QueryDocumentSnapshot doc : querySnapshots) {
+                        String name = doc.getString("name");
+                        String description = doc.getString("description");
+                        Log.d("Firestore", String.format("Event(%s) fetched", name));
+                        eventList.add(new Event(name, description));
+                    }
+
+                    eventAdapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     private void setOnClickListeners(){
