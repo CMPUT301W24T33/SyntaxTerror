@@ -1,4 +1,4 @@
-package com.example.cmput301w24t33.users;
+package com.example.cmput301w24t33.adminFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 
-public class Profile extends Fragment {
+public class viewProfileAdmin extends Fragment {
 
-    public Profile() {
+    public viewProfileAdmin() {
         // Required empty public constructor
     }
 
-    public static Profile newInstance(String param1, String param2) {
-        Profile fragment = new Profile();
+    public static viewProfileAdmin newInstance(String param1, String param2) {
+        viewProfileAdmin fragment = new viewProfileAdmin();
         Bundle args = new Bundle();
-        args.putString("param1", param1);
-        args.putString("param2", param2);
+        args.putString("", param1);
+        args.putString("", param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,9 +58,15 @@ public class Profile extends Fragment {
             // Implement cancel profile editing logic here
         });
 
+        Button deleteButton = view.findViewById(R.id.profile_delete_button);
+        deleteButton.setOnClickListener(v -> {
+            // Implement delete profile logic here
+        });
+
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
             // Implement save profile editing logic here
         });
     }
+
 }
