@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
-import com.example.cmput301w24t33.users.AttendeeAdapter;
 
 import java.util.ArrayList;
 
