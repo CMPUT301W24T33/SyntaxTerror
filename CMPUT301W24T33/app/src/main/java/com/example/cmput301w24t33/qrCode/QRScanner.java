@@ -18,6 +18,7 @@ public class QRScanner{
      * Opens camera to scan QR code and stores contents
      * @param context parent context*/
     public void scanQRCode(@NonNull Context context){
+        Toast toast = new Toast(context);
         GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(context);
         scanner
                 .startScan()
@@ -25,17 +26,20 @@ public class QRScanner{
                         barcode -> {
                             // Task completed successfully
                             this.setQRCode(barcode);
-                            Toast toast = new Toast(context);
                             toast.setText(this.getBarcode().getRawValue());
                             toast.show();
                         })
                 .addOnCanceledListener(
                         () -> {
                             // Task canceled
+                            toast.setText("Scan canceled");
+                            toast.show();
                         })
                 .addOnFailureListener(
                         e -> {
                             // Task failed with an exception
+                            toast.setText("Scan failed, try again");
+                            toast.show();
                         });
     }
 
