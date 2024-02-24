@@ -17,9 +17,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    tasks.withType<Test>(){
-        useJUnitPlatform()
-    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -34,8 +31,6 @@ android {
 
 dependencies {
 
-    implementation("org.junit.jupiter:junit-jupiter-api:5.0.1")
-    implementation("org.junit.jupiter:junit-jupiter-engine:5.0.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -45,7 +40,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.zxing:core:3.4.1")
     implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
-//    testImplementation("junit:junit:4.13.2")
+    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
