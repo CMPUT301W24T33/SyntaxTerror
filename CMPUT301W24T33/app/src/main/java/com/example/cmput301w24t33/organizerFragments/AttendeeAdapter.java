@@ -1,4 +1,4 @@
-package com.example.cmput301w24t33.users;
+package com.example.cmput301w24t33.organizerFragments;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.users.User;
+
 import java.util.ArrayList;
 
 public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyViewHolder> {
