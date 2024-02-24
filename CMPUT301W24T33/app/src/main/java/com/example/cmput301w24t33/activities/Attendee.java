@@ -60,14 +60,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         db = FirebaseFirestore.getInstance();
         eventList = new ArrayList<>();
-        //eventAdapter = new EventAdapter(eventList,this);
-
-        // Signs user out so to test new user sign-in
-        //FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        //mAuth.signOut();
-        //setEvents();
-        //setAdapter();
-        //testUsers();
         setOnClickListeners();
         setDbListeners();
     }
@@ -79,10 +71,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         authorizeUser();
     }
 
-    private void testUsers() {
-        //setUser("Jeff", "daddy", "123");
-        //setUser("Diane", "Mommie", "456");
-    }
+
 
 
     /**
@@ -123,17 +112,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         transaction.addToBackStack(null);
         transaction.commit();
     }
-    
-    private void setEvents(){
-        Log.d(TAG, "setEvent");
-        eventList = new ArrayList<>();
-        eventList.add(new Event("Event 1", "Party"));
-        setDB("Event 1", "Party");
-        eventList.add(new Event("Event 2", "BIG Party"));
-        setDB("Event 2", "BIG Party");
-        eventList.add(new Event("Event 3", "smol Party"));
-        setDB("Event 3", "smol Party");
-    }
+
 
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));

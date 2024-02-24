@@ -30,7 +30,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.organizer_activity);
         eventRecyclerView = findViewById(R.id.organized_events);
-        setEvents();
+
         setAdapter();
         setOnClickListeners(); // function to set on click listeners to keep oncreate clean
     }
@@ -41,22 +41,6 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         transaction.replace(R.id.organizer_layout,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    private void setEvents(){
-        organizedEvents = new ArrayList<>();
-        organizedEvents.add(new Event("Test1", "Party"));
-        organizedEvents.add(new Event("Test2", "Party"));
-        organizedEvents.add(new Event("Test3", "Party"));
-        organizedEvents.add(new Event("Test4", "Party"));
-        organizedEvents.add(new Event("Test5", "Party"));
-        organizedEvents.add(new Event("Test6", "Party"));
-        organizedEvents.add(new Event("Test7", "Party"));
-        organizedEvents.add(new Event("Test8", "Party"));
-        organizedEvents.add(new Event("Test9", "Party"));
-        organizedEvents.add(new Event("Test10", "Party"));
-        organizedEvents.add(new Event("Test11", "Party"));
-        organizedEvents.add(new Event("Test12", "Party"));
     }
 
     private void setAdapter(){
