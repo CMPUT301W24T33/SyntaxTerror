@@ -30,7 +30,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.organizer_activity);
         eventRecyclerView = findViewById(R.id.organized_events);
-        setEvents();
+        organizedEvents = new ArrayList<>();
         setAdapter();
         setOnClickListeners(); // function to set on click listeners to keep oncreate clean
     }
