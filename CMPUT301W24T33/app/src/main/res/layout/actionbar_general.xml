@@ -33,7 +33,6 @@
         </TextView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/profile_button"
             android:layout_width="50dp"
             app:cardCornerRadius="150dp"
             android:layout_height="50dp"
