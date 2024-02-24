@@ -106,7 +106,7 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
     }
 
     public void onEventClickListener(Event event, int position){
-        replaceFragment(new EventDetailsAttendee());
+        // add fragment for when an admin clicks on recyclerview
     }
 
     private void setEvents(){
