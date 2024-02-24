@@ -7,9 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
 
 public class Admin extends AppCompatActivity {
 
@@ -24,9 +26,10 @@ public class Admin extends AppCompatActivity {
         // Event List click listener
         ImageButton eventButton = findViewById(R.id.event_arrow_button);
         eventButton.setOnClickListener(v -> {
+            replaceFragment(new ViewEventsAdmin());
         });
 
-        ImageButton profileButton = findViewById(R.id.event_arrow_button);
+        ImageButton profileButton = findViewById(R.id.profile_arrow_button);
         profileButton.setOnClickListener(v -> {
         });
 
@@ -38,7 +41,7 @@ public class Admin extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.attendee_layout,fragment);
+        transaction.replace(R.id.admin_layout,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
