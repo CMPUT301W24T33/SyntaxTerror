@@ -38,7 +38,6 @@
                 app:cardCornerRadius="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_alignParentRight="true"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/check_in_img"
@@ -49,7 +48,17 @@
                     android:src="@drawable/check_in_img"
                     android:focusable="true">
                 </ImageView>
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/temp_admin_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true">
+                </Button>
+
 
         </LinearLayout>
 

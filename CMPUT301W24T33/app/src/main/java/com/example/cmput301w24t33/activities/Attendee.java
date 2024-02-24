@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -162,7 +163,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         // used reviewgrower.com/button-and-badge-generator/ to quickly make a button
         ImageView checkInButton = findViewById(R.id.check_in_img);
         checkInButton.setOnClickListener(v -> {
-            // fill in a fragment or whatever is decided for checkin
             qrScanner.scanQRCode(Attendee.this);
        });
 
@@ -170,6 +170,15 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Attendee.this, Organizer.class);
+            startActivity(intent);
+            finish();
+        });
+
+        // Temporary admin button, remove once admin id's are sorted
+        // No back button
+        Button tempAdminButton = findViewById(R.id.temp_admin_button);
+        tempAdminButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Attendee.this, Admin.class);
             startActivity(intent);
             finish();
         });
