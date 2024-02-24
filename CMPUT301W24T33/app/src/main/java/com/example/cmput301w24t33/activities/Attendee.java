@@ -80,8 +80,8 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     }
 
     private void testUsers() {
-        setUser("Jeff", "daddy", "123");
-        setUser("Diane", "Mommie", "456");
+        //setUser("Jeff", "daddy", "123");
+        //setUser("Diane", "Mommie", "456");
     }
 
 
@@ -94,11 +94,12 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
                 String userId = data.getStringExtra("USER_ID");
                 Log.d(TAG, "Received user ID: " + userId);
                 // Use userId to create user in database
+                registerUser();
             });
 
     /**
      * This method checks to see if user is signed in and authorized.
-     * If not, it launched AnonymousAuthActivity to authorize and sign in user
+     * If not, it launches AnonymousAuthActivity to authorize and sign in user
      */
     private void authorizeUser() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -108,11 +109,11 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         if (currentUser == null) {
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
+
         }
     }
-    private void registerAttendee(String uID) {
-        //Attendee newUser = new Attendee();
-        //replaceFragment(new ProfileFragment());
+    private void registerUser() {
+        replaceFragment(new Profile());
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -141,12 +142,10 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
-    private void setUser(String fName, String lName, String uId) {
-        User event = new User(fName, lName, uId);
-        Log.d(TAG, "setUser");
 
+    public void setUserDb(User newUser){
         db.collection("users")
-                .add(event)
+                .add(newUser)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
