@@ -26,6 +26,9 @@ public class Event {
         this.name = name;
         this.eventDescription = eventDescription;
     }
+    public Event() {
+
+    }
 
     public String getStartDateTime() {
         return startDateTime;

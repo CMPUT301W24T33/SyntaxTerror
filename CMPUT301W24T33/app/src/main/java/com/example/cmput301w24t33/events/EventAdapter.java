@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cmput301w24t33.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
 
@@ -23,6 +24,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
         this.eventsArrayList = eventsArrayList;
         this.eventClickListener = eventClickListener;
+    }
+
+    /**
+     * This method clears our list of events, then adds most recent list of events from our
+     * database collection and updates the adapter
+     * @param newEvents Is the new list of events from our "events collection.
+     */
+    public void setEvents(List<Event> newEvents) {
+        eventsArrayList.clear();
+        eventsArrayList.addAll(newEvents);
+        notifyDataSetChanged();
     }
 
 
