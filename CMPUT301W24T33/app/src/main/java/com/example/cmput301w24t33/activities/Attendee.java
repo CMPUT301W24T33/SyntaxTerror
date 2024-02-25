@@ -103,7 +103,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         if (currentUser == null) {
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
-
         }
     }
     private void registerUser() {
@@ -257,24 +256,28 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         // Profile button click listener
         ImageView profileButton = findViewById(R.id.profile_image);
 
-        // Use queryUserByDocId to get current user object!
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        String userDocId = currentUser.getUid();
-        queryUserByDocId(userDocId, new GetUserCallback() {
-            @Override
-            public void onUserReceived(User user) {
-                if (user != null) {
-                    // update Profile fragment with user object
-                } else {
-                    // User not found logged in query function
+
+        profileButton.setOnClickListener(v -> {
+            // Use queryUserByDocId to get current user object!
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            String userDocId = currentUser.getUid();
+            queryUserByDocId(userDocId, new GetUserCallback() {
+                @Override
+                public void onUserReceived(User user) {
+                    if (user != null) {
+                        // update Profile fragment with user object
+                    } else {
+                        // User not found logged in query function
+                    }
                 }
-            }
-            @Override
-            public void onFailure(Exception e) {
-                // Error logged in query function
-            }
+                @Override
+                public void onFailure(Exception e) {
+                    // Error logged in query function
+                }
+            });
+            replaceFragment(new Profile());
+
         });
-        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
 
 
         // Check in button click listener

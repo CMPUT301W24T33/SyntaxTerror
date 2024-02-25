@@ -18,6 +18,9 @@ public class User {
         this.lastName = lastName;
         this.uID = uID;
     }
+    public User() {
+
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
