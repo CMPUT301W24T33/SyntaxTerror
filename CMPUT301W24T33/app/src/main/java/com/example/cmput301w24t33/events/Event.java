@@ -12,6 +12,7 @@ public class Event {
     private String startDateTime;
     private String endDateTime;
     private String name;
+    private String organizerId;
     private String eventDescription;
     private String posterQR;
     private String checkInQR;
@@ -22,9 +23,13 @@ public class Event {
     private int maxSignup;
     private ArrayList<String> attendees = new ArrayList<>();
 
-    public Event(String name, String eventDescription) {
+    public Event(String name, String organizerId, String eventDescription) {
         this.name = name;
+        this.organizerId = organizerId;
         this.eventDescription = eventDescription;
+    }
+    public Event() {
+
     }
 
     public String getStartDateTime() {
@@ -124,4 +129,11 @@ public class Event {
     }
 
 
+    public String getOrganizerId() {
+        return organizerId;
+    }
+
+    public void setOrganizerId(String organizerId) {
+        this.organizerId = organizerId;
+    }
 }

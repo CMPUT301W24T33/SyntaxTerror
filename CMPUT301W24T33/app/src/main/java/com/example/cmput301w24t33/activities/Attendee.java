@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
@@ -44,6 +46,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
     private FirebaseFirestore db;
@@ -52,8 +55,10 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
     private FirebaseAuth mAuth;
+    private String userId;
 
     private QRScanner qrScanner = new QRScanner();
+    private EventViewModel eventViewModel;
 
 
     @Override
@@ -61,26 +66,40 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.attendee_activity);
         eventRecyclerView = findViewById(R.id.event_recyclerview);
-        db = FirebaseFirestore.getInstance();
-        eventList = new ArrayList<>();
         mAuth = FirebaseAuth.getInstance();
 
+        eventList = new ArrayList<>();
+        setAdapter();
 
-        // Signs user out so to test new user sign-in
-        //mAuth.signOut();
+        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        eventViewModel.getEventsLiveData().observe(this, events -> {
+            updateUI(events);
+        });
 
         setOnClickListeners();
-        setDbListeners();
     }
 
+    /**
+     * Updates event adapter with current contents in our events collection
+     * @param events is a live representation of Events in our events collection as a List
+     */
+    private void updateUI(List<Event> events) {
+        eventAdapter.setEvents(events);
+    }
+
+    /**
+     * This method authorizes current user and loads up-to-date events for display
+     */
     @Override
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "RESUME");
         authorizeUser();
+        Log.d(TAG, userId);
+        eventViewModel.loadEvents();
     }
     /**
-     *
+     * This is responsible for launching our Anonymous Authorization and Registration of a new user
      */
     private ActivityResultLauncher<Intent> anonymousAuthLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -104,6 +123,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
         }
+        userId = currentUser.getUid();
     }
     private void registerUser() {
         replaceFragment(new Profile());
@@ -150,62 +170,8 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
                 });
     }
 
-    // Adds events to DB. Test function
-    private void setDB(String name, String description) {
-        Event event = new Event(name, description);
-        Log.d(TAG, "setDB");
-
-        db.collection("events")
-                .add(event)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-    }
-
     public void onEventClickListener(Event event, int position){
         replaceFragment(new EventDetailsAttendee());
-    }
-
-    /**
-     * Sets database listener to check and reflect any changes to events in our Firestore database.
-     * <p>
-     *     This method will Log Firestore errors if the EventListener encounters any Firestore exceptions.
-     *     It no errors/exceptions are encountered, eventList is cleared and each event from the "events" collection
-     *     is parsed into a new Event object and added to the eventList. eventAdapter is then notified of changes.
-     * </p>
-     * @see Event
-     * @see EventAdapter
-     */
-    public void setDbListeners() {
-        setAdapter();
-        db.collection("events").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                if (error != null) {
-                    Log.e("Firestore", error.toString());
-                    return;
-                }
-                if (querySnapshots != null) {
-                    if (eventList != null) { eventList.clear(); }
-                    for (QueryDocumentSnapshot doc : querySnapshots) {
-                        String name = doc.getString("name");
-                        String description = doc.getString("description");
-                        Log.d("Firestore", String.format("Event(%s) fetched", name));
-                        eventList.add(new Event(name, description));
-                    }
-                    eventAdapter.notifyDataSetChanged();
-                }
-            }
-        });
     }
 
     /**
@@ -276,7 +242,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
                 }
             });
             replaceFragment(new Profile());
-
         });
 
 
@@ -292,6 +257,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Attendee.this, Organizer.class);
+            intent.putExtra("uId", userId);
             startActivity(intent);
             finish();
         });
