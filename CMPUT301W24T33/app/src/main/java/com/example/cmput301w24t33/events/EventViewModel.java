@@ -17,6 +17,24 @@ public class EventViewModel extends ViewModel {
     public EventViewModel() {
         eventRepo = new EventRepository();
         eventsLiveData = new MutableLiveData<>();
+        setEventCallback();
+    }
+
+    /**
+     * Initializes EventCallback function and sets listener on our "events" collection
+     */
+    private void setEventCallback() {
+        eventRepo.setEventSnapshotListener(new EventRepository.EventCallback() {
+            @Override
+            public void onEventsLoaded(List<Event> events) {
+                eventsLiveData.setValue(events);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, String.valueOf(e));
+            }
+        });
     }
 
     /**
@@ -30,12 +48,19 @@ public class EventViewModel extends ViewModel {
             public void onEventsLoaded(List<Event> events) {
                 eventsLiveData.setValue(events);
             }
-
             @Override
             public void onFailure(Exception e) {
                 Log.d(TAG, String.valueOf(e));
             }
         });
+    }
+    /**
+     * This method loads events organized by the current user from our "events" collection
+     * by creating a new EventRepository and setting the list of documents (events) to eventsLiveData.
+     * Any errors/exceptions encountered are Logged.
+     */
+    public void loadOrganizerEvents(String organizerId) {
+        eventRepo.setEventByOrganizerSnapshotListener(organizerId);
     }
 
     /**

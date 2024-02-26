@@ -55,6 +55,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
     private FirebaseAuth mAuth;
+    private String userId;
 
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
@@ -94,6 +95,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         super.onResume();
         Log.d(TAG, "RESUME");
         authorizeUser();
+        Log.d(TAG, userId);
         eventViewModel.loadEvents();
     }
     /**
@@ -121,6 +123,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
         }
+        userId = currentUser.getUid();
     }
     private void registerUser() {
         replaceFragment(new Profile());
@@ -254,6 +257,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Attendee.this, Organizer.class);
+            intent.putExtra("uId", userId);
             startActivity(intent);
             finish();
         });

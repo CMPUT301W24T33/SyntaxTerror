@@ -41,7 +41,6 @@ public class EventRepository {
      */
     public void setEventSnapshotListener(EventCallback callback) {
         this.eventCallback = callback;
-
         eventsCollection.addSnapshotListener((queryDocumentSnapshots, e) -> {
             if (e != null) {
                 // Firebase error
@@ -57,4 +56,33 @@ public class EventRepository {
             eventCallback.onEventsLoaded(events);
         });
     }
+    /**
+     * Sets database listener to check and reflect any changes to current user's organized events in our Firestore database.
+     * <p>
+     *     This method send Firestore error message as a parameter to the EventCallback function if the EventListener
+     *     encounters any Firestore exceptions.
+     *     If no errors/exceptions are encountered, each event from the "events" collection is parsed into a
+     *     new Event object and added to the eventList. eventAdapter is then notified of changes.
+     * </p>
+     * @see Event
+     * @see EventCallback
+     */
+    public void setEventByOrganizerSnapshotListener(String organizerId) {
+        eventsCollection.whereEqualTo("organizerId", organizerId)
+                .addSnapshotListener((queryDocumentSnapshots, e) -> {
+                    if (e != null) {
+                        // Error encountered
+                        eventCallback.onFailure(e);
+                    }
+                    List<Event> events = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        // Adds each event in our collection with matching organizerId to events
+                        Event event = doc.toObject(Event.class);
+                        events.add(event);
+                    }
+                    // Sets MutableLiveData<List<Event>> with current list of Events
+                    eventCallback.onEventsLoaded(events);
+                });
+    }
+
 }

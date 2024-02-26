@@ -29,7 +29,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     /**
      * This method clears our list of events, then adds most recent list of events from our
      * database collection and updates the adapter
-     * @param newEvents Is the new list of events from our "events collection.
+     * @param newEvents Is the new list of events from our "events" collection.
      */
     public void setEvents(List<Event> newEvents) {
         eventsArrayList.clear();

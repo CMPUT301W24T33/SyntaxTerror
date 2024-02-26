@@ -1,7 +1,10 @@
 package com.example.cmput301w24t33.activities;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -9,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.organizerFragments.EventDetailsOrganizer;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.R;
@@ -20,10 +25,14 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Organizer extends AppCompatActivity implements AdapterEventClickListener {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
+    private EventViewModel eventViewModel;
+    private EventAdapter eventAdapter;
+    private String userId;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +40,34 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         setContentView(R.layout.organizer_activity);
         eventRecyclerView = findViewById(R.id.organized_events);
         organizedEvents = new ArrayList<>();
+        userId = getIntent().getStringExtra("uId");
         setAdapter();
+
+        // Creates a new EventViewModel so we can display Events
+        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        eventViewModel.getEventsLiveData().observe(this, events -> {
+            updateUI(events);
+        });
+
         setOnClickListeners(); // function to set on click listeners to keep oncreate clean
+    }
+
+    /**
+     * Updates event adapter with Events organized by our current user
+     * @param events is a live representation of Events in our events collection as a List
+     */
+    private void updateUI(List<Event> events) {
+        eventAdapter.setEvents(events);
+    }
+
+    /**
+     * This method loads and displays Events organized by current user
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "RESUME");
+        eventViewModel.loadOrganizerEvents(userId);
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -43,26 +78,10 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         transaction.commit();
     }
 
-    private void setEvents(){
-        organizedEvents = new ArrayList<>();
-        organizedEvents.add(new Event("Test1", "Party"));
-        organizedEvents.add(new Event("Test2", "Party"));
-        organizedEvents.add(new Event("Test3", "Party"));
-        organizedEvents.add(new Event("Test4", "Party"));
-        organizedEvents.add(new Event("Test5", "Party"));
-        organizedEvents.add(new Event("Test6", "Party"));
-        organizedEvents.add(new Event("Test7", "Party"));
-        organizedEvents.add(new Event("Test8", "Party"));
-        organizedEvents.add(new Event("Test9", "Party"));
-        organizedEvents.add(new Event("Test10", "Party"));
-        organizedEvents.add(new Event("Test11", "Party"));
-        organizedEvents.add(new Event("Test12", "Party"));
-    }
-
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        EventAdapter eventAdapter = new EventAdapter(organizedEvents,this);
+        eventAdapter = new EventAdapter(organizedEvents,this);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
