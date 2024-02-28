@@ -18,6 +18,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -258,6 +260,14 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Attendee.this, Organizer.class);
             intent.putExtra("uId", userId);
+            startActivity(intent);
+            finish();
+        });
+        // ugly button to navigate to admin activity, remove later
+        Button adminButton = findViewById(R.id.admin_button);
+        adminButton.setOnClickListener(v -> {
+            // code for navigating to admin activity
+            Intent intent = new Intent(Attendee.this, Admin.class);
             startActivity(intent);
             finish();
         });
