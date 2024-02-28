@@ -19,7 +19,7 @@ public class QRGenerator {
         ByteMatrix byteMatrix = new ByteMatrix(width, height);
         try {
             bitMatrix = writer.encode(args, BarcodeFormat.QR_CODE, width, height);
-        } catch (WriterException e) { 
+        } catch (WriterException e) {
             Log.e("QRCodeGenerator", "Error generating QR code", e);
             return null;
         }
