@@ -50,9 +50,14 @@
                     android:focusable="true">
                 </ImageView>
             </androidx.cardview.widget.CardView>
-
+            <Button
+                android:id="@+id/admin_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin"
+                android:textColor="@color/black">
+            </Button>
         </LinearLayout>
-
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
