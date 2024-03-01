@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/organizer_event_fragment"
     android:clickable="true"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".attendeeFragments.EventDetailsAttendee">
 
     <RelativeLayout

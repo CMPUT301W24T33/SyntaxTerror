@@ -21,7 +21,7 @@
             <include layout="@layout/actionbar_attendee_organizer"></include>
 
             <TextView
-                android:layout_below="@id/organizer_attendee_layout"
+                android:layout_below="@id/organizer_attendee_actionbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Organize Events"
