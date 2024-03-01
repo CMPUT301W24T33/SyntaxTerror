@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/organizer_attendee_layout"
+        android:id="@+id/edit_profile_actionbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#F35F5F">
