@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
+    android:id="@+id/admin_edit_profile"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F4EFEF"
     tools:context=".users.Profile"
