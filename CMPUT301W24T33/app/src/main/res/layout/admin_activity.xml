@@ -50,6 +50,7 @@
                     android:gravity="center_vertical"
                     android:textSize="50dp">
                 </TextView>
+
                 <ImageButton
                     android:id="@+id/event_arrow_button"
                     android:layout_width="50sp"
