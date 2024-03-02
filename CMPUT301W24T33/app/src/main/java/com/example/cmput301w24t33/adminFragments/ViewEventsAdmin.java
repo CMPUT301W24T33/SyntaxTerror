@@ -2,31 +2,24 @@ package com.example.cmput301w24t33.adminFragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.events.EventViewModel;
-import com.example.cmput301w24t33.organizerFragments.EventDetailsOrganizer;
-import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
@@ -35,16 +28,16 @@ import com.example.cmput301w24t33.events.EventAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Events extends Fragment implements AdapterEventClickListener{
+public class ViewEventsAdmin extends Fragment implements AdapterEventClickListener{
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private EventViewModel eventViewModel;
     private RecyclerView eventRecyclerView;
 
-    public Events(){}
+    public ViewEventsAdmin(){}
 
-    public static Events newInstance() {
-        Events fragment = new Events();
+    public static ViewEventsAdmin newInstance() {
+        ViewEventsAdmin fragment = new ViewEventsAdmin();
         Bundle args = new Bundle();
         return fragment;
     }
@@ -52,7 +45,7 @@ public class Events extends Fragment implements AdapterEventClickListener{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.events_fragment, container, false);
+        View view = inflater.inflate(R.layout.admin_view_events_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
         displayEvents(view);
@@ -61,13 +54,17 @@ public class Events extends Fragment implements AdapterEventClickListener{
     }
 
     private void setupActionBar(View view) {
-        TextView actionBarText = view.findViewById(R.id.back_actionbar_textview);
+        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("All Events");
+
+        CardView profileButton = view.findViewById(R.id.profile_button);
+        profileButton.setVisibility(View.GONE);
     }
 
     private void setupClickListeners(View view) {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+
     }
     /**
      * Updates event adapter with current contents in our events collection

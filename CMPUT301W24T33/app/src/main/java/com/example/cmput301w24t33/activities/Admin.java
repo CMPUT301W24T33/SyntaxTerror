@@ -6,24 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.adminFragments.Events;
-import com.example.cmput301w24t33.events.AdapterEventClickListener;
-import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventAdapter;
-import com.example.cmput301w24t33.events.EventViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
 
 public class Admin extends AppCompatActivity {
 
@@ -31,7 +20,6 @@ public class Admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_activity);
-
         setOnClickListeners();
     }
 
@@ -49,15 +37,15 @@ public class Admin extends AppCompatActivity {
         ImageButton eventButton = findViewById(R.id.event_arrow_button);
         eventButton.setOnClickListener(v -> {
             Log.d(TAG, "ADMIN: Events button clicked");
-            replaceFragment(new Events());
+            replaceFragment(new ViewEventsAdmin());
         });
 
-        ImageButton profileButton = findViewById(R.id.event_arrow_button);
+        ImageButton profileButton = findViewById(R.id.profile_arrow_button);
         profileButton.setOnClickListener(v -> {
         });
 
         ImageButton imageButton = findViewById(R.id.image_arrow_button);
-        eventButton.setOnClickListener(v -> {
+        imageButton.setOnClickListener(v -> {
         });
     }
 
