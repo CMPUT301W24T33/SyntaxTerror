@@ -28,6 +28,10 @@ public class EventRepository {
         void onFailure(Exception e);
     }
 
+    public void setEventCallback(EventCallback eventCallback) {
+        this.eventCallback = eventCallback;
+    }
+
     /**
      * Sets database listener to check and reflect any changes to events in our Firestore database.
      * <p>
