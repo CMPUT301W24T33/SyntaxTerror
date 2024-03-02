@@ -17,25 +17,32 @@ public class EventViewModel extends ViewModel {
     public EventViewModel() {
         eventRepo = new EventRepository();
         eventsLiveData = new MutableLiveData<>();
-        setEventCallback();
+        setEventCallback(eventRepo);
     }
 
-    /**
-     * Initializes EventCallback function and sets listener on our "events" collection
+
+    /**Initializes EventCallback function and sets listener on our "events" collection
+     *
      */
-    private void setEventCallback() {
-        eventRepo.setEventSnapshotListener(new EventRepository.EventCallback() {
+
+    private void setEventCallback(EventRepository eventRepo) {
+        eventRepo.setEventCallback(new EventRepository.EventCallback() {
+            // When events are successfully loaded, set our Live Data list to our query results
             @Override
             public void onEventsLoaded(List<Event> events) {
                 eventsLiveData.setValue(events);
             }
-
+            // When Firebase encounters an error, log it
             @Override
             public void onFailure(Exception e) {
                 Log.d(TAG, String.valueOf(e));
             }
+
         });
+
     }
+
+
 
     /**
      * This method loads events from our "events" collection by creating a new EventRepository
@@ -43,11 +50,14 @@ public class EventViewModel extends ViewModel {
      * Any errors/exceptions encountered are Logged.
      */
     public void loadEvents() {
+        // Defines UserCallback functions
         eventRepo.setEventSnapshotListener(new EventRepository.EventCallback() {
+            // When events are successfully loaded, set our Live Data list to our query results
             @Override
             public void onEventsLoaded(List<Event> events) {
                 eventsLiveData.setValue(events);
             }
+            // When Firebase encounters an error, log it
             @Override
             public void onFailure(Exception e) {
                 Log.d(TAG, String.valueOf(e));

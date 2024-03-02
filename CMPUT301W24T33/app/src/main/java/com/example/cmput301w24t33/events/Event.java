@@ -1,5 +1,7 @@
 package com.example.cmput301w24t33.events;
 
+import com.example.cmput301w24t33.users.User;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -21,7 +23,9 @@ public class Event {
     private boolean active;
     private int maxOccupancy;
     private int maxSignup;
-    private ArrayList<String> attendees = new ArrayList<>();
+    private ArrayList<User> attendees = new ArrayList<>();
+    private ArrayList<User> signedUp = new ArrayList<>();
+
 
     public Event(String name, String organizerId, String eventDescription) {
         this.name = name;
@@ -120,11 +124,11 @@ public class Event {
         this.maxSignup = maxSignup;
     }
 
-    public ArrayList<String> getAttendees() {
+    public ArrayList<User> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(ArrayList<String> attendees) {
+    public void setAttendees(ArrayList<User> attendees) {
         this.attendees = attendees;
     }
 
@@ -135,5 +139,13 @@ public class Event {
 
     public void setOrganizerId(String organizerId) {
         this.organizerId = organizerId;
+    }
+
+    public ArrayList<User> getSignedUp() {
+        return signedUp;
+    }
+
+    public void setSignedUp(ArrayList<User> signedUp) {
+        this.signedUp = signedUp;
     }
 }
