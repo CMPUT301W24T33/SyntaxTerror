@@ -14,14 +14,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 
-public class viewProfileAdmin extends Fragment {
+public class ViewProfileAdmin extends Fragment {
 
-    public viewProfileAdmin() {
+    public ViewProfileAdmin() {
         // Required empty public constructor
     }
 
-    public static viewProfileAdmin newInstance(String param1, String param2) {
-        viewProfileAdmin fragment = new viewProfileAdmin();
+    public static ViewProfileAdmin newInstance(String param1, String param2) {
+        ViewProfileAdmin fragment = new ViewProfileAdmin();
         Bundle args = new Bundle();
         args.putString("", param1);
         args.putString("", param2);
