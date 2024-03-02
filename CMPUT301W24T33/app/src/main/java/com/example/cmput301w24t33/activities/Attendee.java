@@ -77,9 +77,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         eventViewModel.getEventsLiveData().observe(this, events -> {
             updateUI(events);
         });
-
-        testAdminActivity();
-
         setOnClickListeners();
     }
 
@@ -103,14 +100,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         eventViewModel.loadEvents();
     }
 
-    /**
-     * Created to test Admin event display
-     */
-    private void testAdminActivity() {
-        Intent testAdmin = new Intent(this, Admin.class);
-        startActivity(testAdmin);
-        finish();
-    }
+
     /**
      * This is responsible for launching our Anonymous Authorization and Registration of a new user
      */
