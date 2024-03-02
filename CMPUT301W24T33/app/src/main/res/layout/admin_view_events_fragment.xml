@@ -7,7 +7,7 @@
     android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F4EFEF"
-    tools:context=".adminFragments.Events">
+    tools:context=".adminFragments.ViewEventsAdmin">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-        <include layout="@layout/actionbar_attendee_organizer"></include>
+        <include layout="@layout/actionbar_general"></include>
         <TextView
-            android:layout_below="@id/organizer_attendee_layout"
+            android:layout_below="@id/attendee_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Attend Events"
