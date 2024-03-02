@@ -225,7 +225,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         // Profile button click listener
         ImageView profileButton = findViewById(R.id.profile_image);
 
-
         profileButton.setOnClickListener(v -> {
             // Use queryUserByDocId to get current user object!
             FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -256,7 +255,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             qrScanner.scanQRCode(Attendee.this);
        });
 
-        // Usermode click listener
+        // User Mode click listener - switches to organizer activity
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Attendee.this, Organizer.class);
@@ -264,13 +263,14 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             startActivity(intent);
             finish();
         });
-        // ugly button to navigate to admin activity, remove later
-        Button adminButton = findViewById(R.id.admin_button);
-        adminButton.setOnClickListener(v -> {
+
+        // User Mode click listener - switches to admin activity
+        userMode.setOnLongClickListener(v -> {
             // code for navigating to admin activity
             Intent intent = new Intent(Attendee.this, Admin.class);
             startActivity(intent);
             finish();
+            return true;
         });
     }
 
