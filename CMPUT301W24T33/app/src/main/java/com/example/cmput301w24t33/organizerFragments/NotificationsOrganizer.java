@@ -47,12 +47,12 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         View view = inflater.inflate(R.layout.organizer_notifications_fragment, container, false);
         setupActionBar(view);
         setupNotificationsList(view);
-        setupFloatingActionButtons(view);
+        setupNewNotificationButton(view);
         setupClickListeners(view);
         return view;
     }
 
-    private void setupFloatingActionButtons(@NonNull View view) {
+    private void setupNewNotificationButton(@NonNull View view) {
         FloatingActionButton fabNewNotification = view.findViewById(R.id.button_new_notification);
         fabNewNotification.setOnClickListener(v -> newNotificationDialog());
 

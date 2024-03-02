@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <include layout="@layout/actionbar_attendee_organizer"></include>
+
+            <include layout="@layout/actionbar_attendee_organizer" />
             <TextView
-                android:layout_below="@id/organizer_attendee_actionbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Attend Events"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 android:textAlignment="center">
             </TextView>
             <androidx.recyclerview.widget.RecyclerView
@@ -39,7 +39,6 @@
                 app:cardCornerRadius="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_alignParentRight="true"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/check_in_img"

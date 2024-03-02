@@ -6,6 +6,7 @@
     android:clickable="true"
     android:id="@+id/organizer_choose_qr_fragment"
     android:background="#F4EFEF"
+    android:elevation="2dp"
     tools:context=".attendeeFragments.NotificationsAttendee"
     android:focusable="true">
 
