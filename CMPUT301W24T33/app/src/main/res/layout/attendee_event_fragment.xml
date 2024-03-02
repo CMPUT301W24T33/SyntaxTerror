@@ -7,7 +7,8 @@
     android:id="@+id/attendee_event_fragment"
     android:clickable="true"
     android:background="#FFFFFF"
-    tools:context=".attendeeFragments.EventDetailsAttendee">
+    tools:context=".attendeeFragments.EventDetailsAttendee"
+    android:focusable="true">
 
     <RelativeLayout
         android:id="@+id/layout"
@@ -162,7 +163,6 @@
             android:id="@+id/notifications_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/forward_arrow_img"
             android:contentDescription="notifications_arrow" />
 

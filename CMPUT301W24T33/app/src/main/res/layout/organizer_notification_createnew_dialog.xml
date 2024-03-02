@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/organizer_notifications_create_dialog"
     android:orientation="vertical"
+    android:elevation="3dp"
     android:padding="24dp">
 
     <EditText

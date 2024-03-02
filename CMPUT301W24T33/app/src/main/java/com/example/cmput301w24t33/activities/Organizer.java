@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -23,6 +24,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +95,10 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     private void setOnClickListeners(){
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
+
+        // Create event click listener
+        FloatingActionButton createEvent = findViewById(R.id.button_create_event);
+        createEvent.setOnClickListener(v -> replaceFragment(new EventDetailsOrganizer()));
 
         // User Mode click listener - swiches to attendee activity
         ImageButton userMode = findViewById(R.id.button_user_mode);

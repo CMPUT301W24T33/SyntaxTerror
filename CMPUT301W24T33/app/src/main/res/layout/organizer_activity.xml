@@ -13,14 +13,16 @@
         android:layout_height="match_parent"
         android:id="@+id/organizer_layout">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/actionbar_attendee_organizer"></include>
+            <include layout="@layout/actionbar_attendee_organizer"
+                android:id="@+id/organizer_attendee_actionbar"/>
 
             <TextView
+                android:id="@+id/organize_events_text"
                 android:layout_below="@id/organizer_attendee_actionbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,9 +34,23 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/organized_events"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent"
+                android:layout_below="@+id/organize_events_text"/>
 
-        </LinearLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/button_create_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="#47D04E"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@android:drawable/ic_input_add"
+                android:contentDescription="create event" />
+        </RelativeLayout>
 
     </FrameLayout>
 
