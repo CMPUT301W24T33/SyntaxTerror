@@ -94,11 +94,20 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
 
+        // User Mode click listener - swiches to attendee activity
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Organizer.this, Attendee.class);
             startActivity(intent);
             finish();
+        });
+
+        // User Mode click listener - switches to admin activity
+        userMode.setOnLongClickListener(v -> {
+            Intent intent = new Intent(Organizer.this, Admin.class);
+            startActivity(intent);
+            finish();
+            return true;
         });
     }
 }
