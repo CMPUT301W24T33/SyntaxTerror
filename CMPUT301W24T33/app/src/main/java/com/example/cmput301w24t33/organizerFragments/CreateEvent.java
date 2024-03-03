@@ -19,10 +19,10 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 
-public class EventCreate extends Fragment {
+public class CreateEvent extends Fragment {
 
-    public static EventCreate editEvent(String param1) {
-        EventCreate fragment = new EventCreate();
+    public static CreateEvent editEvent(String param1) {
+        CreateEvent fragment = new CreateEvent();
         Bundle args = new Bundle();
         // Add data to bundle here as follows
         // args.putString(ARG_PARAM1, param1);
