@@ -196,7 +196,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/upload_poster_button"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/CustomOutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -211,7 +211,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/generate_qr_code_button"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/CustomOutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
