@@ -105,7 +105,9 @@
                         android:hint="Start Date"
                         app:endIconDrawable="@drawable/ic_calendar_today"
                         app:endIconMode="custom"
-                        app:hintEnabled="true">
+                        app:hintEnabled="true"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/start_date_edit_text"
@@ -126,7 +128,9 @@
                         android:layout_marginTop="8dp"
                         android:hint="Start Time"
                         app:endIconDrawable="@drawable/ic_access_time"
-                        app:endIconMode="custom">
+                        app:endIconMode="custom"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/start_time_edit_text"
@@ -154,7 +158,9 @@
                         android:layout_height="wrap_content"
                         android:hint="End Date"
                         app:endIconDrawable="@drawable/ic_calendar_today"
-                        app:endIconMode="custom">
+                        app:endIconMode="custom"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/end_date_edit_text"
@@ -174,7 +180,9 @@
                         android:layout_marginTop="8dp"
                         android:hint="End Time"
                         app:endIconDrawable="@drawable/ic_access_time"
-                        app:endIconMode="custom">
+                        app:endIconMode="custom"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/end_time_edit_text"
@@ -215,7 +223,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Generate QR Code"
+                    android:text="Select QR Code"
                     app:icon="@drawable/ic_qr_code"
                     app:iconGravity="textStart"
                     app:iconPadding="8dp"/>
