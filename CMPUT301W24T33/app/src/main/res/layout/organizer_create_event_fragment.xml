@@ -214,7 +214,7 @@
                     app:iconPadding="8dp"/>
 
                 <Space
-                    android:layout_width="8dp"
+                    android:layout_width="16dp"
                     android:layout_height="match_parent"/>
 
                 <com.google.android.material.button.MaterialButton
