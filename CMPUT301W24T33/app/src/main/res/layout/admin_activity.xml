@@ -18,28 +18,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <RelativeLayout
-                android:id="@+id/actionbar_layout"
+                android:id="@+id/actionbar_general"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#F35F5F">
-                <TextView
-                    android:id="@+id/actionbar_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:text="Admin"
-                    android:background="@null"
-                    android:clickable="false"
-                    android:textSize="40dp"
-                    android:textStyle="bold">
-                </TextView>
+                android:layout_height="wrap_content">
+                <include layout="@layout/actionbar_general">
+                </include>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/event_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/actionbar_layout"
+                android:layout_below="@+id/actionbar_general"
                 android:layout_marginTop="100sp">
 
                 <TextView

@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
@@ -42,6 +44,10 @@ public class ViewProfileAdmin extends Fragment {
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.back_actionbar_textview);
         actionBarText.setText("Edit Profile");
+
+        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+        int color = ContextCompat.getColor(getContext(),R.color.admin_actionbar);
+        generalActionBar.setBackgroundColor(color);
     }
 
     private void setupClickListeners(View view) {

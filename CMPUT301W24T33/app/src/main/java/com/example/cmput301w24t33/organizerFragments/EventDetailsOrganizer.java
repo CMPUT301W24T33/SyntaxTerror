@@ -1,6 +1,8 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.Profile;
@@ -60,6 +63,10 @@ public class EventDetailsOrganizer extends Fragment {
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Event Details");
+
+        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+        int color = ContextCompat.getColor(getContext(),R.color.organizer_actionbar);
+        generalActionBar.setBackgroundColor(color);
     }
 
     private void setOnClickListeners(View view){

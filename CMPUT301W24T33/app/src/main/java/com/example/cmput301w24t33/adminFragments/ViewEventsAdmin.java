@@ -3,6 +3,7 @@ package com.example.cmput301w24t33.adminFragments;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import static android.content.ContentValues.TAG;
 
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.lifecycle.ViewModelProvider;
@@ -59,6 +61,10 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
 
         CardView profileButton = view.findViewById(R.id.profile_button);
         profileButton.setVisibility(View.GONE);
+
+        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+        int color = ContextCompat.getColor(getContext(),R.color.admin_actionbar);
+        generalActionBar.setBackgroundColor(color);
     }
 
     private void setupClickListeners(View view) {
