@@ -5,10 +5,16 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,7 +40,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     private EventViewModel eventViewModel;
     private EventAdapter eventAdapter;
     private String userId;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,8 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
             updateUI(events);
         });
 
+        View view = findViewById(R.id.organizer_activity);
+        setupActionBar(view);
         setOnClickListeners(); // function to set on click listeners to keep oncreate clean
     }
 
@@ -86,7 +94,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
-    
+
     @Override
     public void onEventClickListener(Event event, int position) {
        replaceFragment(new CreateEvent());
@@ -114,5 +122,13 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
             finish();
             return true;
         });
+    }
+
+    private void setupActionBar(View view) {
+
+        // update color of actionbar
+        RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
+        int color = ContextCompat.getColor(this,R.color.organizer_actionbar);
+        attendeeOrganizerActionbar.setBackgroundColor(color);
     }
 }
