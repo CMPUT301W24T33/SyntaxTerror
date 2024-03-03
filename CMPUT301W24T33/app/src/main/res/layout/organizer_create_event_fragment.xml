@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/organizer_actionbar"
         app:title="Event Details"
         app:titleCentered="true"
         app:layout_constraintTop_toTopOf="parent"
