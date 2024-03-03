@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
+import com.example.cmput301w24t33.adminFragments.ViewProfilesAdmin;
 
 public class Admin extends AppCompatActivity {
 
@@ -44,12 +45,12 @@ public class Admin extends AppCompatActivity {
         // Button seems to not work? No Logging is done on button press
         ImageButton eventButton = findViewById(R.id.event_arrow_button);
         eventButton.setOnClickListener(v -> {
-            Log.d(TAG, "ADMIN: Events button clicked");
             replaceFragment(new ViewEventsAdmin());
         });
 
         ImageButton profileButton = findViewById(R.id.profile_arrow_button);
         profileButton.setOnClickListener(v -> {
+            replaceFragment(new ViewProfilesAdmin());
         });
 
         ImageButton imageButton = findViewById(R.id.image_arrow_button);
