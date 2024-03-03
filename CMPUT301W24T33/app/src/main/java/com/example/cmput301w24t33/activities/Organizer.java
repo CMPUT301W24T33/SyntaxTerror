@@ -5,7 +5,6 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -18,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.events.EventViewModel;
-import com.example.cmput301w24t33.organizerFragments.EventDetailsOrganizer;
+import com.example.cmput301w24t33.organizerFragments.CreateEvent;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
@@ -90,7 +89,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     
     @Override
     public void onEventClickListener(Event event, int position) {
-       replaceFragment(new EventDetailsOrganizer());
+       replaceFragment(new CreateEvent());
     }
     private void setOnClickListeners(){
         ImageView profileButton = findViewById(R.id.profile_image);
@@ -98,7 +97,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
 
         // Create event click listener
         FloatingActionButton createEvent = findViewById(R.id.button_create_event);
-        createEvent.setOnClickListener(v -> replaceFragment(new EventDetailsOrganizer()));
+        createEvent.setOnClickListener(v -> replaceFragment(new CreateEvent()));
 
         // User Mode click listener - swiches to attendee activity
         ImageButton userMode = findViewById(R.id.button_user_mode);

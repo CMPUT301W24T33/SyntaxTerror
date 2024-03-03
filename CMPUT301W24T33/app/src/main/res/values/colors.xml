@@ -2,5 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="secondary">#FF000000</color>
+    <color name="primary">#FFFFFFFF</color>
+    <color name="onSecondary">#FFFFFFFF</color>
+    <color name="onPrimary">#FF000000</color>
+    <color name="background">#FFFFFFFF</color>
     <color name="attendee_actionbar">#F35F5F</color>
 </resources>
