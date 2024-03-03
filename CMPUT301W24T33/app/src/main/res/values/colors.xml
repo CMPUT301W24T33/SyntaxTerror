@@ -10,4 +10,9 @@
     <color name="attendee_actionbar">#F35F5F</color>
     <color name="organizer_actionbar">#61DC4B</color>
     <color name="admin_actionbar">#C247D8</color>
+    <color name="going">#388E3C</color>
+    <color name="not_going">#D32F2F</color>
+    <color name="default_state">#747474</color>
+    <color name="light_grey">#B5B5B5</color>
+
 </resources>

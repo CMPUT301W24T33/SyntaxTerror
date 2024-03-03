@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/attendee_actionbar"
+        android:background="@color/organizer_actionbar"
         app:title="Event Details"
         app:titleCentered="true"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,44 +53,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingVertical="16dp">
-
-                <com.google.android.material.button.MaterialButtonToggleGroup
-                    android:id="@+id/toggleButtonGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checkedButton="@+id/notGoingButton"
-                    app:singleSelection="true"
-                    app:selectionRequired="true"
-                    app:checkedButton="@+id/goingButton">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/goingButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Going"
-                        android:textColor="@color/white"
-                        app:backgroundTint="@color/going_button_background"
-                        app:cornerRadius="50dp"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/notGoingButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Not Going"
-                        android:textColor="@color/white"
-                        app:backgroundTint="@color/not_going_button_background"
-                        app:cornerRadius="50dp"/>
-                </com.google.android.material.button.MaterialButtonToggleGroup>
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/event_name_text_view"
@@ -159,6 +121,30 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"/>
 
+            <!-- Check-ins Link -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/check_ins_button"
+                style="@style/CustomOutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Checked-In"
+                app:icon="@drawable/ic_check_in"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp" />
+
+            <!-- Sign-ups Link -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sign_ups_button"
+                style="@style/CustomOutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Signed-up"
+                app:icon="@drawable/ic_people"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp" />
+
             <!-- Notifications Link -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/notifications_button"
@@ -166,8 +152,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="8dp"
-                android:text="Notifications"
+                android:text="Manage Notifications"
                 app:icon="@drawable/ic_notifications"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp" />
+
+            <!-- Edit Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_event_button"
+                style="@style/CustomOutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Edit Event"
+                app:icon="@drawable/ic_edit"
                 app:iconGravity="textStart"
                 app:iconPadding="8dp" />
 

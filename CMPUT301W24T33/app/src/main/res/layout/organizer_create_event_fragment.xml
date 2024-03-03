@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/organizer_actionbar"
-        app:title="Event Details"
+        app:title="Create/Edit Event"
         app:titleCentered="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -192,6 +192,68 @@
                             android:minHeight="64dp"
                             android:paddingBottom="0dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Maximum Number of Attendees -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Max Attendees:"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        android:paddingEnd="8dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/max_attendees_input_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Optional">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/max_attendees_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <!-- Geolocation Tracking Toggle -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Geo Tracking:"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        android:paddingEnd="8dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/geo_tracking_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </LinearLayout>
 

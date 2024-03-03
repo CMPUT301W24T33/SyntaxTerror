@@ -1,6 +1,8 @@
 package com.example.cmput301w24t33.attendeeFragments;
 
 import android.os.Bundle;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,11 @@ import android.widget.TextView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.Profile;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.button.MaterialButtonToggleGroup;
+
+import java.util.Objects;
 
 public class EventDetailsAttendee extends Fragment {
 
@@ -32,20 +39,41 @@ public class EventDetailsAttendee extends Fragment {
 
     // Sets onClick listeners for the actionable elements within the fragment
     private void setOnClickListeners(View view){
-        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
-        actionBarText.setText("Event Details");
+        setGoingToggleClickListener(view);
+        setBackArrowClickListener(view);
+        setNotificationClickListener(view);
+    }
 
-        // Back button click listener to return to the previous screen
-        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
-        backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-
-        // Profile button to navigate to the Profile fragment
-        ImageView profileButton = view.findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
-
-        // Notifications button to navigate to the NotificationsAttendee fragment
-        ImageButton notificationButton = view.findViewById(R.id.notifications_button);
+    private void setNotificationClickListener(View view) {
+        MaterialButton notificationButton = view.findViewById(R.id.notifications_button);
         notificationButton.setOnClickListener(v -> replaceFragment(NotificationsAttendee.newInstance()));
+    }
+
+    private void setBackArrowClickListener(View view) {
+        MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
+    }
+
+    private void setGoingToggleClickListener(View view) {
+        MaterialButtonToggleGroup toggleGroup = view.findViewById(R.id.toggleButtonGroup);
+        MaterialButton goingButton = view.findViewById(R.id.goingButton);
+        MaterialButton notGoingButton = view.findViewById(R.id.notGoingButton);
+
+        toggleGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (checkedId == R.id.goingButton) {
+                if (isChecked) {
+                    // User has selected "Going"
+                    goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
+                    notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
+                }
+            } else if (checkedId == R.id.notGoingButton) {
+                if (isChecked) {
+                    // User has selected "Not Going"
+                    goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
+                    notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
+                }
+            }
+        });
     }
 
     // Replace the current fragment with another fragment
