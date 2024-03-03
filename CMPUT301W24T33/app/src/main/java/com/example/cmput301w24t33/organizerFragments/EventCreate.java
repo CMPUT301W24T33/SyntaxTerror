@@ -13,25 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.EventChooseQR;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 
-public class CreateEvent extends Fragment {
+public class EventCreate extends Fragment {
 
-//    private String mParam1;
-//    private String mParam2;
-
-    public CreateEvent() {
-        // Required empty public constructor
-    }
-
-    public static CreateEvent newInstance(String param1, String param2) {
-        CreateEvent fragment = new CreateEvent();
+    public static EventCreate editEvent(String param1) {
+        EventCreate fragment = new EventCreate();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
+        // Add data to bundle here as follows
+        // args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,7 +42,7 @@ public class CreateEvent extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.organizer_create_event_fragment,null);
+        View view = inflater.inflate(R.layout.organizer_create_event_fragment, container, false);
         setupClickListeners(view);
         return view;
     }
@@ -64,17 +58,21 @@ public class CreateEvent extends Fragment {
     private void setupClickListeners(View view){
         setupDateTimeClickListeners(view);
 
+        // Cancel Event Creation
         MaterialButton cancel = view.findViewById(R.id.cancel_button);
         cancel.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
+        // Confirm Event Creation
         MaterialButton confirm = view.findViewById(R.id.confirm_button);
-//        confirm.setOnClickListener(v -> replaceFragment();
+        confirm.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
+        // Upload Event Poster
         MaterialButton uploadPoster = view.findViewById(R.id.upload_poster_button);
-//        uploadPoster.setOnClickListener(v -> replaceFragment();
+//        uploadPoster.setOnClickListener();
 
+        // Generate Event QR code
         MaterialButton generateQR = view.findViewById(R.id.generate_qr_code_button);
-//        generateQR.setOnClickListener(v -> replaceFragment();
+        generateQR.setOnClickListener(v -> replaceFragment(new EventChooseQR()));
     }
 
     private void setupDateTimeClickListeners(View view) {
@@ -89,6 +87,7 @@ public class CreateEvent extends Fragment {
         endDate.setOnClickListener(v -> showDatePickerDialog(endDate));
         endTime.setOnClickListener(v -> showTimePickerDialog(endTime));
     }
+
     private void showDatePickerDialog(TextInputEditText editText) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
