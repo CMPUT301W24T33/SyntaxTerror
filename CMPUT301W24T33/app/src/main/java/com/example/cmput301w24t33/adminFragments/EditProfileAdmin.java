@@ -16,14 +16,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 
-public class ViewProfileAdmin extends Fragment {
+public class EditProfileAdmin extends Fragment {
 
-    public ViewProfileAdmin() {
+    public EditProfileAdmin() {
         // Required empty public constructor
     }
 
-    public static ViewProfileAdmin newInstance(String param1, String param2) {
-        ViewProfileAdmin fragment = new ViewProfileAdmin();
+    public static EditProfileAdmin newInstance(String param1, String param2) {
+        EditProfileAdmin fragment = new EditProfileAdmin();
         Bundle args = new Bundle();
         args.putString("", param1);
         args.putString("", param2);
@@ -34,7 +34,7 @@ public class ViewProfileAdmin extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.profile_fragment, container, false);
+        View view = inflater.inflate(R.layout.admin_edit_profile, container, false);
         setupClickListeners(view);
         setupActionBar(view);
 
@@ -45,7 +45,7 @@ public class ViewProfileAdmin extends Fragment {
         TextView actionBarText = view.findViewById(R.id.back_actionbar_textview);
         actionBarText.setText("Edit Profile");
 
-        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+        RelativeLayout generalActionBar = view.findViewById(R.id.edit_profile_actionbar);
         int color = ContextCompat.getColor(getContext(),R.color.admin_actionbar);
         generalActionBar.setBackgroundColor(color);
     }
@@ -61,13 +61,14 @@ public class ViewProfileAdmin extends Fragment {
 
         Button cancelButton = view.findViewById(R.id.profile_cancel_button);
         cancelButton.setOnClickListener(v -> {
-            // Implement cancel profile editing logic here
+            getParentFragmentManager().popBackStack();
         });
 
         Button deleteButton = view.findViewById(R.id.profile_delete_button);
         deleteButton.setOnClickListener(v -> {
-            // Implement delete profile logic here
+            // implement delete profile logic here
         });
+
 
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
