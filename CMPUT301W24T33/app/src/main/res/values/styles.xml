@@ -21,7 +21,7 @@
         <item name="iconTint">@color/black</item>
 
         <!-- Ripple color for the button (effect on click) -->
-        <item name="rippleColor">@color/black</item>
+        <item name="rippleColor">@color/light_grey</item>
 
         <!-- Elevation for the button (shadow effect) -->
         <item name="android:elevation">0dp</item> <!-- usually, outlined buttons don't have elevation -->
