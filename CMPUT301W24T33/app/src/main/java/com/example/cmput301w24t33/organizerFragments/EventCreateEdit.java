@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
-import com.example.cmput301w24t33.events.EventChooseQR;
+import com.example.cmput301w24t33.organizerFragments.EventChooseQR;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
@@ -118,7 +118,7 @@ public class EventCreateEdit extends Fragment {
 
     private void onSelectQRCode() {
         // Handle QR Code selection
-        replaceFragment(new EventChooseQR());
+        replaceFragment(EventChooseQR.newInstance("",""));
     }
 
     private void showDatePickerDialog(boolean isStart) {
