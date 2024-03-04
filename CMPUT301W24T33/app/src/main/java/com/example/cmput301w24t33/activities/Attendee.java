@@ -56,6 +56,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.attendee_activity);
+        db = FirebaseFirestore.getInstance();
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         mAuth = FirebaseAuth.getInstance();
         //mAuth.signOut();

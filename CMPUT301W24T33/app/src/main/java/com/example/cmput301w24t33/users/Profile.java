@@ -23,7 +23,9 @@ public class Profile extends Fragment {
     private EditText addLnameEditText;
     private String fName;
     private String lName;
-    private String uId;
+    private String email;
+    private EditText addEmailEditText;
+
 
     public Profile() {
         // Required empty public constructor
@@ -56,6 +58,7 @@ public class Profile extends Fragment {
     private void setupClickListeners(View view) {
         addFnameEditText = view.findViewById(R.id.first_name_edit_text);
         addLnameEditText = view.findViewById(R.id.last_name_edit_text);
+        addEmailEditText = view.findViewById(R.id.email_edit_text);
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
@@ -75,12 +78,13 @@ public class Profile extends Fragment {
             // Implement save profile editing logic here
             fName = addFnameEditText.getText().toString();
             lName = addLnameEditText.getText().toString();
+            email = addEmailEditText.getText().toString();
 
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             FirebaseUser currentUser = mAuth.getCurrentUser();
 
 
-            User newUser = new User(fName, lName, false);
+            User newUser = new User(fName, lName, email, false);
             Attendee activity = (Attendee) getActivity();
             activity.setUserDb(newUser);
 
