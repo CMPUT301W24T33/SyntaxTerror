@@ -103,8 +103,8 @@ public class EventCreateEdit extends Fragment {
 
         // DATABASE CODE GOES HERE
 
-
         Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
+        getParentFragmentManager().popBackStack();
     }
 
     private void onCancel() {
