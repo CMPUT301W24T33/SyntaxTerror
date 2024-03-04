@@ -40,7 +40,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
                 android:text="Event Name"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
@@ -57,12 +56,32 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Event Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:text="Event Location"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/event_location_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterMaxLength="30">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/event_location_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Event Description -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
-                android:paddingBottom="8dp"
                 android:text="Event Description"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
@@ -198,8 +217,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:paddingTop="16dp"
+                android:orientation="vertical">
 
                 <!-- Maximum Number of Attendees -->
                 <LinearLayout
@@ -294,7 +313,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <Button
