@@ -1,66 +1,72 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EventDetails#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EventDetails extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private OrganizerEventDetailsFragmentBinding binding;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public EventDetails() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EventDetails.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EventDetails newInstance(String param1, String param2) {
+    public static EventDetails newInstance(String eventID) {
         EventDetails fragment = new EventDetails();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString("EVENT_ID", eventID);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = OrganizerEventDetailsFragmentBinding.inflate(inflater, container, false);
+        assert getArguments() != null;
+        String eventID = getArguments().getString("EVENT_ID");
+        setupActionButtons(eventID);
+        loadData();
+        return binding.getRoot();
+    }
+
+    private void setupActionButtons(String eventID) {
+        binding.shareQrCodeButton.setOnClickListener(v -> {});  // ADD METHOD TO SHARE QR CODE
+        binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
+        binding.checkInsButton.setOnClickListener(v -> replaceFragment(new EventAttendees()));
+//        binding.signUpsButton.setOnClickListener(v -> replaceFragment(new EventSignedUp()));      EVENT SIGNED-UP FRAGMENT NOT MADE YET
+        binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
+        binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(eventID)));
+    }
+
+    private void loadData() {
+        String eventName = "";          // Get From Database
+        String eventLocation = "";      // Get From Database
+        String eventDescription = "";   // Get From Database
+        String eventDateTime = "";      // Get From Database - Note: probably have to make this from date/time parts
+        // Also need to get image here
+
+        binding.eventNameTextView.setText(eventName);
+        binding.eventLocationTextView.setText(eventLocation);
+        binding.eventDescriptionTextView.setText(eventDescription);
+        binding.eventStartEndDateTimeTextView.setText(eventDateTime);
+        // Need to bind image here too
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.organizer_event_details_fragment, container, false);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.attendee_layout, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

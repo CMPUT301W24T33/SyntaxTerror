@@ -26,13 +26,9 @@ public class EventDetailsAttendee extends Fragment {
     }
 
     private void setClickListeners() {
-        // Notification button
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(NotificationsAttendee.newInstance()));
-        // Back button
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
-        // Share QR button
         binding.shareQrCodeButton.setOnClickListener(v -> {});  // THIS NEEDS CODE TO ADD FUNCTIONALITY
-        // Going or not going
         binding.toggleButtonGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (checkedId == R.id.goingButton) {
                 if (isChecked) {
@@ -56,7 +52,7 @@ public class EventDetailsAttendee extends Fragment {
         String eventDateTime = "";     // "Get From Database";
         String eventDescription = "";  // "Get From Database";
         boolean isGoing = false;       // "Get From Database";
-        // Also load poster... somehow
+        // Also load poster here... somehow
 
         binding.eventNameTextView.setText(eventName);
         binding.eventLocationTextView.setText(eventLocation);
@@ -70,6 +66,12 @@ public class EventDetailsAttendee extends Fragment {
          }
 
          // Also need code to load image
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     // Replace the current fragment with another fragment

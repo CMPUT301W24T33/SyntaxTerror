@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.databinding.OrganizerCreateEventFragmentBinding;
+import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 import com.example.cmput301w24t33.events.EventChooseQR;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -19,20 +19,29 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
 
-public class CreateEvent extends Fragment {
+public class EventCreateEdit extends Fragment {
 
-    private OrganizerCreateEventFragmentBinding binding;
+    private OrganizerCreateEditEventFragmentBinding binding;
+
+    public static EventCreateEdit newInstance(String eventID) {
+        EventCreateEdit fragment = new EventCreateEdit();
+        Bundle args = new Bundle();
+        args.putString("EVENT_ID", eventID);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = OrganizerCreateEventFragmentBinding.inflate(inflater, container, false);
-        setupUI();
-        return binding.getRoot();
-    }
-
-    private void setupUI() {
+        binding = OrganizerCreateEditEventFragmentBinding.inflate(inflater, container, false);
         setupActionButtons();
         setupDateTimePickers();
+        if (getArguments() != null) {
+            // Used when editing an event
+            String eventID = getArguments().getString("EVENT_ID");
+            loadData(eventID);
+        }
+        return binding.getRoot();
     }
 
     private void setupActionButtons() {
@@ -42,10 +51,37 @@ public class CreateEvent extends Fragment {
         binding.generateQrCodeButton.setOnClickListener(v -> onSelectQRCode());
     }
 
-    private void onCancel() {
-        // Handle the cancel action
-        binding.cancelButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-        Snackbar.make(binding.getRoot(), "Event creation cancelled", Snackbar.LENGTH_SHORT).show();
+    private void setupDateTimePickers() {
+        binding.startDateEditText.setOnClickListener(v -> showDatePickerDialog(true));
+        binding.startTimeEditText.setOnClickListener(v -> showTimePickerDialog(true));
+        binding.endDateEditText.setOnClickListener(v -> showDatePickerDialog(false));
+        binding.endTimeEditText.setOnClickListener(v -> showTimePickerDialog(false));
+    }
+
+    private void loadData(String eventID) {
+        String eventName = "";          // Get From Database
+        String eventLocation = "";      // Get From Database
+        String eventDescription = "";   // Get From Database
+        String startDate = "";          // Get From Database
+        String endDate = "";            // Get From Database
+        String startTime = "";          // Get From Database
+        String endTime = "";            // Get From Database
+        String maxAttendees = "";       // Get From Database
+        boolean geoTracking = false;    // Get From Database
+
+        // Load data into relevant field
+        binding.eventNameEditText.setText(eventName);
+        binding.eventLocationEditText.setText(eventLocation);
+        binding.eventDescriptionEditText.setText(eventDescription);
+        binding.startDateEditText.setText(startDate);
+        binding.endDateEditText.setText(endDate);
+        binding.startTimeEditText.setText(startTime);
+        binding.endTimeEditText.setText(endTime);
+        binding.maxAttendeesEditText.setText(maxAttendees);
+        binding.geoTrackingSwitch.setChecked(geoTracking);
+
+        // Removes QR Code button
+        binding.generateQrCodeButton.setVisibility(View.GONE);
     }
 
     private void onConfirm() {
@@ -61,12 +97,19 @@ public class CreateEvent extends Fragment {
 
         // Validate input
         if (eventName.isEmpty() || eventDescription.isEmpty() || startDate.isEmpty() || startTime.isEmpty() || endDate.isEmpty() || endTime.isEmpty()) {
-            Snackbar.make(binding.getRoot(), "Please fill in all fields", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(binding.getRoot(), "Please fill in all required fields", Snackbar.LENGTH_LONG).show();
             return;
         }
 
-        // Database Code Here
+        // DATABASE CODE GOES HERE
+
+
         Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
+    }
+
+    private void onCancel() {
+        // Handle the cancel action
+        getParentFragmentManager().popBackStack();
     }
 
     private void onUploadPoster() {
@@ -75,14 +118,7 @@ public class CreateEvent extends Fragment {
 
     private void onSelectQRCode() {
         // Handle QR Code selection
-        binding.generateQrCodeButton.setOnClickListener(v -> replaceFragment(new EventChooseQR()));
-    }
-
-    private void setupDateTimePickers() {
-        binding.startDateEditText.setOnClickListener(v -> showDatePickerDialog(true));
-        binding.startTimeEditText.setOnClickListener(v -> showTimePickerDialog(true));
-        binding.endDateEditText.setOnClickListener(v -> showDatePickerDialog(false));
-        binding.endTimeEditText.setOnClickListener(v -> showTimePickerDialog(false));
+        replaceFragment(new EventChooseQR());
     }
 
     private void showDatePickerDialog(boolean isStart) {
@@ -128,7 +164,7 @@ public class CreateEvent extends Fragment {
 
     private void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
-                .replace(R.id.attendee_layout, fragment)
+                .replace(R.id.organizer_layout, fragment)
                 .addToBackStack(null)
                 .commit();
     }
