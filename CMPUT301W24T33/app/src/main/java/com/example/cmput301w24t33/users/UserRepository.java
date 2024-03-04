@@ -57,6 +57,7 @@ public class UserRepository {
                 });
     }
 
+        
     /**
      * This method sets the MutableLiveData array in UserViewModel to hold all users that have signed up
      * for the event matching the eventId parameter.
