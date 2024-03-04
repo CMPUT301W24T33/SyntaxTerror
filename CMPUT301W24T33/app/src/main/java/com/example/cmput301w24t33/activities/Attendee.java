@@ -2,26 +2,22 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.fragment.app.Fragment;
-import android.content.Context;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
@@ -34,18 +30,11 @@ import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +85,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         super.onResume();
         Log.d(TAG, "RESUME");
         authorizeUser();
-        Log.d(TAG, userId);
         eventViewModel.loadEvents();
     }
 
@@ -126,7 +114,10 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
         }
-        userId = currentUser.getUid();
+        else {
+            userId = currentUser.getUid();
+        }
+
     }
     private void registerUser() {
         replaceFragment(new Profile());
@@ -157,14 +148,8 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
      */
     public void setUserDb(User newUser){
         db.collection("users")
-                .document(newUser.getuID())
+                .document(userId)
                 .set(newUser)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot written with uId: " + newUser.getuID());
-                    }
-                })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -196,9 +181,9 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
      *
      * @see GetUserCallback
      */
-    private void queryUserByDocId(String docId, GetUserCallback callback) {
+    private void queryUserByDocId( GetUserCallback callback) {
         // Get the reference to the user's document using the provided docId
-        DocumentReference userRef = db.collection("users").document(docId);
+        DocumentReference userRef = db.collection("users").document(userId);
 
         // Retrieve the user's data
         userRef.get()
@@ -228,8 +213,8 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         profileButton.setOnClickListener(v -> {
             // Use queryUserByDocId to get current user object!
             FirebaseUser currentUser = mAuth.getCurrentUser();
-            String userDocId = currentUser.getUid();
-            queryUserByDocId(userDocId, new GetUserCallback() {
+
+            queryUserByDocId( new GetUserCallback() {
                 @Override
                 public void onUserReceived(User user) {
                     if (user != null) {
