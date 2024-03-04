@@ -1,16 +1,17 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.Profile;
@@ -38,7 +39,7 @@ public class EventAttendees extends Fragment {
         setupActionBar(view);
         setupClickListeners(view);
         setupAttendeesRecyclerView(view);
-        loadSampleAttendees();
+
         return view;
     }
 
@@ -51,12 +52,7 @@ public class EventAttendees extends Fragment {
         attendeesRecyclerView.setAdapter(attendeeAdapter);
     }
 
-    private void loadSampleAttendees() {
-        attendeesList.add(new User("John", "Doe", "1"));
-        attendeesList.add(new User("Jane", "Smith", "2"));
-        // Notify the adapter of data changes
-        attendeeAdapter.notifyDataSetChanged();
-    }
+
 
     private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);

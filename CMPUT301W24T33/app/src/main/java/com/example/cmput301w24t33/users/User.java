@@ -8,15 +8,18 @@ import java.util.ArrayList;
  *
  */
 public class User {
+
+
+    private Boolean adminview;
     private String firstName;
     private String lastName;
-    private String uID;
+
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
 
-    public User(String firstName, String lastName, String uID) {
+    public User(String firstName, String lastName,Boolean adminview ) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.uID = uID;
+        this.adminview = adminview;
     }
     public User() {
 
@@ -44,11 +47,12 @@ public class User {
         this.signedUpEvents.add(event);
     }
 
-    public String getuID() {
-        return uID;
+    public Boolean getAdminview() {
+        return adminview;
     }
 
-    public void setuID(String uID) {
-        this.uID = uID;
+    public void setAdminview(Boolean adminview) {
+        this.adminview = adminview;
     }
+
 }

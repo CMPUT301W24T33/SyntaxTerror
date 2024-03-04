@@ -78,9 +78,9 @@ public class Profile extends Fragment {
 
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             FirebaseUser currentUser = mAuth.getCurrentUser();
-            String uId = currentUser.getUid();
 
-            User newUser = new User(fName, lName, uId);
+
+            User newUser = new User(fName, lName, false);
             Attendee activity = (Attendee) getActivity();
             activity.setUserDb(newUser);
 
