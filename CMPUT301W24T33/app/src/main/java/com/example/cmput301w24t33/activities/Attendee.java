@@ -69,7 +69,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         setContentView(R.layout.attendee_activity);
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         mAuth = FirebaseAuth.getInstance();
-
+        //mAuth.signOut();
         eventList = new ArrayList<>();
         setAdapter();
 
@@ -96,7 +96,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         super.onResume();
         Log.d(TAG, "RESUME");
         authorizeUser();
-        Log.d(TAG, userId);
         eventViewModel.loadEvents();
     }
 
@@ -107,7 +106,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private ActivityResultLauncher<Intent> anonymousAuthLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 Intent data = result.getData();
-                String userId = data.getStringExtra("USER_ID");
+                userId = data.getStringExtra("USER_ID");
                 Log.d(TAG, "Received user ID: " + userId);
                 // Use userId to create user in database
                 registerUser();
@@ -123,10 +122,13 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
 
         // If user is not signed in, launch AnonymousAuthActivity to sign user in
         if (currentUser == null) {
+            Log.d(TAG, "User not signed in. Launch anonAuth");
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
             anonymousAuthLauncher.launch(intent);
+        } else {
+            userId = currentUser.getUid();
+            Log.d(TAG, userId);
         }
-        userId = currentUser.getUid();
     }
     private void registerUser() {
         replaceFragment(new Profile());
