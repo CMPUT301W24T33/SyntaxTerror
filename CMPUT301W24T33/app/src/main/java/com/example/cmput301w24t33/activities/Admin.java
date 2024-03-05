@@ -42,7 +42,6 @@ public class Admin extends AppCompatActivity {
 
     private void setOnClickListeners() {
         // Event List click listener
-        // Button seems to not work? No Logging is done on button press
         ImageButton eventButton = findViewById(R.id.event_arrow_button);
         eventButton.setOnClickListener(v -> {
             replaceFragment(new ViewEventsAdmin());
