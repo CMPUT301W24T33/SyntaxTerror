@@ -1,11 +1,13 @@
 package com.example.cmput301w24t33.events;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
@@ -16,14 +18,16 @@ import java.util.List;
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
 
 
-    ArrayList<Event> eventsArrayList;
-    AdapterEventClickListener eventClickListener;
+    private ArrayList<Event> eventsArrayList;
+    private AdapterEventClickListener eventClickListener;
+    private Context context;
 
     public EventAdapter(ArrayList<Event> eventsArrayList, AdapterEventClickListener
-                        eventClickListener){
+                        eventClickListener, Context context){
 
         this.eventsArrayList = eventsArrayList;
         this.eventClickListener = eventClickListener;
+        this.context = context;
     }
 
     /**
@@ -53,6 +57,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             eventClickListener.onEventClickListener(event,position);
         });
     }
+/*
+    public Event getEvent(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View view = convertView;
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.content_event, parent, false);
+            Event event = eventsArrayList.get(position);
+        }
+        Event event = eventsArrayList.get(position);
+        return event;
+    }
+ */
 
     @Override
     public int getItemCount() {

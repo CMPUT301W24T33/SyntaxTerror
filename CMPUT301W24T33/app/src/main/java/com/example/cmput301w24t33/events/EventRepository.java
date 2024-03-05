@@ -1,11 +1,17 @@
 package com.example.cmput301w24t33.events;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.util.Log;
+
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class EventRepository {
     private final FirebaseFirestore db;
@@ -47,7 +53,7 @@ public class EventRepository {
      * @see Event
      * @see EventCallback
      */
-    public void setEventSnapshotListener() {
+    public void setEventsSnapshotListener() {
         eventsCollection.addSnapshotListener((queryDocumentSnapshots, e) -> {
             if (e != null) {
                 // Firebase error
@@ -63,6 +69,14 @@ public class EventRepository {
             eventCallback.onEventsLoaded(events);
         });
     }
+
+    /**
+     *
+     */
+    public void setSingleEventSnapshotListener(String eventId) {
+
+    }
+
     /**
      * Sets database listener to check and reflect any changes to current user's organized events in our Firestore database.
      * <p>
@@ -89,6 +103,17 @@ public class EventRepository {
                     }
                     // Sets MutableLiveData<List<Event>> with current list of Events
                     eventCallback.onEventsLoaded(events);
+                });
+    }
+
+    public void updateEvent(Map<String, Object> updates, String eventId) {
+        DocumentReference docRef = eventsCollection.document(eventId);
+        docRef.update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "Document update success");
+                })
+                .addOnFailureListener(e -> {
+                    Log.w(TAG, "Document update failed", e);
                 });
     }
 

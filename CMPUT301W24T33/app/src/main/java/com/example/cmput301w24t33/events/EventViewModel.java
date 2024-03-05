@@ -51,7 +51,7 @@ public class EventViewModel extends ViewModel {
      * This method loads all events from our "events" collection
      */
     public void loadEvents() {
-        eventRepo.setEventSnapshotListener();
+        eventRepo.setEventsSnapshotListener();
     }
     /**
      * This method loads events organized by the current user from our "events" collection
