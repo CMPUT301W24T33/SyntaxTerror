@@ -127,24 +127,6 @@
             android:layout_marginEnd="3dp"
             >
         </Button>
-        <Button
-            android:id="@+id/profile_cancel_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:textColor="@color/black"
-            android:layout_weight="1"
-            android:layout_marginEnd="3dp"
-            >
-        </Button>
-        <Button
-            android:id="@+id/profile_save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:textColor="@color/black"
-            android:layout_weight="1"
-            android:layout_marginStart="3dp">
-        </Button>
+
     </LinearLayout>
 </RelativeLayout>

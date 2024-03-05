@@ -16,14 +16,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 
-public class EditProfileAdmin extends Fragment {
+public class DeleteProfileAdmin extends Fragment {
 
-    public EditProfileAdmin() {
+    public DeleteProfileAdmin() {
         // Required empty public constructor
     }
 
-    public static EditProfileAdmin newInstance(String param1, String param2) {
-        EditProfileAdmin fragment = new EditProfileAdmin();
+    public static DeleteProfileAdmin newInstance(String param1, String param2) {
+        DeleteProfileAdmin fragment = new DeleteProfileAdmin();
         Bundle args = new Bundle();
         args.putString("", param1);
         args.putString("", param2);
@@ -34,7 +34,7 @@ public class EditProfileAdmin extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.admin_edit_profile, container, false);
+        View view = inflater.inflate(R.layout.admin_delete_profile, container, false);
         setupClickListeners(view);
         setupActionBar(view);
 
