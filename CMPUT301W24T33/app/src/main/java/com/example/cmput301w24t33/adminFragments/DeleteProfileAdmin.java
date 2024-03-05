@@ -54,26 +54,9 @@ public class DeleteProfileAdmin extends Fragment {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
-        ImageView profileImage = view.findViewById(R.id.profile_image);
-        profileImage.setOnClickListener(v -> {
-            // Implement profile picture editing logic here
-        });
-
-        Button cancelButton = view.findViewById(R.id.profile_cancel_button);
-        cancelButton.setOnClickListener(v -> {
-            getParentFragmentManager().popBackStack();
-        });
-
         Button deleteButton = view.findViewById(R.id.profile_delete_button);
         deleteButton.setOnClickListener(v -> {
             // implement delete profile logic here
         });
-
-
-        Button saveButton = view.findViewById(R.id.profile_save_button);
-        saveButton.setOnClickListener(v -> {
-            // Implement save profile editing logic here
-        });
     }
-
 }
