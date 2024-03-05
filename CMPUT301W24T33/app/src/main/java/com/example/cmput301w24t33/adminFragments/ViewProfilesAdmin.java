@@ -64,7 +64,7 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
         selectedUserPosition = position;
         View view = getView();
         if (view != null) {
-            replaceFragment(new EditProfileAdmin());
+            replaceFragment(new DeleteProfileAdmin());
         }
     }
     private void setupActionBar(@NonNull View view) {
