@@ -136,7 +136,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList,this);
+        eventAdapter = new EventAdapter(eventList,this, this);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }

@@ -1,9 +1,12 @@
 package com.example.cmput301w24t33.organizerFragments;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +15,27 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
+import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventChooseQR;
+import com.example.cmput301w24t33.events.EventRepository;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 public class EventCreateEdit extends Fragment {
-
+    private EventRepository eventRepo;
+    private Event eventToEdit;
     private OrganizerCreateEditEventFragmentBinding binding;
 
-    public static EventCreateEdit newInstance(String eventID) {
+    public static EventCreateEdit newInstance(Event event) {
         EventCreateEdit fragment = new EventCreateEdit();
+        Log.d(TAG, "EventCreateEdit NewInstance");
         Bundle args = new Bundle();
-        args.putString("EVENT_ID", eventID);
+        args.putSerializable("event", event);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,8 +47,9 @@ public class EventCreateEdit extends Fragment {
         setupDateTimePickers();
         if (getArguments() != null) {
             // Used when editing an event
-            String eventID = getArguments().getString("EVENT_ID");
-            loadData(eventID);
+            Bundle eventBundle = getArguments();
+            eventToEdit = (Event) eventBundle.getSerializable("event");
+            loadData();
         }
         return binding.getRoot();
     }
@@ -58,7 +68,7 @@ public class EventCreateEdit extends Fragment {
         binding.endTimeEditText.setOnClickListener(v -> showTimePickerDialog(false));
     }
 
-    private void loadData(String eventID) {
+    private void loadData() {
         String eventName = "";          // Get From Database
         String eventLocation = "";      // Get From Database
         String eventDescription = "";   // Get From Database
@@ -67,18 +77,18 @@ public class EventCreateEdit extends Fragment {
         String startTime = "";          // Get From Database
         String endTime = "";            // Get From Database
         String maxAttendees = "";       // Get From Database
-        boolean geoTracking = false;    // Get From Database
+        //boolean geoTracking = false;    // Get From Database
 
         // Load data into relevant field
-        binding.eventNameEditText.setText(eventName);
-        binding.eventLocationEditText.setText(eventLocation);
-        binding.eventDescriptionEditText.setText(eventDescription);
-        binding.startDateEditText.setText(startDate);
-        binding.endDateEditText.setText(endDate);
-        binding.startTimeEditText.setText(startTime);
-        binding.endTimeEditText.setText(endTime);
-        binding.maxAttendeesEditText.setText(maxAttendees);
-        binding.geoTrackingSwitch.setChecked(geoTracking);
+        binding.eventNameEditText.setText(eventToEdit.getName());
+        binding.eventLocationEditText.setText(eventToEdit.getAddress());
+        binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
+        binding.startDateEditText.setText(eventToEdit.getStartDate());
+        binding.endDateEditText.setText(eventToEdit.getEndDate());
+        binding.startTimeEditText.setText(eventToEdit.getStartTime());
+        binding.endTimeEditText.setText(eventToEdit.getEndTime());
+        binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
+        binding.geoTrackingSwitch.setChecked(eventToEdit.getGeoTracking());
 
         // Removes QR Code button
         binding.generateQrCodeButton.setVisibility(View.GONE);
@@ -86,6 +96,18 @@ public class EventCreateEdit extends Fragment {
 
     private void onConfirm() {
         // Collect data from input fields
+        /*
+        String eventName = Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim();
+        String eventDescription = Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim();
+        String startDate = Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim();
+        String startTime = Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim();
+        String endDate = Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim();
+        String endTime = Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim();
+        String maxAttendees = Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim();
+        boolean geoLocationTracking = binding.geoTrackingSwitch.isChecked();
+         */
+
+ /*
         String eventName = Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim();
         String eventDescription = Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim();
         String startDate = Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim();
@@ -100,11 +122,43 @@ public class EventCreateEdit extends Fragment {
             Snackbar.make(binding.getRoot(), "Please fill in all required fields", Snackbar.LENGTH_LONG).show();
             return;
         }
+ */
+
+
+        saveEvent();
+
 
         // DATABASE CODE GOES HERE
 
         Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
         getParentFragmentManager().popBackStack();
+    }
+
+    private void saveEvent() {
+        /*
+        Map<String, Object> eventEdits = new HashMap<>();
+        eventEdits.put("name", Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
+        eventEdits.put("eventDescription", Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
+        eventEdits.put("startDate", Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
+        eventEdits.put("startTime", Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
+        eventEdits.put("endDate", Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
+        eventEdits.put("endTime", Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
+        eventEdits.put("maxOccupancy", Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim());
+         */
+
+        // Checks if Event is being edited to prevent creating new Event with updated information
+        if (eventToEdit != null) {
+            // Event is an edit
+            eventToEdit.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
+            eventToEdit.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
+            eventToEdit.setStartDate(Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
+            eventToEdit.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
+            eventToEdit.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
+            eventToEdit.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
+            eventToEdit.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
+            //eventRepo.updateEvent();
+        }
+
     }
 
     private void onCancel() {

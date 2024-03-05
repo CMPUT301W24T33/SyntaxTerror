@@ -2,22 +2,26 @@ package com.example.cmput301w24t33.events;
 
 import com.example.cmput301w24t33.users.User;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
  *
  */
-public class Event {
-
+public class Event implements Serializable {
     protected SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE.LLLL.yyyy KK:mm:ss aaa z");
-    private String startDateTime;
-    private String endDateTime;
+    private String eventId;
+    private String startDate;
+    private String endDate;
+    private String startTime;
+    private String endTime;
     private String name;
     private String organizerId;
     private String eventDescription;
     private String posterQR;
     private String checkInQR;
+    private String address;
     private String locationData;    // Not sure if this is the correct date type
     private boolean geoTracking;
     private boolean active;
@@ -31,25 +35,49 @@ public class Event {
         this.name = name;
         this.organizerId = organizerId;
         this.eventDescription = eventDescription;
+        this.geoTracking = false;
     }
     public Event() {
 
     }
-
-    public String getStartDateTime() {
-        return startDateTime;
+    public String getEventId() {
+        return eventId;
     }
 
-    public void setStartDateTime(String startDateTime) {
-        this.startDateTime = startDateTime;
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+    public String getStartDate() {
+        return startDate;
     }
 
-    public String getEndDateTime() {
-        return endDateTime;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public void setEndDateTime(String endDateTime) {
-        this.endDateTime = endDateTime;
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getName() {
@@ -83,6 +111,13 @@ public class Event {
     public void setCheckInQR(String checkInQR) {
         this.checkInQR = checkInQR;
     }
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getLocationData() {
         return locationData;
@@ -92,7 +127,7 @@ public class Event {
         this.locationData = locationData;
     }
 
-    public boolean isGeoTracking() {
+    public boolean getGeoTracking() {
         return geoTracking;
     }
 
