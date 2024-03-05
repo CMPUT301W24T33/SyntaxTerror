@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notification_dialog_title_hint">title</string>
     <string name="notification_dialog_message_hint">message</string>
+
 </resources>

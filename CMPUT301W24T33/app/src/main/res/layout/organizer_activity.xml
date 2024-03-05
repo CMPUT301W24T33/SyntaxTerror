@@ -9,9 +9,10 @@
     tools:context=".activities.Organizer">
 
     <FrameLayout
+        android:id="@+id/organizer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/organizer_layout">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
