@@ -19,6 +19,7 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventChooseQR;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -30,6 +31,7 @@ public class EventCreateEdit extends Fragment {
     private EventRepository eventRepo;
     private Event eventToEdit;
     private OrganizerCreateEditEventFragmentBinding binding;
+    private FirebaseAuth mAuth;
 
     public static EventCreateEdit newInstance(Event event) {
         EventCreateEdit fragment = new EventCreateEdit();
@@ -108,15 +110,6 @@ public class EventCreateEdit extends Fragment {
          */
 
  /*
-        String eventName = Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim();
-        String eventDescription = Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim();
-        String startDate = Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim();
-        String startTime = Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim();
-        String endDate = Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim();
-        String endTime = Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim();
-        String maxAttendees = Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim();
-        boolean geoLocationTracking = binding.geoTrackingSwitch.isChecked();
-
         // Validate input
         if (eventName.isEmpty() || eventDescription.isEmpty() || startDate.isEmpty() || startTime.isEmpty() || endDate.isEmpty() || endTime.isEmpty()) {
             Snackbar.make(binding.getRoot(), "Please fill in all required fields", Snackbar.LENGTH_LONG).show();
@@ -124,41 +117,41 @@ public class EventCreateEdit extends Fragment {
         }
  */
 
-
-        saveEvent();
-
-
         // DATABASE CODE GOES HERE
+        saveEvent();
 
         Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
         getParentFragmentManager().popBackStack();
     }
 
     private void saveEvent() {
-        /*
-        Map<String, Object> eventEdits = new HashMap<>();
-        eventEdits.put("name", Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
-        eventEdits.put("eventDescription", Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
-        eventEdits.put("startDate", Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
-        eventEdits.put("startTime", Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
-        eventEdits.put("endDate", Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
-        eventEdits.put("endTime", Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
-        eventEdits.put("maxOccupancy", Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim());
-         */
+        eventRepo = new EventRepository();
 
         // Checks if Event is being edited to prevent creating new Event with updated information
         if (eventToEdit != null) {
-            // Event is an edit
-            eventToEdit.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
-            eventToEdit.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
-            eventToEdit.setStartDate(Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
-            eventToEdit.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
-            eventToEdit.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
-            eventToEdit.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
-            eventToEdit.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
-            //eventRepo.updateEvent();
+            // Edits existing event
+            setEventEdits(eventToEdit);
+            eventRepo.updateEvent(eventToEdit);
+        } else {
+            // Creates new event
+            mAuth = FirebaseAuth.getInstance();
+            String userId = mAuth.getUid();
+            Event newEvent = new Event();
+            newEvent.setOrganizerId(userId);
+            setEventEdits(newEvent);
+            eventRepo.createEvent(newEvent);
         }
 
+    }
+    private void setEventEdits(Event event) {
+        event.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
+        event.setAddress(Objects.requireNonNull(binding.eventLocationEditText.getText()).toString().trim());
+        event.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
+        event.setStartDate(Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
+        event.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
+        event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
+        event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
+        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
     }
 
     private void onCancel() {

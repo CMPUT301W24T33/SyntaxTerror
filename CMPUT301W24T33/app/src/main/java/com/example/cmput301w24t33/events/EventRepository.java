@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -106,14 +107,28 @@ public class EventRepository {
                 });
     }
 
-    public void updateEvent(Map<String, Object> updates, String eventId) {
+    public void updateEvent(Event event) {
+        String eventId = event.getEventId();
         DocumentReference docRef = eventsCollection.document(eventId);
-        docRef.update(updates)
+
+        docRef.set(event)
                 .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "Document update success");
+                    Log.d(TAG, "Document update success" + eventId);
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Document update failed", e);
+                });
+    }
+
+    public void createEvent(Event event) {
+        eventsCollection.add(event)
+                .addOnSuccessListener(documentReference -> {
+                    String documentId = documentReference.getId();
+                    event.setEventId(documentId);
+                    Log.d(TAG, "Create Document success: " + documentId);
+                })
+                .addOnFailureListener(e -> {
+                    Log.w(TAG, "Create Document failed", e);
                 });
     }
 
