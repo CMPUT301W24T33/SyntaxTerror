@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -238,7 +239,19 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         ImageView checkInButton = findViewById(R.id.check_in_img);
         checkInButton.setOnClickListener(v -> {
             // fill in a fragment or whatever is decided for checkin
-            qrScanner.scanQRCode(Attendee.this);
+
+            String qrCode = qrScanner.scanQRCode(Attendee.this);
+            if (qrCode != null) {
+                Toast toast = new Toast(this);
+                toast.setText(qrCode);
+                toast.show();
+                db.collection("events").whereEqualTo("checkInQr", qrCode);
+            } else {
+                Toast toast = new Toast(this);
+                toast.setText("Scan canceled/failed");
+                toast.show();
+            }
+
        });
 
         // User Mode click listener - switches to organizer activity
