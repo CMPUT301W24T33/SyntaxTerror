@@ -41,7 +41,7 @@ import java.util.List;
 
 public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
     private FirebaseFirestore db;
-    private CollectionReference events;
+    //private CollectionReference events;
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
@@ -178,7 +178,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
      *         callback function to be handled by the calling function.</li>
      *     </ul>
      * </p>
-     * @param docId     the document id to query the database for
      * @param callback  the callback interface to handle results of the query
      *
      * @see GetUserCallback

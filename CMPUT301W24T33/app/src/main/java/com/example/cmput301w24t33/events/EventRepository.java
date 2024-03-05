@@ -28,6 +28,10 @@ public class EventRepository {
         void onFailure(Exception e);
     }
 
+    /**
+     * Initializes eventCallback
+     * @param eventCallback an EventCallback to initialize for facilitating query result returns
+     */
     public void setEventCallback(EventCallback eventCallback) {
         this.eventCallback = eventCallback;
     }
@@ -37,14 +41,13 @@ public class EventRepository {
      * <p>
      *     This method send Firestore error message as a parameter to the EventCallback function if the EventListener
      *     encounters any Firestore exceptions.
-     *     If no errors/exceptions are encountered, each event from the "events" collection is parsed into a
+     *     If no errors/exceptions are encountered, each document from the "events" collection is parsed into a
      *     new Event object and added to the eventList. eventAdapter is then notified of changes.
      * </p>
      * @see Event
      * @see EventCallback
      */
-    public void setEventSnapshotListener(EventCallback callback) {
-        this.eventCallback = callback;
+    public void setEventSnapshotListener() {
         eventsCollection.addSnapshotListener((queryDocumentSnapshots, e) -> {
             if (e != null) {
                 // Firebase error

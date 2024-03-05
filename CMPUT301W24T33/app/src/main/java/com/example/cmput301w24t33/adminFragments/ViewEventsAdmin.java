@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import static android.content.ContentValues.TAG;
+import static android.opengl.Matrix.length;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -55,6 +56,13 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
 
     }
 
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "VIEW EVENTS ADMIN FRAG RESUME");
+        eventViewModel.loadEvents();
+
+    }
+
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("All Events");
@@ -77,6 +85,7 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
      * @param events is a live representation of Events in our events collection as a List
      */
     private void updateUI(List<Event> events) {
+        Log.d(TAG, String.valueOf(events.size()));
         eventAdapter.setEvents(events);
     }
 

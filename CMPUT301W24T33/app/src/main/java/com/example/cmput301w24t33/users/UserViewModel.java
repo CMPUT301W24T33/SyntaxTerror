@@ -11,11 +11,12 @@ import java.util.List;
 public class UserViewModel extends ViewModel {
     private final UserRepository userRepo;
     private final MutableLiveData<List<User>> userLiveData;
-
+    private User user;
     // Constructor
     public UserViewModel() {
         userRepo = new UserRepository();
         userLiveData = new MutableLiveData<>();
+        user = new User();
         setUserCallback(userRepo);
     }
 
@@ -34,6 +35,12 @@ public class UserViewModel extends ViewModel {
             public void onUsersLoaded(List<User> users) {
                 userLiveData.setValue(users);
             }
+
+            @Override
+            public User onUsersLoaded(User user) {
+                return user;
+            }
+
             // When Firebase encounters an error, log it
             @Override
             public void onFailure(Exception e) {
@@ -44,24 +51,15 @@ public class UserViewModel extends ViewModel {
 
     /**
      * This method loads all users in the "users" collection in our Firestore.
-     * This is done by defining the UserCallback interface to:
-
      */
     public void loadUsers() {
-        userRepo.setUserSnapshotListener(new UserRepository.UserCallback() {
-            @Override
-            public void onUsersLoaded(List<User> users) {
-                userLiveData.setValue(users);
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, String.valueOf(e));
-            }
-        });
+        userRepo.setUserSnapshotListener();
     }
     public void loadCheckedInUsers(String eventId) {
-
+        userRepo.setCheckedInUsersSnapshotListener(eventId);
+    }
+    public void loadSignedUpUsers(String eventId) {
+        userRepo.setSignedUpUsersSnapshotListener(eventId);
     }
     /**
      * Getter method to return users in our users collection
@@ -69,4 +67,5 @@ public class UserViewModel extends ViewModel {
      * our users collection in our Firestore Database
      */
     public LiveData<List<User>> getUsersLiveData() {return userLiveData;}
+    public User getUser() { return user; }
 }
