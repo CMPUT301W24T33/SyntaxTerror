@@ -114,7 +114,7 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
 
     @Override
     public void onEventClickListener(Event event, int position) {
-        replaceFragment(EventCreateEdit.newInstance(event));
+        replaceFragment(DeleteEventAdmin.newInstance(event));
     }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getChildFragmentManager();

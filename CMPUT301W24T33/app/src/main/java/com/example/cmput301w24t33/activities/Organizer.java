@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
+import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
@@ -103,7 +104,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         return fragment;
     }
     public void onEventClickListener(Event event, int position) {
-       replaceFragment(EventCreateEdit.newInstance(event));
+       replaceFragment(EventDetails.newInstance(event));
     }
     private void setOnClickListeners(){
         ImageView profileButton = findViewById(R.id.profile_image);
