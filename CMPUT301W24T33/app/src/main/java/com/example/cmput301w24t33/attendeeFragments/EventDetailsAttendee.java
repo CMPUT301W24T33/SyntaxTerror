@@ -41,7 +41,9 @@ public class EventDetailsAttendee extends Fragment {
     private void setClickListeners() {
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(NotificationsAttendee.newInstance()));
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
-        binding.shareQrCodeButton.setOnClickListener(v -> {});  // THIS NEEDS CODE TO ADD FUNCTIONALITY
+        binding.shareQrCodeButton.setOnClickListener(v -> {
+            // TODO:
+        });
         binding.toggleButtonGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (checkedId == R.id.goingButton) {
                 if (isChecked) {
