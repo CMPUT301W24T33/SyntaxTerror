@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ public class ShareQRFragment extends DialogFragment {
         assert getArguments() != null;
         checkInCode = (QRCode) getArguments().get("CHECKIN");
         assert checkInCode != null;
+        qrView = view.findViewById(R.id.qr_code_image_view);
         qrView.setImageBitmap(checkInCode.getBitmap());
         radioGroup = view.findViewById(R.id.share_qr_code_select_option);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -36,6 +38,9 @@ public class ShareQRFragment extends DialogFragment {
                 .setPositiveButton("Confirm", (d,w)->{
                     if(radioGroup.getCheckedRadioButtonId() == R.id.save_check_in_code) {
                         checkInCode.saveAsPNG(downloadPath);
+                        Toast toast = new Toast(getContext());
+                        toast.setText("QR Code Saved");
+                        toast.show();
                     }
                 } ).create();
     }
