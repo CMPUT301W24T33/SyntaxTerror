@@ -11,27 +11,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
+
 import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventChooseQR;
+import com.example.cmput301w24t33.organizerFragments.EventChooseQR;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-public class EventCreateEdit extends Fragment {
+public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRFragmentListener {
     private EventRepository eventRepo;
     private Event eventToEdit;
     private OrganizerCreateEditEventFragmentBinding binding;
     private FirebaseAuth mAuth;
+    FirebaseFirestore db;
+    private String qrcode = null;
+
 
     public static EventCreateEdit newInstance(Event event) {
         EventCreateEdit fragment = new EventCreateEdit();
@@ -40,6 +50,12 @@ public class EventCreateEdit extends Fragment {
         args.putSerializable("event", event);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -142,6 +158,24 @@ public class EventCreateEdit extends Fragment {
         event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
         event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
         event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
+
+
+        // when no QR code is being reused
+        if (qrcode == null) {
+            // reference to new QR code document
+            DocumentReference docRef = db.collection("checkInCodes").document();
+
+            // sets organizerId field to organizer Id
+            Map<String, String> map = new HashMap<>();
+            map.put("organizerId", mAuth.getUid());
+            docRef.set(map);
+
+            // sets qrcode value to doc name
+            qrcode = docRef.getPath().split("/")[1];
+            Log.d("QRCODE", "null qr code");
+        }
+
+        event.setCheckInQR(Objects.requireNonNull(qrcode));
     }
 
     private void onCancel() {
@@ -155,7 +189,12 @@ public class EventCreateEdit extends Fragment {
 
     private void onSelectQRCode() {
         // Handle QR Code selection
-        replaceFragment(new EventChooseQR());
+        EventChooseQR chooseQrFragment = EventChooseQR.newInstance("param1","param2");
+
+        // Attaches this Listener to EventChooseQR fragment
+        chooseQrFragment.setListener(this);
+
+        replaceFragment(chooseQrFragment);
     }
 
     private void showDatePickerDialog(boolean isStart) {
@@ -204,5 +243,14 @@ public class EventCreateEdit extends Fragment {
                 .replace(R.id.organizer_layout, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    /**
+     * Sets this Listener's qrCode attribute to desired value
+     * @param qrCode qrCode to be set
+     */
+    @Override
+    public void setQRCode(String qrCode) {
+        this.qrcode = qrCode;
     }
 }

@@ -1,30 +1,61 @@
-package com.example.cmput301w24t33.events;
+package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioGroup;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.AdapterEventClickListener;
+import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.EventAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link EventChooseQR#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EventChooseQR extends Fragment {
+public class EventChooseQR extends Fragment implements AdapterEventClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Button confirmButton;
+    private RecyclerView eventView;
+    private ArrayList<Event> eventList;
+    private EventAdapter eventAdapter;
+    private RadioGroup radioButton;
+    private String selectedEvent;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String param1;
+    private String param2;
+
+
+    /**
+     * Listens to EventChooseQR fragment and updates depending on the results
+     */
+    public interface ChooseQRFragmentListener {
+        /**
+         * Sets the Listener's qrCode attribute to given qrCode string
+         * @param qrCode qrCode to be set
+         */
+        public void setQRCode(String qrCode);
+    }
+
+    private ChooseQRFragmentListener listener;
 
     public EventChooseQR() {
         // Required empty public constructor
@@ -51,10 +82,6 @@ public class EventChooseQR extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -62,5 +89,48 @@ public class EventChooseQR extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.organizer_choose_qr_fragment, container, false);
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        View view = getView();
+        confirmButton = view.findViewById(R.id.button_choose_qr_confirm);
+        eventView = view.findViewById(R.id.event_recyclerview);
+        eventList = new ArrayList<Event>();
+        eventAdapter = new EventAdapter(eventList, this, getContext());
+        radioButton = view.findViewById(R.id.choose_qr_radio_group);
+
+        setOnClickListeners();
+    }
+
+    // TODO: Implement QR code reusability
+    //  1: populate recycler view with organizer's past events
+    //  2: set onItemClickListener to handle user input
+    //  3: return selected event to parent fragment view listener.setQRCode(qrCode)
+    //  4: profit $$$
+    private void setOnClickListeners() {
+        confirmButton.setOnClickListener(v->{
+            int option = radioButton.getCheckedRadioButtonId() == R.id.new_qr_radio_button ? 1 : 2;
+            if(option == 1) {
+                listener.setQRCode(null);
+            }
+            getParentFragmentManager().popBackStack();
+        });
+
+
+    }
+
+    @Override
+    public void onEventClickListener(Event event, int position) {
+
+    }
+
+    /**
+     * Attaches ChooseQRFragmentListener to this instance
+     * @param listener object waiting for results
+     */
+    public void setListener(ChooseQRFragmentListener listener){
+        this.listener = listener;
     }
 }
