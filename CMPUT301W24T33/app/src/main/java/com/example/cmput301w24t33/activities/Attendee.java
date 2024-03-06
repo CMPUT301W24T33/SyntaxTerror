@@ -60,7 +60,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         db = FirebaseFirestore.getInstance();
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         mAuth = FirebaseAuth.getInstance();
-        //mAuth.signOut();
+        mAuth.signOut();
         eventList = new ArrayList<>();
         setAdapter();
 

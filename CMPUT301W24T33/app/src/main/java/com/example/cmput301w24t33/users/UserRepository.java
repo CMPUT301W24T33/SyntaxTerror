@@ -3,6 +3,8 @@ import static android.content.ContentValues.TAG;
 
 import android.util.Log;
 
+import androidx.constraintlayout.helper.widget.MotionEffect;
+
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.google.firebase.firestore.CollectionReference;
@@ -157,6 +159,29 @@ public class UserRepository {
                     // Error in fetching document
                     Log.e(TAG, "Error getting document", e);
                     userCallback.onFailure(e);
+                });
+    }
+
+    /**
+     *
+     * @param user
+     */
+    public void setUser(User user) {
+        userCollection.add(user)
+                .addOnSuccessListener(documentReference -> {
+                    String documentId = documentReference.getId();
+                    user.setUserId(documentId);
+                    userCollection.document(documentId)
+                            .update("userId", documentId)
+                            .addOnSuccessListener(aVoid -> {
+                                Log.d(MotionEffect.TAG, "userId added to document");
+                            }).addOnFailureListener(e -> {
+                                Log.e(MotionEffect.TAG, "Failed to add userId", e);
+                            });
+                    Log.d(MotionEffect.TAG, "Create User Document success: " + documentId);
+                })
+                .addOnFailureListener(e -> {
+                    Log.w(MotionEffect.TAG, "Create User Document failed", e);
                 });
     }
 }
