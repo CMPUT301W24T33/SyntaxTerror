@@ -11,8 +11,9 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 
 import java.io.FileOutputStream;
+import java.io.Serializable;
 
-public class QRCode {
+public class QRCode implements Serializable {
     public final int WIDTH = 512;
     public final int HEIGHT = 512;
     private String qrCode;

@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.qrCode.QRCode;
+import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 
 public class EventDetails extends Fragment {
 
@@ -42,6 +44,12 @@ public class EventDetails extends Fragment {
 //        binding.signUpsButton.setOnClickListener(v -> replaceFragment(new EventSignedUp()));      EVENT SIGNED-UP FRAGMENT NOT MADE YET
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
         binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
+        binding.shareQrCodeButton.setOnClickListener(v -> {
+            // TODO: Share QR Code
+            //  1: Open Share QR code fragment
+            QRCode checkInCode = new QRCode(event.getCheckInQR());
+            ShareQRFragment.newInstance(checkInCode, null).show(getActivity().getSupportFragmentManager(), "Share QR Code");
+        });
     }
 
     private void loadData(Event event) {

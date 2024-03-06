@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
+import com.example.cmput301w24t33.qrCode.QRCode;
+import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 
 public class EventDetailsAttendee extends Fragment {
 
@@ -41,9 +44,7 @@ public class EventDetailsAttendee extends Fragment {
     private void setClickListeners() {
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(NotificationsAttendee.newInstance()));
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
-        binding.shareQrCodeButton.setOnClickListener(v -> {
-            // TODO:
-        });
+        binding.shareQrCodeButton.setOnClickListener(v -> {});
         binding.toggleButtonGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (checkedId == R.id.goingButton) {
                 if (isChecked) {
