@@ -17,7 +17,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 
 import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventChooseQR;
+import com.example.cmput301w24t33.organizerFragments.EventChooseQR;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -166,7 +166,7 @@ public class EventCreateEdit extends Fragment {
 
     private void onSelectQRCode() {
         // Handle QR Code selection
-        replaceFragment(EventChooseQR.newInstance("",""));
+        replaceFragment(EventChooseQR.newInstance(eventToEdit.getEventId(), ""));
     }
 
     private void showDatePickerDialog(boolean isStart) {

@@ -16,6 +16,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -30,9 +31,10 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ORG_ID = "param1";
+    private static final String EVENT_ID = "param1";
     private static final String ARG_PARAM2 = "param2";
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
     private Button confirmButton;
     private RecyclerView eventView;
     private ArrayList<Event> eventList;
@@ -42,6 +44,7 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
 
     // TODO: Rename and change types of parameters
     private String organizerId;
+    private String eventId;
     private String mParam2;
 
     public EventChooseQR() {
@@ -52,15 +55,15 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param organizerId Parameter 1.
+     * @param eventId Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment EventChooseQR.
      */
     // TODO: Rename and change types and number of parameters
-    public static EventChooseQR newInstance(String organizerId, String param2) {
+    public static EventChooseQR newInstance(String eventId, String param2) {
         EventChooseQR fragment = new EventChooseQR();
         Bundle args = new Bundle();
-        args.putString(ORG_ID, organizerId);
+        args.putString(EVENT_ID, eventId);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -70,10 +73,11 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            organizerId = getArguments().getString(ORG_ID);
+            eventId = getArguments().getString(EVENT_ID);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
+        mAuth = FirebaseAuth.getInstance();
+        organizerId = mAuth.getUid();
         db = FirebaseFirestore.getInstance();
     }
 
@@ -92,7 +96,7 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
         confirmButton = view.findViewById(R.id.button_choose_qr_confirm);
         eventView = view.findViewById(R.id.event_recyclerview);
         eventList = new ArrayList<Event>();
-        eventAdapter = new EventAdapter(eventList, this);
+        eventAdapter = new EventAdapter(eventList, this, getContext());
         radioButton = view.findViewById(R.id.choose_qr_radio_group);
 
         setOnClickListeners();
@@ -104,6 +108,7 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
             if(option == 1) {
                 HashMap<String, String> data = new HashMap<>();
                 data.put("organizerId", organizerId);
+                data.put("eventId", eventId);
                 db.collection("checkInCodes").document().set(data);
             }
             getParentFragmentManager().popBackStack();
