@@ -137,6 +137,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         if (eventToEdit != null) {
             // Edits existing event
             setEventEdits(eventToEdit);
+            Log.d(TAG, "after set event:" + eventToEdit.getEventId());
             eventRepo.updateEvent(eventToEdit);
         } else {
             // Creates new event
@@ -157,7 +158,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
         event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
         event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
-        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
+        //event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
 
         // when no QR code is being reused
@@ -176,6 +177,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         }
 
         event.setCheckInQR(Objects.requireNonNull(qrcode));
+
     }
 
     private void onCancel() {

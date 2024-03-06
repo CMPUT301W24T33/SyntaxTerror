@@ -109,6 +109,7 @@ public class EventRepository {
 
     public void updateEvent(Event event) {
         String eventId = event.getEventId();
+        Log.d(TAG, "Edit Event: " + eventId);
         DocumentReference docRef = eventsCollection.document(eventId);
 
         docRef.set(event)
@@ -125,6 +126,13 @@ public class EventRepository {
                 .addOnSuccessListener(documentReference -> {
                     String documentId = documentReference.getId();
                     event.setEventId(documentId);
+                    eventsCollection.document(documentId)
+                            .update("eventId", documentId)
+                            .addOnSuccessListener(aVoid -> {
+                                Log.d(TAG, "eventId added to document");
+                            }).addOnFailureListener(e -> {
+                                Log.e(TAG, "Failed to add eventId", e);
+                            });
                     Log.d(TAG, "Create Document success: " + documentId);
                 })
                 .addOnFailureListener(e -> {
