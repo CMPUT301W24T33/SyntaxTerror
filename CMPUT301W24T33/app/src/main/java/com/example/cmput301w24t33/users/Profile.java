@@ -1,7 +1,6 @@
 package com.example.cmput301w24t33.users;
 
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -81,25 +79,6 @@ public class Profile extends Fragment {
             fName = addFnameEditText.getText().toString();
             lName = addLnameEditText.getText().toString();
             email = addEmailEditText.getText().toString();
-
-            //Checks if user passes a string, if not it asks the user again
-            if (fName.isEmpty() || lName.isEmpty()) {
-                Toast.makeText(getContext(), "Please enter both your first and last name", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            //Checks if there are numbers in the name
-            if (fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*")) {
-                Toast.makeText(getContext(), "Please enter a valid name", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            //Checks if email is valid
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_LONG).show();
-                return;
-            }
-
 
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             FirebaseUser currentUser = mAuth.getCurrentUser();
