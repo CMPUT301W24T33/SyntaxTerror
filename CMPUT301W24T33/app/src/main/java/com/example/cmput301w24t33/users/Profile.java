@@ -70,9 +70,8 @@ public class Profile extends Fragment {
         });
 
         Button cancelButton = view.findViewById(R.id.profile_cancel_button);
-        cancelButton.setOnClickListener(v -> {
-            // Implement cancel profile editing logic here
-        });
+        cancelButton.setOnClickListener(v -> getParentFragmentManager().popBackStack()
+        );
 
         // Saves user to DB
         Button saveButton = view.findViewById(R.id.profile_save_button);
