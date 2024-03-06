@@ -46,7 +46,7 @@ import java.util.List;
  */
 public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
     private FirebaseFirestore db;
-    private CollectionReference events;
+    //private CollectionReference events;
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
@@ -137,6 +137,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         replaceFragment(new Profile());
     }
 
+
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -148,10 +149,12 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
      * Sets the adapter for the RecyclerView that displays events. This method configures
      * the layout manager and attaches the EventAdapter to the RecyclerView.
      */
+
+  
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList,this);
+        eventAdapter = new EventAdapter(eventList,this, this);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
@@ -176,7 +179,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     }
 
     public void onEventClickListener(Event event, int position){
-        replaceFragment(new EventDetailsAttendee());
+        replaceFragment(EventDetailsAttendee.newInstance(event));
     }
 
     /**
@@ -193,7 +196,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
      *         callback function to be handled by the calling function.</li>
      *     </ul>
      * </p>
-     * @param docId     the document id to query the database for
      * @param callback  the callback interface to handle results of the query
      *
      * @see GetUserCallback
@@ -277,6 +279,14 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             finish();
             return true;
         });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.attendee_layout,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }

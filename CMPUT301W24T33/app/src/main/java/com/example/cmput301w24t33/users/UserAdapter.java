@@ -28,6 +28,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         this.listener = listener;
     }
 
+    public void setUsers(List<User> newUsers) {
+        users.clear();
+        users.addAll(newUsers);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public UserAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

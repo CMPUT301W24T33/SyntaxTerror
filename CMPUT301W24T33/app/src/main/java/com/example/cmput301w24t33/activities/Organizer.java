@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.helper.widget.MotionEffect;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
+import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.AdapterEventClickListener;
@@ -112,10 +114,11 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(organizedEvents,this);
+        eventAdapter = new EventAdapter(organizedEvents,this, this);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
+
 
     /**
      * Handles click events on individual events in the list. This method is triggered when
@@ -125,8 +128,19 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
      * @param position The position of the clicked event in the list.
      */
     @Override
+
+
+    public static EventCreateEdit newInstance(Event event) {
+        EventCreateEdit fragment = new EventCreateEdit();
+        Log.d(MotionEffect.TAG, "EventCreateEdit NewInstance");
+        Bundle args = new Bundle();
+        args.putSerializable("event", event);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     public void onEventClickListener(Event event, int position) {
-       replaceFragment(new EventCreateEdit());
+       replaceFragment(EventDetails.newInstance(event));
     }
 
     /**
@@ -141,7 +155,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         FloatingActionButton createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
-        // User Mode click listener - swiches to attendee activity
+        // User Mode click listener - switches to attendee activity
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Organizer.this, Attendee.class);
@@ -165,7 +179,6 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
      * @param view The current view context used for finding and modifying the action bar components.
      */
     private void setupActionBar(View view) {
-
         // update color of actionbar
         RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
         int color = ContextCompat.getColor(this,R.color.organizer_actionbar);

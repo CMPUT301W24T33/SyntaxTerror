@@ -67,6 +67,9 @@ public class Admin extends AppCompatActivity {
      * management sections via fragment replacement.
      */
     private void setOnClickListeners() {
+
+        // Event List click listener
+
         ImageButton eventButton = findViewById(R.id.event_arrow_button);
         eventButton.setOnClickListener(v -> {
             replaceFragment(new ViewEventsAdmin());

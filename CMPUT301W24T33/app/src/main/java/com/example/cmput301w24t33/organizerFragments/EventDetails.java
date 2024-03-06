@@ -9,15 +9,16 @@ import android.view.ViewGroup;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
+import com.example.cmput301w24t33.events.Event;
 
 public class EventDetails extends Fragment {
 
     private OrganizerEventDetailsFragmentBinding binding;
 
-    public static EventDetails newInstance(String eventID) {
+    public static EventDetails newInstance(Event event) {
         EventDetails fragment = new EventDetails();
         Bundle args = new Bundle();
-        args.putString("EVENT_ID", eventID);
+        args.putSerializable("event", event);
         fragment.setArguments(args);
         return fragment;
     }
@@ -27,33 +28,35 @@ public class EventDetails extends Fragment {
                              Bundle savedInstanceState) {
         binding = OrganizerEventDetailsFragmentBinding.inflate(inflater, container, false);
         assert getArguments() != null;
-        String eventID = getArguments().getString("EVENT_ID");
-        setupActionButtons(eventID);
-        loadData();
+        Bundle bundle = getArguments();
+        Event event = (Event) bundle.getSerializable("event");
+        setupActionButtons(event);
+        loadData(event);
         return binding.getRoot();
     }
 
-    private void setupActionButtons(String eventID) {
+    private void setupActionButtons(Event event) {
         binding.shareQrCodeButton.setOnClickListener(v -> {});  // ADD METHOD TO SHARE QR CODE
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
         binding.checkInsButton.setOnClickListener(v -> replaceFragment(new EventAttendees()));
 //        binding.signUpsButton.setOnClickListener(v -> replaceFragment(new EventSignedUp()));      EVENT SIGNED-UP FRAGMENT NOT MADE YET
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
-        binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(eventID)));
+        binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
     }
 
-    private void loadData() {
-        String eventName = "";          // Get From Database
-        String eventLocation = "";      // Get From Database
-        String eventDescription = "";   // Get From Database
-        String eventDateTime = "";      // Get From Database - Note: probably have to make this from date/time parts
-        // Also need to get image here
+    private void loadData(Event event) {
 
-        binding.eventNameTextView.setText(eventName);
-        binding.eventLocationTextView.setText(eventLocation);
-        binding.eventDescriptionTextView.setText(eventDescription);
+        String eventStartDate = event.getStartDate();
+        String eventEndDate = event.getEndDate();
+        String eventStartTime = event.getStartTime();
+        String eventEndTime = event.getEndTime();
+        String eventDateTime = "Start: " +eventStartTime + " on " + eventStartDate + "\nEnd:   " + eventEndTime + " on " + eventEndDate;
+
+        binding.eventNameTextView.setText(event.getEventDescription());
+        binding.eventLocationTextView.setText(event.getLocationData());
+        binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
-        // Need to bind image here too
+        // Need to bind image here still
 
     }
 
@@ -65,7 +68,7 @@ public class EventDetails extends Fragment {
 
     private void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
-                .replace(R.id.attendee_layout, fragment)
+                .replace(R.id.organizer_layout, fragment)
                 .addToBackStack(null)
                 .commit();
     }

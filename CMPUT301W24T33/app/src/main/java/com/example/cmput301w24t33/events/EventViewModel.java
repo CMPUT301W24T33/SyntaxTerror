@@ -21,10 +21,17 @@ public class EventViewModel extends ViewModel {
     }
 
 
-    /**Initializes EventCallback function and sets listener on our "events" collection
-     *
+    /**
+     * Defines EventCallback interface
+     * <ul>
+     *     <li>onEventsLoaded(List<Event> events) will set eventsLiveData to the result of the
+     *     database query</li>
+     *     <li>onFailure(Exception e) will log the exception encountered in the database query</li>
+     * </ul>
+     * @param eventRepo an instance of our "events" database, EventRepository, for querying the database
+     * @see EventRepository
+     * @see MutableLiveData
      */
-
     private void setEventCallback(EventRepository eventRepo) {
         eventRepo.setEventCallback(new EventRepository.EventCallback() {
             // When events are successfully loaded, set our Live Data list to our query results
@@ -34,40 +41,23 @@ public class EventViewModel extends ViewModel {
             }
             // When Firebase encounters an error, log it
             @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, String.valueOf(e));
-            }
+            public void onFailure(Exception e) { Log.d(TAG, String.valueOf(e)); }
 
         });
 
     }
 
-
-
     /**
-     * This method loads events from our "events" collection by creating a new EventRepository
-     * and setting the list of documents (events) to eventsLiveData.
-     * Any errors/exceptions encountered are Logged.
+     * This method loads all events from our "events" collection
      */
     public void loadEvents() {
-        // Defines UserCallback functions
-        eventRepo.setEventSnapshotListener(new EventRepository.EventCallback() {
-            // When events are successfully loaded, set our Live Data list to our query results
-            @Override
-            public void onEventsLoaded(List<Event> events) {
-                eventsLiveData.setValue(events);
-            }
-            // When Firebase encounters an error, log it
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, String.valueOf(e));
-            }
-        });
+        eventRepo.setEventsSnapshotListener();
     }
     /**
      * This method loads events organized by the current user from our "events" collection
-     * by creating a new EventRepository and setting the list of documents (events) to eventsLiveData.
      * Any errors/exceptions encountered are Logged.
+     * @param organizerId a String containing the organizerId of the user to query for all
+     *                    events organized by them
      */
     public void loadOrganizerEvents(String organizerId) {
         eventRepo.setEventByOrganizerSnapshotListener(organizerId);
@@ -76,7 +66,8 @@ public class EventViewModel extends ViewModel {
     /**
      * Getter method to return events in our events collection
      * @return eventsLiveData as a MutableLiveData List of Events, which contains a live reflection of
-     * our events collection in our Firestore Database
+     *         our events collection in our Firestore Database
+     * @see MutableLiveData
      */
     public LiveData<List<Event>> getEventsLiveData() {
         return eventsLiveData;
