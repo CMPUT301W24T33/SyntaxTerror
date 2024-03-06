@@ -1,6 +1,8 @@
 package com.example.cmput301w24t33.users;
 
+import android.content.ContentResolver;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,8 @@ public class Profile extends Fragment {
     private String lName;
     private String email;
     private EditText addEmailEditText;
+    private UserViewModel userViewModel;
+
 
 
     public Profile() {
@@ -43,8 +47,7 @@ public class Profile extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
@@ -99,13 +102,8 @@ public class Profile extends Fragment {
                 return;
             }
 
-
-
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-
-
-            User newUser = new User(fName, lName, email, false);
+            String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            User newUser = new User(androidId, fName, lName, email, false);
             Attendee activity = (Attendee) getActivity();
             activity.setUserDb(newUser);
 

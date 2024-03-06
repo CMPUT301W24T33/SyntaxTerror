@@ -35,13 +35,14 @@ import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewEventsAdmin extends Fragment implements AdapterEventClickListener, View.OnTouchListener {
+public class ViewEventsAdmin extends Fragment implements AdapterEventClickListener {
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private EventViewModel eventViewModel;
     private RecyclerView eventRecyclerView;
 
-    public ViewEventsAdmin(){}
+    public ViewEventsAdmin() {
+    }
 
     public static ViewEventsAdmin newInstance() {
         ViewEventsAdmin fragment = new ViewEventsAdmin();
@@ -57,7 +58,6 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         setupActionBar(view);
         displayEvents(view);
         return view;
-
     }
 
     public void onResume() {
@@ -74,7 +74,7 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         profileButton.setVisibility(View.GONE);
 
         RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
-        int color = ContextCompat.getColor(getContext(),R.color.admin_actionbar);
+        int color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
         generalActionBar.setBackgroundColor(color);
     }
 
@@ -82,8 +82,10 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
+
     /**
      * Updates event adapter with current contents in our events collection
+     *
      * @param events is a live representation of Events in our events collection as a List
      */
     private void updateUI(List<Event> events) {
@@ -91,14 +93,15 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         eventAdapter.setEvents(events);
     }
 
-    private void setAdapter(){
+    private void setAdapter() {
         Context context = getContext();
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList,this, context);
+        eventAdapter = new EventAdapter(eventList, this, context);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
+
     private void displayEvents(View view) {
         Log.d(TAG, "EVENTS FRAGMENT: DISPLAY EVENTS");
         eventRecyclerView = view.findViewById(R.id.event_recyclerview);
@@ -116,24 +119,12 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
     public void onEventClickListener(Event event, int position) {
         replaceFragment(DeleteEventAdmin.newInstance(event));
     }
+
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.admin_events_layout,fragment);
+        transaction.replace(R.id.admin_events_layout, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-    /**
-     * Called when a touch event is dispatched to a view. This allows listeners to
-     * get a chance to respond before the target view.
-     *
-     * @param v     The view the touch event has been dispatched to.
-     * @param event The MotionEvent object containing full information about
-     *              the event.
-     * @return True if the listener has consumed the event, false otherwise.
-     */
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
     }
 }
