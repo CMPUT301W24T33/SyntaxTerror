@@ -125,14 +125,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         replaceFragment(new Profile());
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.attendee_layout,fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
@@ -161,7 +153,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     }
 
     public void onEventClickListener(Event event, int position){
-        replaceFragment(new EventDetailsAttendee());
+        replaceFragment(EventDetailsAttendee.newInstance(event));
     }
 
     /**
@@ -258,6 +250,14 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             finish();
             return true;
         });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.attendee_layout,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }

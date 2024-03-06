@@ -11,17 +11,30 @@ import android.view.ViewGroup;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
+import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
 
 public class EventDetailsAttendee extends Fragment {
 
     private AttendeeEventFragmentBinding binding;
 
+    public static EventDetailsAttendee newInstance(Event event) {
+        EventDetailsAttendee fragment = new EventDetailsAttendee();
+        Bundle args = new Bundle();
+        args.putSerializable("event", event);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = AttendeeEventFragmentBinding.inflate(inflater, container, false);
+        assert getArguments() != null;
+        Bundle bundle = getArguments();
+        Event event = (Event) bundle.getSerializable("event");
         setClickListeners();
-        loadData();
+        loadData(event);
         return binding.getRoot();
     }
 
@@ -46,26 +59,25 @@ public class EventDetailsAttendee extends Fragment {
         });
     }
 
-    private void loadData() {
-        String eventName = "";         // "Get From Database";
-        String eventLocation = "";     // "Get From Database";
-        String eventDateTime = "";     // "Get From Database";
-        String eventDescription = "";  // "Get From Database";
-        boolean isGoing = false;       // "Get From Database";
-        // Also load poster here... somehow
+    private void loadData(Event event) {
+        String eventStartDate = event.getStartDate();
+        String eventEndDate = event.getEndDate();
+        String eventStartTime = event.getStartTime();
+        String eventEndTime = event.getEndTime();
+        String eventDateTime = "Start: " +eventStartTime + " on " + eventStartDate + "\nEnd:   " + eventEndTime + " on " + eventEndDate;
 
-        binding.eventNameTextView.setText(eventName);
-        binding.eventLocationTextView.setText(eventLocation);
+        binding.eventNameTextView.setText(event.getEventDescription());
+        binding.eventLocationTextView.setText(event.getLocationData());
+        binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
-        binding.eventDescriptionTextView.setText(eventDescription);
 
+        // STILL  NEED TO LOAD IMAGE AND GOING/NOT GOING STATUS FROM DATABASE
+        boolean isGoing = false; // Placeholder status
          if (isGoing) {
              binding.toggleButtonGroup.check(R.id.goingButton);
          } else {
              binding.toggleButtonGroup.check(R.id.notGoingButton);
          }
-
-         // Also need code to load image
     }
 
     @Override
