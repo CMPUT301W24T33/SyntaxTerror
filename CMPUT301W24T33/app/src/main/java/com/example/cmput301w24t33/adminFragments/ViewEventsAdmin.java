@@ -3,7 +3,6 @@ package com.example.cmput301w24t33.adminFragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -22,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
@@ -35,7 +33,7 @@ import java.util.List;
  * A fragment class for administrators to view and manage events.
  * It displays a list of events and allows administrators to select an event for deletion.
  */
-public class ViewEventsAdmin extends Fragment implements AdapterEventClickListener {
+public class ViewEventsAdmin extends Fragment {
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private EventViewModel eventViewModel;
@@ -57,7 +55,6 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         eventViewModel.loadEvents();
     }
 
-    @Override
     public void onEventClickListener(Event event, int position) {
         replaceFragment(DeleteEventAdmin.newInstance(event));
     }
@@ -122,7 +119,7 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         Context context = getContext();
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList, this, context);
+        eventAdapter = new EventAdapter(eventList, this::onEventClickListener);
         eventRecyclerView.setAdapter(eventAdapter);
     }
 

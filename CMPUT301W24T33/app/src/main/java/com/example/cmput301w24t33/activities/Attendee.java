@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
-import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
@@ -33,14 +32,13 @@ import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
+public class Attendee extends AppCompatActivity {
     private FirebaseFirestore db;
     //private CollectionReference events;
     private ArrayList<Event> eventList;
@@ -129,7 +127,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList,this, this);
+        eventAdapter = new EventAdapter(eventList, this::onEventClickListener);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
