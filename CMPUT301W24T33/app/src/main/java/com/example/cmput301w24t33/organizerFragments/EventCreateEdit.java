@@ -71,16 +71,6 @@ public class EventCreateEdit extends Fragment {
     }
 
     private void loadData() {
-        String eventName = "";          // Get From Database
-        String eventLocation = "";      // Get From Database
-        String eventDescription = "";   // Get From Database
-        String startDate = "";          // Get From Database
-        String endDate = "";            // Get From Database
-        String startTime = "";          // Get From Database
-        String endTime = "";            // Get From Database
-        String maxAttendees = "";       // Get From Database
-        //boolean geoTracking = false;    // Get From Database
-
         // Load data into relevant field
         binding.eventNameEditText.setText(eventToEdit.getName());
         binding.eventLocationEditText.setText(eventToEdit.getAddress());
@@ -93,7 +83,7 @@ public class EventCreateEdit extends Fragment {
         binding.geoTrackingSwitch.setChecked(eventToEdit.getGeoTracking());
 
         // Removes QR Code button
-        binding.generateQrCodeButton.setVisibility(View.GONE);
+        binding.generateQrCodeButton.setVisibility(View.INVISIBLE);
     }
 
     private void onConfirm() {
