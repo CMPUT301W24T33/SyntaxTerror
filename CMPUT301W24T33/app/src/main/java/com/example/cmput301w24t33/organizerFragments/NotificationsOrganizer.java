@@ -3,6 +3,7 @@ package com.example.cmput301w24t33.organizerFragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.app.AlertDialog;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
@@ -72,6 +74,10 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
     private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
+
+        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+        int color = ContextCompat.getColor(getContext(),R.color.organizer_actionbar);
+        generalActionBar.setBackgroundColor(color);
     }
 
     private void setupClickListeners(@NonNull View view) {
