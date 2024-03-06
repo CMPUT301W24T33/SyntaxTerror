@@ -12,12 +12,9 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.events.AdapterEventClickListener;
+import com.example.cmput301w24t33.adminFragments.DeleteEventAdmin;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -26,7 +23,7 @@ import java.util.ArrayList;
  * Use the {@link EventChooseQR#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EventChooseQR extends Fragment implements AdapterEventClickListener {
+public class EventChooseQR extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,7 +95,7 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
         confirmButton = view.findViewById(R.id.button_choose_qr_confirm);
         eventView = view.findViewById(R.id.event_recyclerview);
         eventList = new ArrayList<Event>();
-        eventAdapter = new EventAdapter(eventList, this, getContext());
+        eventAdapter = new EventAdapter(eventList, null);
         radioButton = view.findViewById(R.id.choose_qr_radio_group);
 
         setOnClickListeners();
@@ -118,11 +115,6 @@ public class EventChooseQR extends Fragment implements AdapterEventClickListener
             getParentFragmentManager().popBackStack();
         });
 
-
-    }
-
-    @Override
-    public void onEventClickListener(Event event, int position) {
 
     }
 

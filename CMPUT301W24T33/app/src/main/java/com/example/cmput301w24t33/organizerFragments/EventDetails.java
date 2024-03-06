@@ -28,9 +28,9 @@ public class EventDetails extends Fragment {
                              Bundle savedInstanceState) {
         binding = OrganizerEventDetailsFragmentBinding.inflate(inflater, container, false);
         assert getArguments() != null;
-        Bundle bundle = getArguments();
-        Event event = (Event) bundle.getSerializable("event");
+        Event event = (Event) getArguments().getSerializable("event");
         setupActionButtons(event);
+        assert event != null;
         loadData(event);
         return binding.getRoot();
     }
@@ -53,7 +53,7 @@ public class EventDetails extends Fragment {
         String eventDateTime = "Start: " +eventStartTime + " on " + eventStartDate + "\nEnd:   " + eventEndTime + " on " + eventEndDate;
 
         binding.eventNameTextView.setText(event.getEventDescription());
-        binding.eventLocationTextView.setText(event.getLocationData());
+        binding.eventLocationTextView.setText(event.getAddress());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
         // Need to bind image here still

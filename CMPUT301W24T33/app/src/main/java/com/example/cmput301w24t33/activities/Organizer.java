@@ -25,7 +25,6 @@ import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
 import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,7 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Organizer extends AppCompatActivity implements AdapterEventClickListener {
+public class Organizer extends AppCompatActivity {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
     private EventViewModel eventViewModel;
@@ -51,9 +50,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
 
         // Creates a new EventViewModel so we can display Events
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getEventsLiveData().observe(this, events -> {
-            updateUI(events);
-        });
+        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
 
         View view = findViewById(R.id.organizer_activity);
         setupActionBar(view);
@@ -89,7 +86,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(organizedEvents,this, this);
+        eventAdapter = new EventAdapter(organizedEvents, this::onEventClickListener);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
@@ -106,6 +103,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     public void onEventClickListener(Event event, int position) {
        replaceFragment(EventDetails.newInstance(event));
     }
+
     private void setOnClickListeners(){
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));

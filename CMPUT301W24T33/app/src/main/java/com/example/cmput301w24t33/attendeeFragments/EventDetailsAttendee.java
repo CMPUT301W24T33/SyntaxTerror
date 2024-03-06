@@ -7,22 +7,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 
 /**
- * Fragment for displaying details of an event to an attendee. It offers actions like viewing event notifications and sharing QR codes.
+ * A fragment for displaying event details to an attendee. Includes viewing event notifications and sharing QR codes.
  */
 public class EventDetailsAttendee extends Fragment {
 
     private AttendeeEventFragmentBinding binding;
 
     /**
-     * Factory method to create a new instance of this fragment using the provided event details.
-     *
-     * @param event The event whose details are to be displayed.
+     * Creates a new instance of EventDetailsAttendee fragment with event details.
+     * @param event The event to display.
      * @return A new instance of EventDetailsAttendee.
      */
     public static EventDetailsAttendee newInstance(Event event) {
@@ -34,24 +32,32 @@ public class EventDetailsAttendee extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         binding = AttendeeEventFragmentBinding.inflate(inflater, container, false);
-        assert getArguments() != null;
-        Event event = (Event) getArguments().getSerializable("event");
+        Event event = getArguments() != null ? (Event) getArguments().getSerializable("event") : null;
         setClickListeners();
-        assert event != null;
-        loadData(event);
+        if (event != null) {
+            loadData(event);
+        }
         return binding.getRoot();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
     /**
-     * Initializes click listeners for UI elements in the fragment.
+     * Sets click listeners for UI interactions.
      */
     private void setClickListeners() {
-        binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
+        // Click listeners for notifications, navigation, and QR code sharing.
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsAttendee()));
+        binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
         binding.shareQrCodeButton.setOnClickListener(v -> {
-            // TODO: Placeholder for QR code sharing functionality
+            // QR code sharing functionality
         });
         binding.toggleButtonGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             updateAttendanceStatus(checkedId, isChecked);
@@ -59,51 +65,55 @@ public class EventDetailsAttendee extends Fragment {
     }
 
     /**
-     * Loads the event data into the UI elements of the fragment.
-     *
-     * @param event The event to display.
+     * Loads the event data into the fragment's UI elements.
+     * @param event The event whose details are to be displayed.
      */
     private void loadData(Event event) {
-        String eventDateTime = String.format("Start: %s on %s\nEnd:   %s on %s",
-                event.getStartTime(), event.getStartDate(),
-                event.getEndTime(), event.getEndDate());
+        String eventStartDate = event.getStartDate();
+        String eventEndDate = event.getEndDate();
+        String eventStartTime = event.getStartTime();
+        String eventEndTime = event.getEndTime();
+        String eventDateTime = "Start: " + eventStartTime + " on " + eventStartDate + "\nEnd:   " + eventEndTime + " on " + eventEndDate;
 
-        binding.eventNameTextView.setText(event.getEventDescription());
-        binding.eventLocationTextView.setText(event.getLocationData());
+        binding.eventNameTextView.setText(event.getName());
+        binding.eventLocationTextView.setText(event.getAddress());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
 
-        // TODO: Load event attendance status and image from database
-        boolean isGoing = false; // Example status, replace with actual data fetch
-        binding.toggleButtonGroup.check(isGoing ? R.id.goingButton : R.id.notGoingButton);
+        // STILL  NEED TO LOAD IMAGE AND GOING/NOT GOING STATUS FROM DATABASE
+        boolean isGoing = false; // Placeholder status
+        if (isGoing) {
+            binding.toggleButtonGroup.check(R.id.goingButton);
+        } else {
+            binding.toggleButtonGroup.check(R.id.notGoingButton);
+        }
     }
 
     /**
-     * Updates the visual attendance status based on the user's selection.
+     * Updates attendance status based on user selection.
      *
-     * @param checkedId The ID of the button that was clicked.
+     * @param checkedId The ID of the checked button.
      * @param isChecked Whether the button is checked.
      */
     private void updateAttendanceStatus(int checkedId, boolean isChecked) {
-        if (isChecked) {
-            int colorGoing = ContextCompat.getColor(requireContext(), R.color.going_button_background);
-            int colorNotGoing = ContextCompat.getColor(requireContext(), R.color.not_going_button_background);
-
-            // Update the tint for Going and Not Going buttons based on which button is checked
-            if (checkedId == R.id.goingButton) {
-                binding.goingButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(colorGoing));
-                binding.notGoingButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(colorNotGoing));
-            } else if (checkedId == R.id.notGoingButton) {
-                binding.goingButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(colorNotGoing));
-                binding.notGoingButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(colorGoing));
+        if (checkedId == R.id.goingButton) {
+            if (isChecked) {
+                // User has selected "Going"
+                binding.goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
+                binding.notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
+            }
+        } else if (checkedId == R.id.notGoingButton) {
+            if (isChecked) {
+                // User has selected "Not Going"
+                binding.goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
+                binding.notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
             }
         }
     }
 
     /**
-     * Replaces the current fragment with the specified fragment.
-     *
-     * @param fragment The fragment to display next.
+     * Replaces the current fragment with another fragment.
+     * @param fragment The new fragment to display.
      */
     private void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
