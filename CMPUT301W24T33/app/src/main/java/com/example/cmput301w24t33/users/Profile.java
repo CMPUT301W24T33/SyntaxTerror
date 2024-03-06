@@ -101,15 +101,18 @@ public class Profile extends Fragment {
                 Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_LONG).show();
                 return;
             }
-
-            String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-            User newUser = new User(androidId, fName, lName, email, false);
+            String userId = getAndroidId();
+            User newUser = new User(userId, fName, lName, email, false);
             Attendee activity = (Attendee) getActivity();
             activity.setUserDb(newUser);
 
             // Navigate back to the previous fragment
             getParentFragmentManager().popBackStack();
         });
+    }
+    private String getAndroidId() {
+        String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        return androidId;
     }
 
 }

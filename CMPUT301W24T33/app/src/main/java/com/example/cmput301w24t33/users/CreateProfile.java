@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.provider.Settings;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +23,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CreateProfile#newInstance} factory method to
+ * Use the {@link CreateProfile #newInstance} factory method to
  * create an instance of this fragment.
  */
 public class CreateProfile extends Fragment {
-
+    private UserViewModel userViewModel;
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
@@ -90,19 +91,18 @@ public class CreateProfile extends Fragment {
                 Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_LONG).show();
                 return;
             }
-
-
-
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-
-
-            User newUser = new User(fName, lName, email, false);
+            String userId = getAndroidId();
+            User newUser = new User(userId, fName, lName, email, false);
             Attendee activity = (Attendee) getActivity();
             activity.setUserDb(newUser);
 
             // Navigate back to the previous fragment
             getParentFragmentManager().popBackStack();
         });
+    }
+
+    private String getAndroidId() {
+        String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        return androidId;
     }
 }
