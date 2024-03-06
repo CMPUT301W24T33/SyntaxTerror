@@ -50,7 +50,7 @@ public class EventDetails extends Fragment {
         String eventEndDate = event.getEndDate();
         String eventStartTime = event.getStartTime();
         String eventEndTime = event.getEndTime();
-        String eventDateTime = eventStartTime + " on " + eventStartDate + " until " + eventEndTime + " on " + eventEndDate;
+        String eventDateTime = "Start: " +eventStartTime + " on " + eventStartDate + "\nEnd:   " + eventEndTime + " on " + eventEndDate;
 
         binding.eventNameTextView.setText(event.getEventDescription());
         binding.eventLocationTextView.setText(event.getLocationData());
