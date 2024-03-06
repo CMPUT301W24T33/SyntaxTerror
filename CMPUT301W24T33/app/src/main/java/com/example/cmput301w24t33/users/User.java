@@ -9,17 +9,16 @@ import java.util.ArrayList;
  *
  */
 public class User implements Serializable {
-
-
+    private String userId;
     private Boolean adminview;
     private String email;
-
     private String firstName;
     private String lastName;
 
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
 
-    public User(String firstName, String lastName,String email,Boolean adminview ) {
+    public User(String userId, String firstName, String lastName,String email,Boolean adminview ) {
+        setUserId(userId);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -27,6 +26,13 @@ public class User implements Serializable {
     }
     public User() {
 
+    }
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setFirstName(String firstName) {

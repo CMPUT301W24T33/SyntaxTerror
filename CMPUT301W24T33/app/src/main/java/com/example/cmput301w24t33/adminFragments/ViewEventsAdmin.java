@@ -30,6 +30,7 @@ import com.example.cmput301w24t33.events.EventViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * A fragment class for administrators to view and manage events.
  * It displays a list of events and allows administrators to select an event for deletion.
@@ -88,6 +89,7 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
+
     /**
      * Configures the RecyclerView and initializes the event list and adapter.
      *
@@ -111,9 +113,11 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         eventAdapter.setEvents(events);
     }
 
+
     /**
      * Initializes the event adapter and sets it on the RecyclerView.
      */
+
     private void setAdapter() {
         Context context = getContext();
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -121,6 +125,7 @@ public class ViewEventsAdmin extends Fragment implements AdapterEventClickListen
         eventAdapter = new EventAdapter(eventList, this, context);
         eventRecyclerView.setAdapter(eventAdapter);
     }
+
 
     /**
      * Replaces the current fragment with a new fragment for event deletion.

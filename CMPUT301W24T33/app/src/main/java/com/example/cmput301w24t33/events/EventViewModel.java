@@ -19,8 +19,6 @@ public class EventViewModel extends ViewModel {
         eventsLiveData = new MutableLiveData<>();
         setEventCallback(eventRepo);
     }
-
-
     /**
      * Defines EventCallback interface
      * <ul>
