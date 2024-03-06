@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -14,19 +15,27 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+
+import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.users.User;
+
+
+
 import com.example.cmput301w24t33.R;
 
 public class DeleteProfileAdmin extends Fragment {
+
+
+    private User profileToDelete;
 
     public DeleteProfileAdmin() {
         // Required empty public constructor
     }
 
-    public static DeleteProfileAdmin newInstance(String param1, String param2) {
+    public static DeleteProfileAdmin newInstance(User user) {
         DeleteProfileAdmin fragment = new DeleteProfileAdmin();
         Bundle args = new Bundle();
-        args.putString("", param1);
-        args.putString("", param2);
+        args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
@@ -37,8 +46,22 @@ public class DeleteProfileAdmin extends Fragment {
         View view = inflater.inflate(R.layout.admin_delete_profile, container, false);
         setupClickListeners(view);
         setupActionBar(view);
-
+        if (getArguments() != null) {
+            // Used when editing an event
+            Bundle eventBundle = getArguments();
+            profileToDelete = (User) eventBundle.getSerializable("user");
+            loadData(view);
+        }
         return view;
+    }
+
+    private void loadData(View view) {
+        EditText firstName = view.findViewById(R.id.first_name_edit_text);
+        EditText lastName = view.findViewById(R.id.last_name_edit_text);
+        EditText email = view.findViewById(R.id.email_edit_text);
+        firstName.setText(profileToDelete.getFirstName());
+        lastName.setText(profileToDelete.getLastName());
+        email.setText(profileToDelete.getEmail());
     }
 
     private void setupActionBar(View view) {
@@ -59,4 +82,5 @@ public class DeleteProfileAdmin extends Fragment {
             // implement delete profile logic here
         });
     }
+
 }
