@@ -121,6 +121,7 @@ public class EventCreateEdit extends Fragment {
         if (eventToEdit != null) {
             // Edits existing event
             setEventEdits(eventToEdit);
+            Log.d(TAG, "after set event:" + eventToEdit.getEventId());
             eventRepo.updateEvent(eventToEdit);
         } else {
             // Creates new event
@@ -141,7 +142,7 @@ public class EventCreateEdit extends Fragment {
         event.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
         event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
         event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
-        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
+        //event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
     }
 
     private void onCancel() {
