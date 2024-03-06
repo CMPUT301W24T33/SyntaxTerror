@@ -18,6 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
@@ -26,6 +31,8 @@ public class EventAttendees extends Fragment {
     private RecyclerView attendeesRecyclerView;
     private final ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
+    private MapView mapView;
+    private GoogleMap gMap;
 
     public EventAttendees() {
         // Required empty public constructor
@@ -41,6 +48,7 @@ public class EventAttendees extends Fragment {
         setupActionBar(view);
         setupClickListeners(view);
         setupAttendeesRecyclerView(view);
+        setupMapView(view, savedInstanceState);
 
         return view;
     }
@@ -52,6 +60,17 @@ public class EventAttendees extends Fragment {
         attendeeAdapter = new AttendeeAdapter(attendeesList);
 
         attendeesRecyclerView.setAdapter(attendeeAdapter);
+    }
+    // Map view set to uAlberta location
+    private void setupMapView(@NonNull View view, Bundle savedInstanceState) {
+        mapView = view.findViewById(R.id.attendee_map);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(googleMap -> {
+            gMap = googleMap;
+            LatLng uAlberta = new LatLng(53.5232, -113.5263);
+            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uAlberta, 15));
+            gMap.addMarker(new MarkerOptions().position(uAlberta).title("University of Alberta"));
+        });
     }
 
 
