@@ -11,14 +11,17 @@ public class User {
 
 
     private Boolean adminview;
+    private String email;
+
     private String firstName;
     private String lastName;
 
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
 
-    public User(String firstName, String lastName,Boolean adminview ) {
+    public User(String firstName, String lastName,String email,Boolean adminview ) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.adminview = adminview;
     }
     public User() {
@@ -53,6 +56,13 @@ public class User {
 
     public void setAdminview(Boolean adminview) {
         this.adminview = adminview;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

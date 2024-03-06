@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.helper.widget.MotionEffect;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -87,14 +88,22 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(organizedEvents,this);
+        eventAdapter = new EventAdapter(organizedEvents,this, this);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
 
-    @Override
+
+    public static EventCreateEdit newInstance(Event event) {
+        EventCreateEdit fragment = new EventCreateEdit();
+        Log.d(MotionEffect.TAG, "EventCreateEdit NewInstance");
+        Bundle args = new Bundle();
+        args.putSerializable("event", event);
+        fragment.setArguments(args);
+        return fragment;
+    }
     public void onEventClickListener(Event event, int position) {
-       replaceFragment(new EventCreateEdit());
+       replaceFragment(EventCreateEdit.newInstance(event));
     }
     private void setOnClickListeners(){
         ImageView profileButton = findViewById(R.id.profile_image);
@@ -104,7 +113,7 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         FloatingActionButton createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
-        // User Mode click listener - swiches to attendee activity
+        // User Mode click listener - switches to attendee activity
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(Organizer.this, Attendee.class);
@@ -122,7 +131,6 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     }
 
     private void setupActionBar(View view) {
-
         // update color of actionbar
         RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
         int color = ContextCompat.getColor(this,R.color.organizer_actionbar);

@@ -41,7 +41,7 @@ import java.util.List;
 
 public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
     private FirebaseFirestore db;
-    private CollectionReference events;
+    //private CollectionReference events;
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
@@ -56,6 +56,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.attendee_activity);
+        db = FirebaseFirestore.getInstance();
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         mAuth = FirebaseAuth.getInstance();
         //mAuth.signOut();
@@ -135,7 +136,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList,this);
+        eventAdapter = new EventAdapter(eventList,this, this);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
@@ -177,7 +178,6 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
      *         callback function to be handled by the calling function.</li>
      *     </ul>
      * </p>
-     * @param docId     the document id to query the database for
      * @param callback  the callback interface to handle results of the query
      *
      * @see GetUserCallback
