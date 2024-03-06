@@ -26,6 +26,7 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRScanner;
+import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
@@ -122,7 +123,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
 
     }
     private void registerUser() {
-        replaceFragment(new Profile());
+        replaceFragment(new CreateProfile());
     }
 
     private void setAdapter(){
