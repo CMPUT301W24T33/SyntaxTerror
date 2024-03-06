@@ -56,6 +56,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -141,7 +142,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             eventRepo.updateEvent(eventToEdit);
         } else {
             // Creates new event
-            mAuth = FirebaseAuth.getInstance();
+            //mAuth = FirebaseAuth.getInstance();
             String userId = mAuth.getUid();
             Event newEvent = new Event();
             newEvent.setOrganizerId(userId);
