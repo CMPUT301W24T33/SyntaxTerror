@@ -18,7 +18,7 @@ import com.example.cmput301w24t33.R;
 
 public class ShareQRFragment extends DialogFragment {
     private QRCode checkInCode;
-    private final String downloadPath = "/storage/emulated/0/Download";
+    private String downloadPath;
     private RadioGroup radioGroup;
     private ImageView qrView;
 
@@ -31,6 +31,7 @@ public class ShareQRFragment extends DialogFragment {
         assert checkInCode != null;
         qrView = view.findViewById(R.id.qr_code_image_view);
         qrView.setImageBitmap(checkInCode.getBitmap());
+        downloadPath = checkInCode.getQrCode();
         radioGroup = view.findViewById(R.id.share_qr_code_select_option);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder.setView(view).setTitle("Share QR Code")

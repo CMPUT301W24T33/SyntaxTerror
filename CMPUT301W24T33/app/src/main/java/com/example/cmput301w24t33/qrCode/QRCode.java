@@ -25,6 +25,7 @@ public class QRCode implements Serializable {
     private BitMatrix bitMatrix;
     private QRCodeWriter writer = new QRCodeWriter();
     public QRCode(String args) {
+        qrCode = args;
         com.google.zxing.qrcode.encoder.QRCode qrCode = new com.google.zxing.qrcode.encoder.QRCode();
         bmp = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.RGB_565);
         try {
@@ -45,14 +46,14 @@ public class QRCode implements Serializable {
 
     public void saveAsPNG(String filename){
         File sdCard = Environment.getExternalStorageDirectory();
-        File dir = new File(sdCard.getAbsoluteFile() + "/storage/emulated/0/Download");
+        File dir = new File(sdCard.getAbsoluteFile() + "/Download/" + filename + ".png");
         try {
             FileOutputStream fileOut = new FileOutputStream(dir);
             bmp.compress(Bitmap.CompressFormat.PNG, 100, fileOut);
             fileOut.flush();
             fileOut.close();
         } catch(Exception e) {
-            Log.e("SAVEFILE", "invalid path argument:" + filename);
+            Log.e("SAVEFILE", "invalid path argument:" + dir.getPath());
         }
     }
 
@@ -67,5 +68,9 @@ public class QRCode implements Serializable {
         } catch(Exception e) {
             Log.e("SAVEFILE", "invalid path argument:" + filename);
         }
+    }
+
+    public String getQrCode(){
+        return qrCode;
     }
 }
