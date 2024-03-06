@@ -2,7 +2,10 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -13,6 +16,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,15 +35,26 @@ import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firestore.v1.GetDocumentRequestOrBuilder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
     private FirebaseFirestore db;
@@ -51,6 +67,8 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
 
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
+//
+    private FusedLocationProviderClient fusedLocationProvider;
 
 
     @Override
@@ -63,7 +81,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         //mAuth.signOut();
         eventList = new ArrayList<>();
         setAdapter();
-
+        fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(this, events -> {
             updateUI(events);
@@ -242,10 +260,36 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
 
             String qrCode = qrScanner.scanQRCode(Attendee.this);
             if (qrCode != null) {
+                final String[] eventId = new String[1];
                 Toast toast = new Toast(this);
                 toast.setText(qrCode);
                 toast.show();
-                db.collection("events").whereEqualTo("checkInQr", qrCode);
+
+                db.collection("events")
+                        .whereEqualTo("checkInQR", qrCode)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if(task.isSuccessful()) {
+                                    for(QueryDocumentSnapshot doc : task.getResult()) {
+                                        Log.d("QRCheckIn", doc.getId() + "->" + doc.getData());
+                                        eventId[0] = doc.getData().get("checkInQR").toString();
+                                        Map<String, String> update = new HashMap<>();
+
+                                        update.put(userId, userId); // should be geo-location
+
+                                        // add attendee id to attendees array (or collection... shouldn't it be a collection?)
+                                        // creates new document in attendees sub-collection in event doc with
+                                        //
+                                        db.collection("events").document(eventId[0])
+                                                .collection("attendees")
+                                                .document(userId)
+                                                .set(update);
+                                    }
+                                }
+                            }
+                        });
             } else {
                 Toast toast = new Toast(this);
                 toast.setText("Scan canceled/failed");
@@ -273,4 +317,43 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         });
     }
 
+    private void CheckIn(String eventId, String userId) {
+        Map<String, GeoPoint> update = new HashMap<>();
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1 );
+//        enforcePermission(android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+            // You can use the API that requires the permission.
+            fusedLocationProvider.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    // Got last known location. In some rare situations this can be null.
+                    if (location != null) {
+                        // Logic to handle location object
+                        update.put(userId, new GeoPoint(location.getLatitude(),location.getLongitude()));
+                    }
+                }
+            });
+
+        } else if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            // In an educational UI, explain to the user why your app requires this
+            // permission for a specific feature to behave as expected, and what
+            // features are disabled if it's declined. In this UI, include a
+            // "cancel" or "no thanks" button that lets the user continue
+            // using your app without granting the permission.
+
+        } else {
+            // You can directly ask for the permission.
+            // The registered ActivityResultCallback gets the result of this request.
+
+        }
+
+//        update.put("userId", new GeoPoint(53.1111, 0.01));
+        db.collection("events").document(eventId)
+                .collection("attendees")
+                .document(userId)
+                .set(update);
+    }
 }
