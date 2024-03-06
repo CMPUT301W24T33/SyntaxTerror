@@ -18,15 +18,32 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+/**
+ * Activity to handle anonymous authentication with Firebase. The class demonstrates
+ * how to sign in a user anonymously and then link the anonymous account with credentials
+ * if needed.
+ */
 public class AnonymousAuthActivity extends Activity {
     private FirebaseAuth mAuth;
     private static final String TAG = "AnonymousAuth";
+
+    /**
+     * Called when the activity is first created. This method initializes the FirebaseAuth instance.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise it is null.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
     }
+    /**
+     * Invoked after the activity has been created and the activity's window has been made visible.
+     * It starts the process of signing in anonymously to Firebase.
+     */
 
     @Override
     public void onStart() {
@@ -35,6 +52,10 @@ public class AnonymousAuthActivity extends Activity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
     }
+    /**
+     * Signs in the user anonymously using FirebaseAuth. On success or failure, updates the UI accordingly.
+     */
+
     public void signInAnonymously() {
         // [START signin_anonymously]
         mAuth.signInAnonymously()
@@ -57,6 +78,10 @@ public class AnonymousAuthActivity extends Activity {
                 });
         // [END signin_anonymously]
     }
+    /**
+     * Attempts to link the currently signed-in anonymous user with email and password credentials.
+     * On success or failure, updates the UI accordingly.
+     */
     private void linkAccount() {
         AuthCredential credential = EmailAuthProvider.getCredential("", "");
 
@@ -79,6 +104,12 @@ public class AnonymousAuthActivity extends Activity {
                 });
         // [END link_credential]
     }
+    /**
+     * Updates the UI based on user authentication status. If the user is successfully authenticated,
+     * passes the user's UID back to the calling activity.
+     *
+     * @param user The current FirebaseUser. This may be null if authentication failed.
+     */
     private void updateUI(FirebaseUser user) {
         Log.d(TAG, "User authenticated " + user.getUid());
         // Notify AttendeeActivity that authentication is complete
@@ -87,6 +118,5 @@ public class AnonymousAuthActivity extends Activity {
         setResult(RESULT_OK, resultIntent);
         finish();
     }
-
 
 }

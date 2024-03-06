@@ -33,6 +33,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Organizer activity serves as the interface for event organizers. It allows organizers
+ * to view, create, and edit events. This class also provides functionality for switching
+ * between Organizer and Attendee modes, as well as to an Admin mode for users with the
+ * appropriate access.
+ */
 public class Organizer extends AppCompatActivity implements AdapterEventClickListener {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
@@ -40,6 +46,15 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
     private EventAdapter eventAdapter;
     private String userId;
 
+    /**
+     * Called when the activity is first created. Initializes the RecyclerView for displaying
+     * organized events, sets up the EventViewModel for observing event data, and configures
+     * the action bar and click listeners for UI elements.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being
+     *                           shut down, this Bundle contains the data it most recently supplied
+     *                           in onSaveInstanceState(Bundle). Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +93,12 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         eventViewModel.loadOrganizerEvents(userId);
     }
 
+    /**
+     * Replaces the current fragment in the Organizer activity with the specified fragment.
+     * This method allows for dynamic navigation between different parts of the Organizer interface.
+     *
+     * @param fragment The new Fragment to display.
+     */
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -86,6 +107,10 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         transaction.commit();
     }
 
+    /**
+     * Initializes the EventAdapter and configures the RecyclerView used for displaying
+     * the list of organized events.
+     */
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
@@ -93,6 +118,16 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
+
+
+    /**
+     * Handles click events on individual events in the list. This method is triggered when
+     * an event is selected by the user, typically leading to the event's edit screen.
+     *
+     * @param event    The Event that was clicked.
+     * @param position The position of the clicked event in the list.
+     */
+    @Override
 
 
     public static EventCreateEdit newInstance(Event event) {
@@ -103,9 +138,15 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         fragment.setArguments(args);
         return fragment;
     }
+
     public void onEventClickListener(Event event, int position) {
        replaceFragment(EventDetails.newInstance(event));
     }
+
+    /**
+     * Sets up click listeners for various UI elements in the Organizer activity, such as
+     * the profile button, create event button, and mode switch buttons.
+     */
     private void setOnClickListeners(){
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
@@ -131,6 +172,12 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
         });
     }
 
+    /**
+     * Configures the action bar specific to the Organizer activity, including setting the
+     * background color to distinguish it from other modes.
+     *
+     * @param view The current view context used for finding and modifying the action bar components.
+     */
     private void setupActionBar(View view) {
         // update color of actionbar
         RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
