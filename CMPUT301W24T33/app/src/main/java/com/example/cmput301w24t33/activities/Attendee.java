@@ -39,6 +39,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity class for the attendee user role. This class manages the display of events,
+ * interaction with event details, QR code scanning for event check-in, and user profile management.
+ * It also facilitates the transition to organizer or admin roles based on user actions.
+ */
 public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
     private FirebaseFirestore db;
     private CollectionReference events;
@@ -51,7 +56,13 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
 
-
+    /**
+     * Initializes the activity, sets up the Firebase Firestore and FirebaseAuth instances,
+     * prepares the RecyclerView for displaying events, and binds onClickListeners to UI components.
+     * It also observes changes in the EventViewModel to update the UI accordingly.
+     *
+     * @param savedInstanceState Contains data supplied in onSaveInstanceState(Bundle) if the activity is re-initialized after being previously shut down.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +131,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             Log.d(TAG, userId);
         }
 
+        // controller model
     }
     private void registerUser() {
         replaceFragment(new Profile());
@@ -132,7 +144,10 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
+    /**
+     * Sets the adapter for the RecyclerView that displays events. This method configures
+     * the layout manager and attaches the EventAdapter to the RecyclerView.
+     */
     private void setAdapter(){
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
@@ -206,7 +221,10 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             callback.onFailure(e);
         });
     }
-
+    /**
+     * Sets up onClickListeners for UI components like the profile button and check-in button.
+     * This method encapsulates the logic for handling user interactions with these components.
+     */
     private void setOnClickListeners(){
 
         // Profile button click listener
