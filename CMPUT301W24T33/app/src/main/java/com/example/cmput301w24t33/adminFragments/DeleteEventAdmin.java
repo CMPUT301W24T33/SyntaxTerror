@@ -30,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class DeleteEventAdmin extends Fragment {
 
     private AdminDeleteEventFragmentBinding binding;
-    private Event eventToEdit;
+    private Event eventToDelete;
     private EventRepository eventRepo;
     private FirebaseAuth mAuth;
 
@@ -53,12 +53,11 @@ public class DeleteEventAdmin extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = AdminDeleteEventFragmentBinding.inflate(inflater, container, false);
-        View view =  inflater.inflate(R.layout.admin_delete_event_fragment, container, false);
         setupActionButtons();
         if (getArguments() != null) {
             // Used when editing an event
             Bundle eventBundle = getArguments();
-            eventToEdit = (Event) eventBundle.getSerializable("event");
+            eventToDelete = (Event) eventBundle.getSerializable("event");
             loadData();
         }
         return binding.getRoot();
@@ -71,14 +70,14 @@ public class DeleteEventAdmin extends Fragment {
 
     private void loadData() {
         // Load data into relevant field
-        binding.eventNameEditText.setText(eventToEdit.getName());
-        binding.eventLocationEditText.setText(eventToEdit.getAddress());
-        binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
-        binding.startDateEditText.setText(eventToEdit.getStartDate());
-        binding.endDateEditText.setText(eventToEdit.getEndDate());
-        binding.startTimeEditText.setText(eventToEdit.getStartTime());
-        binding.endTimeEditText.setText(eventToEdit.getEndTime());
-        binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
+        binding.eventNameEditText.setText(eventToDelete.getName());
+        binding.eventLocationEditText.setText(eventToDelete.getAddress());
+        binding.eventDescriptionEditText.setText(eventToDelete.getEventDescription());
+        binding.startDateEditText.setText(eventToDelete.getStartDate());
+        binding.endDateEditText.setText(eventToDelete.getEndDate());
+        binding.startTimeEditText.setText(eventToDelete.getStartTime());
+        binding.endTimeEditText.setText(eventToDelete.getEndTime());
+        binding.maxAttendeesEditText.setText(String.valueOf(eventToDelete.getMaxOccupancy()));
     }
 
     private void onCancel() {

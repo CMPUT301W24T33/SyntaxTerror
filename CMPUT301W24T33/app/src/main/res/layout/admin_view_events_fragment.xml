@@ -18,14 +18,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
         <include layout="@layout/actionbar_general"></include>
-        <TextView
-            android:layout_below="@id/attendee_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Attend Events"
-            android:textSize="40dp"
-            android:textAlignment="center">
-        </TextView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/event_recyclerview"

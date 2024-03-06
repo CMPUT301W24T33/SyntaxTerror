@@ -2,12 +2,13 @@ package com.example.cmput301w24t33.users;
 
 import com.example.cmput301w24t33.events.Event;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  */
-public class User {
+public class User implements Serializable {
 
 
     private Boolean adminview;
