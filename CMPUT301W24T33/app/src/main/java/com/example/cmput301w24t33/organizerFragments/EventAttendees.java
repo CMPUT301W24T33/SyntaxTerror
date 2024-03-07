@@ -1,3 +1,7 @@
+// The EventAttendees fragment is designed to show a list of attendees for an event and a map view
+// indicating a location, providing a visual and interactive component for event organizers within
+// an Android application.
+
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
@@ -26,6 +30,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
+/**
+ * A Fragment to display event attendees and a map view location.
+ */
 public class EventAttendees extends Fragment {
 
     private RecyclerView attendeesRecyclerView;
@@ -34,10 +41,16 @@ public class EventAttendees extends Fragment {
     private MapView mapView;
     private GoogleMap gMap;
 
+    /**
+     * Required empty public constructor
+     */
     public EventAttendees() {
-        // Required empty public constructor
     }
 
+    /**
+     * Creates a new instance of EventAttendees.
+     * @return A new instance of fragment EventAttendees.
+     */
     public static EventAttendees newInstance() {
         return new EventAttendees();
     }
@@ -53,15 +66,23 @@ public class EventAttendees extends Fragment {
         return view;
     }
 
+    /**
+     * Sets up the RecyclerView for displaying attendees.
+     * @param view The current view.
+     */
     private void setupAttendeesRecyclerView(@NonNull View view) {
         attendeesRecyclerView = view.findViewById(R.id.event_attendees_list);
         attendeesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        // Updated to reflect the removal of the click listener from the adapter's constructor
         attendeeAdapter = new AttendeeAdapter(attendeesList);
-
         attendeesRecyclerView.setAdapter(attendeeAdapter);
     }
+
     // Map view set to uAlberta location
+    /**
+     * Initializes and sets up the map view to a specific location.
+     * @param view The current view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     */
     private void setupMapView(@NonNull View view, Bundle savedInstanceState) {
         mapView = view.findViewById(R.id.attendee_map);
         mapView.onCreate(savedInstanceState);
@@ -73,17 +94,23 @@ public class EventAttendees extends Fragment {
         });
     }
 
-
-
+    /**
+     * Sets up the action bar with a title and background color.
+     * @param view The current view.
+     */
     private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Attendees");
 
         RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
-        int color = ContextCompat.getColor(getContext(),R.color.organizer_actionbar);
+        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar);
         generalActionBar.setBackgroundColor(color);
     }
 
+    /**
+     * Configures click listeners for back navigation and profile viewing.
+     * @param view The current view.
+     */
     private void setupClickListeners(@NonNull View view) {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
@@ -92,10 +119,13 @@ public class EventAttendees extends Fragment {
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
-    // Method to replace the current fragment with another, specified by the 'fragment' parameter
+    /**
+     * Replaces the current fragment with another fragment.
+     * @param fragment The fragment to replace the current fragment with.
+     */
     private void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
-                .replace(R.id.organizer_layout, fragment) // Ensure this container ID matches your layout
+                .replace(R.id.organizer_layout, fragment)
                 .addToBackStack(null)
                 .commit();
     }

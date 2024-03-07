@@ -1,3 +1,6 @@
+// dedicated to generating QR codes from strings and converting these QR codes into bitmap images
+// for use within applications, facilitating a variety of QR code-based functionalities.
+
 package com.example.cmput301w24t33.qrCode;
 
 import android.graphics.Bitmap;
@@ -11,9 +14,21 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.QRCode;
 
+/**
+ * Provides functionality for generating QR codes and converting them into bitmap images.
+ */
 public class QRGenerator {
     QRCodeWriter writer = new QRCodeWriter();
-    public QRCode generate(String args, int width, int height){
+
+    /**
+     * Generates a QR code from the given string.
+     *
+     * @param args The string to encode in the QR code.
+     * @param width The width of the QR code in pixels.
+     * @param height The height of the QR code in pixels.
+     * @return A QRCode object representing the generated QR code.
+     */
+    public QRCode generate(String args, int width, int height) {
         QRCode qrCode = new QRCode();
         BitMatrix bitMatrix;
         ByteMatrix byteMatrix = new ByteMatrix(width, height);
@@ -24,10 +39,9 @@ public class QRGenerator {
             return null;
         }
 
-
-        for(int x=0; x<width; x++){
-            for(int y=0; y<height; y++){
-                byteMatrix.set(x,y,bitMatrix.get(x,y));
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                byteMatrix.set(x, y, bitMatrix.get(x, y) ? (byte) 1 : (byte) 0);
             }
         }
 
@@ -35,15 +49,21 @@ public class QRGenerator {
         return qrCode;
     }
 
-    public Bitmap bitmap(QRCode qrCode){
+    /**
+     * Converts a QRCode object into a bitmap image.
+     *
+     * @param qrCode The QRCode object to convert into a bitmap.
+     * @return A Bitmap object representing the QR code.
+     */
+    public Bitmap bitmap(QRCode qrCode) {
         ByteMatrix byteMatrix = qrCode.getMatrix();
         int width = byteMatrix.getWidth();
         int height = byteMatrix.getHeight();
         Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
 
-        for (int x=0; x<width; x++){
-            for(int y=0; y<height; y++){
-                bmp.setPixel(x, y, byteMatrix.get(x,y) == 0 ? Color.WHITE : Color.BLACK);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                bmp.setPixel(x, y, byteMatrix.get(x, y) == 0 ? Color.WHITE : Color.BLACK);
             }
         }
         return bmp;

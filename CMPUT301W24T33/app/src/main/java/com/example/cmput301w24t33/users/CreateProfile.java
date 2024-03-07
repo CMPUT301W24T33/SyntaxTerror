@@ -1,6 +1,8 @@
-package com.example.cmput301w24t33.users;
+// responsible for providing the functionality for creating a new user profile within the
+// application, including input validation for the user's name and email and preparing the new user
+// data for database insertion.
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+package com.example.cmput301w24t33.users;
 
 import android.os.Bundle;
 
@@ -8,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.Settings;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +22,11 @@ import android.widget.Toast;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreateProfile #newInstance} factory method to
- * create an instance of this fragment.
+ * Fragment for creating a new user profile within the application. It captures
+ * user information such as first name, last name, and email, validating each
+ * before creating a new User instance.
  */
 public class CreateProfile extends Fragment {
     private UserRepository userRepo;
@@ -41,7 +40,7 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        userRepo = new UserRepository();
     }
 
     @Override
@@ -50,67 +49,59 @@ public class CreateProfile extends Fragment {
         View view = inflater.inflate(R.layout.profile_create_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
-
         return view;
     }
+
+    /**
+     * Sets up the action bar for the create profile screen, including setting the
+     * title and hiding the back button.
+     *
+     * @param view The current view where the action bar is located.
+     */
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.back_actionbar_textview);
         actionBarText.setText("Create Profile");
 
         ImageButton back = view.findViewById(R.id.back_arrow_img);
         back.setVisibility(View.GONE);
-
-
     }
 
+    /**
+     * Initializes click listeners for the create profile screen, including
+     * logic for creating a new user profile.
+     *
+     * @param view The current view where the EditText and Button are located.
+     */
     private void setupClickListeners(View view) {
         addFnameEditText = view.findViewById(R.id.first_name_edit_text);
         addLnameEditText = view.findViewById(R.id.last_name_edit_text);
         addEmailEditText = view.findViewById(R.id.email_edit_text);
 
-
-        // Saves user to DB
         Button createButton = view.findViewById(R.id.profile_save_button);
         createButton.setOnClickListener(v -> {
-            // Implement save profile editing logic here
             fName = addFnameEditText.getText().toString().trim();
             lName = addLnameEditText.getText().toString().trim();
             email = addEmailEditText.getText().toString().trim();
 
-            //Checks if user passes a string, if not it asks the user again
-            if (fName.isEmpty() || lName.isEmpty()) {
-                Toast.makeText(getContext(), "Please enter both your first and last name", Toast.LENGTH_LONG).show();
+            if (fName.isEmpty() || lName.isEmpty() || fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            //Checks if there are numbers in the name
-            if (fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*")) {
-                Toast.makeText(getContext(), "Please enter a valid name", Toast.LENGTH_LONG).show();
-                return;
-            }
+            String userId = getAndroidId();
+            User newUser = new User(userId, fName, lName, email, false);
+            userRepo.setUser(newUser, userId);
 
-            //Checks if email is valid
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_LONG).show();
-                return;
-            }
-            createUser();
-
-            // Navigate back to the previous fragment
             getParentFragmentManager().popBackStack();
         });
     }
 
+    /**
+     * Retrieves the unique Android device ID to be used as a user identifier.
+     *
+     * @return A string representing the Android ID.
+     */
     private String getAndroidId() {
-        String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-        return androidId;
-    }
-
-    private void createUser() {
-        userRepo = new UserRepository();
-        String userId = getAndroidId();
-        Log.d(TAG, userId);
-        User newUser = new User(userId, fName, lName, email, false);
-        userRepo.setUser(newUser);
+        return Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 }
