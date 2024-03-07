@@ -4,7 +4,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.util.Log;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -12,15 +11,19 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * Manages the retrieval and updates of Event data from Firebase Firestore.
+ * This repository is responsible for querying Firestore for event data, listening for real-time updates,
+ * and providing callbacks for successful data retrieval or errors.
+ */
 public class EventRepository {
     private final FirebaseFirestore db;
     private final CollectionReference eventsCollection;
     private EventCallback eventCallback;
 
     /**
-     *
+     * Constructs an EventRepository and initializes Firestore and events collection references.
      */
     public EventRepository() {
         db = FirebaseFirestore.getInstance();
@@ -28,108 +31,92 @@ public class EventRepository {
     }
 
     /**
-     * Interface provides options for different event loading and event fetch failures
+     * Interface defining callbacks for event data loading operations.
      */
     public interface EventCallback {
-        void onEventsLoaded(List<Event> events);
-        void onFailure(Exception e);
+        void onEventsLoaded(List<Event> events); // Called when events are successfully loaded.
+
+        void onFailure(Exception e); // Called when an error occurs during event data fetching.
     }
 
     /**
-     * Initializes eventCallback
-     * @param eventCallback an EventCallback to initialize for facilitating query result returns
+     * Sets the callback to be used for event data operations.
+     *
+     * @param eventCallback The callback implementation to handle event data operations.
      */
     public void setEventCallback(EventCallback eventCallback) {
         this.eventCallback = eventCallback;
     }
 
     /**
-     * Sets database listener to check and reflect any changes to events in our Firestore database.
-     * <p>
-     *     This method send Firestore error message as a parameter to the EventCallback function if the EventListener
-     *     encounters any Firestore exceptions.
-     *     If no errors/exceptions are encountered, each document from the "events" collection is parsed into a
-     *     new Event object and added to the eventList. eventAdapter is then notified of changes.
-     * </p>
-     * @see Event
-     * @see EventCallback
+     * Registers a listener for real-time updates to all events in the Firestore database.
+     * Notifies the set EventCallback on successful data retrieval or failure.
      */
     public void setEventsSnapshotListener() {
         eventsCollection.addSnapshotListener((queryDocumentSnapshots, e) -> {
             if (e != null) {
-                // Firebase error
                 eventCallback.onFailure(e);
+                return;
             }
             List<Event> events = new ArrayList<>();
             for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                // Adds each event in our collection to events
                 Event event = doc.toObject(Event.class);
                 events.add(event);
             }
-            // Sets MutableLiveData<List<Event>> with current list of Events
             eventCallback.onEventsLoaded(events);
         });
     }
 
     /**
+     * Registers a listener for real-time updates to events organized by a specific user.
      *
-     */
-    public void setSingleEventSnapshotListener(String eventId) {
-
-    }
-
-    /**
-     * Sets database listener to check and reflect any changes to current user's organized events in our Firestore database.
-     * <p>
-     *     This method send Firestore error message as a parameter to the EventCallback function if the EventListener
-     *     encounters any Firestore exceptions.
-     *     If no errors/exceptions are encountered, each event from the "events" collection is parsed into a
-     *     new Event object and added to the eventList. eventAdapter is then notified of changes.
-     * </p>
-     * @see Event
-     * @see EventCallback
+     * @param organizerId The ID of the organizer to filter events by.
      */
     public void setEventByOrganizerSnapshotListener(String organizerId) {
         eventsCollection.whereEqualTo("organizerId", organizerId)
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {
                     if (e != null) {
-                        // Error encountered
                         eventCallback.onFailure(e);
+                        return;
                     }
                     List<Event> events = new ArrayList<>();
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                        // Adds each event in our collection with matching organizerId to events
                         Event event = doc.toObject(Event.class);
                         events.add(event);
                     }
-                    // Sets MutableLiveData<List<Event>> with current list of Events
                     eventCallback.onEventsLoaded(events);
                 });
     }
 
+    /**
+     * Updates an existing event document in Firestore with new data from an Event object.
+     *
+     * @param event The event object containing updated information.
+     */
     public void updateEvent(Event event) {
         String eventId = event.getEventId();
         DocumentReference docRef = eventsCollection.document(eventId);
 
         docRef.set(event)
-                .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "Document update success" + eventId);
-                })
-                .addOnFailureListener(e -> {
-                    Log.w(TAG, "Document update failed", e);
-                });
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "Document update success: " + eventId))
+                .addOnFailureListener(e -> Log.w(TAG, "Document update failed", e));
     }
 
+    /**
+     * Creates a new event document in Firestore and sets the document ID on the event object.
+     *
+     * @param event The new event to add to Firestore.
+     */
     public void createEvent(Event event) {
         eventsCollection.add(event)
                 .addOnSuccessListener(documentReference -> {
                     String documentId = documentReference.getId();
                     event.setEventId(documentId);
-                    Log.d(TAG, "Create Document success: " + documentId);
+                    eventsCollection.document(documentId)
+                            .update("eventId", documentId)
+                            .addOnSuccessListener(aVoid -> Log.d(TAG, "eventId added to document: " + documentId))
+                            .addOnFailureListener(e -> Log.e(TAG, "Failed to add eventId", e));
                 })
-                .addOnFailureListener(e -> {
-                    Log.w(TAG, "Create Document failed", e);
-                });
+                .addOnFailureListener(e -> Log.w(TAG, "Create document failed", e));
     }
-
 }

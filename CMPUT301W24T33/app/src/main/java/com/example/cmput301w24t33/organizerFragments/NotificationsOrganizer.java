@@ -1,8 +1,11 @@
+// for managing notifications within the app, providing event organizers with the functionality to
+// create, view, and delete notifications, enhancing communication with event attendees.
+
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +16,7 @@ import android.app.AlertDialog;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
@@ -26,22 +30,23 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * A fragment for organizing and managing notifications for event organizers within the application.
+ * Allows for the creation, display, and deletion of notifications.
+ */
 public class NotificationsOrganizer extends Fragment implements NotificationAdapter.OnNotificationListener {
 
     private List<Notification> notifications;
     private NotificationAdapter adapter;
     private int selectedNotificationPosition = -1;
 
-    public NotificationsOrganizer() {
-        // Required empty public constructor
-    }
-
-    @NonNull
-    @Contract(" -> new")
-    public static NotificationsOrganizer newInstance() {
-        return new NotificationsOrganizer();
-    }
-
+    /**
+     * Creates and returns the view hierarchy associated with the fragment.
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return Return the View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_notifications_fragment, container, false);
@@ -52,6 +57,10 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         return view;
     }
 
+    /**
+     * Sets up the new notification floating action button and its behavior.
+     * @param view The current view in which the button is located.
+     */
     private void setupNewNotificationButton(@NonNull View view) {
         FloatingActionButton fabNewNotification = view.findViewById(R.id.button_new_notification);
         fabNewNotification.setOnClickListener(v -> newNotificationDialog());
@@ -69,11 +78,23 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         });
     }
 
+    /**
+     * Configures the action bar including the back button and profile icon.
+     * @param view The current view containing the action bar.
+     */
     private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Notifications");
+
+        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+        int color = ContextCompat.getColor(getContext(),R.color.organizer_actionbar);
+        generalActionBar.setBackgroundColor(color);
     }
 
+    /**
+     * Sets up click listeners for back navigation and profile viewing.
+     * @param view The current view containing the buttons.
+     */
     private void setupClickListeners(@NonNull View view) {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
@@ -82,6 +103,10 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
+    /**
+     * Initializes the list of notifications and sets up the RecyclerView adapter.
+     * @param view The current view containing the RecyclerView.
+     */
     private void setupNotificationsList(@NonNull View view) {
         RecyclerView recyclerView = view.findViewById(R.id.notifications_organizer);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -91,6 +116,9 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     * Displays a dialog for creating a new notification.
+     */
     private void newNotificationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
@@ -113,13 +141,22 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         dialog.show();
     }
 
+    /**
+     * Adds a new notification to the list and updates the adapter.
+     * @param title The title of the notification.
+     * @param message The message of the notification.
+     * @param timestamp The timestamp of the notification creation.
+     */
     private void createNotification(String title, String message, String timestamp) {
         Notification newNotification = new Notification(title, message, timestamp);
         notifications.add(newNotification);
         adapter.notifyDataSetChanged();
     }
 
-    @NonNull
+    /**
+     * Generates a sample list of notifications.
+     * @return A list of sample notifications.
+     */
     private List<Notification> createSampleNotifications() {
         List<Notification> sampleNotifications = new ArrayList<>();
         sampleNotifications.add(new Notification("Welcome", "Thanks for joining our event!", "10:00 AM"));
@@ -128,7 +165,10 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         return sampleNotifications;
     }
 
-    @Override
+    /**
+     * Handles click events on notifications, enabling the deletion of selected notifications.
+     * @param position The position of the clicked notification in the list.
+     */
     public void onNotificationClick(int position) {
         selectedNotificationPosition = position;
         View view = getView();
@@ -138,6 +178,10 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         }
     }
 
+    /**
+     * Replaces the current fragment with the specified fragment.
+     * @param fragment The new fragment to replace the current one.
+     */
     private void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.organizer_layout, fragment)

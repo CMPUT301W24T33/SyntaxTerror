@@ -1,47 +1,38 @@
+// Purpose:
+// Provides an interface for administrators to view and delete events.
+//
+// Issues:
+// Event deletion logic is not implemented in the onDelete method
+
 package com.example.cmput301w24t33.adminFragments;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
+
 import com.example.cmput301w24t33.databinding.AdminDeleteEventFragmentBinding;
-
-
-import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventRepository;
-import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
-import com.google.firebase.auth.FirebaseAuth;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link DeleteEventAdmin#newInstance} factory method to
- * create an instance of this fragment.
+ * A fragment for administrators to delete events. Provides UI for confirming deletion
+ * and performs the deletion process.
  */
 public class DeleteEventAdmin extends Fragment {
 
     private AdminDeleteEventFragmentBinding binding;
-    private Event eventToEdit;
-    private EventRepository eventRepo;
-    private FirebaseAuth mAuth;
+    private Event eventToDelete;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    /**
+     * Factory method to create a new instance of DeleteEventAdmin fragment
+     * using the provided parameters.
+     *
+     * @param event The event to delete.
+     * @return A new instance of DeleteEventAdmin.
+     */
     public static DeleteEventAdmin newInstance(Event event) {
         DeleteEventAdmin fragment = new DeleteEventAdmin();
-        Log.d(TAG, "DeleteEventAdmin NewInstance");
         Bundle args = new Bundle();
         args.putSerializable("event", event);
         fragment.setArguments(args);
@@ -49,49 +40,61 @@ public class DeleteEventAdmin extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = AdminDeleteEventFragmentBinding.inflate(inflater, container, false);
-        View view =  inflater.inflate(R.layout.admin_delete_event_fragment, container, false);
-        setupActionButtons();
         if (getArguments() != null) {
-            // Used when editing an event
-            Bundle eventBundle = getArguments();
-            eventToEdit = (Event) eventBundle.getSerializable("event");
+            eventToDelete = (Event) getArguments().getSerializable("event");
             loadData();
         }
+        setupActionButtons();
         return binding.getRoot();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null; // Avoid memory leaks by nullifying the reference to the binding
+    }
+
+    /**
+     * Initializes the action buttons with their respective click listeners.
+     */
     private void setupActionButtons() {
+        // Sets up listeners for both cancel and delete buttons
         binding.cancelButton.setOnClickListener(v -> onCancel());
         binding.deleteButton.setOnClickListener(v -> onDelete());
     }
 
-    private void loadData() {
-        // Load data into relevant field
-        binding.eventNameEditText.setText(eventToEdit.getName());
-        binding.eventLocationEditText.setText(eventToEdit.getAddress());
-        binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
-        binding.startDateEditText.setText(eventToEdit.getStartDate());
-        binding.endDateEditText.setText(eventToEdit.getEndDate());
-        binding.startTimeEditText.setText(eventToEdit.getStartTime());
-        binding.endTimeEditText.setText(eventToEdit.getEndTime());
-        binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
+    /**
+     * Handles the action to cancel the deletion, typically by popping the current fragment
+     * off the stack to return to the previous screen.
+     */
+    private void onCancel() {
+        // Cancel the deletion and return to the previous screen
+        getParentFragmentManager().popBackStack();
     }
 
-    private void onCancel() {
-        // Handle the cancel action
-        getParentFragmentManager().popBackStack();
-    }
+    /**
+     * Handles the deletion action. Implement the actual deletion logic here.
+     */
     private void onDelete() {
-        // handle on delete here
-        getParentFragmentManager().popBackStack();
+        // Implement event deletion logic here
+        getParentFragmentManager().popBackStack(); // Placeholder action
     }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+
+    /**
+     * Loads event data into the UI, allowing the user to review the event details
+     * before confirming deletion.
+     */
+    private void loadData() {
+        // Populates the text fields with the event details for review
+        binding.eventNameEditText.setText(eventToDelete.getName());
+        binding.eventLocationEditText.setText(eventToDelete.getAddress());
+        binding.eventDescriptionEditText.setText(eventToDelete.getEventDescription());
+        binding.startDateEditText.setText(eventToDelete.getStartDate());
+        binding.endDateEditText.setText(eventToDelete.getEndDate());
+        binding.startTimeEditText.setText(eventToDelete.getStartTime());
+        binding.endTimeEditText.setText(eventToDelete.getEndTime());
+        binding.maxAttendeesEditText.setText(String.valueOf(eventToDelete.getMaxOccupancy()));
     }
 }
