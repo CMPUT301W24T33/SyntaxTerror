@@ -281,12 +281,14 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.attendee_layout,fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
+    //error: method replaceFragment(Fragment) is already defined in class Attendee//
+
+//    private void replaceFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction transaction = fragmentManager.beginTransaction();
+//        transaction.replace(R.id.attendee_layout,fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
 
 }

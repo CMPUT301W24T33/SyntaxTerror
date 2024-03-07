@@ -127,8 +127,6 @@ public class Organizer extends AppCompatActivity implements AdapterEventClickLis
      * @param event    The Event that was clicked.
      * @param position The position of the clicked event in the list.
      */
-    @Override
-
 
     public static EventCreateEdit newInstance(Event event) {
         EventCreateEdit fragment = new EventCreateEdit();
