@@ -1,3 +1,11 @@
+// Purpose:
+// A fragment designed for attendees to view detailed information about an event, allowing them to
+// interact by registering their attendance status and accessing notifications.
+//
+// Issues:
+// QR code sharing and attendance status updates are not implemented.
+// Potential crash if instantiated without event details.
+
 package com.example.cmput301w24t33.attendeeFragments;
 
 import android.os.Bundle;
@@ -8,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.attendeeFragments.NotificationsAttendee;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 
