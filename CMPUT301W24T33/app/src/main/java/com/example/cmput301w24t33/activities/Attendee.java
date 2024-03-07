@@ -282,19 +282,6 @@ public class Attendee extends AppCompatActivity {
                 this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
 
-            // You can use the API that requires the permission.
-            fusedLocationProvider.getLastLocation().addOnSuccessListener(this, location -> {
-                // Got last known location. In some rare situations this can be null.
-                if (location != null) {
-                    // Logic to handle location object
-                    update.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
-                } else {
-                    update.put("location", null);
-                }
-            }).addOnFailureListener(this, v->{
-                Log.d("Location", "Could not retrieve cached location");
-            });
-
             // Retrieves Current Location
             fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener(this, location -> {
                 if (location != null) {
@@ -314,13 +301,7 @@ public class Attendee extends AppCompatActivity {
                 Log.d("Location", "Could not retrieve new location");
             });
 
-
             Log.d("CheckIn", "Permission Granted");
-
-
-
-
-
         }
     }
 

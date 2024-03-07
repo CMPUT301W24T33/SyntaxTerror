@@ -193,6 +193,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void setEventEdits(Event event) {
         event.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
+
+        // for google autocomplete see https://developers.google.com/maps/documentation/places/android-sdk/autocomplete
         event.setAddress(Objects.requireNonNull(binding.eventLocationEditText.getText()).toString().trim());
         event.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
         event.setStartDate(Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
