@@ -16,8 +16,11 @@ import android.location.Location;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -76,8 +79,10 @@ public class Attendee extends AppCompatActivity {
     private FirebaseFirestore db;
 
     private ArrayList<Event> eventList;
-    private EventAdapter eventAdapter;
-    private RecyclerView eventRecyclerView;
+    private EventAdapter allEventAdapter;
+    private EventAdapter userEventAdapter;
+    private RecyclerView allEventRecyclerView;
+    private RecyclerView userEventRecyclerView;
     private String userId;
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
@@ -95,14 +100,20 @@ public class Attendee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.attendee_activity);
-        eventRecyclerView = findViewById(R.id.event_recyclerview);
+        allEventRecyclerView = findViewById(R.id.all_event_recyclerview);
+        userEventRecyclerView = findViewById(R.id.user_event_recyclerview);
 
 
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
-
+        setupActionbar();
         authenticateUser();
         displayEvents();
         setOnClickListeners();
+    }
+
+    private void setupActionbar() {
+        TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
+        actionBarText.setText("Attend Events");
     }
 
     /**
@@ -110,7 +121,7 @@ public class Attendee extends AppCompatActivity {
      * @param events A list of events to be displayed.
      */
     private void updateUI(List<Event> events) {
-        eventAdapter.setEvents(events);
+        allEventAdapter.setEvents(events);
     }
 
     /**
@@ -134,12 +145,35 @@ public class Attendee extends AppCompatActivity {
      * Sets up the RecyclerView adapter for displaying events.
      */
     private void setAdapter() {
-        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList, this::onEventClickListener);
-        eventRecyclerView.setAdapter(eventAdapter);
-        eventAdapter.notifyDataSetChanged();
+        allEventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        allEventRecyclerView.setHasFixedSize(true);
+        allEventAdapter = new EventAdapter(eventList, this::onEventClickListener);
+        allEventRecyclerView.setAdapter(allEventAdapter);
+        allEventAdapter.notifyDataSetChanged();
+
+        ArrayList<Event> testEventList = new ArrayList<Event>();
+        userEventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        userEventRecyclerView.setHasFixedSize(true);
+        userEventAdapter = new EventAdapter(testEventList, this::onEventClickListener);
+        userEventRecyclerView.setAdapter(userEventAdapter);
+        userEventAdapter.notifyDataSetChanged();
+
     }
+    private void switchRecyclerView(Button switchButton) {
+        boolean allEventsVisible = allEventRecyclerView.isClickable();
+
+        switchButton.setText(allEventsVisible ?  "Click To Browse All Events" : "Click To Browse Your Events");
+
+        // Toggle visibility and interactivity based on allEventsVisible
+        allEventRecyclerView.setClickable(!allEventsVisible);
+        allEventRecyclerView.setFocusable(!allEventsVisible);
+        allEventRecyclerView.setVisibility(allEventsVisible ? View.GONE : View.VISIBLE);
+
+        userEventRecyclerView.setClickable(allEventsVisible);
+        userEventRecyclerView.setFocusable(allEventsVisible);
+        userEventRecyclerView.setVisibility(allEventsVisible ? View.VISIBLE : View.GONE);
+    }
+
     private String getAndroidId() {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         return androidId;
@@ -230,6 +264,11 @@ public class Attendee extends AppCompatActivity {
             startActivity(intent);
             finish();
             return true;
+        });
+
+        Button switchRecyclerviewButton = findViewById(R.id.switch_recycler_view_button);
+        switchRecyclerviewButton.setOnClickListener(v -> {
+            switchRecyclerView(switchRecyclerviewButton);
         });
     }
 

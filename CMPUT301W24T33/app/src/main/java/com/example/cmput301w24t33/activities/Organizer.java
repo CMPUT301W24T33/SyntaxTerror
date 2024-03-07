@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.helper.widget.MotionEffect;
@@ -163,5 +164,8 @@ public class Organizer extends AppCompatActivity {
         RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
         int color = ContextCompat.getColor(this, R.color.organizer_actionbar);
         attendeeOrganizerActionbar.setBackgroundColor(color);
+        TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
+        actionBarText.setText("Organize Events");
+
     }
 }

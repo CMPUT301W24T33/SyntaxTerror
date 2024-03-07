@@ -22,21 +22,12 @@
             <include layout="@layout/actionbar_attendee_organizer"
                 android:id="@+id/attendee_organizer"/>
 
-            <TextView
-                android:id="@+id/organize_events_text"
-                android:layout_below="@id/attendee_organizer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Organize Events"
-                android:textSize="40dp"
-                android:textAlignment="center">
-            </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/organized_events"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/organize_events_text"/>
+                android:layout_below="@+id/attendee_organizer"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/button_create_event"
