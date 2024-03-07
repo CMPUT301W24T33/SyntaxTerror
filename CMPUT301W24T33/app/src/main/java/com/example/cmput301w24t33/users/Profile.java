@@ -85,6 +85,7 @@ public class Profile extends Fragment {
         // Save button listener
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
+
             // Save profile logic
             saveProfile();
         });
