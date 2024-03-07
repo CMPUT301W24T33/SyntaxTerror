@@ -115,6 +115,16 @@ public class Organizer extends AppCompatActivity {
      * @param event The event that was clicked.
      * @param position The position in the adapter of the clicked event.
      */
+
+    public static EventCreateEdit newInstance(Event event) {
+        EventCreateEdit fragment = new EventCreateEdit();
+        Log.d(MotionEffect.TAG, "EventCreateEdit NewInstance");
+        Bundle args = new Bundle();
+        args.putSerializable("event", event);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     public void onEventClickListener(Event event, int position) {
         replaceFragment(EventDetails.newInstance(event));
     }

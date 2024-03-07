@@ -76,6 +76,17 @@ public class EventAttendees extends Fragment {
         attendeeAdapter = new AttendeeAdapter(attendeesList);
         attendeesRecyclerView.setAdapter(attendeeAdapter);
     }
+    // Map view set to uAlberta location
+    private void setupMapView(@NonNull View view, Bundle savedInstanceState) {
+        mapView = view.findViewById(R.id.attendee_map);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(googleMap -> {
+            gMap = googleMap;
+            LatLng uAlberta = new LatLng(53.5232, -113.5263);
+            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uAlberta, 15));
+            gMap.addMarker(new MarkerOptions().position(uAlberta).title("University of Alberta"));
+        });
+    }
 
     /**
      * Initializes and sets up the map view to a specific location.
@@ -102,6 +113,7 @@ public class EventAttendees extends Fragment {
         actionBarText.setText("Attendees");
 
         RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+        int color = ContextCompat.getColor(getContext(),R.color.organizer_actionbar);
         int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar);
         generalActionBar.setBackgroundColor(color);
     }
