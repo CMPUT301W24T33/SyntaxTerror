@@ -9,16 +9,22 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -36,14 +42,29 @@ import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.google.android.datatransport.Priority;
+import com.google.android.gms.location.CurrentLocationRequest;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firestore.v1.GetDocumentRequestOrBuilder;
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
@@ -57,6 +78,8 @@ public class Attendee extends AppCompatActivity {
     private String userId;
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
+//
+    private FusedLocationProviderClient fusedLocationProvider;
 
     /**
      * Initializes the activity, setting up Firebase, RecyclerView for events, and listeners.
@@ -72,7 +95,7 @@ public class Attendee extends AppCompatActivity {
         mAuth.signOut();
         eventList = new ArrayList<>();
         setAdapter();
-
+        fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(this, this::updateUI);
         setOnClickListeners();
@@ -205,7 +228,30 @@ public class Attendee extends AppCompatActivity {
         });
 
         ImageView checkInButton = findViewById(R.id.check_in_img);
-        checkInButton.setOnClickListener(v -> qrScanner.scanQRCode(Attendee.this));
+
+        checkInButton.setOnClickListener(v -> {
+            GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(this);
+
+            // initializes scanner
+            scanner
+                    .startScan()
+                    .addOnSuccessListener(
+                            barcode -> {
+                                this.HandleScannerResult(barcode.getRawValue());
+                                // Task successful
+                                Log.d("SCAN", "Scan Successful");
+                            })
+                    .addOnCanceledListener(
+                            () -> {
+                                // Task canceled
+                                Log.d("SCAN", "Scan canceled");
+                            })
+                    .addOnFailureListener(
+                            e -> {
+                                // Task failed with an exception
+                                Log.d("SCAN","Scan failed, try again: " + e.getMessage());
+                            });
+       });
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
@@ -225,6 +271,97 @@ public class Attendee extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * Handles result of QR scanner
+     * @param qrCode scanned qr code
+     */
+    private void HandleScannerResult(String qrCode){
+        if (qrCode != null) {
+            db.collection("events")
+                    .whereEqualTo("checkInQR", qrCode)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()) {
+                                for(QueryDocumentSnapshot doc : task.getResult()) {
+                                    Log.d("QRCheckIn", doc.getId() + "->" + doc.getData());
+                                    String eventId = doc.getId();//doc.getData().get("checkInQR").toString();
+                                    Log.d("QRCheckIn", eventId);
+                                    Attendee.this.CheckIn(eventId);
+                                }
+                            }
+                        }
+                    });
+        } else {
+            Log.d("CheckIn", "Check in failed");
+        }
+    }
+
+    /**
+     * Checks user into event
+     * @param eventId ID of event to be checked into
+     */
+    private void CheckIn(String eventId) {
+        // TODO: Determine if event has GeoTracking enabled
+        //  1: If GeoTracking is enabled
+        //      1.1: nothing needed
+        //  2: If GeoTethering is enabled
+        //      2.1: prevent user from checking if they are not within some fixed distance of event
+        //  3: If GeoTracking is disabled
+        //      3.1: Don't store user's location (just set it to null?)
+        Map<String, GeoPoint> update = new HashMap<>();
+        update.put("test", new GeoPoint(1,1));
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);
+
+        // gets location permission
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+
+            // You can use the API that requires the permission.
+            fusedLocationProvider.getLastLocation().addOnSuccessListener(this, location -> {
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    // Logic to handle location object
+                    update.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
+                } else {
+                    update.put("location", null);
+                }
+            }).addOnFailureListener(this, v->{
+                Log.d("Location", "Could not retrieve cached location");
+            });
+
+            // Retrieves Current Location
+            fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener(this, location -> {
+                if (location != null) {
+                    // Logic to handle location object
+                    update.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
+                    Log.d("Location", "Retrieved new Location");
+                    db.collection("events").document(eventId)
+                            .collection("attendees")
+                            .document(userId)
+                            .set(update).addOnSuccessListener(v->{
+                                Log.d("CheckIn", "User Successfully checked in");
+                            });
+                } else {
+                    update.put("location", null);
+                }
+            }).addOnFailureListener(this, u->{
+                Log.d("Location", "Could not retrieve new location");
+            });
+
+
+            Log.d("CheckIn", "Permission Granted");
+
+
+
+
+
+        }
+    }
+
     /**
      * Replaces the current fragment with a new one.
      * @param fragment The new fragment to display.
@@ -237,3 +374,4 @@ public class Attendee extends AppCompatActivity {
         transaction.commit();
     }
 }
+
