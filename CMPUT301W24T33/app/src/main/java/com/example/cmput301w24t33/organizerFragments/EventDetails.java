@@ -151,7 +151,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         String path = Environment.DIRECTORY_DCIM + "/images"; // path to images DCIM folder
 
         ContentValues values = new ContentValues();
-        values.put(MediaStore.MediaColumns.DISPLAY_NAME, "displayName");
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, qrCode.getQrCode());
         values.put(MediaStore.MediaColumns.MIME_TYPE, "image/png");
         values.put(MediaStore.MediaColumns.RELATIVE_PATH, path);
 

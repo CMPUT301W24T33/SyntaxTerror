@@ -42,6 +42,8 @@ import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.google.android.datatransport.Priority;
+import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,6 +58,8 @@ import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firestore.v1.GetDocumentRequestOrBuilder;
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -226,46 +230,27 @@ public class Attendee extends AppCompatActivity {
         ImageView checkInButton = findViewById(R.id.check_in_img);
 
         checkInButton.setOnClickListener(v -> {
-            // fill in a fragment or whatever is decided for checkin
+            GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(this);
 
-            String qrCode = qrScanner.scanQRCode(Attendee.this);
-            if (qrCode != null) {
-                final String[] eventId = new String[1];
-                Toast toast = new Toast(this);
-                toast.setText(qrCode);
-                toast.show();
-
-                db.collection("events")
-                        .whereEqualTo("checkInQR", qrCode)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if(task.isSuccessful()) {
-                                    for(QueryDocumentSnapshot doc : task.getResult()) {
-                                        Log.d("QRCheckIn", doc.getId() + "->" + doc.getData());
-                                        eventId[0] = doc.getData().get("checkInQR").toString();
-                                        Map<String, String> update = new HashMap<>();
-
-                                        update.put(userId, userId); // should be geo-location
-
-                                        // add attendee id to attendees array (or collection... shouldn't it be a collection?)
-                                        // creates new document in attendees sub-collection in event doc with
-                                        //
-                                        db.collection("events").document(eventId[0])
-                                                .collection("attendees")
-                                                .document(userId)
-                                                .set(update);
-                                    }
-                                }
-                            }
-                        });
-            } else {
-                Toast toast = new Toast(this);
-                toast.setText("Scan canceled/failed");
-                toast.show();
-            }
-
+            // initializes scanner
+            scanner
+                    .startScan()
+                    .addOnSuccessListener(
+                            barcode -> {
+                                this.HandleScannerResult(barcode.getRawValue());
+                                // Task successful
+                                Log.d("SCAN", "Scan Successful");
+                            })
+                    .addOnCanceledListener(
+                            () -> {
+                                // Task canceled
+                                Log.d("SCAN", "Scan canceled");
+                            })
+                    .addOnFailureListener(
+                            e -> {
+                                // Task failed with an exception
+                                Log.d("SCAN","Scan failed, try again: " + e.getMessage());
+                            });
        });
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
@@ -287,51 +272,100 @@ public class Attendee extends AppCompatActivity {
     }
 
 
-    private void CheckIn(String eventId, String userId) {
+    /**
+     * Handles result of QR scanner
+     * @param qrCode scanned qr code
+     */
+    private void HandleScannerResult(String qrCode){
+        if (qrCode != null) {
+            db.collection("events")
+                    .whereEqualTo("checkInQR", qrCode)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()) {
+                                for(QueryDocumentSnapshot doc : task.getResult()) {
+                                    Log.d("QRCheckIn", doc.getId() + "->" + doc.getData());
+                                    String eventId = doc.getId();//doc.getData().get("checkInQR").toString();
+                                    Log.d("QRCheckIn", eventId);
+                                    Attendee.this.CheckIn(eventId);
+                                }
+                            }
+                        }
+                    });
+        } else {
+            Log.d("CheckIn", "Check in failed");
+        }
+    }
+
+    /**
+     * Checks user into event
+     * @param eventId ID of event to be checked into
+     */
+    private void CheckIn(String eventId) {
+        // TODO: Determine if event has GeoTracking enabled
+        //  1: If GeoTracking is enabled
+        //      1.1: nothing needed
+        //  2: If GeoTethering is enabled
+        //      2.1: prevent user from checking if they are not within some fixed distance of event
+        //  3: If GeoTracking is disabled
+        //      3.1: Don't store user's location (just set it to null?)
         Map<String, GeoPoint> update = new HashMap<>();
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1 );
-//        enforcePermission(android.Manifest.permission.ACCESS_COARSE_LOCATION);
+        update.put("test", new GeoPoint(1,1));
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);
+
+        // gets location permission
         if (ContextCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
+
             // You can use the API that requires the permission.
-            fusedLocationProvider.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(Location location) {
-                    // Got last known location. In some rare situations this can be null.
-                    if (location != null) {
-                        // Logic to handle location object
-                        update.put(userId, new GeoPoint(location.getLatitude(),location.getLongitude()));
-                    }
+            fusedLocationProvider.getLastLocation().addOnSuccessListener(this, location -> {
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    // Logic to handle location object
+                    update.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
+                } else {
+                    update.put("location", null);
                 }
+            }).addOnFailureListener(this, v->{
+                Log.d("Location", "Could not retrieve cached location");
             });
 
-        } else if (ActivityCompat.shouldShowRequestPermissionRationale(
-                this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-            // In an educational UI, explain to the user why your app requires this
-            // permission for a specific feature to behave as expected, and what
-            // features are disabled if it's declined. In this UI, include a
-            // "cancel" or "no thanks" button that lets the user continue
-            // using your app without granting the permission.
+            // Retrieves Current Location
+            fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener(this, location -> {
+                if (location != null) {
+                    // Logic to handle location object
+                    update.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
+                    Log.d("Location", "Retrieved new Location");
+                    db.collection("events").document(eventId)
+                            .collection("attendees")
+                            .document(userId)
+                            .set(update).addOnSuccessListener(v->{
+                                Log.d("CheckIn", "User Successfully checked in");
+                            });
+                } else {
+                    update.put("location", null);
+                }
+            }).addOnFailureListener(this, u->{
+                Log.d("Location", "Could not retrieve new location");
+            });
 
-        } else {
-            // You can directly ask for the permission.
-            // The registered ActivityResultCallback gets the result of this request.
+
+            Log.d("CheckIn", "Permission Granted");
+
+
+
+
 
         }
-
-//        update.put("userId", new GeoPoint(53.1111, 0.01));
-        db.collection("events").document(eventId)
-                .collection("attendees")
-                .document(userId)
-                .set(update);
     }
 
     /**
      * Replaces the current fragment with a new one.
      * @param fragment The new fragment to display.
      */
-
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
