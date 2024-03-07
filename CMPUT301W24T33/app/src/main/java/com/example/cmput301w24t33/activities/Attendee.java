@@ -82,6 +82,7 @@ public class Attendee extends AppCompatActivity {
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
 
+    private User currentUser;
     private FusedLocationProviderClient fusedLocationProvider;
     private UserViewModel userViewModel;
 
@@ -96,13 +97,9 @@ public class Attendee extends AppCompatActivity {
         setContentView(R.layout.attendee_activity);
         eventRecyclerView = findViewById(R.id.event_recyclerview);
 
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.signOut();
-        eventList = new ArrayList<>();
-        setAdapter();
+
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
+
         authenticateUser();
         displayEvents();
         setOnClickListeners();
@@ -126,35 +123,6 @@ public class Attendee extends AppCompatActivity {
         eventViewModel.loadEvents();
     }
 
-
-    /**
-     * Launches activity for anonymous authentication and registers a new user upon completion.
-     */
-    private ActivityResultLauncher<Intent> anonymousAuthLauncher =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                Intent data = result.getData();
-                if (data != null) {
-                    userId = data.getStringExtra("USER_ID");
-                    Log.d(TAG, "Received user ID: " + userId);
-                    registerUser();
-                }
-            });
-
-    /**
-     * Checks if the user is signed in and authorized; otherwise, launches the AnonymousAuthActivity for sign-in.
-     */
-    private void authorizeUser() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null) {
-            Log.d(TAG, "User not signed in. Launch anonAuth");
-            Intent intent = new Intent(this, AnonymousAuthActivity.class);
-            anonymousAuthLauncher.launch(intent);
-        } else {
-            userId = currentUser.getUid();
-            Log.d(TAG, userId);
-        }
-    }
-
     /**
      * Navigates to the profile creation fragment.
      */
@@ -166,7 +134,12 @@ public class Attendee extends AppCompatActivity {
      * Sets up the RecyclerView adapter for displaying events.
      */
     private void setAdapter() {
-
+        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        eventRecyclerView.setHasFixedSize(true);
+        eventAdapter = new EventAdapter(eventList, this::onEventClickListener);
+        eventRecyclerView.setAdapter(eventAdapter);
+        eventAdapter.notifyDataSetChanged();
+    }
     private String getAndroidId() {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         return androidId;
@@ -182,6 +155,7 @@ public class Attendee extends AppCompatActivity {
             if (user != null) {
                 // User has a profile
                 Log.d(TAG, "User Authenticated: " + user.getUserId());
+                currentUser = user;
             } else {
                 // New User
                 replaceFragment(new CreateProfile());
@@ -194,19 +168,8 @@ public class Attendee extends AppCompatActivity {
         setAdapter();
 
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getEventsLiveData().observe(this, events -> {
-            updateUI(events);
-        });
+        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
     }
-    /*
-    private void setAdapter(){
-        eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList, this::onEventClickListener);
-        eventRecyclerView.setAdapter(eventAdapter);
-        eventAdapter.notifyDataSetChanged();
-    }
-    */
 
     /**
      * Handles click events on individual events, navigating to the event details.

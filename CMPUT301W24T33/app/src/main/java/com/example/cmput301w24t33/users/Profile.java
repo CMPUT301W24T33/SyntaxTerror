@@ -36,12 +36,14 @@ public class Profile extends Fragment {
     private String email;
     private EditText addEmailEditText;
     private UserViewModel userViewModel;
+    private UserRepository userRepo;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
+        userRepo = new UserRepository();
 
         return view;
     }
@@ -109,10 +111,6 @@ public class Profile extends Fragment {
         // Create new User object
         String userId = getAndroidId();
         User newUser = new User(userId, fName, lName, email, false);
-
-        // Update user in database (pseudo code)
-        Attendee activity = (Attendee) getActivity();
-        activity.setUserDb(newUser);
 
         // Navigate back
         getParentFragmentManager().popBackStack();

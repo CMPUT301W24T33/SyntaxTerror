@@ -40,7 +40,7 @@ public class UserRepository {
      */
     public interface UserCallback {
         void onUsersLoaded(List<User> users);
-        User onUsersLoaded(User user);
+        void onUsersLoaded(User user);
         void onFailure(@NonNull Exception e);
 
     }
@@ -151,10 +151,10 @@ public class UserRepository {
     public void setUser(User user, String docId) {
         userCollection.document(docId).set(user)
                 .addOnSuccessListener(documentReference -> {
-                    Log.d(MotionEffect.TAG, "Create User Document success: " + user.getUserId());
+                    Log.d(TAG, "Create User Document success: " + user.getUserId());
                 })
                 .addOnFailureListener(e -> {
-                    Log.w(MotionEffect.TAG, "Create User Document failed", e);
+                    Log.w(TAG, "Create User Document failed", e);
                 });
     }
 }
