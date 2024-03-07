@@ -8,7 +8,9 @@ package com.example.cmput301w24t33.users;
 import static android.content.ContentValues.TAG;
 
 import android.util.Log;
+
 import androidx.annotation.NonNull;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,8 +40,9 @@ public class UserRepository {
      */
     public interface UserCallback {
         void onUsersLoaded(List<User> users);
-        User onUsersLoaded(User user);
+        void onUsersLoaded(User user);
         void onFailure(@NonNull Exception e);
+
     }
 
     /**
@@ -119,18 +122,24 @@ public class UserRepository {
      */
     public void getUser(String userId) {
         DocumentReference userRef = userCollection.document(userId);
-        userRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                User currentUser = documentSnapshot.toObject(User.class);
-                userCallback.onUsersLoaded(currentUser);
-            } else {
-                Log.d(TAG, "No such document");
-                userCallback.onUsersLoaded((User) null);
-            }
-        }).addOnFailureListener(e -> {
-            Log.e(TAG, "Error getting document", e);
-            userCallback.onFailure(e);
-        });
+        userRef.get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        //Document/User found
+                        User currentUser = documentSnapshot.toObject(User.class);
+                        // Notifies callback with User object
+                        Log.d(TAG, "HEY ITS HERE: " + currentUser.getUserId());
+                        userCallback.onUsersLoaded(currentUser);
+                    } else {
+                        // Document/User does not exist
+                        Log.d(TAG, "No such document");
+                        userCallback.onUsersLoaded((User)null);
+                    }
+                }).addOnFailureListener(e -> {
+                    // Error in fetching document
+                    Log.e(TAG, "Error getting document", e);
+                    userCallback.onFailure(e);
+                });
     }
 
     /**
@@ -138,15 +147,14 @@ public class UserRepository {
      *
      * @param user The User object to add to Firestore.
      */
-    public void setUser(User user) {
-        userCollection.add(user).addOnSuccessListener(documentReference -> {
-            String documentId = documentReference.getId();
-            user.setUserId(documentId);
-            userCollection.document(documentId)
-                    .update("userId", documentId)
-                    .addOnSuccessListener(aVoid -> Log.d(TAG, "userId added to document"))
-                    .addOnFailureListener(e -> Log.e(TAG, "Failed to add userId", e));
-            Log.d(TAG, "Create User Document success: " + documentId);
-        }).addOnFailureListener(e -> Log.w(TAG, "Create User Document failed", e));
+
+    public void setUser(User user, String docId) {
+        userCollection.document(docId).set(user)
+                .addOnSuccessListener(documentReference -> {
+                    Log.d(TAG, "Create User Document success: " + user.getUserId());
+                })
+                .addOnFailureListener(e -> {
+                    Log.w(TAG, "Create User Document failed", e);
+                });
     }
 }

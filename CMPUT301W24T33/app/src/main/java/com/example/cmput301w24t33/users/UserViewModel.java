@@ -18,6 +18,7 @@ import java.util.List;
 public class UserViewModel extends ViewModel {
     private final UserRepository userRepo;
     private final MutableLiveData<List<User>> userLiveData;
+    private MutableLiveData<User> liveUser;
     private User user;
 
     /**
@@ -27,6 +28,7 @@ public class UserViewModel extends ViewModel {
     public UserViewModel() {
         userRepo = new UserRepository();
         userLiveData = new MutableLiveData<>();
+        liveUser = new MutableLiveData<>();
         user = new User();
         setUserCallback(userRepo);
     }
@@ -46,9 +48,13 @@ public class UserViewModel extends ViewModel {
             }
 
             @Override
-            public User onUsersLoaded(User user) {
-                // This implementation is unused in this context
-                return user;
+            public void onUsersLoaded(User queriedUser) {
+                if (queriedUser==null) {
+                    //return;
+                }
+                //Log.d(TAG, "UserViewModel single user: " + queriedUser.getUserId());
+                liveUser.setValue(queriedUser);
+                //Log.d(TAG, "LiveData single user: " + liveUser.getValue());
             }
 
             @Override
@@ -89,16 +95,12 @@ public class UserViewModel extends ViewModel {
      *
      * @return A LiveData object containing a list of User objects.
      */
-    public LiveData<List<User>> getUsersLiveData() {
-        return userLiveData;
+    public LiveData<List<User>> getUsersLiveData() {return userLiveData;}
+    public void queryUser(String userId) {
+        userRepo.getUser(userId);
     }
-
-    /**
-     * Returns the current User object.
-     *
-     * @return A User object.
-     */
-    public User getUser() {
-        return user;
+    public LiveData<User> getUser() {
+        Log.d(TAG, " GET USER LiveData single user: " + liveUser.getValue());
+        return liveUser;
     }
 }

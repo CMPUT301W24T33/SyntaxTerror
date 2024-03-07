@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -39,7 +40,7 @@ import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.CreateProfile;
-import com.example.cmput301w24t33.users.GetUserCallback;
+
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.datatransport.Priority;
@@ -61,25 +62,30 @@ import com.google.firestore.v1.GetDocumentRequestOrBuilder;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
+import com.example.cmput301w24t33.users.UserViewModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
 public class Attendee extends AppCompatActivity {
     private FirebaseFirestore db;
+
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
-    private FirebaseAuth mAuth;
     private String userId;
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
-//
+
+    private User currentUser;
     private FusedLocationProviderClient fusedLocationProvider;
+    private UserViewModel userViewModel;
+
 
     /**
      * Initializes the activity, setting up Firebase, RecyclerView for events, and listeners.
@@ -89,15 +95,13 @@ public class Attendee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.attendee_activity);
-        db = FirebaseFirestore.getInstance();
         eventRecyclerView = findViewById(R.id.event_recyclerview);
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.signOut();
-        eventList = new ArrayList<>();
-        setAdapter();
+
+
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
+
+        authenticateUser();
+        displayEvents();
         setOnClickListeners();
     }
 
@@ -116,36 +120,7 @@ public class Attendee extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "RESUME");
-        authorizeUser();
         eventViewModel.loadEvents();
-    }
-
-    /**
-     * Launches activity for anonymous authentication and registers a new user upon completion.
-     */
-    private ActivityResultLauncher<Intent> anonymousAuthLauncher =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                Intent data = result.getData();
-                if (data != null) {
-                    userId = data.getStringExtra("USER_ID");
-                    Log.d(TAG, "Received user ID: " + userId);
-                    registerUser();
-                }
-            });
-
-    /**
-     * Checks if the user is signed in and authorized; otherwise, launches the AnonymousAuthActivity for sign-in.
-     */
-    private void authorizeUser() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null) {
-            Log.d(TAG, "User not signed in. Launch anonAuth");
-            Intent intent = new Intent(this, AnonymousAuthActivity.class);
-            anonymousAuthLauncher.launch(intent);
-        } else {
-            userId = currentUser.getUid();
-            Log.d(TAG, userId);
-        }
     }
 
     /**
@@ -165,16 +140,35 @@ public class Attendee extends AppCompatActivity {
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
+    private String getAndroidId() {
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        return androidId;
+    }
 
-    /**
-     * Saves a new user to the Firestore database.
-     * @param newUser The new User object to be saved.
-     */
-    public void setUserDb(User newUser) {
-        db.collection("users")
-                .document(userId)
-                .set(newUser)
-                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+    public void authenticateUser() {
+        userId = getAndroidId();
+        Log.d(TAG, "Attendee Android ID: " + userId);
+
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel.queryUser(userId);
+        userViewModel.getUser().observe(this, user -> {
+            if (user != null) {
+                // User has a profile
+                Log.d(TAG, "User Authenticated: " + user.getUserId());
+                currentUser = user;
+            } else {
+                // New User
+                replaceFragment(new CreateProfile());
+            }
+        });
+    }
+
+    private void displayEvents() {
+        eventList = new ArrayList<>();
+        setAdapter();
+
+        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
     }
 
     /**
@@ -187,43 +181,11 @@ public class Attendee extends AppCompatActivity {
     }
 
     /**
-     * Queries Firestore for a user by their document ID and handles the result through a callback interface.
-     * @param callback The callback to handle the user query result.
-     */
-    private void queryUserByDocId(GetUserCallback callback) {
-        DocumentReference userRef = db.collection("users").document(userId);
-        userRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                User currentUser = documentSnapshot.toObject(User.class);
-                callback.onUserReceived(currentUser);
-            } else {
-                Log.d(TAG, "No such document");
-                callback.onUserReceived(null);
-            }
-        }).addOnFailureListener(e -> {
-            Log.e(TAG, "Error getting document", e);
-            callback.onFailure(e);
-        });
-    }
-
-    /**
      * Sets click listeners for various UI components like profile and check-in.
      */
     private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> {
-            // Implementation for profile interaction
-            queryUserByDocId(new GetUserCallback() {
-                @Override
-                public void onUserReceived(User user) {
-                    // Handle user object, e.g., display user profile
-                }
-
-                @Override
-                public void onFailure(Exception e) {
-                    // Handle failure to retrieve user
-                }
-            });
             replaceFragment(new Profile());
         });
 

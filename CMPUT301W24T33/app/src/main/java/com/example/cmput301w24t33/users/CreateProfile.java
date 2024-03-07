@@ -29,6 +29,7 @@ import com.example.cmput301w24t33.activities.Attendee;
  * before creating a new User instance.
  */
 public class CreateProfile extends Fragment {
+    private UserRepository userRepo;
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
@@ -39,6 +40,7 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userRepo = new UserRepository();
     }
 
     @Override
@@ -88,8 +90,7 @@ public class CreateProfile extends Fragment {
 
             String userId = getAndroidId();
             User newUser = new User(userId, fName, lName, email, false);
-            Attendee activity = (Attendee) getActivity();
-            activity.setUserDb(newUser);
+            userRepo.setUser(newUser, userId);
 
             getParentFragmentManager().popBackStack();
         });
