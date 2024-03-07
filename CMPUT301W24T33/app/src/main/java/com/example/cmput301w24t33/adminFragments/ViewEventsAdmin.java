@@ -1,3 +1,9 @@
+// Purpose:
+// Provides an interface for administrators to view events and select individual events to open a
+// more detailed view.
+//
+// Issues:
+
 package com.example.cmput301w24t33.adminFragments;
 
 import android.content.Context;

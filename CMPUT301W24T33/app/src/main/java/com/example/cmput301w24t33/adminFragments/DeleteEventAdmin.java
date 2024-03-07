@@ -1,3 +1,9 @@
+// Purpose:
+// Provides an interface for administrators to view and delete events.
+//
+// Issues:
+// Event deletion logic is not implemented in the onDelete method
+
 package com.example.cmput301w24t33.adminFragments;
 
 import android.os.Bundle;
