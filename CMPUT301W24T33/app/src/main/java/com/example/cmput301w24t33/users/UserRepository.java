@@ -5,8 +5,6 @@ import android.util.Log;
 
 import androidx.constraintlayout.helper.widget.MotionEffect;
 
-import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventRepository;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,7 +26,7 @@ public class UserRepository {
      */
     public interface UserCallback {
         void onUsersLoaded(List<User> users);
-        User onUsersLoaded(User user);
+        void onUsersLoaded(User user);
         void onFailure(Exception e);
     }
 
@@ -146,14 +144,15 @@ public class UserRepository {
         userRef.get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        // Document/User found
+                        //Document/User found
                         User currentUser = documentSnapshot.toObject(User.class);
                         // Notifies callback with User object
+                        Log.d(TAG, "HEY ITS HERE: " + currentUser.getUserId());
                         userCallback.onUsersLoaded(currentUser);
                     } else {
                         // Document/User does not exist
                         Log.d(TAG, "No such document");
-                        userCallback.onUsersLoaded((User) null);
+                        userCallback.onUsersLoaded((User)null);
                     }
                 }).addOnFailureListener(e -> {
                     // Error in fetching document
@@ -166,19 +165,10 @@ public class UserRepository {
      *
      * @param user
      */
-    public void setUser(User user) {
-        userCollection.add(user)
+    public void setUser(User user, String docId) {
+        userCollection.document(docId).set(user)
                 .addOnSuccessListener(documentReference -> {
-                    String documentId = documentReference.getId();
-                    user.setUserId(documentId);
-                    userCollection.document(documentId)
-                            .update("userId", documentId)
-                            .addOnSuccessListener(aVoid -> {
-                                Log.d(MotionEffect.TAG, "userId added to document");
-                            }).addOnFailureListener(e -> {
-                                Log.e(MotionEffect.TAG, "Failed to add userId", e);
-                            });
-                    Log.d(MotionEffect.TAG, "Create User Document success: " + documentId);
+                    Log.d(MotionEffect.TAG, "Create User Document success: " + user.getUserId());
                 })
                 .addOnFailureListener(e -> {
                     Log.w(MotionEffect.TAG, "Create User Document failed", e);

@@ -103,8 +103,8 @@ public class Profile extends Fragment {
             }
             String userId = getAndroidId();
             User newUser = new User(userId, fName, lName, email, false);
-            Attendee activity = (Attendee) getActivity();
-            activity.setUserDb(newUser);
+            //Attendee activity = (Attendee) getActivity();
+            //activity.setUserDb(newUser);
 
             // Navigate back to the previous fragment
             getParentFragmentManager().popBackStack();

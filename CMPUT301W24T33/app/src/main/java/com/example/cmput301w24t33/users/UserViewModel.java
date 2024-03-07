@@ -11,11 +11,13 @@ import java.util.List;
 public class UserViewModel extends ViewModel {
     private final UserRepository userRepo;
     private final MutableLiveData<List<User>> userLiveData;
+    private MutableLiveData<User> liveUser;
     private User user;
     // Constructor
     public UserViewModel() {
         userRepo = new UserRepository();
         userLiveData = new MutableLiveData<>();
+        liveUser = new MutableLiveData<>();
         user = new User();
         setUserCallback(userRepo);
     }
@@ -37,8 +39,13 @@ public class UserViewModel extends ViewModel {
             }
 
             @Override
-            public User onUsersLoaded(User user) {
-                return user;
+            public void onUsersLoaded(User queriedUser) {
+                if (queriedUser==null) {
+                    //return;
+                }
+                //Log.d(TAG, "UserViewModel single user: " + queriedUser.getUserId());
+                liveUser.setValue(queriedUser);
+                //Log.d(TAG, "LiveData single user: " + liveUser.getValue());
             }
 
             // When Firebase encounters an error, log it
@@ -67,5 +74,11 @@ public class UserViewModel extends ViewModel {
      * our users collection in our Firestore Database
      */
     public LiveData<List<User>> getUsersLiveData() {return userLiveData;}
-    public User getUser() { return user; }
+    public void queryUser(String userId) {
+        userRepo.getUser(userId);
+    }
+    public LiveData<User> getUser() {
+        Log.d(TAG, " GET USER LiveData single user: " + liveUser.getValue());
+        return liveUser;
+    }
 }

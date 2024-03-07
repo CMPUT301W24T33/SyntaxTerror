@@ -27,7 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
  * create an instance of this fragment.
  */
 public class CreateProfile extends Fragment {
-    private UserViewModel userViewModel;
+    private UserRepository userRepo;
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
@@ -38,6 +38,7 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userRepo = new UserRepository();
 
     }
 
@@ -93,8 +94,7 @@ public class CreateProfile extends Fragment {
             }
             String userId = getAndroidId();
             User newUser = new User(userId, fName, lName, email, false);
-            Attendee activity = (Attendee) getActivity();
-            activity.setUserDb(newUser);
+            userRepo.setUser(newUser, userId);
 
             // Navigate back to the previous fragment
             getParentFragmentManager().popBackStack();

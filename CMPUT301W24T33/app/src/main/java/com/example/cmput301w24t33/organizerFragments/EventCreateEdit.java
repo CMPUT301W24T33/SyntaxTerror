@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,7 +39,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private EventRepository eventRepo;
     private Event eventToEdit;
     private OrganizerCreateEditEventFragmentBinding binding;
-    private FirebaseAuth mAuth;
     FirebaseFirestore db;
     private String qrcode = null;
 
@@ -56,7 +56,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
-        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -143,7 +142,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         } else {
             // Creates new event
             //mAuth = FirebaseAuth.getInstance();
-            String userId = mAuth.getUid();
+            String userId = getAndroidId();
             Event newEvent = new Event();
             newEvent.setOrganizerId(userId);
             setEventEdits(newEvent);
@@ -169,7 +168,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
             // sets organizerId field to organizer Id
             Map<String, String> map = new HashMap<>();
-            map.put("organizerId", mAuth.getUid());
+            map.put("organizerId", getAndroidId());
             docRef.set(map);
 
             // sets qrcode value to doc name
@@ -255,5 +254,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     @Override
     public void setQRCode(String qrCode) {
         this.qrcode = qrCode;
+    }
+    private String getAndroidId() {
+        String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        return androidId;
     }
 }
