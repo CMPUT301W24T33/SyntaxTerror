@@ -1,3 +1,10 @@
+// Purpose:
+// An activity for attendees to view events, authenticate users, and navigate to profiles or event
+// details, emphasizing a user-friendly interface for event interaction.
+//
+// Issues:
+//
+
 package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
@@ -21,18 +28,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
-import com.example.cmput301w24t33.events.AdapterEventClickListener;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRScanner;
+import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -40,28 +46,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Activity class for the attendee user role. This class manages the display of events,
- * interaction with event details, QR code scanning for event check-in, and user profile management.
- * It also facilitates the transition to organizer or admin roles based on user actions.
+ * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
-public class Attendee extends AppCompatActivity implements AdapterEventClickListener {
+public class Attendee extends AppCompatActivity {
     private FirebaseFirestore db;
-    //private CollectionReference events;
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
     private FirebaseAuth mAuth;
     private String userId;
-
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
 
     /**
-     * Initializes the activity, sets up the Firebase Firestore and FirebaseAuth instances,
-     * prepares the RecyclerView for displaying events, and binds onClickListeners to UI components.
-     * It also observes changes in the EventViewModel to update the UI accordingly.
-     *
-     * @param savedInstanceState Contains data supplied in onSaveInstanceState(Bundle) if the activity is re-initialized after being previously shut down.
+     * Initializes the activity, setting up Firebase, RecyclerView for events, and listeners.
+     * @param savedInstanceState Contains data from onSaveInstanceState(Bundle) if the activity is re-initialized.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,27 +69,25 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         db = FirebaseFirestore.getInstance();
         eventRecyclerView = findViewById(R.id.event_recyclerview);
         mAuth = FirebaseAuth.getInstance();
-        //mAuth.signOut();
+        mAuth.signOut();
         eventList = new ArrayList<>();
         setAdapter();
 
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getEventsLiveData().observe(this, events -> {
-            updateUI(events);
-        });
+        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
         setOnClickListeners();
     }
 
     /**
-     * Updates event adapter with current contents in our events collection
-     * @param events is a live representation of Events in our events collection as a List
+     * Updates the UI to display the latest events data.
+     * @param events A list of events to be displayed.
      */
     private void updateUI(List<Event> events) {
         eventAdapter.setEvents(events);
     }
 
     /**
-     * This method authorizes current user and loads up-to-date events for display
+     * Handles actions to be taken when the activity resumes, including user authorization and events loading.
      */
     @Override
     protected void onResume() {
@@ -100,28 +97,24 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         eventViewModel.loadEvents();
     }
 
-
     /**
-     * This is responsible for launching our Anonymous Authorization and Registration of a new user
+     * Launches activity for anonymous authentication and registers a new user upon completion.
      */
     private ActivityResultLauncher<Intent> anonymousAuthLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 Intent data = result.getData();
-                userId = data.getStringExtra("USER_ID");
-                Log.d(TAG, "Received user ID: " + userId);
-                // Use userId to create user in database
-                registerUser();
+                if (data != null) {
+                    userId = data.getStringExtra("USER_ID");
+                    Log.d(TAG, "Received user ID: " + userId);
+                    registerUser();
+                }
             });
 
     /**
-     * This method checks to see if user is signed in and authorized.
-     * If not, it launches AnonymousAuthActivity to authorize and sign in user
+     * Checks if the user is signed in and authorized; otherwise, launches the AnonymousAuthActivity for sign-in.
      */
     private void authorizeUser() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        // If user is not signed in, launch AnonymousAuthActivity to sign user in
         if (currentUser == null) {
             Log.d(TAG, "User not signed in. Launch anonAuth");
             Intent intent = new Intent(this, AnonymousAuthActivity.class);
@@ -130,150 +123,101 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
             userId = currentUser.getUid();
             Log.d(TAG, userId);
         }
-
-        // controller model
-    }
-    private void registerUser() {
-        replaceFragment(new Profile());
     }
 
-
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.attendee_layout,fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
     /**
-     * Sets the adapter for the RecyclerView that displays events. This method configures
-     * the layout manager and attaches the EventAdapter to the RecyclerView.
+     * Navigates to the profile creation fragment.
      */
+    private void registerUser() {
+        replaceFragment(new CreateProfile());
+    }
 
-  
-    private void setAdapter(){
+    /**
+     * Sets up the RecyclerView adapter for displaying events.
+     */
+    private void setAdapter() {
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventRecyclerView.setHasFixedSize(true);
-        eventAdapter = new EventAdapter(eventList,this, this);
+        eventAdapter = new EventAdapter(eventList, this::onEventClickListener);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
     }
 
     /**
-     * Saves a provided User into the "users" collection in our database
-     * <p>If successful, Log document id (docId == uId)
-     * Else, Log error, e, that was encountered</p>
-     * @param newUser   User object to be saved to database
-     * @see User
+     * Saves a new user to the Firestore database.
+     * @param newUser The new User object to be saved.
      */
-    public void setUserDb(User newUser){
+    public void setUserDb(User newUser) {
         db.collection("users")
                 .document(userId)
                 .set(newUser)
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
+                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
     }
 
-    public void onEventClickListener(Event event, int position){
+    /**
+     * Handles click events on individual events, navigating to the event details.
+     * @param event The clicked event object.
+     * @param position The position in the adapter of the clicked event.
+     */
+    public void onEventClickListener(Event event, int position) {
         replaceFragment(EventDetailsAttendee.newInstance(event));
     }
 
     /**
-     * This method queries our database's "users" collection for a specific docId (docId == uId), then uses a callback function
-     * to handle the query result
-     * <p>
-     *     The GetUserCallback interface is used to handle the query results
-     *     <ul>
-     *         <li>Document/User exists in the collection: currentUser is passed into the callback function
-     *         to be handled by the calling function.</li>
-     *         <li>Document/User does NOT exist in the collection: null is passed into the callback function
-     *         to be handled by the calling function.</li>
-     *         <li>Error in the .get() function in fetching User: The error encountered, e, is passed into the
-     *         callback function to be handled by the calling function.</li>
-     *     </ul>
-     * </p>
-     * @param callback  the callback interface to handle results of the query
-     *
-     * @see GetUserCallback
+     * Queries Firestore for a user by their document ID and handles the result through a callback interface.
+     * @param callback The callback to handle the user query result.
      */
-    private void queryUserByDocId( GetUserCallback callback) {
-        // Get the reference to the user's document using the provided docId
+    private void queryUserByDocId(GetUserCallback callback) {
         DocumentReference userRef = db.collection("users").document(userId);
-
-        // Retrieve the user's data
-        userRef.get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()) {
-                        // Document/User found
-                        User currentUser = documentSnapshot.toObject(User.class);
-                        // Notifies callback with User object
-                        callback.onUserReceived(currentUser);
-                    } else {
-                        // Document/User does not exist
-                        Log.d(TAG, "No such document");
-                        callback.onUserReceived(null);
-                    }
+        userRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                User currentUser = documentSnapshot.toObject(User.class);
+                callback.onUserReceived(currentUser);
+            } else {
+                Log.d(TAG, "No such document");
+                callback.onUserReceived(null);
+            }
         }).addOnFailureListener(e -> {
-            // Error in fetching document
             Log.e(TAG, "Error getting document", e);
             callback.onFailure(e);
         });
     }
+
     /**
-     * Sets up onClickListeners for UI components like the profile button and check-in button.
-     * This method encapsulates the logic for handling user interactions with these components.
+     * Sets click listeners for various UI components like profile and check-in.
      */
-    private void setOnClickListeners(){
-
-        // Profile button click listener
+    private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
-
         profileButton.setOnClickListener(v -> {
-            // Use queryUserByDocId to get current user object!
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-
-            queryUserByDocId( new GetUserCallback() {
+            // Implementation for profile interaction
+            queryUserByDocId(new GetUserCallback() {
                 @Override
                 public void onUserReceived(User user) {
-                    if (user != null) {
-                        // update Profile fragment with user object
-                    } else {
-                        // User not found logged in query function
-                    }
+                    // Handle user object, e.g., display user profile
                 }
+
                 @Override
                 public void onFailure(Exception e) {
-                    // Error logged in query function
+                    // Handle failure to retrieve user
                 }
             });
             replaceFragment(new Profile());
         });
 
-
-        // Check in button click listener
-        // used reviewgrower.com/button-and-badge-generator/ to quickly make a button
         ImageView checkInButton = findViewById(R.id.check_in_img);
-        checkInButton.setOnClickListener(v -> {
-            // fill in a fragment or whatever is decided for checkin
-            qrScanner.scanQRCode(Attendee.this);
-       });
+        checkInButton.setOnClickListener(v -> qrScanner.scanQRCode(Attendee.this));
 
-        // User Mode click listener - switches to organizer activity
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
+            // Switch to Organizer activity
             Intent intent = new Intent(Attendee.this, Organizer.class);
             intent.putExtra("uId", userId);
             startActivity(intent);
             finish();
         });
 
-        // User Mode click listener - switches to admin activity
         userMode.setOnLongClickListener(v -> {
-            // code for navigating to admin activity
+            // Switch to Admin activity
             Intent intent = new Intent(Attendee.this, Admin.class);
             startActivity(intent);
             finish();
@@ -281,14 +225,16 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         });
     }
 
-    //error: method replaceFragment(Fragment) is already defined in class Attendee//
-
-//    private void replaceFragment(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction transaction = fragmentManager.beginTransaction();
-//        transaction.replace(R.id.attendee_layout,fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
-
+    /**
+     * Replaces the current fragment with a new one.
+     * @param fragment The new fragment to display.
+     */
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.attendee_layout, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }
+

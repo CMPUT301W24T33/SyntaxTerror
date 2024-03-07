@@ -1,6 +1,12 @@
+//  facilitates the viewing and editing of user profile details, including name and email, with
+//  validation checks to ensure that the data entered is appropriate. It provides an interface for
+//  users to interact with their profile within the application.
+
 package com.example.cmput301w24t33.users;
 
+import android.content.ContentResolver;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +23,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * A fragment class for displaying and editing the profile of a user.
+ * Allows users to view and update their first name, last name, and email address.
+ */
 public class Profile extends Fragment {
     private EditText addFnameEditText;
     private EditText addLnameEditText;
@@ -27,24 +35,10 @@ public class Profile extends Fragment {
     private String lName;
     private String email;
     private EditText addEmailEditText;
-
-
-    public Profile() {
-        // Required empty public constructor
-    }
-
-    public static Profile newInstance(String param1, String param2) {
-        Profile fragment = new Profile();
-        Bundle args = new Bundle();
-        args.putString("param1", param1);
-        args.putString("param2", param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private UserViewModel userViewModel;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
@@ -52,64 +46,83 @@ public class Profile extends Fragment {
         return view;
     }
 
+    /**
+     * Sets up the action bar for the profile editing screen, including setting the title.
+     *
+     * @param view The current view where the action bar is located.
+     */
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.back_actionbar_textview);
         actionBarText.setText("Edit Profile");
     }
 
+    /**
+     * Initializes click listeners for the profile editing screen, including
+     * logic for updating user profile information.
+     *
+     * @param view The current view where the EditText and Button are located.
+     */
     private void setupClickListeners(View view) {
+        // Initialize views
         addFnameEditText = view.findViewById(R.id.first_name_edit_text);
         addLnameEditText = view.findViewById(R.id.last_name_edit_text);
         addEmailEditText = view.findViewById(R.id.email_edit_text);
+
+        // Back button listener
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
+        // Profile image listener
         ImageView profileImage = view.findViewById(R.id.profile_image);
         profileImage.setOnClickListener(v -> {
-            // Implement profile picture editing logic here
+            // Placeholder for profile picture editing logic
         });
 
+        // Cancel button listener
         Button cancelButton = view.findViewById(R.id.profile_cancel_button);
         cancelButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
-        // Saves user to DB
+        // Save button listener
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
-            // Implement save profile editing logic here
-            fName = addFnameEditText.getText().toString();
-            lName = addLnameEditText.getText().toString();
-            email = addEmailEditText.getText().toString();
-
-            //Checks if user passes a string, if not it asks the user again
-            if (fName.isEmpty() || lName.isEmpty()) {
-                Toast.makeText(getContext(), "Please enter both your first and last name", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            //Checks if there are numbers in the name
-            if (fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*")) {
-                Toast.makeText(getContext(), "Please enter a valid name", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            //Checks if email is valid
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-
-
-            User newUser = new User(fName, lName, email, false);
-            Attendee activity = (Attendee) getActivity();
-            activity.setUserDb(newUser);
-
-            // Navigate back to the previous fragment
-            getParentFragmentManager().popBackStack();
+            // Save profile logic
+            saveProfile();
         });
     }
 
+    /**
+     * Saves the profile after validating the input data and updates the user data in the database.
+     */
+    private void saveProfile() {
+        // Extract text from EditTexts
+        fName = addFnameEditText.getText().toString().trim();
+        lName = addLnameEditText.getText().toString().trim();
+        email = addEmailEditText.getText().toString().trim();
+
+        // Validate inputs
+        if (fName.isEmpty() || lName.isEmpty() || fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Create new User object
+        String userId = getAndroidId();
+        User newUser = new User(userId, fName, lName, email, false);
+
+        // Update user in database (pseudo code)
+        Attendee activity = (Attendee) getActivity();
+        activity.setUserDb(newUser);
+
+        // Navigate back
+        getParentFragmentManager().popBackStack();
+    }
+
+    /**
+     * Retrieves the unique Android device ID to be used as a user identifier.
+     *
+     * @return A string representing the Android ID.
+     */
+    private String getAndroidId() {
+        return Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
 }

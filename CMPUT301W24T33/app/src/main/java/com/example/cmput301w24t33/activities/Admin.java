@@ -1,3 +1,11 @@
+// Purpose:
+// Facilitates administrative tasks within the application, offering a user interface for
+// managing events and profiles. It provides navigation options for admins to access various
+// administrative functionalities.
+//
+// Issues:
+//
+
 package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
@@ -21,21 +29,13 @@ import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
 import com.example.cmput301w24t33.adminFragments.ViewProfilesAdmin;
 
 /**
- * The Admin activity is responsible for handling the administrative user interface
- * and interactions within the application. It allows navigation to different
- * administrative functionalities like viewing events and managing profiles.
+ * Represents the administrative area of the application, allowing navigation between administrative functionalities such as viewing events and profiles.
  */
 public class Admin extends AppCompatActivity {
 
     /**
-     * Called when the activity is starting. This is where most initialization should go:
-     * calling setContentView(int) to inflate the activity's UI, using findViewById(int)
-     * to programmatically interact with widgets in the UI, setting up any initial fragment
-     * transactions, and general setup.
-     *
-     * @param savedInstanceState If the activity is being re-initialized after previously
-     *                           being shut down then this Bundle contains the data it most
-     *                           recently supplied in onSaveInstanceState(Bundle). Note: Otherwise it is null.
+     * Called when the activity is starting. Initializes the activity, view components, and event listeners.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +47,7 @@ public class Admin extends AppCompatActivity {
     }
 
     /**
-     * Called after {@link #onStart} when the activity is being re-initialized from
-     * a previously saved state, given here in savedInstanceState. Most implementations
-     * will simply use onCreate(Bundle) to restore their state, but it is sometimes
-     * convenient to do it here after all of the initialization has been done or to
-     * allow subclasses to decide whether to use your default implementation. The
-     * default implementation of this method performs a restore of any view state that
-     * had previously been frozen by onSaveInstanceState(Bundle).
+     * Called after {@link #onStart()} when the activity is being re-initialized from a previously saved state, given here in savedInstanceState.
      */
     @Override
     protected void onResume() {
@@ -62,37 +56,31 @@ public class Admin extends AppCompatActivity {
     }
 
     /**
-     * Initializes onClickListeners for various buttons in the Admin activity.
-     * This includes setting up navigation to the event management and profile
-     * management sections via fragment replacement.
+     * Sets click listeners for UI elements to navigate through the app's administrative functionalities.
      */
     private void setOnClickListeners() {
-
-        // Event List click listener
-
+        // Event List button click listener
         ImageButton eventButton = findViewById(R.id.event_arrow_button);
         eventButton.setOnClickListener(v -> {
             replaceFragment(new ViewEventsAdmin());
         });
 
+        // Profile View button click listener
         ImageButton profileButton = findViewById(R.id.profile_arrow_button);
         profileButton.setOnClickListener(v -> {
             replaceFragment(new ViewProfilesAdmin());
         });
 
-        // Note: The imageButton does not have an associated action in the provided code.
+        // Placeholder for future functionality
         ImageButton imageButton = findViewById(R.id.image_arrow_button);
         imageButton.setOnClickListener(v -> {
-            // Future implementation here
+            // Future functionality here
         });
     }
 
     /**
-     * Replaces the current fragment displayed in the Admin activity with the
-     * specified fragment. This allows for dynamic switching between different
-     * administrative views without leaving the activity.
-     *
-     * @param fragment The new fragment to display in the {@code R.id.admin_layout} container.
+     * Replaces the current fragment with the given fragment.
+     * @param fragment The new fragment to display.
      */
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -103,26 +91,25 @@ public class Admin extends AppCompatActivity {
     }
 
     /**
-     * Sets up the action bar for the Admin activity. This includes setting the
-     * title text, hiding unnecessary buttons like the profile button and the
-     * back button, and changing the background color to indicate the admin context.
-     *
-     * @param view The view from which to find and modify the action bar components.
+     * Sets up the custom ActionBar for the Admin activity with specific visual styles and visibility settings.
+     * @param view The current view that contains the ActionBar elements.
      */
     private void setupActionBar(View view) {
+        // Setting the action bar text
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Admin");
 
+        // Making the profile button invisible
         CardView profileButton = view.findViewById(R.id.profile_button);
         profileButton.setVisibility(View.GONE);
 
+        // Making the back arrow button invisible
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setVisibility(View.GONE);
 
+        // Changing the background color of the action bar
         RelativeLayout generalActionbar = view.findViewById(R.id.general_actionbar);
-        int color = ContextCompat.getColor(this, R.color.admin_actionbar);
+        int color = ContextCompat.getColor(this,R.color.admin_actionbar);
         generalActionbar.setBackgroundColor(color);
     }
 }
-
-
