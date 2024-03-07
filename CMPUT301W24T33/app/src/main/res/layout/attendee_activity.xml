@@ -19,16 +19,52 @@
             android:orientation="vertical">
 
             <include layout="@layout/actionbar_attendee_organizer" />
-            <TextView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Attend Events"
-                android:textSize="40sp"
-                android:textAlignment="center">
-            </TextView>
+                android:orientation="horizontal"
+                android:layout_weight="2"
+                android:layout_marginBottom="8sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginTop="8sp"
+                >
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/switch_recycler_view_button"
+                    style="@style/CustomOutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Click To Browse Your Events"
+                    app:icon="@drawable/ic_event_list"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/event_recyclerview"
+                android:id="@+id/all_event_recyclerview"
                 android:layout_weight="1000"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="3sp"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/user_event_recyclerview"
+                android:layout_weight="1000"
+                android:clickable="false"
+                android:focusable="false"
+                android:visibility="gone"
+                android:layout_marginTop="3sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </androidx.recyclerview.widget.RecyclerView>
