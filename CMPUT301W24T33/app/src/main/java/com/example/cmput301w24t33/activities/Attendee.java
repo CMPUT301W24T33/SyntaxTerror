@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,6 +31,8 @@ import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.GetUserCallback;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
+import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,11 +49,12 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
     private RecyclerView eventRecyclerView;
-    private FirebaseAuth mAuth;
+    private UserRepository userRepo;
+    private UserViewModel userViewModel;
     private String userId;
-
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
+
 
 
     @Override
@@ -59,8 +63,20 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         setContentView(R.layout.attendee_activity);
         db = FirebaseFirestore.getInstance();
         eventRecyclerView = findViewById(R.id.event_recyclerview);
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.signOut();
+
+        String userId = getAndroidId();
+        userViewModel = new UserViewModel();
+        //User user = userViewModel.getUser(userId);
+        User userExists = userViewModel.getUser(userId);
+        if (userExists) {
+            Log.d(TAG, "User exists in the database");
+        } else {
+            Log.d(TAG, "User: " + userId + " does not exist in the database");
+            //create new user
+            registerUser();
+        }
+
+
         eventList = new ArrayList<>();
         setAdapter();
 
@@ -86,7 +102,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "RESUME");
-        authorizeUser();
+        //authorizeUser();
         eventViewModel.loadEvents();
     }
 
@@ -206,7 +222,7 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
 
         profileButton.setOnClickListener(v -> {
             // Use queryUserByDocId to get current user object!
-            FirebaseUser currentUser = mAuth.getCurrentUser();
+            //FirebaseUser currentUser = mAuth.getCurrentUser();
 
             queryUserByDocId( new GetUserCallback() {
                 @Override
@@ -259,6 +275,15 @@ public class Attendee extends AppCompatActivity implements AdapterEventClickList
         transaction.replace(R.id.attendee_layout,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    /**
+     *
+     * @return
+     */
+    private String getAndroidId() {
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        return androidId;
     }
 
 }

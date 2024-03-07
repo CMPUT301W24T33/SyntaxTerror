@@ -38,6 +38,10 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public User onUsersLoaded(User user) {
+
+                if (user == null) {
+                    return null;
+                }
                 return user;
             }
 
@@ -67,5 +71,10 @@ public class UserViewModel extends ViewModel {
      * our users collection in our Firestore Database
      */
     public LiveData<List<User>> getUsersLiveData() {return userLiveData;}
-    public User getUser() { return user; }
+
+    public User getUser(String userId) {
+        User user = userRepo.getUser(userId);
+        Log.d(TAG, "Trying to get the user from the database...");
+        // The actual result will be obtained through the callback
+    }
 }

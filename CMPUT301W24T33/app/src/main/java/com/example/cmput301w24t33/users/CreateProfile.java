@@ -1,11 +1,14 @@
 package com.example.cmput301w24t33.users;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.Settings;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
  * create an instance of this fragment.
  */
 public class CreateProfile extends Fragment {
-    private UserViewModel userViewModel;
+    private UserRepository userRepo;
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
@@ -91,10 +94,7 @@ public class CreateProfile extends Fragment {
                 Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_LONG).show();
                 return;
             }
-            String userId = getAndroidId();
-            User newUser = new User(userId, fName, lName, email, false);
-            Attendee activity = (Attendee) getActivity();
-            activity.setUserDb(newUser);
+            createUser();
 
             // Navigate back to the previous fragment
             getParentFragmentManager().popBackStack();
@@ -104,5 +104,13 @@ public class CreateProfile extends Fragment {
     private String getAndroidId() {
         String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
         return androidId;
+    }
+
+    private void createUser() {
+        userRepo = new UserRepository();
+        String userId = getAndroidId();
+        Log.d(TAG, userId);
+        User newUser = new User(userId, fName, lName, email, false);
+        userRepo.setUser(newUser);
     }
 }
