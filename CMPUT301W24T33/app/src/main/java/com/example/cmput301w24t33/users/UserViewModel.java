@@ -1,18 +1,29 @@
+// serves as a bridge between the UI and the data layer, specifically for user-related data.
+// It utilizes UserRepository for fetching user data from Firestore and updates the UI with this
+// data through LiveData, ensuring UI components observe and react to data changes
+
 package com.example.cmput301w24t33.users;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import java.util.List;
+
+/**
+ * ViewModel for managing UI-related data in a lifecycle-conscious way.
+ * It holds user data and communicates with the UserRepository for data operations.
+ */
 public class UserViewModel extends ViewModel {
     private final UserRepository userRepo;
     private final MutableLiveData<List<User>> userLiveData;
     private User user;
-    // Constructor
+
+    /**
+     * Constructor initializes the UserRepository, user LiveData, and a User object.
+     * Also sets up the callback interface for user data operations.
+     */
     public UserViewModel() {
         userRepo = new UserRepository();
         userLiveData = new MutableLiveData<>();
@@ -21,51 +32,73 @@ public class UserViewModel extends ViewModel {
     }
 
     /**
-     * Defines UserCallback interface by:
-      * <ul>
-     *     <li>Set userLiveData to a list of users provided by the setUserSnapshotListener()</li>
-     *     <li>Logging an exception if the Firebase query encountered an error<</li>
-     * </ul>
-     * @param userRepo
+     * Sets the callback for user data operations. Updates LiveData with user data on successful fetch
+     * and logs any errors encountered during the process.
+     *
+     * @param userRepo The UserRepository instance used for data operations.
      */
     private void setUserCallback(UserRepository userRepo) {
-        // When users are successfully loaded, set our Live Data list to our query results
         userRepo.setUserCallback(new UserRepository.UserCallback() {
             @Override
             public void onUsersLoaded(List<User> users) {
+                // Update LiveData with the list of users
                 userLiveData.setValue(users);
             }
 
             @Override
             public User onUsersLoaded(User user) {
+                // This implementation is unused in this context
                 return user;
             }
 
-            // When Firebase encounters an error, log it
             @Override
             public void onFailure(Exception e) {
-                Log.d(TAG, String.valueOf(e));
+                // Log error on failure
+                Log.d(TAG, "Error loading users: ", e);
             }
         });
     }
 
     /**
-     * This method loads all users in the "users" collection in our Firestore.
+     * Initiates the fetching of all users from the Firestore database.
      */
     public void loadUsers() {
         userRepo.setUserSnapshotListener();
     }
+
+    /**
+     * Initiates fetching of users checked into a specific event.
+     *
+     * @param eventId The ID of the event to fetch checked-in users for.
+     */
     public void loadCheckedInUsers(String eventId) {
         userRepo.setCheckedInUsersSnapshotListener(eventId);
     }
+
+    /**
+     * Initiates fetching of users signed up for a specific event.
+     *
+     * @param eventId The ID of the event to fetch signed-up users for.
+     */
     public void loadSignedUpUsers(String eventId) {
         userRepo.setSignedUpUsersSnapshotListener(eventId);
     }
+
     /**
-     * Getter method to return users in our users collection
-     * @return userLiveData as a MutableLiveData List of User, which contains a live reflection of
-     * our users collection in our Firestore Database
+     * Returns LiveData containing the list of users.
+     *
+     * @return A LiveData object containing a list of User objects.
      */
-    public LiveData<List<User>> getUsersLiveData() {return userLiveData;}
-    public User getUser() { return user; }
+    public LiveData<List<User>> getUsersLiveData() {
+        return userLiveData;
+    }
+
+    /**
+     * Returns the current User object.
+     *
+     * @return A User object.
+     */
+    public User getUser() {
+        return user;
+    }
 }
