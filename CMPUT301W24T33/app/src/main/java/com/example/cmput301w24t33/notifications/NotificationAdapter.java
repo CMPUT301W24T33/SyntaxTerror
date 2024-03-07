@@ -1,3 +1,7 @@
+// The NotificationAdapter class serves as a bridge between a RecyclerView and a data set of
+// Notification objects, enabling notifications to be displayed in a list or grid within an Android
+// application, following the Adapter design pattern.
+
 package com.example.cmput301w24t33.notifications;
 
 import android.view.LayoutInflater;
@@ -9,17 +13,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cmput301w24t33.R;
 import java.util.List;
 
+/**
+ * Adapter class for RecyclerView to display notifications.
+ */
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
     private final List<Notification> notifications;
     private final OnNotificationListener listener; // Listener can be null
 
-    // Interface for click events, remains unchanged
+    /**
+     * Interface for handling click events on notifications.
+     */
     public interface OnNotificationListener {
         void onNotificationClick(int position);
     }
 
-    // Constructor accepts a nullable listener
+    /**
+     * Constructs a NotificationAdapter with a list of notifications and a listener for click events.
+     * @param notifications The list of Notification objects to be displayed.
+     * @param listener The listener for handling notification click events.
+     */
     public NotificationAdapter(List<Notification> notifications, OnNotificationListener listener) {
         this.notifications = notifications;
         this.listener = listener;
@@ -45,9 +58,17 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         return notifications.size();
     }
 
+    /**
+     * ViewHolder class to hold and bind views for each notification item.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView notificationTitle, notificationMessage, notificationTimestamp;
 
+        /**
+         * Constructs a ViewHolder for a notification item.
+         * @param itemView The view of the notification item.
+         * @param listener The listener for handling clicks on the notification item.
+         */
         public ViewHolder(View itemView, OnNotificationListener listener) {
             super(itemView);
             notificationTitle = itemView.findViewById(R.id.notification_title);

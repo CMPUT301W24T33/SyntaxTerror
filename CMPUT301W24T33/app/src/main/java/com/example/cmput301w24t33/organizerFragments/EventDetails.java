@@ -1,3 +1,7 @@
+// This class serves the purpose of displaying event details within the app, offering the organizer
+// functionality to manage the event further by navigating to different fragments for actions like
+// editing event details, checking in attendees, and sending notifications.
+
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
@@ -11,10 +15,21 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 
+/**
+ * A fragment class to display the details of an event within the application.
+ * It allows the organizer to view event details and provides navigation to edit the event,
+ * manage attendees, and send notifications.
+ */
 public class EventDetails extends Fragment {
 
     private OrganizerEventDetailsFragmentBinding binding;
 
+    /**
+     * Factory method to create a new instance of this fragment using the provided Event object.
+     *
+     * @param event The event object to be displayed in this fragment.
+     * @return A new instance of fragment EventDetails.
+     */
     public static EventDetails newInstance(Event event) {
         EventDetails fragment = new EventDetails();
         Bundle args = new Bundle();
@@ -35,15 +50,34 @@ public class EventDetails extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * Initializes the action buttons for sharing QR code, navigating back, checking in attendees,
+     * sending notifications, and editing the event.
+     *
+     * @param event The event object used to populate action button functions.
+     */
     private void setupActionButtons(Event event) {
-        binding.shareQrCodeButton.setOnClickListener(v -> {});  // ADD METHOD TO SHARE QR CODE
+        // ADD METHOD TO SHARE QR CODE
+        binding.shareQrCodeButton.setOnClickListener(v -> {});
+
+        // Navigation back to the previous fragment
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
+
+        // Navigation to the event attendees fragment
         binding.checkInsButton.setOnClickListener(v -> replaceFragment(new EventAttendees()));
-//        binding.signUpsButton.setOnClickListener(v -> replaceFragment(new EventSignedUp()));      EVENT SIGNED-UP FRAGMENT NOT MADE YET
+
+        // Navigation to the notifications organizer fragment
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
+
+        // Navigation to the event edit fragment
         binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
     }
 
+    /**
+     * Loads the event data into the UI components of the fragment.
+     *
+     * @param event The event object whose data is to be displayed.
+     */
     private void loadData(Event event) {
 
         String eventStartDate = event.getStartDate();
@@ -66,6 +100,11 @@ public class EventDetails extends Fragment {
         binding = null;
     }
 
+    /**
+     * Replaces the current fragment with the specified fragment.
+     *
+     * @param fragment The new fragment to replace the current one.
+     */
     private void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.organizer_layout, fragment)

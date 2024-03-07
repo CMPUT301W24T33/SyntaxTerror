@@ -1,3 +1,7 @@
+// This class is designed for managing the creation and editing of events in an Android application,
+// providing the interface for inputting event details and handling QR code generation or selection
+// for event check-ins.
+
 package com.example.cmput301w24t33.organizerFragments;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
@@ -34,6 +38,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Fragment for creating and editing events within the application.
+ * This fragment allows users to input event details, choose or generate a QR code for event check-ins,
+ * and handles both creating a new event and updating an existing one.
+ */
 public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRFragmentListener {
     private EventRepository eventRepo;
     private Event eventToEdit;
@@ -43,6 +52,11 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private String qrcode = null;
 
 
+    /**
+     * Creates a new instance of the EventCreateEdit fragment with an optional event to edit.
+     * @param event Event object to be edited, null if creating a new event.
+     * @return A new instance of EventCreateEdit.
+     */
     public static EventCreateEdit newInstance(Event event) {
         EventCreateEdit fragment = new EventCreateEdit();
         Log.d(TAG, "EventCreateEdit NewInstance");
@@ -51,6 +65,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +88,15 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         return binding.getRoot();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    /**
+     * Sets up listeners for action buttons including cancel, confirm, upload poster, and select QR code.
+     */
     private void setupActionButtons() {
         binding.cancelButton.setOnClickListener(v -> onCancel());
         binding.confirmButton.setOnClickListener(v -> onConfirm());
@@ -80,6 +104,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         binding.generateQrCodeButton.setOnClickListener(v -> onSelectQRCode());
     }
 
+    /**
+     * Initializes date and time picker dialogs for event start and end times.
+     */
     private void setupDateTimePickers() {
         binding.startDateEditText.setOnClickListener(v -> showDatePickerDialog(true));
         binding.startTimeEditText.setOnClickListener(v -> showTimePickerDialog(true));
@@ -87,6 +114,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         binding.endTimeEditText.setOnClickListener(v -> showTimePickerDialog(false));
     }
 
+    /**
+     * Loads existing event data into the input fields if an event is being edited.
+     */
     private void loadData() {
         // Load data into relevant field
         binding.eventNameEditText.setText(eventToEdit.getName());
@@ -103,6 +133,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         binding.generateQrCodeButton.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * Handles the confirm action, validates input data, and either updates an existing event or creates a new one.
+     */
     private void onConfirm() {
         // Collect data from input fields
         /*
@@ -131,6 +164,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         getParentFragmentManager().popBackStack();
     }
 
+    /**
+     * Saves the event to the database. Updates the event if it's being edited, or creates a new event otherwise.
+     */
     private void saveEvent() {
         eventRepo = new EventRepository();
 
@@ -151,6 +187,11 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         }
 
     }
+
+    /**
+     * Sets or updates the event's details based on user input.
+     * @param event The event to be edited or created.
+     */
     private void setEventEdits(Event event) {
         event.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
         event.setAddress(Objects.requireNonNull(binding.eventLocationEditText.getText()).toString().trim());
@@ -181,18 +222,27 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
     }
 
+    /**
+     * Handles the cancel action and returns to the previous fragment.
+     */
     private void onCancel() {
         // Handle the cancel action
         getParentFragmentManager().popBackStack();
     }
 
+    /**
+     * Placeholder for poster upload functionality.
+     */
     private void onUploadPoster() {
         // Handle the poster upload
     }
 
+    /**
+     * Initiates the QR code selection or generation process.
+     */
     private void onSelectQRCode() {
         // Handle QR Code selection
-        EventChooseQR chooseQrFragment = EventChooseQR.newInstance("param1","param2");
+        EventChooseQR chooseQrFragment = new EventChooseQR();
 
         // Attaches this Listener to EventChooseQR fragment
         chooseQrFragment.setListener(this);
@@ -200,6 +250,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         replaceFragment(chooseQrFragment);
     }
 
+    /**
+     * Displays a date picker dialog for selecting the event's start or end date.
+     * @param isStart Indicates whether the date picker is for the start or end date.
+     */
     private void showDatePickerDialog(boolean isStart) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -218,6 +272,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         datePickerDialog.show();
     }
 
+    /**
+     * Displays a time picker dialog for selecting the event's start or end time.
+     * @param isStart Indicates whether the time picker is for the start or end time.
+     */
     private void showTimePickerDialog(boolean isStart) {
         final Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -235,12 +293,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         timePickerDialog.show();
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
+    /**
+     * Replaces the current fragment with the specified fragment.
+     * @param fragment The fragment to replace the current one.
+     */
     private void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.organizer_layout, fragment)
