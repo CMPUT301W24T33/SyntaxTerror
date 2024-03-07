@@ -4,7 +4,10 @@
 
 package com.example.cmput301w24t33.organizerFragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.adminFragments.DeleteEventAdmin;
+import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,6 +44,7 @@ public class EventAttendees extends Fragment {
     private final ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
     private MapView mapView;
+    private Event selectedEvent;
     private GoogleMap gMap;
 
     /**
@@ -51,13 +57,25 @@ public class EventAttendees extends Fragment {
      * Creates a new instance of EventAttendees.
      * @return A new instance of fragment EventAttendees.
      */
-    public static EventAttendees newInstance() {
-        return new EventAttendees();
+    public static EventAttendees newInstance(Event event) {
+        EventAttendees fragment = new EventAttendees();
+        Bundle args = new Bundle();
+        args.putSerializable("event", event);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
+
+        if (getArguments() != null) {
+            selectedEvent = (Event) getArguments().getSerializable("event");
+            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
+        }
+
+        //String address = selectedEvent.getAddress();
+
         setupActionBar(view);
         setupClickListeners(view);
         setupAttendeesRecyclerView(view);
