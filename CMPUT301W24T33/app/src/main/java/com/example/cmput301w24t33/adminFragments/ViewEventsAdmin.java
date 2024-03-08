@@ -45,6 +45,14 @@ public class ViewEventsAdmin extends Fragment {
     private EventViewModel eventViewModel;
     private RecyclerView eventRecyclerView;
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This method inflates the layout for the fragment's view, sets up the action bar, click listeners, and initializes the display of events.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,12 +63,21 @@ public class ViewEventsAdmin extends Fragment {
         return view;
     }
 
+    /**
+     * Refreshes the events list from the ViewModel when the fragment resumes, ensuring the data displayed is up-to-date.
+     */
     @Override
     public void onResume() {
         super.onResume();
         eventViewModel.loadEvents();
     }
 
+    /**
+     * Callback method to be invoked when an event in the RecyclerView is clicked. It navigates to the DeleteEventAdmin fragment for the selected event.
+     *
+     * @param event The Event object associated with the clicked item.
+     * @param position The position of the clicked item in the adapter.
+     */
     public void onEventClickListener(Event event, int position) {
         replaceFragment(DeleteEventAdmin.newInstance(event));
     }

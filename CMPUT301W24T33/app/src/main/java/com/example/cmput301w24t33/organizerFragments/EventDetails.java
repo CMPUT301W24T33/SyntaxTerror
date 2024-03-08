@@ -64,6 +64,14 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         return fragment;
     }
 
+    /**
+     * Initializes the fragment's UI components with event data and sets up action buttons for event management tasks.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container The parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState Contains data from onSaveInstanceState(Bundle) if the fragment is being recreated.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -126,6 +134,9 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
 
     }
 
+    /**
+     * Cleans up resources associated with the fragment's view hierarchy. This method is called when the view previously created by onCreateView has been detached.
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();

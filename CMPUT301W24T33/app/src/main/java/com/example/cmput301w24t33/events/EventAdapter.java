@@ -30,16 +30,26 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     private final AdapterEventClickListener eventClickListener;
 
     /**
-     * Constructs an EventAdapter with a specific dataset of events and a click listener.
+     * Constructs an adapter for displaying events in a RecyclerView.
+     * This adapter is responsible for converting event objects into viewable elements
+     * and managing interactions through a defined click listener.
      *
-     * @param eventsArrayList The list of events to be displayed.
-     * @param eventClickListener The listener to handle click events on the RecyclerView items.
+     * @param eventsArrayList The dataset of Event objects to be displayed.
+     * @param eventClickListener An interface callback for handling clicks on each event item.
      */
     public EventAdapter(ArrayList<Event> eventsArrayList, AdapterEventClickListener eventClickListener) {
         this.eventsArrayList = eventsArrayList;
         this.eventClickListener = eventClickListener;
     }
 
+    /**
+     * Inflates the view for each event item within the RecyclerView. This method is called when
+     * the RecyclerView needs a new ViewHolder to represent an event item.
+     *
+     * @param parent The ViewGroup into which the new view will be added.
+     * @param viewType The view type of the new view, for different types of items if any.
+     * @return A new instance of MyViewHolder that holds the view for the event item.
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,12 +57,25 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         return new MyViewHolder(view, eventClickListener);
     }
 
+    /**
+     * Binds the data from the event object at a specific position in the dataset to the ViewHolder.
+     * This method sets the content of the event item's view to reflect the event data it represents.
+     *
+     * @param holder The ViewHolder which should be updated to represent the event content.
+     * @param position The position of the event item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Event event = eventsArrayList.get(position);
         holder.bind(event, eventClickListener);
     }
 
+    /**
+     * Returns the total number of event items in the dataset. This method helps the RecyclerView
+     * determine the number of items it needs to display.
+     *
+     * @return The size of the eventsArrayList, representing the total number of event items in the dataset.
+     */
     @Override
     public int getItemCount() {
         return eventsArrayList.size();

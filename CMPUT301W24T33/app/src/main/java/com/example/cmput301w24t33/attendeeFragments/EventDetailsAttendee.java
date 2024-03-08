@@ -41,6 +41,14 @@ public class EventDetailsAttendee extends Fragment {
         return fragment;
     }
 
+    /**
+     * Creates and returns the view hierarchy associated with the fragment. Initializes the binding, sets up click listeners, and loads event data into UI components.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate views in the fragment.
+     * @param container The parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +61,9 @@ public class EventDetailsAttendee extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * Cleans up resources associated with the view hierarchy. This method is called when the view previously created by onCreateView is about to be destroyed.
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -39,7 +39,14 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
     private RecyclerView userRecyclerView;
     private UserViewModel userViewModel;
 
-
+    /**
+     * Called to have the fragment instantiate its user interface view. This method inflates the layout for the fragment's view, sets up the action bar, click listeners, and prepares the display of user profiles.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +57,9 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
         return view;
     }
 
+    /**
+     * Refreshes the list of user profiles from the ViewModel when the fragment resumes, ensuring the data displayed is up-to-date.
+     */
     @Override
     public void onResume() {
         super.onResume();

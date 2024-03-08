@@ -46,6 +46,13 @@ public class ShareQRFragment extends DialogFragment {
         public void ShareSelectedQRCode(QRCode qrCode);
     }
 
+    /**
+     * Creates and returns a dialog for selecting a QR code type to share. Initializes the dialog with options
+     * for sharing check-in, event, or poster QR codes and sets up the positive and negative buttons with appropriate actions.
+     *
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
+     * @return An AlertDialog object ready to be displayed.
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -79,6 +86,12 @@ public class ShareQRFragment extends DialogFragment {
                 } ).create();
     }
 
+    /**
+     * Attaches the fragment to its context, ensuring that it can communicate with the parent fragment or activity.
+     * This method was originally intended to establish the ShareQRDialogListener interface with the context.
+     *
+     * @param context The context in which the fragment is being attached.
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

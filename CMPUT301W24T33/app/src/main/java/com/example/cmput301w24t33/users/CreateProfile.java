@@ -41,12 +41,25 @@ public class CreateProfile extends Fragment {
     private String email;
     private EditText addEmailEditText;
 
+    /**
+     * Initializes the fragment and user repository when the fragment is first created.
+     *
+     * @param savedInstanceState If the fragment is re-created from a previous state, this Bundle contains the data it most recently supplied.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userRepo = new UserRepository();
     }
 
+    /**
+     * Inflates the fragment's view and sets up the UI components and action bar for creating a new user profile.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container The parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

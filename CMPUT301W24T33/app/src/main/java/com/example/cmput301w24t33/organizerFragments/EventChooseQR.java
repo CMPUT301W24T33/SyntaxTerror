@@ -47,11 +47,26 @@ public class EventChooseQR extends Fragment {
         void setQRCode(String qrCode);
     }
 
+    /**
+     * Initializes the fragment. Called when the fragment is first created.
+     * Use this method for any one-time initializations and retrieving passed arguments.
+     *
+     * @param savedInstanceState Contains data supplied in onSaveInstanceState(Bundle) if the fragment is being recreated.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This method inflates the layout for this fragment,
+     * initializing the UI components that allow an organizer to choose an event for QR code generation or to opt for creating a new QR code.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,6 +74,10 @@ public class EventChooseQR extends Fragment {
         return inflater.inflate(R.layout.organizer_choose_qr_fragment, container, false);
     }
 
+    /**
+     * Called immediately after onCreateView(LayoutInflater, ViewGroup, Bundle) has returned, but before any saved state has been restored into the view.
+     * This method is used to finalize the fragment's UI initialization by setting up RecyclerView for event selection and the onClickListeners for UI interaction.
+     */
     @Override
     public void onStart(){
         super.onStart();

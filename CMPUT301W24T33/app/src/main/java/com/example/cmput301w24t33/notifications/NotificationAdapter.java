@@ -41,6 +41,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         this.listener = listener;
     }
 
+    /**
+     * Inflates the layout for each notification item when needed. This method is called when the RecyclerView needs a new ViewHolder to represent a notification.
+     *
+     * @param parent The ViewGroup into which the new view will be added.
+     * @param viewType The view type of the new view, used for creating different types of views in the same RecyclerView.
+     * @return A new instance of ViewHolder that holds the View for each notification item.
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,6 +55,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         return new ViewHolder(view, listener);
     }
 
+    /**
+     * Binds the data from a Notification object to the ViewHolder. This method updates the contents of the ViewHolder to reflect the notification at the given position in the list.
+     *
+     * @param holder The ViewHolder which should be updated to represent the contents of the item at the given position.
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Notification notification = notifications.get(position);
@@ -56,6 +69,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.notificationTimestamp.setText(notification.getTimestamp());
     }
 
+    /**
+     * Returns the total number of items in the data set held by the adapter. This method helps the RecyclerView determine how many items it needs to display.
+     *
+     * @return The size of the notifications list, representing the total number of notifications in the data set.
+     */
     @Override
     public int getItemCount() {
         return notifications.size();

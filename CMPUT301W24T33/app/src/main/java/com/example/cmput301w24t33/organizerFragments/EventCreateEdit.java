@@ -71,12 +71,29 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     }
 
 
+    /**
+     * Called when the fragment is first created. Prepares the fragment by initializing
+     * the Firestore database instance and handling any arguments passed to the fragment,
+     * such as an event ID for editing purposes.
+     *
+     * @param savedInstanceState If the fragment is re-created from a previous state, this bundle
+     *                           contains the data it most recently supplied. Otherwise, it is null.
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
     }
 
+    /**
+     * Configures action buttons, date and time pickers, and loads existing event data if editing an event.
+     * This is called to prepare the fragment's user interface.
+     *
+     * @param inflater The LayoutInflater object to inflate views in the fragment.
+     * @param container If non-null, this is the parent view the fragment's UI should attach to.
+     * @param savedInstanceState If non-null, the fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OrganizerCreateEditEventFragmentBinding.inflate(inflater, container, false);
@@ -91,6 +108,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         return binding.getRoot();
     }
 
+    /**
+     * Cleans up resources associated with the view hierarchy. This is called when the view previously created by onCreateView has been detached.
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();

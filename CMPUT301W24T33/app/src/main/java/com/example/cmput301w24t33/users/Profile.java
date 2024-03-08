@@ -42,6 +42,14 @@ public class Profile extends Fragment {
     private UserViewModel userViewModel;
     private UserRepository userRepo;
 
+    /**
+     * Inflates the layout for the profile editing screen and initializes UI components, including setting up click listeners and the action bar.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);

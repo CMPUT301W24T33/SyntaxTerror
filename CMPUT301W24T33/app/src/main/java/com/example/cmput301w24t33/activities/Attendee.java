@@ -99,6 +99,9 @@ public class Attendee extends AppCompatActivity {
         setOnClickListeners();
     }
 
+    /**
+     * Configures the ActionBar with specific settings for this activity, setting the text to indicate the user can attend events.
+     */
     private void setupActionbar() {
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Attend Events");
@@ -147,6 +150,12 @@ public class Attendee extends AppCompatActivity {
         userEventAdapter.notifyDataSetChanged();
 
     }
+
+    /**
+     * Switches between displaying all events and events the user is attending based on the current state, updating the button text accordingly.
+     *
+     * @param switchButton The button that triggers the switch between the all events view and the user's events view.
+     */
     private void switchRecyclerView(Button switchButton) {
         boolean allEventsVisible = allEventRecyclerView.isClickable();
 
@@ -167,6 +176,9 @@ public class Attendee extends AppCompatActivity {
         return androidId;
     }
 
+    /**
+     * Authenticates the user based on the device's Android ID, checking if a user profile already exists or initiating profile creation if not.
+     */
     public void authenticateUser() {
         userId = getAndroidId();
         Log.d(TAG, "Attendee Android ID: " + userId);
@@ -185,6 +197,9 @@ public class Attendee extends AppCompatActivity {
         });
     }
 
+    /**
+     * Initializes and displays the list of events, setting up the adapter and handling live data updates from the ViewModel.
+     */
     private void displayEvents() {
         eventList = new ArrayList<>();
         setAdapter();

@@ -79,6 +79,16 @@ public class EventAttendees extends Fragment {
         return frag;
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This method sets up the
+     * action bar, click listeners, attendees RecyclerView, and map view. It also initializes
+     * the attendees count TextView.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
@@ -100,6 +110,12 @@ public class EventAttendees extends Fragment {
         return view;
     }
 
+    /**
+     * Called when the fragment is being created. Initializes the Firestore database instance and retrieves
+     * the event ID from the fragment arguments to set up data retrieval for the event attendees.
+     *
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

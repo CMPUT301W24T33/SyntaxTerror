@@ -127,6 +127,13 @@ public class Organizer extends AppCompatActivity {
         return fragment;
     }
 
+    /**
+     * Handles click events on individual events within the RecyclerView. This method is called when
+     * an event item is clicked and navigates to the event details or editing screen.
+     *
+     * @param event The event object associated with the clicked item.
+     * @param position The position of the clicked item in the adapter.
+     */
     public void onEventClickListener(Event event, int position) {
         replaceFragment(EventDetails.newInstance(event));
     }
