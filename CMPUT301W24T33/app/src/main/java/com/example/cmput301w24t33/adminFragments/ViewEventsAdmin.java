@@ -2,7 +2,7 @@
 // Provides an interface for administrators to view events and select individual events to open a
 // more detailed view.
 //
-// Issues:
+// Issues: None
 
 package com.example.cmput301w24t33.adminFragments;
 

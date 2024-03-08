@@ -3,7 +3,7 @@
 // validation checks to ensure that the data entered is appropriate. It provides an interface for
 // users to interact with their profile.
 //
-// Issues:
+// Issues: Fill in user profile info when navigating to this fragment
 //
 
 package com.example.cmput301w24t33.users;

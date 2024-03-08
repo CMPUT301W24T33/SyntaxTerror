@@ -3,6 +3,7 @@
 // and handling QR code generation or selection for event check-ins.
 //
 // Issues:
+// Put parameters on input such as max size, cannot be blank etc, end date after start date etc.
 //
 
 package com.example.cmput301w24t33.organizerFragments;

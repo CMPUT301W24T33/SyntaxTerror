@@ -5,7 +5,9 @@
 //  handling and UI updates based on user data operations.
 //
 // Issues:
-//
+// make method to obtain current users id at any time
+// make method to send push notifications to a given user
+// make method to allow for user profile information deletion
 
 package com.example.cmput301w24t33.users;
 

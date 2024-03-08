@@ -2,7 +2,7 @@
 // Serves as a bridge between a RecyclerView and a data set of Notification objects, enabling
 // notifications to be displayed in a list.
 //
-// Issues:
+// Issues: None
 //
 
 package com.example.cmput301w24t33.notifications;

@@ -2,7 +2,7 @@
 // Models a user of the application, encapsulating their identification, contact information, and
 // their interaction with events through sign-ups.
 //
-// Issues:
+// Issues: wants to be able to enable or disable geolocation tracking
 //
 
 package com.example.cmput301w24t33.users;

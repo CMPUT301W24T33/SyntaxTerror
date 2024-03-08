@@ -3,7 +3,7 @@
 // It allows the user to choose from different QR codes (e.g., check-in code, event code, poster code)
 // and shares the selected QR code back to the parent fragment through a listener interface.
 //
-// Issues:
+// Issues: None
 //
 
 

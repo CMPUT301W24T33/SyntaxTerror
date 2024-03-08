@@ -3,7 +3,7 @@
 // navigating to different fragments for actions like editing event details, checking in attendees,
 // and sending notifications.
 //
-// Issues:
+// Issues: populate with a poster image
 //
 
 package com.example.cmput301w24t33.organizerFragments;

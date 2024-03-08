@@ -3,8 +3,8 @@
 // interact by registering their attendance status and accessing notifications.
 //
 // Issues:
-//
-//
+// record attending status, current just a toggle button
+// implement a poster from event with a way to view it
 
 package com.example.cmput301w24t33.attendeeFragments;
 

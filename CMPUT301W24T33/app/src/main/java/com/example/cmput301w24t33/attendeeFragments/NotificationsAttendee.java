@@ -1,7 +1,7 @@
 // Purpose:
 // A fragment designed for attendees to view notifications for an event.
 //
-// Issues:
+// Issues: Populate recyclerview from database for the event
 
 package com.example.cmput301w24t33.attendeeFragments;
 

@@ -2,7 +2,7 @@
 // An activity for attendees to view events, authenticate users, and navigate to profiles or event
 // details, emphasizing a user-friendly interface for event interaction.
 //
-// Issues:
+// Issues: Populate users events they will attend
 //
 
 package com.example.cmput301w24t33.activities;

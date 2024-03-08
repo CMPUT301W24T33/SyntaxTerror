@@ -2,7 +2,8 @@
 // Supports event organizers by enabling event creation, editing, and detail viewing, alongside
 // user mode switching for enhanced application navigation.
 //
-// Issues:
+// Issues: None
+//
 //
 
 package com.example.cmput301w24t33.activities;

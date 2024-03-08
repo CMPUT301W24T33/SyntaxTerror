@@ -3,7 +3,7 @@
 // managing events and profiles. It provides navigation options for admins to access various
 // administrative functionalities.
 //
-// Issues:
+// Issues: Implement image deletion fragment
 //
 
 package com.example.cmput301w24t33.activities;
