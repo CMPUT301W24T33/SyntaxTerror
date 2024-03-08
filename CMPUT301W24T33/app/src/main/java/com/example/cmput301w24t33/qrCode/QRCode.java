@@ -2,7 +2,7 @@
 // Generates and manages QR codes, allowing for the creation of QR code images from input data.
 //
 // Issues:
-//
+// None
 
 package com.example.cmput301w24t33.qrCode;
 
@@ -23,6 +23,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 
+/**
+ * Represents a QR code and provides Bitmap generation for said code
+ * @see Bitmap
+ */
 public class QRCode implements Serializable {
     public final int WIDTH = 512;
     public final int HEIGHT = 512;
@@ -30,12 +34,17 @@ public class QRCode implements Serializable {
     private Bitmap bmp;
     private BitMatrix bitMatrix;
     private QRCodeWriter writer = new QRCodeWriter();
-    public QRCode(String args) {
-        qrCode = args;
+
+    /**
+     * Constructs a new QR code with a given string to store within
+     * @param code desired value to store in QR code
+     */
+    public QRCode(String code) {
+        qrCode = code;
         com.google.zxing.qrcode.encoder.QRCode qrCode = new com.google.zxing.qrcode.encoder.QRCode();
         bmp = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.RGB_565);
         try {
-            bitMatrix = writer.encode(args, BarcodeFormat.QR_CODE, WIDTH, HEIGHT);
+            bitMatrix = writer.encode(code, BarcodeFormat.QR_CODE, WIDTH, HEIGHT);
         } catch (WriterException e) {
             Log.e("QRCodeGenerator", "Error generating QR code", e);
         }
@@ -46,6 +55,10 @@ public class QRCode implements Serializable {
         }
     }
 
+    /**
+     * Gets the bitmap version of the QR code
+     * @return QR code bitmap
+     */
     public Bitmap getBitmap() {
         return bmp;
     }
@@ -77,6 +90,10 @@ public class QRCode implements Serializable {
 //        }
 //    }
 
+    /**
+     * Returns stored QR code string value
+     * @return QR code string
+     */
     public String getQrCode(){
         return qrCode;
     }
