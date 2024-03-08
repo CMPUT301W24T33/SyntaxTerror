@@ -74,9 +74,6 @@ public class ViewEventsAdmin extends Fragment {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("All Events");
 
-        CardView profileButton = view.findViewById(R.id.profile_button);
-        profileButton.setVisibility(View.GONE);
-
         RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
         int color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
         generalActionBar.setBackgroundColor(color);
@@ -88,7 +85,7 @@ public class ViewEventsAdmin extends Fragment {
      * @param view The current view instance containing the UI elements.
      */
     private void setupClickListeners(View view) {
-        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
+        ImageButton backButton = view.findViewById(R.id.view_events_back_button);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
