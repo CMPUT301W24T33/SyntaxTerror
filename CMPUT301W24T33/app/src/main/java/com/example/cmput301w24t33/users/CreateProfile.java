@@ -1,6 +1,9 @@
-// responsible for providing the functionality for creating a new user profile within the
-// application, including input validation for the user's name and email and preparing the new user
-// data for database insertion.
+// Purpose:
+// Responsible for providing the functionality for creating a new user profile, including input
+// validation for the user's name and email and preparing the new user data for database insertion.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.users;
 

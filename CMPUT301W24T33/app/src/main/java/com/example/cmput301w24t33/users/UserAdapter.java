@@ -1,5 +1,9 @@
-// manages a collection of User objects to be displayed in a RecyclerView, handling the binding of
+// Purpose:
+// Manages a collection of User objects to be displayed in a RecyclerView, handling the binding of
 // each user's data to a view within the RecyclerView.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.users;
 

@@ -1,6 +1,9 @@
-// The NotificationAdapter class serves as a bridge between a RecyclerView and a data set of
-// Notification objects, enabling notifications to be displayed in a list or grid within an Android
-// application, following the Adapter design pattern.
+// Purpose:
+// Serves as a bridge between a RecyclerView and a data set of Notification objects, enabling
+// notifications to be displayed in a list.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.notifications;
 

@@ -1,5 +1,9 @@
-// dedicated to generating QR codes from strings and converting these QR codes into bitmap images
+// Purpose:
+// Dedicated to generating QR codes from strings and converting these QR codes into bitmap images
 // for use within applications, facilitating a variety of QR code-based functionalities.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.qrCode;
 

@@ -1,8 +1,13 @@
-// The EventAttendees fragment is designed to show a list of attendees for an event and a map view
-// indicating a location, providing a visual and interactive component for event organizers within
-// an Android application.
+// Purpose:
+// Shows a list of attendees and how many their are for an event and a map view indicating a location
+// of attendees when they check in.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.organizerFragments;
+
+import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +27,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.adminFragments.DeleteEventAdmin;
+import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -51,6 +58,7 @@ public class EventAttendees extends Fragment {
     private FirebaseFirestore db;
     private String eventId;
     private MapView mapView;
+    private Event selectedEvent;
     private GoogleMap gMap;
 
     /**
@@ -74,6 +82,14 @@ public class EventAttendees extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
+
+        if (getArguments() != null) {
+            selectedEvent = (Event) getArguments().getSerializable("event");
+            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
+        }
+
+        //String address = selectedEvent.getAddress();
+
         setupActionBar(view);
         setupClickListeners(view);
         setupAttendeesRecyclerView(view);

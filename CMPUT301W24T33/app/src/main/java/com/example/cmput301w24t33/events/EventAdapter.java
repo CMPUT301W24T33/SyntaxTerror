@@ -1,3 +1,11 @@
+// Purpose:
+// The EventAdapter class serves as an adapter for managing the display of Event items within a
+// RecyclerView, converting Event objects into UI elements and defining interactions with them
+// through a click listener.
+//
+// Issues:
+//
+
 package com.example.cmput301w24t33.events;
 
 import android.view.LayoutInflater;
