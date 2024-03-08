@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +36,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 
@@ -46,6 +53,10 @@ public class EventAttendees extends Fragment {
     private RecyclerView attendeesRecyclerView;
     private final ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
+    private CollectionReference attendeeRef;
+    private TextView attendeeNumberView;
+    private FirebaseFirestore db;
+    private String eventId;
     private MapView mapView;
     private Event selectedEvent;
     private GoogleMap gMap;
@@ -60,22 +71,22 @@ public class EventAttendees extends Fragment {
      * Creates a new instance of EventAttendees.
      * @return A new instance of fragment EventAttendees.
      */
-    public static EventAttendees newInstance(Event event) {
-        EventAttendees fragment = new EventAttendees();
+    public static EventAttendees newInstance(String eventId) {
         Bundle args = new Bundle();
-        args.putSerializable("event", event);
-        fragment.setArguments(args);
-        return fragment;
+        args.putString("eventId", eventId);
+        EventAttendees frag = new EventAttendees();
+        frag.setArguments(args);
+        return frag;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
 
-        if (getArguments() != null) {
-            selectedEvent = (Event) getArguments().getSerializable("event");
-            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
-        }
+//        if (getArguments() != null) {
+////            selectedEvent = (Event) getArguments().getSerializable("event");
+////            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
+//        }
 
         //String address = selectedEvent.getAddress();
 
@@ -83,8 +94,18 @@ public class EventAttendees extends Fragment {
         setupClickListeners(view);
         setupAttendeesRecyclerView(view);
         setupMapView(view, savedInstanceState);
+        attendeeNumberView = view.findViewById(R.id.attendees_count);
+        attendeeNumberView.setText("0");
 
         return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
+        assert getArguments() != null;
+        eventId = getArguments().get("eventId").toString();
     }
 
     /**
@@ -96,6 +117,37 @@ public class EventAttendees extends Fragment {
         attendeesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         attendeeAdapter = new AttendeeAdapter(attendeesList);
         attendeesRecyclerView.setAdapter(attendeeAdapter);
+
+        // populates attendees list with attendee names
+        attendeeRef = db.collection("events/" + eventId + "/attendees");
+        attendeeRef.addSnapshotListener((eventSnapshot, eventError)->{
+            Log.d("AttendeeSnapshot", "snaped: " + attendeeRef.getPath());
+            if (eventError != null) {
+                Log.d("AttendeeSnapshot", eventError.toString());
+            } else if (eventSnapshot != null) {
+                attendeesList.clear();
+                Log.d("AttendeeSnapshot", "not null");
+                for (QueryDocumentSnapshot doc : eventSnapshot) {
+                    Log.d("UserSnapshot", "snaped");
+                    String userId = doc.getId();
+                    Log.d("AttendeeSnapshot", "user Id: " + userId);
+                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Log.d("AttendeeSnapshot", "doc exists");
+                            User user = document.toObject(User.class);
+                            assert user != null;
+                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
+                            attendeesList.add(user);
+                        }
+                        attendeeAdapter.notifyDataSetChanged();
+                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
+
+                    });
+                }
+            }
+        });
+
     }
 
     // Map view set to uAlberta location

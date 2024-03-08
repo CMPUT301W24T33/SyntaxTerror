@@ -115,7 +115,6 @@ public class Organizer extends AppCompatActivity {
     /**
      * Handles click events on individual events, directing to event details or editing.
      * @param event The event that was clicked.
-     * @param position The position in the adapter of the clicked event.
      */
 
     public static EventCreateEdit newInstance(Event event) {

@@ -91,7 +91,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         // Navigation to the event attendees fragment
-        binding.checkInsButton.setOnClickListener(v -> replaceFragment(EventAttendees.newInstance(event)));
+        binding.checkInsButton.setOnClickListener(v -> replaceFragment(EventAttendees.newInstance(event.getEventId())));
 
         // Navigation to the notifications organizer fragment
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));

@@ -103,7 +103,8 @@ public class Attendee extends AppCompatActivity {
         allEventRecyclerView = findViewById(R.id.all_event_recyclerview);
         userEventRecyclerView = findViewById(R.id.user_event_recyclerview);
 
-
+        db = FirebaseFirestore.getInstance();
+        
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         setupActionbar();
         authenticateUser();
