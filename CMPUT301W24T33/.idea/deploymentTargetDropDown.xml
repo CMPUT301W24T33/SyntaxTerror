@@ -2,13 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="AdminUITest">
-        <State />
-      </entry>
-      <entry key="AttendeeUITest">
-        <State />
-      </entry>
-      <entry key="OrganizerUITest">
         <State />
       </entry>
       <entry key="app">

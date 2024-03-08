@@ -10,19 +10,19 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
@@ -38,7 +38,7 @@ public class Admin extends AppCompatActivity {
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_activity);
         View view = findViewById(R.id.admin_activity);
@@ -50,7 +50,7 @@ public class Admin extends AppCompatActivity {
      * Called after {@link #onStart()} when the activity is being re-initialized from a previously saved state, given here in savedInstanceState.
      */
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         Log.d(TAG, "ADMIN RESUME");
     }
@@ -58,7 +58,7 @@ public class Admin extends AppCompatActivity {
     /**
      * Sets click listeners for UI elements to navigate through the app's administrative functionalities.
      */
-    private void setOnClickListeners() {
+    public void setOnClickListeners() {
         // Event List button click listener
         ImageButton eventButton = findViewById(R.id.event_arrow_button);
         eventButton.setOnClickListener(v -> {
@@ -82,7 +82,7 @@ public class Admin extends AppCompatActivity {
      * Replaces the current fragment with the given fragment.
      * @param fragment The new fragment to display.
      */
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.admin_layout, fragment);
@@ -94,7 +94,7 @@ public class Admin extends AppCompatActivity {
      * Sets up the custom ActionBar for the Admin activity with specific visual styles and visibility settings.
      * @param view The current view that contains the ActionBar elements.
      */
-    private void setupActionBar(View view) {
+    public void setupActionBar(View view) {
         // Setting the action bar text
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Admin");
