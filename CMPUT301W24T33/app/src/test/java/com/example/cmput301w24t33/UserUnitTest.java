@@ -15,7 +15,6 @@ public class UserUnitTest {
 
     @Before
     public void setUp() {
-        // Initialize your User object here
         user = new User("1", "John", "Doe", "john.doe@example.com", false);
     }
 
@@ -30,7 +29,6 @@ public class UserUnitTest {
 
     @Test
     public void getFullNameTest() {
-        // Assuming there is a method getFullName that concatenates firstName and lastName
         String expectedFullName = "John Doe";
         assertEquals(expectedFullName, user.getFullName());
     }

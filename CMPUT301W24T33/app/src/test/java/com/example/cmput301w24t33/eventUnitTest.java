@@ -18,7 +18,6 @@ public class eventUnitTest {
 
     @Before
     public void setUp() {
-        // Initialize your Event object here
         event = new Event(initialName, initialOrganizerId, initialDescription);
     }
 
@@ -28,7 +27,6 @@ public class eventUnitTest {
         assertEquals("Name should match initial value", initialName, event.getName());
         assertEquals("Organizer ID should match initial value", initialOrganizerId, event.getOrganizerId());
         assertEquals("Description should match initial value", initialDescription, event.getEventDescription());
-        // Add more assertions here for other default values you expect upon initialization
     }
 
     @Test
@@ -38,22 +36,16 @@ public class eventUnitTest {
         assertEquals("Event ID should match set value", eventId, event.getEventId());
     }
 
-    // Add similar tests for other properties...
-
     @Test
     public void testAttendeeManagement() {
-        // Assuming you have methods to add/remove attendees or to sign up
-        User user1 = new User(); // Simplified, adjust according to your actual User class
+        User user1 = new User();
         User user2 = new User();
-
 
         event.getAttendees().add(user1);
         event.getSignedUp().add(user2);
 
         assertTrue("User1 should be in attendees list", event.getAttendees().contains(user1));
         assertTrue("User2 should be in signedUp list", event.getSignedUp().contains(user2));
-
-
     }
 
 
