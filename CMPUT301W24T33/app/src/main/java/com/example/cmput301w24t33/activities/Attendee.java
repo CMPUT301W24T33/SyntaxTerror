@@ -319,6 +319,8 @@ public class Attendee extends AppCompatActivity {
         //      2.1: prevent user from checking if they are not within some fixed distance of event
         //  3: If GeoTracking is disabled
         //      3.1: Don't store user's location (just set it to null?)
+        //  4: Explain to user why location is being asked for
+        //      4.1: Note that location is only required if the organizer has geo-tethering on
         Map<String, GeoPoint> update = new HashMap<>();
         update.put("test", new GeoPoint(1,1));
         requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);

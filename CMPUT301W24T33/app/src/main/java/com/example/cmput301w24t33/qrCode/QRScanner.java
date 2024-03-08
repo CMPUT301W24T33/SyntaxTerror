@@ -1,4 +1,4 @@
-// Purpose:
+// Purpose: (NOT USED)
 // facilitates the scanning of QR codes using ML Kit's barcode scanning functionality and stores the
 // scanned contents for further processing
 //
@@ -22,7 +22,8 @@ import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * This scans a QR code and stores its contents*/
+ * This scans a QR code and stores its contents
+ * */
 public class QRScanner {
     private Barcode barcode;
 
