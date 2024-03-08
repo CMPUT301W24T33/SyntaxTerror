@@ -76,7 +76,7 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
      * @param view The current view instance containing the UI elements.
      */
     private void setupClickListeners(@NonNull View view) {
-        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
+        ImageButton backButton = view.findViewById(R.id.view_profiles_back_button);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
