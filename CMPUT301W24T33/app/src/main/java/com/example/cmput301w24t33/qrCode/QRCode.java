@@ -1,3 +1,9 @@
+// Purpose:
+// Generates and manages QR codes, allowing for the creation of QR code images from input data.
+//
+// Issues:
+//
+
 package com.example.cmput301w24t33.qrCode;
 
 import android.graphics.Bitmap;
@@ -44,31 +50,32 @@ public class QRCode implements Serializable {
         return bmp;
     }
 
-    public void saveAsPNG(String filename){
-        File sdCard = Environment.getExternalStorageDirectory();
-        File dir = new File(sdCard.getAbsoluteFile() + "/Download/" + filename + ".png");
-        try {
-            FileOutputStream fileOut = new FileOutputStream(dir);
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, fileOut);
-            fileOut.flush();
-            fileOut.close();
-        } catch(Exception e) {
-            Log.e("SAVEFILE", "invalid path argument:" + dir.getPath());
-        }
-    }
-
-    public void saveAsJPEG(String filename) {
-        try {
-            File sdCard = Environment.getExternalStorageDirectory();
-            File dir = new File(sdCard.getAbsoluteFile() + "/storage/emulated/0/Download");
-            FileOutputStream fileOut = new FileOutputStream(dir);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fileOut);
-            fileOut.flush();
-            fileOut.close();
-        } catch(Exception e) {
-            Log.e("SAVEFILE", "invalid path argument:" + filename);
-        }
-    }
+//
+//    public void saveAsPNG(String filename){
+//        File sdCard = Environment.getExternalStorageDirectory();
+//        File dir = new File(sdCard.getAbsoluteFile() + "/Download/" + filename + ".png");
+//        try {
+//            FileOutputStream fileOut = new FileOutputStream(dir);
+//            bmp.compress(Bitmap.CompressFormat.PNG, 100, fileOut);
+//            fileOut.flush();
+//            fileOut.close();
+//        } catch(Exception e) {
+//            Log.e("SAVEFILE", "invalid path argument:" + dir.getPath());
+//        }
+//    }
+//
+//    public void saveAsJPEG(String filename) {
+//        try {
+//            File sdCard = Environment.getExternalStorageDirectory();
+//            File dir = new File(sdCard.getAbsoluteFile() + "/storage/emulated/0/Download");
+//            FileOutputStream fileOut = new FileOutputStream(dir);
+//            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fileOut);
+//            fileOut.flush();
+//            fileOut.close();
+//        } catch(Exception e) {
+//            Log.e("SAVEFILE", "invalid path argument:" + filename);
+//        }
+//    }
 
     public String getQrCode(){
         return qrCode;

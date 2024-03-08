@@ -1,6 +1,9 @@
-// This class is designed for managing the creation and editing of events in an Android application,
-// providing the interface for inputting event details and handling QR code generation or selection
-// for event check-ins.
+// Purpose:
+// Manages the creation and editing of events providing the interface for inputting event details
+// and handling QR code generation or selection for event check-ins.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 

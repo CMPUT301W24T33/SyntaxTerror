@@ -1,5 +1,9 @@
-// for managing notifications within the app, providing event organizers with the functionality to
+// Purpose:
+// Manages notifications within the app, providing event organizers with the functionality to
 // create, view, and delete notifications, enhancing communication with event attendees.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 

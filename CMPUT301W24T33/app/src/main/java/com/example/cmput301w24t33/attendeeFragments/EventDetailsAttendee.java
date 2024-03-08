@@ -3,8 +3,8 @@
 // interact by registering their attendance status and accessing notifications.
 //
 // Issues:
-// QR code sharing and attendance status updates are not implemented.
-// Potential crash if instantiated without event details.
+//
+//
 
 package com.example.cmput301w24t33.attendeeFragments;
 

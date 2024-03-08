@@ -1,6 +1,10 @@
-// This class serves the purpose of displaying event details within the app, offering the organizer
-// functionality to manage the event further by navigating to different fragments for actions like
-// editing event details, checking in attendees, and sending notifications.
+// Purpose:
+// Displays an events details offering the organizer functionality to manage the event further by
+// navigating to different fragments for actions like editing event details, checking in attendees,
+// and sending notifications.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 
@@ -25,6 +29,7 @@ import android.view.ViewGroup;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.organizerFragments.EventAttendees;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -1,5 +1,8 @@
-// The EventChooseQR fragment provides an interface for selecting an existing event to generate or
-// reuse a QR code, facilitating user interaction in a dynamic and flexible manner within the application.
+// Purpose:
+// Provides an interface for selecting an existing event to generate or reuse a QR code
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 

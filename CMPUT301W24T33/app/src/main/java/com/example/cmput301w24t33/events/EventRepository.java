@@ -1,3 +1,11 @@
+// Purpose:
+// The EventRepository class manages the retrieval and updates of Event data from Firebase Firestore.
+// It is responsible for querying Firestore for event data, listening for real-time updates, and
+// providing callbacks for successful data retrieval or errors.
+//
+// Issues:
+//
+
 package com.example.cmput301w24t33.events;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;

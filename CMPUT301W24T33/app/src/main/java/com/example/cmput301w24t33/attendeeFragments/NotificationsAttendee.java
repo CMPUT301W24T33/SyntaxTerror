@@ -1,3 +1,8 @@
+// Purpose:
+// A fragment designed for attendees to view notifications for an event.
+//
+// Issues:
+
 package com.example.cmput301w24t33.attendeeFragments;
 
 import android.os.Bundle;

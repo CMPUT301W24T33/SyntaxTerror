@@ -1,5 +1,9 @@
-// models a user of the application, encapsulating their identification, contact information, and
+// Purpose:
+// Models a user of the application, encapsulating their identification, contact information, and
 // their interaction with events through sign-ups.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.users;
 

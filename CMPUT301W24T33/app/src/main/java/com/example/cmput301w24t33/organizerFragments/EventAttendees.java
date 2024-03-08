@@ -1,6 +1,9 @@
-// The EventAttendees fragment is designed to show a list of attendees for an event and a map view
-// indicating a location, providing a visual and interactive component for event organizers within
-// an Android application.
+// Purpose:
+// Shows a list of attendees and how many their are for an event and a map view indicating a location
+// of attendees when they check in.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 

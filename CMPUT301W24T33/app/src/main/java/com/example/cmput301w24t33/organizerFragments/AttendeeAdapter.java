@@ -1,6 +1,9 @@
-// The AttendeeAdapter class facilitates the display of attendees in a list within an Android
-// application, using a RecyclerView to efficiently manage and present a dynamic list of User
-// objects representing attendees.
+// Purpose:
+// Facilitates the display of attendees in a list using a RecyclerView to efficiently manage and p
+// resent a dynamic list of User objects representing attendees.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 
