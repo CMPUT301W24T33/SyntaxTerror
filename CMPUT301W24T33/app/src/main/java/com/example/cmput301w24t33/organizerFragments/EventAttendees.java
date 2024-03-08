@@ -83,10 +83,10 @@ public class EventAttendees extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
 
-        if (getArguments() != null) {
-            selectedEvent = (Event) getArguments().getSerializable("event");
-            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
-        }
+//        if (getArguments() != null) {
+////            selectedEvent = (Event) getArguments().getSerializable("event");
+////            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
+//        }
 
         //String address = selectedEvent.getAddress();
 
