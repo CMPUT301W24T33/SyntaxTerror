@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.users.User;
 
 import org.junit.Before;
@@ -46,16 +45,16 @@ public class eventUnitTest {
         User user1 = new User(); // Simplified, adjust according to your actual User class
         User user2 = new User();
 
-        // Example test - adjust according to your actual methods
+
         event.getAttendees().add(user1);
         event.getSignedUp().add(user2);
 
         assertTrue("User1 should be in attendees list", event.getAttendees().contains(user1));
         assertTrue("User2 should be in signedUp list", event.getSignedUp().contains(user2));
 
-        // Add tests here for removing attendees, testing max occupancy, etc.
+
     }
 
-    // More tests here for other functionalities...
+
 
 }

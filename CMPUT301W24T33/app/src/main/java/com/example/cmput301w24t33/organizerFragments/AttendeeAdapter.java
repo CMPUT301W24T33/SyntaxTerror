@@ -56,8 +56,8 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
      * ViewHolder class for attendee items in the RecyclerView.
      */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView firstNameText;
-        TextView lastNameText;
+        public TextView firstNameText;
+        public TextView lastNameText;
 
         /**
          * Constructs a ViewHolder for an attendee item.
