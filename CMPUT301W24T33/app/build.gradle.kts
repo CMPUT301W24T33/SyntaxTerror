@@ -55,7 +55,7 @@ android {
 
 dependencies {
 
-    implementation(files("C:\\Users\\reece\\AppData\\Local\\Android\\Sdk\\platforms\\android-34\\android.jar"))
+//    implementation(files("C:\\Users\\reece\\AppData\\Local\\Android\\Sdk\\platforms\\android-34\\android.jar"))
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
