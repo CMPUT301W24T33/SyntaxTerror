@@ -47,7 +47,7 @@ import java.io.Serializable;
 public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDialogListener, Serializable {
 
 
-    private OrganizerEventDetailsFragmentBinding binding;
+    public OrganizerEventDetailsFragmentBinding binding;
     private FirebaseFirestore db;
 
     /**
@@ -83,7 +83,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      *
      * @param event The event object used to populate action button functions.
      */
-    private void setupActionButtons(Event event) {
+    public void setupActionButtons(Event event) {
         // ADD METHOD TO SHARE QR CODE
         binding.shareQrCodeButton.setOnClickListener(v -> {});
 
@@ -137,7 +137,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      *
      * @param fragment The new fragment to replace the current one.
      */
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.organizer_layout, fragment)
                 .addToBackStack(null)

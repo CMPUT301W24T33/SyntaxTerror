@@ -12,7 +12,6 @@ import static android.content.ContentValues.TAG;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -21,13 +20,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -43,29 +38,21 @@ import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.CreateProfile;
-
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
-import com.google.android.datatransport.Priority;
+import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firestore.v1.GetDocumentRequestOrBuilder;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
-import com.example.cmput301w24t33.users.UserViewModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -175,7 +162,7 @@ public class Attendee extends AppCompatActivity {
         userEventRecyclerView.setVisibility(allEventsVisible ? View.VISIBLE : View.GONE);
     }
 
-    private String getAndroidId() {
+    public String getAndroidId() {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         return androidId;
     }
