@@ -29,7 +29,7 @@ public class UserViewModel extends ViewModel {
      * Constructor initializes the UserRepository, user LiveData, and a User object.
      * Also sets up the callback interface for user data operations.
      */
-    public UserViewModel() {
+    public UserViewModel(UserRepository userRepository) {
         userRepo = new UserRepository();
         userLiveData = new MutableLiveData<>();
         liveUser = new MutableLiveData<>();

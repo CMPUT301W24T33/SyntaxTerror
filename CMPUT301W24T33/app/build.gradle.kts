@@ -47,6 +47,7 @@ android {
     viewBinding {
         enable = true
     }
+    buildToolsVersion = "30.0.3"
 
 
 }
@@ -66,10 +67,14 @@ dependencies {
     implementation("com.google.zxing:core:3.4.1")
     implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
     implementation("com.google.android.gms:play-services-location:21.2.0")
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    debugImplementation("androidx.fragment:fragment-testing:1.6.2")
+    testImplementation("junit:junit:4.13.2") // JUnit 4 for unit testing
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1") // JUnit Jupiter for more modern unit testing features
+    androidTestImplementation("androidx.test.ext:junit:1.1.5") // AndroidX JUnit extensions for Android tests
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1") // Espresso for UI tests
+    testImplementation("org.mockito:mockito-core:3.11.2") // Mockito for mocking in unit tests
+    androidTestImplementation("org.mockito:mockito-android:3.11.2") // Mockito for Android for use in instrumentation
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation ("org.powermock:powermock-api-mockito2")
+
 }
