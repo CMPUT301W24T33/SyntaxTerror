@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -248,6 +249,9 @@ public class Attendee extends AppCompatActivity {
                     .addOnFailureListener(
                             e -> {
                                 // Task failed with an exception
+                                Toast scanFailedToast = new Toast(this);
+                                scanFailedToast.setText("Check-in failed, please try again");
+                                scanFailedToast.show();
                                 Log.d("SCAN","Scan failed, try again: " + e.getMessage());
                             });
        });
@@ -324,19 +328,6 @@ public class Attendee extends AppCompatActivity {
                 this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
 
-            // You can use the API that requires the permission.
-            fusedLocationProvider.getLastLocation().addOnSuccessListener(this, location -> {
-                // Got last known location. In some rare situations this can be null.
-                if (location != null) {
-                    // Logic to handle location object
-                    update.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
-                } else {
-                    update.put("location", null);
-                }
-            }).addOnFailureListener(this, v->{
-                Log.d("Location", "Could not retrieve cached location");
-            });
-
             // Retrieves Current Location
             fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener(this, location -> {
                 if (location != null) {
@@ -346,7 +337,8 @@ public class Attendee extends AppCompatActivity {
                     db.collection("events").document(eventId)
                             .collection("attendees")
                             .document(userId)
-                            .set(update).addOnSuccessListener(v->{
+                            .set(update)
+                            .addOnSuccessListener(v->{
                                 Log.d("CheckIn", "User Successfully checked in");
                             });
                 } else {
