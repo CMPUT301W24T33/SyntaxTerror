@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Tests in 'com.example.cmput301w24t33'">
-        <State />
-      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -13,12 +10,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\CBlac\.android\avd\Pixel_3a_API_30.avd" />
+                  <value value="C:\Users\minja\.android\avd\Pixel_6a_API_VanillaIceCream.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-08T09:27:43.791291500Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-03-12T00:48:48.378930600Z" />
         </State>
       </entry>
     </value>

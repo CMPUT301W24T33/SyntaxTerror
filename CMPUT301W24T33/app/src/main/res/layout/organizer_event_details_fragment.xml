@@ -58,57 +58,64 @@
                 android:id="@+id/event_name_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
                 android:text="Sample Event Name"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:paddingBottom="16dp" />
+                android:textColor="#000000" />
 
             <!-- Section Header: Location -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
                 android:text="Location"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:paddingBottom="4dp" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/event_location_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
                 android:text="123 Event Street, City, Country"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:paddingBottom="16dp" />
+                android:textColor="#000000" />
 
             <!-- Section Header: Date/Time -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
                 android:text="Date and Time"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:paddingBottom="4dp" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/event_start_end_date_time_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
                 android:text="April 20, 2024, from 10:00 AM to 3:00 PM"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:paddingBottom="16dp" />
+                android:textColor="#090909" />
 
             <!-- Section Header: Description -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
                 android:text="Description"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:paddingBottom="4dp" />
+                android:textColor="#101010" />
 
             <TextView
                 android:id="@+id/event_description_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
                 android:text="This is a detailed description of the event, including all relevant information attendees need to know."
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:paddingBottom="16dp" />
+                android:textColor="#000000" />
 
             <!-- Event Poster -->
             <ImageView
