@@ -215,7 +215,7 @@ public class Attendee extends AppCompatActivity {
      * @param position The position in the adapter of the clicked event.
      */
     public void onEventClickListener(Event event, int position) {
-        replaceFragment(EventDetailsAttendee.newInstance(event));
+        replaceFragment(EventDetailsAttendee.newInstance(event, currentUser));
     }
 
     /**

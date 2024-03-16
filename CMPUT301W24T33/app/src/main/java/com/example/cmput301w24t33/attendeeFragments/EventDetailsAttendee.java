@@ -11,15 +11,17 @@ package com.example.cmput301w24t33.attendeeFragments;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.attendeeFragments.NotificationsAttendee;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.users.User;
 
 /**
  * A fragment for displaying event details to an attendee. Includes viewing event notifications and sharing QR codes.
@@ -27,15 +29,19 @@ import com.example.cmput301w24t33.events.Event;
 public class EventDetailsAttendee extends Fragment {
 
     private AttendeeEventFragmentBinding binding;
-
+    private Event event;
+    private User user;
     /**
      * Creates a new instance of EventDetailsAttendee fragment with event details.
-     * @param event The event to display.
+     *
+     * @param event  The event to display.
+     * @param user The current user.
      * @return A new instance of EventDetailsAttendee.
      */
-    public static EventDetailsAttendee newInstance(Event event) {
+    public static EventDetailsAttendee newInstance(Event event, User user) {
         EventDetailsAttendee fragment = new EventDetailsAttendee();
         Bundle args = new Bundle();
+        args.putSerializable("userId", user);
         args.putSerializable("event", event);
         fragment.setArguments(args);
         return fragment;
@@ -53,10 +59,11 @@ public class EventDetailsAttendee extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = AttendeeEventFragmentBinding.inflate(inflater, container, false);
-        Event event = getArguments() != null ? (Event) getArguments().getSerializable("event") : null;
+        event = getArguments() != null ? (Event) getArguments().getSerializable("event") : null;
+        user = getArguments() != null ? (User) getArguments().getSerializable("userId") : null;
         setClickListeners();
         if (event != null) {
-            loadData(event);
+            loadData();
         }
         return binding.getRoot();
     }
@@ -81,15 +88,14 @@ public class EventDetailsAttendee extends Fragment {
             // QR code sharing functionality
         });
         binding.toggleButtonGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
-            updateAttendanceStatus(checkedId, isChecked);
+            updateSignedUpStatus(checkedId, isChecked);
         });
     }
 
     /**
      * Loads the event data into the fragment's UI elements.
-     * @param event The event whose details are to be displayed.
      */
-    private void loadData(Event event) {
+    private void loadData() {
         String eventStartDate = event.getStartDate();
         String eventEndDate = event.getEndDate();
         String eventStartTime = event.getStartTime();
@@ -101,35 +107,30 @@ public class EventDetailsAttendee extends Fragment {
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
 
-        // STILL  NEED TO LOAD IMAGE AND GOING/NOT GOING STATUS FROM DATABASE
-        boolean isGoing = false; // Placeholder status
+        boolean isGoing = event.getSignedUp().contains(user);
         if (isGoing) {
             binding.toggleButtonGroup.check(R.id.goingButton);
         } else {
             binding.toggleButtonGroup.check(R.id.notGoingButton);
         }
+
+        // TODO: LOAD EVENT IMAGE
     }
 
-    /**
-     * Updates attendance status based on user selection.
-     *
-     * @param checkedId The ID of the checked button.
-     * @param isChecked Whether the button is checked.
-     */
-    private void updateAttendanceStatus(int checkedId, boolean isChecked) {
+    private void updateSignedUpStatus(int checkedId, boolean isChecked) {
         if (checkedId == R.id.goingButton) {
             if (isChecked) {
                 // User has selected "Going"
-                binding.goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
-                binding.notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
+                event.getSignedUp().add(user);
             }
         } else if (checkedId == R.id.notGoingButton) {
             if (isChecked) {
                 // User has selected "Not Going"
-                binding.goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
-                binding.notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
+                event.getSignedUp().remove(user);
             }
         }
+        EventRepository eventRepo = new EventRepository();
+        eventRepo.updateEvent(event);
     }
 
     /**

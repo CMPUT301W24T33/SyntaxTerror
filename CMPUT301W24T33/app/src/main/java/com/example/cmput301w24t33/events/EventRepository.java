@@ -110,8 +110,8 @@ public class EventRepository {
         DocumentReference docRef = eventsCollection.document(eventId);
 
         docRef.set(event)
-                .addOnSuccessListener(aVoid -> Log.d(TAG, "Document update success: " + eventId))
-                .addOnFailureListener(e -> Log.w(TAG, "Document update failed", e));
+                .addOnSuccessListener(aVoid -> Log.d("BALLSACK", "Document update success: " + eventId))
+                .addOnFailureListener(e -> Log.w("BALLSACK", "Document update failed", e));
     }
 
     /**
