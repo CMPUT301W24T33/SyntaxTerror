@@ -41,7 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Name"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="#000000" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/event_name_input_layout"
@@ -53,7 +54,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/event_name_edit_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Event Name -->
@@ -62,19 +64,23 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:text="Event Location"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="#000000" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/event_location_input_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#000000"
                 app:counterMaxLength="30">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/event_location_edit_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Event Description -->
@@ -83,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
                 android:text="Event Description"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="#000000" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/event_description_input_layout"
@@ -96,7 +103,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
-                    android:minLines="4" />
+                    android:minLines="4"
+                    android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Date & Time Container -->
@@ -134,7 +142,8 @@
                             android:layout_height="wrap_content"
                             android:focusable="false"
                             android:minHeight="64dp"
-                            android:paddingBottom="0dp"/>
+                            android:paddingBottom="0dp"
+                            android:textColor="#000000" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,7 +166,8 @@
                             android:layout_height="wrap_content"
                             android:focusable="false"
                             android:minHeight="64dp"
-                            android:paddingBottom="0dp"/>
+                            android:paddingBottom="0dp"
+                            android:textColor="#000000" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -187,7 +197,8 @@
                             android:layout_height="wrap_content"
                             android:focusable="false"
                             android:minHeight="64dp"
-                            android:paddingBottom="0dp"/>
+                            android:paddingBottom="0dp"
+                            android:textColor="#000000" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- End Time -->
@@ -209,7 +220,8 @@
                             android:layout_height="wrap_content"
                             android:focusable="false"
                             android:minHeight="64dp"
-                            android:paddingBottom="0dp"/>
+                            android:paddingBottom="0dp"
+                            android:textColor="#000000" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -230,11 +242,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Max Attendees:"
                         android:ellipsize="end"
+                        android:paddingEnd="8dp"
                         android:singleLine="true"
+                        android:text="Max Attendees:"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                        android:paddingEnd="8dp"/>
+                        android:textColor="#000000" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/max_attendees_input_layout"
@@ -248,7 +261,8 @@
                             android:id="@+id/max_attendees_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"/>
+                            android:inputType="number"
+                            android:textColor="#000000" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -263,11 +277,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Geo Tracking:"
                         android:ellipsize="end"
+                        android:paddingEnd="8dp"
                         android:singleLine="true"
+                        android:text="Geo Tracking:"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                        android:paddingEnd="8dp"/>
+                        android:textColor="#000000" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/geo_tracking_switch"
