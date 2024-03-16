@@ -5,7 +5,7 @@ import android.util.Pair;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
-import com.google.android.gms.tasks.Tasks;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -152,7 +152,7 @@ public class ImageHandler {
 
         usersRef.updateChildren(updates);
     }
-    
+
     /**
      * Removes the specified event's picture from Firebase Storage and clears related fields in Firebase Database.
      * This method asynchronously deletes the image from Firebase Storage and updates the 'eventImage' and 'imageRef'
