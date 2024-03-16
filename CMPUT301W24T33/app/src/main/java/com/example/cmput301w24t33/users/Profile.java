@@ -9,6 +9,7 @@
 package com.example.cmput301w24t33.users;
 
 import android.content.ContentResolver;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Patterns;
@@ -28,6 +29,10 @@ import androidx.fragment.app.Fragment;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 /**
  * A fragment class for displaying and editing the profile of a user.
  * Allows users to view and update their first name, last name, and email address.
@@ -41,6 +46,7 @@ public class Profile extends Fragment {
     private EditText addEmailEditText;
     private UserViewModel userViewModel;
     private UserRepository userRepo;
+    private ImageView profileImageView;
 
     /**
      * Inflates the layout for the profile editing screen and initializes UI components, including setting up click listeners and the action bar.
@@ -81,6 +87,7 @@ public class Profile extends Fragment {
         addFnameEditText = view.findViewById(R.id.first_name_edit_text);
         addLnameEditText = view.findViewById(R.id.last_name_edit_text);
         addEmailEditText = view.findViewById(R.id.email_edit_text);
+        profileImageView = view.findViewById(R.id.profile_image);
 
         // Back button listener
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
@@ -119,6 +126,30 @@ public class Profile extends Fragment {
             Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
             return;
         }
+
+        //Create Users Deterministic Identicon
+        byte[] hash = IdenticonGenerator.generateHash(fName);
+        Bitmap identicon = IdenticonGenerator.generateIdenticonBitmap(hash);
+
+        // Attempt to save the identicon as a JPEG
+        try {
+            // Creates a file in the app's cache directory
+            File identiconFile = new File(getContext().getCacheDir(), "userIdenticon.jpg");
+
+            // Convert bitmap to byte array and write to the file
+            try (FileOutputStream outputStream = new FileOutputStream(identiconFile)) {
+                identicon.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+            }
+            // Set the ImageView to the identicon Bitmap
+            profileImageView.setImageBitmap(identicon);
+
+            // TODO: Do something with the file if needed, such as uploading it to a server
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Error saving userIdenticon", Toast.LENGTH_SHORT).show();
+        }
+        profileImageView.setImageBitmap(identicon);
 
         // Create new User object
         String userId = getAndroidId();
