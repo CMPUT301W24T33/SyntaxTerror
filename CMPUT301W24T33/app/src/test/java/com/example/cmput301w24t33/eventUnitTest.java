@@ -42,10 +42,10 @@ public class eventUnitTest {
         User user2 = new User();
 
         event.getAttendees().add(user1);
-        event.getSignedUp().add(user2);
+        event.setSignedUp(user2);
 
         assertTrue("User1 should be in attendees list", event.getAttendees().contains(user1));
-        assertTrue("User2 should be in signedUp list", event.getSignedUp().contains(user2));
+        assertTrue("User2 should be in signedUp list", event.checkSignedUp(user2));
     }
 
 
