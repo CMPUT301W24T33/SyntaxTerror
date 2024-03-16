@@ -8,6 +8,7 @@
 
 package com.example.cmput301w24t33.users;
 
+
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -27,7 +28,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.activities.Attendee;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,6 +38,7 @@ import java.io.IOException;
  * Allows users to view and update their first name, last name, and email address.
  */
 public class Profile extends Fragment {
+
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
@@ -47,6 +48,8 @@ public class Profile extends Fragment {
     private UserViewModel userViewModel;
     private UserRepository userRepo;
     private ImageView profileImageView;
+
+
 
     /**
      * Inflates the layout for the profile editing screen and initializes UI components, including setting up click listeners and the action bar.
