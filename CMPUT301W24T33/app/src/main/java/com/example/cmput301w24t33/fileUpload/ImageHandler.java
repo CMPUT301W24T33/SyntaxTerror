@@ -15,11 +15,23 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * A utility class for handling image operations including uploading to Firebase Storage,
+ * updating image references in Firebase Database, and removing images from Firebase.
+ */
 public class ImageHandler {
-
-    // Takes in a filepath of a image and uploads it to firestorage. It will return a url to
-    // be updated in the database later and the name of the imageuploaded
+    /**
+     * Uploads an image file to Firebase Storage and returns a {@link Pair} containing the download URL
+     * and the name of the uploaded image. Note that the method signature suggests a synchronous operation,
+     * but Firebase Storage operations are asynchronous. This method serves as an example and should be adapted
+     * to fit asynchronous execution patterns in your application.
+     *
+     * @param filepath The path to the image file to upload.
+     * @param storage  The {@link FirebaseStorage} instance to use for uploading.
+     * @return A {@link Pair} where the first element is the download URL as a {@link String} and the second
+     * element is the name of the uploaded file. This is a placeholder return value and should be replaced
+     * with appropriate asynchronous handling mechanisms.
+     */
     public static Pair<String, String> uploadFile(String filepath, FirebaseStorage storage) {
         // Extract the name of the file from the filepath
         String fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
@@ -63,9 +75,15 @@ public class ImageHandler {
         return new Pair<>("", "");
     }
 
-
-    // This take in a url, Users id, imageName, and the database instance and updates there fields
-    // uaserImage gets updated with the url,imageRef gets updated with imageName and updates the userUpload to be true
+    /**
+     * Updates the user's profile with the provided image URL and image name. This method asynchronously
+     * updates the 'userImage', 'imageRef', and 'userUpload' fields for a specified user in Firebase Database.
+     *
+     * @param userID   The ID of the user to update.
+     * @param imageName The name of the image file.
+     * @param URL      The download URL of the uploaded image.
+     * @param database The {@link FirebaseDatabase} instance to use for updating.
+     */
     public static void updateAddUserPicture(String userID, String imageName, String URL, FirebaseDatabase database) {
         DatabaseReference usersRef = database.getReference("users").child(userID);
         Map<String, Object> updates = new HashMap<>();
@@ -81,8 +99,16 @@ public class ImageHandler {
             }
         });
     }
-    //This take in a url, Users id, imageName, and the database instance and updates two fields
-    //uaserEvent gets updated with the url,imageRef gets updated with imageName
+
+    /**
+     * Updates the specified event with the provided image URL and image name. This method asynchronously
+     * updates the 'eventImage' and 'imageRef' fields for a specified event in Firebase Database.
+     *
+     * @param eventID   The ID of the event to update.
+     * @param imageRef The name of the image file.
+     * @param URL      The download URL of the uploaded image.
+     * @param database The {@link FirebaseDatabase} instance to use for updating.
+     */
     public static void updateAddEventPicture(String eventID, String imageRef, String URL, FirebaseDatabase database) {
         DatabaseReference eventsRef = database.getReference("events").child(eventID);
         Map<String, Object> updates = new HashMap<>();
@@ -98,10 +124,16 @@ public class ImageHandler {
         });
     }
 
-    // This take in a imageref, Users id,firebasestorage instance  and the database instance
-    // it removes the file from firestore
-    // clears the filed of both image ref and userImage
-    // updates the field userUpload to false
+    /**
+     * Removes the specified user's picture from Firebase Storage and clears related fields in Firebase Database.
+     * This method asynchronously deletes the image from Firebase Storage and updates the 'userImage', 'imageRef',
+     * and 'userUpload' fields for a specified user in Firebase Database.
+     *
+     * @param userID   The ID of the user whose picture is to be removed.
+     * @param imageName The name of the image file to remove.
+     * @param storage  The {@link FirebaseStorage} instance to use for deletion.
+     * @param database The {@link FirebaseDatabase} instance to use for updating.
+     */
     public static void removeUserPicture(String userID, String imageName, FirebaseStorage storage, FirebaseDatabase database) {
         // Remove file from Firebase Storage
         StorageReference storageRef = storage.getReference().child("images/" + imageName);
@@ -120,10 +152,17 @@ public class ImageHandler {
 
         usersRef.updateChildren(updates);
     }
-
-    // This take in a imageref, event id,firebasestorage instance  and the database instance
-    // it removes the file from firestore
-    // clears the filed of both image ref and eventImage
+    
+    /**
+     * Removes the specified event's picture from Firebase Storage and clears related fields in Firebase Database.
+     * This method asynchronously deletes the image from Firebase Storage and updates the 'eventImage' and 'imageRef'
+     * fields for a specified event in Firebase Database.
+     *
+     * @param eventID   The ID of the event whose picture is to be removed.
+     * @param imageName The name of the image file to remove.
+     * @param storage  The {@link FirebaseStorage} instance to use for deletion.
+     * @param database The {@link FirebaseDatabase} instance to use for updating.
+     */
     public static void removeEventPicture(String eventID, String imageName, FirebaseStorage storage, FirebaseDatabase database) {
         // Remove file from Firebase Storage
         StorageReference storageRef = storage.getReference().child("images/" + imageName);
