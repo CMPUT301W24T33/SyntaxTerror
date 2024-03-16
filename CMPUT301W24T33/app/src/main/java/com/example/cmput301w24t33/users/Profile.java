@@ -9,6 +9,7 @@
 package com.example.cmput301w24t33.users;
 
 import android.content.ContentResolver;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Patterns;
@@ -41,6 +42,7 @@ public class Profile extends Fragment {
     private EditText addEmailEditText;
     private UserViewModel userViewModel;
     private UserRepository userRepo;
+    private ImageView profileImageView;
 
     /**
      * Inflates the layout for the profile editing screen and initializes UI components, including setting up click listeners and the action bar.
@@ -81,6 +83,7 @@ public class Profile extends Fragment {
         addFnameEditText = view.findViewById(R.id.first_name_edit_text);
         addLnameEditText = view.findViewById(R.id.last_name_edit_text);
         addEmailEditText = view.findViewById(R.id.email_edit_text);
+        profileImageView = view.findViewById(R.id.profile_image);
 
         // Back button listener
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
@@ -119,6 +122,11 @@ public class Profile extends Fragment {
             Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
             return;
         }
+
+        //Create Users Deterministic Identicon
+        byte[] hash = IdenticonGenerator.generateHash(fName);
+        Bitmap identicon = IdenticonGenerator.generateIdenticonBitmap(hash);
+        profileImageView.setImageBitmap(identicon);
 
         // Create new User object
         String userId = getAndroidId();
