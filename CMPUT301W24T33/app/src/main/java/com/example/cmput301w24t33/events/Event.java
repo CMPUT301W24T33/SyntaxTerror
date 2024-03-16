@@ -331,24 +331,15 @@ public class Event implements Serializable {
      * Gets the list of users who have signed up for the event but are not yet attendees.
      * @return An ArrayList of User objects representing users who have signed up.
      */
-    public boolean checkSignedUp(User user) {
-        return signedUp.contains(user);
+    public ArrayList<User> getSignedUp() {
+        return signedUp;
     }
 
     /**
      * Sets the list of users who have signed up for the event.
-     * @param user User that will be added to sign up list.
-//     */
-    public void setSignedUp(User user) {
-        this.signedUp.add(user);
-    }
-
-    /**
-     * Sets the list of users who have signed up for the event.
-     * @param user User that will be added to sign up list.
+     * @param signedUp An ArrayList of User objects representing users who have signed up.
      */
-    public void removeSignedUp(User user) {
-        this.signedUp.remove(user);
+    public void setSignedUp(ArrayList<User> signedUp) {
+        this.signedUp = signedUp;
     }
 }
-

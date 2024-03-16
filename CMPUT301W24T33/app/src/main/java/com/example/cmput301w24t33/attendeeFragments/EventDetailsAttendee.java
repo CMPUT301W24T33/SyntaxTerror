@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,29 +107,26 @@ public class EventDetailsAttendee extends Fragment {
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
 
-        // STILL  NEED TO LOAD IMAGE AND GOING/NOT GOING STATUS FROM DATABASE
-        boolean isGoing = event.checkSignedUp(user);
+        boolean isGoing = event.getSignedUp().contains(user);
         if (isGoing) {
             binding.toggleButtonGroup.check(R.id.goingButton);
         } else {
             binding.toggleButtonGroup.check(R.id.notGoingButton);
         }
+
+        // TODO: LOAD EVENT IMAGE
     }
 
     private void updateSignedUpStatus(int checkedId, boolean isChecked) {
         if (checkedId == R.id.goingButton) {
             if (isChecked) {
                 // User has selected "Going"
-                event.setSignedUp(user);
-                binding.goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
-                binding.notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
+                event.getSignedUp().add(user);
             }
         } else if (checkedId == R.id.notGoingButton) {
             if (isChecked) {
                 // User has selected "Not Going"
-                event.removeSignedUp(user);
-                binding.goingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.going_button_background));
-                binding.notGoingButton.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.not_going_button_background));
+                event.getSignedUp().remove(user);
             }
         }
         EventRepository eventRepo = new EventRepository();
