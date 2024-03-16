@@ -29,6 +29,10 @@ import androidx.fragment.app.Fragment;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 /**
  * A fragment class for displaying and editing the profile of a user.
  * Allows users to view and update their first name, last name, and email address.
@@ -126,6 +130,25 @@ public class Profile extends Fragment {
         //Create Users Deterministic Identicon
         byte[] hash = IdenticonGenerator.generateHash(fName);
         Bitmap identicon = IdenticonGenerator.generateIdenticonBitmap(hash);
+
+        // Attempt to save the identicon as a JPEG
+        try {
+            // Creates a file in the app's cache directory
+            File identiconFile = new File(getContext().getCacheDir(), "userIdenticon.jpg");
+
+            // Convert bitmap to byte array and write to the file
+            try (FileOutputStream outputStream = new FileOutputStream(identiconFile)) {
+                identicon.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+            }
+            // Set the ImageView to the identicon Bitmap
+            profileImageView.setImageBitmap(identicon);
+
+            // TODO: Do something with the file if needed, such as uploading it to a server
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Error saving userIdenticon", Toast.LENGTH_SHORT).show();
+        }
         profileImageView.setImageBitmap(identicon);
 
         // Create new User object
