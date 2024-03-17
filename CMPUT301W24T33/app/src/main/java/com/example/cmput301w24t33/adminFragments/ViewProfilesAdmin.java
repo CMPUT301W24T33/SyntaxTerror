@@ -1,7 +1,7 @@
 // Purpose:
 // Provides an interface for viewing and deleting user profiles.
 //
-// Issues:
+// Issues: None
 
 package com.example.cmput301w24t33.adminFragments;
 
@@ -43,7 +43,14 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
     private UserViewModel userViewModel;
     private UserRepository userRepo;
 
-
+    /**
+     * Called to have the fragment instantiate its user interface view. This method inflates the layout for the fragment's view, sets up the action bar, click listeners, and prepares the display of user profiles.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +61,9 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
         return view;
     }
 
+    /**
+     * Refreshes the list of user profiles from the ViewModel when the fragment resumes, ensuring the data displayed is up-to-date.
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -80,7 +90,7 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
      * @param view The current view instance containing the UI elements.
      */
     private void setupClickListeners(@NonNull View view) {
-        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
+        ImageButton backButton = view.findViewById(R.id.view_profiles_back_button);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 

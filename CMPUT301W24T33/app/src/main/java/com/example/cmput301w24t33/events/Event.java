@@ -1,10 +1,22 @@
+// Purpose:
+// Represents a scheduled event, storing details such as date, time, location, and
+// participants, with functionalities for managing event properties and attendee lists.
+//
+// Issues: None
+//
+
 package com.example.cmput301w24t33.events;
 
+import android.location.Location;
+
 import com.example.cmput301w24t33.users.User;
+import com.google.firebase.firestore.GeoPoint;
+
+import org.checkerframework.checker.units.qual.A;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Represents an event, including details such as date, time, location, and participants.
@@ -28,8 +40,14 @@ public class Event implements Serializable {
     private boolean active;
     private int maxOccupancy;
     private int maxSignup;
-    //private ArrayList<String> attendees = new ArrayList<>();
-    //private ArrayList<String> signedUp = new ArrayList<>();
+    private ArrayList<User> attendees = new ArrayList<>();
+
+
+
+    private ArrayList<GeoPoint> checkInLocations = new ArrayList<>();
+    private ArrayList<User> signedUp = new ArrayList<>();
+    private String imageRef;
+    private String imageUrl;
 
     /**
      * Constructs a new Event with specified name, organizerId, and eventDescription.
@@ -304,5 +322,66 @@ public class Event implements Serializable {
         this.maxSignup = maxSignup;
     }
 
-}
+    /**
+     * Gets the list of attendees currently signed up for the event.
+     * @return An ArrayList of User objects representing the attendees.
+     */
+    public ArrayList<User> getAttendees() {
+        return attendees;
+    }
 
+    /**
+     * Sets the list of attendees for the event.
+     * @param attendees An ArrayList of User objects representing the attendees.
+     */
+    public void setAttendees(ArrayList<User> attendees) {
+        this.attendees = attendees;
+    }
+
+    /**
+     * Gets the list of users who have signed up for the event but are not yet attendees.
+     * @return An ArrayList of User objects representing users who have signed up.
+     */
+    public ArrayList<User> getSignedUp() {
+        return signedUp;
+    }
+
+    public void addAttendee(User attendee, Location location) {
+        attendees.add(attendee);
+        if (location != null) {
+            checkInLocations.add(new GeoPoint(location.getLatitude(), location.getLongitude()));
+        }
+    }
+
+    /**
+     * Sets the list of users who have signed up for the event.
+     * @param signedUp An ArrayList of User objects representing users who have signed up.
+     */
+    public void setSignedUp(ArrayList<User> signedUp) {
+        this.signedUp = signedUp;
+    }
+
+    public String getImageRef() {
+        return imageRef;
+    }
+
+    public void setImageRef(String imageRef) {
+        this.imageRef = imageRef;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public ArrayList<GeoPoint> getCheckInLocations() {
+        return checkInLocations;
+    }
+
+    public void setCheckInLocations(ArrayList<GeoPoint> checkInLocations) {
+        this.checkInLocations = checkInLocations;
+    }
+}

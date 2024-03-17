@@ -1,29 +1,36 @@
-// for managing notifications within the app, providing event organizers with the functionality to
+// Purpose:
+// Manages notifications within the app, providing event organizers with the functionality to
 // create, view, and delete notifications, enhancing communication with event attendees.
+//
+// Issues: Connect notification creation to database
+//         Send push notification to people signed up/attending event
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.app.AlertDialog;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
 import com.example.cmput301w24t33.users.Profile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import org.jetbrains.annotations.Contract;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

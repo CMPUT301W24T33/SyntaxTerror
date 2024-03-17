@@ -1,14 +1,14 @@
-// responsible for providing the functionality for creating a new user profile within the
-// application, including input validation for the user's name and email and preparing the new user
-// data for database insertion.
+// Purpose:
+// Responsible for providing the functionality for creating a new user profile, including input
+// validation for the user's name and email and preparing the new user data for database insertion.
+// Only called once when a new android id is used and persists until user fills in profile info
+//
+// Issues: None
+//
 
 package com.example.cmput301w24t33.users;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.provider.Settings;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -19,6 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
@@ -39,6 +42,11 @@ public class CreateProfile extends Fragment {
     private String email;
     private EditText addEmailEditText;
 
+    /**
+     * Initializes the fragment and user repository when the fragment is first created.
+     *
+     * @param savedInstanceState If the fragment is re-created from a previous state, this Bundle contains the data it most recently supplied.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +54,14 @@ public class CreateProfile extends Fragment {
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
     }
 
+    /**
+     * Inflates the fragment's view and sets up the UI components and action bar for creating a new user profile.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container The parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,7 +108,7 @@ public class CreateProfile extends Fragment {
             }
 
             String userId = getAndroidId();
-            User newUser = new User(userId, fName, lName, email, false);
+            User newUser = new User(userId, fName, lName, email, false, "","");
             userRepo.setUser(newUser, userId);
 
             getParentFragmentManager().popBackStack();

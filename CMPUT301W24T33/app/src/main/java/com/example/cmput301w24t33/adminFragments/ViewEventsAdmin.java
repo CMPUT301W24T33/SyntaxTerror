@@ -2,7 +2,7 @@
 // Provides an interface for administrators to view events and select individual events to open a
 // more detailed view.
 //
-// Issues:
+// Issues: None
 
 package com.example.cmput301w24t33.adminFragments;
 
@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -45,6 +44,14 @@ public class ViewEventsAdmin extends Fragment {
     private EventViewModel eventViewModel;
     private RecyclerView eventRecyclerView;
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This method inflates the layout for the fragment's view, sets up the action bar, click listeners, and initializes the display of events.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,12 +62,21 @@ public class ViewEventsAdmin extends Fragment {
         return view;
     }
 
+    /**
+     * Refreshes the events list from the ViewModel when the fragment resumes, ensuring the data displayed is up-to-date.
+     */
     @Override
     public void onResume() {
         super.onResume();
         eventViewModel.loadEvents();
     }
 
+    /**
+     * Callback method to be invoked when an event in the RecyclerView is clicked. It navigates to the DeleteEventAdmin fragment for the selected event.
+     *
+     * @param event The Event object associated with the clicked item.
+     * @param position The position of the clicked item in the adapter.
+     */
     public void onEventClickListener(Event event, int position) {
         replaceFragment(DeleteEventAdmin.newInstance(event));
     }
@@ -74,9 +90,6 @@ public class ViewEventsAdmin extends Fragment {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("All Events");
 
-        CardView profileButton = view.findViewById(R.id.profile_button);
-        profileButton.setVisibility(View.GONE);
-
         RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
         int color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
         generalActionBar.setBackgroundColor(color);
@@ -88,7 +101,7 @@ public class ViewEventsAdmin extends Fragment {
      * @param view The current view instance containing the UI elements.
      */
     private void setupClickListeners(View view) {
-        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
+        ImageButton backButton = view.findViewById(R.id.view_events_back_button);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 

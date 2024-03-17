@@ -45,6 +45,14 @@ public class DeleteProfileAdmin extends Fragment {
         return fragment;
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This method inflates the layout for the fragment's view and initializes the UI elements.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return Return the View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_delete_profile, container, false);

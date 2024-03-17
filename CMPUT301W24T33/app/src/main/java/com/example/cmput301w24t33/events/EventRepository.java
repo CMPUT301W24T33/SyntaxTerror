@@ -1,3 +1,15 @@
+// Purpose:
+// The EventRepository class manages the retrieval and updates of Event data from Firebase Firestore.
+// It is responsible for querying Firestore for event data, listening for real-time updates, and
+// providing callbacks for successful data retrieval or errors.
+//
+// Issues: Create method to allow events to be deleted
+//         Create method to populate a users events they have signed up to attend
+//         Create method that limits number of attendees to an event on optional limit
+//         Create method to obtain poster for event
+//         Create method to obtain an organizer users reusable qr codes from events already over
+//
+
 package com.example.cmput301w24t33.events;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
@@ -98,8 +110,8 @@ public class EventRepository {
         DocumentReference docRef = eventsCollection.document(eventId);
 
         docRef.set(event)
-                .addOnSuccessListener(aVoid -> Log.d(TAG, "Document update success: " + eventId))
-                .addOnFailureListener(e -> Log.w(TAG, "Document update failed", e));
+                .addOnSuccessListener(aVoid -> Log.d("BALLSACK", "Document update success: " + eventId))
+                .addOnFailureListener(e -> Log.w("BALLSACK", "Document update failed", e));
     }
 
     /**

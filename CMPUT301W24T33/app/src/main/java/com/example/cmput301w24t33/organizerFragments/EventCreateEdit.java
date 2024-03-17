@@ -1,39 +1,50 @@
-// This class is designed for managing the creation and editing of events in an Android application,
-// providing the interface for inputting event details and handling QR code generation or selection
-// for event check-ins.
+// Purpose:
+// Manages the creation and editing of events providing the interface for inputting event details
+// and handling QR code generation or selection for event check-ins.
+//
+// Issues:
+// Put parameters on input such as max size, cannot be blank etc, end date after start date etc.
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
-
 import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.organizerFragments.EventChooseQR;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.fileUpload.ImageHandler;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
+import java.io.IOException;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -51,6 +62,38 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     FirebaseFirestore db;
     private String qrcode = null;
 
+    private FirebaseStorage storage;
+    private String imageRef;
+    private String imageUrl;
+
+    private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if(result.getResultCode() == Activity.RESULT_OK
+                        && result.getData() != null) {
+                    storage = FirebaseStorage.getInstance();
+                    Uri photoUri = result.getData().getData();
+                    Log.d("returned url",photoUri.toString());
+
+                    ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
+                        @Override
+                        public void onSuccess(Pair<String, String> result) {
+                            // Handle the success case here
+                            // For example, store the result.first as the image URL and result.second as the image name
+                            Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                            imageRef = result.second;
+                            imageUrl = result.first;
+                        }
+                        @Override
+                        public void onFailure(Exception e) {
+                            // Handle the failure case here
+                            Log.d("Upload Failure", e.toString());
+                        }
+                    });
+                }
+            }
+    );
+
 
     /**
      * Creates a new instance of the EventCreateEdit fragment with an optional event to edit.
@@ -67,12 +110,29 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     }
 
 
+    /**
+     * Called when the fragment is first created. Prepares the fragment by initializing
+     * the Firestore database instance and handling any arguments passed to the fragment,
+     * such as an event ID for editing purposes.
+     *
+     * @param savedInstanceState If the fragment is re-created from a previous state, this bundle
+     *                           contains the data it most recently supplied. Otherwise, it is null.
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
     }
 
+    /**
+     * Configures action buttons, date and time pickers, and loads existing event data if editing an event.
+     * This is called to prepare the fragment's user interface.
+     *
+     * @param inflater The LayoutInflater object to inflate views in the fragment.
+     * @param container If non-null, this is the parent view the fragment's UI should attach to.
+     * @param savedInstanceState If non-null, the fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OrganizerCreateEditEventFragmentBinding.inflate(inflater, container, false);
@@ -87,6 +147,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         return binding.getRoot();
     }
 
+    /**
+     * Cleans up resources associated with the view hierarchy. This is called when the view previously created by onCreateView has been detached.
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -199,6 +262,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
         event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
         event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
+        event.setGeoTracking(binding.geoTrackingSwitch.isChecked());
         //event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
 
@@ -233,7 +297,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Placeholder for poster upload functionality.
      */
     private void onUploadPoster() {
-        // Handle the poster upload
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        launcher.launch(intent);
     }
 
     /**

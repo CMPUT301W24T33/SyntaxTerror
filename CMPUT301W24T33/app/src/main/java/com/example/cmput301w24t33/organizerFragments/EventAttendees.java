@@ -1,10 +1,11 @@
-// The EventAttendees fragment is designed to show a list of attendees for an event and a map view
-// indicating a location, providing a visual and interactive component for event organizers within
-// an Android application.
+// Purpose:
+// Shows a list of attendees and how many their are for an event and a map view indicating a location
+// of attendees when they check in.
+//
+// Issues: Have a way to pin sign in locations on map
+//
 
 package com.example.cmput301w24t33.organizerFragments;
-
-import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,13 +18,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.adminFragments.DeleteEventAdmin;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
@@ -32,8 +33,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A Fragment to display event attendees and a map view location.
@@ -41,8 +49,11 @@ import java.util.ArrayList;
 public class EventAttendees extends Fragment {
 
     private RecyclerView attendeesRecyclerView;
-    private final ArrayList<User> attendeesList = new ArrayList<>();
+    private ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
+    private TextView attendeeNumberView;
+    private FirebaseFirestore db;
+    private String eventId;
     private MapView mapView;
     private Event selectedEvent;
     private GoogleMap gMap;
@@ -58,30 +69,57 @@ public class EventAttendees extends Fragment {
      * @return A new instance of fragment EventAttendees.
      */
     public static EventAttendees newInstance(Event event) {
-        EventAttendees fragment = new EventAttendees();
         Bundle args = new Bundle();
         args.putSerializable("event", event);
-        fragment.setArguments(args);
-        return fragment;
+        EventAttendees frag = new EventAttendees();
+        frag.setArguments(args);
+        return frag;
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view. This method sets up the
+     * action bar, click listeners, attendees RecyclerView, and map view. It also initializes
+     * the attendees count TextView.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
 
         if (getArguments() != null) {
             selectedEvent = (Event) getArguments().getSerializable("event");
-            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
+//            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
         }
 
         //String address = selectedEvent.getAddress();
 
         setupActionBar(view);
         setupClickListeners(view);
-        setupAttendeesRecyclerView(view);
         setupMapView(view, savedInstanceState);
+        setupAttendeesRecyclerView(view);
+
+        attendeeNumberView = view.findViewById(R.id.attendees_count);
+        attendeeNumberView.setText("0");
 
         return view;
+    }
+
+    /**
+     * Called when the fragment is being created. Initializes the Firestore database instance and retrieves
+     * the event ID from the fragment arguments to set up data retrieval for the event attendees.
+     *
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
+     */
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
+//        assert getArguments() != null;
+//        eventId = getArguments().get("eventId").toString();
     }
 
     /**
@@ -93,6 +131,79 @@ public class EventAttendees extends Fragment {
         attendeesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         attendeeAdapter = new AttendeeAdapter(attendeesList);
         attendeesRecyclerView.setAdapter(attendeeAdapter);
+
+        // populates attendees list with attendee names
+//        attendeeRef = db.collection("events/" + eventId + "/attendees");
+//        attendeeRef.addSnapshotListener((eventSnapshot, eventError)->{
+//            Log.d("AttendeeSnapshot", "snaped: " + attendeeRef.getPath());
+//            if (eventError != null) {
+//                Log.d("AttendeeSnapshot", eventError.toString());
+//            } else if (eventSnapshot != null) {
+//                attendeesList.clear();
+//                Log.d("AttendeeSnapshot", "not null");
+//                for (QueryDocumentSnapshot doc : eventSnapshot) {
+//                    Log.d("UserSnapshot", "snaped");
+//                    String userId = doc.getId();
+//                    Log.d("AttendeeSnapshot", "user Id: " + userId);
+//                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
+//                        DocumentSnapshot document = task.getResult();
+//                        if (document.exists()) {
+//                            Log.d("AttendeeSnapshot", "doc exists");
+//                            User user = document.toObject(User.class);
+//                            assert user != null;
+//                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
+//                            attendeesList.add(user);
+//                        }
+//                        attendeeAdapter.notifyDataSetChanged();
+//                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
+//
+//                    });
+//                }
+//            }
+//        });
+
+        // is this necessary?
+        DocumentReference eventRef = db.collection("events").document(selectedEvent.getEventId());
+
+        eventRef
+                .addSnapshotListener((eventSnapshot, eventError) ->{
+                    Log.d("AttendeeSnapshot", "snaped: " + eventRef.getPath());
+            if (eventError != null) {
+                Log.d("AttendeeSnapshot", eventError.toString());
+            } else if (eventSnapshot != null) {
+                attendeesList.clear();
+                Log.d("AttendeeSnapshot", "not null");
+                for(User user : eventSnapshot.toObject(Event.class).getAttendees()){
+                    attendeesList.add(user);
+
+                }
+//                for(GeoPoint checkInPoint : eventSnapshot.toObject(Event.class).getCheckInLocations()) {
+//                    gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+//                }
+                attendeeAdapter.notifyDataSetChanged();
+                attendeeNumberView.setText(String.format(Locale.CANADA, "%d", attendeesList.size()));
+            }
+//                    Log.d("UserSnapshot", "snaped");
+//                    String userId = doc.getId();
+//                    Log.d("AttendeeSnapshot", "user Id: " + userId);
+//                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
+//                        DocumentSnapshot document = task.getResult();
+//                        if (document.exists()) {
+//                            Log.d("AttendeeSnapshot", "doc exists");
+//                            User user = document.toObject(User.class);
+//                            assert user != null;
+//                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
+//                            attendeesList.add(user);
+//                        }
+//                        attendeeAdapter.notifyDataSetChanged();
+//                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
+//
+//                    });
+//                }
+
+        });
+
+
     }
 
     // Map view set to uAlberta location
@@ -109,6 +220,9 @@ public class EventAttendees extends Fragment {
             LatLng uAlberta = new LatLng(53.5232, -113.5263);
             gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uAlberta, 15));
             gMap.addMarker(new MarkerOptions().position(uAlberta).title("University of Alberta"));
+            for(GeoPoint checkInPoint : selectedEvent.getCheckInLocations()) {
+                gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+            }
         });
     }
 

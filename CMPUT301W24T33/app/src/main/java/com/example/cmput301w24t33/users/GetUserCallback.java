@@ -1,3 +1,11 @@
+// Purpose:
+// interface handles user retrieval outcomes, offering methods for successful user retrieval
+// (onUserReceived) and failure (onFailure).
+//
+// Issues:
+//
+
+
 package com.example.cmput301w24t33.users;
 
 /**

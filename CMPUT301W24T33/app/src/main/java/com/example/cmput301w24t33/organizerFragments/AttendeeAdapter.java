@@ -1,6 +1,9 @@
-// The AttendeeAdapter class facilitates the display of attendees in a list within an Android
-// application, using a RecyclerView to efficiently manage and present a dynamic list of User
-// objects representing attendees.
+// Purpose:
+// Facilitates the display of attendees in a list using a RecyclerView to efficiently manage and p
+// resent a dynamic list of User objects representing attendees.
+//
+// Issues: Make the attendees list look better
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 
@@ -8,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.User;
 
@@ -30,6 +35,14 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
         this.attendeesList = attendeesList;
     }
 
+    /**
+     * Inflates the layout for each attendee item when the RecyclerView needs a new ViewHolder.
+     * This method creates a new ViewHolder instance by inflating the attendee item layout.
+     *
+     * @param parent The ViewGroup into which the new view will be added.
+     * @param viewType The view type of the new view, for handling different types of items in the RecyclerView.
+     * @return A new ViewHolder instance that holds the View for the attendee item.
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,6 +50,14 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
         return new MyViewHolder(view);
     }
 
+    /**
+     * Binds the attendee data to the ViewHolder for a specific position in the RecyclerView.
+     * This method updates the contents of the ViewHolder's itemView to reflect the attendee
+     * information at the given position in the dataset.
+     *
+     * @param holder The ViewHolder which should be updated to represent the attendee data.
+     * @param position The position of the attendee within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = attendeesList.get(position);
@@ -44,6 +65,12 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
         holder.lastNameText.setText(user.getLastName());
     }
 
+    /**
+     * Returns the total number of attendees in the dataset.
+     * This method helps the RecyclerView determine the number of items it needs to display.
+     *
+     * @return The size of the attendeesList, representing the total number of attendees in the dataset.
+     */
     @Override
     public int getItemCount() {
         return attendeesList.size();

@@ -1,3 +1,10 @@
+// Purpose:
+// Manages UI-related data for events, ensuring persistence through lifecycle changes and
+// facilitating interaction between the UI and the EventRepository.
+//
+// Issues:
+//
+
 package com.example.cmput301w24t33.events;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
@@ -7,6 +14,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
 import java.util.List;
 
 /**

@@ -42,18 +42,22 @@
         android:layout_below="@id/profile_view"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/first_name_text_view"
             style="@style/ProfileText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="First Name:"
+            android:textColor="#000000"
             android:textStyle="bold" />
+
         <EditText
             android:id="@+id/first_name_edit_text"
             style="@style/ProfileText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#000000" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,18 +67,22 @@
         android:layout_below="@id/first_name_layout"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/last_name_text_view"
             style="@style/ProfileText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Last Name:"
+            android:textColor="#000000"
             android:textStyle="bold" />
+
         <EditText
             android:id="@+id/last_name_edit_text"
             style="@style/ProfileText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#000000" />
     </LinearLayout>
 
     <LinearLayout
@@ -84,18 +92,22 @@
         android:layout_below="@id/last_name_layout"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/email_text_view"
             style="@style/ProfileText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E-Mail:"
+            android:textColor="#000000"
             android:textStyle="bold" />
+
         <EditText
             android:id="@+id/email_edit_text"
             style="@style/ProfileText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="#000000" />
     </LinearLayout>
 
     <LinearLayout

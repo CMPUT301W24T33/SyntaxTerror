@@ -1,5 +1,9 @@
-// models a user of the application, encapsulating their identification, contact information, and
+// Purpose:
+// Models a user of the application, encapsulating their identification, contact information, and
 // their interaction with events through sign-ups.
+//
+// Issues: wants to be able to enable or disable geolocation tracking
+//
 
 package com.example.cmput301w24t33.users;
 
@@ -7,6 +11,7 @@ import com.example.cmput301w24t33.events.Event;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Represents a user within the application, including their personal information
@@ -19,6 +24,8 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
+    private String imageRef;
+    private String imageUrl;
 
     /**
      * Constructs a User object with specified details.
@@ -29,18 +36,45 @@ public class User implements Serializable {
      * @param email     User's email address.
      * @param adminview Flag indicating whether the user has administrative views.
      */
-    public User(String userId, String firstName, String lastName, String email, Boolean adminview) {
+    public User(String userId, String firstName, String lastName, String email, Boolean adminview,String imageurl, String imageRef) {
         setUserId(userId);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.adminview = adminview;
+        this.imageUrl = imageurl;
+        this.imageRef = imageRef;
     }
 
     /**
      * Default constructor for User.
      */
     public User() {
+    }
+
+    /**
+     * Compares this user to the specified object. The result is {@code true} if and only if
+     * the argument is not {@code null} and is a {@code User} object that represents the same user ID as this object.
+     *
+     * @param o the object to compare this {@code User} against
+     * @return {@code true} if the given object represents a {@code User} equivalent to this user, {@code false} otherwise
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userId.equals(user.userId);
+    }
+
+    /**
+     * Returns a hash code value for this user. This method is supported for the benefit of hash tables such as those provided by {@link java.util.HashMap}.
+     *
+     * @return a hash code value for this user.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
     }
 
     /**
@@ -151,4 +185,19 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getImageRef() {
+        return imageRef;
+    }
+
+    public void setImageRef(String imageRef) {
+        this.imageRef = imageRef;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
