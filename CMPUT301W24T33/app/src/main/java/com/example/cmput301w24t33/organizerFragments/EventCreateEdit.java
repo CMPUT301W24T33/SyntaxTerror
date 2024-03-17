@@ -262,6 +262,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
         event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
         event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
+        event.setGeoTracking(binding.geoTrackingSwitch.isChecked());
         //event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
 

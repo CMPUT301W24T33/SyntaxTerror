@@ -7,7 +7,12 @@
 
 package com.example.cmput301w24t33.events;
 
+import android.location.Location;
+
 import com.example.cmput301w24t33.users.User;
+import com.google.firebase.firestore.GeoPoint;
+
+import org.checkerframework.checker.units.qual.A;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -36,6 +41,10 @@ public class Event implements Serializable {
     private int maxOccupancy;
     private int maxSignup;
     private ArrayList<User> attendees = new ArrayList<>();
+
+
+
+    private ArrayList<GeoPoint> checkInLocations = new ArrayList<>();
     private ArrayList<User> signedUp = new ArrayList<>();
     private String imageRef;
     private String imageUrl;
@@ -337,6 +346,13 @@ public class Event implements Serializable {
         return signedUp;
     }
 
+    public void addAttendee(User attendee, Location location) {
+        attendees.add(attendee);
+        if (location != null) {
+            checkInLocations.add(new GeoPoint(location.getLatitude(), location.getLongitude()));
+        }
+    }
+
     /**
      * Sets the list of users who have signed up for the event.
      * @param signedUp An ArrayList of User objects representing users who have signed up.
@@ -359,5 +375,13 @@ public class Event implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public ArrayList<GeoPoint> getCheckInLocations() {
+        return checkInLocations;
+    }
+
+    public void setCheckInLocations(ArrayList<GeoPoint> checkInLocations) {
+        this.checkInLocations = checkInLocations;
     }
 }
