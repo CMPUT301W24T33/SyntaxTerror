@@ -61,6 +61,8 @@ public class Event implements Serializable {
         this.organizerId = organizerId;
         this.eventDescription = eventDescription;
         this.geoTracking = false;
+        this.imageRef = "";
+        this.imageUrl = "";
     }
 
     public Event() {
