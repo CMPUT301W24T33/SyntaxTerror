@@ -8,10 +8,16 @@
 
 package com.example.cmput301w24t33.users;
 
-import android.content.ContentResolver;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
+import android.util.Pair;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +29,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.activities.Attendee;
+import com.example.cmput301w24t33.fileUpload.ImageHandler;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,6 +47,7 @@ import java.io.IOException;
  * Allows users to view and update their first name, last name, and email address.
  */
 public class Profile extends Fragment {
+
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
@@ -46,7 +56,53 @@ public class Profile extends Fragment {
     private EditText addEmailEditText;
     private UserViewModel userViewModel;
     private UserRepository userRepo;
+    FirebaseStorage storage;
     private ImageView profileImageView;
+    private String imageRef;
+    private String imageUrl;
+
+
+    private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if(result.getResultCode() == Activity.RESULT_OK
+                        && result.getData() != null) {
+                    storage = FirebaseStorage.getInstance();
+                    Uri photoUri = result.getData().getData();
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), photoUri);
+                        profileImageView.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Log.d("returned url",photoUri.toString());
+
+                    ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
+                        @Override
+                        public void onSuccess(Pair<String, String> result) {
+                            // Handle the success case here
+                            // For example, store the result.first as the image URL and result.second as the image name
+                            Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                            imageRef = result.second;
+                            imageUrl = result.first;
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+                            // Handle the failure case here
+                            Log.d("Upload Failure", e.toString());
+                        }
+                    });
+
+
+
+
+                }
+            }
+    );
+
+
+
 
     /**
      * Inflates the layout for the profile editing screen and initializes UI components, including setting up click listeners and the action bar.
@@ -96,7 +152,7 @@ public class Profile extends Fragment {
         // Profile image listener
         ImageView profileImage = view.findViewById(R.id.profile_image);
         profileImage.setOnClickListener(v -> {
-            // Placeholder for profile picture editing logic
+            selectImage();
         });
 
         // Cancel button listener
@@ -110,7 +166,18 @@ public class Profile extends Fragment {
             // Save profile logic
             saveProfile();
         });
+
+
     }
+    /**
+     * Select an image as a profile image
+     */
+    private void selectImage() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        launcher.launch(intent);
+    }
+
+
 
     /**
      * Saves the profile after validating the input data and updates the user data in the database.
@@ -153,7 +220,7 @@ public class Profile extends Fragment {
 
         // Create new User object
         String userId = getAndroidId();
-        User newUser = new User(userId, fName, lName, email, false);
+        User newUser = new User(userId, fName, lName, email, false, imageUrl, imageRef);
 
         // Navigate back
         getParentFragmentManager().popBackStack();

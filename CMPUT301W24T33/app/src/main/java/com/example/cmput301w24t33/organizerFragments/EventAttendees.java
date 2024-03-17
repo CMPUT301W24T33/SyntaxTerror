@@ -7,8 +7,6 @@
 
 package com.example.cmput301w24t33.organizerFragments;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +25,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.adminFragments.DeleteEventAdmin;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
@@ -37,11 +34,9 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 

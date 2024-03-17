@@ -9,10 +9,6 @@
 package com.example.cmput301w24t33.users;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.provider.Settings;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -24,8 +20,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.activities.Attendee;
 
 /**
  * Fragment for creating a new user profile within the application. It captures
@@ -106,7 +104,7 @@ public class CreateProfile extends Fragment {
             }
 
             String userId = getAndroidId();
-            User newUser = new User(userId, fName, lName, email, false);
+            User newUser = new User(userId, fName, lName, email, false, "","");
             userRepo.setUser(newUser, userId);
 
             getParentFragmentManager().popBackStack();

@@ -8,10 +8,11 @@
 package com.example.cmput301w24t33.adminFragments;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.databinding.AdminDeleteEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
