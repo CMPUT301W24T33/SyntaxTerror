@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A fragment class for displaying and editing the profile of a user.
@@ -43,7 +44,7 @@ public class Profile extends Fragment {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
-        userRepo = new UserRepository();
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
 
         return view;
     }

@@ -28,8 +28,8 @@ public class Event implements Serializable {
     private boolean active;
     private int maxOccupancy;
     private int maxSignup;
-    private ArrayList<User> attendees = new ArrayList<>();
-    private ArrayList<User> signedUp = new ArrayList<>();
+    //private ArrayList<String> attendees = new ArrayList<>();
+    //private ArrayList<String> signedUp = new ArrayList<>();
 
     /**
      * Constructs a new Event with specified name, organizerId, and eventDescription.
@@ -304,35 +304,5 @@ public class Event implements Serializable {
         this.maxSignup = maxSignup;
     }
 
-    /**
-     * Gets the list of attendees currently signed up for the event.
-     * @return An ArrayList of User objects representing the attendees.
-     */
-    public ArrayList<User> getAttendees() {
-        return attendees;
-    }
-
-    /**
-     * Sets the list of attendees for the event.
-     * @param attendees An ArrayList of User objects representing the attendees.
-     */
-    public void setAttendees(ArrayList<User> attendees) {
-        this.attendees = attendees;
-    }
-
-    /**
-     * Gets the list of users who have signed up for the event but are not yet attendees.
-     * @return An ArrayList of User objects representing users who have signed up.
-     */
-    public ArrayList<User> getSignedUp() {
-        return signedUp;
-    }
-
-    /**
-     * Sets the list of users who have signed up for the event.
-     * @param signedUp An ArrayList of User objects representing users who have signed up.
-     */
-    public void setSignedUp(ArrayList<User> signedUp) {
-        this.signedUp = signedUp;
-    }
 }
+

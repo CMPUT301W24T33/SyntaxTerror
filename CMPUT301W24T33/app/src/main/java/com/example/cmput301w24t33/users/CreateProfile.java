@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Fragment for creating a new user profile within the application. It captures
@@ -40,7 +42,8 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userRepo = new UserRepository();
+        //FirebaseFirestore db = FirebaseFirestore.getInstance();
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
     }
 
     @Override

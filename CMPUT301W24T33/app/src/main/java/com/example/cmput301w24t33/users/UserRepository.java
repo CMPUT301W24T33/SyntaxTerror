@@ -30,8 +30,8 @@ public class UserRepository {
     /**
      * Constructor for UserRepository. Initializes connection to Firestore and the users collection.
      */
-    public UserRepository() {
-        db = FirebaseFirestore.getInstance();
+    public UserRepository(FirebaseFirestore targetDB) {
+        db = targetDB;
         userCollection = db.collection("users");
     }
 
@@ -42,7 +42,6 @@ public class UserRepository {
         void onUsersLoaded(List<User> users);
         void onUsersLoaded(User user);
         void onFailure(@NonNull Exception e);
-
     }
 
     /**
@@ -147,7 +146,6 @@ public class UserRepository {
      *
      * @param user The User object to add to Firestore.
      */
-
     public void setUser(User user, String docId) {
         userCollection.document(docId).set(user)
                 .addOnSuccessListener(documentReference -> {

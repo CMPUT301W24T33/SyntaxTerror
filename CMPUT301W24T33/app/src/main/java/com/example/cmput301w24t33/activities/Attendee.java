@@ -32,6 +32,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,6 +47,7 @@ import com.example.cmput301w24t33.users.CreateProfile;
 
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
 import com.google.android.datatransport.Priority;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -54,6 +56,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -86,7 +89,7 @@ public class Attendee extends AppCompatActivity {
     private String userId;
     private QRScanner qrScanner = new QRScanner();
     private EventViewModel eventViewModel;
-
+    private UserRepository userRepo;
     private User currentUser;
     private FusedLocationProviderClient fusedLocationProvider;
     private UserViewModel userViewModel;
@@ -183,7 +186,12 @@ public class Attendee extends AppCompatActivity {
         userId = getAndroidId();
         Log.d(TAG, "Attendee Android ID: " + userId);
 
-        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+
+        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+
+
+        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.queryUser(userId);
         userViewModel.getUser().observe(this, user -> {
             if (user != null) {

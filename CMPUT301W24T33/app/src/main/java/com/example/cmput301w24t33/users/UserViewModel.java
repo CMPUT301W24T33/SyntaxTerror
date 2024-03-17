@@ -16,8 +16,8 @@ import java.util.List;
  * It holds user data and communicates with the UserRepository for data operations.
  */
 public class UserViewModel extends ViewModel {
-    private final UserRepository userRepo;
-    private final MutableLiveData<List<User>> userLiveData;
+    private UserRepository userRepo;
+    private MutableLiveData<List<User>> userLiveData;
     private MutableLiveData<User> liveUser;
     private User user;
 
@@ -26,10 +26,18 @@ public class UserViewModel extends ViewModel {
      * Also sets up the callback interface for user data operations.
      */
     public UserViewModel() {
-        userRepo = new UserRepository();
-        userLiveData = new MutableLiveData<>();
-        liveUser = new MutableLiveData<>();
-        user = new User();
+        //userRepo = new UserRepository();
+        //userLiveData = new MutableLiveData<>();
+        //liveUser = new MutableLiveData<>();
+        //user = new User();
+        //setUserCallback(userRepo);
+    }
+
+    public UserViewModel (UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser, User newUser) {
+        userRepo = myRepo;
+        userLiveData = userList;
+        liveUser = singleUser;
+        user = newUser;
         setUserCallback(userRepo);
     }
 
