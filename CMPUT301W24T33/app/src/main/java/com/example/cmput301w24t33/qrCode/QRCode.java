@@ -29,20 +29,14 @@
 package com.example.cmput301w24t33.qrCode;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.Environment;
 import android.util.Log;
 
-import com.example.cmput301w24t33.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.google.zxing.qrcode.encoder.ByteMatrix;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.Serializable;
 
 /**

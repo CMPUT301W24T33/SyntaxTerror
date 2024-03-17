@@ -11,7 +11,7 @@ import com.example.cmput301w24t33.users.User;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Represents an event, including details such as date, time, location, and participants.
@@ -37,6 +37,8 @@ public class Event implements Serializable {
     private int maxSignup;
     private ArrayList<User> attendees = new ArrayList<>();
     private ArrayList<User> signedUp = new ArrayList<>();
+    private String imageRef;
+    private String imageUrl;
 
     /**
      * Constructs a new Event with specified name, organizerId, and eventDescription.
@@ -341,5 +343,21 @@ public class Event implements Serializable {
      */
     public void setSignedUp(ArrayList<User> signedUp) {
         this.signedUp = signedUp;
+    }
+
+    public String getImageRef() {
+        return imageRef;
+    }
+
+    public void setImageRef(String imageRef) {
+        this.imageRef = imageRef;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
