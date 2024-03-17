@@ -9,6 +9,8 @@
 package com.example.cmput301w24t33.users;
 
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -62,6 +64,7 @@ public class Profile extends Fragment {
     private ImageView profileImageView;
     private String imageRef;
     private String imageUrl;
+    private User profileToEdit;
 
 
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
@@ -95,14 +98,19 @@ public class Profile extends Fragment {
                             Log.d("Upload Failure", e.toString());
                         }
                     });
-
-
-
-
                 }
             }
     );
 
+
+    public static Profile newInstance(User user) {
+        Profile fragment = new Profile();
+        Log.d(TAG, "Profile NewInstance");
+        Bundle args = new Bundle();
+        args.putSerializable("user", user);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
 
@@ -120,6 +128,12 @@ public class Profile extends Fragment {
         setupClickListeners(view);
         setupActionBar(view);
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
+
+        if (getArguments() != null) {
+            Bundle userBundle = getArguments();
+            profileToEdit = (User) userBundle.getSerializable("user");
+            loadData(view, profileToEdit);
+        }
 
         return view;
     }
@@ -171,6 +185,19 @@ public class Profile extends Fragment {
 
 
     }
+
+    private void loadData(View view, User profile) {
+        /*
+        EditText editFirstName = view.findViewById(R.id.first_name_edit_text);
+        EditText editLastName = view.findViewById(R.id.last_name_edit_text);
+        EditText editEmail = view.findViewById(R.id.email_edit_text);
+        */
+        addFnameEditText.setText(profile.getFirstName());
+        addLnameEditText.setText(profile.getLastName());
+        addEmailEditText.setText(profile.getEmail());
+
+
+    }
     /**
      * Select an image as a profile image
      */
@@ -185,6 +212,8 @@ public class Profile extends Fragment {
      * Saves the profile after validating the input data and updates the user data in the database.
      */
     private void saveProfile() {
+
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
         // Extract text from EditTexts
         fName = addFnameEditText.getText().toString().trim();
         lName = addLnameEditText.getText().toString().trim();
@@ -220,9 +249,11 @@ public class Profile extends Fragment {
         }
         profileImageView.setImageBitmap(identicon);
 
-        // Create new User object
-        String userId = getAndroidId();
-        User newUser = new User(userId, fName, lName, email, false, imageUrl, imageRef);
+        profileToEdit.setFirstName(addFnameEditText.getText().toString());
+        profileToEdit.setLastName(addLnameEditText.getText().toString());
+        profileToEdit.setEmail(addEmailEditText.getText().toString());
+
+        userRepo.updateUser(profileToEdit);
 
         // Navigate back
         getParentFragmentManager().popBackStack();

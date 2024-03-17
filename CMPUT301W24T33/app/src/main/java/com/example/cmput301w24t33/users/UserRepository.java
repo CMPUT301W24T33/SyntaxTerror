@@ -161,4 +161,13 @@ public class UserRepository {
                     Log.w(TAG, "Create User Document failed", e);
                 });
     }
+
+    public void updateUser(User user) {
+        String userId = user.getUserId();
+        DocumentReference docRef = userCollection.document(userId);
+
+        docRef.set(user)
+                .addOnSuccessListener(aVoid -> Log.d("User Update", "Document update success: " + userId))
+                .addOnFailureListener(e -> Log.w("User update", "Document update failed", e));
+    }
 }

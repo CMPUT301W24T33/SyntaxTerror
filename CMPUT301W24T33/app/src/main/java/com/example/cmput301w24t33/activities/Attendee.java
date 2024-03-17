@@ -231,7 +231,7 @@ public class Attendee extends AppCompatActivity {
     private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> {
-            replaceFragment(new Profile());
+            replaceFragment(Profile.newInstance(currentUser));
         });
 
         ImageView checkInButton = findViewById(R.id.check_in_img);

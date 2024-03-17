@@ -15,7 +15,7 @@ public class UserUnitTest {
 
     @Before
     public void setUp() {
-        user = new User("1", "John", "Doe", "john.doe@example.com", false);
+        //user = new User("1", "John", "Doe", "john.doe@example.com", false);
     }
 
     @Test
