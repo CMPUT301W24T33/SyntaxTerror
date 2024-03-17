@@ -14,6 +14,7 @@ package com.example.cmput301w24t33.events;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.nfc.Tag;
 import android.util.Log;
 
 import com.google.firebase.firestore.CollectionReference;
@@ -110,8 +111,8 @@ public class EventRepository {
         DocumentReference docRef = eventsCollection.document(eventId);
 
         docRef.set(event)
-                .addOnSuccessListener(aVoid -> Log.d("BALLSACK", "Document update success: " + eventId))
-                .addOnFailureListener(e -> Log.w("BALLSACK", "Document update failed", e));
+                .addOnSuccessListener(aVoid -> Log.d("document", "Document update success: " + eventId))
+                .addOnFailureListener(e -> Log.w("document", "Document update failed", e));
     }
 
     /**
