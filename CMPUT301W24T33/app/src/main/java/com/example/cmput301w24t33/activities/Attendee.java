@@ -43,12 +43,17 @@ import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,6 +71,7 @@ public class Attendee extends AppCompatActivity {
     private AttendeeActivityBinding binding;
     private User currentUser;
     private String userId;
+    private String userImageURL;
     private QRScanner qrScanner = new QRScanner();
     private FusedLocationProviderClient fusedLocationProvider;
     private UserViewModel userViewModel;
@@ -92,6 +98,7 @@ public class Attendee extends AppCompatActivity {
         setupViewModel();
         setupActionbar();
         setOnClickListeners();
+        fetchInfo(findViewById(R.id.profile_image));
     }
 
     /**
@@ -192,11 +199,34 @@ public class Attendee extends AppCompatActivity {
             } else {
                 // New User
                 replaceFragment(new CreateProfile());
+                fetchInfo(findViewById(R.id.profile_image));
             }
             setupViewModel();
         });
     }
-
+    private void fetchInfo(ImageView profileButton ) {
+        String androidId = getAndroidId(); // Ensure this method correctly retrieves the ID
+        db.collection("users").document(androidId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            userImageURL = documentSnapshot.getString("imageUrl");
+                            Log.d("profile", userImageURL);
+                            Picasso.get().load(userImageURL).into(profileButton);
+                        } else {
+                            System.out.println("No such document");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("Error getting documents: " + e);
+                    }
+                });
+    }
     /**
      * Handles click events on individual events, navigating to the event details.
      * @param event The clicked event object.
@@ -211,6 +241,7 @@ public class Attendee extends AppCompatActivity {
      */
     private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
+
         profileButton.setOnClickListener(v -> {
             replaceFragment(new Profile());
         });
