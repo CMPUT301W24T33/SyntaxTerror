@@ -106,7 +106,7 @@ public class CreateProfile extends Fragment {
             }
 
             String userId = getAndroidId();
-            User newUser = new User(userId, fName, lName, email, false);
+            User newUser = new User(userId, fName, lName, email, false, "","");
             userRepo.setUser(newUser, userId);
 
             getParentFragmentManager().popBackStack();

@@ -1,114 +1,62 @@
 package com.example.cmput301w24t33.fileUpload;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.net.Uri;
+import android.util.Log;
 import android.util.Pair;
 
+import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
+
 /**
  * A utility class for handling image operations including uploading to Firebase Storage,
  * updating image references in Firebase Database, and removing images from Firebase.
  */
 public class ImageHandler {
-    /**
-     * Uploads an image file to Firebase Storage and returns a {@link Pair} containing the download URL
-     * and the name of the uploaded image. Note that the method signature suggests a synchronous operation,
-     * but Firebase Storage operations are asynchronous. This method serves as an example and should be adapted
-     * to fit asynchronous execution patterns in your application.
-     *
-     * @param filepath The path to the image file to upload.
-     * @param storage  The {@link FirebaseStorage} instance to use for uploading.
-     * @return A {@link Pair} where the first element is the download URL as a {@link String} and the second
-     * element is the name of the uploaded file. This is a placeholder return value and should be replaced
-     * with appropriate asynchronous handling mechanisms.
-     */
-    public static Pair<String, String> uploadFile(String filepath, FirebaseStorage storage) {
-        // Extract the name of the file from the filepath
-        String fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
-        Uri file = Uri.fromFile(new File(filepath));
+
+    public interface UploadCallback {
+        void onSuccess(Pair<String, String> result);
+        void onFailure(Exception e);
+    }
+    public static void uploadFile(Uri filepath, FirebaseStorage storage, UploadCallback callback) {
+        String generatedString = UUID.randomUUID().toString();
         StorageReference storageRef = storage.getReference();
-        StorageReference fileRef = storageRef.child("images/" + fileName);
-        UploadTask uploadTask = fileRef.putFile(file);
+        StorageReference fileRef = storageRef.child("images/" + generatedString);
+        UploadTask uploadTask = fileRef.putFile(filepath);
 
-        // Initialize a TaskCompletionSource to manage the return value
-        TaskCompletionSource<Pair<String, String>> taskCompletionSource = new TaskCompletionSource<>();
-        Task<Pair<String, String>> customTask = taskCompletionSource.getTask();
-
-        // Start the upload and listen for completion
         uploadTask.continueWithTask(task -> {
             if (!task.isSuccessful()) {
                 throw task.getException();
             }
-            // Continue with the task to get the download URL
             return fileRef.getDownloadUrl();
         }).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Uri downloadUri = task.getResult();
-                // Use TaskCompletionSource to set the result
-                taskCompletionSource.setResult(new Pair<>(downloadUri.toString(), fileName));
+                callback.onSuccess(new Pair<>(downloadUri.toString(), generatedString));
             } else {
-                taskCompletionSource.setException(task.getException());
-            }
-        });
-
-        // Blocking on the main thread is discouraged; consider using an asynchronous pattern instead
-        // This example assumes you're handling the result asynchronously
-        customTask.addOnSuccessListener(pair -> {
-            // Handle success - pair contains the URL and file name
-            System.out.println("Upload successful. URL: " + pair.first + ", Name: " + pair.second);
-        }).addOnFailureListener(e -> {
-            // Handle failure
-        });
-
-        // Return type needs to be changed to accommodate asynchronous execution
-        // For now, this is a placeholder to fit the method signature
-        return new Pair<>("", "");
-    }
-
-    /**
-     * Updates the user's profile with the provided image URL and image name. This method asynchronously
-     * updates the 'userImage', 'imageRef', and 'userUpload' fields for a specified user in Firebase Database.
-     *
-     * @param userID   The ID of the user to update.
-     * @param imageName The name of the image file.
-     * @param URL      The download URL of the uploaded image.
-     * @param database The {@link FirebaseDatabase} instance to use for updating.
-     */
-    public static void updateAddUserPicture(String userID, String imageName, String URL, FirebaseDatabase database) {
-        DatabaseReference usersRef = database.getReference("users").child(userID);
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("userImage", URL);
-        updates.put("imageRef", imageName);
-        updates.put("userUpload", true);
-
-        usersRef.updateChildren(updates).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                System.out.println("User picture updated successfully.");
-            } else {
-                System.err.println("Failed to update user picture.");
+                callback.onFailure(task.getException());
             }
         });
     }
 
-    /**
-     * Updates the specified event with the provided image URL and image name. This method asynchronously
-     * updates the 'eventImage' and 'imageRef' fields for a specified event in Firebase Database.
-     *
-     * @param eventID   The ID of the event to update.
-     * @param imageRef The name of the image file.
-     * @param URL      The download URL of the uploaded image.
-     * @param database The {@link FirebaseDatabase} instance to use for updating.
-     */
     public static void updateAddEventPicture(String eventID, String imageRef, String URL, FirebaseDatabase database) {
         DatabaseReference eventsRef = database.getReference("events").child(eventID);
         Map<String, Object> updates = new HashMap<>();

@@ -64,6 +64,8 @@ public class Profile extends Fragment {
     private UserRepository userRepo;
     FirebaseStorage storage;
     private ImageView profileImageView;
+    private String imageRef;
+    private String imageUrl;
 
 
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
@@ -81,11 +83,26 @@ public class Profile extends Fragment {
                     }
                     Log.d("returned url",photoUri.toString());
 
-                    Pair myReturn = ImageHandler.uploadFile(photoUri.getPath(),storage);
-                    String downloadURL = myReturn.first.toString();
-                    String referenceURL = myReturn.second.toString();
+                    ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
+                        @Override
+                        public void onSuccess(Pair<String, String> result) {
+                            // Handle the success case here
+                            // For example, store the result.first as the image URL and result.second as the image name
+                            Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                            imageRef = result.second;
+                            imageUrl = result.first;
+                        }
 
-                    Log.d("url",downloadURL);
+                        @Override
+                        public void onFailure(Exception e) {
+                            // Handle the failure case here
+                            Log.d("Upload Failure", e.toString());
+                        }
+                    });
+
+
+
+
                 }
             }
     );
@@ -209,7 +226,7 @@ public class Profile extends Fragment {
 
         // Create new User object
         String userId = getAndroidId();
-        User newUser = new User(userId, fName, lName, email, false);
+        User newUser = new User(userId, fName, lName, email, false, imageUrl, imageRef);
 
         // Navigate back
         getParentFragmentManager().popBackStack();
