@@ -10,16 +10,25 @@ package com.example.cmput301w24t33.organizerFragments;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,10 +37,13 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.fileUpload.ImageHandler;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
@@ -49,6 +61,38 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private OrganizerCreateEditEventFragmentBinding binding;
     FirebaseFirestore db;
     private String qrcode = null;
+
+    private FirebaseStorage storage;
+    private String imageRef;
+    private String imageUrl;
+
+    private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if(result.getResultCode() == Activity.RESULT_OK
+                        && result.getData() != null) {
+                    storage = FirebaseStorage.getInstance();
+                    Uri photoUri = result.getData().getData();
+                    Log.d("returned url",photoUri.toString());
+
+                    ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
+                        @Override
+                        public void onSuccess(Pair<String, String> result) {
+                            // Handle the success case here
+                            // For example, store the result.first as the image URL and result.second as the image name
+                            Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                            imageRef = result.second;
+                            imageUrl = result.first;
+                        }
+                        @Override
+                        public void onFailure(Exception e) {
+                            // Handle the failure case here
+                            Log.d("Upload Failure", e.toString());
+                        }
+                    });
+                }
+            }
+    );
 
 
     /**
@@ -252,7 +296,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Placeholder for poster upload functionality.
      */
     private void onUploadPoster() {
-        // Handle the poster upload
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        launcher.launch(intent);
     }
 
     /**
