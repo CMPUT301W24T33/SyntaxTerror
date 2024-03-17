@@ -34,11 +34,14 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A Fragment to display event attendees and a map view location.
@@ -46,9 +49,8 @@ import java.util.ArrayList;
 public class EventAttendees extends Fragment {
 
     private RecyclerView attendeesRecyclerView;
-    private final ArrayList<User> attendeesList = new ArrayList<>();
+    private ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
-    private CollectionReference attendeeRef;
     private TextView attendeeNumberView;
     private FirebaseFirestore db;
     private String eventId;
@@ -66,9 +68,9 @@ public class EventAttendees extends Fragment {
      * Creates a new instance of EventAttendees.
      * @return A new instance of fragment EventAttendees.
      */
-    public static EventAttendees newInstance(String eventId) {
+    public static EventAttendees newInstance(Event event) {
         Bundle args = new Bundle();
-        args.putString("eventId", eventId);
+        args.putSerializable("event", event);
         EventAttendees frag = new EventAttendees();
         frag.setArguments(args);
         return frag;
@@ -88,17 +90,18 @@ public class EventAttendees extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
 
-//        if (getArguments() != null) {
-////            selectedEvent = (Event) getArguments().getSerializable("event");
-////            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
-//        }
+        if (getArguments() != null) {
+            selectedEvent = (Event) getArguments().getSerializable("event");
+//            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
+        }
 
         //String address = selectedEvent.getAddress();
 
         setupActionBar(view);
         setupClickListeners(view);
-        setupAttendeesRecyclerView(view);
         setupMapView(view, savedInstanceState);
+        setupAttendeesRecyclerView(view);
+
         attendeeNumberView = view.findViewById(R.id.attendees_count);
         attendeeNumberView.setText("0");
 
@@ -115,8 +118,8 @@ public class EventAttendees extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
-        assert getArguments() != null;
-        eventId = getArguments().get("eventId").toString();
+//        assert getArguments() != null;
+//        eventId = getArguments().get("eventId").toString();
     }
 
     /**
@@ -130,34 +133,76 @@ public class EventAttendees extends Fragment {
         attendeesRecyclerView.setAdapter(attendeeAdapter);
 
         // populates attendees list with attendee names
-        attendeeRef = db.collection("events/" + eventId + "/attendees");
-        attendeeRef.addSnapshotListener((eventSnapshot, eventError)->{
-            Log.d("AttendeeSnapshot", "snaped: " + attendeeRef.getPath());
+//        attendeeRef = db.collection("events/" + eventId + "/attendees");
+//        attendeeRef.addSnapshotListener((eventSnapshot, eventError)->{
+//            Log.d("AttendeeSnapshot", "snaped: " + attendeeRef.getPath());
+//            if (eventError != null) {
+//                Log.d("AttendeeSnapshot", eventError.toString());
+//            } else if (eventSnapshot != null) {
+//                attendeesList.clear();
+//                Log.d("AttendeeSnapshot", "not null");
+//                for (QueryDocumentSnapshot doc : eventSnapshot) {
+//                    Log.d("UserSnapshot", "snaped");
+//                    String userId = doc.getId();
+//                    Log.d("AttendeeSnapshot", "user Id: " + userId);
+//                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
+//                        DocumentSnapshot document = task.getResult();
+//                        if (document.exists()) {
+//                            Log.d("AttendeeSnapshot", "doc exists");
+//                            User user = document.toObject(User.class);
+//                            assert user != null;
+//                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
+//                            attendeesList.add(user);
+//                        }
+//                        attendeeAdapter.notifyDataSetChanged();
+//                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
+//
+//                    });
+//                }
+//            }
+//        });
+
+        // is this necessary?
+        DocumentReference eventRef = db.collection("events").document(selectedEvent.getEventId());
+
+        eventRef
+                .addSnapshotListener((eventSnapshot, eventError) ->{
+                    Log.d("AttendeeSnapshot", "snaped: " + eventRef.getPath());
             if (eventError != null) {
                 Log.d("AttendeeSnapshot", eventError.toString());
             } else if (eventSnapshot != null) {
                 attendeesList.clear();
                 Log.d("AttendeeSnapshot", "not null");
-                for (QueryDocumentSnapshot doc : eventSnapshot) {
-                    Log.d("UserSnapshot", "snaped");
-                    String userId = doc.getId();
-                    Log.d("AttendeeSnapshot", "user Id: " + userId);
-                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d("AttendeeSnapshot", "doc exists");
-                            User user = document.toObject(User.class);
-                            assert user != null;
-                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
-                            attendeesList.add(user);
-                        }
-                        attendeeAdapter.notifyDataSetChanged();
-                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
+                for(User user : eventSnapshot.toObject(Event.class).getAttendees()){
+                    attendeesList.add(user);
 
-                    });
                 }
+//                for(GeoPoint checkInPoint : eventSnapshot.toObject(Event.class).getCheckInLocations()) {
+//                    gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+//                }
+                attendeeAdapter.notifyDataSetChanged();
+                attendeeNumberView.setText(String.format(Locale.CANADA, "%d", attendeesList.size()));
             }
+//                    Log.d("UserSnapshot", "snaped");
+//                    String userId = doc.getId();
+//                    Log.d("AttendeeSnapshot", "user Id: " + userId);
+//                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
+//                        DocumentSnapshot document = task.getResult();
+//                        if (document.exists()) {
+//                            Log.d("AttendeeSnapshot", "doc exists");
+//                            User user = document.toObject(User.class);
+//                            assert user != null;
+//                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
+//                            attendeesList.add(user);
+//                        }
+//                        attendeeAdapter.notifyDataSetChanged();
+//                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
+//
+//                    });
+//                }
+
         });
+
 
     }
 
@@ -175,6 +220,9 @@ public class EventAttendees extends Fragment {
             LatLng uAlberta = new LatLng(53.5232, -113.5263);
             gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uAlberta, 15));
             gMap.addMarker(new MarkerOptions().position(uAlberta).title("University of Alberta"));
+            for(GeoPoint checkInPoint : selectedEvent.getCheckInLocations()) {
+                gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+            }
         });
     }
 

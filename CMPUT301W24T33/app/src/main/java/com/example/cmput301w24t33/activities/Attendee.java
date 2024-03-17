@@ -36,6 +36,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
+import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.CreateProfile;
@@ -230,6 +231,8 @@ public class Attendee extends AppCompatActivity {
         ImageView checkInButton = findViewById(R.id.check_in_img);
 
         checkInButton.setOnClickListener(v -> {
+//            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);
+//            onRequestPermissionsResult(1,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, new int[]{PackageManager.PERMISSION_GRANTED});
             GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(this);
 
             // initializes scanner
@@ -289,16 +292,12 @@ public class Attendee extends AppCompatActivity {
             db.collection("events")
                     .whereEqualTo("checkInQR", qrCode)
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()) {
-                                for(QueryDocumentSnapshot doc : task.getResult()) {
-                                    Log.d("QRCheckIn", doc.getId() + "->" + doc.getData());
-                                    String eventId = doc.getId();//doc.getData().get("checkInQR").toString();
-                                    Log.d("QRCheckIn", eventId);
-                                    Attendee.this.CheckIn(eventId);
-                                }
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()) {
+                            for(QueryDocumentSnapshot doc : task.getResult()) {
+                                Log.d("QRCheckIn", doc.getId() + "->" + doc.getData());
+                                Event event = doc.toObject(Event.class);
+                                Attendee.this.CheckIn(event);
                             }
                         }
                     });
@@ -309,54 +308,64 @@ public class Attendee extends AppCompatActivity {
 
     /**
      * Checks user into event
-     * @param eventId ID of event to be checked into
+     * @param event event to be checked into
      */
-    private void CheckIn(String eventId) {
+    private void CheckIn(Event event) {
         // TODO: Determine if event has GeoTracking enabled
         //  1: If GeoTracking is enabled
         //      1.1: nothing needed
         //  2: If GeoTethering is enabled
         //      2.1: prevent user from checking if they are not within some fixed distance of event
+        //      2.2: what should this fixed distance be?
         //  3: If GeoTracking is disabled
         //      3.1: Don't store user's location (just set it to null?)
         //  4: Explain to user why location is being asked for
         //      4.1: Note that location is only required if the organizer has geo-tethering on
         Map<String, GeoPoint> update = new HashMap<>();
         update.put("test", new GeoPoint(1,1));
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);
 
-        // gets location permission
-        if (ContextCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED) {
+        Toast checkInFailedToast = new Toast(getApplicationContext());
+        checkInFailedToast
+                .setText("Check In Failed: Please Try Again");
 
-            // Retrieves Current Location
-            fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener(this, location -> {
-                if (location != null) {
-                    // Logic to handle location object
-                    update.put("location", new GeoPoint(location.getLatitude(),location.getLongitude()));
-                    Log.d("Location", "Retrieved new Location");
-                    db.collection("events").document(eventId)
-                            .collection("attendees")
-                            .document(userId)
-                            .set(update)
-                            .addOnSuccessListener(v->{
-                                Log.d("CheckIn", "User Successfully checked in");
-                            });
-                } else {
-                    update.put("location", null);
-                }
-            }).addOnFailureListener(this, u->{
-                Log.d("Location", "Could not retrieve new location");
-            });
+        Toast locationPermissionsToast = new Toast(getApplicationContext());
+        locationPermissionsToast.setText("Please Enable Location Settings And Try Again");
 
+        Toast checkInSuccessfulToast = new Toast(getApplicationContext());
+        checkInSuccessfulToast.setText("Successfully Checked In");
+        if(event.getGeoTracking()){
+            // gets location permission
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
 
-            Log.d("CheckIn", "Permission Granted");
+            if (ContextCompat.checkSelfPermission(
+                    this, Manifest.permission.ACCESS_FINE_LOCATION) ==
+                    PackageManager.PERMISSION_GRANTED) {
 
+                // Retrieves Current Location
+                fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener(this, location -> {
+                    if (location != null) {
+                        // Logic to handle location object
+                        event.addAttendee(currentUser, location);
+                        EventRepository eventRepo = new EventRepository();
+                        eventRepo.updateEvent(event);
+                        checkInSuccessfulToast.show();
 
-
-
-
+                    } else {
+                        checkInFailedToast.show();
+                    }
+                }).addOnFailureListener(this, u->{
+                    Log.d("Location", "Could not retrieve new location");
+                    locationPermissionsToast.show();
+                });
+                Log.d("Location", "Permission Granted");
+            } else {
+                locationPermissionsToast.show();
+            }
+        } else { // geoTracking dissabled
+            event.addAttendee(currentUser, null);
+            EventRepository eventRepo = new EventRepository();
+            eventRepo.updateEvent(event);
+            checkInSuccessfulToast.show();
         }
     }
 
