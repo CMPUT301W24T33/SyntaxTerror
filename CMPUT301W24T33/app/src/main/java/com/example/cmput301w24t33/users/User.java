@@ -24,6 +24,8 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
+    private String imageRef;
+    private String imageUrl;
 
     /**
      * Constructs a User object with specified details.
@@ -34,12 +36,14 @@ public class User implements Serializable {
      * @param email     User's email address.
      * @param adminview Flag indicating whether the user has administrative views.
      */
-    public User(String userId, String firstName, String lastName, String email, Boolean adminview) {
+    public User(String userId, String firstName, String lastName, String email, Boolean adminview,String imageurl, String imageRef) {
         setUserId(userId);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.adminview = adminview;
+        this.imageUrl = imageurl;
+        this.imageRef = imageRef;
     }
 
     /**
