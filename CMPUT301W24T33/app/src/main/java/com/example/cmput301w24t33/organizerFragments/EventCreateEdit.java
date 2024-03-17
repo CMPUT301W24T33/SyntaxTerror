@@ -19,25 +19,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
-
 import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.organizerFragments.EventChooseQR;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;

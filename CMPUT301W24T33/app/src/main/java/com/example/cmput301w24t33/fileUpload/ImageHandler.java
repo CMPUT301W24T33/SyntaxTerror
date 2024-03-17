@@ -1,29 +1,16 @@
 package com.example.cmput301w24t33.fileUpload;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.net.Uri;
-import android.util.Log;
 import android.util.Pair;
-
-import com.example.cmput301w24t33.users.User;
-import com.example.cmput301w24t33.users.UserRepository;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskCompletionSource;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 
 /**

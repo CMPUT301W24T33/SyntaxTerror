@@ -14,12 +14,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.cmput301w24t33.activities.Attendee;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * This scans a QR code and stores its contents
