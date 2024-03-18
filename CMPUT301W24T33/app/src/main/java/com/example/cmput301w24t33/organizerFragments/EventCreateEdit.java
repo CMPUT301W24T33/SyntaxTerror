@@ -200,6 +200,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
         // Removes QR Code button
         binding.generateQrCodeButton.setVisibility(View.INVISIBLE);
+        qrcode = eventToEdit.getCheckInQR();
     }
 
     /**
