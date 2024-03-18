@@ -9,6 +9,8 @@
 package com.example.cmput301w24t33.users;
 
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -36,6 +38,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.activities.Attendee;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -68,6 +72,7 @@ public class Profile extends Fragment {
     private ImageView profileImageView;
     private String imageRef;
     private String imageUrl;
+    private User profileToEdit;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -185,6 +190,15 @@ public class Profile extends Fragment {
     );
 
 
+    public static Profile newInstance(User user) {
+        Profile fragment = new Profile();
+        Log.d(TAG, "Profile NewInstance");
+        Bundle args = new Bundle();
+        args.putSerializable("user", user);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
 
     /**
@@ -200,7 +214,13 @@ public class Profile extends Fragment {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
-        userRepo = new UserRepository(db);
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+
+        if (getArguments() != null) {
+            Bundle userBundle = getArguments();
+            profileToEdit = (User) userBundle.getSerializable("user");
+            loadData(view, profileToEdit);
+        }
 
         return view;
     }
@@ -252,6 +272,19 @@ public class Profile extends Fragment {
 
 
     }
+
+    private void loadData(View view, User profile) {
+        /*
+        EditText editFirstName = view.findViewById(R.id.first_name_edit_text);
+        EditText editLastName = view.findViewById(R.id.last_name_edit_text);
+        EditText editEmail = view.findViewById(R.id.email_edit_text);
+        */
+        addFnameEditText.setText(profile.getFirstName());
+        addLnameEditText.setText(profile.getLastName());
+        addEmailEditText.setText(profile.getEmail());
+
+
+    }
     /**
      * Select an image as a profile image
      */
@@ -266,6 +299,8 @@ public class Profile extends Fragment {
      * Saves the profile after validating the input data and updates the user data in the database.
      */
     private void saveProfile() {
+
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
         // Extract text from EditTexts
         fName = addFnameEditText.getText().toString().trim();
         lName = addLnameEditText.getText().toString().trim();
@@ -291,6 +326,11 @@ public class Profile extends Fragment {
                 .update(updates)
                 .addOnSuccessListener(aVoid -> Log.d("Firestore", "DocumentSnapshot successfully updated!"))
                 .addOnFailureListener(e -> Log.w("Firestore", "Error updating document", e));
+        profileToEdit.setFirstName(addFnameEditText.getText().toString());
+        profileToEdit.setLastName(addLnameEditText.getText().toString());
+        profileToEdit.setEmail(addEmailEditText.getText().toString());
+
+        userRepo.updateUser(profileToEdit);
 
         // Navigate back
         getParentFragmentManager().popBackStack();
