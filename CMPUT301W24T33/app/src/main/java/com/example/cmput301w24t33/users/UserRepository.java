@@ -1,7 +1,13 @@
-//  Responsible for managing user data within the app, interfacing with Firebase Firestore to
+// Purpose:
+//  Responsible for managing user data, interfacing with Firebase Firestore to
 //  retrieve, listen for changes, and update user data in real time. It uses a callback interface
 //  to communicate data fetching success or failure back to the caller, enabling asynchronous data
 //  handling and UI updates based on user data operations.
+//
+// Issues:
+// make method to obtain current users id at any time
+// make method to send push notifications to a given user
+// make method to allow for user profile information deletion
 
 package com.example.cmput301w24t33.users;
 

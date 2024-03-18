@@ -1,3 +1,12 @@
+// Purpose:
+// Represents a dialog fragment used to select a desired QR code type to share with other apps.
+// It allows the user to choose from different QR codes (e.g., check-in code, event code, poster code)
+// and shares the selected QR code back to the parent fragment through a listener interface.
+//
+// Issues: None
+//
+
+
 package com.example.cmput301w24t33.qrCode;
 
 import android.app.AlertDialog;
@@ -8,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +45,13 @@ public class ShareQRFragment extends DialogFragment {
         public void ShareSelectedQRCode(QRCode qrCode);
     }
 
+    /**
+     * Creates and returns a dialog for selecting a QR code type to share. Initializes the dialog with options
+     * for sharing check-in, event, or poster QR codes and sets up the positive and negative buttons with appropriate actions.
+     *
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
+     * @return An AlertDialog object ready to be displayed.
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -70,6 +85,12 @@ public class ShareQRFragment extends DialogFragment {
                 } ).create();
     }
 
+    /**
+     * Attaches the fragment to its context, ensuring that it can communicate with the parent fragment or activity.
+     * This method was originally intended to establish the ShareQRDialogListener interface with the context.
+     *
+     * @param context The context in which the fragment is being attached.
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

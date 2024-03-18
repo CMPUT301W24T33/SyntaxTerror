@@ -1,26 +1,27 @@
-// This class serves the purpose of displaying event details within the app, offering the organizer
-// functionality to manage the event further by navigating to different fragments for actions like
-// editing event details, checking in attendees, and sending notifications.
+// Purpose:
+// Displays an events details offering the organizer functionality to manage the event further by
+// navigating to different fragments for actions like editing event details, checking in attendees,
+// and sending notifications.
+//
+// Issues: populate with a poster image
+//
 
 package com.example.cmput301w24t33.organizerFragments;
 
-import android.app.Application;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
@@ -42,7 +43,7 @@ import java.io.Serializable;
 public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDialogListener, Serializable {
 
 
-    private OrganizerEventDetailsFragmentBinding binding;
+    public OrganizerEventDetailsFragmentBinding binding;
     private FirebaseFirestore db;
 
     /**
@@ -59,6 +60,14 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         return fragment;
     }
 
+    /**
+     * Initializes the fragment's UI components with event data and sets up action buttons for event management tasks.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container The parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState Contains data from onSaveInstanceState(Bundle) if the fragment is being recreated.
+     * @return The View for the fragment's UI.
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,7 +87,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      *
      * @param event The event object used to populate action button functions.
      */
-    private void setupActionButtons(Event event) {
+    public void setupActionButtons(Event event) {
         // ADD METHOD TO SHARE QR CODE
         binding.shareQrCodeButton.setOnClickListener(v -> {});
 
@@ -87,6 +96,9 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
 
         // Navigation to the event attendees fragment
         binding.checkInsButton.setOnClickListener(v -> replaceFragment(EventAttendees.newInstance(event)));
+
+        // Navigation to the event sign ups fragment
+        binding.signUpsButton.setOnClickListener(v -> replaceFragment(EventSignedUp.newInstance(event.getSignedUp())));
 
         // Navigation to the notifications organizer fragment
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
@@ -121,6 +133,9 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
 
     }
 
+    /**
+     * Cleans up resources associated with the fragment's view hierarchy. This method is called when the view previously created by onCreateView has been detached.
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -132,7 +147,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      *
      * @param fragment The new fragment to replace the current one.
      */
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.organizer_layout, fragment)
                 .addToBackStack(null)

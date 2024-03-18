@@ -2,7 +2,8 @@
 // Supports event organizers by enabling event creation, editing, and detail viewing, alongside
 // user mode switching for enhanced application navigation.
 //
-// Issues:
+// Issues: None
+//
 //
 
 package com.example.cmput301w24t33.activities;
@@ -115,7 +116,6 @@ public class Organizer extends AppCompatActivity {
     /**
      * Handles click events on individual events, directing to event details or editing.
      * @param event The event that was clicked.
-     * @param position The position in the adapter of the clicked event.
      */
 
     public static EventCreateEdit newInstance(Event event) {
@@ -127,6 +127,13 @@ public class Organizer extends AppCompatActivity {
         return fragment;
     }
 
+    /**
+     * Handles click events on individual events within the RecyclerView. This method is called when
+     * an event item is clicked and navigates to the event details or editing screen.
+     *
+     * @param event The event object associated with the clicked item.
+     * @param position The position of the clicked item in the adapter.
+     */
     public void onEventClickListener(Event event, int position) {
         replaceFragment(EventDetails.newInstance(event));
     }

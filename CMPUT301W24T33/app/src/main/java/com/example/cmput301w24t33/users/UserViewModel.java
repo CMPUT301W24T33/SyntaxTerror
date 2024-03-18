@@ -1,6 +1,10 @@
-// serves as a bridge between the UI and the data layer, specifically for user-related data.
+// Purpose
+// Serves as a bridge between the UI and the data layer, specifically for user-related data.
 // It utilizes UserRepository for fetching user data from Firestore and updates the UI with this
-// data through LiveData, ensuring UI components observe and react to data changes
+// data through LiveData, ensuring UI components observe and react to data changes.
+//
+// Issues:
+//
 
 package com.example.cmput301w24t33.users;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;

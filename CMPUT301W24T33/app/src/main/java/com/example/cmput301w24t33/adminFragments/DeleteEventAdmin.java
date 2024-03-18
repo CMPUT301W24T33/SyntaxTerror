@@ -3,14 +3,16 @@
 //
 // Issues:
 // Event deletion logic is not implemented in the onDelete method
+//
 
 package com.example.cmput301w24t33.adminFragments;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.databinding.AdminDeleteEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
@@ -39,6 +41,15 @@ public class DeleteEventAdmin extends Fragment {
         return fragment;
     }
 
+    /**
+     * Creates and returns the view hierarchy associated with the fragment.
+     * Initializes the fragment's binding with the layout inflater and sets up the UI components.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return A View corresponding to the fragment UI.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = AdminDeleteEventFragmentBinding.inflate(inflater, container, false);
@@ -50,6 +61,10 @@ public class DeleteEventAdmin extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * Called when the view previously created by onCreateView(LayoutInflater, ViewGroup, Bundle) has
+     * been detached from the fragment. The binding is nullified here to avoid memory leaks.
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
