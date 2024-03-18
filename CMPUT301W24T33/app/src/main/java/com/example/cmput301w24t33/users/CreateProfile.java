@@ -64,7 +64,7 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userRepo = new UserRepository();
+        userRepo = new UserRepository(db);
     }
 
     /**

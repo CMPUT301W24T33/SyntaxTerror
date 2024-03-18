@@ -180,10 +180,6 @@ public class Profile extends Fragment {
                             Log.d("Upload Failure", e.toString());
                         }
                     });
-
-
-
-
                 }
             }
     );
@@ -204,7 +200,7 @@ public class Profile extends Fragment {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
-        userRepo = new UserRepository();
+        userRepo = new UserRepository(db);
 
         return view;
     }
