@@ -37,7 +37,7 @@ public class User implements Serializable {
      * @param adminview Flag indicating whether the user has administrative views.
      */
     public User(String userId, String firstName, String lastName, String email, Boolean adminview,String imageurl, String imageRef) {
-        setUserId(userId);
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

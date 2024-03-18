@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.users.UserAdapter;
+import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,7 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
     private UserAdapter userAdapter;
     private RecyclerView userRecyclerView;
     private UserViewModel userViewModel;
+    private UserRepository userRepo;
 
     /**
      * Called to have the fragment instantiate its user interface view. This method inflates the layout for the fragment's view, sets up the action bar, click listeners, and prepares the display of user profiles.
@@ -100,8 +104,10 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
         userRecyclerView = view.findViewById(R.id.profiles_admin);
         userList = new ArrayList<>();
         setAdapter();
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
 
-        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.getUsersLiveData().observe(getViewLifecycleOwner(), this::updateUI);
     }
 

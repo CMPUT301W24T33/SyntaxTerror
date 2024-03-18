@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -43,6 +44,7 @@ import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -102,7 +104,7 @@ public class Attendee extends AppCompatActivity {
         setupViewModel();
         setupActionbar();
         setOnClickListeners();
-        fetchInfo(findViewById(R.id.profile_image));
+        //fetchInfo(findViewById(R.id.profile_image));
     }
 
     /**
@@ -192,8 +194,11 @@ public class Attendee extends AppCompatActivity {
     public void authenticateUser() {
         userId = getAndroidId();
         Log.d(TAG, "Attendee Android ID: " + userId);
+        UserRepository userRepo = new UserRepository(db);
+        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+
         userViewModel.queryUser(userId);
         userViewModel.getUser().observe(this, user -> {
             if (user != null) {
@@ -247,9 +252,8 @@ public class Attendee extends AppCompatActivity {
         ImageView profileButton = findViewById(R.id.profile_image);
 
         profileButton.setOnClickListener(v -> {
-            replaceFragment(new Profile());
+            replaceFragment(Profile.newInstance(currentUser));
         });
-        binding.switchEventsButton.setOnClickListener(v -> switchEventView());
 
         ImageView checkInButton = findViewById(R.id.check_in_img);
 
