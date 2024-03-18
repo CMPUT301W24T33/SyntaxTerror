@@ -74,7 +74,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 if(result.getResultCode() == Activity.RESULT_OK
                         && result.getData() != null) {
                     storage = FirebaseStorage.getInstance();
-                    doneImageUpload = false;
                     Uri photoUri = result.getData().getData();
                     Log.d("returned url",photoUri.toString());
 
@@ -311,6 +310,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Placeholder for poster upload functionality.
      */
     private void onUploadPoster() {
+        doneImageUpload = false;
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         launcher.launch(intent);
     }
