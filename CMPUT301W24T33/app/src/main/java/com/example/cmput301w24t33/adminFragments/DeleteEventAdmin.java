@@ -16,13 +16,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.databinding.AdminDeleteEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.EventRepository;
 
 /**
  * A fragment for administrators to delete events. Provides UI for confirming deletion
  * and performs the deletion process.
  */
 public class DeleteEventAdmin extends Fragment {
-
+    private EventRepository eventRepo;
     private AdminDeleteEventFragmentBinding binding;
     private Event eventToDelete;
 
@@ -57,6 +58,7 @@ public class DeleteEventAdmin extends Fragment {
             eventToDelete = (Event) getArguments().getSerializable("event");
             loadData();
         }
+        eventRepo = new EventRepository();
         setupActionButtons();
         return binding.getRoot();
     }
@@ -94,6 +96,7 @@ public class DeleteEventAdmin extends Fragment {
      */
     private void onDelete() {
         // Implement event deletion logic here
+        eventRepo.deleteEvent(eventToDelete);
         getParentFragmentManager().popBackStack(); // Placeholder action
     }
 

@@ -14,8 +14,12 @@ package com.example.cmput301w24t33.events;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.nfc.Tag;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -110,8 +114,8 @@ public class EventRepository {
         DocumentReference docRef = eventsCollection.document(eventId);
 
         docRef.set(event)
-                .addOnSuccessListener(aVoid -> Log.d("BALLSACK", "Document update success: " + eventId))
-                .addOnFailureListener(e -> Log.w("BALLSACK", "Document update failed", e));
+                .addOnSuccessListener(aVoid -> Log.d("document", "Document update success: " + eventId))
+                .addOnFailureListener(e -> Log.w("document", "Document update failed", e));
     }
 
     /**
@@ -130,5 +134,22 @@ public class EventRepository {
                             .addOnFailureListener(e -> Log.e(TAG, "Failed to add eventId", e));
                 })
                 .addOnFailureListener(e -> Log.w(TAG, "Create document failed", e));
+    }
+
+    public void deleteEvent(Event event) {
+        eventsCollection.document(event.getEventId())
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error deleting document", e);
+                    }
+                });
     }
 }

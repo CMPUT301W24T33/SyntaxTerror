@@ -63,8 +63,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private String qrcode = null;
 
     private FirebaseStorage storage;
-    private String imageRef;
-    private String imageUrl;
+    private String eventImageRef;
+    private String eventImageUrl;
+    // set to false if entering image select from gallery activity, turns true if upload or exit
+    private boolean doneImageUpload = true;
 
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -81,8 +83,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                             // Handle the success case here
                             // For example, store the result.first as the image URL and result.second as the image name
                             Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
-                            imageRef = result.second;
-                            imageUrl = result.first;
+                            eventImageRef = result.second;
+                            eventImageUrl = result.first;
+                            doneImageUpload = true;
                         }
                         @Override
                         public void onFailure(Exception e) {
@@ -90,6 +93,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                             Log.d("Upload Failure", e.toString());
                         }
                     });
+                }
+                // result code shows activity cancelled, happens when back button pressed
+                else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                    doneImageUpload = true;
                 }
             }
     );
@@ -193,6 +200,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
         // Removes QR Code button
         binding.generateQrCodeButton.setVisibility(View.INVISIBLE);
+        qrcode = eventToEdit.getCheckInQR();
     }
 
     /**
@@ -218,12 +226,15 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             return;
         }
  */
-
-        // DATABASE CODE GOES HERE
-        saveEvent();
-
-        Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
-        getParentFragmentManager().popBackStack();
+        if (doneImageUpload) {
+            // DATABASE CODE GOES HERE
+            saveEvent();
+            Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
+            getParentFragmentManager().popBackStack();
+        }
+        else{
+            Snackbar.make(binding.getRoot(), "Uploading Poster", Snackbar.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -263,6 +274,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
         event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
         event.setGeoTracking(binding.geoTrackingSwitch.isChecked());
+        Log.d("setURL","a"+eventImageUrl);
+        event.setImageUrl(eventImageUrl);
+        event.setImageRef(eventImageRef);
         //event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
 
@@ -297,6 +311,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Placeholder for poster upload functionality.
      */
     private void onUploadPoster() {
+        doneImageUpload = false;
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         launcher.launch(intent);
     }

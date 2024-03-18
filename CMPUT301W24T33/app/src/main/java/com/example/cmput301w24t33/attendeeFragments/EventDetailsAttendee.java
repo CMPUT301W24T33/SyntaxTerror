@@ -8,7 +8,14 @@
 
 package com.example.cmput301w24t33.attendeeFragments;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +27,18 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.qrCode.QRCode;
+import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.example.cmput301w24t33.users.User;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Serializable;
 
 /**
  * A fragment for displaying event details to an attendee. Includes viewing event notifications and sharing QR codes.
  */
-public class EventDetailsAttendee extends Fragment {
+public class EventDetailsAttendee extends Fragment implements ShareQRFragment.ShareQRDialogListener, Serializable {
 
     private AttendeeEventFragmentBinding binding;
     private Event event;
@@ -85,6 +98,12 @@ public class EventDetailsAttendee extends Fragment {
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
         binding.shareQrCodeButton.setOnClickListener(v -> {
             // QR code sharing functionality
+            QRCode checkInCode = new QRCode(event.getCheckInQR());
+            QRCode posterCode = event.getPosterQR()==null? null: new QRCode(event.getPosterQR());
+
+            ShareQRFragment
+                    .newInstance(checkInCode, new QRCode(event.getEventId()), posterCode,this)
+                    .show(getActivity().getSupportFragmentManager(), "Share QR Code");
         });
         binding.toggleButtonGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             updateSignedUpStatus(checkedId, isChecked);
@@ -142,4 +161,49 @@ public class EventDetailsAttendee extends Fragment {
                 .addToBackStack(null)
                 .commit();
     }
+
+    @Override
+    public void ShareSelectedQRCode(QRCode qrCode) {
+        if(qrCode == null) { //nothing to share
+            return;
+        }
+
+        // Save image to internal Storage
+        //  (see https://stackoverflow.com/questions/56904485/how-to-save-an-image-in-android-q-using-mediastore)
+        String path = Environment.DIRECTORY_DCIM + "/images"; // path to images DCIM folder
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, qrCode.getQrCode());
+        values.put(MediaStore.MediaColumns.MIME_TYPE, "image/png");
+        values.put(MediaStore.MediaColumns.RELATIVE_PATH, path);
+
+        ContentResolver resolver = getContext().getContentResolver();
+        Uri uri = null;
+        try {
+            Uri contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            uri = resolver.insert(contentUri, values);
+            OutputStream stream = resolver.openOutputStream(uri);
+
+            // saves QRCode image to internal storage
+            qrCode.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, stream);
+        } catch (IOException e) {
+            if (uri != null) {
+                resolver.delete(uri, null, null);
+            }
+            e.printStackTrace();
+        }
+
+        // Handles share activity
+        Intent sendIntent = new Intent();
+
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        sendIntent.setType("image/png");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+
+        // start share activity
+        startActivity(shareIntent);
+    }
 }
+

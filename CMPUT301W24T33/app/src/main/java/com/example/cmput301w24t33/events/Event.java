@@ -61,6 +61,8 @@ public class Event implements Serializable {
         this.organizerId = organizerId;
         this.eventDescription = eventDescription;
         this.geoTracking = false;
+        this.imageRef = "";
+        this.imageUrl = "";
     }
 
     public Event() {
@@ -327,6 +329,9 @@ public class Event implements Serializable {
      * @return An ArrayList of User objects representing the attendees.
      */
     public ArrayList<User> getAttendees() {
+        if (attendees.isEmpty()) {
+            return attendees;
+        }
         return attendees;
     }
 

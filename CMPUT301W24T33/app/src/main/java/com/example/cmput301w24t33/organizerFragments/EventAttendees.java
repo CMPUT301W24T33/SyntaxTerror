@@ -173,9 +173,12 @@ public class EventAttendees extends Fragment {
             } else if (eventSnapshot != null) {
                 attendeesList.clear();
                 Log.d("AttendeeSnapshot", "not null");
-                for(User user : eventSnapshot.toObject(Event.class).getAttendees()){
-                    attendeesList.add(user);
+                if (!eventSnapshot.toObject(Event.class).getAttendees().isEmpty()) {
 
+                    for (User user : eventSnapshot.toObject(Event.class).getAttendees()) {
+                        attendeesList.add(user);
+
+                    }
                 }
 //                for(GeoPoint checkInPoint : eventSnapshot.toObject(Event.class).getCheckInLocations()) {
 //                    gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));

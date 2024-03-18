@@ -14,15 +14,34 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.cmput301w24t33.events.Event;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
+
+import java.util.ArrayList;
 
 /**
  * This scans a QR code and stores its contents
  * */
 public class QRScanner {
     private Barcode barcode;
+    private ScanResultsListener listener;
+
+    /**
+     * Listens to QRScanner and does some action on Scan Result
+     */
+    public interface ScanResultsListener{
+        /**
+         * Does some action on Scan Result
+         * @param qrCode scanned QR code
+         */
+        void onScanResult(QRCode qrCode);
+    }
+
+    public QRScanner(ScanResultsListener listener){
+        this.listener = listener;
+    }
 
     /**
      * Opens camera to scan QR code and stores contents
@@ -35,6 +54,7 @@ public class QRScanner {
                 .addOnSuccessListener(
                         barcode -> {
                             this.setQRCode(barcode);
+                            listener.onScanResult(new QRCode(barcode.getRawValue()));
 
                             Log.d("SCAN", "Scan Successful");
                         })

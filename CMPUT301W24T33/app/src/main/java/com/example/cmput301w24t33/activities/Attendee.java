@@ -14,46 +14,52 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.events.EventViewModel;
+import com.example.cmput301w24t33.qrCode.QRCheckIn;
+import com.example.cmput301w24t33.qrCode.QRCode;
+import com.example.cmput301w24t33.qrCode.QRFindEvent;
 import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,20 +72,18 @@ import java.util.Map;
  */
 public class Attendee extends AppCompatActivity {
     private FirebaseFirestore db;
-
-    private ArrayList<Event> eventList;
-    private EventAdapter allEventAdapter;
-    private EventAdapter userEventAdapter;
-    private RecyclerView allEventRecyclerView;
-    private RecyclerView userEventRecyclerView;
-    private String userId;
-    private QRScanner qrScanner = new QRScanner();
-    private EventViewModel eventViewModel;
-
+    private EventAdapter eventAdapter;
+    private boolean viewingAllEvents = false;
+    private AttendeeActivityBinding binding;
     private User currentUser;
+    private String userId;
+    private String userImageURL;
     private FusedLocationProviderClient fusedLocationProvider;
+    private QRScanner qrScanner;
     private UserViewModel userViewModel;
-
+    private EventViewModel eventViewModel;
+    private ArrayList<Event> allEvents = new ArrayList<>();
+    private ArrayList<Event> signedUpEvents = new ArrayList<>();
 
     /**
      * Initializes the activity, setting up Firebase, RecyclerView for events, and listeners.
@@ -88,17 +92,77 @@ public class Attendee extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.attendee_activity);
-        allEventRecyclerView = findViewById(R.id.all_event_recyclerview);
-        userEventRecyclerView = findViewById(R.id.user_event_recyclerview);
+        binding = AttendeeActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
-        
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
-        setupActionbar();
+        userId = getAndroidId();
+
         authenticateUser();
-        displayEvents();
+        setupRecyclerView();
+        setupViewModel();
+        setupActionbar();
         setOnClickListeners();
+        //fetchInfo(findViewById(R.id.profile_image));
+    }
+
+    /**
+     * Switches between viewing all events and events the user has signed up for.
+     * Updates the UI to reflect the current view state.
+     */
+    private void switchEventView() {
+        viewingAllEvents = !viewingAllEvents;
+        updateDisplayedEvents();
+        binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+    }
+
+    /**
+     * Updates the RecyclerView to display either all events or only the events the user has signed up for,
+     * based on the current view state.
+     */
+    private void updateDisplayedEvents() {
+        List<Event> eventsToShow = viewingAllEvents ? allEvents : signedUpEvents;
+        eventAdapter.setEvents(eventsToShow);
+        eventAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Sets up the RecyclerView with a LinearLayoutManager and an EventAdapter.
+     */
+    private void setupRecyclerView() {
+        eventAdapter = new EventAdapter(new ArrayList<>(), this::onEventClickListener);
+        binding.eventrecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        binding.eventrecyclerview.setAdapter(eventAdapter);
+    }
+
+    /**
+     * Initializes the ViewModel and sets up an observer for the events LiveData.
+     * Updates the local lists of all events and signed-up events whenever the LiveData changes.
+     */
+    private void setupViewModel() {
+        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        eventViewModel.getEventsLiveData().observe(this, events -> {
+            allEvents.clear();
+            allEvents.addAll(events);
+            userSignUpFilter(events);
+            updateDisplayedEvents();
+        });
+        eventViewModel.loadEvents();
+    }
+
+    /**
+     * Filters the list of all events to find events that the user has signed up for.
+     * Updates the local list of signed-up events.
+     * @param events The full list of events to filter from.
+     */
+    private void userSignUpFilter(List<Event> events) {
+        signedUpEvents.clear();
+        for (Event event : events) {
+            if (event.getSignedUp().contains(currentUser)) {
+                signedUpEvents.add(event);
+            }
+        }
     }
 
     /**
@@ -110,14 +174,6 @@ public class Attendee extends AppCompatActivity {
     }
 
     /**
-     * Updates the UI to display the latest events data.
-     * @param events A list of events to be displayed.
-     */
-    private void updateUI(List<Event> events) {
-        allEventAdapter.setEvents(events);
-    }
-
-    /**
      * Handles actions to be taken when the activity resumes, including user authorization and events loading.
      */
     @Override
@@ -125,52 +181,6 @@ public class Attendee extends AppCompatActivity {
         super.onResume();
         Log.d(TAG, "RESUME");
         eventViewModel.loadEvents();
-    }
-
-    /**
-     * Navigates to the profile creation fragment.
-     */
-    private void registerUser() {
-        replaceFragment(new CreateProfile());
-    }
-
-    /**
-     * Sets up the RecyclerView adapter for displaying events.
-     */
-    private void setAdapter() {
-        allEventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        allEventRecyclerView.setHasFixedSize(true);
-        allEventAdapter = new EventAdapter(eventList, this::onEventClickListener);
-        allEventRecyclerView.setAdapter(allEventAdapter);
-        allEventAdapter.notifyDataSetChanged();
-
-        ArrayList<Event> testEventList = new ArrayList<Event>();
-        userEventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        userEventRecyclerView.setHasFixedSize(true);
-        userEventAdapter = new EventAdapter(testEventList, this::onEventClickListener);
-        userEventRecyclerView.setAdapter(userEventAdapter);
-        userEventAdapter.notifyDataSetChanged();
-
-    }
-
-    /**
-     * Switches between displaying all events and events the user is attending based on the current state, updating the button text accordingly.
-     *
-     * @param switchButton The button that triggers the switch between the all events view and the user's events view.
-     */
-    private void switchRecyclerView(Button switchButton) {
-        boolean allEventsVisible = allEventRecyclerView.isClickable();
-
-        switchButton.setText(allEventsVisible ?  "Click To Browse All Events" : "Click To Browse Your Events");
-
-        // Toggle visibility and interactivity based on allEventsVisible
-        allEventRecyclerView.setClickable(!allEventsVisible);
-        allEventRecyclerView.setFocusable(!allEventsVisible);
-        allEventRecyclerView.setVisibility(allEventsVisible ? View.GONE : View.VISIBLE);
-
-        userEventRecyclerView.setClickable(allEventsVisible);
-        userEventRecyclerView.setFocusable(allEventsVisible);
-        userEventRecyclerView.setVisibility(allEventsVisible ? View.VISIBLE : View.GONE);
     }
 
     public String getAndroidId() {
@@ -184,8 +194,11 @@ public class Attendee extends AppCompatActivity {
     public void authenticateUser() {
         userId = getAndroidId();
         Log.d(TAG, "Attendee Android ID: " + userId);
+        UserRepository userRepo = new UserRepository(db);
+        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+
         userViewModel.queryUser(userId);
         userViewModel.getUser().observe(this, user -> {
             if (user != null) {
@@ -195,21 +208,34 @@ public class Attendee extends AppCompatActivity {
             } else {
                 // New User
                 replaceFragment(new CreateProfile());
+                fetchInfo(findViewById(R.id.profile_image));
             }
+            setupViewModel();
         });
     }
-
-    /**
-     * Initializes and displays the list of events, setting up the adapter and handling live data updates from the ViewModel.
-     */
-    private void displayEvents() {
-        eventList = new ArrayList<>();
-        setAdapter();
-
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
+    private void fetchInfo(ImageView profileButton ) {
+        String androidId = getAndroidId(); // Ensure this method correctly retrieves the ID
+        db.collection("users").document(androidId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            userImageURL = documentSnapshot.getString("imageUrl");
+                            Log.d("profile", userImageURL);
+                            Picasso.get().load(userImageURL).into(profileButton);
+                        } else {
+                            System.out.println("No such document");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("Error getting documents: " + e);
+                    }
+                });
     }
-
     /**
      * Handles click events on individual events, navigating to the event details.
      * @param event The clicked event object.
@@ -224,40 +250,27 @@ public class Attendee extends AppCompatActivity {
      */
     private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
+
         profileButton.setOnClickListener(v -> {
-            replaceFragment(new Profile());
+            replaceFragment(Profile.newInstance(currentUser));
         });
 
         ImageView checkInButton = findViewById(R.id.check_in_img);
 
         checkInButton.setOnClickListener(v -> {
-//            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);
-//            onRequestPermissionsResult(1,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, new int[]{PackageManager.PERMISSION_GRANTED});
-            GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(this);
+            QRCheckIn qrCheckIn = new QRCheckIn(this, currentUser, allEvents);
+            qrScanner = new QRScanner(qrCheckIn);
+            qrScanner.scanQRCode(this);
+           });
 
-            // initializes scanner
-            scanner
-                    .startScan()
-                    .addOnSuccessListener(
-                            barcode -> {
-                                this.HandleScannerResult(barcode.getRawValue());
-                                // Task successful
-                                Log.d("SCAN", "Scan Successful");
-                            })
-                    .addOnCanceledListener(
-                            () -> {
-                                // Task canceled
-                                Log.d("SCAN", "Scan canceled");
-                            })
-                    .addOnFailureListener(
-                            e -> {
-                                // Task failed with an exception
-                                Toast scanFailedToast = new Toast(this);
-                                scanFailedToast.setText("Check-in failed, please try again");
-                                scanFailedToast.show();
-                                Log.d("SCAN","Scan failed, try again: " + e.getMessage());
-                            });
-       });
+        ImageView findEventButton = findViewById(R.id.find_event_img);
+
+        findEventButton.setOnClickListener(v ->{
+            QRFindEvent qrFindEvent = new QRFindEvent(this, allEvents);
+            qrScanner = new QRScanner((qrFindEvent));
+            qrScanner.scanQRCode(this);
+
+        });
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
@@ -275,98 +288,6 @@ public class Attendee extends AppCompatActivity {
             finish();
             return true;
         });
-
-        Button switchRecyclerviewButton = findViewById(R.id.switch_recycler_view_button);
-        switchRecyclerviewButton.setOnClickListener(v -> {
-            switchRecyclerView(switchRecyclerviewButton);
-        });
-    }
-
-
-    /**
-     * Handles result of QR scanner
-     * @param qrCode scanned qr code
-     */
-    private void HandleScannerResult(String qrCode){
-        if (qrCode != null) {
-            db.collection("events")
-                    .whereEqualTo("checkInQR", qrCode)
-                    .get()
-                    .addOnCompleteListener(task -> {
-                        if(task.isSuccessful()) {
-                            for(QueryDocumentSnapshot doc : task.getResult()) {
-                                Log.d("QRCheckIn", doc.getId() + "->" + doc.getData());
-                                Event event = doc.toObject(Event.class);
-                                Attendee.this.CheckIn(event);
-                            }
-                        }
-                    });
-        } else {
-            Log.d("CheckIn", "Check in failed");
-        }
-    }
-
-    /**
-     * Checks user into event
-     * @param event event to be checked into
-     */
-    private void CheckIn(Event event) {
-        // TODO: Determine if event has GeoTracking enabled
-        //  1: If GeoTracking is enabled
-        //      1.1: nothing needed
-        //  2: If GeoTethering is enabled
-        //      2.1: prevent user from checking if they are not within some fixed distance of event
-        //      2.2: what should this fixed distance be?
-        //  3: If GeoTracking is disabled
-        //      3.1: Don't store user's location (just set it to null?)
-        //  4: Explain to user why location is being asked for
-        //      4.1: Note that location is only required if the organizer has geo-tethering on
-        Map<String, GeoPoint> update = new HashMap<>();
-        update.put("test", new GeoPoint(1,1));
-
-        Toast checkInFailedToast = new Toast(getApplicationContext());
-        checkInFailedToast
-                .setText("Check In Failed: Please Try Again");
-
-        Toast locationPermissionsToast = new Toast(getApplicationContext());
-        locationPermissionsToast.setText("Please Enable Location Settings And Try Again");
-
-        Toast checkInSuccessfulToast = new Toast(getApplicationContext());
-        checkInSuccessfulToast.setText("Successfully Checked In");
-        if(event.getGeoTracking()){
-            // gets location permission
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
-
-            if (ContextCompat.checkSelfPermission(
-                    this, Manifest.permission.ACCESS_FINE_LOCATION) ==
-                    PackageManager.PERMISSION_GRANTED) {
-
-                // Retrieves Current Location
-                fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener(this, location -> {
-                    if (location != null) {
-                        // Logic to handle location object
-                        event.addAttendee(currentUser, location);
-                        EventRepository eventRepo = new EventRepository();
-                        eventRepo.updateEvent(event);
-                        checkInSuccessfulToast.show();
-
-                    } else {
-                        checkInFailedToast.show();
-                    }
-                }).addOnFailureListener(this, u->{
-                    Log.d("Location", "Could not retrieve new location");
-                    locationPermissionsToast.show();
-                });
-                Log.d("Location", "Permission Granted");
-            } else {
-                locationPermissionsToast.show();
-            }
-        } else { // geoTracking dissabled
-            event.addAttendee(currentUser, null);
-            EventRepository eventRepo = new EventRepository();
-            eventRepo.updateEvent(event);
-            checkInSuccessfulToast.show();
-        }
     }
 
     /**
@@ -378,7 +299,11 @@ public class Attendee extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.attendee_layout, fragment);
         transaction.addToBackStack(null);
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
+    }
+
+    public void onFindEventResult(Event event){
+        replaceFragment(EventDetailsAttendee.newInstance(event, currentUser));
     }
 }
 

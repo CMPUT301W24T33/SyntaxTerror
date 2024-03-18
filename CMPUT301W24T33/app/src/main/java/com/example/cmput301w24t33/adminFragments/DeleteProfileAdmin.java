@@ -7,6 +7,7 @@
 package com.example.cmput301w24t33.adminFragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A fragment class for administrators to delete user profiles.
@@ -29,6 +32,7 @@ import com.example.cmput301w24t33.users.User;
  */
 public class DeleteProfileAdmin extends Fragment {
 
+    private UserRepository userRepo;
     private User profileToDelete;
 
     /**
@@ -56,12 +60,17 @@ public class DeleteProfileAdmin extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_delete_profile, container, false);
-        setupActionBar(view);
-        setupClickListeners(view);
+
         if (getArguments() != null) {
             profileToDelete = (User) getArguments().getSerializable("user");
+            Log.w("Profile  ", profileToDelete.getFirstName());
             loadData(view);
         }
+        Log.w("No profile to delte", "sad");
+
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        setupActionBar(view);
+        setupClickListeners(view);
         return view;
     }
 
@@ -72,7 +81,7 @@ public class DeleteProfileAdmin extends Fragment {
      */
     private void setupActionBar(View view) {
         TextView actionBarText = view.findViewById(R.id.back_actionbar_textview);
-        actionBarText.setText("Edit Profile");
+        actionBarText.setText("Profile");
 
         RelativeLayout generalActionBar = view.findViewById(R.id.edit_profile_actionbar);
         int color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
@@ -92,6 +101,7 @@ public class DeleteProfileAdmin extends Fragment {
         Button deleteButton = view.findViewById(R.id.profile_delete_button);
         deleteButton.setOnClickListener(v -> {
             // Implement delete profile logic here
+            userRepo.deleteUser(profileToDelete);
             getParentFragmentManager().popBackStack();
         });
     }
