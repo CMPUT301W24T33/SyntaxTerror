@@ -106,8 +106,11 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         // Navigation to the event edit fragment
         binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
         binding.shareQrCodeButton.setOnClickListener(v -> {
+            QRCode checkInCode = new QRCode(event.getCheckInQR());
+            QRCode posterCode = event.getPosterQR()==null? null: new QRCode(event.getPosterQR());
+
             ShareQRFragment
-                    .newInstance(new QRCode(event.getCheckInQR()), new QRCode(event.getEventId()), null,this)
+                    .newInstance(checkInCode, new QRCode(event.getEventId()), posterCode,this)
                     .show(getActivity().getSupportFragmentManager(), "Share QR Code");
         });
     }
@@ -160,6 +163,9 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      */
     @Override
     public void ShareSelectedQRCode(QRCode qrCode) {
+        if(qrCode == null) { //nothing to share
+            return;
+        }
 
         // Save image to internal Storage
         //  (see https://stackoverflow.com/questions/56904485/how-to-save-an-image-in-android-q-using-mediastore)
