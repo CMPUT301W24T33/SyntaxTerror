@@ -7,17 +7,21 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.OrganizerChooseQrFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventRepository;
@@ -37,6 +41,9 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
     private EventAdapter eventAdapter;
     private String userId;
     private RadioGroup radioButton;
+    private RadioButton selectPreviousButton;
+    private RadioButton createNewButton;
+    private TextView selectedEventView;
     private Event selectedEvent;
     private ChooseQRFragmentListener listener;
     private EventRepository eventRepo = new EventRepository();
@@ -55,6 +62,7 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
 
     public EventChooseQR(String userId){
         this.userId = userId;
+        Log.d("ChoseQR", "organizer id: "+userId);
     }
 
     /**
@@ -99,13 +107,13 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
         eventList = new ArrayList<>();
         eventRepo.setEventCallback(this);
         eventRepo.setEventByOrganizerSnapshotListener(userId);
-//        eventView.setVisibility(View.GONE);
-        eventAdapter = new EventAdapter(eventList, this);
-        eventView.setLayoutManager(new LinearLayoutManager(getContext()));
-        eventView.setAdapter(eventAdapter);
+        eventView.setVisibility(View.GONE);
+        getView().findViewById(R.id.selected_event_text).setVisibility(View.GONE);
 
         radioButton = view.findViewById(R.id.choose_qr_radio_group);
-
+        selectPreviousButton = view.findViewById(R.id.reuse_qr_radio_button);
+        createNewButton = view.findViewById(R.id.new_qr_radio_button);
+        selectedEventView = view.findViewById(R.id.selected_event);
         setOnClickListeners();
     }
 
@@ -127,6 +135,18 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
             }
             getParentFragmentManager().popBackStack();
         });
+        selectPreviousButton.setOnClickListener(v->{
+            eventView.setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.selected_event_text).setVisibility(View.VISIBLE);
+            selectedEventView.setVisibility(View.VISIBLE);
+        });
+        createNewButton.setOnClickListener(v->{
+            eventView.setVisibility(View.GONE);
+            getView().findViewById(R.id.selected_event_text).setVisibility(View.GONE);
+            selectedEventView.setVisibility(View.GONE);
+        });
+
+
     }
 
     /**
@@ -139,11 +159,18 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
 
     @Override
     public void onEventsLoaded(List<Event> events) {
+        Log.d("EventCallback", "Events loaded: "+ events.get(0).getName());
         this.eventList = (ArrayList<Event>) events;
+        eventAdapter = new EventAdapter(eventList, this);
+        eventView.setLayoutManager(new LinearLayoutManager(getContext()));
+        eventView.setHasFixedSize(true);
+        eventView.setAdapter(eventAdapter);
+        eventAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onFailure(Exception e) {
+        Log.e("EventCallback", "failed to retrieve events: " + e.getMessage());
         e.printStackTrace();
     }
 
@@ -151,6 +178,7 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
     @Override
     public void onEventClickListener(Event event, int position) {
         selectedEvent = event;
+        selectedEventView.setText(event.getName());
     }
 
 }
