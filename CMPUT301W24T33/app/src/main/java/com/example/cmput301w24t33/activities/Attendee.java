@@ -53,6 +53,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
@@ -104,7 +105,7 @@ public class Attendee extends AppCompatActivity {
         setupViewModel();
         setupActionbar();
         setOnClickListeners();
-        //fetchInfo(findViewById(R.id.profile_image));
+        fetchInfo(findViewById(R.id.profile_image));
     }
 
     /**
@@ -262,6 +263,12 @@ public class Attendee extends AppCompatActivity {
             qrScanner = new QRScanner(qrCheckIn);
             qrScanner.scanQRCode(this);
            });
+
+        MaterialButton switchEventsButton = findViewById(R.id.switch_events_button);
+
+        switchEventsButton.setOnClickListener(v -> {
+            switchEventView();
+        });
 
         ImageView findEventButton = findViewById(R.id.find_event_img);
 
