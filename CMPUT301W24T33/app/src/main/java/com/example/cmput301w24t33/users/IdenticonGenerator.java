@@ -40,7 +40,7 @@ public class IdenticonGenerator {
      */
 
     public static Bitmap generateIdenticonBitmap(byte[] hash) {
-        final int width = 5, height = 5;
+        final int width = 7, height = 7;
         final int blockSize = 100;
         Bitmap identicon = Bitmap.createBitmap(width * blockSize, height * blockSize, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(identicon);
