@@ -178,8 +178,12 @@ public class EventAttendees extends Fragment {
                     LatLng eventLocation = new LatLng(latitude, longitude);
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
                     gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
+                } else {
+                // Default to Edmonton if location is not Specified
+                LatLng eventEdmontonDefault = new LatLng(53.5461, -113.4938);
+                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventEdmontonDefault, 10));
+            }
 
-                }
 
                 // Add markers for each check-in location
                 for(GeoPoint checkInPoint : selectedEvent.getCheckInLocations()) {
