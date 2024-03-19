@@ -109,9 +109,14 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
             QRCode checkInCode = new QRCode(event.getCheckInQR());
             QRCode posterCode = event.getPosterQR()==null? null: new QRCode(event.getPosterQR());
 
-            ShareQRFragment
-                    .newInstance(checkInCode, new QRCode(event.getEventId()), posterCode,this)
-                    .show(getActivity().getSupportFragmentManager(), "Share QR Code");
+//            ShareQRFragment
+//                    .newInstance(checkInCode, new QRCode(event.getEventId()), posterCode,this)
+//                    .show(getActivity().getSupportFragmentManager(), "Share QR Code");
+
+            //Temporarly commented out as it shown error Required type:
+            //Event
+            //Provided:
+            //QRCode
         });
     }
 

@@ -101,9 +101,9 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
             QRCode checkInCode = new QRCode(event.getCheckInQR());
             QRCode posterCode = event.getPosterQR()==null? null: new QRCode(event.getPosterQR());
 
-            ShareQRFragment
-                    .newInstance(checkInCode, new QRCode(event.getEventId()), posterCode,this)
-                    .show(getActivity().getSupportFragmentManager(), "Share QR Code");
+//            ShareQRFragment
+//                    .newInstance(checkInCode, new QRCode(event.getEventId()), posterCode,this)
+//                    .show(getActivity().getSupportFragmentManager(), "Share QR Code");
         });
         binding.toggleButtonGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             updateSignedUpStatus(checkedId, isChecked);

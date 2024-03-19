@@ -67,6 +67,30 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="#000000" />
 
+            <fragment
+                android:id="@+id/autocomplete_fragment"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="383dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="8dp"
+                tools:ignore="MissingClass" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/event_location_cords_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:textColor="#000000"
+                app:counterMaxLength="30">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/event_location_cords_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:textColor="#000000" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/event_location_input_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -82,6 +106,7 @@
                     android:textColor="#000000" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <!-- Event Description -->
             <TextView
