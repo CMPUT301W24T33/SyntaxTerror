@@ -7,8 +7,18 @@ import android.graphics.Paint;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * A utility class for generating identicons.
+ * Identicons are hash values, used to deterministically generate users image.
+ */
 public class IdenticonGenerator {
-
+    /**
+     * Generates a hash from the input string using the MD5 hashing algorithm.
+     * This hash is used for generating the identicon.
+     *
+     * @param input The input string to hash. This is typically the user's unique identifier.
+     * @return A byte array representing the MD5 hash of the input string. Returns null if the hashing algorithm is not found.
+     */
     public static byte[] generateHash(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("MD5");
@@ -19,6 +29,15 @@ public class IdenticonGenerator {
             return null;
         }
     }
+
+    /**
+     * Generates a bitmap image of an identicon based on the given hash.
+     * The identicon is a 5x5 grid where each cell's color is determined by the hash's bits,
+     * creating a unique pattern for each input.
+     *
+     * @param hash The hash used to generate the identicon pattern. This should be generated using {@link #generateHash(String)}.
+     * @return A Bitmap object of the generated identicon.
+     */
 
     public static Bitmap generateIdenticonBitmap(byte[] hash) {
         final int width = 5, height = 5;
