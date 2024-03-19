@@ -156,7 +156,6 @@ public class EventAttendees extends Fragment {
         });
     }
 
-    // Map view set to uAlberta location
     /**
      * Initializes and sets up the map view to a specific location.
      * @param view The current view.
@@ -167,11 +166,25 @@ public class EventAttendees extends Fragment {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(googleMap -> {
             gMap = googleMap;
-            LatLng uAlberta = new LatLng(53.5232, -113.5263);
-            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uAlberta, 15));
-            gMap.addMarker(new MarkerOptions().position(uAlberta).title("University of Alberta"));
-            for(GeoPoint checkInPoint : selectedEvent.getCheckInLocations()) {
-                gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+            if (selectedEvent != null) {
+                String locationData = selectedEvent.getLocationData();
+                // We are parsing that string from Location Data
+                if (locationData != null && !locationData.isEmpty()) {
+                    String[] parts = locationData.split(",");
+                    double latitude = Double.parseDouble(parts[0]);
+                    double longitude = Double.parseDouble(parts[1]);
+
+                    //Moving camera to location
+                    LatLng eventLocation = new LatLng(latitude, longitude);
+                    gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
+                    gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
+
+                }
+
+                // Add markers for each check-in location
+                for(GeoPoint checkInPoint : selectedEvent.getCheckInLocations()) {
+                    gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+                }
             }
         });
     }
