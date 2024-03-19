@@ -329,6 +329,9 @@ public class Event implements Serializable {
      * @return An ArrayList of User objects representing the attendees.
      */
     public ArrayList<User> getAttendees() {
+        if (attendees.isEmpty()) {
+            return attendees;
+        }
         return attendees;
     }
 

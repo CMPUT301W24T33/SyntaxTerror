@@ -30,6 +30,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
+import com.example.cmput301w24t33.activities.Attendee;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
@@ -64,7 +66,8 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userRepo = new UserRepository();
+        //FirebaseFirestore db = FirebaseFirestore.getInstance();
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
     }
 
     /**

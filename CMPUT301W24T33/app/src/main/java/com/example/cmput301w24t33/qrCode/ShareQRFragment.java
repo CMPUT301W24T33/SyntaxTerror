@@ -77,7 +77,7 @@ public class ShareQRFragment extends DialogFragment {
                     if(radioGroup.getCheckedRadioButtonId() == R.id.share_check_in_code) {
                         listener.ShareSelectedQRCode(checkInCode);
                     } else if (radioGroup.getCheckedRadioButtonId() == R.id.share_event_code) {
-                        listener.ShareSelectedQRCode(eventCode);
+                        listener.ShareSelectedQRCode(checkInCode);
                     } else {
                         listener.ShareSelectedQRCode(posterCode);
                     }

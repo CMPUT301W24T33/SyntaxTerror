@@ -16,7 +16,10 @@ import static android.content.ContentValues.TAG;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.helper.widget.MotionEffect;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,8 +39,8 @@ public class UserRepository {
     /**
      * Constructor for UserRepository. Initializes connection to Firestore and the users collection.
      */
-    public UserRepository() {
-        db = FirebaseFirestore.getInstance();
+    public UserRepository(FirebaseFirestore targetDB) {
+        db = targetDB;
         userCollection = db.collection("users");
     }
 
@@ -48,7 +51,6 @@ public class UserRepository {
         void onUsersLoaded(List<User> users);
         void onUsersLoaded(User user);
         void onFailure(@NonNull Exception e);
-
     }
 
     /**
@@ -153,7 +155,6 @@ public class UserRepository {
      *
      * @param user The User object to add to Firestore.
      */
-
     public void setUser(User user, String docId) {
         userCollection.document(docId).set(user)
                 .addOnSuccessListener(documentReference -> {
@@ -161,6 +162,34 @@ public class UserRepository {
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Create User Document failed", e);
+                });
+    }
+
+    public void updateUser(User user) {
+        String userId = user.getUserId();
+        DocumentReference docRef = userCollection.document(userId);
+
+        docRef.set(user)
+                .addOnSuccessListener(aVoid -> Log.d("User Update", "Document update success: " + userId))
+                .addOnFailureListener(e -> Log.w("User update", "Document update failed", e));
+    }
+
+    public void deleteUser(User user) {
+        String userId = user.getUserId();
+        DocumentReference docRef = userCollection.document(userId);
+
+        docRef.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(MotionEffect.TAG, "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@android.support.annotation.NonNull Exception e) {
+                        Log.w(MotionEffect.TAG, "Error deleting document", e);
+                    }
                 });
     }
 }
