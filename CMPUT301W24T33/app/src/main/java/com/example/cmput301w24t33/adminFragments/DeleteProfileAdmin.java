@@ -59,7 +59,7 @@ public class DeleteProfileAdmin extends Fragment {
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.admin_delete_profile, container, false);
+        View view = inflater.inflate(R.layout.admin_delete_profile_fragment, container, false);
         if (getArguments() != null) {
             profileToDelete = (User) getArguments().getSerializable("user");
             Log.w("Profile  ", profileToDelete.getFirstName());
