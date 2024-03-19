@@ -126,7 +126,6 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
             if(option == 1) {
                 listener.setQRCode(null);
             } else {
-//                eventView.setVisibility(View.VISIBLE);
                 if(selectedEvent != null) {
                     listener.setQRCode(selectedEvent.getCheckInQR());
                     selectedEvent.setCheckInQR(null);
@@ -135,18 +134,18 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
             }
             getParentFragmentManager().popBackStack();
         });
+
         selectPreviousButton.setOnClickListener(v->{
             eventView.setVisibility(View.VISIBLE);
             getView().findViewById(R.id.selected_event_text).setVisibility(View.VISIBLE);
             selectedEventView.setVisibility(View.VISIBLE);
         });
+
         createNewButton.setOnClickListener(v->{
             eventView.setVisibility(View.GONE);
             getView().findViewById(R.id.selected_event_text).setVisibility(View.GONE);
             selectedEventView.setVisibility(View.GONE);
         });
-
-
     }
 
     /**
@@ -157,6 +156,10 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
         this.listener = listener;
     }
 
+    /**
+     * Populates RecyclerView with loaded events.
+     * @param events events belonging to the user.
+     */
     @Override
     public void onEventsLoaded(List<Event> events) {
         Log.d("EventCallback", "Events loaded: "+ events.get(0).getName());
@@ -168,6 +171,10 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
         eventAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Handles event loading failure.
+     * @param e Exception resulting from attempt to load events.
+     */
     @Override
     public void onFailure(Exception e) {
         Log.e("EventCallback", "failed to retrieve events: " + e.getMessage());

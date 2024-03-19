@@ -385,6 +385,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         this.qrcode = qrCode;
     }
 
+
     private String getAndroidId() {
         return Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
