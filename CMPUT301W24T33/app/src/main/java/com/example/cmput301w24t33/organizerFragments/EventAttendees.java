@@ -132,37 +132,7 @@ public class EventAttendees extends Fragment {
         attendeeAdapter = new AttendeeAdapter(attendeesList);
         attendeesRecyclerView.setAdapter(attendeeAdapter);
 
-        // populates attendees list with attendee names
-//        attendeeRef = db.collection("events/" + eventId + "/attendees");
-//        attendeeRef.addSnapshotListener((eventSnapshot, eventError)->{
-//            Log.d("AttendeeSnapshot", "snaped: " + attendeeRef.getPath());
-//            if (eventError != null) {
-//                Log.d("AttendeeSnapshot", eventError.toString());
-//            } else if (eventSnapshot != null) {
-//                attendeesList.clear();
-//                Log.d("AttendeeSnapshot", "not null");
-//                for (QueryDocumentSnapshot doc : eventSnapshot) {
-//                    Log.d("UserSnapshot", "snaped");
-//                    String userId = doc.getId();
-//                    Log.d("AttendeeSnapshot", "user Id: " + userId);
-//                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
-//                        DocumentSnapshot document = task.getResult();
-//                        if (document.exists()) {
-//                            Log.d("AttendeeSnapshot", "doc exists");
-//                            User user = document.toObject(User.class);
-//                            assert user != null;
-//                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
-//                            attendeesList.add(user);
-//                        }
-//                        attendeeAdapter.notifyDataSetChanged();
-//                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
-//
-//                    });
-//                }
-//            }
-//        });
-
-        // is this necessary?
+        // is this necessary? yes
         DocumentReference eventRef = db.collection("events").document(selectedEvent.getEventId());
 
         eventRef
@@ -180,33 +150,10 @@ public class EventAttendees extends Fragment {
 
                     }
                 }
-//                for(GeoPoint checkInPoint : eventSnapshot.toObject(Event.class).getCheckInLocations()) {
-//                    gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
-//                }
                 attendeeAdapter.notifyDataSetChanged();
                 attendeeNumberView.setText(String.format(Locale.CANADA, "%d", attendeesList.size()));
             }
-//                    Log.d("UserSnapshot", "snaped");
-//                    String userId = doc.getId();
-//                    Log.d("AttendeeSnapshot", "user Id: " + userId);
-//                    db.collection("users").document(userId).get().addOnCompleteListener(task -> {
-//                        DocumentSnapshot document = task.getResult();
-//                        if (document.exists()) {
-//                            Log.d("AttendeeSnapshot", "doc exists");
-//                            User user = document.toObject(User.class);
-//                            assert user != null;
-//                            Log.d("AttendeeSnapshot", "User: " + user.getFullName());
-//                            attendeesList.add(user);
-//                        }
-//                        attendeeAdapter.notifyDataSetChanged();
-//                        attendeeNumberView.setText(String.format("%d",attendeesList.size()));
-//
-//                    });
-//                }
-
         });
-
-
     }
 
     // Map view set to uAlberta location

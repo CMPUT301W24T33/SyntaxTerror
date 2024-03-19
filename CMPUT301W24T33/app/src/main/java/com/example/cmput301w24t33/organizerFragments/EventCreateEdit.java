@@ -49,6 +49,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Fragment for creating and editing events within the application.
@@ -282,17 +283,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
         // when no QR code is being reused
         if (qrcode == null) {
-            // reference to new QR code document
-            DocumentReference docRef = db.collection("checkInCodes").document();
-
-            // sets organizerId field to organizer Id
-            Map<String, String> map = new HashMap<>();
-            map.put("organizerId", getAndroidId());
-            docRef.set(map);
-
-            // sets qrcode value to doc name
-            qrcode = docRef.getPath().split("/")[1];
-            Log.d("QRCODE", "null qr code");
+            // create new uuid for qrcode
+            qrcode = UUID.randomUUID().toString();
+            Log.d("QRCODE", "new QR code: " + qrcode);
         }
 
         event.setCheckInQR(Objects.requireNonNull(qrcode));
@@ -321,7 +314,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void onSelectQRCode() {
         // Handle QR Code selection
-        EventChooseQR chooseQrFragment = new EventChooseQR();
+        EventChooseQR chooseQrFragment = new EventChooseQR(getAndroidId());
 
         // Attaches this Listener to EventChooseQR fragment
         chooseQrFragment.setListener(this);
@@ -391,8 +384,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     public void setQRCode(String qrCode) {
         this.qrcode = qrCode;
     }
+
+
     private String getAndroidId() {
-        String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-        return androidId;
+        return Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 }

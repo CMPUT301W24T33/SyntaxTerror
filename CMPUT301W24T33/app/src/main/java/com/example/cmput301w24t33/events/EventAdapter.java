@@ -8,6 +8,7 @@
 
 package com.example.cmput301w24t33.events;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,6 +112,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
          * @param listener The listener to handle click events on this view.
          */
         void bind(final Event event, final AdapterEventClickListener listener) {
+            Log.d("EventBinding", "Event: " + event.getName());
             eventText.setText(event.getName());
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();

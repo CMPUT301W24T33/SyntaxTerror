@@ -79,33 +79,6 @@ public class QRCode implements Serializable {
         return bmp;
     }
 
-//
-//    public void saveAsPNG(String filename){
-//        File sdCard = Environment.getExternalStorageDirectory();
-//        File dir = new File(sdCard.getAbsoluteFile() + "/Download/" + filename + ".png");
-//        try {
-//            FileOutputStream fileOut = new FileOutputStream(dir);
-//            bmp.compress(Bitmap.CompressFormat.PNG, 100, fileOut);
-//            fileOut.flush();
-//            fileOut.close();
-//        } catch(Exception e) {
-//            Log.e("SAVEFILE", "invalid path argument:" + dir.getPath());
-//        }
-//    }
-//
-//    public void saveAsJPEG(String filename) {
-//        try {
-//            File sdCard = Environment.getExternalStorageDirectory();
-//            File dir = new File(sdCard.getAbsoluteFile() + "/storage/emulated/0/Download");
-//            FileOutputStream fileOut = new FileOutputStream(dir);
-//            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fileOut);
-//            fileOut.flush();
-//            fileOut.close();
-//        } catch(Exception e) {
-//            Log.e("SAVEFILE", "invalid path argument:" + filename);
-//        }
-//    }
-
     /**
      * Returns stored QR code string value
      * @return QR code string
