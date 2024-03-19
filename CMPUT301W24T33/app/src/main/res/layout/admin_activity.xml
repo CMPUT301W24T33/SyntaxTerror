@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/admin_activity"
+    android:background="#F4EFEF"
     android:layout_height="match_parent"
     tools:context=".activities.Organizer">
 
@@ -27,73 +28,68 @@
 
             <RelativeLayout
                 android:id="@+id/event_layout"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/actionbar_general"
                 android:layout_marginTop="100sp">
 
-                <TextView
-                    android:id="@+id/event_string"
+                <Button
+                    android:id="@+id/browse_events_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=" Event List"
-                    android:gravity="center_vertical"
-                    android:textSize="50dp">
-                </TextView>
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="20sp"
+                    android:layout_marginBottom="20sp"
+                    android:backgroundTint="@color/admin_actionbar"
+                    android:text=" Browse Events"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"></Button>
 
-                <ImageButton
-                    android:id="@+id/event_arrow_button"
-                    android:layout_width="50sp"
-                    android:layout_height="67sp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/forward_arrow_img"
-                    />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/profile_layout"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/actionbar_layout"
                 android:layout_marginTop="100sp">
-                <TextView
-                    android:id="@+id/profile_string"
+                <Button
+                    android:id="@+id/browse_profiles_button"
+                    android:text=" Browse Profiles"
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=" Profile List"
-                    android:gravity="center_vertical"
-                    android:textSize="50dp">
-                </TextView>
-                <ImageButton
-                    android:id="@+id/profile_arrow_button"
-                    android:layout_width="50sp"
-                    android:layout_height="67sp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/forward_arrow_img"
-                    />
+                    android:textSize="30dp"
+                    android:backgroundTint="@color/admin_actionbar"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="20sp">
+                </Button>
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/image_layout"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/actionbar_layout"
                 android:layout_marginTop="100sp">
-                <TextView
-                    android:id="@+id/image_string"
+                <Button
+                    android:id="@+id/browse_images_button"
+                    android:text=" Browse Images"
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=" Image List"
-                    android:gravity="center_vertical"
-                    android:textSize="50dp">
-                </TextView>
-                <ImageButton
-                    android:id="@+id/image_arrow_button"
-                    android:layout_width="50sp"
-                    android:layout_height="67sp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/forward_arrow_img"
-                    />
+                    android:textSize="30dp"
+                    android:backgroundTint="@color/admin_actionbar"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="20sp">
+                </Button>
+
             </RelativeLayout>
         </LinearLayout>
     </FrameLayout>

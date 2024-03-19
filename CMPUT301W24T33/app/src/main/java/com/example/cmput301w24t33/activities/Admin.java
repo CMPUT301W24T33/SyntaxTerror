@@ -13,6 +13,7 @@ import static android.content.ContentValues.TAG;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
+import com.example.cmput301w24t33.adminFragments.ViewImagesAdmin;
 import com.example.cmput301w24t33.adminFragments.ViewProfilesAdmin;
 
 /**
@@ -60,21 +62,21 @@ public class Admin extends AppCompatActivity {
      */
     public void setOnClickListeners() {
         // Event List button click listener
-        ImageButton eventButton = findViewById(R.id.event_arrow_button);
+        Button eventButton = findViewById(R.id.browse_events_button);
         eventButton.setOnClickListener(v -> {
             replaceFragment(new ViewEventsAdmin());
         });
 
         // Profile View button click listener
-        ImageButton profileButton = findViewById(R.id.profile_arrow_button);
+        Button profileButton = findViewById(R.id.browse_profiles_button);
         profileButton.setOnClickListener(v -> {
             replaceFragment(new ViewProfilesAdmin());
         });
 
         // Placeholder for future functionality
-        ImageButton imageButton = findViewById(R.id.image_arrow_button);
+        Button imageButton = findViewById(R.id.browse_images_button);
         imageButton.setOnClickListener(v -> {
-            // Future functionality here
+            replaceFragment(new ViewImagesAdmin());
         });
     }
 

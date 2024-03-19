@@ -11,9 +11,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AdminDeleteEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 
@@ -57,8 +60,15 @@ public class DeleteEventAdmin extends Fragment {
             eventToDelete = (Event) getArguments().getSerializable("event");
             loadData();
         }
+        setupActionBar();
         setupActionButtons();
         return binding.getRoot();
+    }
+
+    private void setupActionBar() {
+        int color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
+        binding.editEventActionbar.setBackgroundColor(color);
+        binding.backActionbarTextview.setText("Delete Event");
     }
 
     /**
@@ -78,6 +88,7 @@ public class DeleteEventAdmin extends Fragment {
         // Sets up listeners for both cancel and delete buttons
         binding.cancelButton.setOnClickListener(v -> onCancel());
         binding.deleteButton.setOnClickListener(v -> onDelete());
+        binding.backArrowImg.setOnClickListener(v -> onCancel());
     }
 
     /**
