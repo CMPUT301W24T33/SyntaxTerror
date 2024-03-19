@@ -194,6 +194,12 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         binding.endTimeEditText.setOnClickListener(v -> showTimePickerDialog(false));
     }
 
+    /**
+     * Initializes and sets up the Places Autocomplete search fragment.
+     * Configures the fragment to display place suggestions as the user types and handles
+     * the selection of a place by updating the event's location input field with the selected
+     * place's address and storing the latitude and longitude coordinates.
+     */
     private void setupPlacesAutocomplete() {
         // Initialize the search fragment
         AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
