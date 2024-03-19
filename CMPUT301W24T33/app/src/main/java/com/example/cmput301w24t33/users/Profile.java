@@ -70,9 +70,14 @@ public class Profile extends Fragment {
     private UserViewModel userViewModel;
     private UserRepository userRepo;
     private ImageView profileImageView;
+<<<<<<< Updated upstream
     private String imageRef;
     private String imageUrl;
     private User profileToEdit;
+=======
+    public static String imageRef;
+    public static String imageUrl;
+>>>>>>> Stashed changes
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
