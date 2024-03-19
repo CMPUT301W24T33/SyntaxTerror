@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,8 +26,10 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +47,7 @@ public class ViewImagesAdmin extends Fragment {
     private EventViewModel eventViewModel;
     private View inflatedView;
     private boolean showEventPosters = true;
+    private UserRepository userRepo;
 
     public ViewImagesAdmin() {
         // Required empty public constructor
@@ -183,7 +187,10 @@ public class ViewImagesAdmin extends Fragment {
 
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(getViewLifecycleOwner(), this::updateEventUI);
-        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.getUsersLiveData().observe(getViewLifecycleOwner(), this::updateUserUI);
     }
     /**
