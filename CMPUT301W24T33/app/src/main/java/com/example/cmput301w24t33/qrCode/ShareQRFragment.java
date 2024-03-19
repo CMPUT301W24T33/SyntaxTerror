@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.Event;
 
 import java.io.Serializable;
 
@@ -30,19 +31,17 @@ import java.io.Serializable;
  * Used to select a desired QR code type to share with other apps
  */
 public class ShareQRFragment extends DialogFragment {
-    private QRCode checkInCode;
-    private QRCode eventCode;
-    private QRCode posterCode;
+    private String checkInCode;
+    private String posterCode;
     private String downloadPath;
     private RadioGroup radioGroup;
-    private ImageView qrView;
     private ShareQRDialogListener listener;
 
     /**
      * Provides Contract between parent fragment and ShareQRFragment to Share a selected QR code
      */
     public interface ShareQRDialogListener {
-        public void ShareSelectedQRCode(QRCode qrCode);
+        void ShareSelectedQRCode(QRCode qrCode);
     }
 
     /**
@@ -55,18 +54,21 @@ public class ShareQRFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        // TODO: Sharing events whose check in code has been reused will cause issues if we use the
+        //      same QR code for both. It would be better (and easier) to just have 3 separate QR
+        //      codes for all fields. To do this you need to:
+        //          1: Add an event qr code to this class (use eventId)
+        //          2: Update the find event functionality in Attendee to query for event ID instead of check In code
         View view = LayoutInflater.from(getContext()).inflate(R.layout.organizer_share_qr_fragment, null);
 
         // gets data from bundle
         assert getArguments() != null;
-        checkInCode = (QRCode) getArguments().get("CHECKIN");
-        eventCode = (QRCode) getArguments().get("EVENTQR");
-        posterCode = (QRCode) getArguments().get("POSTERQR");
+        checkInCode = (String) getArguments().get("CHECKIN");
+        posterCode = (String) getArguments().get("POSTERQR");
         listener = (ShareQRDialogListener) getArguments().get("LISTENER");
 
-        assert checkInCode != null;
 
-        downloadPath = checkInCode.getQrCode();
+        downloadPath = checkInCode;
         radioGroup = view.findViewById(R.id.share_qr_code_select_option);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder.setView(view).setTitle("Share QR Code")
@@ -75,11 +77,11 @@ public class ShareQRFragment extends DialogFragment {
 
                     // determines which code to share and passes it back to listener
                     if(radioGroup.getCheckedRadioButtonId() == R.id.share_check_in_code) {
-                        listener.ShareSelectedQRCode(checkInCode);
+                        listener.ShareSelectedQRCode(new QRCode(checkInCode));
                     } else if (radioGroup.getCheckedRadioButtonId() == R.id.share_event_code) {
-                        listener.ShareSelectedQRCode(checkInCode);
+                        listener.ShareSelectedQRCode(new QRCode(checkInCode));
                     } else {
-                        listener.ShareSelectedQRCode(posterCode);
+                        listener.ShareSelectedQRCode(new QRCode(posterCode));
                     }
 
                 } ).create();
@@ -99,18 +101,17 @@ public class ShareQRFragment extends DialogFragment {
 
     /**
      * Creates a new Instance of ShareQRFragment with given arguments
-     * @param checkInCode QR code for attendee event check in
-     * @param eventQRCode QR code for linking to event in app
-     * @param posterQRCode QR code for sharing poster with outside apps
+     * @param event selected Event to share details of
      * @param listener ShareQRFragment dialogue listener
      * @return new ShareQRFragment instance
      */
-    public static ShareQRFragment newInstance(QRCode checkInCode, QRCode eventQRCode, QRCode posterQRCode, Serializable listener) {
+    public static ShareQRFragment newInstance(Event event, Serializable listener) {
         ShareQRFragment shareQRFragment = new ShareQRFragment();
         Bundle args = new Bundle();
-        args.putSerializable("CHECKIN", checkInCode);
-        args.putSerializable("EVENTQR", eventQRCode);
-        args.putSerializable("POSTERQR", posterQRCode);
+
+        args.putSerializable("CHECKIN", event.getCheckInQR());
+        args.putSerializable("EVENTQR", event.getCheckInQR());
+        args.putSerializable("POSTERQR", event.getImageUrl());
         args.putSerializable("LISTENER", listener);
         shareQRFragment.setArguments(args);
         return shareQRFragment;
