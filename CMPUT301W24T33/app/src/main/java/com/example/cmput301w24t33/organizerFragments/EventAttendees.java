@@ -7,6 +7,7 @@
 
 package com.example.cmput301w24t33.organizerFragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,14 +32,12 @@ import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -57,6 +56,7 @@ public class EventAttendees extends Fragment {
     private MapView mapView;
     private Event selectedEvent;
     private GoogleMap gMap;
+    private float GEOFENCE_RADIUS = 100;
 
     /**
      * Required empty public constructor
@@ -156,7 +156,6 @@ public class EventAttendees extends Fragment {
         });
     }
 
-    // Map view set to uAlberta location
     /**
      * Initializes and sets up the map view to a specific location.
      * @param view The current view.
@@ -167,13 +166,46 @@ public class EventAttendees extends Fragment {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(googleMap -> {
             gMap = googleMap;
-            LatLng uAlberta = new LatLng(53.5232, -113.5263);
-            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uAlberta, 15));
-            gMap.addMarker(new MarkerOptions().position(uAlberta).title("University of Alberta"));
-            for(GeoPoint checkInPoint : selectedEvent.getCheckInLocations()) {
-                gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+            if (selectedEvent != null) {
+                String locationData = selectedEvent.getLocationData();
+                // We are parsing that string from Location Data
+                if (locationData != null && !locationData.isEmpty()) {
+                    String[] parts = locationData.split(",");
+                    double latitude = Double.parseDouble(parts[0]);
+                    double longitude = Double.parseDouble(parts[1]);
+
+                    //Moving camera to location
+                    LatLng eventLocation = new LatLng(latitude, longitude);
+                    gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
+                    gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
+                    addCircle(eventLocation,GEOFENCE_RADIUS);
+
+                } else {
+                // Default to Edmonton if location is not Specified
+                LatLng eventEdmontonDefault = new LatLng(53.5461, -113.4938);
+                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventEdmontonDefault, 10));
+            }
+
+
+                // Add markers for each check-in location
+                for(String checkInPoint : selectedEvent.getCheckInLocations()) {
+                    double lat = Double.parseDouble(checkInPoint.split(",")[0]);
+                    double lon = Double.parseDouble(checkInPoint.split(",")[1]);
+                    gMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)));
+                }
             }
         });
+    }
+
+    private void addCircle(LatLng latLng,float radius){
+        CircleOptions circleOptions = new CircleOptions();
+        circleOptions.center(latLng);
+        circleOptions.radius(radius);
+        circleOptions.strokeColor(Color.argb(255,255,0,0));
+        circleOptions.fillColor(Color.argb(64,255,0,0));
+        circleOptions.strokeWidth(4);
+        gMap.addCircle(circleOptions);
+
     }
 
     /**

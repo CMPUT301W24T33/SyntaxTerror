@@ -12,8 +12,6 @@ import android.location.Location;
 import com.example.cmput301w24t33.users.User;
 import com.google.firebase.firestore.GeoPoint;
 
-import org.checkerframework.checker.units.qual.A;
-
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,10 +39,7 @@ public class Event implements Serializable {
     private int maxOccupancy;
     private int maxSignup;
     private ArrayList<User> attendees = new ArrayList<>();
-
-
-
-    private ArrayList<GeoPoint> checkInLocations = new ArrayList<>();
+    private ArrayList<String> checkInLocations = new ArrayList<>();
     private ArrayList<User> signedUp = new ArrayList<>();
     private String imageRef;
     private String imageUrl;
@@ -354,7 +349,7 @@ public class Event implements Serializable {
     public void addAttendee(User attendee, Location location) {
         attendees.add(attendee);
         if (location != null) {
-            checkInLocations.add(new GeoPoint(location.getLatitude(), location.getLongitude()));
+            checkInLocations.add(location.getLatitude() + "," +location.getLongitude());
         }
     }
 
@@ -382,11 +377,27 @@ public class Event implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public ArrayList<GeoPoint> getCheckInLocations() {
+    public ArrayList<String> getCheckInLocations() {
+        ArrayList<GeoPoint> geoPointLocations = new ArrayList<>();
+        for (String location: checkInLocations){
+            double lat = Double.parseDouble(location.split(",")[0]);
+            double lon = Double.parseDouble(location.split(",")[1]);
+            geoPointLocations.add(new GeoPoint(lat,lon));
+        }
         return checkInLocations;
     }
 
-    public void setCheckInLocations(ArrayList<GeoPoint> checkInLocations) {
+    public void setCheckInLocations(ArrayList<String> checkInLocations) {
         this.checkInLocations = checkInLocations;
+    }
+
+    public ArrayList<GeoPoint> checkInLocationsGeoPoint(){
+        ArrayList<GeoPoint> geoPointLocations = new ArrayList<>();
+        for (String location: checkInLocations){
+            double lat = Double.parseDouble(location.split(",")[0]);
+            double lon = Double.parseDouble(location.split(",")[1]);
+            geoPointLocations.add(new GeoPoint(lat,lon));
+        }
+        return geoPointLocations;
     }
 }

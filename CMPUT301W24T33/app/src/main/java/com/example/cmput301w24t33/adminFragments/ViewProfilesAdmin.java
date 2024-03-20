@@ -139,7 +139,8 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
      */
     @Override
     public void onUserClick(int position) {
-        replaceFragment(new DeleteProfileAdmin()); // Placeholder for fragment replacement logic
+        User user = userList.get(position);
+        replaceFragment(DeleteProfileAdmin.newInstance(user)); // Placeholder for fragment replacement logic
     }
 
     /**

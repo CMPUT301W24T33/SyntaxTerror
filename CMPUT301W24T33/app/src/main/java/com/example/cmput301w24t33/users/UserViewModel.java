@@ -13,6 +13,9 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.List;
 
 /**
@@ -30,14 +33,22 @@ public class UserViewModel extends ViewModel {
      * Also sets up the callback interface for user data operations.
      */
     public UserViewModel() {
-        //userRepo = new UserRepository();
-        //userLiveData = new MutableLiveData<>();
-        //liveUser = new MutableLiveData<>();
-        //user = new User();
-        //setUserCallback(userRepo);
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userLiveData = new MutableLiveData<>();
+        liveUser = new MutableLiveData<>();
+        user = new User();
+        setUserCallback(userRepo);
     }
 
     public UserViewModel (UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser, User newUser) {
+        userRepo = myRepo;
+        userLiveData = userList;
+        liveUser = singleUser;
+        user = newUser;
+        setUserCallback(userRepo);
+    }
+
+    public void init(UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser, User newUser) {
         userRepo = myRepo;
         userLiveData = userList;
         liveUser = singleUser;
@@ -61,12 +72,7 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public void onUsersLoaded(User queriedUser) {
-                if (queriedUser==null) {
-                    //return;
-                }
-                //Log.d(TAG, "UserViewModel single user: " + queriedUser.getUserId());
                 liveUser.setValue(queriedUser);
-                //Log.d(TAG, "LiveData single user: " + liveUser.getValue());
             }
 
             @Override
@@ -102,16 +108,19 @@ public class UserViewModel extends ViewModel {
         userRepo.setSignedUpUsersSnapshotListener(eventId);
     }
 
+    public void setUser(User user) {
+        liveUser.setValue(user);
+    }
+
     /**
      * Returns LiveData containing the list of users.
      *
      * @return A LiveData object containing a list of User objects.
      */
     public LiveData<List<User>> getUsersLiveData() {return userLiveData;}
-    public void queryUser(String userId) {
+
+    public LiveData<User> getUser(String userId) {
         userRepo.getUser(userId);
-    }
-    public LiveData<User> getUser() {
         Log.d(TAG, " GET USER LiveData single user: " + liveUser.getValue());
         return liveUser;
     }

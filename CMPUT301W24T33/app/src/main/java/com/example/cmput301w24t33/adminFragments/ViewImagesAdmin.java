@@ -1,6 +1,7 @@
 package com.example.cmput301w24t33.adminFragments;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,6 +31,7 @@ import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -73,7 +76,14 @@ public class ViewImagesAdmin extends Fragment {
      * @param position The position of the clicked item in the adapter.
      */
     public void onEventClickListener(Event event, int position) {
-        replaceFragment(DeleteEventAdmin.newInstance(event));
+        RecyclerView.ViewHolder viewHolder = eventPosterRecyclerView.findViewHolderForAdapterPosition(position);
+        View view = viewHolder.itemView;
+        if(event.getImageUrl() != null) {   // there is an image in poster imageview, get it and pass forward
+            replaceFragment(DeletePosterAdmin.newInstance(event));
+        }
+        else{
+            Snackbar.make(view, "Event has no poster to delete", Snackbar.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -105,6 +115,10 @@ public class ViewImagesAdmin extends Fragment {
         });
     }
 
+    /**
+     * Toggles between event and profile image recyclerviews
+     *
+     */
     private void ChangeRecyclerview() {
         showEventPosters = !showEventPosters;
         TextView button = inflatedView.findViewById(R.id.switch_imagetype_button);
@@ -166,11 +180,14 @@ public class ViewImagesAdmin extends Fragment {
 
         userImageRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         userImageRecyclerView.setHasFixedSize(true);
-        userImageAdapter = new UserImageAdapter(userList, this::onUserClickListener);
+        userImageAdapter = new UserImageAdapter(userList, this::onUserClick);
         userImageRecyclerView.setAdapter(userImageAdapter);
     }
 
-    private void onUserClickListener(int i) {
+    private void onUserClick(int position) {
+        User user = userList.get(position);
+        replaceFragment(DeleteProfilePictureAdmin.newInstance(user));
+
     }
 
     /**

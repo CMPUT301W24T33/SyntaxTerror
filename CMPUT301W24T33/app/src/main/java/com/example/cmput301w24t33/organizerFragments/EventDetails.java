@@ -23,12 +23,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -109,6 +111,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
             ShareQRFragment
                     .newInstance(event,this)
                     .show(getActivity().getSupportFragmentManager(), "Share QR Code");
+
         });
     }
 
@@ -129,7 +132,13 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         binding.eventLocationTextView.setText(event.getAddress());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
-        // Need to bind image here still
+        if(event.getImageUrl() != null && event.getImageUrl() != ""){
+            Glide.with(this).load(event.getImageUrl()).into(binding.eventPosterImageView);
+            //Picasso.get().load(event.getImageUrl()).fit().into(binding.eventPosterImageView);   // load poster image
+        }
+        else{
+            binding.eventPosterImageView.setImageResource(R.drawable.ic_event_poster_placeholder); // set image default
+        }
 
     }
 

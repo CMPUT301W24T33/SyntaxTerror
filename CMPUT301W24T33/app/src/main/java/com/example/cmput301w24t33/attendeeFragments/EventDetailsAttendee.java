@@ -19,10 +19,12 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
@@ -121,6 +123,13 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         binding.eventLocationTextView.setText(event.getAddress());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
+        if(event.getImageUrl() != null && event.getImageUrl() != ""){
+            Glide.with(this).load(event.getImageUrl()).into(binding.eventPosterImageView);
+            //Picasso.get().load(event.getImageUrl()).fit().into(binding.eventPosterImageView);   // load poster image
+        }
+        else{
+            binding.eventPosterImageView.setImageResource(R.drawable.ic_event_poster_placeholder); // set image default
+        }
 
         boolean isGoing = event.getSignedUp().contains(user);
         if (isGoing) {
@@ -136,6 +145,10 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         if (checkedId == R.id.goingButton) {
             if (isChecked) {
                 // User has selected "Going"
+                if(!validateSignUp()) {
+                    Toast.makeText(getContext(),"Error: Event's Max Signup reached", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 event.getSignedUp().add(user);
             }
         } else if (checkedId == R.id.notGoingButton) {
@@ -146,6 +159,10 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         }
         EventRepository eventRepo = new EventRepository();
         eventRepo.updateEvent(event);
+    }
+
+    private boolean validateSignUp(){
+        return event.getMaxSignup() != event.getSignedUp().size() || event.getMaxSignup() == 0;
     }
 
     /**

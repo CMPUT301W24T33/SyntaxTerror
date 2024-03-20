@@ -53,6 +53,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
@@ -70,8 +71,7 @@ import java.util.Map;
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
-public class Attendee extends AppCompatActivity {
-    private FirebaseFirestore db;
+public class Attendee extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
     private EventAdapter eventAdapter;
     private boolean viewingAllEvents = false;
     private AttendeeActivityBinding binding;
@@ -95,7 +95,6 @@ public class Attendee extends AppCompatActivity {
         binding = AttendeeActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        db = FirebaseFirestore.getInstance();
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
@@ -104,7 +103,6 @@ public class Attendee extends AppCompatActivity {
         setupViewModel();
         setupActionbar();
         setOnClickListeners();
-        //fetchInfo(findViewById(R.id.profile_image));
     }
 
     /**
@@ -194,48 +192,29 @@ public class Attendee extends AppCompatActivity {
     public void authenticateUser() {
         userId = getAndroidId();
         Log.d(TAG, "Attendee Android ID: " + userId);
-        UserRepository userRepo = new UserRepository(db);
-        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
-
-        userViewModel.queryUser(userId);
-        userViewModel.getUser().observe(this, user -> {
+        //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel.getUser(userId).observe(this, user -> {
             if (user != null) {
                 // User has a profile
                 Log.d(TAG, "User Authenticated: " + user.getUserId());
                 currentUser = user;
+                fetchInfo(findViewById(R.id.profile_image));
             } else {
                 // New User
                 replaceFragment(new CreateProfile());
-                fetchInfo(findViewById(R.id.profile_image));
             }
             setupViewModel();
         });
     }
+
+
     private void fetchInfo(ImageView profileButton ) {
-        String androidId = getAndroidId(); // Ensure this method correctly retrieves the ID
-        db.collection("users").document(androidId)
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            userImageURL = documentSnapshot.getString("imageUrl");
-                            Log.d("profile", userImageURL);
-                            Picasso.get().load(userImageURL).into(profileButton);
-                        } else {
-                            System.out.println("No such document");
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println("Error getting documents: " + e);
-                    }
-                });
+        userImageURL = currentUser.getImageUrl();
+        Picasso.get().load(userImageURL).into(profileButton);
     }
+
     /**
      * Handles click events on individual events, navigating to the event details.
      * @param event The clicked event object.
@@ -263,6 +242,12 @@ public class Attendee extends AppCompatActivity {
             qrScanner = new QRScanner(qrCheckIn);
             qrScanner.scanQRCode(this);
            });
+
+        MaterialButton switchEventsButton = findViewById(R.id.switch_events_button);
+
+        switchEventsButton.setOnClickListener(v -> {
+            switchEventView();
+        });
 
         ImageView findEventButton = findViewById(R.id.find_event_img);
 
@@ -305,6 +290,13 @@ public class Attendee extends AppCompatActivity {
 
     public void onFindEventResult(Event event){
         replaceFragment(EventDetailsAttendee.newInstance(event, currentUser));
+    }
+
+    @Override
+    public void onUserCreated(User user) {
+        userViewModel.setUser(user);
+        currentUser = user;
+        fetchInfo(findViewById(R.id.profile_image));
     }
 }
 
