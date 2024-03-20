@@ -65,7 +65,7 @@ public class DeleteProfileAdmin extends Fragment {
             Log.w("Profile  ", profileToDelete.getFirstName());
             loadData(view);
         }
-        Log.w("No profile to delte", "sad");
+        Log.w("No profile to delete", "sad");
 
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
         setupActionBar(view);
