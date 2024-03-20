@@ -11,6 +11,7 @@ import android.location.Location;
 
 import com.example.cmput301w24t33.users.User;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.type.LatLng;
 
 import org.checkerframework.checker.units.qual.A;
 
@@ -41,10 +42,7 @@ public class Event implements Serializable {
     private int maxOccupancy;
     private int maxSignup;
     private ArrayList<User> attendees = new ArrayList<>();
-
-
-
-    private ArrayList<GeoPoint> checkInLocations = new ArrayList<>();
+    private ArrayList<String> checkInLocations = new ArrayList<>();
     private ArrayList<User> signedUp = new ArrayList<>();
     private String imageRef;
     private String imageUrl;
@@ -383,10 +381,12 @@ public class Event implements Serializable {
     }
 
     public ArrayList<GeoPoint> getCheckInLocations() {
-        return checkInLocations;
+        ArrayList<GeoPoint> geoPointLocations = new ArrayList<>();
+        for(String location)
+        return geoPointLocations;
     }
 
     public void setCheckInLocations(ArrayList<GeoPoint> checkInLocations) {
-        this.checkInLocations = checkInLocations;
+//        this.checkInLocations = checkInLocations;
     }
 }
