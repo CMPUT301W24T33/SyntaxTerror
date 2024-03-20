@@ -36,6 +36,7 @@ import java.util.List;
  * perform CRUD operations on user data.
  */
 public class UserRepository {
+    private static  UserRepository instance;
     private final FirebaseFirestore db;
     private final CollectionReference userCollection;
     private UserCallback userCallback;
@@ -47,6 +48,7 @@ public class UserRepository {
         db = targetDB;
         userCollection = db.collection("users");
     }
+
 
     /**
      * Interface for callbacks when user data is loaded or an error occurs.
@@ -195,6 +197,10 @@ public class UserRepository {
                 });
     }
 
+    /**
+     *
+     * @param user
+     */
     public void updateUser(User user) {
         String userId = user.getUserId();
         DocumentReference docRef = userCollection.document(userId);
@@ -204,6 +210,10 @@ public class UserRepository {
                 .addOnFailureListener(e -> Log.w("User update", "Document update failed", e));
     }
 
+    /**
+     *
+     * @param user
+     */
     public void deleteUser(User user) {
         String userId = user.getUserId();
         DocumentReference docRef = userCollection.document(userId);

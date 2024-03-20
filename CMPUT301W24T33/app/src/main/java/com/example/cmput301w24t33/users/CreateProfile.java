@@ -8,6 +8,7 @@
 
 package com.example.cmput301w24t33.users;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,15 +50,14 @@ import java.io.IOException;
  * before creating a new User instance.
  */
 public class CreateProfile extends Fragment {
+    private OnUserCreatedListener mListener;
     private UserRepository userRepo;
-    private UserViewModel userViewModel;
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
     private String lName;
     private String email;
     private EditText addEmailEditText;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
     private String imageRef;
     private String imageUrl;
@@ -69,11 +69,7 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //FirebaseFirestore db = FirebaseFirestore.getInstance();
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
-        userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
-
-        userViewModel.init(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
     }
 
     /**
@@ -91,6 +87,13 @@ public class CreateProfile extends Fragment {
         setupClickListeners(view);
         setupActionBar(view);
         return view;
+    }
+
+    /**
+     *
+     */
+    public interface OnUserCreatedListener {
+        void onUserCreated(User user);
     }
 
     /**
@@ -129,7 +132,7 @@ public class CreateProfile extends Fragment {
                 Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
                 return;
             }
-            //Create Users Deterministic Identicon
+            //Create User's Deterministic Identicon
             byte[] hash = IdenticonGenerator.generateHash(fName);
             Bitmap identicon = IdenticonGenerator.generateIdenticonBitmap(hash);
 
@@ -146,13 +149,14 @@ public class CreateProfile extends Fragment {
                 ImageHandler.uploadFile(Uri.fromFile(new File("/data/user/0/com.example.cmput301w24t33/cache/userIdenticon.jpg")), storage, new ImageHandler.UploadCallback() {
                     @Override
                     public void onSuccess(Pair<String, String> result) {
-                        // Handle the success case here
-                        // For example, store the result.first as the image URL and result.second as the image name
+
                         String userId = getAndroidId();
                         Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
                         User newUser = new User(userId, fName, lName, email, false, result.first,result.second);
                         userRepo.setUser(newUser);
-                        userViewModel.setUser(newUser);
+
+                        mListener.onUserCreated(newUser);
+
                         getParentFragmentManager().popBackStack();
 
                     }
@@ -173,6 +177,22 @@ public class CreateProfile extends Fragment {
 
 
         });
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnUserCreatedListener) {
+            mListener = (OnUserCreatedListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnUserCreatedListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 
     /**

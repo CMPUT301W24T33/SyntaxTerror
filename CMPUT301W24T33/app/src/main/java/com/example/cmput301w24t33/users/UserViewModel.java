@@ -111,6 +111,7 @@ public class UserViewModel extends ViewModel {
     public void setUser(User user) {
         liveUser.setValue(user);
     }
+
     /**
      * Returns LiveData containing the list of users.
      *

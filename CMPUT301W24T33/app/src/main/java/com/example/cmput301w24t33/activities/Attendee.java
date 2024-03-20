@@ -71,7 +71,7 @@ import java.util.Map;
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
-public class Attendee extends AppCompatActivity {
+public class Attendee extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
     private FirebaseFirestore db;
     private EventAdapter eventAdapter;
     private boolean viewingAllEvents = false;
@@ -195,7 +195,6 @@ public class Attendee extends AppCompatActivity {
     public void authenticateUser() {
         userId = getAndroidId();
         Log.d(TAG, "Attendee Android ID: " + userId);
-        UserRepository userRepo = new UserRepository(db);
 
         //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
@@ -320,6 +319,13 @@ public class Attendee extends AppCompatActivity {
 
     public void onFindEventResult(Event event){
         replaceFragment(EventDetailsAttendee.newInstance(event, currentUser));
+    }
+
+    @Override
+    public void onUserCreated(User user) {
+        userViewModel.setUser(user);
+        currentUser = user;
+        fetchInfo(findViewById(R.id.profile_image));
     }
 }
 
