@@ -263,6 +263,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         profileButton.setOnClickListener(v -> {
             replaceFragment(Profile.newInstance(currentUser));
         });
+        binding.switchEventsButton.setOnClickListener(v -> switchEventView());
 
         ImageView checkInButton = findViewById(R.id.check_in_img);
 

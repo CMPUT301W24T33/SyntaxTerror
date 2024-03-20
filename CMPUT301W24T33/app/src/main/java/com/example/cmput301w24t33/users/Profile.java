@@ -77,6 +77,11 @@ public class Profile extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
+    /**
+     * Fetches the user's information from Firestore and updates the UI accordingly.
+     * If the user has a saved image URL, it uses Picasso to load the image into the profile image view.
+     * If not, it generates an identicon based on the user's first name, saves it, and uploads it to Firebase Storage.
+     */
     private void fetchInfo() {
         String androidId = getAndroidId(); // Ensure this method correctly retrieves the ID
         db.collection("users").document(androidId)
@@ -154,6 +159,11 @@ public class Profile extends Fragment {
                 });
     }
 
+    /**
+     * Initializes the activity result launcher for handling the result of the image selection intent.
+     * If an image is successfully selected, it converts the image URI to a Bitmap, sets it to the profile image view,
+     * and uploads the image to Firebase Storage.
+     */
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -189,7 +199,12 @@ public class Profile extends Fragment {
             }
     );
 
-
+    /**
+     * Creates a new instance of the Profile fragment, bundling the provided user object as an argument.
+     *
+     * @param user The user object to be edited in the profile.
+     * @return A new instance of Profile with the user data bundled.
+     */
     public static Profile newInstance(User user) {
         Profile fragment = new Profile();
         Log.d(TAG, "Profile NewInstance");
@@ -273,6 +288,12 @@ public class Profile extends Fragment {
 
     }
 
+    /**
+     * Loads user data into the profile form fields from the provided User object.
+     *
+     * @param view The current view where the form fields are located.
+     * @param profile The User object containing the data to be loaded.
+     */
     private void loadData(View view, User profile) {
         /*
         EditText editFirstName = view.findViewById(R.id.first_name_edit_text);

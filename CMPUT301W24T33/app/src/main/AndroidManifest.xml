@@ -29,10 +29,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".activities.Admin"
-            android:exported="false" />
-        <activity
-            android:name=".activities.Attendee"
+            android:name=".activities.AppInitialization"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,13 +38,22 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activities.Admin"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Attendee"
+            android:exported="false" />
+        <activity
             android:name=".activities.Organizer"
             android:exported="false" />
         <activity android:name=".activities.AnonymousAuthActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
+            android:value="${MAPS_API_KEY}"/>
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="barcode_ui"/>
     </application>
 
 </manifest>

@@ -7,33 +7,46 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.OrganizerChooseQrFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
+import com.example.cmput301w24t33.events.EventRepository;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment for choosing an event to generate or reuse a QR code.
  * Allows users to select from existing events or create a new QR code.
  */
-public class EventChooseQR extends Fragment {
+public class EventChooseQR extends Fragment implements EventRepository.EventCallback, EventAdapter.AdapterEventClickListener {
     private Button confirmButton;
     private RecyclerView eventView;
     private ArrayList<Event> eventList;
     private EventAdapter eventAdapter;
+    private String userId;
     private RadioGroup radioButton;
-    private String selectedEvent;
+    private RadioButton selectPreviousButton;
+    private RadioButton createNewButton;
+    private TextView selectedEventView;
+    private Event selectedEvent;
     private ChooseQRFragmentListener listener;
+    private EventRepository eventRepo = new EventRepository();
 
     /**
      * Interface for communication with fragments or activities that host this fragment.
@@ -46,6 +59,12 @@ public class EventChooseQR extends Fragment {
         void setQRCode(String qrCode);
     }
 
+
+    public EventChooseQR(String userId){
+        this.userId = userId;
+        Log.d("ChoseQR", "organizer id: "+userId);
+    }
+
     /**
      * Initializes the fragment. Called when the fragment is first created.
      * Use this method for any one-time initializations and retrieving passed arguments.
@@ -56,6 +75,8 @@ public class EventChooseQR extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+
 
     /**
      * Called to have the fragment instantiate its user interface view. This method inflates the layout for this fragment,
@@ -84,9 +105,15 @@ public class EventChooseQR extends Fragment {
         confirmButton = view.findViewById(R.id.button_choose_qr_confirm);
         eventView = view.findViewById(R.id.event_recyclerview);
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(eventList, null);
-        radioButton = view.findViewById(R.id.choose_qr_radio_group);
+        eventRepo.setEventCallback(this);
+        eventRepo.setEventByOrganizerSnapshotListener(userId);
+        eventView.setVisibility(View.GONE);
+        getView().findViewById(R.id.selected_event_text).setVisibility(View.GONE);
 
+        radioButton = view.findViewById(R.id.choose_qr_radio_group);
+        selectPreviousButton = view.findViewById(R.id.reuse_qr_radio_button);
+        createNewButton = view.findViewById(R.id.new_qr_radio_button);
+        selectedEventView = view.findViewById(R.id.selected_event);
         setOnClickListeners();
     }
 
@@ -98,8 +125,26 @@ public class EventChooseQR extends Fragment {
             int option = radioButton.getCheckedRadioButtonId() == R.id.new_qr_radio_button ? 1 : 2;
             if(option == 1) {
                 listener.setQRCode(null);
+            } else {
+                if(selectedEvent != null) {
+                    listener.setQRCode(selectedEvent.getCheckInQR());
+                    selectedEvent.setCheckInQR(null);
+                    eventRepo.updateEvent(selectedEvent);
+                }
             }
             getParentFragmentManager().popBackStack();
+        });
+
+        selectPreviousButton.setOnClickListener(v->{
+            eventView.setVisibility(View.VISIBLE);
+            getView().findViewById(R.id.selected_event_text).setVisibility(View.VISIBLE);
+            selectedEventView.setVisibility(View.VISIBLE);
+        });
+
+        createNewButton.setOnClickListener(v->{
+            eventView.setVisibility(View.GONE);
+            getView().findViewById(R.id.selected_event_text).setVisibility(View.GONE);
+            selectedEventView.setVisibility(View.GONE);
         });
     }
 
@@ -110,4 +155,37 @@ public class EventChooseQR extends Fragment {
     public void setListener(ChooseQRFragmentListener listener){
         this.listener = listener;
     }
+
+    /**
+     * Populates RecyclerView with loaded events.
+     * @param events events belonging to the user.
+     */
+    @Override
+    public void onEventsLoaded(List<Event> events) {
+        Log.d("EventCallback", "Events loaded: "+ events.get(0).getName());
+        this.eventList = (ArrayList<Event>) events;
+        eventAdapter = new EventAdapter(eventList, this);
+        eventView.setLayoutManager(new LinearLayoutManager(getContext()));
+        eventView.setHasFixedSize(true);
+        eventView.setAdapter(eventAdapter);
+        eventAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Handles event loading failure.
+     * @param e Exception resulting from attempt to load events.
+     */
+    @Override
+    public void onFailure(Exception e) {
+        Log.e("EventCallback", "failed to retrieve events: " + e.getMessage());
+        e.printStackTrace();
+    }
+
+
+    @Override
+    public void onEventClickListener(Event event, int position) {
+        selectedEvent = event;
+        selectedEventView.setText(event.getName());
+    }
+
 }

@@ -38,17 +38,25 @@ import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBi
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Fragment for creating and editing events within the application.
@@ -128,6 +136,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Places.initialize(getContext().getApplicationContext(), getString(R.string.places));
         db = FirebaseFirestore.getInstance();
     }
 
@@ -145,6 +154,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         binding = OrganizerCreateEditEventFragmentBinding.inflate(inflater, container, false);
         setupActionButtons();
         setupDateTimePickers();
+        setupPlacesAutocomplete();
+
         if (getArguments() != null) {
             // Used when editing an event
             Bundle eventBundle = getArguments();
@@ -184,12 +195,52 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     }
 
     /**
+     * Initializes and sets up the Places Autocomplete search fragment.
+     * Configures the fragment to display place suggestions as the user types and handles
+     * the selection of a place by updating the event's location input field with the selected
+     * place's address and storing the latitude and longitude coordinates.
+     */
+    private void setupPlacesAutocomplete() {
+        // Initialize the search fragment
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
+        if (autocompleteFragment != null) {
+            autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
+
+            autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+                @Override
+                public void onPlaceSelected(@NonNull Place place) {
+                    // Handle the selected Place
+                    binding.eventLocationEditText.setText(place.getAddress());
+                    LatLng latLng = place.getLatLng();
+                    if (latLng != null) {
+                        String latitude = String.valueOf(latLng.latitude);
+                        String longitude = String.valueOf(latLng.longitude);
+
+                        //Set Cords to the event
+                        String locationData = latitude + "," + longitude;
+                        binding.eventLocationCordsText.setText(locationData);
+
+                    }
+                }
+                @Override
+                public void onError(@NonNull Status status) {
+                    Log.i("Places", "An error occurred: " + status);
+                }
+            });
+        }
+    }
+
+
+    /**
      * Loads existing event data into the input fields if an event is being edited.
      */
     private void loadData() {
         // Load data into relevant field
         binding.eventNameEditText.setText(eventToEdit.getName());
         binding.eventLocationEditText.setText(eventToEdit.getAddress());
+        binding.eventLocationCordsText.setText(eventToEdit.getLocationData());
         binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
         binding.startDateEditText.setText(eventToEdit.getStartDate());
         binding.endDateEditText.setText(eventToEdit.getEndDate());
@@ -268,6 +319,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private void setEventEdits(Event event) {
         event.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
         event.setAddress(Objects.requireNonNull(binding.eventLocationEditText.getText()).toString().trim());
+        event.setLocationData(Objects.requireNonNull(binding.eventLocationCordsText).getText().toString().trim());
         event.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
         event.setStartDate(Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
         event.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
@@ -277,22 +329,14 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         Log.d("setURL","a"+eventImageUrl);
         event.setImageUrl(eventImageUrl);
         event.setImageRef(eventImageRef);
-        //event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
+        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
 
         // when no QR code is being reused
         if (qrcode == null) {
-            // reference to new QR code document
-            DocumentReference docRef = db.collection("checkInCodes").document();
-
-            // sets organizerId field to organizer Id
-            Map<String, String> map = new HashMap<>();
-            map.put("organizerId", getAndroidId());
-            docRef.set(map);
-
-            // sets qrcode value to doc name
-            qrcode = docRef.getPath().split("/")[1];
-            Log.d("QRCODE", "null qr code");
+            // create new uuid for qrcode
+            qrcode = UUID.randomUUID().toString();
+            Log.d("QRCODE", "new QR code: " + qrcode);
         }
 
         event.setCheckInQR(Objects.requireNonNull(qrcode));
@@ -321,7 +365,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void onSelectQRCode() {
         // Handle QR Code selection
-        EventChooseQR chooseQrFragment = new EventChooseQR();
+        EventChooseQR chooseQrFragment = new EventChooseQR(getAndroidId());
 
         // Attaches this Listener to EventChooseQR fragment
         chooseQrFragment.setListener(this);
@@ -391,8 +435,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     public void setQRCode(String qrCode) {
         this.qrcode = qrCode;
     }
+
+
     private String getAndroidId() {
-        String androidId = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-        return androidId;
+        return Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 }
