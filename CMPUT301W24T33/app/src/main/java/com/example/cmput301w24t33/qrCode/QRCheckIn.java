@@ -32,7 +32,8 @@ public class QRCheckIn implements QRScanner.ScanResultsListener{
     @Override
     public void onScanResult(QRCode qrCode) {
         for(Event event: events){
-            if (event.getCheckInQR().equals(qrCode.getQrCode())){
+            Log.d("CheckIn", "Event: "+event.getName());
+            if (event.getCheckInQR() != null && event.getCheckInQR().equals(qrCode.getQrCode())){
                 if(!validateCheckIn(event)){ // invalid check in
                     return;
                 }

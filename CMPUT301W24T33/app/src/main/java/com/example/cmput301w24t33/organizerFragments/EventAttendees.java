@@ -35,12 +35,9 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -191,8 +188,10 @@ public class EventAttendees extends Fragment {
 
 
                 // Add markers for each check-in location
-                for(GeoPoint checkInPoint : selectedEvent.getCheckInLocations()) {
-                    gMap.addMarker(new MarkerOptions().position(new LatLng(checkInPoint.getLatitude(),checkInPoint.getLongitude())));
+                for(String checkInPoint : selectedEvent.getCheckInLocations()) {
+                    double lat = Double.parseDouble(checkInPoint.split(",")[0]);
+                    double lon = Double.parseDouble(checkInPoint.split(",")[1]);
+                    gMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)));
                 }
             }
         });

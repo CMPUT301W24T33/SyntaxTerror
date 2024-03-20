@@ -11,9 +11,6 @@ import android.location.Location;
 
 import com.example.cmput301w24t33.users.User;
 import com.google.firebase.firestore.GeoPoint;
-import com.google.type.LatLng;
-
-import org.checkerframework.checker.units.qual.A;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -352,7 +349,7 @@ public class Event implements Serializable {
     public void addAttendee(User attendee, Location location) {
         attendees.add(attendee);
         if (location != null) {
-            checkInLocations.add(new GeoPoint(location.getLatitude(), location.getLongitude()));
+            checkInLocations.add(location.getLatitude() + "," +location.getLongitude());
         }
     }
 
@@ -380,13 +377,27 @@ public class Event implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public ArrayList<GeoPoint> getCheckInLocations() {
+    public ArrayList<String> getCheckInLocations() {
         ArrayList<GeoPoint> geoPointLocations = new ArrayList<>();
-        for(String location)
-        return geoPointLocations;
+        for (String location: checkInLocations){
+            double lat = Double.parseDouble(location.split(",")[0]);
+            double lon = Double.parseDouble(location.split(",")[1]);
+            geoPointLocations.add(new GeoPoint(lat,lon));
+        }
+        return checkInLocations;
     }
 
-    public void setCheckInLocations(ArrayList<GeoPoint> checkInLocations) {
-//        this.checkInLocations = checkInLocations;
+    public void setCheckInLocations(ArrayList<String> checkInLocations) {
+        this.checkInLocations = checkInLocations;
+    }
+
+    public ArrayList<GeoPoint> checkInLocationsGeoPoint(){
+        ArrayList<GeoPoint> geoPointLocations = new ArrayList<>();
+        for (String location: checkInLocations){
+            double lat = Double.parseDouble(location.split(",")[0]);
+            double lon = Double.parseDouble(location.split(",")[1]);
+            geoPointLocations.add(new GeoPoint(lat,lon));
+        }
+        return geoPointLocations;
     }
 }
