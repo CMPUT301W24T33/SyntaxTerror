@@ -23,6 +23,7 @@ public class User implements Serializable {
     private String email;
     private String firstName;
     private String lastName;
+    private String fullName;
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
     private String imageRef;
     private String imageUrl;
