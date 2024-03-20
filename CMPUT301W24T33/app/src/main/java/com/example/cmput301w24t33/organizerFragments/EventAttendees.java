@@ -7,6 +7,7 @@
 
 package com.example.cmput301w24t33.organizerFragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.firestore.CollectionReference;
@@ -57,6 +59,7 @@ public class EventAttendees extends Fragment {
     private MapView mapView;
     private Event selectedEvent;
     private GoogleMap gMap;
+    private float GEOFENCE_RADIUS = 100;
 
     /**
      * Required empty public constructor
@@ -178,6 +181,8 @@ public class EventAttendees extends Fragment {
                     LatLng eventLocation = new LatLng(latitude, longitude);
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
                     gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
+                    addCircle(eventLocation,GEOFENCE_RADIUS);
+
                 } else {
                 // Default to Edmonton if location is not Specified
                 LatLng eventEdmontonDefault = new LatLng(53.5461, -113.4938);
@@ -191,6 +196,17 @@ public class EventAttendees extends Fragment {
                 }
             }
         });
+    }
+
+    private void addCircle(LatLng latLng,float radius){
+        CircleOptions circleOptions = new CircleOptions();
+        circleOptions.center(latLng);
+        circleOptions.radius(radius);
+        circleOptions.strokeColor(Color.argb(255,255,0,0));
+        circleOptions.fillColor(Color.argb(64,255,0,0));
+        circleOptions.strokeWidth(4);
+        gMap.addCircle(circleOptions);
+
     }
 
     /**
