@@ -77,7 +77,6 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:4.4.0") // use the latest version
     androidTestImplementation ("org.mockito:mockito-android:4.4.0") // use the latest version for Android tests
     implementation ("com.squareup.picasso:picasso:2.71828")
-
-
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
 
 }
