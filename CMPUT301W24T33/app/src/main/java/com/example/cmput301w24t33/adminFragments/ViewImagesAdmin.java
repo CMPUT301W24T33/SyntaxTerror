@@ -180,11 +180,13 @@ public class ViewImagesAdmin extends Fragment {
 
         userImageRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         userImageRecyclerView.setHasFixedSize(true);
-        userImageAdapter = new UserImageAdapter(userList, this::onUserClickListener);
+        userImageAdapter = new UserImageAdapter(userList, this::onUserClick);
         userImageRecyclerView.setAdapter(userImageAdapter);
     }
 
-    private void onUserClickListener(int position) {
+    private void onUserClick(int position) {
+        User user = userList.get(position);
+        replaceFragment(DeleteProfilePictureAdmin.newInstance(user));
 
     }
 

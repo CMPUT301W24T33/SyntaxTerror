@@ -9,7 +9,7 @@
     tools:context=".activities.Organizer">
 
     <RelativeLayout
-        android:id="@+id/edit_event_actionbar"
+        android:id="@+id/delete_profile_picture_actionbar"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -42,15 +42,16 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/event_information_layout"
+        android:id="@+id/user_information_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_event_actionbar"
+        app:layout_constraintTop_toBottomOf="@+id/delete_profile_picture_actionbar"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
@@ -59,22 +60,39 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Event Name -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event Name"
+                android:text="First Name"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/event_name_input_layout"
+                android:id="@+id/profile_first_name_input_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:counterMaxLength="30">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/event_name_edit_text"
+                    android:id="@+id/profile_first_name_edit_text"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/profile_last_name_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterMaxLength="30">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/profile_last_name_edit_text"
                     android:focusable="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -82,19 +100,18 @@
 
             <!-- Event Poster -->
             <ImageView
-                android:id="@+id/event_poster_image_view"
+                android:id="@+id/profile_picture_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:scaleType="fitXY"
                 android:contentDescription="event_poster"
                 android:src="@drawable/ic_event_poster_placeholder"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/delete_button"
