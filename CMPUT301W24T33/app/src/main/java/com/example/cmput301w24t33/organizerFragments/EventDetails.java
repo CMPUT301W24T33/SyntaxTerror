@@ -101,7 +101,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         binding.signUpsButton.setOnClickListener(v -> replaceFragment(EventSignedUp.newInstance(event.getSignedUp())));
 
         // Navigation to the notifications organizer fragment
-        binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsOrganizer()));
+        binding.notificationsButton.setOnClickListener(v -> replaceFragment(NotificationsOrganizer.newInstance(event)));
 
         // Navigation to the event edit fragment
         binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
