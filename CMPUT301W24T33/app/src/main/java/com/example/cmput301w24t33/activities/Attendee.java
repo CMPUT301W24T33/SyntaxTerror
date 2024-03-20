@@ -72,7 +72,6 @@ import java.util.Map;
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
 public class Attendee extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
-    private FirebaseFirestore db;
     private EventAdapter eventAdapter;
     private boolean viewingAllEvents = false;
     private AttendeeActivityBinding binding;
@@ -96,7 +95,6 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         binding = AttendeeActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        db = FirebaseFirestore.getInstance();
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
@@ -105,7 +103,6 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         setupViewModel();
         setupActionbar();
         setOnClickListeners();
-        //fetchInfo(findViewById(R.id.profile_image));
     }
 
     /**
@@ -207,7 +204,6 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
             } else {
                 // New User
                 replaceFragment(new CreateProfile());
-                //fetchInfo(findViewById(R.id.profile_image));
             }
             setupViewModel();
         });
@@ -215,36 +211,10 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
 
 
     private void fetchInfo(ImageView profileButton ) {
-
         userImageURL = currentUser.getImageUrl();
-        Log.w("IMAGE URL: ", userImageURL);
         Picasso.get().load(userImageURL).into(profileButton);
-        //Log.w("Fetch User", user.getUserId());
-        /*
-        String androidId = getAndroidId(); // Ensure this method correctly retrieves the ID
-        db.collection("users").document(androidId)
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            userImageURL = documentSnapshot.getString("imageUrl");
-                            Log.d("profile", userImageURL);
-                            Picasso.get().load(userImageURL).into(profileButton);
-                        } else {
-                            System.out.println("No such document");
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println("Error getting documents: " + e);
-                    }
-                });
-
-         */
     }
+
     /**
      * Handles click events on individual events, navigating to the event details.
      * @param event The clicked event object.
