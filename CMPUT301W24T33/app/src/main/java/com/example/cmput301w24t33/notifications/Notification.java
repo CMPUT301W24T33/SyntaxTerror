@@ -13,6 +13,7 @@ package com.example.cmput301w24t33.notifications;
  * allowing for easy storage and retrieval of notification details.
  */
 public class Notification {
+    private String notificationId;
     private String title;
     private String message;
     private String timestamp;
@@ -28,6 +29,17 @@ public class Notification {
         this.title = title;
         this.message = message;
         this.timestamp = timestamp;
+    }
+
+    // Empty constructor for Firebase
+    public Notification() {}
+
+    public String getNotificationId() {
+        return notificationId;
+    }
+
+    public void setNotificationId(String notificationId) {
+        this.notificationId = notificationId;
     }
 
     /**
