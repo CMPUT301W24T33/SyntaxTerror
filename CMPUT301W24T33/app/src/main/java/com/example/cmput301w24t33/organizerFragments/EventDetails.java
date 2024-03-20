@@ -109,6 +109,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
             ShareQRFragment
                     .newInstance(event,this)
                     .show(getActivity().getSupportFragmentManager(), "Share QR Code");
+
         });
     }
 
