@@ -27,6 +27,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
@@ -48,6 +50,7 @@ import java.io.IOException;
  */
 public class CreateProfile extends Fragment {
     private UserRepository userRepo;
+    private UserViewModel userViewModel;
     private EditText addFnameEditText;
     private EditText addLnameEditText;
     private String fName;
@@ -68,6 +71,9 @@ public class CreateProfile extends Fragment {
         super.onCreate(savedInstanceState);
         //FirebaseFirestore db = FirebaseFirestore.getInstance();
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
+
+        userViewModel.init(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
     }
 
     /**
@@ -145,7 +151,8 @@ public class CreateProfile extends Fragment {
                         String userId = getAndroidId();
                         Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
                         User newUser = new User(userId, fName, lName, email, false, result.first,result.second);
-                        userRepo.setUser(newUser, getAndroidId());
+                        userRepo.setUser(newUser);
+                        userViewModel.setUser(newUser);
                         getParentFragmentManager().popBackStack();
 
                     }

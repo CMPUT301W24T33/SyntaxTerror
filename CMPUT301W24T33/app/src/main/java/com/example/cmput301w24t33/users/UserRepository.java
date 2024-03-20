@@ -14,6 +14,7 @@ package com.example.cmput301w24t33.users;
 import static android.content.ContentValues.TAG;
 
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.MotionEffect;
@@ -22,8 +23,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,6 +127,30 @@ public class UserRepository {
                 });
     }
 
+    private void getUserImageURL(String userId) {
+
+        userCollection.document(userId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String userImageURL = documentSnapshot.getString("imageUrl");
+                            Log.d("profile", userImageURL);
+                            //Picasso.get().load(userImageURL).into(profileButton);
+                        } else {
+                            System.out.println("No such document");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@android.support.annotation.NonNull Exception e) {
+                        System.out.println("Error getting documents: " + e);
+                    }
+                });
+    }
+
     /**
      * Retrieves a single user by their ID and reflects any changes in real-time.
      *
@@ -155,10 +183,12 @@ public class UserRepository {
      *
      * @param user The User object to add to Firestore.
      */
-    public void setUser(User user, String docId) {
+    public void setUser(User user) {
+        String docId = user.getUserId();
         userCollection.document(docId).set(user)
                 .addOnSuccessListener(documentReference -> {
                     Log.d(TAG, "Create User Document success: " + user.getUserId());
+                    //userCallback.onUsersLoaded(user);
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Create User Document failed", e);

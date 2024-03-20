@@ -103,7 +103,26 @@ public class EventRepository {
                     eventCallback.onEventsLoaded(events);
                 });
     }
-
+    /**
+     * Registers a listener for real-time updates to events a specific user has signed up for.
+     *
+     * @param userId The ID of the organizer to filter events by.
+     */
+    public void setEventBySignUpSnapshotListener(String userId) {
+        eventsCollection.whereArrayContains("signedUp", userId)
+                .addSnapshotListener((queryDocumentSnapshots, e) -> {
+                    if (e != null) {
+                        eventCallback.onFailure(e);
+                        return;
+                    }
+                    List<Event> events = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        Event event = doc.toObject(Event.class);
+                        events.add(event);
+                    }
+                    eventCallback.onEventsLoaded(events);
+                });
+    }
     /**
      * Updates an existing event document in Firestore with new data from an Event object.
      *

@@ -105,7 +105,7 @@ public class Attendee extends AppCompatActivity {
         setupViewModel();
         setupActionbar();
         setOnClickListeners();
-        fetchInfo(findViewById(R.id.profile_image));
+        //fetchInfo(findViewById(R.id.profile_image));
     }
 
     /**
@@ -196,25 +196,32 @@ public class Attendee extends AppCompatActivity {
         userId = getAndroidId();
         Log.d(TAG, "Attendee Android ID: " + userId);
         UserRepository userRepo = new UserRepository(db);
-        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
-        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
-
-        userViewModel.queryUser(userId);
-        userViewModel.getUser().observe(this, user -> {
+        //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel.getUser(userId).observe(this, user -> {
             if (user != null) {
                 // User has a profile
                 Log.d(TAG, "User Authenticated: " + user.getUserId());
                 currentUser = user;
+                fetchInfo(findViewById(R.id.profile_image));
             } else {
                 // New User
                 replaceFragment(new CreateProfile());
-                fetchInfo(findViewById(R.id.profile_image));
+                //fetchInfo(findViewById(R.id.profile_image));
             }
             setupViewModel();
         });
     }
+
+
     private void fetchInfo(ImageView profileButton ) {
+
+        userImageURL = currentUser.getImageUrl();
+        Log.w("IMAGE URL: ", userImageURL);
+        Picasso.get().load(userImageURL).into(profileButton);
+        //Log.w("Fetch User", user.getUserId());
+        /*
         String androidId = getAndroidId(); // Ensure this method correctly retrieves the ID
         db.collection("users").document(androidId)
                 .get()
@@ -236,6 +243,8 @@ public class Attendee extends AppCompatActivity {
                         System.out.println("Error getting documents: " + e);
                     }
                 });
+
+         */
     }
     /**
      * Handles click events on individual events, navigating to the event details.
