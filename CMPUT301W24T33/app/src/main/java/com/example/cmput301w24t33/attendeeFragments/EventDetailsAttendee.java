@@ -19,6 +19,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -136,6 +137,10 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         if (checkedId == R.id.goingButton) {
             if (isChecked) {
                 // User has selected "Going"
+                if(!validateSignUp()) {
+                    Toast.makeText(getContext(),"Error: Event's Max Signup reached", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 event.getSignedUp().add(user);
             }
         } else if (checkedId == R.id.notGoingButton) {
@@ -146,6 +151,10 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         }
         EventRepository eventRepo = new EventRepository();
         eventRepo.updateEvent(event);
+    }
+
+    private boolean validateSignUp(){
+        return event.getMaxSignup() != event.getSignedUp().size() || event.getMaxSignup() == 0;
     }
 
     /**

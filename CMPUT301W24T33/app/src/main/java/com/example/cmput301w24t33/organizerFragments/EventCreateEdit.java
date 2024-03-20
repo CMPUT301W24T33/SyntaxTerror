@@ -329,7 +329,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         Log.d("setURL","a"+eventImageUrl);
         event.setImageUrl(eventImageUrl);
         event.setImageRef(eventImageRef);
-        //event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
+        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
 
         // when no QR code is being reused
