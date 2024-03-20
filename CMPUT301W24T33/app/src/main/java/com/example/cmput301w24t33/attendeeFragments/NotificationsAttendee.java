@@ -78,12 +78,12 @@ public class NotificationsAttendee extends Fragment {
      * @param view The current view instance containing the UI elements.
      */
     private void setupNotificationsList(@NonNull View view) {
-        RecyclerView recyclerView = view.findViewById(R.id.notifications_attendee);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        List<Notification> notifications = createSampleNotifications();
-        NotificationAdapter adapter = new NotificationAdapter(notifications, null);
-        recyclerView.setAdapter(adapter);
+//        RecyclerView recyclerView = view.findViewById(R.id.notifications_attendee);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//
+//        List<Notification> notifications = createSampleNotifications();
+//        NotificationAdapter adapter = new NotificationAdapter(notifications, null);
+//        recyclerView.setAdapter(adapter);
     }
 
     /**

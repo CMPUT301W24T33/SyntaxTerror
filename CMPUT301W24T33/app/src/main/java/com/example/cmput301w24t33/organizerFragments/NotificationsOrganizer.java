@@ -1,6 +1,9 @@
 package com.example.cmput301w24t33.organizerFragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +19,11 @@ import com.example.cmput301w24t33.databinding.OrganizerNotificationsFragmentBind
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.users.Profile;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -28,8 +31,8 @@ import java.util.Locale;
 public class NotificationsOrganizer extends Fragment implements NotificationAdapter.OnNotificationListener {
 
     private OrganizerNotificationsFragmentBinding binding;
-    private List<Notification> notifications;
     private NotificationAdapter adapter;
+    private Event event;
     private int selectedNotificationPosition = -1;
 
     public static NotificationsOrganizer newInstance(Event event) {
@@ -43,8 +46,10 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OrganizerNotificationsFragmentBinding.inflate(inflater, container, false);
+        event = (Event) getArguments().get("event");
+        adapter = new NotificationAdapter(this);
         setupActionBar();
-        setupNotificationsList();
+        fetchNotifications();
         setupNewNotificationButton();
         setupClickListeners();
         return binding.getRoot();
@@ -56,13 +61,27 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         binding.buttonDeleteNotification.setOnClickListener(v -> deleteSelectedNotification());
     }
 
+    public void onNotificationClick(int position) {
+        selectedNotificationPosition = position;
+        binding.buttonDeleteNotification.setVisibility(View.VISIBLE);
+    }
+
     private void deleteSelectedNotification() {
-        if (selectedNotificationPosition != -1 && selectedNotificationPosition < notifications.size()) {
-            notifications.remove(selectedNotificationPosition);
-            adapter.notifyItemRemoved(selectedNotificationPosition);
-            adapter.notifyItemRangeChanged(selectedNotificationPosition, notifications.size());
-            binding.buttonDeleteNotification.setVisibility(View.GONE);
-            selectedNotificationPosition = -1;
+        if (selectedNotificationPosition != -1) {
+            String notificationId = adapter.getNotifications().get(selectedNotificationPosition).getId();
+            String eventId = event.getEventId();
+
+            NotificationManager.getInstance().deleteNotification(eventId, notificationId, task -> {
+                if (task.isSuccessful()) {
+                    getActivity().runOnUiThread(() -> {
+                        adapter.removeNotificationAt(selectedNotificationPosition);
+                        binding.buttonDeleteNotification.setVisibility(View.GONE);
+                        selectedNotificationPosition = -1;
+                    });
+                } else {
+                    Log.e(TAG, "Error deleting notification", task.getException());
+                }
+            });
         }
     }
 
@@ -77,11 +96,15 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
         binding.actionbar.profileImage.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
-    private void setupNotificationsList() {
+    private void fetchNotifications() {
         binding.notificationsOrganizer.setLayoutManager(new LinearLayoutManager(getContext()));
-        notifications = createSampleNotifications();
-        adapter = new NotificationAdapter(notifications, this);
+        NotificationManager.getInstance().fetchNotificationsForEvent(event.getEventId(), this::updateAdapter);
+    }
+
+    private void updateAdapter(List<Notification> notifications) {
+        adapter.addNotifications(notifications);
         binding.notificationsOrganizer.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private void newNotificationDialog() {
@@ -98,27 +121,22 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
     private void createNotificationFromDialog(View dialogView) {
         String title = ((EditText) dialogView.findViewById(R.id.etNotificationTitle)).getText().toString().trim();
         String message = ((EditText) dialogView.findViewById(R.id.etNotificationMessage)).getText().toString().trim();
+        // TODO: GET PROPER TIME FROM TIME CLASS
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
         createNotification(title, message, timestamp);
     }
 
     private void createNotification(String title, String message, String timestamp) {
-        Notification newNotification = new Notification(title, message, timestamp);
-        notifications.add(newNotification);
-        adapter.notifyDataSetChanged();
-    }
+        Notification notification = new Notification(title, message, timestamp);
+        String eventId = event.getEventId();
 
-    private List<Notification> createSampleNotifications() {
-        List<Notification> sampleNotifications = new ArrayList<>();
-        sampleNotifications.add(new Notification("Welcome", "Thanks for joining our event!", "10:00 AM"));
-        sampleNotifications.add(new Notification("Session Start", "Don't miss the keynote speech.", "11:00 AM"));
-        sampleNotifications.add(new Notification("Lunch Break", "Lunch is served at the main hall.", "1:00 PM"));
-        return sampleNotifications;
-    }
-
-    public void onNotificationClick(int position) {
-        selectedNotificationPosition = position;
-        binding.buttonDeleteNotification.setVisibility(View.VISIBLE);
+        NotificationManager.getInstance().addNotification(eventId, notification, task -> {
+            if (task.isSuccessful()) {
+                fetchNotifications(); // Re-fetch notifications to include the new one
+            } else {
+                Log.e(TAG, "Error adding notification", task.getException());
+            }
+        });
     }
 
     private void replaceFragment(Fragment fragment) {

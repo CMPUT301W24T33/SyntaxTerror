@@ -21,9 +21,15 @@ public class NotificationManager {
         repository = new NotificationRepository(this::dispatchNotificationUpdate);
     }
 
-    public static synchronized NotificationManager getInstance(Application application) {
+    public static synchronized void initialize(Application application) {
         if (instance == null) {
             instance = new NotificationManager(application);
+        }
+    }
+
+    public static synchronized NotificationManager getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("NotificationManager must be initialized in the Application class before use");
         }
         return instance;
     }
@@ -46,11 +52,8 @@ public class NotificationManager {
         repository.deleteNotification(eventId, notificationId, onCompleteListener);
     }
 
-    public void fetchNotificationsForEvent(String eventId, OnCompleteListener<QuerySnapshot> onCompleteListener) {
-        repository.fetchNotificationsForEvent(eventId, onCompleteListener);
+    public void fetchNotificationsForEvent(String eventId, NotificationRepository.NotificationsFetchListener listener) {
+        repository.fetchNotificationsForEvent(eventId, listener);
     }
 }
 
-
-//    List<String> eventIds = Arrays.asList("eventId1", "eventId2", "eventId3"); // Example event IDs
-//NotificationManager.getInstance(this.getApplication()).updateEventIdsOfInterest(eventIds);

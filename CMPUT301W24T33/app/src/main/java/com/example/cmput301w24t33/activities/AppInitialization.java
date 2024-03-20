@@ -9,7 +9,7 @@ public class AppInitialization extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //NotificationManager.getInstance(this.getApplication());
+        NotificationManager.initialize(this.getApplication());
         launchApp();
         finish();
     }

@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
-    private final List<Notification> notifications;
+    private List<Notification> notifications;
     private final OnNotificationListener listener; // Listener can be null
 
     /**
@@ -36,12 +36,24 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     /**
      * Constructs a NotificationAdapter with a list of notifications and a listener for click events.
-     * @param notifications The list of Notification objects to be displayed.
      * @param listener The listener for handling notification click events.
      */
-    public NotificationAdapter(List<Notification> notifications, OnNotificationListener listener) {
-        this.notifications = notifications;
+    public NotificationAdapter(OnNotificationListener listener) {
         this.listener = listener;
+    }
+
+    public void addNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public void removeNotificationAt(int position) {
+        notifications.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, notifications.size());
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
     }
 
     /**

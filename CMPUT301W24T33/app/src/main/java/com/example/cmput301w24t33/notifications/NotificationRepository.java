@@ -8,8 +8,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -24,6 +27,11 @@ public class NotificationRepository {
     public interface NotificationUpdateListener {
         void onNotificationUpdate(Event event, Notification notification);
     }
+
+    public interface NotificationsFetchListener {
+        void onFetched(List<Notification> notifications);
+    }
+
 
     public void listenForEventNotificationUpdates(List<String> eventIds) {
         for (String eventId : eventIds) {
@@ -57,19 +65,8 @@ public class NotificationRepository {
     public void addNotification(String eventId, Notification notification, OnCompleteListener<DocumentReference> onCompleteListener) {
         db.collection("events").document(eventId).collection("notifications")
                 .add(notification)
-                .addOnSuccessListener(documentReference -> {
-                    String documentId = documentReference.getId();
-                    notification.setNotificationId(documentId);
-                    // Optionally update the notification document with its ID
-                    db.collection("events").document(eventId).collection("notifications").document(documentId)
-                            .update("notificationId", documentId)
-                            .addOnSuccessListener(aVoid -> Log.d(TAG, "NotificationId added to document: " + documentId))
-                            .addOnFailureListener(e -> Log.e(TAG, "Failed to add notificationId", e));
-                })
-                .addOnFailureListener(e -> Log.w(TAG, "Create notification failed", e))
                 .addOnCompleteListener(onCompleteListener);
     }
-
 
     // Delete a notification from an event
     public void deleteNotification(String eventId, String notificationId, OnCompleteListener<Void> onCompleteListener) {
@@ -79,11 +76,23 @@ public class NotificationRepository {
     }
 
     // Fetch all notifications for a given event
-    public void fetchNotificationsForEvent(String eventId, OnCompleteListener<QuerySnapshot> onCompleteListener) {
+    public void fetchNotificationsForEvent(String eventId, NotificationsFetchListener listener) {
         db.collection("events").document(eventId).collection("notifications")
                 .get()
-                .addOnCompleteListener(onCompleteListener);
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<Notification> notifications = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            notifications.add(document.toObject(Notification.class));
+                        }
+                        listener.onFetched(notifications);
+                    } else {
+                        Log.e(TAG, "Error fetching notifications", task.getException());
+                        listener.onFetched(Collections.emptyList()); // Or handle the error as you see fit
+                    }
+                });
     }
+
 }
 
 
