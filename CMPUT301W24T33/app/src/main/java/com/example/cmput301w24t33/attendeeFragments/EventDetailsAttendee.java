@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
@@ -121,6 +122,13 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         binding.eventLocationTextView.setText(event.getAddress());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
+        if(event.getImageUrl() != null && event.getImageUrl() != ""){
+            Glide.with(this).load(event.getImageUrl()).into(binding.eventPosterImageView);
+            //Picasso.get().load(event.getImageUrl()).fit().into(binding.eventPosterImageView);   // load poster image
+        }
+        else{
+            binding.eventPosterImageView.setImageResource(R.drawable.ic_event_poster_placeholder); // set image default
+        }
 
         boolean isGoing = event.getSignedUp().contains(user);
         if (isGoing) {
