@@ -77,11 +77,17 @@ public class ShareQRFragment extends DialogFragment {
 
                     // determines which code to share and passes it back to listener
                     if(radioGroup.getCheckedRadioButtonId() == R.id.share_check_in_code) {
-                        listener.ShareSelectedQRCode(new QRCode(checkInCode));
+                        if(checkInCode != null) {
+                            listener.ShareSelectedQRCode(new QRCode(checkInCode));
+                        }
                     } else if (radioGroup.getCheckedRadioButtonId() == R.id.share_event_code) {
-                        listener.ShareSelectedQRCode(new QRCode(checkInCode));
+                        if(checkInCode != null) {
+                            listener.ShareSelectedQRCode(new QRCode(checkInCode));
+                        }
                     } else {
-                        listener.ShareSelectedQRCode(new QRCode(posterCode));
+                        if(posterCode != null) {
+                            listener.ShareSelectedQRCode(new QRCode(posterCode));
+                        }
                     }
 
                 } ).create();

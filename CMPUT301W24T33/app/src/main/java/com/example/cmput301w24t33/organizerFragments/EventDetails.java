@@ -106,11 +106,8 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         // Navigation to the event edit fragment
         binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
         binding.shareQrCodeButton.setOnClickListener(v -> {
-            QRCode checkInCode = new QRCode(event.getCheckInQR());
-            QRCode posterCode = event.getPosterQR()==null? null: new QRCode(event.getPosterQR());
-
             ShareQRFragment
-                    .newInstance(checkInCode, new QRCode(event.getEventId()), posterCode,this)
+                    .newInstance(event,this)
                     .show(getActivity().getSupportFragmentManager(), "Share QR Code");
         });
     }
