@@ -11,34 +11,43 @@ import android.view.ViewGroup;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AdminDeletePosterFragmentBinding;
+import com.example.cmput301w24t33.databinding.AdminDeleteProfilePictureFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link DeleteProfilePictureAdmin#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class DeleteProfilePictureAdmin extends Fragment {
 
-public class DeletePosterAdmin extends Fragment {
 
-    private EventRepository eventRepo;
-    private AdminDeletePosterFragmentBinding binding;
-    private Event eventToRemovePoster;
+    private UserRepository userRepo;
+    private AdminDeleteProfilePictureFragmentBinding binding;
+    private User userProfile;
     private Picasso picasso;
 
 
-    public DeletePosterAdmin() {
+    public DeleteProfilePictureAdmin() {
         // Required empty public constructor
     }
 
     /**
-     * Factory method to create a new instance of DeleteEventAdmin fragment
+     * Factory method to create a new instance of DeleteProfilePictureAdmin fragment
      * using the provided parameters.
      *
-     * @param event The event to remove image from.
-     * @return A new instance of DeleteEventAdmin.
+     * @param user The user to remove image from.
+     * @return A new instance of DeleteProfilePictureAdmin.
      */
-    public static DeletePosterAdmin newInstance(Event event) {
-        DeletePosterAdmin fragment = new DeletePosterAdmin();
+    public static DeleteProfilePictureAdmin newInstance(User user) {
+        DeleteProfilePictureAdmin fragment = new DeleteProfilePictureAdmin();
         Bundle args = new Bundle();
-        args.putSerializable("event", event);
+        args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,22 +57,22 @@ public class DeletePosterAdmin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = AdminDeletePosterFragmentBinding.inflate(inflater,container,false);
+        binding = AdminDeleteProfilePictureFragmentBinding.inflate(inflater,container,false);
         if (getArguments() != null) {
-            eventToRemovePoster = (Event) getArguments().getSerializable("event");
+            userProfile = (User) getArguments().getSerializable("user");
         }
         picasso = Picasso.get();
         loadData();
         setupActionBar();
-        eventRepo = new EventRepository();
+        userRepo = new UserRepository(FirebaseFirestore.getInstance());
         setupActionButtons();
         return binding.getRoot();
     }
 
     private void setupActionBar() {
         int color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
-        binding.editEventActionbar.setBackgroundColor(color);
-        binding.backActionbarTextview.setText("Delete Poster");
+        binding.deleteProfilePictureActionbar.setBackgroundColor(color);
+        binding.backActionbarTextview.setText("Delete Profile Pic");
     }
 
     /**
@@ -100,17 +109,18 @@ public class DeletePosterAdmin extends Fragment {
      */
     private void onDelete() {
         // Implement event deletion logic here
-        eventToRemovePoster.setImageRef(null);
-        eventToRemovePoster.setImageUrl(null);
-        eventRepo.updateEvent(eventToRemovePoster);
+        userProfile.setImageRef(null);
+        userProfile.setImageUrl(null);
+        userRepo.updateUser(userProfile);
         getParentFragmentManager().popBackStack(); // Placeholder action
     }
     /**
-     * Loads event data into the UI, allowing the user to review the event details
+     * Loads picture into UI to allow user to view before deleting
      * before confirming deletion.
      */
     private void loadData() {
-        binding.eventNameEditText.setText(eventToRemovePoster.getName());
-        picasso.load(eventToRemovePoster.getImageUrl()).into(binding.eventPosterImageView);
+        binding.profileFirstNameEditText.setText(userProfile.getFirstName());
+        binding.profileLastNameEditText.setText(userProfile.getLastName());
+        picasso.load(userProfile.getImageUrl()).into(binding.profilePictureImageView);
     }
 }

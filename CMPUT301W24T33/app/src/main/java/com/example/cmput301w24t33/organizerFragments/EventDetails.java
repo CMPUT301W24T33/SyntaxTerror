@@ -133,7 +133,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
         if(event.getImageUrl() != null && event.getImageUrl() != ""){
-            Glide.with(this).load(event.getImageUrl()).centerCrop().into(binding.eventPosterImageView);
+            Glide.with(this).load(event.getImageUrl()).into(binding.eventPosterImageView);
             //Picasso.get().load(event.getImageUrl()).fit().into(binding.eventPosterImageView);   // load poster image
         }
         else{
