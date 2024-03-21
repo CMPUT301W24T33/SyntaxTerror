@@ -59,16 +59,10 @@ public class NotificationManager {
      * @param notification The notification to be dispatched.
      */
     private void dispatchNotificationUpdate(Event event, Notification notification) {
-        // Get the initialization timestamp
-        long initTimestamp = getNotificationInitTimestamp();
-        // Get notification timestamp
-        long notificationTimestamp = notification.getTimestamp().toDate().getTime();
-        // Check if the notification is newer than the app initialization
-        if (notificationTimestamp > initTimestamp) {
-            new Handler(Looper.getMainLooper()).post(() ->
-                    Toast.makeText(application, event.getName() + ": " + notification.getMessage(), Toast.LENGTH_SHORT).show()
-            );
-        }
+        new Handler(Looper.getMainLooper()).post(() ->
+                Toast.makeText(application, event.getName() + ": " + notification.getMessage(), Toast.LENGTH_SHORT).show()
+        );
+
     }
 
     /**

@@ -20,19 +20,9 @@ public class AppInitialization extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         NotificationManager.initialize(this.getApplication());
-        setNotificationInitTimestamp();
 
         launchApp();
         finish();
-    }
-
-    /**
-     * Stores the current system time as the initialization timestamp for notifications in the app's shared preferences.
-     * This timestamp can be used for tracking purposes or to manage notification behaviors based on the app initialization time.
-     */    private void setNotificationInitTimestamp() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        long initTimestamp = System.currentTimeMillis();
-        prefs.edit().putLong("notificationInitTimestamp", initTimestamp).apply();
     }
 
     /**

@@ -64,11 +64,17 @@ public class NotificationRepository {
         // Add new listeners for event IDs that don't have one yet
         eventIds.forEach(eventId -> {
             if (!activeListeners.containsKey(eventId)) {
+                final boolean[] isFirstInvocation = {true};
+
                 ListenerRegistration listener = db.collection("events").document(eventId)
                         .collection("notifications")
                         .addSnapshotListener((snapshots, error) -> {
                             if (error != null) {
                                 Log.w(TAG, "Listen failed.", error);
+                                return;
+                            }
+                            if (isFirstInvocation[0]) {
+                                isFirstInvocation[0] = false;
                                 return;
                             }
                             for (DocumentChange dc : snapshots.getDocumentChanges()) {
@@ -78,7 +84,7 @@ public class NotificationRepository {
                                     db.collection("events").document(eventId).get()
                                             .addOnSuccessListener(eventSnapshot -> {
                                                 Event event = eventSnapshot.toObject(Event.class);
-                                                if (event != null) {
+                                                if (event != null && newNotification.getTimestamp() != null) {
                                                     updateListener.onNotificationUpdate(event, newNotification);
                                                 }
                                             })
@@ -90,6 +96,7 @@ public class NotificationRepository {
             }
         });
     }
+
 
 
     /**
@@ -120,12 +127,16 @@ public class NotificationRepository {
      * @param notificationId The ID of the notification to be deleted.
      * @param onCompleteListener The listener to be called upon the operation's completion.
      */
-    // Delete a notification from an event
     public void deleteNotification(String eventId, String notificationId, OnCompleteListener<Void> onCompleteListener) {
+        if (eventId == null || notificationId == null) {
+            Log.e(TAG, "Event ID or Notification ID is null. Deletion cannot proceed.");
+            return;
+        }
         db.collection("events").document(eventId).collection("notifications").document(notificationId)
                 .delete()
                 .addOnCompleteListener(onCompleteListener);
     }
+
 
     /**
      * Fetches all notifications for a given event and passes them to the NotificationsFetchListener.
