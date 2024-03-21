@@ -3,6 +3,9 @@ package com.example.cmput301w24t33.notifications;
 import static android.content.ContentValues.TAG;
 
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.example.cmput301w24t33.events.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentChange;
@@ -52,6 +55,8 @@ public class NotificationRepository {
      * @param eventId A list of event IDs to listen for notification updates.
      */
     public void addEventListener(String eventId) {
+        final boolean[] isFirstInvocation = {true};
+
         if (activeListeners.containsKey(eventId)) {
             return;
         }
@@ -60,6 +65,10 @@ public class NotificationRepository {
                 .addSnapshotListener((snapshots, error) -> {
                     if (error != null) {
                         Log.w(TAG, "Listen failed.", error);
+                        return;
+                    }
+                    if (isFirstInvocation[0]) {
+                        isFirstInvocation[0] = false;
                         return;
                     }
                     for (DocumentChange dc : snapshots.getDocumentChanges()) {
@@ -79,7 +88,7 @@ public class NotificationRepository {
         activeListeners.put(eventId, listener);
     }
 
-    public void addEventListeners(Set<String> eventIds) {
+    public void addEventListeners(@NonNull Set<String> eventIds) {
         eventIds.forEach(this::addEventListener);
     }
 
