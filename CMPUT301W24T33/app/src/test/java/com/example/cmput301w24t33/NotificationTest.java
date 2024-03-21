@@ -16,7 +16,7 @@ public class NotificationTest {
 
     @Test
     public void testConstructor() {
-        Notification notification = new Notification("Test Title", "Test Message", "Test Timestamp");
+        Notification notification = new Notification("Test Title", "Test Message");
 
         assertEquals("Test Title", notification.getTitle());
         assertEquals("Test Message", notification.getMessage());
@@ -25,7 +25,7 @@ public class NotificationTest {
 
     @Test
     public void testSetTitle() {
-        Notification notification = new Notification("Test Title", "Test Message", "Test Timestamp");
+        Notification notification = new Notification("Test Title", "Test Message");
         notification.setTitle("New Title");
 
         assertEquals("New Title", notification.getTitle());
@@ -33,17 +33,9 @@ public class NotificationTest {
 
     @Test
     public void testSetMessage() {
-        Notification notification = new Notification("Test Title", "Test Message", "Test Timestamp");
+        Notification notification = new Notification("Test Title", "Test Message");
         notification.setMessage("New Message");
 
         assertEquals("New Message", notification.getMessage());
-    }
-
-    @Test
-    public void testSetTimestamp() {
-        Notification notification = new Notification("Test Title", "Test Message", "Test Timestamp");
-        notification.setTimestamp("New Timestamp");
-
-        assertEquals("New Timestamp", notification.getTimestamp());
     }
 }

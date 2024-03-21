@@ -7,39 +7,51 @@
 
 package com.example.cmput301w24t33.notifications;
 
+import com.google.firebase.Timestamp;
+
+
 /**
  * Represents a notification with a title, message, and timestamp.
  * This class can be used to model notifications in an application,
  * allowing for easy storage and retrieval of notification details.
  */
 public class Notification {
-    private String notificationId;
+    private String id;
     private String title;
     private String message;
-    private String timestamp;
+    private Timestamp timestamp;
 
     /**
      * Constructs a new Notification with specified title, message, and timestamp.
      *
      * @param title The title of the notification.
      * @param message The message body of the notification.
-     * @param timestamp The timestamp when the notification was created or received.
      */
-    public Notification(String title, String message, String timestamp) {
+    public Notification(String title, String message) {
         this.title = title;
         this.message = message;
-        this.timestamp = timestamp;
+        this.timestamp = Timestamp.now();
     }
 
     // Empty constructor for Firebase
     public Notification() {}
 
-    public String getNotificationId() {
-        return notificationId;
+    /**
+     * Returns the ID of the notification.
+     *
+     * @return The notification title.
+     */
+    public String getId() {
+        return id;
     }
 
-    public void setNotificationId(String notificationId) {
-        this.notificationId = notificationId;
+    /**
+     * Sets the ID of the notification.
+     *
+     * @return The notification title.
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -83,16 +95,8 @@ public class Notification {
      *
      * @return The notification timestamp.
      */
-    public String getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * Sets the timestamp of the notification.
-     *
-     * @param timestamp The new timestamp of the notification.
-     */
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
 }
