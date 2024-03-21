@@ -147,7 +147,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
                 notificationTrackedEvents.add(event.getEventId());
             }
         }
-        NotificationManager.getInstance().trackEventNotifications(notificationTrackedEvents);
+        NotificationManager.getInstance().trackMultipleEventsNotifications(notificationTrackedEvents);
     }
 
     /**

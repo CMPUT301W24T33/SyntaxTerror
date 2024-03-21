@@ -42,12 +42,16 @@ public class NotificationManager {
         return instance;
     }
 
-    /**
-     * Updates the list of event IDs for which the NotificationManager should listen for notifications. This method configures the repository to listen for notifications related to the specified events.
-     * @param eventIds A list of event IDs to listen for updates.
-     */
-    public void trackEventNotifications(Set<String> eventIds) {
-        repository.listenForEventNotificationUpdates(eventIds);
+    public void trackMultipleEventsNotifications(Set<String> eventIds) {
+        repository.addEventListeners(eventIds);
+    }
+
+    public void trackEventNotification(String eventId) {
+        repository.addEventListener(eventId);
+    }
+
+    public void stopTrackingEventNotification(String eventId) {
+        repository.removeEventListener(eventId);
     }
 
     /**

@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -95,6 +96,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener{
                         event.addAttendee(currentUser, location);
                         EventRepository eventRepo = new EventRepository();
                         eventRepo.updateEvent(event);
+                        NotificationManager.getInstance().trackEventNotification(event.getEventId());
                         checkInSuccessfulToast.show();
 
                     } else {
@@ -112,9 +114,12 @@ public class QRCheckIn implements QRScanner.ScanResultsListener{
             event.addAttendee(currentUser, null);
             EventRepository eventRepo = new EventRepository();
             eventRepo.updateEvent(event);
+            NotificationManager.getInstance().trackEventNotification(event.getEventId());
             checkInSuccessfulToast.show();
         }
     }
+
+
 
     private boolean validateCheckIn(Event event){
         // TODO: Validate user is within check in radius of event
