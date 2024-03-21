@@ -49,56 +49,46 @@ public class NotificationRepository {
 
     /**
      * Listens for updates to notifications for the specified events. It adds snapshot listeners to each event's notifications and updates the UI through the NotificationUpdateListener.
-     * @param eventIds A list of event IDs to listen for notification updates.
+     * @param eventId A list of event IDs to listen for notification updates.
      */
-    public void listenForEventNotificationUpdates(Set<String> eventIds) {
-        // Remove listeners for event IDs that are no longer active
-        new ArrayList<>(activeListeners.keySet()).forEach(existingEventId -> {
-            if (!eventIds.contains(existingEventId)) {
-                ListenerRegistration registration = activeListeners.remove(existingEventId);
-                if (registration != null) {
-                    registration.remove();
-                }
-            }
-        });
-
-        // Add new listeners for event IDs that don't have one yet
-        eventIds.forEach(eventId -> {
-            if (!activeListeners.containsKey(eventId)) {
-                final boolean[] isFirstInvocation = {true};
-
-                ListenerRegistration listener = db.collection("events").document(eventId)
-                        .collection("notifications")
-                        .addSnapshotListener((snapshots, error) -> {
-                            if (error != null) {
-                                Log.w(TAG, "Listen failed.", error);
-                                return;
-                            }
-                            if (isFirstInvocation[0]) {
-                                isFirstInvocation[0] = false;
-                                return;
-                            }
-                            for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                                if (dc.getType() == DocumentChange.Type.ADDED) {
-                                    Notification newNotification = dc.getDocument().toObject(Notification.class);
-                                    // Fetch the corresponding event for each notification
-                                    db.collection("events").document(eventId).get()
-                                            .addOnSuccessListener(eventSnapshot -> {
-                                                Event event = eventSnapshot.toObject(Event.class);
-                                                if (event != null && newNotification.getTimestamp() != null) {
-                                                    updateListener.onNotificationUpdate(event, newNotification);
-                                                }
-                                            })
-                                            .addOnFailureListener(e -> Log.e(TAG, "Error fetching event details", e));
-                                }
-                            }
-                        });
-                activeListeners.put(eventId, listener);
-            }
-        });
+    public void addEventListener(String eventId) {
+        if (activeListeners.containsKey(eventId)) {
+            return;
+        }
+        ListenerRegistration listener = db.collection("events").document(eventId)
+                .collection("notifications")
+                .addSnapshotListener((snapshots, error) -> {
+                    if (error != null) {
+                        Log.w(TAG, "Listen failed.", error);
+                        return;
+                    }
+                    for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                        if (dc.getType() == DocumentChange.Type.ADDED) {
+                            Notification newNotification = dc.getDocument().toObject(Notification.class);
+                            db.collection("events").document(eventId).get()
+                                    .addOnSuccessListener(eventSnapshot -> {
+                                        Event event = eventSnapshot.toObject(Event.class);
+                                        if (event != null && newNotification.getTimestamp() != null) {
+                                            updateListener.onNotificationUpdate(event, newNotification);
+                                        }
+                                    })
+                                    .addOnFailureListener(e -> Log.e(TAG, "Error fetching event details", e));
+                        }
+                    }
+                });
+        activeListeners.put(eventId, listener);
     }
 
+    public void addEventListeners(Set<String> eventIds) {
+        eventIds.forEach(this::addEventListener);
+    }
 
+    public void removeEventListener(String eventId) {
+        ListenerRegistration registration = activeListeners.remove(eventId);
+        if (registration != null) {
+            registration.remove();
+        }
+    }
 
     /**
      * Adds a new notification to the specified event. Upon completion, it calls the provided OnCompleteListener.

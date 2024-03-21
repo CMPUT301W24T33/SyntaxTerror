@@ -157,12 +157,13 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
                     Toast.makeText(getContext(),"Error: Event's Max Signup reached", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                NotificationManager.getInstance().trackEventNotifications(Collections.singleton(event.getEventId()));
+                NotificationManager.getInstance().trackEventNotification(event.getEventId());
                 event.getSignedUp().add(user);
             }
         } else if (checkedId == R.id.notGoingButton) {
             if (isChecked) {
                 // User has selected "Not Going"
+                NotificationManager.getInstance().stopTrackingEventNotification(event.getEventId());
                 event.getSignedUp().remove(user);
             }
         }
