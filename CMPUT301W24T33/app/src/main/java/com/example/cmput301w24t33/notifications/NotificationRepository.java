@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 public class NotificationRepository {
@@ -50,7 +51,7 @@ public class NotificationRepository {
      * Listens for updates to notifications for the specified events. It adds snapshot listeners to each event's notifications and updates the UI through the NotificationUpdateListener.
      * @param eventIds A list of event IDs to listen for notification updates.
      */
-    public void listenForEventNotificationUpdates(List<String> eventIds) {
+    public void listenForEventNotificationUpdates(Set<String> eventIds) {
         // Remove listeners for event IDs that are no longer active
         new ArrayList<>(activeListeners.keySet()).forEach(existingEventId -> {
             if (!eventIds.contains(existingEventId)) {
