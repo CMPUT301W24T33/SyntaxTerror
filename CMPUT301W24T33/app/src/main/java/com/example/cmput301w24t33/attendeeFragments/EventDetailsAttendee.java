@@ -29,6 +29,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.example.cmput301w24t33.users.User;
@@ -36,6 +37,7 @@ import com.example.cmput301w24t33.users.User;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.util.Collections;
 
 /**
  * A fragment for displaying event details to an attendee. Includes viewing event notifications and sharing QR codes.
@@ -139,8 +141,6 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         } else {
             binding.toggleButtonGroup.check(R.id.notGoingButton);
         }
-
-        // TODO: LOAD EVENT IMAGE
     }
 
     /**
@@ -157,6 +157,7 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
                     Toast.makeText(getContext(),"Error: Event's Max Signup reached", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                NotificationManager.getInstance().trackEventNotifications(Collections.singleton(event.getEventId()));
                 event.getSignedUp().add(user);
             }
         } else if (checkedId == R.id.notGoingButton) {
