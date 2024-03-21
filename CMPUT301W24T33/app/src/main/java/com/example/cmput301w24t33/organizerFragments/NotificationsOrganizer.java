@@ -96,6 +96,7 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
                         adapter.removeNotificationAt(selectedNotificationPosition);
                         binding.buttonDeleteNotification.setVisibility(View.GONE);
                         selectedNotificationPosition = -1;
+                        fetchNotifications();
                     });
                 } else {
                     Log.e(TAG, "Error deleting notification", task.getException());
