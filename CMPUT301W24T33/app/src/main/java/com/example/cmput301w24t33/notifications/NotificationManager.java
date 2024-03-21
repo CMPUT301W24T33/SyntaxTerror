@@ -8,7 +8,6 @@ import com.example.cmput301w24t33.events.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentReference;
 
-import java.util.List;
 import java.util.Set;
 
 public class NotificationManager {
@@ -47,7 +46,7 @@ public class NotificationManager {
      * Updates the list of event IDs for which the NotificationManager should listen for notifications. This method configures the repository to listen for notifications related to the specified events.
      * @param eventIds A list of event IDs to listen for updates.
      */
-    public void trackEventsNotifications(Set<String> eventIds) {
+    public void trackEventNotifications(Set<String> eventIds) {
         repository.listenForEventNotificationUpdates(eventIds);
     }
 
