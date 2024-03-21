@@ -9,24 +9,18 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -35,38 +29,24 @@ import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
-import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.qrCode.QRCheckIn;
-import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.QRFindEvent;
 import com.example.cmput301w24t33.qrCode.QRScanner;
 import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
-import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
-import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.GeoPoint;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
-import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -144,7 +124,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         eventViewModel.getEventsLiveData().observe(this, events -> {
             allEvents.clear();
             allEvents.addAll(events);
-            userSignUpFilter(events);
+            eventListsFilter(events);
             updateDisplayedEvents();
         });
         eventViewModel.loadEvents();
@@ -155,16 +135,19 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      * Updates the local list of signed-up events.
      * @param events The full list of events to filter from.
      */
-    private void userSignUpFilter(List<Event> events) {
+    private void eventListsFilter(List<Event> events) {
         signedUpEvents.clear();
-        ArrayList<String> signedUpEventIds = new ArrayList<>();
+        Set<String> notificationTrackedEvents = new HashSet<>();
         for (Event event : events) {
             if (event.getSignedUp().contains(currentUser)) {
                 signedUpEvents.add(event);
-                signedUpEventIds.add(event.getEventId());
+                notificationTrackedEvents.add(event.getEventId());
+            }
+            if (event.getAttendees().contains(currentUser)) {
+                notificationTrackedEvents.add(event.getEventId());
             }
         }
-        NotificationManager.getInstance().updateEventIdsOfInterest(signedUpEventIds);
+        NotificationManager.getInstance().trackEventsNotifications(notificationTrackedEvents);
     }
 
     /**

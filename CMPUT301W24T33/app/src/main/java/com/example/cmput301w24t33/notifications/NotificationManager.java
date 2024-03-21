@@ -1,17 +1,15 @@
 package com.example.cmput301w24t33.notifications;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.widget.Toast;
 import com.example.cmput301w24t33.events.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
+import java.util.Set;
 
 public class NotificationManager {
     private static NotificationManager instance;
@@ -49,7 +47,7 @@ public class NotificationManager {
      * Updates the list of event IDs for which the NotificationManager should listen for notifications. This method configures the repository to listen for notifications related to the specified events.
      * @param eventIds A list of event IDs to listen for updates.
      */
-    public void updateEventIdsOfInterest(List<String> eventIds) {
+    public void trackEventsNotifications(Set<String> eventIds) {
         repository.listenForEventNotificationUpdates(eventIds);
     }
 
@@ -62,7 +60,6 @@ public class NotificationManager {
         new Handler(Looper.getMainLooper()).post(() ->
                 Toast.makeText(application, event.getName() + ": " + notification.getMessage(), Toast.LENGTH_SHORT).show()
         );
-
     }
 
     /**
@@ -93,15 +90,6 @@ public class NotificationManager {
      */
     public void fetchNotificationsForEvent(String eventId, NotificationRepository.NotificationsFetchListener listener) {
         repository.fetchNotificationsForEvent(eventId, listener);
-    }
-
-    /**
-     * Retrieves the app initialization timestamp from shared preferences. This timestamp is used to determine if a notification is new since the app was last initialized.
-     * @return The timestamp of app initialization.
-     */
-    public long getNotificationInitTimestamp() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(application);
-        return prefs.getLong("notificationInitTimestamp", 0);
     }
 }
 
