@@ -41,16 +41,16 @@ import java.io.Serializable;
  * A fragment for displaying event details to an attendee. Includes viewing event notifications and sharing QR codes.
  */
 public class EventDetailsAttendee extends Fragment implements ShareQRFragment.ShareQRDialogListener, Serializable {
-
     private AttendeeEventFragmentBinding binding;
     private Event event;
     private User user;
+
     /**
-     * Creates a new instance of EventDetailsAttendee fragment with event details.
-     *
-     * @param event  The event to display.
-     * @param user The current user.
-     * @return A new instance of EventDetailsAttendee.
+     * Creates a new instance of the EventDetailsAttendee fragment with specified event and user details.
+     * It packages these details into a Bundle for retrieval in onCreateView.
+     * @param event The Event object containing details about the event.
+     * @param user The User object representing the current user.
+     * @return An EventDetailsAttendee instance with event and user data.
      */
     public static EventDetailsAttendee newInstance(Event event, User user) {
         EventDetailsAttendee fragment = new EventDetailsAttendee();
@@ -62,12 +62,12 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
     }
 
     /**
-     * Creates and returns the view hierarchy associated with the fragment. Initializes the binding, sets up click listeners, and loads event data into UI components.
-     *
-     * @param inflater The LayoutInflater object that can be used to inflate views in the fragment.
-     * @param container The parent view that the fragment's UI should be attached to.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
-     * @return The View for the fragment's UI.
+     * Initializes and returns the fragment's UI view. Sets up data binding, retrieves event and user from arguments,
+     * initializes UI components with event data, and sets click listeners for interaction.
+     * @param inflater The LayoutInflater object to inflate views in the fragment.
+     * @param container The parent view to attach the fragment's UI to.
+     * @param savedInstanceState If non-null, this fragment is reconstructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -83,7 +83,7 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
     }
 
     /**
-     * Cleans up resources associated with the view hierarchy. This method is called when the view previously created by onCreateView is about to be destroyed.
+     * Cleans up the resources associated with the fragment, particularly nullifying the view binding to avoid memory leaks.
      */
     @Override
     public void onDestroyView() {
@@ -92,11 +92,11 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
     }
 
     /**
-     * Sets click listeners for UI interactions.
+     * Sets click listeners for various UI components, including the notifications button, navigation, and sharing QR code.
      */
     private void setClickListeners() {
         // Click listeners for notifications, navigation, and QR code sharing.
-        binding.notificationsButton.setOnClickListener(v -> replaceFragment(new NotificationsAttendee()));
+        binding.notificationsButton.setOnClickListener(v -> replaceFragment(NotificationsAttendee.newInstance(event)));
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
         binding.shareQrCodeButton.setOnClickListener(v -> {
             // QR code sharing functionality
@@ -109,8 +109,10 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         });
     }
 
+
     /**
-     * Loads the event data into the fragment's UI elements.
+     * Updates the fragment UI with the details of the event. This includes setting text views with event information
+     * and updating the toggle button group based on the user's attending status.
      */
     private void loadData() {
         String eventStartDate = event.getStartDate();
@@ -141,6 +143,12 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         // TODO: LOAD EVENT IMAGE
     }
 
+    /**
+     * Updates the user's sign-up status for the event based on the selected option in the toggle button group.
+     * Performs validation before updating to ensure the event's maximum sign-up limit hasn't been reached.
+     * @param checkedId The ID of the checked button in the toggle group.
+     * @param isChecked The new checked state of the button.
+     */
     private void updateSignedUpStatus(int checkedId, boolean isChecked) {
         if (checkedId == R.id.goingButton) {
             if (isChecked) {
@@ -161,6 +169,10 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         eventRepo.updateEvent(event);
     }
 
+    /**
+     * Validates if the user can sign up for the event based on the maximum number of sign-ups allowed.
+     * @return true if the user can sign up, false otherwise.
+     */
     private boolean validateSignUp(){
         return event.getMaxSignup() != event.getSignedUp().size() || event.getMaxSignup() == 0;
     }
@@ -176,6 +188,11 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
                 .commit();
     }
 
+    /**
+     * Handles sharing the selected QR code. Saves the QR code image to storage and initiates a share intent
+     * for sharing the image.
+     * @param qrCode The QRCode object containing the QR code to share.
+     */
     @Override
     public void ShareSelectedQRCode(QRCode qrCode) {
         if(qrCode == null) { //nothing to share

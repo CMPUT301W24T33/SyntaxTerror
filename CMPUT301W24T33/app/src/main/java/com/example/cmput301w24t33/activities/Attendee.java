@@ -37,6 +37,7 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.events.EventViewModel;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.qrCode.QRCheckIn;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.QRFindEvent;
@@ -156,11 +157,14 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      */
     private void userSignUpFilter(List<Event> events) {
         signedUpEvents.clear();
+        ArrayList<String> signedUpEventIds = new ArrayList<>();
         for (Event event : events) {
             if (event.getSignedUp().contains(currentUser)) {
                 signedUpEvents.add(event);
+                signedUpEventIds.add(event.getEventId());
             }
         }
+        NotificationManager.getInstance().updateEventIdsOfInterest(signedUpEventIds);
     }
 
     /**
@@ -181,6 +185,10 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         eventViewModel.loadEvents();
     }
 
+    /**
+     * Retrieves the unique Android ID for the device. This ID is used to identify the user's device uniquely.
+     * @return A string representing the Android ID of the device.
+     */
     public String getAndroidId() {
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         return androidId;
@@ -209,7 +217,10 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         });
     }
 
-
+    /**
+     * Updates the profile button with the user's image from the URL provided in the user's profile.
+     * @param profileButton The ImageView component used as the profile button.
+     */
     private void fetchInfo(ImageView profileButton ) {
         userImageURL = currentUser.getImageUrl();
         Picasso.get().load(userImageURL).into(profileButton);
@@ -288,10 +299,18 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         transaction.commitAllowingStateLoss();
     }
 
+    /**
+     * Handles the result of a QR code scan to find an event, navigating to the event details if an event is found.
+     * @param event The event found as a result of the QR code scan.
+     */
     public void onFindEventResult(Event event){
         replaceFragment(EventDetailsAttendee.newInstance(event, currentUser));
     }
 
+    /**
+     * Called when a new user profile is created. It updates the ViewModel with the new user and updates the UI accordingly.
+     * @param user The newly created user.
+     */
     @Override
     public void onUserCreated(User user) {
         userViewModel.setUser(user);

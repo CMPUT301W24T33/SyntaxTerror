@@ -9,21 +9,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.AttendeeNotificationsFragmentBinding;
+import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.users.Profile;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +26,24 @@ import java.util.List;
  * It includes a list of notifications and provides navigation to view a user's profile.
  */
 public class NotificationsAttendee extends Fragment {
+    AttendeeNotificationsFragmentBinding binding;
+    Event event;
+    NotificationAdapter adapter;
+
+    /**
+     * Initializes a new instance of the NotificationsAttendee fragment with the specified event details.
+     * This static method prepares the fragment for displaying notifications related to the provided event.
+     *
+     * @param event The event object containing details relevant to the notifications to be displayed.
+     * @return A new instance of NotificationsAttendee with event data passed as arguments.
+     */
+    public static NotificationsAttendee newInstance(Event event) {
+        NotificationsAttendee fragment = new NotificationsAttendee();
+        Bundle args = new Bundle();
+        args.putSerializable("event", event);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     /**
      * Called to have the fragment instantiate its user interface view. This method inflates the layout for the fragment's view, sets up the action bar, click listeners, and initializes the notifications list display.
@@ -42,62 +55,43 @@ public class NotificationsAttendee extends Fragment {
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.attendee_notifications_fragment, container, false);
-        setupActionBar(view);
-        setupClickListeners(view);
-        setupNotificationsList(view);
-        return view;
+        binding = AttendeeNotificationsFragmentBinding.inflate(inflater, container, false);
+        event = (Event) getArguments().get("event");
+        adapter = new NotificationAdapter(null);
+        setupActionBar();
+        fetchNotifications();
+        return binding.getRoot();
     }
 
     /**
      * Sets up the action bar for the fragment.
-     *
-     * @param view The current view instance containing the UI elements.
      */
-    private void setupActionBar(@NonNull View view) {
-        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
-        actionBarText.setText("Notifications");
+    private void setupActionBar() {
+        binding.actionBar.generalActionbarTextview.setText("Notifications");
+        binding.actionBar.backArrowImg.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+        binding.actionBar.profileImage.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
     /**
-     * Sets up click listeners for UI elements in the fragment, including navigation back and to the user profile.
-     *
-     * @param view The current view instance containing the UI elements.
+     * Fetches the list of notifications associated with the event from the database and updates the UI.
+     * This method calls the NotificationManager to retrieve notifications for the specified event and updates
+     * the RecyclerView adapter with the fetched data.
      */
-    private void setupClickListeners(@NonNull View view) {
-        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
-        backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-
-        ImageView profileButton = view.findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
+    private void fetchNotifications() {
+        binding.notificationsAttendee.setLayoutManager(new LinearLayoutManager(getContext()));
+        NotificationManager.getInstance().fetchNotificationsForEvent(event.getEventId(), this::updateAdapter);
     }
 
     /**
-     * Initializes and displays the list of notifications in a RecyclerView.
+     * Updates the adapter with a new list of notifications and refreshes the RecyclerView to display the latest notifications.
+     * This method is typically called after notifications have been fetched from the database.
      *
-     * @param view The current view instance containing the UI elements.
+     * @param notifications The list of notifications to be displayed in the RecyclerView.
      */
-    private void setupNotificationsList(@NonNull View view) {
-//        RecyclerView recyclerView = view.findViewById(R.id.notifications_attendee);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        List<Notification> notifications = createSampleNotifications();
-//        NotificationAdapter adapter = new NotificationAdapter(notifications, null);
-//        recyclerView.setAdapter(adapter);
-    }
-
-    /**
-     * Creates a list of sample notifications for demonstration purposes.
-     *
-     * @return A list of Notification objects.
-     */
-    @NonNull
-    private List<Notification> createSampleNotifications() {
-        List<Notification> notifications = new ArrayList<>();
-        notifications.add(new Notification("Welcome", "Thanks for joining our event!", "10:00 AM"));
-        notifications.add(new Notification("Session Start", "Don't miss the keynote speech.", "11:00 AM"));
-        notifications.add(new Notification("Lunch Break", "Lunch is served at the main hall.", "1:00 PM"));
-        return notifications;
+    private void updateAdapter(List<Notification> notifications) {
+        adapter.addNotifications(notifications);
+        binding.notificationsAttendee.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -110,5 +104,15 @@ public class NotificationsAttendee extends Fragment {
                 .replace(R.id.attendee_layout, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    /**
+     * Cleans up the fragment's resources, particularly the binding, to prevent memory leaks.
+     * This method is called when the fragment's view is being destroyed.
+     */
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

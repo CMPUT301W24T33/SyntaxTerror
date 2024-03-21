@@ -13,7 +13,9 @@
         android:id="@+id/profile_back_actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/actionbar_general" />
+        <include
+            android:id="@+id/action_bar"
+            layout="@layout/actionbar_general" />
 
     </RelativeLayout>
 

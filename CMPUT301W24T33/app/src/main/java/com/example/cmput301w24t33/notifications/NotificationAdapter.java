@@ -16,8 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.google.firebase.Timestamp;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Adapter class for RecyclerView to display notifications.
@@ -42,16 +45,28 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         this.listener = listener;
     }
 
+    /**
+     * Updates the adapter's dataset with a new list of notifications and notifies any observers of the item range changed.
+     * @param notifications The new list of notifications to be displayed.
+     */
     public void addNotifications(List<Notification> notifications) {
         this.notifications = notifications;
     }
 
+    /**
+     * Removes a notification from the adapter's dataset at the specified position and notifies any observers of the item removed.
+     * @param position The position of the notification in the dataset to be removed.
+     */
     public void removeNotificationAt(int position) {
         notifications.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, notifications.size());
     }
 
+    /**
+     * Returns the list of notifications currently held by the adapter.
+     * @return The current list of notifications.
+     */
     public List<Notification> getNotifications() {
         return notifications;
     }
@@ -81,7 +96,19 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         Notification notification = notifications.get(position);
         holder.notificationTitle.setText(notification.getTitle());
         holder.notificationMessage.setText(notification.getMessage());
-        holder.notificationTimestamp.setText(notification.getTimestamp());
+        holder.notificationTimestamp.setText(convertTime(notification.getTimestamp()));
+    }
+
+    /**
+     * Converts a Timestamp to a formatted string representing the date and time of the notification.
+     * @param timestamp The Timestamp to convert.
+     * @return A string representing the formatted date and time.
+     */
+    // TODO: This class doesnt belong here and should be moved to a more appropriate class
+    private String convertTime(Timestamp timestamp) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            String formattedDate = dateFormat.format(timestamp.toDate());
+            return formattedDate;
     }
 
     /**
