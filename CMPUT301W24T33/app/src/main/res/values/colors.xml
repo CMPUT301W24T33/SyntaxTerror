@@ -24,4 +24,7 @@
     <color name="secondary_day">#ff9090ff</color>
     <color name="secondary_night">#1f1faf</color>
 
+    <color name="button_3_day">#afb00af0</color>
+    <color name="button_3_night">#9f8000b0</color>
+
 </resources>

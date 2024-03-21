@@ -44,7 +44,6 @@ import java.io.Serializable;
 
 public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDialogListener, Serializable {
 
-
     public OrganizerEventDetailsFragmentBinding binding;
     private FirebaseFirestore db;
 
@@ -121,7 +120,6 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      * @param event The event object whose data is to be displayed.
      */
     private void loadData(Event event) {
-
         String eventStartDate = event.getStartDate();
         String eventEndDate = event.getEndDate();
         String eventStartTime = event.getStartTime();

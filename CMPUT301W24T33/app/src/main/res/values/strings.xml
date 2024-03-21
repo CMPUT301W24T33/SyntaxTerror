@@ -39,5 +39,10 @@
     <string name="signed_up">Signed-up</string>
     <string name="manage_notifications">Manage Notifications</string>
     <string name="edit_event">Edit Event</string>
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="e_mail">E-Mail:</string>
+    <string name="save">Save</string>
+    <string name="create">Create</string>
 
 </resources>

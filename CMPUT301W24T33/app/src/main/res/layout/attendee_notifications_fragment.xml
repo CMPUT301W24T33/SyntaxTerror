@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:id="@+id/attendee_notifications_fragment"
-    android:background="#F4EFEF"
+    android:background="?backgroundColor"
     tools:context=".attendeeFragments.NotificationsAttendee"
     android:focusable="true">
 
