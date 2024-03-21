@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:elevation="2dp"
+    android:background="?backgroundColor"
     android:id="@+id/organizer_event_attendees_fragment"
     tools:context=".attendeeFragments.NotificationsAttendee"
     android:focusable="true">
