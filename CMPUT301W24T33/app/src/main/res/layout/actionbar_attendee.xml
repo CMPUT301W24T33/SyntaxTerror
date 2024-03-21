@@ -12,6 +12,7 @@
         android:background="?attr/action_bar_attendee">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/profile_button"
             android:layout_width="50dp"
             app:cardCornerRadius="150dp"
             android:layout_height="50dp"
@@ -23,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/test_profile"
-                >
+                android:focusable="true">
             </ImageView>
         </androidx.cardview.widget.CardView>
 
@@ -32,20 +33,23 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:srcCompat="?switchProfileIcon"
-            android:background="?selectableItemBackgroundBorderless"
-            android:layout_marginLeft="5dp"/>
+            android:background="@color/transparent"
+            android:layout_marginLeft="5dp"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/attendee_organizer_textview"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:text=""
+            android:layout_toStartOf="@id/profile_button"
+            android:layout_toEndOf="@id/button_user_mode"
             android:background="@null"
             android:clickable="false"
-            android:textSize="35dp"
-            android:textStyle="bold">
-        </TextView>
+            android:textAlignment="center"
+            android:text=""
+            android:textSize="35sp"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 

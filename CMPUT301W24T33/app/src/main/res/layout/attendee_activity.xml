@@ -75,6 +75,7 @@
                     app:layout_constraintEnd_toStartOf="@id/find_event_card_view"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="5dp"
                     >
                     <ImageView
                         android:id="@+id/check_in_img"
@@ -98,7 +99,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/check_in_card_view">
+                    app:layout_constraintStart_toEndOf="@id/check_in_card_view"
+                    android:layout_marginBottom="5dp">
                     <ImageView
                         android:id="@+id/find_event_img"
                         android:clickable="true"
