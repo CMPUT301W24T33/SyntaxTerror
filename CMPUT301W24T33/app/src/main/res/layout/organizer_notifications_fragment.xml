@@ -17,7 +17,7 @@
         android:layout_height="wrap_content">
         <include
             android:id="@+id/actionbar"
-            layout="@layout/actionbar_general" />
+            layout="@layout/actionbar_general_organizer" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

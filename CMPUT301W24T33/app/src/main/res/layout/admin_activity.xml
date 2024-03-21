@@ -22,7 +22,7 @@
                 android:id="@+id/actionbar_general"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <include layout="@layout/actionbar_general">
+                <include layout="@layout/actionbar_general_attendee">
                 </include>
             </RelativeLayout>
 

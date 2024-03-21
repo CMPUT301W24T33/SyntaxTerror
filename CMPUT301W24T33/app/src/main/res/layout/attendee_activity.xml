@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/actionbar_attendee_organizer" />
+            <include layout="@layout/actionbar_attendee"/>
 
 
             <LinearLayout
@@ -81,9 +81,10 @@
                         android:scaleType="centerCrop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/check_in_img"
-                        android:background="@color/organizer_actionbar"
-                        android:focusable="true">
+                        android:src="?attr/check_in_button_image"
+                        android:background="?attr/button_color_1"
+                        android:focusable="true"
+                        >
                     </ImageView>
                 </androidx.cardview.widget.CardView>
 
@@ -103,9 +104,9 @@
                         android:scaleType="centerCrop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_search_icon_foreground"
-                        android:background="@color/organizer_actionbar"
-                        android:focusable="true">
+                        android:src="?attr/search_button_image"
+                        android:focusable="true"
+                        android:background="?attr/button_color_1">
                     </ImageView>
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>

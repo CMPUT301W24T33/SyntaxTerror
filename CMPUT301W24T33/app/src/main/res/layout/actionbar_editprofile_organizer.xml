@@ -9,7 +9,7 @@
         android:id="@+id/edit_profile_actionbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="?attr/action_bar_attendee">
+        android:background="?attr/action_bar_organizer">
 
         <ImageButton
             android:id="@+id/back_arrow_img"

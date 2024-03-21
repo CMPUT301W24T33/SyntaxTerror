@@ -9,7 +9,7 @@
         android:id="@+id/organizer_attendee_actionbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/attendee_actionbar">
+        android:background="?attr/action_bar_organizer">
 
         <androidx.cardview.widget.CardView
             android:layout_width="50dp"

@@ -169,8 +169,8 @@ public class Organizer extends AppCompatActivity {
      */
     private void setupActionBar(View view) {
         RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
-        int color = ContextCompat.getColor(this, R.color.organizer_actionbar);
-        attendeeOrganizerActionbar.setBackgroundColor(color);
+//        int color = ContextCompat.getColor(this, R.color.organizer_actionbar_day);
+//        attendeeOrganizerActionbar.setBackgroundColor(color);
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Organize Events");
 

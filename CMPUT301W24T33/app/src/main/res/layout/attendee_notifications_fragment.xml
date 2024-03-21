@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
         <include
             android:id="@+id/action_bar"
-            layout="@layout/actionbar_general" />
+            layout="@layout/actionbar_general_attendee" />
 
     </RelativeLayout>
 

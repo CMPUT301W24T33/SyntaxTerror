@@ -8,5 +8,36 @@
     <string name="share_check_in_code">Share Check In Code</string>
     <string name="share_poster">Share Poster</string>
     <string name="places">AIzaSyBK94a1cQs_7HW6JGFZRu39VRILNwkB0uk</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="event_description">Event Description</string>
+    <string name="start_date">Start Date</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_date">End Date</string>
+    <string name="end_time">End Time</string>
+    <string name="max_attendees">Max Attendees:</string>
+    <string name="optional">Optional</string>
+    <string name="enable_geo_tracking">Enable Geo Tracking:</string>
+    <string name="upload_poster">Upload Poster</string>
+    <string name="select_qr_code">Select QR Code</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="back_button">Back Button</string>
+    <string name="choose_qr_code">Choose QR Code</string>
+    <string name="create_new_qr_code_default">Create New QR Code (default)</string>
+    <string name="reuse_existing_qr_code">Reuse Existing QR Code</string>
+    <string name="selected_event">Selected Event:</string>
+    <string name="this_is_a_detailed_description_of_the_event_including_all_relevant_information_attendees_need_to_know">event_desc_example</string>
+    <string name="description">Description</string>
+    <string name="april_20_2024_from_10_00_am_to_3_00_pm">event_time_example</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="_123_event_street_city_country">event_location_example\n</string>
+    <string name="location">Location</string>
+    <string name="sample_event_name">Sample Event Name</string>
+    <string name="share_qr_code">Share QR code</string>
+    <string name="event_poster">Event Poster</string>
+    <string name="checked_in">Checked-In</string>
+    <string name="signed_up">Signed-up</string>
+    <string name="manage_notifications">Manage Notifications</string>
+    <string name="edit_event">Edit Event</string>
 
 </resources>
