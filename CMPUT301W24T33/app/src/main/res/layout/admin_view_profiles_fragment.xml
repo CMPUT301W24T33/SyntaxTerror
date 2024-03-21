@@ -15,7 +15,7 @@
         android:id="@+id/general_actionbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/attendee_actionbar">
+        android:background="@color/attendee_actionbar_day">
         <ImageButton
             android:id="@+id/view_profiles_back_button"
             android:layout_width="40dp"

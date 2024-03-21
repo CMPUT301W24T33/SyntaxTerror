@@ -162,7 +162,8 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
      */
     @Override
     public void onEventsLoaded(List<Event> events) {
-        Log.d("EventCallback", "Events loaded: "+ events.get(0).getName());
+
+        Log.d("EventCallback", "Events loaded: "+ (events.size()>0 ? events.get(0).getName():""));
         this.eventList = (ArrayList<Event>) events;
         eventAdapter = new EventAdapter(eventList, this);
         eventView.setLayoutManager(new LinearLayoutManager(getContext()));

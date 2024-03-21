@@ -7,7 +7,6 @@
     android:clickable="true"
     android:elevation="2dp"
     android:id="@+id/organizer_event_attendees_fragment"
-    android:background="#F4EFEF"
     tools:context=".attendeeFragments.NotificationsAttendee"
     android:focusable="true">
 
@@ -19,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <include layout="@layout/actionbar_editprofile" />
+        <include layout="@layout/actionbar_editprofile_organizer" />
     </RelativeLayout>
 
     <LinearLayout

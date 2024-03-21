@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,7 +52,7 @@ public class EventSignedUp extends Fragment {
         TextView actionBarText = binding.actionbar.findViewById(R.id.back_actionbar_textview);
         actionBarText.setText("Signed Up");
 
-        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar);
+        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar_day);
 
         ImageButton backButton = binding.actionbar.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());

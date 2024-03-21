@@ -110,8 +110,8 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
      */
     private void setupActionBar() {
         binding.actionbar.generalActionbarTextview.setText("Notifications");
-        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar);
-        binding.actionbar.generalActionbar.setBackgroundColor(color);
+//        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar_day);
+//        binding.actionbar.generalActionbar.setBackgroundColor(color);
     }
 
     /**

@@ -37,7 +37,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.GeoPoint;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -216,9 +215,9 @@ public class EventAttendees extends Fragment {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Attendees");
 
-        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
-        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar);
-        generalActionBar.setBackgroundColor(color);
+//        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
+//        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar_day);
+//        generalActionBar.setBackgroundColor(color);
     }
 
     /**

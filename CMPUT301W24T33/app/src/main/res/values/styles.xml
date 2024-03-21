@@ -4,41 +4,21 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="CustomOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <!-- Background tint color for the button -->
-        <item name="backgroundTint">@color/white</item>
-
-        <!-- Stroke color for the outlined border -->
-        <item name="strokeColor">@color/black</item>
-
-        <!-- Stroke width for the outlined border -->
-        <item name="strokeWidth">1dp</item>
-
-        <!-- Text color for the button -->
-        <item name="android:textColor">@color/black</item>
-
-        <!-- Icon tint for the button icon -->
-        <item name="iconTint">@color/black</item>
-
-        <!-- Ripple color for the button (effect on click) -->
-        <item name="rippleColor">@color/light_grey</item>
-
-        <!-- Elevation for the button (shadow effect) -->
-        <item name="android:elevation">0dp</item> <!-- usually, outlined buttons don't have elevation -->
-
-        <!-- Padding around the button icon -->
-        <item name="iconPadding">8dp</item>
-
-        <!-- Size of the button icon -->
-        <item name="iconSize">24dp</item>
-
-        <!-- Material shape appearance for the button -->
-        <item name="shapeAppearance">@style/MyShapeAppearance</item>
-    </style>
-
     <style name="MyShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">4dp</item>
     </style>
+
+    <declare-styleable name="button_attrs">
+        <attr name="button_color_1" format="color"/>
+        <attr name="check_in_button_image" format="reference"/>
+        <attr name="search_button_image" format="reference"/>
+        <attr name="button_color_2" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="action_bar_attrs">
+        <attr name="action_bar_attendee" format="color"/>
+        <attr name="action_bar_organizer" format="color"/>
+    </declare-styleable>
 
 </resources>
