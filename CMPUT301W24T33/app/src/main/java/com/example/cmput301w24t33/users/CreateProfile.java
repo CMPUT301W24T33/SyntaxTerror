@@ -8,11 +8,14 @@
 
 package com.example.cmput301w24t33.users;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
@@ -210,6 +213,7 @@ public class CreateProfile extends Fragment {
     }
     //Action for Konfetti
     public void explode() {
+        // Existing Konfetti logic
         EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);
         konfettiView.start(
                 new PartyFactory(emitterConfig)
