@@ -24,6 +24,8 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -184,7 +186,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void setupDateTimePickers() {
         binding.startTimeText.setOnClickListener(v -> showDatePickerDialog(true));
-        binding.endTimeText.setOnClickListener(v -> showTimePickerDialog(false));
+        binding.endTimeText.setOnClickListener(v -> showDatePickerDialog(false));
     }
 
     /**
@@ -347,44 +349,95 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     }
 
     /**
-     * Displays a date picker dialog for selecting the event's start or end date.
-     * @param isStart Indicates whether the date picker is for the start or end date.
+     * Displays a date picker dialog for selecting either the event's start or end date.
+     *
+     * @param isStart A boolean flag indicating whether the start date (true) or the end date (false) is being set.
      */
     private void showDatePickerDialog(boolean isStart) {
-        final Calendar calendar = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), (view, year, monthOfYear, dayOfMonth) -> {
-            if (isStart) {
-                tempStartDateTime.set(year, monthOfYear, dayOfMonth);
-                showTimePickerDialog(true);
-            } else {
-                tempEndDateTime.set(year, monthOfYear, dayOfMonth);
-                showTimePickerDialog(false);
-            }
-        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        final Calendar initialCalendar = isStart ? tempStartDateTime : tempEndDateTime;
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                requireContext(),
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    Calendar chosenDate = (Calendar) initialCalendar.clone();
+                    chosenDate.set(year, monthOfYear, dayOfMonth, chosenDate.get(Calendar.HOUR_OF_DAY), chosenDate.get(Calendar.MINUTE));
+                    if (isStart) {
+                        tempStartDateTime.set(year, monthOfYear, dayOfMonth);
+                        showTimePickerDialog(true);
+                    } else {
+                        tempEndDateTime.set(year, monthOfYear, dayOfMonth);
+                        showTimePickerDialog(false);
+                    }
+                },
+                initialCalendar.get(Calendar.YEAR),
+                initialCalendar.get(Calendar.MONTH),
+                initialCalendar.get(Calendar.DAY_OF_MONTH)
+        );
 
+        datePickerDialog.getDatePicker().setMinDate(isStart ? System.currentTimeMillis() - 1000 : tempStartDateTime.getTimeInMillis());
         datePickerDialog.show();
     }
 
     /**
-     * Displays a time picker dialog for selecting the event's start or end time.
-     * @param isStart Indicates whether the time picker is for the start or end time.
+     * Displays a time picker dialog for selecting either the event's start or end time.
+     * It validates the selected time to ensure that the start time is not in the past
+     * and that the end time is after the start time on the same day.
+     * @param isStart A boolean flag indicating whether the start time (true) or the end time (false) is being set.
      */
     private void showTimePickerDialog(boolean isStart) {
-        final Calendar calendar = Calendar.getInstance();
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hourOfDay, minuteOfHour) -> {
-            if (isStart) {
-                tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
-            } else {
-                tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
-            }
-            updateDateTimeUI(isStart);
-        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(getContext()));
+        final Calendar now = Calendar.getInstance();
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                getContext(),
+                (view, hourOfDay, minuteOfHour) -> {
+                    Calendar chosenDateTime = (Calendar) (isStart ? tempStartDateTime.clone() : tempEndDateTime.clone());
+                    chosenDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                    chosenDateTime.set(Calendar.MINUTE, minuteOfHour);
+                    if (isStart) {
+                        if (chosenDateTime.before(now)) {
+                            Toast.makeText(getContext(), "Start time cannot be in the past.", Toast.LENGTH_LONG).show();
+                        } else {
+                            tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                            tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
+                        }
+                    } else {
+                        if (chosenDateTime.before(tempStartDateTime) && isSameDay(chosenDateTime, tempStartDateTime)) {
+                            Toast.makeText(getContext(), "End time must be after start time on the same day.", Toast.LENGTH_LONG).show();
+                            Calendar fallbackEndTime = (Calendar) tempStartDateTime.clone();
+                            fallbackEndTime.add(Calendar.MINUTE, 1);
+                            tempEndDateTime.set(Calendar.HOUR_OF_DAY, fallbackEndTime.get(Calendar.HOUR_OF_DAY));
+                            tempEndDateTime.set(Calendar.MINUTE, fallbackEndTime.get(Calendar.MINUTE));
+                        } else {
+                            tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                            tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
+                        }
+                    }
+                    updateDateTimeUI(isStart);
+                },
+                now.get(Calendar.HOUR_OF_DAY),
+                now.get(Calendar.MINUTE),
+                DateFormat.is24HourFormat(getContext())
+        );
 
         timePickerDialog.show();
     }
 
+    /**
+     * Checks if two {@link Calendar} instances represent the same day.
+     * @param cal1 The first calendar instance to compare.
+     * @param cal2 The second calendar instance to compare.
+     * @return true if both {@link Calendar} instances represent the same day; false otherwise.
+     */
+    private boolean isSameDay(Calendar cal1, Calendar cal2) {
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+    }
+
+    /**
+     * Updates the UI to display the selected start or end date and time.
+     * It formats the date and time into a string and sets the text of the
+     * appropriate TextView based on whether the start or end date/time is being updated.
+     * @param isStart A boolean flag indicating whether the start date/time (true) or the end date/time (false) is being updated.
+     */
     private void updateDateTimeUI(boolean isStart) {
         SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
         if (isStart) {
