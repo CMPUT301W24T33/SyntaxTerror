@@ -77,6 +77,8 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:4.4.0") // use the latest version
     androidTestImplementation ("org.mockito:mockito-android:4.4.0") // use the latest version for Android tests
     implementation ("com.squareup.picasso:picasso:2.71828")
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.13.0")
+    implementation("nl.dionsegijn:konfetti-compose:2.0.4")
+    implementation("nl.dionsegijn:konfetti-xml:2.0.4")
 
 }
