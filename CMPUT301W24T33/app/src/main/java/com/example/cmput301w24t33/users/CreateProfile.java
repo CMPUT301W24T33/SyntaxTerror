@@ -8,11 +8,14 @@
 
 package com.example.cmput301w24t33.users;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
@@ -43,6 +46,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
+import nl.dionsegijn.konfetti.core.Party;
+import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.Position;
+import nl.dionsegijn.konfetti.core.emitter.Emitter;
+import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
+import nl.dionsegijn.konfetti.core.models.Shape;
+import nl.dionsegijn.konfetti.core.models.Size;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 /**
  * Fragment for creating a new user profile within the application. It captures
@@ -61,6 +75,7 @@ public class CreateProfile extends Fragment {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     private String imageRef;
     private String imageUrl;
+    private KonfettiView konfettiView = null;
     /**
      * Initializes the fragment and user repository when the fragment is first created.
      *
@@ -86,6 +101,7 @@ public class CreateProfile extends Fragment {
         View view = inflater.inflate(R.layout.profile_create_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
+
         return view;
     }
 
@@ -175,9 +191,40 @@ public class CreateProfile extends Fragment {
                 Toast.makeText(getContext(), "Error saving userIdenticon", Toast.LENGTH_SHORT).show();
             }
 
+            //Konfetti initalize
+            konfettiView = view.findViewById(R.id.konfettiView);
+            EmitterConfig emitterConfig = new Emitter(5L, TimeUnit.SECONDS).perSecond(50);
+            Party party =
+                    new PartyFactory(emitterConfig)
+                            .angle(270)
+                            .spread(90)
+                            .setSpeedBetween(1f, 5f)
+                            .timeToLive(2000L)
+                            .shapes(new Shape.Rectangle(0.2f))
+                            .sizes(new Size(12, 5f, 0.2f))
+                            .position(0.0, 0.0, 1.0, 0.0)
+                            .build();
+            explode();
+            Toast.makeText(getContext(),"Welcome "+ fName + "!",Toast.LENGTH_SHORT).show();
 
         });
+
+
     }
+    //Action for Konfetti
+    public void explode() {
+        // Existing Konfetti logic
+        EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);
+        konfettiView.start(
+                new PartyFactory(emitterConfig)
+                        .spread(360)
+                        .shapes(Arrays.asList(Shape.Square.INSTANCE, Shape.Circle.INSTANCE))
+                        .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
+                        .setSpeedBetween(0f, 30f)
+                        .position(new Position.Relative(0.5, 0.3))
+                        .build());
+    }
+
 
     @Override
     public void onAttach(@NonNull Context context) {
