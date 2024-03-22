@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,14 +24,11 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
@@ -45,16 +41,13 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-
-import java.io.IOException;
+import com.google.firebase.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -69,12 +62,14 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private OrganizerCreateEditEventFragmentBinding binding;
     FirebaseFirestore db;
     private String qrcode = null;
-
     private FirebaseStorage storage;
     private String eventImageRef;
     private String eventImageUrl;
     // set to false if entering image select from gallery activity, turns true if upload or exit
     private boolean doneImageUpload = true;
+    private Calendar tempStartDateTime = Calendar.getInstance();
+    private Calendar tempEndDateTime = Calendar.getInstance();
+
 
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -188,10 +183,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Initializes date and time picker dialogs for event start and end times.
      */
     private void setupDateTimePickers() {
-        binding.startDateEditText.setOnClickListener(v -> showDatePickerDialog(true));
-        binding.startTimeEditText.setOnClickListener(v -> showTimePickerDialog(true));
-        binding.endDateEditText.setOnClickListener(v -> showDatePickerDialog(false));
-        binding.endTimeEditText.setOnClickListener(v -> showTimePickerDialog(false));
+        binding.startTimeText.setOnClickListener(v -> showDatePickerDialog(true));
+        binding.endTimeText.setOnClickListener(v -> showTimePickerDialog(false));
     }
 
     /**
@@ -232,20 +225,23 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         }
     }
 
-
     /**
      * Loads existing event data into the input fields if an event is being edited.
      */
     private void loadData() {
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        String startDateTime = eventToEdit.getStartDateTime() != null ?
+                dateTimeFormat.format(eventToEdit.getStartDateTime().toDate()) : "";
+        String endDateTime = eventToEdit.getEndDateTIme() != null ?
+                dateTimeFormat.format(eventToEdit.getEndDateTIme().toDate()) : "";
+
         // Load data into relevant field
         binding.eventNameEditText.setText(eventToEdit.getName());
         binding.eventLocationEditText.setText(eventToEdit.getAddress());
         binding.eventLocationCordsText.setText(eventToEdit.getLocationData());
         binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
-        binding.startDateEditText.setText(eventToEdit.getStartDate());
-        binding.endDateEditText.setText(eventToEdit.getEndDate());
-        binding.startTimeEditText.setText(eventToEdit.getStartTime());
-        binding.endTimeEditText.setText(eventToEdit.getEndTime());
+        binding.startTimeText.setText(startDateTime);
+        binding.endTimeText.setText(endDateTime);
         binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
         binding.geoTrackingSwitch.setChecked(eventToEdit.getGeoTracking());
 
@@ -258,27 +254,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Handles the confirm action, validates input data, and either updates an existing event or creates a new one.
      */
     private void onConfirm() {
-        // Collect data from input fields
-        /*
-        String eventName = Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim();
-        String eventDescription = Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim();
-        String startDate = Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim();
-        String startTime = Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim();
-        String endDate = Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim();
-        String endTime = Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim();
-        String maxAttendees = Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim();
-        boolean geoLocationTracking = binding.geoTrackingSwitch.isChecked();
-         */
-
- /*
-        // Validate input
-        if (eventName.isEmpty() || eventDescription.isEmpty() || startDate.isEmpty() || startTime.isEmpty() || endDate.isEmpty() || endTime.isEmpty()) {
-            Snackbar.make(binding.getRoot(), "Please fill in all required fields", Snackbar.LENGTH_LONG).show();
-            return;
-        }
- */
         if (doneImageUpload) {
-            // DATABASE CODE GOES HERE
             saveEvent();
             Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
             getParentFragmentManager().popBackStack();
@@ -293,7 +269,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void saveEvent() {
         eventRepo = new EventRepository();
-
         // Checks if Event is being edited to prevent creating new Event with updated information
         if (eventToEdit != null) {
             // Edits existing event
@@ -321,10 +296,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setAddress(Objects.requireNonNull(binding.eventLocationEditText.getText()).toString().trim());
         event.setLocationData(Objects.requireNonNull(binding.eventLocationCordsText).getText().toString().trim());
         event.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
-        event.setStartDate(Objects.requireNonNull(binding.startDateEditText.getText()).toString().trim());
-        event.setStartTime(Objects.requireNonNull(binding.startTimeEditText.getText()).toString().trim());
-        event.setEndDate(Objects.requireNonNull(binding.endDateEditText.getText()).toString().trim());
-        event.setEndTime(Objects.requireNonNull(binding.endTimeEditText.getText()).toString().trim());
+        event.setStartDateTime(new Timestamp(tempStartDateTime.getTime()));
+        event.setEndDateTIme(new Timestamp(tempEndDateTime.getTime()));
         event.setGeoTracking(binding.geoTrackingSwitch.isChecked());
         Log.d("setURL","a"+eventImageUrl);
         event.setImageUrl(eventImageUrl);
@@ -379,18 +352,15 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void showDatePickerDialog(boolean isStart) {
         final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), (view, year1, monthOfYear, dayOfMonth) -> {
-            String selectedDate = String.format(Locale.getDefault(), "%d-%02d-%02d", year1, monthOfYear + 1, dayOfMonth);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), (view, year, monthOfYear, dayOfMonth) -> {
             if (isStart) {
-                binding.startDateEditText.setText(selectedDate);
+                tempStartDateTime.set(year, monthOfYear, dayOfMonth);
+                showTimePickerDialog(true);
             } else {
-                binding.endDateEditText.setText(selectedDate);
+                tempEndDateTime.set(year, monthOfYear, dayOfMonth);
+                showTimePickerDialog(false);
             }
-        }, year, month, day);
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.show();
     }
@@ -401,19 +371,27 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void showTimePickerDialog(boolean isStart) {
         final Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-
         TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hourOfDay, minuteOfHour) -> {
-            String selectedTime = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minuteOfHour);
             if (isStart) {
-                binding.startTimeEditText.setText(selectedTime);
+                tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
             } else {
-                binding.endTimeEditText.setText(selectedTime);
+                tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
             }
-        }, hour, minute, DateFormat.is24HourFormat(getContext()));
+            updateDateTimeUI(isStart);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(getContext()));
 
         timePickerDialog.show();
+    }
+
+    private void updateDateTimeUI(boolean isStart) {
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        if (isStart) {
+            binding.startTimeText.setText(dateTimeFormat.format(tempStartDateTime.getTime()));
+        } else {
+            binding.endTimeText.setText(dateTimeFormat.format(tempEndDateTime.getTime()));
+        }
     }
 
     /**

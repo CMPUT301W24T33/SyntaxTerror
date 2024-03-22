@@ -30,11 +30,12 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * A fragment class to display the details of an event within the application.
@@ -121,12 +122,10 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      * @param event The event object whose data is to be displayed.
      */
     private void loadData(Event event) {
-
-        String eventStartDate = event.getStartDate();
-        String eventEndDate = event.getEndDate();
-        String eventStartTime = event.getStartTime();
-        String eventEndTime = event.getEndTime();
-        String eventDateTime = "Start: " +eventStartTime + " on " + eventStartDate + "\nEnd:   " + eventEndTime + " on " + eventEndDate;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        String startDateTimeStr = dateFormat.format(event.getStartDateTime().toDate());
+        String endDateTimeStr = dateFormat.format(event.getEndDateTIme().toDate());
+        String eventDateTime = startDateTimeStr + " - " + endDateTimeStr;
 
         binding.eventNameTextView.setText(event.getEventDescription());
         binding.eventLocationTextView.setText(event.getAddress());

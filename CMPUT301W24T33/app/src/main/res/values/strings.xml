@@ -39,5 +39,6 @@
     <string name="signed_up">Signed-up</string>
     <string name="manage_notifications">Manage Notifications</string>
     <string name="edit_event">Edit Event</string>
+    <string name="options">Options</string>
 
 </resources>

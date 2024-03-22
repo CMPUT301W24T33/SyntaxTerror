@@ -37,7 +37,8 @@ import com.example.cmput301w24t33.users.User;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
-import java.util.Collections;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * A fragment for displaying event details to an attendee. Includes viewing event notifications and sharing QR codes.
@@ -117,11 +118,10 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
      * and updating the toggle button group based on the user's attending status.
      */
     private void loadData() {
-        String eventStartDate = event.getStartDate();
-        String eventEndDate = event.getEndDate();
-        String eventStartTime = event.getStartTime();
-        String eventEndTime = event.getEndTime();
-        String eventDateTime = "Start: " + eventStartTime + " on " + eventStartDate + "\nEnd:   " + eventEndTime + " on " + eventEndDate;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        String startDateTimeStr = dateFormat.format(event.getStartDateTime().toDate());
+        String endDateTimeStr = dateFormat.format(event.getEndDateTIme().toDate());
+        String eventDateTime = startDateTimeStr + " - " + endDateTimeStr;
 
         binding.eventNameTextView.setText(event.getName());
         binding.eventLocationTextView.setText(event.getAddress());
