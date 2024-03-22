@@ -10,6 +10,7 @@ package com.example.cmput301w24t33.events;
 import android.location.Location;
 
 import com.example.cmput301w24t33.users.User;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.GeoPoint;
 
 import java.io.Serializable;
@@ -23,10 +24,8 @@ import java.util.ArrayList;
 public class Event implements Serializable {
     protected SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE.LLLL.yyyy KK:mm:ss aaa z");
     private String eventId;
-    private String startDate;
-    private String endDate;
-    private String startTime;
-    private String endTime;
+    private Timestamp startDateTime;
+    private Timestamp endDateTIme;
     private String name;
     private String organizerId;
     private String eventDescription;
@@ -83,64 +82,32 @@ public class Event implements Serializable {
      * Gets the start date of the event.
      * @return A string representing the start date.
      */
-    public String getStartDate() {
-        return startDate;
+    public Timestamp getStartDateTime() {
+        return startDateTime;
     }
 
     /**
      * Sets the start date of the event.
-     * @param startDate A string representing the start date.
+     * @param startDateTime A string representing the start date.
      */
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(Timestamp startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
     /**
      * Gets the end date of the event.
      * @return A string representing the end date.
      */
-    public String getEndDate() {
-        return endDate;
+    public Timestamp getEndDateTIme() {
+        return endDateTIme;
     }
 
     /**
      * Sets the end date of the event.
-     * @param endDate A string representing the end date.
+     * @param endDateTIme A string representing the end date.
      */
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    /**
-     * Gets the start time of the event.
-     * @return A string representing the start time.
-     */
-    public String getStartTime() {
-        return startTime;
-    }
-
-    /**
-     * Sets the start time of the event.
-     * @param startTime A string representing the start time.
-     */
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    /**
-     * Gets the end time of the event.
-     * @return A string representing the end time.
-     */
-    public String getEndTime() {
-        return endTime;
-    }
-
-    /**
-     * Sets the end time of the event.
-     * @param endTime A string representing the end time.
-     */
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEndDateTIme(Timestamp endDateTIme) {
+        this.endDateTIme = endDateTIme;
     }
 
     /**

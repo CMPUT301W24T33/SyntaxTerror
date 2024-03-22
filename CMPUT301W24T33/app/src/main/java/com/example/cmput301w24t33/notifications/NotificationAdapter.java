@@ -21,6 +21,8 @@ import com.google.firebase.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Adapter class for RecyclerView to display notifications.
@@ -49,8 +51,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
      * Updates the adapter's dataset with a new list of notifications and notifies any observers of the item range changed.
      * @param notifications The new list of notifications to be displayed.
      */
+    /**
+     * Updates the adapter's dataset with a new list of notifications, sorts them from most recent to least recent,
+     * and notifies any observers of the item range changed.
+     * @param notifications The new list of notifications to be displayed.
+     */
     public void addNotifications(List<Notification> notifications) {
         this.notifications = notifications;
+        // Sort notifications by their timestamp from most recent to least recent
+        Collections.sort(this.notifications, new Comparator<Notification>() {
+            @Override
+            public int compare(Notification o1, Notification o2) {
+                return o2.getTimestamp().compareTo(o1.getTimestamp());
+            }
+        });
+        notifyDataSetChanged();
     }
 
     /**
