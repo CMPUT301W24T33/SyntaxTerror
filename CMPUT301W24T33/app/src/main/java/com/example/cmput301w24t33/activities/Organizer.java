@@ -73,14 +73,6 @@ public class Organizer extends AppCompatActivity {
     }
 
     /**
-     * Updates the UI with a list of events.
-     * @param events List of Event objects to be displayed.
-     */
-    private void updateUI(List<Event> events) {
-        eventAdapter.setEvents(events);
-    }
-
-    /**
      * Loads and displays events organized by the current user upon resuming the activity.
      */
     @Override
@@ -91,15 +83,11 @@ public class Organizer extends AppCompatActivity {
     }
 
     /**
-     * Replaces the current fragment with the specified fragment.
-     * @param fragment The new fragment to display.
+     * Updates the UI with a list of events.
+     * @param events List of Event objects to be displayed.
      */
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.organizer_layout, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+    private void updateUI(List<Event> events) {
+        eventAdapter.setEvents(events);
     }
 
     /**
@@ -111,20 +99,6 @@ public class Organizer extends AppCompatActivity {
         eventAdapter = new EventAdapter(organizedEvents, this::onEventClickListener);
         eventRecyclerView.setAdapter(eventAdapter);
         eventAdapter.notifyDataSetChanged();
-    }
-
-    /**
-     * Handles click events on individual events, directing to event details or editing.
-     * @param event The event that was clicked.
-     */
-
-    public static EventCreateEdit newInstance(Event event) {
-        EventCreateEdit fragment = new EventCreateEdit();
-        Log.d(MotionEffect.TAG, "EventCreateEdit NewInstance");
-        Bundle args = new Bundle();
-        args.putSerializable("event", event);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     /**
@@ -174,5 +148,17 @@ public class Organizer extends AppCompatActivity {
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Organize Events");
 
+    }
+
+    /**
+     * Replaces the current fragment with the specified fragment.
+     * @param fragment The new fragment to display.
+     */
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.organizer_layout, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
