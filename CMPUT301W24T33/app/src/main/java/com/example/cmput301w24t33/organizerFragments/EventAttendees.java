@@ -144,10 +144,7 @@ public class EventAttendees extends Fragment {
                 Log.d("AttendeeSnapshot", "not null");
                 if (!eventSnapshot.toObject(Event.class).getAttendees().isEmpty()) {
 
-                    for (User user : eventSnapshot.toObject(Event.class).getAttendees()) {
-                        attendeesList.add(user);
-
-                    }
+                    attendeesList.addAll(eventSnapshot.toObject(Event.class).getAttendees());
                 }
                 attendeeAdapter.notifyDataSetChanged();
                 attendeeNumberView.setText(String.format(Locale.CANADA, "%d", attendeesList.size()));

@@ -26,6 +26,7 @@ import java.util.ArrayList;
 public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyViewHolder> {
 
     private final ArrayList<User> attendeesList;
+    private final ArrayList<User> singleAttendeesList;
 
     /**
      * Constructs an AttendeeAdapter with a list of User objects representing attendees.
@@ -33,6 +34,16 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
      */
     public AttendeeAdapter(ArrayList<User> attendeesList) {
         this.attendeesList = attendeesList;
+        ArrayList<User> tempArray = new ArrayList<>();
+
+        for(User attendee: attendeesList){
+            if(!tempArray.contains(attendee)){
+                tempArray.add(attendee);
+            }
+        }
+
+        this.singleAttendeesList = tempArray;
+
     }
 
     /**
@@ -63,6 +74,7 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
         User user = attendeesList.get(position);
         holder.firstNameText.setText(user.getFirstName());
         holder.lastNameText.setText(user.getLastName());
+        holder.countText.setText(getUserCount(user));
     }
 
     /**
@@ -76,10 +88,21 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
         return attendeesList.size();
     }
 
+    private int getUserCount(User user){
+        int count = 0;
+        for(User listUser: attendeesList){
+            if (listUser.equals(user)){
+                count++;
+            }
+        }
+        return count;
+    }
+
     /**
      * ViewHolder class for attendee items in the RecyclerView.
      */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView countText;
         TextView firstNameText;
         TextView lastNameText;
 
@@ -91,6 +114,7 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
             super(itemView);
             firstNameText = itemView.findViewById(R.id.firstNameText);
             lastNameText = itemView.findViewById(R.id.lastNameText);
+            countText = itemView.findViewById(R.id.check_in_count);
         }
     }
 }
