@@ -29,6 +29,7 @@ import java.util.Map;
 public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyViewHolder> {
 
     private final ArrayList<User> attendeesList;
+    private boolean countFlag = true;
 
 //    private final ArrayList<User> attendeesList;
 
@@ -39,6 +40,11 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
     public AttendeeAdapter(ArrayList<User> attendeesList) {
         this.attendeesList = attendeesList;
 
+    }
+
+    public AttendeeAdapter(ArrayList<User> attendeesList, boolean countFlag){
+        this.attendeesList = attendeesList;
+        this.countFlag = countFlag;
     }
 
     /**
@@ -67,10 +73,11 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = attendeesList.get(position);
-//        User user = (User) attendeesMap.keySet().toArray()[position];
         holder.firstNameText.setText(user.getFirstName());
         holder.lastNameText.setText(user.getLastName());
-        holder.countText.setText(String.format(Locale.CANADA, "%d", getUserCount(user)));
+        if(countFlag) {
+            holder.countText.setText(String.format(Locale.CANADA, "%d", getUserCount(user)));
+        }
     }
 
     /**
