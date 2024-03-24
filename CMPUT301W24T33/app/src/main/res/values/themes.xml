@@ -12,13 +12,15 @@
         <item name="backgroundColor">@color/white</item>
         <item name="action_bar_attendee">@color/attendee_actionbar_day</item>
         <item name="action_bar_organizer">@color/organizer_actionbar_day</item>
+
         <item name="check_in_button_image">@drawable/check_in_img_day</item>
         <item name="search_button_image">@drawable/ic_search_icon_day_foreground</item>
+        <item name="switchProfileIcon">@drawable/switch_user_mode_day</item>
+
         <item name="button_color_1">@color/button_day</item>
         <item name="button_color_2">@color/black</item>
         <item name="button_color_3">@color/button_3_day</item>
-        <item name="switchProfileIcon">@drawable/baseline_switch_account_40</item>
-        <item name="snackbarStyle">@style/Theme.SnackBarStyle</item>
+
     </style>
 
     <style name="Theme.TextAppearance" parent="@style/TextAppearance.MaterialComponents.Caption">

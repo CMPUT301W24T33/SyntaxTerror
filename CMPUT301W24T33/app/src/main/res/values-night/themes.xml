@@ -13,18 +13,16 @@
         <item name="android:textColor">@color/white</item>
         <item name="action_bar_attendee">@color/attendee_actionbar_night</item>
         <item name="action_bar_organizer">@color/organizer_actionbar_night</item>
+
         <item name="button_color_1">@color/button_night</item>
         <item name="button_color_2">@color/white</item>
         <item name="button_color_3">@color/button_3_night</item>
+
         <item name="check_in_button_image">@drawable/check_in_img_night</item>
         <item name="search_button_image">@drawable/ic_search_icon_night_foreground</item>
-        <item name="switchProfileIcon">@drawable/baseline_switch_account_40_night</item>
-        <item name="snackbarStyle">@style/Theme.SnackBarStyle</item>
+        <item name="switchProfileIcon">@drawable/switch_user_mode_night</item>
     </style>
 
-
-    <style name="Theme.SnackBarStyle" parent="Widget.MaterialComponents.Snackbar">
-    </style>
     <style name="Theme.ActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textColor">@color/white</item>
         <item name="android:background">#00000000</item>

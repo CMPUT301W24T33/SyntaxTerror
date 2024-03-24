@@ -44,15 +44,13 @@ public class EventSignedUp extends Fragment {
         assert getArguments() != null;
         ArrayList<User> signedUpList = (ArrayList<User>) getArguments().getSerializable("signedUpList");
         binding.eventSignupsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        AttendeeAdapter adapter = new AttendeeAdapter(signedUpList);
+        AttendeeAdapter adapter = new AttendeeAdapter(signedUpList, false);
         binding.eventSignupsList.setAdapter(adapter);
         binding.signedupCount.setText(String.valueOf(signedUpList.size()));
     }
     private void setupActionBar() {
         TextView actionBarText = binding.actionbar.findViewById(R.id.back_actionbar_textview);
         actionBarText.setText("Signed Up");
-
-        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar_day);
 
         ImageButton backButton = binding.actionbar.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
