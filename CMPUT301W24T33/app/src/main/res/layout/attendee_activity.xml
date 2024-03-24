@@ -76,12 +76,12 @@
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".03" />
+                    android:layout_weight=".01" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/home_icon"
-                    android:layout_width="59dp"
-                    android:layout_height="59dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
@@ -89,8 +89,8 @@
 
                     <ImageView
                         android:id="@+id/home_icon_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
 
                         android:background="?attr/button_color_1"
                         android:clickable="true"
@@ -103,12 +103,12 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".05" />
+                    android:layout_weight=".023" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/check_in_card_view"
-                    android:layout_width="59dp"
-                    android:layout_height="59dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
@@ -132,8 +132,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/find_event_card_view"
-                    android:layout_width="59dp"
-                    android:layout_height="59dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
@@ -154,7 +154,32 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".10" />
+                    android:layout_weight=".023" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    app:cardCornerRadius="100dp">
+
+                    <ImageView
+                        android:id="@+id/profile_icon_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/button_color_1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/person"></ImageView>
+
+                </androidx.cardview.widget.CardView>
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".01" />
             </LinearLayout>
 
 
