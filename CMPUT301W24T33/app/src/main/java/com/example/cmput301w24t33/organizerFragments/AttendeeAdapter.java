@@ -19,6 +19,9 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Adapter for RecyclerView to display a list of attendees.
@@ -26,7 +29,8 @@ import java.util.ArrayList;
 public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyViewHolder> {
 
     private final ArrayList<User> attendeesList;
-    private final ArrayList<User> singleAttendeesList;
+
+//    private final ArrayList<User> attendeesList;
 
     /**
      * Constructs an AttendeeAdapter with a list of User objects representing attendees.
@@ -34,15 +38,6 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
      */
     public AttendeeAdapter(ArrayList<User> attendeesList) {
         this.attendeesList = attendeesList;
-        ArrayList<User> tempArray = new ArrayList<>();
-
-        for(User attendee: attendeesList){
-            if(!tempArray.contains(attendee)){
-                tempArray.add(attendee);
-            }
-        }
-
-        this.singleAttendeesList = tempArray;
 
     }
 
@@ -72,9 +67,10 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = attendeesList.get(position);
+//        User user = (User) attendeesMap.keySet().toArray()[position];
         holder.firstNameText.setText(user.getFirstName());
         holder.lastNameText.setText(user.getLastName());
-        holder.countText.setText(getUserCount(user));
+        holder.countText.setText(String.format(Locale.CANADA, "%d", getUserCount(user)));
     }
 
     /**
@@ -85,7 +81,15 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
      */
     @Override
     public int getItemCount() {
-        return attendeesList.size();
+        int count = 0;
+        ArrayList<User> temp = new ArrayList<>();
+        for(User user: attendeesList){
+            if(!temp.contains(user)){
+                temp.add(user);
+                count++;
+            }
+        }
+        return count;
     }
 
     private int getUserCount(User user){
