@@ -44,6 +44,7 @@
                     app:iconGravity="textStart"
                     app:iconPadding="8dp"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -71,138 +72,129 @@
                 android:layout_height="95dp"
                 android:background="@drawable/bottom_nav"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                <Space
+                <!-- Home Icon and Label -->
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".01" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/home_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    app:cardCornerRadius="100dp">
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/home_icon_img"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="?attr/button_color_1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/home_icon"></ImageView>
-                </androidx.cardview.widget.CardView>
+                        android:src="@drawable/home_icon" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_family"
+                        android:text="Home"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-                <Space
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".023" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/check_in_card_view"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    app:cardCornerRadius="100dp">
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/check_in_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/button_color_1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:scaleType="centerCrop"
-                        android:src="?attr/check_in_button_image"></ImageView>
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".04" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="?attr/check_in_button_image" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/create_event_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    app:cardCornerRadius="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_family"
+                        android:text="QR"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <!-- Create Icon and Label -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/create_event_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/button_color_1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/add_icon"></ImageView>
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".04" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/add_icon"
+                        android:contentDescription="@string/create"/>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/find_event_card_view"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    app:cardCornerRadius="100dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Create"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Find Icon and Label -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/find_event_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/button_color_1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:scaleType="centerCrop"
-                        android:src="?attr/search_button_image"></ImageView>
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="?attr/search_button_image"/>
 
-                </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_family"
+                        android:text="Find"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-                <Space
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".023" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/profile_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    app:cardCornerRadius="100dp">
+                    android:layout_weight="0.2"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/profile_icon_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/button_color_1"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/person_icon"></ImageView>
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/person_icon" />
 
-                </androidx.cardview.widget.CardView>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".01" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_family"
+                        android:layout_marginTop="4dp"
+                        android:text="Profile"
+                        android:textSize="12sp" />
+                </LinearLayout>
             </LinearLayout>
+
 
 
         </LinearLayout>
