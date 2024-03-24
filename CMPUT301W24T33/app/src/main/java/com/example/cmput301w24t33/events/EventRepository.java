@@ -123,6 +123,22 @@ public class EventRepository {
                     eventCallback.onEventsLoaded(events);
                 });
     }
+
+    public void setEventByCheckedInSnapshotListener(String eventId){
+        eventsCollection.whereEqualTo("eventId", eventId)
+                .addSnapshotListener((queryDocumentSnapshots, e) -> {
+                    if (e != null) {
+                        eventCallback.onFailure(e);
+                        return;
+                    }
+                    List<Event> events = new ArrayList<>();
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        Event event = doc.toObject(Event.class);
+                        events.add(event);
+                    }
+                    eventCallback.onEventsLoaded(events);
+                });
+    }
     /**
      * Updates an existing event document in Firestore with new data from an Event object.
      *

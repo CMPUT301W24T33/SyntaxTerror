@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,18 +40,19 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
  * A Fragment to display event attendees and a map view location.
  */
-public class EventAttendees extends Fragment {
+public class EventAttendees extends Fragment implements EventRepository.EventCallback {
 
     private RecyclerView attendeesRecyclerView;
     private ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
     private TextView attendeeNumberView;
-    private FirebaseFirestore db;
+    private final EventRepository eventRepository = new EventRepository();
     private String eventId;
     private MapView mapView;
     private Event selectedEvent;
@@ -91,7 +93,6 @@ public class EventAttendees extends Fragment {
 
         if (getArguments() != null) {
             selectedEvent = (Event) getArguments().getSerializable("event");
-//            Log.d(TAG, "Event Passed: " + selectedEvent.getEventId());
         }
 
         //String address = selectedEvent.getAddress();
@@ -99,26 +100,12 @@ public class EventAttendees extends Fragment {
         setupActionBar(view);
         setupClickListeners(view);
         setupMapView(view, savedInstanceState);
-        setupAttendeesRecyclerView(view);
 
         attendeeNumberView = view.findViewById(R.id.attendees_count);
         attendeeNumberView.setText("0");
 
+        setupAttendeesRecyclerView(view);
         return view;
-    }
-
-    /**
-     * Called when the fragment is being created. Initializes the Firestore database instance and retrieves
-     * the event ID from the fragment arguments to set up data retrieval for the event attendees.
-     *
-     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this is the state.
-     */
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        db = FirebaseFirestore.getInstance();
-//        assert getArguments() != null;
-//        eventId = getArguments().get("eventId").toString();
     }
 
     /**
@@ -131,28 +118,8 @@ public class EventAttendees extends Fragment {
         attendeeAdapter = new AttendeeAdapter(attendeesList);
         attendeesRecyclerView.setAdapter(attendeeAdapter);
 
-        // is this necessary? yes
-        DocumentReference eventRef = db.collection("events").document(selectedEvent.getEventId());
-
-        eventRef
-                .addSnapshotListener((eventSnapshot, eventError) ->{
-                    Log.d("AttendeeSnapshot", "snaped: " + eventRef.getPath());
-            if (eventError != null) {
-                Log.d("AttendeeSnapshot", eventError.toString());
-            } else if (eventSnapshot != null) {
-                attendeesList.clear();
-                Log.d("AttendeeSnapshot", "not null");
-                if (!eventSnapshot.toObject(Event.class).getAttendees().isEmpty()) {
-
-                    for (User user : eventSnapshot.toObject(Event.class).getAttendees()) {
-                        attendeesList.add(user);
-
-                    }
-                }
-                attendeeAdapter.notifyDataSetChanged();
-                attendeeNumberView.setText(String.format(Locale.CANADA, "%d", attendeesList.size()));
-            }
-        });
+        eventRepository.setEventCallback(this);
+        eventRepository.setEventByCheckedInSnapshotListener(selectedEvent.getEventId());
     }
 
     /**
@@ -208,16 +175,49 @@ public class EventAttendees extends Fragment {
     }
 
     /**
+     * Fills out Recycler view with loaded event's attendees
+     * @param events list of events with selected event's event Id (should be only 1)
+     */
+    @Override
+    public void onEventsLoaded(List<Event> events) {
+        attendeesList.clear();
+        attendeesList.addAll(events.get(0).getAttendees());
+        attendeeNumberView.setText(String.format(Locale.CANADA, "%d", getUniqueAttendeeCount()));
+        attendeeAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Handles case when EventRepository failed to load events
+     * @param e exception caused by database query
+     */
+    @Override
+    public void onFailure(Exception e){
+        e.printStackTrace();
+    }
+
+    /**
+     * gets the number of unique users checked into this event
+     * @return total number of unique attendees
+     */
+    private int getUniqueAttendeeCount(){
+        int count = 0;
+        ArrayList<User> temp = new ArrayList<>();
+        for (User user : attendeesList){
+            if(!temp.contains(user)){
+                temp.add(user);
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
      * Sets up the action bar with a title and background color.
      * @param view The current view.
      */
     private void setupActionBar(@NonNull View view) {
         TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
         actionBarText.setText("Attendees");
-
-//        RelativeLayout generalActionBar = view.findViewById(R.id.general_actionbar);
-//        int color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar_day);
-//        generalActionBar.setBackgroundColor(color);
     }
 
     /**

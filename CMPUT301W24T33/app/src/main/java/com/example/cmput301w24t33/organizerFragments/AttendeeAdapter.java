@@ -19,6 +19,9 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Adapter for RecyclerView to display a list of attendees.
@@ -27,12 +30,15 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
 
     private final ArrayList<User> attendeesList;
 
+//    private final ArrayList<User> attendeesList;
+
     /**
      * Constructs an AttendeeAdapter with a list of User objects representing attendees.
      * @param attendeesList The list of attendees to be displayed.
      */
     public AttendeeAdapter(ArrayList<User> attendeesList) {
         this.attendeesList = attendeesList;
+
     }
 
     /**
@@ -61,8 +67,10 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = attendeesList.get(position);
+//        User user = (User) attendeesMap.keySet().toArray()[position];
         holder.firstNameText.setText(user.getFirstName());
         holder.lastNameText.setText(user.getLastName());
+        holder.countText.setText(String.format(Locale.CANADA, "%d", getUserCount(user)));
     }
 
     /**
@@ -73,13 +81,32 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
      */
     @Override
     public int getItemCount() {
-        return attendeesList.size();
+        int count = 0;
+        ArrayList<User> temp = new ArrayList<>();
+        for(User user: attendeesList){
+            if(!temp.contains(user)){
+                temp.add(user);
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int getUserCount(User user){
+        int count = 0;
+        for(User listUser: attendeesList){
+            if (listUser.equals(user)){
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
      * ViewHolder class for attendee items in the RecyclerView.
      */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView countText;
         TextView firstNameText;
         TextView lastNameText;
 
@@ -91,6 +118,7 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
             super(itemView);
             firstNameText = itemView.findViewById(R.id.firstNameText);
             lastNameText = itemView.findViewById(R.id.lastNameText);
+            countText = itemView.findViewById(R.id.check_in_count);
         }
     }
 }
