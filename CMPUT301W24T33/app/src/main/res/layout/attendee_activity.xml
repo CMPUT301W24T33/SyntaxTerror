@@ -88,7 +88,7 @@
                         android:id="@+id/home_icon_img"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/home_icon" />
+                        android:src="@drawable/dark_house_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
