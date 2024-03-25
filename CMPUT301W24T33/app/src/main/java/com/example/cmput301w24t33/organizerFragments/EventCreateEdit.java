@@ -71,6 +71,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private boolean doneImageUpload = true;
     private Calendar tempStartDateTime = Calendar.getInstance();
     private Calendar tempEndDateTime = Calendar.getInstance();
+    private String address;
+    private String locationData;
+
 
 
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
@@ -196,27 +199,16 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * place's address and storing the latitude and longitude coordinates.
      */
     private void setupPlacesAutocomplete() {
-        // Initialize the search fragment
         AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
                 getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
-
         if (autocompleteFragment != null) {
             autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
-
             autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
                 @Override
                 public void onPlaceSelected(@NonNull Place place) {
-                    // Handle the selected Place
-                    binding.eventLocationEditText.setText(place.getAddress());
                     LatLng latLng = place.getLatLng();
                     if (latLng != null) {
-                        String latitude = String.valueOf(latLng.latitude);
-                        String longitude = String.valueOf(latLng.longitude);
-
-                        //Set Cords to the event
-                        String locationData = latitude + "," + longitude;
-                        binding.eventLocationCordsText.setText(locationData);
-
+                        locationData = latLng.latitude + "," + latLng.longitude;
                     }
                 }
                 @Override
@@ -226,6 +218,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             });
         }
     }
+
 
     /**
      * Loads existing event data into the input fields if an event is being edited.
@@ -239,7 +232,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
         // Load data into relevant field
         binding.eventNameEditText.setText(eventToEdit.getName());
-        binding.eventLocationEditText.setText(eventToEdit.getAddress());
         binding.eventLocationCordsText.setText(eventToEdit.getLocationData());
         binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
         binding.startTimeText.setText(startDateTime);
@@ -295,8 +287,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void setEventEdits(Event event) {
         event.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
-        event.setAddress(Objects.requireNonNull(binding.eventLocationEditText.getText()).toString().trim());
-        event.setLocationData(Objects.requireNonNull(binding.eventLocationCordsText).getText().toString().trim());
+        event.setAddress(address);
+        event.setLocationData(locationData);
         event.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
         event.setStartDateTime(new Timestamp(tempStartDateTime.getTime()));
         event.setEndDateTIme(new Timestamp(tempEndDateTime.getTime()));
