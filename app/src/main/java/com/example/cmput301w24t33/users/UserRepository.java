@@ -14,7 +14,6 @@ package com.example.cmput301w24t33.users;
 import static android.content.ContentValues.TAG;
 
 import android.util.Log;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.MotionEffect;
@@ -26,7 +25,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,7 +145,7 @@ public class UserRepository {
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@android.support.annotation.NonNull Exception e) {
+                    public void onFailure(@androidx.annotation.NonNull Exception e) {
                         System.out.println("Error getting documents: " + e);
                     }
                 });
@@ -227,7 +225,7 @@ public class UserRepository {
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@android.support.annotation.NonNull Exception e) {
+                    public void onFailure(@androidx.annotation.NonNull Exception e) {
                         Log.w(MotionEffect.TAG, "Error deleting document", e);
                     }
                 });

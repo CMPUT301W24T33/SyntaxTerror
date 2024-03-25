@@ -14,8 +14,7 @@ package com.example.cmput301w24t33.events;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.nfc.Tag;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
