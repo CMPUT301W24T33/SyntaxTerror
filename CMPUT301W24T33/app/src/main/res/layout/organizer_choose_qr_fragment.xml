@@ -6,6 +6,7 @@
     android:clickable="true"
     android:id="@+id/organizer_choose_qr_fragment"
     android:elevation="2dp"
+    android:background="?backgroundColor"
     tools:context=".organizerFragments.EventChooseQR"
     android:focusable="true">
 

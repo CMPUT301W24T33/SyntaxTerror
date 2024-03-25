@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?backgroundColor"
     android:id="@+id/profile_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4EFEF"
     android:clickable="true"
     android:elevation="2dp"
     android:focusable="true"
@@ -49,15 +49,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="First Name:"
-            android:textColor="#000000"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/first_name_edit_text"
             style="@style/ProfileText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
@@ -73,16 +71,14 @@
             style="@style/ProfileText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Name:"
-            android:textColor="#000000"
+            android:text="@string/last_name"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/last_name_edit_text"
             style="@style/ProfileText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
@@ -98,16 +94,14 @@
             style="@style/ProfileText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-Mail:"
-            android:textColor="#000000"
+            android:text="@string/e_mail"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/email_edit_text"
             style="@style/ProfileText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000000" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
@@ -119,22 +113,22 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal">
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/profile_cancel_button"
+            android:background="?attr/button_color_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="3dp"
-            android:text="Cancel"
-            android:textColor="@color/black" />
-        <Button
+            android:text="@string/cancel"/>
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/profile_save_button"
+            android:background="?attr/button_color_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="3dp"
-            android:text="Save"
-            android:textColor="@color/black" />
+            android:text="@string/save"/>
     </LinearLayout>
 
 </RelativeLayout>

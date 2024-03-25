@@ -45,7 +45,6 @@ import java.util.Locale;
 
 public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDialogListener, Serializable {
 
-
     public OrganizerEventDetailsFragmentBinding binding;
     private FirebaseFirestore db;
 

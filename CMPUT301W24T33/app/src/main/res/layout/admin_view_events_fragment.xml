@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F4EFEF"
+    android:background="?backgroundColor"
     tools:context=".adminFragments.ViewEventsAdmin">
     <FrameLayout
         android:layout_width="match_parent"

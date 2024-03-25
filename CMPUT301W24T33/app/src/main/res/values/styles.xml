@@ -11,14 +11,16 @@
 
     <declare-styleable name="button_attrs">
         <attr name="button_color_1" format="color"/>
+        <attr name="button_color_2" format="color"/>
+        <attr name="button_color_3" format="color"/>
         <attr name="check_in_button_image" format="reference"/>
         <attr name="search_button_image" format="reference"/>
-        <attr name="button_color_2" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="action_bar_attrs">
         <attr name="action_bar_attendee" format="color"/>
         <attr name="action_bar_organizer" format="color"/>
+        <attr name="switchProfileIcon" format="reference"/>
     </declare-styleable>
 
 </resources>
