@@ -15,8 +15,10 @@ public class UserUnitTest {
 
     @Before
     public void setUp() {
-        //user = new User("1", "John", "Doe", "john.doe@example.com", false);
+        // Instantiate the user object with all required parameters
+        user = new User("1", "John", "Doe", "john.doe@example.com", false, "imageURL", "imageRef");
     }
+
 
     @Test
     public void userConstructorTest() {
