@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="secondary">#FF000000</color>
+    <color name="primary">#FFFFFFFF</color>
+    <color name="onSecondary">#FFFFFFFF</color>
+    <color name="onPrimary">#FF000000</color>
+    <color name="background">#FFFFFFFF</color>
+
+    <color name="attendee_actionbar_day">#f94d3f</color>
+    <color name="organizer_actionbar_day">#39e8cf</color>
+    <color name="attendee_actionbar_night">#6d0523</color>
+    <color name="organizer_actionbar_night">#1b4d67</color>
+
+    <color name="admin_actionbar">#C247D8</color>
+    <color name="going">#388E3C</color>
+    <color name="not_going">#D32F2F</color>
+    <color name="default_state">#747474</color>
+    <color name="light_grey">#B5B5B5</color>
+    <color name="button_day">#61DC4B</color>
+    <color name="button_night">#5561DC4B</color>
+
+    <color name="secondary_day">#ff9090ff</color>
+    <color name="secondary_night">#1f1faf</color>
+
+    <color name="button_3_day">#afb00af0</color>
+    <color name="button_3_night">#9f8000b0</color>
+
+    <color name="transparent">#00000000</color>
+
+</resources>

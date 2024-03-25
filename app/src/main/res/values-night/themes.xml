@@ -1,0 +1,63 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!--    <attr name="checkInButtonImage" format="reference">@item/checkInButtonImage</attr>-->
+<!--    <item name="checkInButtonImage" type="drawable">@drawable/check_in_img_night</item>-->
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CMPUT301W24T33" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorAccent">@color/organizer_actionbar_day</item>
+        <item name="backgroundColor">@color/black</item>
+        <item name="android:colorPrimary">@color/organizer_actionbar_day</item>
+        <item name="colorSecondary">@color/secondary_night</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="action_bar_attendee">@color/attendee_actionbar_night</item>
+        <item name="action_bar_organizer">@color/organizer_actionbar_night</item>
+
+        <item name="button_color_1">@color/button_night</item>
+        <item name="button_color_2">@color/white</item>
+        <item name="button_color_3">@color/button_3_night</item>
+
+        <item name="check_in_button_image">@drawable/check_in_img_night</item>
+        <item name="search_button_image">@drawable/ic_search_icon_night_foreground</item>
+        <item name="switchProfileIcon">@drawable/switch_user_mode_night</item>
+    </style>
+
+    <style name="Theme.ActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+
+    <style name="CustomOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <!-- Background tint color for the button -->
+        <item name="backgroundTint">@color/black</item>
+
+        <!-- Stroke color for the outlined border -->
+        <item name="strokeColor">@color/white</item>
+
+        <!-- Stroke width for the outlined border -->
+        <item name="strokeWidth">1dp</item>
+
+        <!-- Text color for the button -->
+        <item name="android:textColor">@color/white</item>
+
+        <!-- Icon tint for the button icon -->
+        <item name="iconTint">@color/white</item>
+
+        <!-- Ripple color for the button (effect on click) -->
+        <item name="rippleColor">@color/light_grey</item>
+
+        <!-- Elevation for the button (shadow effect) -->
+        <item name="android:elevation">0dp</item> <!-- usually, outlined buttons don't have elevation -->
+
+        <!-- Padding around the button icon -->
+        <item name="iconPadding">8dp</item>
+
+        <!-- Size of the button icon -->
+        <item name="iconSize">24dp</item>
+
+        <!-- Material shape appearance for the button -->
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+    </style>
+</resources>

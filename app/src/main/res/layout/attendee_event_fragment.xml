@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    tools:context=".activities.Organizer">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/action_bar_attendee"
+        app:title="Event Details"
+        app:titleCentered="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:navigationIcon="@drawable/ic_back_arrow"
+        android:theme="@style/Theme.ActionBar">
+
+        <!-- Share QR Code Button -->
+        <ImageButton
+            android:id="@+id/share_qr_code_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="share_qr_code"
+            android:src="@drawable/ic_share"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingVertical="16dp">
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/toggleButtonGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/notGoingButton"
+                    app:singleSelection="true"
+                    app:selectionRequired="true"
+                    app:checkedButton="@+id/goingButton">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/goingButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Going"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/going_button_background"
+                        app:cornerRadius="50dp"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/notGoingButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Not Going"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/not_going_button_background"
+                        app:cornerRadius="50dp"/>
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/event_name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XML Placeholder Event Name"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:paddingBottom="16dp" />
+
+            <!-- Section Header: Location -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/event_location_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XML Placeholder Location"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:paddingBottom="16dp" />
+
+            <!-- Section Header: Date/Time -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date and Time"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/event_start_end_date_time_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XML Placeholder Date and Time"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:paddingBottom="16dp" />
+
+            <!-- Section Header: Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/event_description_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XML Placeholder Event Description"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:paddingBottom="16dp" />
+
+            <!-- Event Poster -->
+            <ImageView
+                android:id="@+id/event_poster_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#D7D7D7"
+                android:contentDescription="event_poster"
+                android:src="@drawable/ic_event_poster_placeholder"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Notifications Link -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/notifications_button"
+                style="@style/CustomOutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Notifications"
+                app:icon="@drawable/ic_notifications"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
