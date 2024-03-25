@@ -23,4 +23,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x ./CMPUT301W24T33/gradlew
     - name: Build with Gradle
-      run: ./CMPUT301W24T33/gradlew build
+      run: ./CCMPUT301W24T33/gradlew build
