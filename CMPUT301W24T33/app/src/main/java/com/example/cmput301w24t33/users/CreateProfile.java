@@ -85,6 +85,7 @@ public class CreateProfile extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        
     }
 
     /**
