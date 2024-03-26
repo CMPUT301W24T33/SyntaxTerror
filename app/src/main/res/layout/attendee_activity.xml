@@ -123,31 +123,15 @@
 
                 </LinearLayout>
 
-                <!-- Create Icon and Label -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.02"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="10dp">
+                    android:paddingTop="10dp"/>
 
-                    <ImageView
-                        android:id="@+id/create_event_img"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/add_icon"
-                        android:contentDescription="@string/create"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Create"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <!-- Find Icon and Label -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
