@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -132,7 +133,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
         if(event.getImageUrl() != null && event.getImageUrl() != ""){
             Glide.with(this).load(event.getImageUrl()).into(binding.eventPosterImageView);
-            //Picasso.get().load(event.getImageUrl()).fit().into(binding.eventPosterImageView);   // load poster image
+            binding.eventPosterImageView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.transparent));
         }
         else{
             binding.eventPosterImageView.setImageResource(R.drawable.ic_event_poster_placeholder); // set image default

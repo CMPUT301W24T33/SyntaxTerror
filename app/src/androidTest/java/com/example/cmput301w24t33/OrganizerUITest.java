@@ -40,7 +40,7 @@ public class OrganizerUITest {
         // click on button to create an event
         onView(withId(R.id.button_create_event)).perform(click());
         // check to see if unique event creation uml element present
-        onView(withId(R.id.event_location_edit_text)).check(matches(isDisplayed()));
+        onView(withId(R.id.max_attendees_edit_text)).check(matches(isDisplayed()));
         // scroll to cancel
         onView(withText("Cancel")).perform(ViewActions.scrollTo());
         // click cancel

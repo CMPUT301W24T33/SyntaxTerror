@@ -175,7 +175,7 @@ public class ViewImagesAdmin extends Fragment {
         Context context = getContext();
         eventPosterRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         eventPosterRecyclerView.setHasFixedSize(true);
-        eventPosterAdapter = new EventPosterAdapter(eventList, this::onEventClickListener);
+        eventPosterAdapter = new EventPosterAdapter(eventList, this::onEventClickListener,this);
         eventPosterRecyclerView.setAdapter(eventPosterAdapter);
 
         userImageRecyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -186,7 +186,12 @@ public class ViewImagesAdmin extends Fragment {
 
     private void onUserClick(int position) {
         User user = userList.get(position);
-        replaceFragment(DeleteProfilePictureAdmin.newInstance(user));
+        if (user.getImageUrl() != null && user.getImageUrl() != "") {
+            replaceFragment(DeleteProfilePictureAdmin.newInstance(user));
+        }
+        else{
+            Snackbar.make(inflatedView, "User has no image to delete", Snackbar.LENGTH_SHORT).show();
+        }
 
     }
 
