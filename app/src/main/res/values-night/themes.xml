@@ -21,6 +21,8 @@
         <item name="check_in_button_image">@drawable/check_in_img_night</item>
         <item name="search_button_image">@drawable/ic_search_icon_night_foreground</item>
         <item name="switchProfileIcon">@drawable/switch_user_mode_night</item>
+        <item name="switchPersonIcon">@drawable/person_icon_night</item>
+        <item name="switchHouseIcon">@drawable/house_icon_night</item>
     </style>
 
     <style name="Theme.ActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
