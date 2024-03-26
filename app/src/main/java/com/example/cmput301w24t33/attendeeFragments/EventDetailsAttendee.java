@@ -129,7 +129,6 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
         if(event.getImageUrl() != null && event.getImageUrl() != ""){
             Glide.with(this).load(event.getImageUrl()).into(binding.eventPosterImageView);
-            //Picasso.get().load(event.getImageUrl()).fit().into(binding.eventPosterImageView);   // load poster image
         }
         else{
             binding.eventPosterImageView.setImageResource(R.drawable.ic_event_poster_placeholder); // set image default

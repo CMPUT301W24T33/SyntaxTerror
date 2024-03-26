@@ -9,10 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.User;
-import com.squareup.picasso.Picasso;
-
 
 import java.util.List;
 
@@ -75,10 +74,10 @@ public class UserImageAdapter extends RecyclerView.Adapter<UserImageAdapter.View
         holder.lastName.setText(user.getLastName());
         String userURL = user.getImageUrl();
         if (userURL != null && userURL != "") {
-            Picasso.get().load(userURL).into(holder.userImage);
+            Glide.with(holder.userImage.getContext()).load(userURL).into(holder.userImage);
         }
         else{
-            Picasso.get().cancelRequest(holder.userImage);
+            Glide.with(holder.userImage.getContext()).clear(holder.userImage);
             holder.userImage.setImageResource(R.drawable.no_image);
         }
     }
