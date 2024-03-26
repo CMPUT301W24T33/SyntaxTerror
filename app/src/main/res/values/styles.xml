@@ -16,6 +16,8 @@
         <attr name="check_in_button_image" format="reference"/>
         <attr name="search_button_image" format="reference"/>
         <attr name="switchPersonIcon" format="reference"/>
+        <attr name="switchHouseIcon" format="reference"/>
+
     </declare-styleable>
 
     <declare-styleable name="action_bar_attrs">
