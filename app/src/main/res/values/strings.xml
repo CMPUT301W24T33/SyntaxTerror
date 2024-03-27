@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sociable</string>
+    <string name="app_name">SyntaxTerror</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notification_dialog_title_hint">title</string>
