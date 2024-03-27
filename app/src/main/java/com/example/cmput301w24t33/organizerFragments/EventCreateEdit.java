@@ -269,6 +269,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             setEventEdits(eventToEdit);
             Log.d(TAG, "after set event:" + eventToEdit.getEventId());
             eventRepo.updateEvent(eventToEdit);
+
         } else {
             // Creates new event
             //mAuth = FirebaseAuth.getInstance();
