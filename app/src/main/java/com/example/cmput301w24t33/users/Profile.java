@@ -37,6 +37,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.Attendee;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -100,7 +101,7 @@ public class Profile extends Fragment {
                             addEmailEditText.setText(email);
                             addLnameEditText.setText(lName);
                             if (imageUrl != "") {
-                                Picasso.get().load(imageUrl).into(profileImageView);
+                                Glide.with(getContext()).load(imageUrl).into(profileImageView);
                             }
                             else{
 
@@ -149,6 +150,7 @@ public class Profile extends Fragment {
                         } else {
                             System.out.println("No such document");
                         }
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -332,24 +334,11 @@ public class Profile extends Fragment {
             Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
             return;
         }
-
-
-        // Create new User object
-        String userId = getAndroidId();
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("firstName", fName);
-        updates.put("lastName", lName);
-        updates.put("email",email);
-        updates.put("imageRef",imageRef);
-        updates.put("imageUrl",imageUrl);
-
-        db.collection("users").document(getAndroidId())
-                .update(updates)
-                .addOnSuccessListener(aVoid -> Log.d("Firestore", "DocumentSnapshot successfully updated!"))
-                .addOnFailureListener(e -> Log.w("Firestore", "Error updating document", e));
         profileToEdit.setFirstName(addFnameEditText.getText().toString());
         profileToEdit.setLastName(addLnameEditText.getText().toString());
         profileToEdit.setEmail(addEmailEditText.getText().toString());
+        profileToEdit.getImageRef(imageRef);
+        profileToEdit.setImageUrl(imageUrl);
 
         userRepo.updateUser(profileToEdit);
 

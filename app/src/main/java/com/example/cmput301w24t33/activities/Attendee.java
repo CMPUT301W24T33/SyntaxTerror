@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
@@ -206,7 +207,8 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      */
     private void fetchInfo(ImageView profileButton ) {
         userImageURL = currentUser.getImageUrl();
-        Picasso.get().load(userImageURL).into(profileButton);
+
+        Glide.with(this).load(userImageURL).into(profileButton);
     }
 
     /**
