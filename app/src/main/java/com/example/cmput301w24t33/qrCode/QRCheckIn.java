@@ -4,7 +4,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -17,16 +16,12 @@ import androidx.core.content.ContextCompat;
 
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
-import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.firestore.GeoPoint;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class QRCheckIn implements QRScanner.ScanResultsListener {
     private Context context;
@@ -148,7 +143,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
             fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null)
                     .addOnSuccessListener((Activity) context, location -> {
                         // If location is not null and is near GeofenceArea
-                        if (location != null && GeofenceArea(event.getLocationData(), location)) {
+                        if (location != null && GeofenceArea(event.getLocationCoord(), location)) {
                             // User is within geofence radius, proceed with check-in
                             Toast.makeText(context, "Welcome to event!", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Location is good!");
@@ -188,7 +183,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
 //            return false;
 //        } else if (event.getGeoTracking()) {
 //            Log.d("CheckIn", "Not close enough to event: " +event.getName());
-////            String[] latLong = event.getLocationData().split(",");
+////            String[] latLong = event.getLocationCoord().split(",");
 ////            int lat = Integer.parseInt(latLong[0]);
 ////            int lon = Integer.parseInt(latLong[1]);
 //            return true; //this needs to check if the user is within range to check into the event

@@ -124,7 +124,7 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         String eventDateTime = startDateTimeStr + " - " + endDateTimeStr;
 
         binding.eventNameTextView.setText(event.getName());
-        binding.eventLocationTextView.setText(event.getAddress());
+        binding.eventLocationTextView.setText(event.getLocationName());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
         if(event.getImageUrl() != null && event.getImageUrl() != ""){

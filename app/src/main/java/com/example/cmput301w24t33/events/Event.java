@@ -31,8 +31,8 @@ public class Event implements Serializable {
     private String eventDescription;
     private String posterQR;
     private String checkInQR;
-    private String address;
-    private String locationData;
+    private String locationCoord;
+    private String locationName;
     private boolean geoTracking;
     private boolean active;
     private int maxOccupancy;
@@ -194,32 +194,32 @@ public class Event implements Serializable {
      * Gets the address of the event location.
      * @return A string representing the event location address.
      */
-    public String getAddress() {
-        return address;
+    public String getLocationName() {
+        return locationName;
     }
 
     /**
      * Sets the address of the event location.
-     * @param address A string representing the event location address.
+     * @param locationName A string representing the event location address.
      */
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     /**
      * Gets additional location data for the event.
      * @return A string containing additional location data.
      */
-    public String getLocationData() {
-        return locationData;
+    public String getLocationCoord() {
+        return locationCoord;
     }
 
     /**
      * Sets additional location data for the event.
-     * @param locationData A string containing additional location data.
+     * @param locationCoord A string containing additional location data.
      */
-    public void setLocationData(String locationData) {
-        this.locationData = locationData;
+    public void setLocationCoord(String locationCoord) {
+        this.locationCoord = locationCoord;
     }
 
     /**
