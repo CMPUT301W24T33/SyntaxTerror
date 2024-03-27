@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firebase_database_url" translatable="false">https://syntax-terror-f783b-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1087289880922</string>
+    <string name="google_api_key" translatable="false">AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs</string>
+    <string name="google_app_id" translatable="false">1:1087289880922:android:9aad77801068ca53288363</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs</string>
+    <string name="google_storage_bucket" translatable="false">syntax-terror-f783b.appspot.com</string>
+    <string name="project_id" translatable="false">syntax-terror-f783b</string>
+</resources>
