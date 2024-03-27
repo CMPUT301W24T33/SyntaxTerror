@@ -9,15 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.databinding.AdminDeletePosterFragmentBinding;
 import com.example.cmput301w24t33.databinding.AdminDeleteProfilePictureFragmentBinding;
-import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.users.UserRepository;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.squareup.picasso.Picasso;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +28,7 @@ public class DeleteProfilePictureAdmin extends Fragment {
     private UserRepository userRepo;
     private AdminDeleteProfilePictureFragmentBinding binding;
     private User userProfile;
-    private Picasso picasso;
+
 
 
     public DeleteProfilePictureAdmin() {
@@ -61,7 +59,6 @@ public class DeleteProfilePictureAdmin extends Fragment {
         if (getArguments() != null) {
             userProfile = (User) getArguments().getSerializable("user");
         }
-        picasso = Picasso.get();
         loadData();
         setupActionBar();
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
@@ -121,6 +118,6 @@ public class DeleteProfilePictureAdmin extends Fragment {
     private void loadData() {
         binding.profileFirstNameEditText.setText(userProfile.getFirstName());
         binding.profileLastNameEditText.setText(userProfile.getLastName());
-        picasso.load(userProfile.getImageUrl()).into(binding.profilePictureImageView);
+        Glide.with(this).load(userProfile.getImageUrl()).into(binding.profilePictureImageView);
     }
 }

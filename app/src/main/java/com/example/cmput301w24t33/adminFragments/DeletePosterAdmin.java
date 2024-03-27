@@ -9,11 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AdminDeletePosterFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
-import com.squareup.picasso.Picasso;
 
 
 public class DeletePosterAdmin extends Fragment {
@@ -21,7 +21,7 @@ public class DeletePosterAdmin extends Fragment {
     private EventRepository eventRepo;
     private AdminDeletePosterFragmentBinding binding;
     private Event eventToRemovePoster;
-    private Picasso picasso;
+
 
 
     public DeletePosterAdmin() {
@@ -52,7 +52,6 @@ public class DeletePosterAdmin extends Fragment {
         if (getArguments() != null) {
             eventToRemovePoster = (Event) getArguments().getSerializable("event");
         }
-        picasso = Picasso.get();
         loadData();
         setupActionBar();
         eventRepo = new EventRepository();
@@ -111,6 +110,6 @@ public class DeletePosterAdmin extends Fragment {
      */
     private void loadData() {
         binding.eventNameEditText.setText(eventToRemovePoster.getName());
-        picasso.load(eventToRemovePoster.getImageUrl()).into(binding.eventPosterImageView);
+        Glide.with(this).load(eventToRemovePoster.getImageUrl()).into(binding.eventPosterImageView);
     }
 }
