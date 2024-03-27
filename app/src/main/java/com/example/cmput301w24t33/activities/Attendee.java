@@ -81,10 +81,10 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
 
         authenticateUser();
         setupRecyclerView();
-        setupViewModel();
         setupActionbar();
         setOnClickListeners();
     }
+
 
     /**
      * Switches between viewing all events and events the user has signed up for.
@@ -164,6 +164,8 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
     @Override
     protected void onResume() {
         super.onResume();
+        NotificationManager.initialize(this.getApplication());
+        setupViewModel();
         Log.d(TAG, "RESUME");
         eventViewModel.loadEvents();
     }

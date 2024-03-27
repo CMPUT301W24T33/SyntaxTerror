@@ -29,6 +29,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
 import com.example.cmput301w24t33.adminFragments.ViewImagesAdmin;
 import com.example.cmput301w24t33.adminFragments.ViewProfilesAdmin;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 
 /**
  * Represents the administrative area of the application, allowing navigation between administrative functionalities such as viewing events and profiles.
@@ -54,6 +55,7 @@ public class Admin extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        NotificationManager.initialize(this.getApplication());
         Log.d(TAG, "ADMIN RESUME");
     }
 
