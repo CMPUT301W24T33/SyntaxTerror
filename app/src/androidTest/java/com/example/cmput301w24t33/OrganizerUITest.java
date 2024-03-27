@@ -3,7 +3,10 @@ package com.example.cmput301w24t33;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -37,16 +40,25 @@ public class OrganizerUITest {
 
     @Test
     public void testOrganizerCreateEventFragment() {
-        // click on button to create an event
+        // Testing out if cancelling event works
         onView(withId(R.id.button_create_event)).perform(click());
-        // check to see if unique event creation uml element present
-        onView(withId(R.id.event_location_edit_text)).check(matches(isDisplayed()));
         // scroll to cancel
         onView(withText("Cancel")).perform(ViewActions.scrollTo());
         // click cancel
         onView(withId(R.id.cancel_button)).perform(click());
         // check if on organizer activity
         onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
+
+        //Testing out if creating event works
+        onView(withId(R.id.button_create_event)).perform(click());
+        onView(withId(R.id.event_name_edit_text)).perform(typeText("Uni Days!"), closeSoftKeyboard());
+        onView(withId(R.id.event_description_edit_text)).perform(typeText("University of Alberta"), closeSoftKeyboard());
+        onView(withId(R.id.max_attendees_edit_text)).perform(replaceText("2"),closeSoftKeyboard());
+        onView(withText("Confirm")).perform(ViewActions.scrollTo());
+        onView(withId(R.id.confirm_button)).perform(click());
+
+//        onView(withId(R.id.organized_events))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
     }
 
     @Test
