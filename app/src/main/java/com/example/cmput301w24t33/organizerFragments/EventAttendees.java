@@ -163,16 +163,21 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         });
     }
 
-    private void addCircle(LatLng latLng,float radius){
+    /**
+     * Adds a circle to the Google Map centered at the given latitude and longitude.
+     * @param latLng The center point of the circle on the map, specified as a LatLng object containing latitude and longitude.
+     * @param radius The radius of the circle in meters.
+     */
+    private void addCircle(LatLng latLng, float radius){
         CircleOptions circleOptions = new CircleOptions();
         circleOptions.center(latLng);
         circleOptions.radius(radius);
-        circleOptions.strokeColor(Color.argb(255,255,0,0));
-        circleOptions.fillColor(Color.argb(64,255,0,0));
+        circleOptions.strokeColor(Color.argb(255, 0, 128, 128));
+        circleOptions.fillColor(Color.argb(64, 0, 128, 128));
         circleOptions.strokeWidth(4);
         gMap.addCircle(circleOptions);
-
     }
+
 
     /**
      * Fills out Recycler view with loaded event's attendees
