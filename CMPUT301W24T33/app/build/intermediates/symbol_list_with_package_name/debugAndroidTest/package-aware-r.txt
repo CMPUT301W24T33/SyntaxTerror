@@ -1,0 +1,3 @@
+com.example.cmput301w24t33.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

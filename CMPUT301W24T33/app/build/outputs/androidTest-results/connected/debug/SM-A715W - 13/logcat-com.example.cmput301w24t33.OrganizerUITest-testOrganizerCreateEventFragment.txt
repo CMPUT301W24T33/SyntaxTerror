@@ -1,0 +1,709 @@
+03-08 15:13:52.026 26361 26459 I TestRunner: started: testOrganizerCreateEventFragment(com.example.cmput301w24t33.OrganizerUITest)
+03-08 15:13:52.038 26361 26459 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+03-08 15:13:52.041  1472  1882 I ChimeraSystemEventListener: appLaunchIntent package name is: com.example.cmput301w24t33
+03-08 15:13:52.043  1472  3404 I SemDvfsHyPerManager: acquire hyper - AMS_APP_SWITCH/1472@18, type = -999
+03-08 15:13:52.044  1327  2296 I SurfaceFlinger: id=35634 createSurf, flag=24004, Task=3077#35634
+03-08 15:13:52.044  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1110813  [1472 / 18]    HINT : AMS_APP_SWITCH    list :
+03-08 15:13:52.044  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPULittleMinFreq] UpdateResource Request ID : 1110813    Value : 1804800
+03-08 15:13:52.045  1327  3508 I SurfaceFlinger: id=35635 createSurf, flag=80004, ActivityRecord{e82ffc4 u0 com.example.cmput301w24t33/.activities.Organizer} t3077}#35635
+03-08 15:13:52.047  5044  5044 I SemDvfsHyPerManager: acquire hyper - APP_START_SHORT/5044@12, type = -999
+03-08 15:13:52.050  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1110813    Value : 2208000
+03-08 15:13:52.050  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12784108  [5044 / 12]    HINT : APP_START    list : [TIMEOUT / 1500]
+03-08 15:13:52.051  1472  5215 I SemDvfsHyPerManager: acquire hyper - AMS_APP_LAUNCH/1472@15, type = -999
+03-08 15:13:52.051  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12784108    Value : 2208000
+03-08 15:13:52.051  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1106343  [1472 / 15]    HINT : AMS_APP_LAUNCH    list :
+03-08 15:13:52.052  2578  2664 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:52.052  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPULittleMinFreq] UpdateResource Request ID : 1106343    Value : 1804800
+03-08 15:13:52.053  1472  5215 D InputTransport: Input channel constructed: 'fbcedcf', fd=691
+03-08 15:13:52.053  1472  5215 D InputTransport: Input channel constructed: 'fbcedcf', fd=715
+03-08 15:13:52.053  1472  5215 D InputTransport: Input channel constructed: 'fbcedcf', fd=741
+03-08 15:13:52.053  1327  2296 I SurfaceFlinger: id=35636 createSurf, flag=80004, fbcedcf Splash Screen com.example.cmput301w24t33#35636
+03-08 15:13:52.054  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1106343    Value : 2208000
+03-08 15:13:52.054  1472  5215 D InputTransport: Input channel destroyed: 'fbcedcf', fd=741
+03-08 15:13:52.055  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33 from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:52.055  3258  3258 I BaseActivity: removeActivityFlags, flags : 16
+03-08 15:13:52.056  3258  3258 I BaseActivity: removeActivityFlags, flags : 6
+03-08 15:13:52.056  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: setView = android.widget.FrameLayout@77b371b TM=true
+03-08 15:13:52.056  3258  3258 I DragController: endDrag
+03-08 15:13:52.056  3258  3258 W LauncherAppWidgetHost: setShouldListenFlag, mFlags:15 flag:resume on:false isFront:false
+03-08 15:13:52.056  3258  3258 I SPayUpdater: updateSpayHandler launcher activity is paused false
+03-08 15:13:52.056  1537  2942 I CameraService: onUidStateChanged: uid=10052, procState is changed. (0 -> 1)
+03-08 15:13:52.058  5044  5044 I SemDvfsHyPerManager: acquire hyper - APP_START/5044@14, type = -999
+03-08 15:13:52.058  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12794225  [5044 / 14]    HINT : APP_START    list :
+03-08 15:13:52.058  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12794225    Value : 2208000
+03-08 15:13:52.060  1472  3440 I AS.AudioService: uid:10333is using audio
+03-08 15:13:52.061  1472  3543 D InputDispatcher: Focused application(0): ActivityRecord{e82ffc4 u0 com.example.cmput301w24t33/.activities.Organizer} t3077}
+03-08 15:13:52.067  3258  3258 I TopTaskTracker: onTaskMovedToFront : taskId = 3077
+03-08 15:13:52.069  1472  2391 D AS.MultiSoundManager: mForegroundUid = 10451
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fl=81030118
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   pfl=16000010
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: performTraversals mFirst=true windowShouldResize=true viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fl=81030118
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   pfl=16000010
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:52.069  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:52.074  1472  5215 V WindowManager: Relayout Window{fbcedcf u0 Splash Screen com.example.cmput301w24t33}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:52.074  1327  2296 I SurfaceFlinger: id=35637 createSurf, flag=40004, Splash Screen com.example.cmput301w24t33$_2578#35637
+03-08 15:13:52.078  1472  5215 V WindowManager: Relayout hash=fbcedcf, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:52.078  1472  5215 V WindowManager:   fl=81030118
+03-08 15:13:52.078  1472  5215 V WindowManager:   pfl=16000010
+03-08 15:13:52.078  1472  5215 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:52.078  1472  5215 V WindowManager:   bhv=DEFAULT
+03-08 15:13:52.078  1472  5215 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:52.078 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: PRE_ON_CREATE
+03-08 15:13:52.078 26361 26361 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+03-08 15:13:52.078  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33 from=android.view.ViewRootImpl.relayoutWindow:9802
+03-08 15:13:52.080  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
+03-08 15:13:52.081  2578  2656 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@2a6f9ff[cmput301w24t33] mNativeObject= 0xb400007c520de100 sc.mNativeObject= 0xb400007c662a0500 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
+03-08 15:13:52.081  5242  5242 I ActivityUtils: HomePackage : com.sec.android.app.launcher, resumePackageName : com.example.cmput301w24t33
+03-08 15:13:52.081  2578  2656 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@2a6f9ff[cmput301w24t33] mNativeObject= 0xb400007c520de100 sc.mNativeObject= 0xb400007c662a0500 format= -3 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
+03-08 15:13:52.082  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=11 res=0x3 s={true 0xb400007c4a124800} ch=true seqId=0
+03-08 15:13:52.083  2578  2664 D OpenGLRenderer: eglCreateWindowSurface
+03-08 15:13:52.083  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007c4a124800} hwInitialized=true
+03-08 15:13:52.084  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: reportNextDraw android.view.ViewRootImpl.performTraversals:4438 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309
+03-08 15:13:52.084  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Setup new sync id=0
+03-08 15:13:52.084  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Setting syncFrameCallback
+03-08 15:13:52.084  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: registerCallbacksForSync syncBuffer=false
+03-08 15:13:52.085  2578  2712 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-08 15:13:52.085  2578  2712 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Setting up sync and frameCommitCallback
+03-08 15:13:52.086 26361 26361 I DecorView: [INFO] isPopOver=false config=true
+03-08 15:13:52.087 26361 26361 I DecorView: updateCaptionType: isFloating=false isApplication=true hasWindowDecorCaption=false this=DecorView@89dac48[]
+03-08 15:13:52.087 26361 26361 D DecorView: setCaptionType = 0, this = DecorView@89dac48[]
+03-08 15:13:52.087  1472  3543 D InputDispatcher: Focus left window (0): 25ecb59 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity
+03-08 15:13:52.088  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: MSG_WINDOW_FOCUS_CHANGED 0 0
+03-08 15:13:52.088  3258  3258 I BaseActivity: removeActivityFlags, flags : 8
+03-08 15:13:52.088  1472  3678 I MediaSessionMonitor: Media session stopped : diffrent pkg
+03-08 15:13:52.089 26361 26361 I DecorView: getCurrentDensityDpi: from real metrics. densityDpi=420 msg=resources_loaded
+03-08 15:13:52.089 26361 26361 I DecorView: setWindowBackground: isPopOver=false color=ffffffff d=android.graphics.drawable.ColorDrawable@bbb1006
+03-08 15:13:52.090  2578  2664 I BLASTBufferQueue: [ViewRootImpl@2a6f9ff[cmput301w24t33]#948](f:0,a:0) onFrameAvailable the first frame is available
+03-08 15:13:52.090  2578  2664 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-08 15:13:52.091  2578  2664 D OpenGLRenderer: CFMS:: SetUp Pid : 2578    Tid : 2664
+03-08 15:13:52.091  2578  2664 W Parcel  : Expecting binder but got null!
+03-08 15:13:52.092  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: onSyncComplete
+03-08 15:13:52.092  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
+03-08 15:13:52.092  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c6643cc00
+03-08 15:13:52.097  1327  3508 I SurfaceFlinger: id=35638 createSurf, flag=24000, Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35638
+03-08 15:13:52.100  1327  3508 I SurfaceFlinger: id=35639 createSurf, flag=24004, Surface(name=Task=3077)/@0x161b024 - animation-leash of app_transition#35639
+03-08 15:13:52.105  1327  3508 I SurfaceFlinger: id=35640 createSurf, flag=80000, 3937ad7 ActivityRecordInputSink com.example.cmput301w24t33/.activities.Organizer#35640
+03-08 15:13:52.108  2578  2643 D Bubbles : onLocusVisibilityChanged: LocusId[17_chars] visible=false
+03-08 15:13:52.118  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33$_2578#35637] hidden!! flag(0)
+03-08 15:13:52.119 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: CREATED
+03-08 15:13:52.120 26361 26361 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:52.122 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: STARTED
+03-08 15:13:52.123 26361 26361 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:52.124 26361 26361 D ContentValues: RESUME
+03-08 15:13:52.124 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: RESUMED
+03-08 15:13:52.125 26361 26361 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:52.126 26361 26361 I MSHandlerLifeCycle: check: return. pkg=com.example.cmput301w24t33 parent=null callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.ActivityThread.handleResumeActivity:5476 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176
+03-08 15:13:52.126 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@89dac48[]
+03-08 15:13:52.128  1257 28348 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1115292
+03-08 15:13:52.129  1257 28348 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1115292
+03-08 15:13:52.129 26361 26463 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:52.130  1472  5162 D InputTransport: Input channel constructed: '5257faf', fd=605
+03-08 15:13:52.130  1472  5162 D InputTransport: Input channel constructed: '5257faf', fd=741
+03-08 15:13:52.131  1472  5162 D InputTransport: Input channel constructed: '5257faf', fd=756
+03-08 15:13:52.131  1327  3508 I SurfaceFlinger: id=35641 createSurf, flag=80004, 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer#35641
+03-08 15:13:52.132  1472  5162 D InputTransport: Input channel destroyed: '5257faf', fd=756
+03-08 15:13:52.134 26361 26361 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:52.136 26361 26361 I ViewRootImpl@841c411[Organizer]: setView = com.android.internal.policy.DecorView@89dac48 TM=true
+03-08 15:13:52.137 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@89dac48[Organizer]
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147f00 | 0100 | RGBx_8888    |  152.0    0.0 1232.0 2400.0 |    0    0 1080 2400 | Wallpaper BBQ wrapper#88
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007445801300 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.sec.android.app.launcher/com.sec[...]ivities.LauncherActivity$_3258#35626
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007445800ea0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |   76  168 1004 2232 | Splash Screen com.example.cmput301w24t33$_2578#35637
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446149b70 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:52.139  1327  1327 D SurfaceFlinger:
+03-08 15:13:52.150 26361 26361 I ViewRootImpl@841c411[Organizer]: performTraversals params={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:52.150 26361 26361 I ViewRootImpl@841c411[Organizer]:   fl=81810100
+03-08 15:13:52.150 26361 26361 I ViewRootImpl@841c411[Organizer]:   pfl=12020040
+03-08 15:13:52.150 26361 26361 I ViewRootImpl@841c411[Organizer]:   bhv=DEFAULT
+03-08 15:13:52.150 26361 26361 I ViewRootImpl@841c411[Organizer]:   fitSides= naviIconColor=0
+03-08 15:13:52.150 26361 26361 I ViewRootImpl@841c411[Organizer]:   sfl=100000}
+03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]: performTraversals mFirst=true windowShouldResize=true viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   fl=81810100
+03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   pfl=12020040
+03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   bhv=DEFAULT
+03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   fitSides= naviIconColor=0
+03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   sfl=100000}
+03-08 15:13:52.153  1472  3543 V WindowManager: Relayout Window{5257faf u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:52.153  1327  2296 I SurfaceFlinger: id=35642 createSurf, flag=40004, com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642
+03-08 15:13:52.156  1327  2296 I SurfaceFlinger: id=35643 createSurf, flag=24000, Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35643
+03-08 15:13:52.156  1327  2296 I SurfaceFlinger: id=35644 createSurf, flag=24000, Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35644
+03-08 15:13:52.157  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:16, packageName: com.example.cmput301w24t33 (APPEARANCE_LIGHT_NAVIGATION_BARS ), navbarColorManagedByIme:false
+03-08 15:13:52.158  3258 23306 I TouchInteractionService: onSystemUiStateChanged, stateFlags : 131072 |allow_gesture|
+03-08 15:13:52.158  1472  3543 V WindowManager: Relayout hash=5257faf, pid=26361, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:52.158  1472  3543 V WindowManager:   fl=81810100
+03-08 15:13:52.158  1472  3543 V WindowManager:   pfl=12020040
+03-08 15:13:52.158  1472  3543 V WindowManager:   apr=LIGHT_NAVIGATION_BARS
+03-08 15:13:52.158  1472  3543 V WindowManager:   bhv=DEFAULT
+03-08 15:13:52.158  1472  3543 V WindowManager:   fitSides= naviIconColor=0
+03-08 15:13:52.158  1472  3543 V WindowManager:   sfl=100000}
+03-08 15:13:52.158  3258  3258 I RecentsAnimationDeviceState: setSystemUiFlags, stateFlags : 131072
+03-08 15:13:52.158  3258  3258 I TouchInteractionService: onSystemUiFlagsChanged, lastSysUIFlags : 0
+03-08 15:13:52.160 26361 26361 I ViewRootImpl@841c411[Organizer]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
+03-08 15:13:52.161 26361 26361 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@841c411[Organizer] mNativeObject= 0xb400007c7ee0a300 sc.mNativeObject= 0xb400007c7e0c2a20 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
+03-08 15:13:52.161 26361 26361 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@841c411[Organizer] mNativeObject= 0xb400007c7ee0a300 sc.mNativeObject= 0xb400007c7e0c2a20 format= -1 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
+03-08 15:13:52.162 26361 26361 I ViewRootImpl@841c411[Organizer]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=8 res=0x3 s={true 0xb400007ce21b8800} ch=true seqId=0
+03-08 15:13:52.163 26361 26463 D OpenGLRenderer: eglCreateWindowSurface
+03-08 15:13:52.163 26361 26361 I ViewRootImpl@841c411[Organizer]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007ce21b8800} hwInitialized=true
+03-08 15:13:52.165  3258 23306 I RecentModel: onTaskStackChangedBackground
+03-08 15:13:52.167 26361 26361 I ViewRootImpl@841c411[Organizer]: reportNextDraw android.view.ViewRootImpl.performTraversals:4438 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309
+03-08 15:13:52.168 26361 26361 I ViewRootImpl@841c411[Organizer]: Setup new sync id=0
+03-08 15:13:52.168 26361 26361 I ViewRootImpl@841c411[Organizer]: Setting syncFrameCallback
+03-08 15:13:52.168 26361 26361 I ViewRootImpl@841c411[Organizer]: registerCallbacksForSync syncBuffer=false
+03-08 15:13:52.173  3258  3627 I RecentTasksList: loadTasksInBackground : groupTask = GroupTask{task1=[id=3049 windowingMode=1 user=0 lastActiveTime=329064735] null, task2=null, task3=null, mStagedSplitBounds=null}
+03-08 15:13:52.173  3258  3627 I RecentTasksList: loadTasksInBackground : groupTask = GroupTask{task1=[id=3075 windowingMode=1 user=0 lastActiveTime=329100576] null, task2=null, task3=null, mStagedSplitBounds=null}
+03-08 15:13:52.173  3258  3627 I RecentTasksList: loadTasksInBackground : groupTask = GroupTask{task1=[id=3077 windowingMode=1 user=0 lastActiveTime=329102780] null, task2=null, task3=null, mStagedSplitBounds=null}
+03-08 15:13:52.175 26361 26528 I ViewRootImpl@841c411[Organizer]: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-08 15:13:52.175 26361 26528 I ViewRootImpl@841c411[Organizer]: Setting up sync and frameCommitCallback
+03-08 15:13:52.178 26361 26463 I BLASTBufferQueue: [ViewRootImpl@841c411[Organizer]#11](f:0,a:0) onFrameAvailable the first frame is available
+03-08 15:13:52.179 26361 26463 I ViewRootImpl@841c411[Organizer]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-08 15:13:52.180 26361 26463 D OpenGLRenderer: CFMS:: SetUp Pid : 26361    Tid : 26463
+03-08 15:13:52.180 26361 26463 W Parcel  : Expecting binder but got null!
+03-08 15:13:52.181 26361 26361 I ViewRootImpl@841c411[Organizer]: onSyncComplete
+03-08 15:13:52.181 26361 26361 I ViewRootImpl@841c411[Organizer]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
+03-08 15:13:52.181 26361 26361 I ViewRootImpl@841c411[Organizer]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c7df84f00
+03-08 15:13:52.185  1327  1327 I Layer   : id=35627 removedFromDrawingState Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35627 (139)
+03-08 15:13:52.185  1327  1327 I Layer   : id=35628 removedFromDrawingState Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35628 (139)
+03-08 15:13:52.185  1327  1327 I SurfaceFlinger: id=35627 Removed Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35627 (139)
+03-08 15:13:52.186  1327  1327 I SurfaceFlinger: id=35628 Removed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35628 (139)
+03-08 15:13:52.186  1327  1327 I Layer   : id=35627 Destroyed Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35627
+03-08 15:13:52.186  1327  1327 I Layer   : id=35628 Destroyed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35628
+03-08 15:13:52.187  1472  1876 W ziparchive: Unable to open '/data/app/~~W-ddUiX8JS3WzrZIN8mU0w==/com.example.cmput301w24t33-E7e2aXhTzEvn2QLsQTpRuw==/base.dm': No such file or directory
+03-08 15:13:52.188  1472  2910 D InputDispatcher: Focus request (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer but waiting because NO_WINDOW
+03-08 15:13:52.189  3258  3258 I TaskThumbnailCache: handleResult: taskId = 3075, taskThumbnail = android.graphics.Bitmap@4c8c957
+03-08 15:13:52.190  1327  2100 I SurfaceFlinger: id=35645 createSurf, flag=24000, Surface(name=5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer)/@0x5a80543 - animation-leash of starting_reveal#35645
+03-08 15:13:52.190  1472  1876 I PkgPredictorService-SecIpmManagerServiceImpl: reportToNAP uid:10451 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer thisTime:145
+03-08 15:13:52.192  1472  5162 I SemDvfsHyPerManager: acquire hyper - AMS_RESUME_TAIL/1472@16, type = -999
+03-08 15:13:52.192  1472  1876 I ActivityTaskManager: Displayed com.example.cmput301w24t33/.activities.Organizer: +145ms
+03-08 15:13:52.192  1472  5162 I SemDvfsHyPerManager: acquire hyper - AMS_ACT_LAZY/1472@17, type = -999
+03-08 15:13:52.192  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1107832  [1472 / 16]    HINT : AMS_RESUME_TAIL    list :
+03-08 15:13:52.194  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1107832    Value : 1324800
+03-08 15:13:52.194  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1109322  [1472 / 17]    HINT : AMS_ACT_LAZY    list :
+03-08 15:13:52.194  1257  1326 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPULittleMinFreq] RemoveResource Request ID : 1110813
+03-08 15:13:52.196  1257  1326 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1110813
+03-08 15:13:52.196  1257  1326 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1110813
+03-08 15:13:52.201  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642] hidden!! flag(0)
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fl=81030118
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   pfl=16000010
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fl=81030118
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   pfl=16000010
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:52.203  1472  3335 V WindowManager: Relayout Window{fbcedcf u0 Splash Screen com.example.cmput301w24t33}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:52.203  1472  3543 D InputDispatcher: Focus entered window (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer
+03-08 15:13:52.204 26361 26361 I ViewRootImpl@841c411[Organizer]: MSG_WINDOW_FOCUS_CHANGED 1 0
+03-08 15:13:52.204  2578  2578 D SamsungLightBarControlHelper: onStatusBarAppearanceChanged() -  sbModeChanged:false, statusBarMode:MODE_TRANSPARENT, barState:SHADE, isKeyguardShowing:false, navbarColorManagedByIme:false, stackAppearancesChanged:true, (AppearanceRegion{ bounds=[0,0][1080,2400]}, ), packageName:com.example.cmput301w24t33
+03-08 15:13:52.204  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:0, packageName: com.example.cmput301w24t33, navbarColorManagedByIme:false
+03-08 15:13:52.205 26361 26361 I ViewRootImpl@841c411[Organizer]: mThreadedRenderer.initializeIfNeeded()#2 mSurface={isValid=true 0xb400007ce21b8800}
+03-08 15:13:52.205  1472  3335 V WindowManager: Relayout hash=fbcedcf, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:52.205  1472  3335 V WindowManager:   fl=81030118
+03-08 15:13:52.205  1472  3335 V WindowManager:   pfl=16000010
+03-08 15:13:52.205  1472  3335 V WindowManager:   bhv=DEFAULT
+03-08 15:13:52.205  1472  3335 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:52.205  2578  2578 D SamsungLightBarControlHelper: updateNavigation(White button) isLightBar:false, hasLightBarNavigationBarFlag:false, packageName:com.example.cmput301w24t33, DirectReplying:false, NavBarColorManagerdByIme:false, ForceDarkForScrim:false, QsCustomizing:false, PanelHasWhiteBg:true
+03-08 15:13:52.206 26361 26361 D InputMethodManager: startInputInner - Id : 0
+03-08 15:13:52.206  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: updateBlastSurfaceIfNeeded mBlastBufferQueue=0xb400007c520de100 isSameSurfaceControl=true
+03-08 15:13:52.206 26361 26361 I InputMethodManager: startInputInner - mService.startInputOrWindowGainedFocus
+03-08 15:13:52.206  2578  2656 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@2a6f9ff[cmput301w24t33] mNativeObject= 0xb400007c520de100 sc.mNativeObject= 0xb400007c662a0960 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2898 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301
+03-08 15:13:52.206  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=4 res=0x0 s={true 0xb400007c4a124800} ch=false seqId=0
+03-08 15:13:52.206  2578  2578 D SamsungLightBarControlHelper: updateStatus(WHITE icon) NumStacks:1, StatusBarMode:MODE_TRANSPARENT, lightBarBounds:[], StatusBarState:SHADE, packageName:com.example.cmput301w24t33, isWhiteKeyguardStatusBarBySettings:true
+03-08 15:13:52.207  1472  3335 D InputMethodManagerService: mDesktopModeManager null!
+03-08 15:13:52.207  1472  3335 V InputMethodManagerService: getDisplayIdOfInputMethodWindowToBeAdded: displayId=0
+03-08 15:13:52.207  2578  2711 I ViewRootImpl@2a6f9ff[cmput301w24t33]: mWNT: t=0xb400007c81f7fe00 mBlastBufferQueue=0xb400007c520de100 fn= 2 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:52.207  2578  2711 I ViewRootImpl@2a6f9ff[cmput301w24t33]: mWNT: t=0xb400007c81ff1600 mBlastBufferQueue=0xb400007c520de100 fn= 2 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:52.207  1472  3335 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147f00 | 0100 | RGBx_8888    |  152.0    0.0 1232.0 2400.0 |    0    0 1080 2400 | Wallpaper BBQ wrapper#88
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007445801300 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.sec.android.app.launcher/com.sec[...]ivities.LauncherActivity$_3258#35626
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d065460 | 0102 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |   40   89 1040 2311 | com.example.cmput301w24t33/com.examp[...]33.activities.Organizer$_26361#35642
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007445800ea0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |   40   89 1040 2311 | Splash Screen com.example.cmput301w24t33$_2578#35637
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#3533
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger: 3
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446149b70 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:52.208  1327  1327 D SurfaceFlinger:
+03-08 15:13:52.208  1472  3335 D InputMethodManagerService: checkDisplayOfStartInputAndUpdateKeyboard: displayId=0, mFocusedDisplayId=0
+03-08 15:13:52.208  1472  3335 D InputTransport: Input channel constructed: 'ClientS', fd=756
+03-08 15:13:52.208  1472  3335 D InputTransport: Input channel destroyed: 'ClientS', fd=756
+03-08 15:13:52.209 12908 12908 I HBD     : HoneyBoardService onFinishInput
+03-08 15:13:52.209 12908 12908 I HBD     : a IC have been unbinding,  RemoteInputConnection{idHash=#626ba55}
+03-08 15:13:52.209 12908 12908 I HBD     : HoneyBoardService [PF_CL][onFinishInput]  0 ms
+03-08 15:13:52.209 12908 12908 I HBD     : HoneyBoardService [IMI] onStartInput - caller pid : 26361 , caller uid : 10451
+03-08 15:13:52.209 12908 12908 I HBD     : j updateConfigs
+03-08 15:13:52.209 12908 12908 I HBD     : j isEnabledNightMode : false
+03-08 15:13:52.209 12908 12908 I HBD     : a IC have been binding, RemoteInputConnection{idHash=#e016c6a}
+03-08 15:13:52.209 12908 12908 I HBD     : h [EditorInputType]setPrivateImeOptionsToTable privateImeOptions ( null )
+03-08 15:13:52.209 12908 12908 I HBD     : b incognitoMode : false
+03-08 15:13:52.210 12908 12908 I HBD     : b needOff = true , isForceOff = false, isNullInputClass : true
+03-08 15:13:52.210 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:52.210 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:52.210 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:52.210  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+03-08 15:13:52.210  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+03-08 15:13:52.210  1327  2296 I SurfaceFlinger: id=35646 createSurf, flag=24004, Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35646
+03-08 15:13:52.210 12908 12908 I HBD     : b needOff = true , isForceOff = false, isNullInputClass : true
+03-08 15:13:52.210 12908 12908 I HBD     : b update cached prediction status : false
+03-08 15:13:52.211 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:52.211 12908 12908 I HBD     : a currentState : 0
+03-08 15:13:52.211  1244  3899 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired
+03-08 15:13:52.211  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+03-08 15:13:52.211 12908 12908 I HBD     : a [UpdatePolicy] [post] a: 0 cl: 65537 kit: [0/0] vt: 0 ir: 1
+03-08 15:13:52.212 12908 12908 I HBD     : a [NRIC] resetNoResponseState
+03-08 15:13:52.212 12908 12908 I HBD     : b needOff = true , isForceOff = false, isNullInputClass : true
+03-08 15:13:52.212 12908 12908 I HBD     : b update cached prediction status : false
+03-08 15:13:52.212 12908 12908 I HBD     : HoneyBoardService [PF_OP][onStartInput]  3 ms
+03-08 15:13:52.219  1327  1327 I Layer   : id=35632 removedFromDrawingState Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35632 (139)
+03-08 15:13:52.219  1327  1327 I SurfaceFlinger: id=35632 Removed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35632 (139)
+03-08 15:13:52.219  2578  2712 I ViewRootImpl@2a6f9ff[cmput301w24t33]: mWNT: t=0xb400007c8200a100 mBlastBufferQueue=0xb400007c520de100 fn= 3 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:52.219  1327  1327 I Layer   : id=35632 Destroyed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35632
+03-08 15:13:52.223  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
+03-08 15:13:52.223  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   fl=81840048
+03-08 15:13:52.223  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   pfl=1b000000
+03-08 15:13:52.223  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE naviIconColor=0
+03-08 15:13:52.223  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   sfl=60000}
+03-08 15:13:52.224  1472  3543 V WindowManager: Relayout Window{85bfa35 u0 NotificationShade}: viewVisibility=4 req=1080x2400 d0
+03-08 15:13:52.226  1472  5162 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+03-08 15:13:52.226  1472  3543 V WindowManager: Relayout hash=85bfa35, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
+03-08 15:13:52.226  1472  3543 V WindowManager:   fl=81840048
+03-08 15:13:52.226  1472  3543 V WindowManager:   pfl=1b000000
+03-08 15:13:52.226  1472  3543 V WindowManager:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE naviIconColor=0
+03-08 15:13:52.226  1472  3543 V WindowManager:   sfl=60000}
+03-08 15:13:52.227 12908 12908 I InputMethodService: removeImeSurface
+03-08 15:13:52.227  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)4 dur=4 res=0x0 s={false 0x0} ch=false seqId=0
+03-08 15:13:52.227 12908 12908 I MSHandlerLifeCycle: check: return. pkg=com.samsung.android.honeyboard isActivity=false callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.Dialog.hide:767 android.inputmethodservice.InputMethodService.removeImeSurface:1290 android.inputmethodservice.InputMethodService.scheduleImeSurfaceRemoval:1279 android.inputmethodservice.InputMethodService.-$$Nest$mscheduleImeSurfaceRemoval:0
+03-08 15:13:52.227 12908 12908 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@df736f9[InputMethod]
+03-08 15:13:52.229  2578  2578 I FaceWidgetPositionAlgorithm: getClockContainerHeight() supplier = 227, bottom margin = 0, real height = 290
+03-08 15:13:52.229  2578  2578 I ClockInfoManager: isClockFaceType: type = 9 clockFaceType = 0
+03-08 15:13:52.229  2578  2578 D FaceWidgetPositionAlgorithm: getTopMargin scale = 0.8408237, clockContainerHeight = 227, scaleMarginY = 21
+03-08 15:13:52.229  2578  2578 I FaceWidgetPositionAlgorithm: getClockContainerHeight() supplier = 227, bottom margin = 63, real height = 290
+03-08 15:13:52.230  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() height = 456 container Visibility = 8, isValid = true, mIsDozing = false, fraction = 1.0, source = 0, target = 0
+03-08 15:13:52.230  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() supplier = 456
+03-08 15:13:52.235  2578  2711 I ViewRootImpl@2a6f9ff[cmput301w24t33]: mWNT: t=0xb400007c81ff6f00 mBlastBufferQueue=0xb400007c520de100 fn= 4 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:52.252  2578  2664 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:52.252  2578  2664 D OpenGLRenderer: setSurface() destroyed EGLSurface
+03-08 15:13:52.252  2578  2664 D OpenGLRenderer: destroyEglSurface
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309 alpha=0.0
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fl=81030118
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   pfl=16000010
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=true mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309 alpha=0.0
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fl=81030118
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   pfl=16000010
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:52.254  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:52.255  1472  3543 V WindowManager: Relayout Window{fbcedcf u0 Splash Screen com.example.cmput301w24t33}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:52.257  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+03-08 15:13:52.257  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+03-08 15:13:52.257  1537  2198 I CameraService: onUidStateChanged: uid=10052, procState is changed. (1 -> 0)
+03-08 15:13:52.260  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:16, packageName: com.example.cmput301w24t33 (APPEARANCE_LIGHT_NAVIGATION_BARS ), navbarColorManagedByIme:false
+03-08 15:13:52.260  1472  3543 V WindowManager: Relayout hash=fbcedcf, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309 alpha=0.0
+03-08 15:13:52.260  1472  3543 V WindowManager:   fl=81030118
+03-08 15:13:52.260  1472  3543 V WindowManager:   pfl=16000010
+03-08 15:13:52.260  1472  3543 V WindowManager:   bhv=DEFAULT
+03-08 15:13:52.260  1472  3543 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:52.260  2578  2578 D SamsungLightBarControlHelper: updateNavigation(Black button) isLightBar:false, hasLightBarNavigationBarFlag:true, packageName:com.example.cmput301w24t33, DirectReplying:false, NavBarColorManagerdByIme:false, ForceDarkForScrim:false, QsCustomizing:false, PanelHasWhiteBg:true
+03-08 15:13:52.262  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=7 res=0x2 s={false 0x0} ch=true seqId=0
+03-08 15:13:52.262  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: dispatchDetachedFromWindow
+03-08 15:13:52.262  1472  3543 D InputTransport: Input channel destroyed: 'fbcedcf', fd=691
+03-08 15:13:52.262  1472  3543 W InputManager-JNI: Input channel object 'fbcedcf Splash Screen com.example.cmput301w24t33 (client)' was disposed without first being removed with the input manager!
+03-08 15:13:52.263  1472  3543 D InputTransport: Input channel destroyed: 'fbcedcf', fd=715
+03-08 15:13:52.264  2578  2656 D InputTransport: Input channel destroyed: 'fbcedcf', fd=203
+03-08 15:13:52.268  1327  1327 I Layer   : id=35645 removedFromDrawingState Surface(name=5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer)/@0x5a80543 - animation-leash of starting_reveal#35645 (138)
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147f00 | 0100 | RGBx_8888    |  152.0    0.0 1232.0 2400.0 |    0    0 1080 2400 | Wallpaper BBQ wrapper#88
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007445801300 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.sec.android.app.launcher/com.sec[...]ivities.LauncherActivity$_3258#35626
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb4000074461488a0 | 0102 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |   18   40 1062 2360 | com.example.cmput301w24t33/com.examp[...]33.activities.Organizer$_26361#35642
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446149b70 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:52.274  1327  1327 D SurfaceFlinger:
+03-08 15:13:52.382  5242  5242 I Utils   : isCurrentUser current = 0, ownerId = 0
+03-08 15:13:52.382  5242  5242 I TrayVisibilityController: getComputedTrayVisible : keyguardState = 1
+03-08 15:13:52.382  5242  5242 I TrayVisibilityController: updateTrayVisible: State=1 visible=1 mCurrentVisible=1 specificMode=0
+03-08 15:13:52.382  5242  5242 I TrayStateController: onNotifyUpdateTray: state=0
+03-08 15:13:52.407  1244  3730 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released
+03-08 15:13:52.456  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:52.456  1327  1327 D SurfaceFlinger:      DEVICE | 0xb4000074461488a0 | 0102 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.example.cmput301w24t33/com.examp[...]33.activities.Organizer$_26361#35642
+03-08 15:13:52.456  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:52.456  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:52.456  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446149b70 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:52.456  1327  1327 D SurfaceFlinger:
+03-08 15:13:52.469  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: handleAppVisibility mAppVisible = true visible = false
+03-08 15:13:52.471  2578 21464 D WallpaperService: dispatchAppVisibility onVisibilityChanged(): false
+03-08 15:13:52.471  2578  2578 D WallpaperService: reportVisibility onVisibilityChanged visible: false
+03-08 15:13:52.472  2578  2749 I ImageWallpaper[GLEngine]:  onVisibilityChanged false , 0
+03-08 15:13:52.482  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+03-08 15:13:52.482  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+03-08 15:13:52.483  1244  3899 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired
+03-08 15:13:52.483  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+03-08 15:13:52.485  1327  1327 I Layer   : id=35637 removedFromDrawingState Splash Screen com.example.cmput301w24t33$_2578#35637 (138)
+03-08 15:13:52.485  1327  1327 I Layer   : id=35638 removedFromDrawingState Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35638 (138)
+03-08 15:13:52.485  1327  1327 I Layer   : Layer [com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35626] hidden!! flag(1)
+03-08 15:13:52.485  1327  1327 I Layer   : id=35636 removedFromDrawingState fbcedcf Splash Screen com.example.cmput301w24t33#35636 (138)
+03-08 15:13:52.485  1327  1327 I Layer   : id=35639 removedFromDrawingState Surface(name=Task=3077)/@0x161b024 - animation-leash of app_transition#35639 (138)
+03-08 15:13:52.485  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33$_2578#35637] hidden!! flag(1)
+03-08 15:13:52.485  1327  1327 I SurfaceFlinger: id=35636 Removed fbcedcf Splash Screen com.example.cmput301w24t33#35636 (138)
+03-08 15:13:52.485  1327  1327 I SurfaceFlinger: id=35637 Removed Splash Screen com.example.cmput301w24t33$_2578#35637 (138)
+03-08 15:13:52.485  1327  1327 I SurfaceFlinger: id=35639 Removed Surface(name=Task=3077)/@0x161b024 - animation-leash of app_transition#35639 (138)
+03-08 15:13:52.485  1327  1327 I SurfaceFlinger: id=35638 Removed Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35638 (138)
+03-08 15:13:52.486  1327  1327 I Layer   : id=35636 Destroyed fbcedcf Splash Screen com.example.cmput301w24t33#35636
+03-08 15:13:52.486  1327  1327 I Layer   : id=35637 Destroyed Splash Screen com.example.cmput301w24t33$_2578#35637
+03-08 15:13:52.486  1327  1327 I Layer   : id=35638 Destroyed Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35638
+03-08 15:13:52.486  1327  1327 I Layer   : id=35639 Destroyed Surface(name=Task=3077)/@0x161b024 - animation-leash of app_transition#35639
+03-08 15:13:52.488  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=true mForceNextWindowRelayout=false params=null
+03-08 15:13:52.489  1472  5162 V WindowManager: Relayout Window{25ecb59 u0 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:52.491  1472  5162 V WindowManager: Relayout hash=25ecb59, pid=3258, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:52.491  1472  5162 V WindowManager:   fl=81910100
+03-08 15:13:52.491  1472  5162 V WindowManager:   pfl=1e020040
+03-08 15:13:52.491  1472  5162 V WindowManager:   vsysui=1700
+03-08 15:13:52.491  1472  5162 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:52.491  1472  5162 V WindowManager:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:52.491  1472  5162 V WindowManager:   fitSides= screenDimDuration=200000 naviIconColor=0}
+03-08 15:13:52.492 26361 26361 I ViewInteraction: Performing 'single click' action on view view.getId() is <2131230846/com.example.cmput301w24t33:id/button_create_event>
+03-08 15:13:52.494  1472  5162 D InputDispatcher: Inject motion (26361/10451): action=0x0, time=154424742000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:52.495  1472  2259 I InputDispatcher: Delivering touch to (2578): action: 0x4, f=0x0, d=0, '296f76f', t=0
+03-08 15:13:52.495  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x0, f=0x0, d=0, '5257faf', t=0
+03-08 15:13:52.495  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -387361384 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:203 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:52.495  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -387361384 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:89 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:52.496 26361 26361 I ViewRootImpl@841c411[Organizer]: ViewPostIme pointer 0
+03-08 15:13:52.497  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=7 res=0x2 s={false 0x0} ch=true seqId=0
+03-08 15:13:52.497  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: stopped(true) old = false
+03-08 15:13:52.497  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: WindowStopped on com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity set to true
+03-08 15:13:52.498  3258  3258 I Launcher: !@Boot_DEBUG: Launcher.onStop()
+03-08 15:13:52.498  3258  3258 I Launcher: !@Boot_EBS_D: Launcher.onStop()
+03-08 15:13:52.498  3258  3258 I BaseActivity: removeActivityFlags, flags : 17
+03-08 15:13:52.499  3258  3258 I StateManager: goToState isInState Normal
+03-08 15:13:52.499  3258  3627 I IMM_LC  : hsifw() - flag : 0
+03-08 15:13:52.499  3258  3627 I IMM_LC  : hsifw() - mService.hideSoftInput
+03-08 15:13:52.499  3258  3258 W LauncherAppWidgetHost: setShouldListenFlag, mFlags:7 flag:start on:false isFront:false
+03-08 15:13:52.500  1472  3335 I AppWidgetServiceImpl: stopListening callbacks : null
+03-08 15:13:52.500  3258  3258 W LauncherAppWidgetHost: stopListening, mFlags:2 isFront:false
+03-08 15:13:52.500  3258  3258 W Launcher.NotificationListener: removeNotificationsChangedListener
+03-08 15:13:52.500  3258  3258 I Launcher.NotificationListener: unregisterObserver, this is not notificationService!!
+03-08 15:13:52.500  3258  3258 I BadgeCountUpdaterImpl: onNotificationsChangedDisConnected
+03-08 15:13:52.501  3258  3258 I DecorView: notifyKeepScreenOnChanged: keepScreenOn=false
+03-08 15:13:52.505  3258  3637 I LiveIconUpdateEventHandler: cancelMinuteChangeAlarm
+03-08 15:13:52.511  3258  3637 I LiveIconUpdateEventHandler: cancelDateChangeAlarm
+03-08 15:13:52.512  3258  3258 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@159fe79[LauncherActivity]
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: performTraversals params={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fl=81910100
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   pfl=1e020040
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   vsysui=1700
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fitSides= naviIconColor=0}
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fl=81910100
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   pfl=1e020040
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   vsysui=1700
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:52.513  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fitSides= naviIconColor=0}
+03-08 15:13:52.513  1472  3543 V WindowManager: Relayout Window{25ecb59 u0 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:52.516  1472  3543 V WindowManager: Relayout hash=25ecb59, pid=3258, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:52.516  1472  3543 V WindowManager:   fl=81910100
+03-08 15:13:52.516  1472  3543 V WindowManager:   pfl=1e020040
+03-08 15:13:52.516  1472  3543 V WindowManager:   vsysui=1700
+03-08 15:13:52.516  1472  3543 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:52.516  1472  3543 V WindowManager:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:52.516  1472  3543 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:52.517  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=4 res=0x2 s={false 0x0} ch=false seqId=0
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/3258/sched_low_latency with value 1
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 3258
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5771/sched_low_latency with value 1
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5771
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5770/sched_low_latency with value 1
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5770
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5393/sched_low_latency with value 1
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5393
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-UTIL: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-OPTSHANDLER: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:52.528  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 54]
+03-08 15:13:52.529  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+03-08 15:13:52.529  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+03-08 15:13:52.535  1472  3543 D InputDispatcher: Inject motion (26361/10451): action=0x1, time=154424783000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:52.536  1327  1327 I Layer   : id=35626 removedFromDrawingState com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35626 (134)
+03-08 15:13:52.536  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x1, f=0x0, d=0, '5257faf', t=0
+03-08 15:13:52.536  1327  1327 I SurfaceFlinger: id=35626 Removed com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35626 (134)
+03-08 15:13:52.536  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -43882282
+03-08 15:13:52.536  1327  1327 I Layer   : id=35626 Destroyed com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35626
+03-08 15:13:52.536  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -43882282
+03-08 15:13:52.538 26361 26361 I ViewRootImpl@841c411[Organizer]: ViewPostIme pointer 1
+03-08 15:13:52.543 26361 26361 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+03-08 15:13:52.543 26361 26361 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+03-08 15:13:52.558 10149 10149 I dgdm    : onPause
+03-08 15:13:52.562 26361 26361 D CompatibilityChangeReporter: Compat change id reported: 171228096; UID 10451; state: ENABLED
+03-08 15:13:52.679  1244  3730 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released
+03-08 15:13:52.696  1257 28360 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1107832
+03-08 15:13:52.696  1257 28360 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1107832
+03-08 15:13:52.795  1472  1877 I GestureDetector: handleMessage TAP
+03-08 15:13:52.796  1472  1472 I GestureDetector: handleMessage TAP
+03-08 15:13:52.876  3258  3637 I QuickstepModelDelegate: Widget predictions updated
+03-08 15:13:52.903 10149 10149 I dgdm    : onStop
+03-08 15:13:53.132  1257 28350 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMaxFreq] RemoveResource Request ID : 12789166
+03-08 15:13:53.132  1257 28350 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 12789166
+03-08 15:13:53.202 26361 26361 I ViewInteraction: Checking 'MatchesViewAssertion{viewMatcher=(view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() to return non-empty rectangle)}' assertion on view view.getId() is <2131230956/com.example.cmput301w24t33:id/event_location_edit_text>
+03-08 15:13:53.211 26361 26361 I ViewInteraction: Performing 'scroll to' action on view an instance of android.widget.TextView and view.getText() with or without transformation to match: is "Cancel"
+03-08 15:13:53.219 26361 26361 I ViewInteraction: Performing 'single click' action on view view.getId() is <2131230852/com.example.cmput301w24t33:id/cancel_button>
+03-08 15:13:53.221  1472  3335 D InputDispatcher: Inject motion (26361/10451): action=0x0, time=154425469000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:53.221  1472  2259 I InputDispatcher: Delivering touch to (2578): action: 0x4, f=0x0, d=0, '296f76f', t=0
+03-08 15:13:53.221  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x0, f=0x0, d=0, '5257faf', t=0
+03-08 15:13:53.222  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -301284116 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:203 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:53.222 26361 26361 I ViewRootImpl@841c411[Organizer]: ViewPostIme pointer 0
+03-08 15:13:53.222  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -301284116 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:89 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:53.237  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+03-08 15:13:53.237  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+03-08 15:13:53.238  1244  3899 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired
+03-08 15:13:53.238  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+03-08 15:13:53.262  1472  3335 D InputDispatcher: Inject motion (26361/10451): action=0x1, time=154425510000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:53.262  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x1, f=0x0, d=0, '5257faf', t=0
+03-08 15:13:53.263 26361 26361 I ViewRootImpl@841c411[Organizer]: ViewPostIme pointer 1
+03-08 15:13:53.263  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -408785065
+03-08 15:13:53.263  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -408785065
+03-08 15:13:53.283  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+03-08 15:13:53.283  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+03-08 15:13:53.434  1244  3730 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released
+03-08 15:13:53.471  1472  4475 D SemWifiUsabilityStatsMonitor: onWifiUsabilityStats - seqNum 23818, isSameBssidAndFreq true
+03-08 15:13:53.471  1472  2428 I SemWifiLinkQualityMonitor: Link Qos Query: 0.049 ms / 164.747 Mbps (200 / 0.006 / 1.063)
+03-08 15:13:53.515 26361 26361 I ViewInteraction: Checking 'MatchesViewAssertion{viewMatcher=(view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() to return non-empty rectangle)}' assertion on view view.getId() is <2131231154/com.example.cmput301w24t33:id/organizer_activity>
+03-08 15:13:53.520  1472  1882 I ChimeraSystemEventListener: appLaunchIntent package name is: com.example.cmput301w24t33.test
+03-08 15:13:53.522  1472  3404 I SemDvfsHyPerManager: acquire hyper - AMS_APP_SWITCH/1472@18, type = -999
+03-08 15:13:53.522  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1110813  [1472 / 18]    HINT : AMS_APP_SWITCH    list :
+03-08 15:13:53.522  1327  3508 I SurfaceFlinger: id=35647 createSurf, flag=24004, Task=3078#35647
+03-08 15:13:53.523  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPULittleMinFreq] UpdateResource Request ID : 1110813    Value : 1804800
+03-08 15:13:53.523  1472  1877 I GestureDetector: handleMessage TAP
+03-08 15:13:53.523  1472  1472 I GestureDetector: handleMessage TAP
+03-08 15:13:53.523  5044  5044 I SemDvfsHyPerManager: acquire hyper - APP_START_SHORT/5044@12, type = -999
+03-08 15:13:53.524  1327  3508 I SurfaceFlinger: id=35648 createSurf, flag=80004, ActivityRecord{b67d19b u0 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} t3078}#35648
+03-08 15:13:53.525  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1110813    Value : 2208000
+03-08 15:13:53.525  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12784108  [5044 / 12]    HINT : APP_START    list : [TIMEOUT / 1500]
+03-08 15:13:53.525  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12784108    Value : 2208000
+03-08 15:13:53.530  1537  1537 I CameraService: onUidStateChanged: uid=10052, procState is changed. (0 -> 1)
+03-08 15:13:53.530  1472  3335 I SemDvfsHyPerManager: acquire hyper - AMS_APP_LAUNCH/1472@15, type = -999
+03-08 15:13:53.530  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1106343  [1472 / 15]    HINT : AMS_APP_LAUNCH    list :
+03-08 15:13:53.531  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPULittleMinFreq] UpdateResource Request ID : 1106343    Value : 1804800
+03-08 15:13:53.531  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1106343    Value : 2208000
+03-08 15:13:53.531  2578  2664 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:53.531  5044  5044 I SemDvfsHyPerManager: acquire hyper - APP_START/5044@14, type = -999
+03-08 15:13:53.532  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12794225  [5044 / 14]    HINT : APP_START    list :
+03-08 15:13:53.532  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12794225    Value : 2208000
+03-08 15:13:53.533  1472  3335 D InputTransport: Input channel constructed: 'ec0bc02', fd=691
+03-08 15:13:53.533  1472  3335 D InputTransport: Input channel constructed: 'ec0bc02', fd=715
+03-08 15:13:53.533  1472  3335 D InputTransport: Input channel constructed: 'ec0bc02', fd=756
+03-08 15:13:53.533  1327  2100 I SurfaceFlinger: id=35649 createSurf, flag=80004, ec0bc02 Splash Screen com.example.cmput301w24t33.test#35649
+03-08 15:13:53.534  1472  3335 D InputTransport: Input channel destroyed: 'ec0bc02', fd=756
+03-08 15:13:53.534  3258  3258 I TopTaskTracker: onTaskMovedToFront : taskId = 3078
+03-08 15:13:53.535  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33.test from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:53.536  2578  2656 I ViewRootImpl@4f860ef[test]: setView = android.widget.FrameLayout@a941d0b TM=true
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   fl=81030118
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   pfl=16000010
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   bhv=DEFAULT
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   fitSides= naviIconColor=0}
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]: performTraversals mFirst=true windowShouldResize=true viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   fl=81030118
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   pfl=16000010
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   bhv=DEFAULT
+03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   fitSides= naviIconColor=0}
+03-08 15:13:53.537  1472  3440 I AS.AudioService: uid:10333is using audio
+03-08 15:13:53.538 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: PAUSED
+03-08 15:13:53.539 26361 26361 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:53.543  1472  5162 D InputDispatcher: Focused application(0): ActivityRecord{b67d19b u0 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} t3078}
+03-08 15:13:53.549  1472  3335 V WindowManager: Relayout Window{ec0bc02 u0 Splash Screen com.example.cmput301w24t33.test}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:53.549  1327  2100 I SurfaceFlinger: id=35650 createSurf, flag=40004, Splash Screen com.example.cmput301w24t33.test$_2578#35650
+03-08 15:13:53.552  1472  3335 V WindowManager: Relayout hash=ec0bc02, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT
+03-08 15:13:53.552  1472  3335 V WindowManager:   fl=81030118
+03-08 15:13:53.552  1472  3335 V WindowManager:   pfl=16000010
+03-08 15:13:53.552  1472  3335 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:53.552  1472  3335 V WindowManager:   bhv=DEFAULT
+03-08 15:13:53.552  1472  3335 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:53.553  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33.test from=android.view.ViewRootImpl.relayoutWindow:9802
+03-08 15:13:53.553  1472  2391 D AS.MultiSoundManager: mForegroundUid = 10453
+03-08 15:13:53.553  2578  2656 I ViewRootImpl@4f860ef[test]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
+03-08 15:13:53.554  2578  2656 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@4f860ef[test] mNativeObject= 0xb400007c520de100 sc.mNativeObject= 0xb400007c4d127a00 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
+03-08 15:13:53.554  2578  2656 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@4f860ef[test] mNativeObject= 0xb400007c520de100 sc.mNativeObject= 0xb400007c4d127a00 format= -3 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
+03-08 15:13:53.554  2578  2656 I ViewRootImpl@4f860ef[test]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=16 res=0x3 s={true 0xb400007c49a66800} ch=true seqId=0
+03-08 15:13:53.555  2578  2656 I ViewRootImpl@4f860ef[test]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007c49a66800} hwInitialized=true
+03-08 15:13:53.555  2578  2664 D OpenGLRenderer: eglCreateWindowSurface
+03-08 15:13:53.555  2578  2656 I ViewRootImpl@4f860ef[test]: reportNextDraw android.view.ViewRootImpl.performTraversals:4438 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309
+03-08 15:13:53.555  2578  2656 I ViewRootImpl@4f860ef[test]: Setup new sync id=0
+03-08 15:13:53.555  2578  2656 I ViewRootImpl@4f860ef[test]: Setting syncFrameCallback
+03-08 15:13:53.555  2578  2656 I ViewRootImpl@4f860ef[test]: registerCallbacksForSync syncBuffer=false
+03-08 15:13:53.556  2578  2712 I ViewRootImpl@4f860ef[test]: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-08 15:13:53.556  2578  2712 I ViewRootImpl@4f860ef[test]: Setting up sync and frameCommitCallback
+03-08 15:13:53.557  2578  2664 I BLASTBufferQueue: [ViewRootImpl@4f860ef[test]#949](f:0,a:0) onFrameAvailable the first frame is available
+03-08 15:13:53.558  2578  2664 I ViewRootImpl@4f860ef[test]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-08 15:13:53.559  2578  2664 D OpenGLRenderer: CFMS:: SetUp Pid : 2578    Tid : 2664
+03-08 15:13:53.559  2578  2664 W Parcel  : Expecting binder but got null!
+03-08 15:13:53.559  2578  2656 I ViewRootImpl@4f860ef[test]: onSyncComplete
+03-08 15:13:53.559  2578  2656 I ViewRootImpl@4f860ef[test]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
+03-08 15:13:53.560  2578  2656 I ViewRootImpl@4f860ef[test]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c8200a700
+03-08 15:13:53.566  5242  5242 I ActivityUtils: HomePackage : com.sec.android.app.launcher, resumePackageName : com.example.cmput301w24t33.test
+03-08 15:13:53.566 27916 27916 I DecorView: [INFO] isPopOver=false config=true
+03-08 15:13:53.567 27916 27916 I DecorView: updateCaptionType: isFloating=false isApplication=true hasWindowDecorCaption=false this=DecorView@28f4522[]
+03-08 15:13:53.567 27916 27916 D DecorView: setCaptionType = 0, this = DecorView@28f4522[]
+03-08 15:13:53.569  1472  6022 D InputDispatcher: Focus left window (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer
+03-08 15:13:53.570 26361 26361 I ViewRootImpl@841c411[Organizer]: MSG_WINDOW_FOCUS_CHANGED 0 0
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/3258/sched_low_latency with value 1
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 3258
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5771/sched_low_latency with value 1
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5771
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5770/sched_low_latency with value 1
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5770
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5393/sched_low_latency with value 1
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5393
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-UTIL: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-OPTSHANDLER: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:53.570  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 54]
+03-08 15:13:53.574 27916 27916 I DecorView: getCurrentDensityDpi: from real metrics. densityDpi=420 msg=resources_loaded
+03-08 15:13:53.574 27916 27916 I DecorView: setWindowBackground: isPopOver=false color=ffffffff d=android.graphics.drawable.ColorDrawable@3b9e570
+03-08 15:13:53.577  1327  1327 I Layer   : id=35651 Destroyed Screenshot Parent#35651
+03-08 15:13:53.578 27916 27916 I MSHandlerLifeCycle: check: return. pkg=com.example.cmput301w24t33.test parent=null callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.ActivityThread.handleResumeActivity:5476 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176
+03-08 15:13:53.578 27916 27916 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@28f4522[]
+03-08 15:13:53.582 27916 27939 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:53.583  1327  3508 I SurfaceFlinger: id=35652 createSurf, flag=80000, cd9a1aa ActivityRecordInputSink com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity#35652
+03-08 15:13:53.586 26361 26361 I ViewRootImpl@841c411[Organizer]: handleAppVisibility mAppVisible = true visible = false
+03-08 15:13:53.588  1472  2910 D InputTransport: Input channel constructed: 'd3c2398', fd=756
+03-08 15:13:53.588  1472  2910 D InputTransport: Input channel constructed: 'd3c2398', fd=759
+03-08 15:13:53.589  1472  2910 D InputTransport: Input channel constructed: 'd3c2398', fd=914
+03-08 15:13:53.589  1327  2296 I SurfaceFlinger: id=35653 createSurf, flag=80004, d3c2398 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity#35653
+03-08 15:13:53.590  1472  2910 D InputTransport: Input channel destroyed: 'd3c2398', fd=914
+03-08 15:13:53.590  1472  3678 I MediaSessionMonitor: Media session stopped : diffrent pkg
+03-08 15:13:53.595 27916 27916 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:53.597 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: setView = com.android.internal.policy.DecorView@28f4522 TM=true
+03-08 15:13:53.598 27916 27916 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@28f4522[InstrumentationActivityInvoker$EmptyActivity]
+03-08 15:13:53.600  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33.test$_2578#35650] hidden!! flag(0)
+03-08 15:13:53.600  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642] hidden!! flag(1)
+03-08 15:13:53.603 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:53.603 26361 26463 D OpenGLRenderer: setSurface() destroyed EGLSurface
+03-08 15:13:53.603 26361 26463 D OpenGLRenderer: destroyEglSurface
+03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan forwardNavigation} ty=BASE_APPLICATION
+03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   fl=81810100
+03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   pfl=12020040
+03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   bhv=DEFAULT
+03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   fitSides= naviIconColor=0
+03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   sfl=100000}
+03-08 15:13:53.605 26361 26361 I ViewRootImpl@841c411[Organizer]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=true mForceNextWindowRelayout=false params=null
+03-08 15:13:53.605  1472  3543 V WindowManager: Relayout Window{5257faf u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:53.606  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:53.606  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d065b60 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | Splash Screen com.example.cmput301w24t33.test$_2578#35650
+03-08 15:13:53.606  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:53.606  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:53.606  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000744614a4a0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:53.606  1327  1327 D SurfaceFlinger:
+03-08 15:13:53.607  1472  3543 V WindowManager: Relayout hash=5257faf, pid=26361, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:53.607  1472  3543 V WindowManager:   fl=81810100
+03-08 15:13:53.607  1472  3543 V WindowManager:   pfl=12020040
+03-08 15:13:53.607  1472  3543 V WindowManager:   apr=LIGHT_NAVIGATION_BARS
+03-08 15:13:53.607  1472  3543 V WindowManager:   bhv=DEFAULT
+03-08 15:13:53.607  1472  3543 V WindowManager:   fitSides= naviIconColor=0
+03-08 15:13:53.607  1472  3543 V WindowManager:   sfl=100000}
+03-08 15:13:53.607 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: performTraversals mFirst=true windowShouldResize=true viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan forwardNavigation} ty=BASE_APPLICATION
+03-08 15:13:53.607 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   fl=81810100
+03-08 15:13:53.607 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   pfl=12020040
+03-08 15:13:53.607 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   bhv=DEFAULT
+03-08 15:13:53.607 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   fitSides= naviIconColor=0
+03-08 15:13:53.607 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   sfl=100000}
+03-08 15:13:53.607  1472  3543 V WindowManager: Relayout Window{d3c2398 u0 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:53.608  1327  2296 I SurfaceFlinger: id=35654 createSurf, flag=40004, com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity$_27916#35654
+03-08 15:13:53.610 26361 26361 I ViewRootImpl@841c411[Organizer]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=4 res=0x2 s={false 0x0} ch=true seqId=0
+03-08 15:13:53.611  1327  2296 I SurfaceFlinger: id=35655 createSurf, flag=24000, Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35655
+03-08 15:13:53.612  1327  2296 I SurfaceFlinger: id=35656 createSurf, flag=24000, Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35656
+03-08 15:13:53.613  2578  2578 D SamsungLightBarControlHelper: onStatusBarAppearanceChanged() -  sbModeChanged:false, statusBarMode:MODE_TRANSPARENT, barState:SHADE, isKeyguardShowing:false, navbarColorManagedByIme:false, stackAppearancesChanged:true, (AppearanceRegion{LIGHT_STATUS_BARS bounds=[0,0][1080,2400]}, ), packageName:com.example.cmput301w24t33.test
+03-08 15:13:53.613  1472  3543 V WindowManager: Relayout hash=d3c2398, pid=27916, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan forwardNavigation} ty=BASE_APPLICATION
+03-08 15:13:53.613  1472  3543 V WindowManager:   fl=81810100
+03-08 15:13:53.613  1472  3543 V WindowManager:   pfl=12020040
+03-08 15:13:53.613  1472  3543 V WindowManager:   apr=LIGHT_NAVIGATION_BARS
+03-08 15:13:53.613  1472  3543 V WindowManager:   bhv=DEFAULT
+03-08 15:13:53.613  1472  3543 V WindowManager:   fitSides= naviIconColor=0
+03-08 15:13:53.613  1472  3543 V WindowManager:   sfl=100000}
+03-08 15:13:53.613  2578  2578 D SamsungLightBarControlHelper: updateStatus(BLACK icon) NumStacks:1, StatusBarMode:MODE_TRANSPARENT, lightBarBounds:[Rect(0, 0 - 1080, 2400)], StatusBarState:SHADE, packageName:com.example.cmput301w24t33.test, isWhiteKeyguardStatusBarBySettings:true
+03-08 15:13:53.619 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
+03-08 15:13:53.621 27916 27916 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity] mNativeObject= 0xb400007ceb0ddc80 sc.mNativeObject= 0xb400007ce103c0c0 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
+03-08 15:13:53.621 27916 27916 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity] mNativeObject= 0xb400007ceb0ddc80 sc.mNativeObject= 0xb400007ce103c0c0 format= -1 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
+03-08 15:13:53.622  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
+03-08 15:13:53.622  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   fl=81840048
+03-08 15:13:53.622  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   pfl=1b000000
+03-08 15:13:53.622  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   vsysui=2000
+03-08 15:13:53.622  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   apr=LIGHT_STATUS_BARS
+03-08 15:13:53.622  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE naviIconColor=0
+03-08 15:13:53.622  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   sfl=60000}
+03-08 15:13:53.622  1472  3543 V WindowManager: Relayout Window{85bfa35 u0 NotificationShade}: viewVisibility=4 req=1080x2400 d0
+03-08 15:13:53.623 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=12 res=0x3 s={true 0xb400007cfb5e6800} ch=true seqId=0
+03-08 15:13:53.625 26361 26361 I ViewRootImpl@841c411[Organizer]: stopped(true) old = false
+03-08 15:13:53.625 26361 26361 I ViewRootImpl@841c411[Organizer]: WindowStopped on com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer set to true
+03-08 15:13:53.625 27916 27939 D OpenGLRenderer: eglCreateWindowSurface
+03-08 15:13:53.625 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007cfb5e6800} hwInitialized=true
+03-08 15:13:53.625  1472  3543 V WindowManager: Relayout hash=85bfa35, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
+03-08 15:13:53.625  1472  3543 V WindowManager:   fl=81840048
+03-08 15:13:53.625  1472  3543 V WindowManager:   pfl=1b000000
+03-08 15:13:53.625  1472  3543 V WindowManager:   vsysui=2000
+03-08 15:13:53.625  1472  3543 V WindowManager:   apr=LIGHT_STATUS_BARS
+03-08 15:13:53.625  1472  3543 V WindowManager:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE naviIconColor=0
+03-08 15:13:53.625  1472  3543 V WindowManager:   sfl=60000}
+03-08 15:13:53.626  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)4 dur=4 res=0x0 s={false 0x0} ch=false seqId=0
+03-08 15:13:53.627 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: reportNextDraw android.view.ViewRootImpl.performTraversals:4438 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309
+03-08 15:13:53.627 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Setup new sync id=0
+03-08 15:13:53.627 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Setting syncFrameCallback
+03-08 15:13:53.627 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: registerCallbacksForSync syncBuffer=false
+03-08 15:13:53.628  2578  2578 I FaceWidgetPositionAlgorithm: getClockContainerHeight() supplier = 227, bottom margin = 0, real height = 290
+03-08 15:13:53.628  2578  2578 I ClockInfoManager: isClockFaceType: type = 9 clockFaceType = 0
+03-08 15:13:53.628  2578  2578 D FaceWidgetPositionAlgorithm: getTopMargin scale = 0.8408237, clockContainerHeight = 227, scaleMarginY = 21
+03-08 15:13:53.628  2578  2578 I FaceWidgetPositionAlgorithm: getClockContainerHeight() supplier = 227, bottom margin = 63, real height = 290
+03-08 15:13:53.628  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() height = 456 container Visibility = 8, isValid = true, mIsDozing = false, fraction = 1.0, source = 0, target = 0
+03-08 15:13:53.628  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() supplier = 456
+03-08 15:13:53.631 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: STOPPED
+03-08 15:13:53.631 26361 26361 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:53.632 27916 27943 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-08 15:13:53.632 27916 27943 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Setting up sync and frameCommitCallback
+03-08 15:13:53.633 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@89dac48[Organizer]
+03-08 15:13:53.634 27916 27939 I BLASTBufferQueue: [ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]#2](f:0,a:0) onFrameAvailable the first frame is available
+03-08 15:13:53.635 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: DESTROYED
+03-08 15:13:53.635  1327  1327 I Layer   : id=35643 removedFromDrawingState Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35643 (142)
+03-08 15:13:53.635 27916 27939 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-08 15:13:53.635 26361 26361 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+03-08 15:13:53.635  1327  1327 I Layer   : id=35644 removedFromDrawingState Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35644 (142)
+03-08 15:13:53.638 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@89dac48[Organizer]
+03-08 15:13:53.638  1472  3335 D InputDispatcher: Focus request (0): d3c2398 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity but waiting because NO_WINDOW
+03-08 15:13:53.638 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:53.638 26361 26361 I ViewRootImpl@841c411[Organizer]: dispatchDetachedFromWindow
+03-08 15:13:53.639  1472  3543 D InputTransport: Input channel destroyed: '5257faf', fd=605
+03-08 15:13:53.639  1472  3543 W InputManager-JNI: Input channel object '5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer (client)' was disposed without first being removed with the input manager!
+03-08 15:13:53.639  1472  3543 D InputTransport: Input channel destroyed: '5257faf', fd=741
+03-08 15:13:53.640 27916 27939 D OpenGLRenderer: CFMS:: SetUp Pid : 27916    Tid : 27939
+03-08 15:13:53.640 27916 27939 W Parcel  : Expecting binder but got null!
+03-08 15:13:53.640  1327  3508 I SurfaceFlinger: id=35657 createSurf, flag=24004, Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35657
+03-08 15:13:53.641 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: onSyncComplete
+03-08 15:13:53.641 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
+03-08 15:13:53.641 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c82016500
+03-08 15:13:53.644 26361 26361 D InputTransport: Input channel destroyed: '5257faf', fd=110
+03-08 15:13:53.645  1327  2296 I SurfaceFlinger: id=35644 Removed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35644 (143)
+03-08 15:13:53.645  1327  2296 I SurfaceFlinger: id=35643 Removed Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35643 (143)
+03-08 15:13:53.645  1327  2296 I SurfaceFlinger: id=35562 Removed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35562 (143)
+03-08 15:13:53.645 12908 12908 I InputMethodService: removeImeSurface
+03-08 15:13:53.646 12908 12908 I MSHandlerLifeCycle: check: return. pkg=com.samsung.android.honeyboard isActivity=false callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.Dialog.hide:767 android.inputmethodservice.InputMethodService.removeImeSurface:1290 android.inputmethodservice.InputMethodService.scheduleImeSurfaceRemoval:1279 android.inputmethodservice.InputMethodService.-$$Nest$mscheduleImeSurfaceRemoval:0
+03-08 15:13:53.646 12908 12908 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@df736f9[InputMethod]
+03-08 15:13:53.647 26361 26459 I TestRunner: finished: testOrganizerCreateEventFragment(com.example.cmput301w24t33.OrganizerUITest)
