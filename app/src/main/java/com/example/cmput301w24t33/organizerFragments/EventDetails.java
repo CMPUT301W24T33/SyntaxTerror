@@ -28,8 +28,10 @@ import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.RemovePoster;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -113,6 +115,14 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
                     .newInstance(event,this)
                     .show(getActivity().getSupportFragmentManager(), "Share QR Code");
 
+        });
+        binding.eventPosterImageView.setOnClickListener(v -> {
+            if(event.getImageUrl() != null) {   // there is an image in poster imageview, get it and pass forward
+                replaceFragment(RemovePoster.newInstance(event));
+            }
+            else{
+                Snackbar.make(binding.getRoot(), "Event has no poster to remove", Snackbar.LENGTH_SHORT).show();
+            }
         });
     }
 
