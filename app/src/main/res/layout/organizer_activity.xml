@@ -19,8 +19,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/actionbar_organizer"
-                android:id="@+id/attendee_organizer"/>
+            <include
+                android:id="@+id/attendee_organizer"
+                layout="@layout/actionbar_organizer" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/organized_events"
@@ -36,6 +37,7 @@
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
                 android:padding="16dp">
+
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/button_create_event"
