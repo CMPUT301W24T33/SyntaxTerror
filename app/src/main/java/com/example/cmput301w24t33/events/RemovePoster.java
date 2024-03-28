@@ -1,10 +1,12 @@
-package com.example.cmput301w24t33.adminFragments;
+package com.example.cmput301w24t33.events;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +14,13 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AdminDeletePosterFragmentBinding;
-import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventRepository;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
-public class DeletePosterAdmin extends Fragment {
+public class RemovePoster extends Fragment {
 
     private EventRepository eventRepo;
     private AdminDeletePosterFragmentBinding binding;
@@ -24,7 +28,7 @@ public class DeletePosterAdmin extends Fragment {
 
 
 
-    public DeletePosterAdmin() {
+    public RemovePoster() {
         // Required empty public constructor
     }
 
@@ -35,8 +39,8 @@ public class DeletePosterAdmin extends Fragment {
      * @param event The event to remove image from.
      * @return A new instance of DeleteEventAdmin.
      */
-    public static DeletePosterAdmin newInstance(Event event) {
-        DeletePosterAdmin fragment = new DeletePosterAdmin();
+    public static RemovePoster newInstance(Event event) {
+        RemovePoster fragment = new RemovePoster();
         Bundle args = new Bundle();
         args.putSerializable("event", event);
         fragment.setArguments(args);
@@ -99,6 +103,20 @@ public class DeletePosterAdmin extends Fragment {
      */
     private void onDelete() {
         // Implement event deletion logic here
+
+        // Remove image from database
+        Log.d("ImageRef", eventToRemovePoster.getImageRef());
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference fileRef = storage.getReferenceFromUrl(eventToRemovePoster.getImageUrl());
+        fileRef.delete().addOnSuccessListener(aVoid -> {
+            // File deleted successfully
+            Log.d("FirebaseStorage", "File deleted successfully");
+
+        }).addOnFailureListener(exception -> {
+            // Uh-oh, an error occurred!
+            Log.d("FirebaseStorage", "Error deleting file", exception);
+        });
+
         eventToRemovePoster.setImageRef(null);
         eventToRemovePoster.setImageUrl(null);
         eventRepo.updateEvent(eventToRemovePoster);

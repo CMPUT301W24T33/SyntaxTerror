@@ -47,6 +47,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -146,6 +147,9 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
             }
             if (event.getAttendees().contains(currentUser)) {
                 notificationTrackedEvents.add(event.getEventId());
+            }
+            if (Objects.equals(event.getOrganizerId(), userId)) {
+                NotificationManager.getInstance().trackAttendeeUpdatesForEvent(event.getEventId());
             }
         }
         NotificationManager.getInstance().trackMultipleEventsNotifications(notificationTrackedEvents);
@@ -268,6 +272,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         userMode.setOnLongClickListener(v -> {
             // Switch to Admin activity
             Intent intent = new Intent(Attendee.this, Admin.class);
+            intent.putExtra("uId", userId);
             startActivity(intent);
             finish();
             return true;

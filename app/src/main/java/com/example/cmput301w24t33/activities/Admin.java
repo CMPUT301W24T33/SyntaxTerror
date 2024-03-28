@@ -10,7 +10,9 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,7 @@ import com.example.cmput301w24t33.notifications.NotificationManager;
  */
 public class Admin extends AppCompatActivity {
 
+    String userId;
     /**
      * Called when the activity is starting. Initializes the activity, view components, and event listeners.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
@@ -43,6 +46,7 @@ public class Admin extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userId = getIntent().getStringExtra("uId");
         setContentView(R.layout.admin_activity);
         View view = findViewById(R.id.admin_activity);
         setupActionBar(view);
@@ -80,6 +84,15 @@ public class Admin extends AppCompatActivity {
         imageButton.setOnClickListener(v -> {
             replaceFragment(new ViewImagesAdmin());
         });
+
+        ImageButton userMode = findViewById(R.id.button_user_mode);
+        userMode.setOnLongClickListener(v -> {
+            // Switch to Organizer activity
+            Intent intent = new Intent(Admin.this, Attendee.class);
+            startActivity(intent);
+            finish();
+            return true;
+        });
     }
 
     /**
@@ -100,20 +113,13 @@ public class Admin extends AppCompatActivity {
      */
     public void setupActionBar(View view) {
         // Setting the action bar text
-        TextView actionBarText = view.findViewById(R.id.general_actionbar_textview);
+        TextView actionBarText = view.findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Admin");
 
-        // Making the profile button invisible
-        CardView profileButton = view.findViewById(R.id.profile_button);
-        profileButton.setVisibility(View.GONE);
-
-        // Making the back arrow button invisible
-        ImageButton backButton = view.findViewById(R.id.back_arrow_img);
-        backButton.setVisibility(View.GONE);
-
         // Changing the background color of the action bar
-        RelativeLayout generalActionbar = view.findViewById(R.id.general_actionbar);
+        RelativeLayout generalActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
         int color = ContextCompat.getColor(this,R.color.admin_actionbar);
         generalActionbar.setBackgroundColor(color);
     }
+
 }
