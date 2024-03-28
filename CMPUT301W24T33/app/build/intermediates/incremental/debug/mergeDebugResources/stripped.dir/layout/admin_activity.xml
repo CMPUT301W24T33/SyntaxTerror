@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/admin_activity"
+    android:background="#F4EFEF"
+    android:layout_height="match_parent"
+    tools:context=".activities.Organizer">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/admin_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/actionbar_general"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/actionbar_general">
+                </include>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/event_layout"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_general"
+                android:layout_marginTop="100sp">
+
+                <Button
+                    android:id="@+id/browse_events_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="20sp"
+                    android:layout_marginBottom="20sp"
+                    android:backgroundTint="@color/admin_actionbar"
+                    android:text=" Browse Events"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"></Button>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/profile_layout"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_layout"
+                android:layout_marginTop="100sp">
+                <Button
+                    android:id="@+id/browse_profiles_button"
+                    android:text=" Browse Profiles"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:backgroundTint="@color/admin_actionbar"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="20sp">
+                </Button>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/image_layout"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actionbar_layout"
+                android:layout_marginTop="100sp">
+                <Button
+                    android:id="@+id/browse_images_button"
+                    android:text=" Browse Images"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:backgroundTint="@color/admin_actionbar"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="20sp">
+                </Button>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

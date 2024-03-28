@@ -1,0 +1,126 @@
+[
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/content_attendees.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/content_attendees.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/attendee_activity.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/attendee_activity.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_delete_poster_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_delete_poster_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_delete_event_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_delete_event_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/profile_create_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/profile_create_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/content_user.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/content_user.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_activity.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_activity.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_view_events_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_view_events_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/actionbar_general.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/actionbar_general.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_view_profiles_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_view_profiles_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/actionbar_attendee_organizer.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/actionbar_attendee_organizer.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/attendee_notifications_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/attendee_notifications_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_event_signed_up_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_event_signed_up_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_notification_createnew_dialog.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_notification_createnew_dialog.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_delete_profile_picture_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_delete_profile_picture_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_delete_profile_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_delete_profile_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_choose_qr_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_choose_qr_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_event_details_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_event_details_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/profile_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/profile_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/content_event_poster.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/content_event_poster.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/content_admin_view_user_images.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/content_admin_view_user_images.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/attendee_event_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/attendee_event_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_create_edit_event_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_create_edit_event_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_notifications_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_notifications_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_event_attendees_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_event_attendees_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/content_event.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/content_event.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/content_notification.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/content_notification.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/actionbar_editprofile.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/actionbar_editprofile.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_view_images_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_view_images_fragment.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/admin_activity.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/admin_activity.xml"
+    },
+    {
+        "merged": "com.example.cmput301w24t33.app-mergeDebugResources-38:/layout/organizer_share_qr_fragment.xml",
+        "source": "com.example.cmput301w24t33.app-main-41:/layout/organizer_share_qr_fragment.xml"
+    }
+]

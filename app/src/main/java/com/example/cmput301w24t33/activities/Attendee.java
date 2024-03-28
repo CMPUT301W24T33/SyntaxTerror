@@ -79,7 +79,10 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
-        authenticateUser();
+        currentUser = (User) getIntent().getSerializableExtra("user");
+        Log.w("HECK", currentUser.getFirstName());
+        //authenticateUser();
+        //fetchInfo(findViewById(R.id.profile_image));
         setupRecyclerView();
         setupViewModel();
         setupActionbar();
