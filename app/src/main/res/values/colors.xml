@@ -18,8 +18,9 @@
     <color name="not_going">#D32F2F</color>
     <color name="default_state">#747474</color>
     <color name="light_grey">#B5B5B5</color>
-    <color name="button_day">#61DC4B</color>
-    <color name="button_night">#5561DC4B</color>
+    <color name="button_day">#2196F3</color>
+    <color name="button_night">#FFC107</color> 
+
 
     <color name="secondary_day">#ff9090ff</color>
     <color name="secondary_night">#1f1faf</color>

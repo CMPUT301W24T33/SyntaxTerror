@@ -42,12 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:text=""
             android:background="@null"
             android:clickable="false"
+            android:text=""
             android:textSize="35dp"
-            android:textStyle="bold">
-        </TextView>
+            android:textStyle="bold"></TextView>
 
     </RelativeLayout>
 
