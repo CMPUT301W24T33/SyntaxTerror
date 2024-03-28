@@ -93,9 +93,6 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      * @param event The event object used to populate action button functions.
      */
     public void setupActionButtons(Event event) {
-        // ADD METHOD TO SHARE QR CODE
-        binding.shareQrCodeButton.setOnClickListener(v -> {});
-
         // Navigation back to the previous fragment
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
 
@@ -110,6 +107,8 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
 
         // Navigation to the event edit fragment
         binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
+
+        // Share QR Code
         binding.shareQrCodeButton.setOnClickListener(v -> {
             ShareQRFragment
                     .newInstance(event,this)
