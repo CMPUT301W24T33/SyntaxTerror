@@ -287,6 +287,12 @@ public class Profile extends Fragment {
             saveProfile();
         });
 
+        // Remove image button listener
+        Button removeImageButton = view.findViewById(R.id.remove_profile_img_button);
+        removeImageButton.setOnClickListener(v -> {
+            // logic for removing an image here
+            // can change button later to different location if needed
+        });
 
     }
 
