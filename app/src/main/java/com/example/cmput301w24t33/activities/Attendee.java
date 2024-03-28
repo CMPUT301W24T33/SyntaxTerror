@@ -268,6 +268,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         userMode.setOnLongClickListener(v -> {
             // Switch to Admin activity
             Intent intent = new Intent(Attendee.this, Admin.class);
+            intent.putExtra("uId", userId);
             startActivity(intent);
             finish();
             return true;
