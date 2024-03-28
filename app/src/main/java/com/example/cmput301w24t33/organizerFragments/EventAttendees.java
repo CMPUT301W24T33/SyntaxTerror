@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.OrganizerEventAttendeesFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.users.Profile;
@@ -46,6 +47,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
     private ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
     private TextView attendeeNumberView;
+    private OrganizerEventAttendeesFragmentBinding binding;
     private final EventRepository eventRepository = new EventRepository();
     private String eventId;
     private MapView mapView;
@@ -84,7 +86,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.organizer_event_attendees_fragment, container, false);
-
+        binding = OrganizerEventAttendeesFragmentBinding.inflate(inflater,container,false);
         if (getArguments() != null) {
             selectedEvent = (Event) getArguments().getSerializable("event");
         }
@@ -100,7 +102,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         attendeeNumberView.setText("0");
 
         setupAttendeesRecyclerView(view);
-        return view;
+        return binding.getRoot();
     }
 
     /**
@@ -123,6 +125,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
      * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
      */
     private void setupMapView(@NonNull View view, Bundle savedInstanceState) {
+
         mapView = view.findViewById(R.id.attendee_map);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(googleMap -> {
@@ -134,23 +137,22 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
                     String[] parts = locationData.split(",");
                     double latitude = Double.parseDouble(parts[0]);
                     double longitude = Double.parseDouble(parts[1]);
-
                     //Moving camera to location
                     LatLng eventLocation = new LatLng(latitude, longitude);
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
                     gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
 
-                    if (selectedEvent.getGeoTracking()== true){
+                    if (selectedEvent.getGeoTracking()){
                         addCircle(eventLocation,GEOFENCE_RADIUS);
-                    } else if (selectedEvent.getGeoTracking() == false) {
+                    } else {
                         gMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)));
                     }
 
                 } else {
-                // Default to Edmonton if location is not Specified
-                LatLng eventEdmontonDefault = new LatLng(53.5461, -113.4938);
-                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventEdmontonDefault, 10));
-            }
+                    // Default to Edmonton if location is not Specified
+                    LatLng eventEdmontonDefault = new LatLng(53.5461, -113.4938);
+                    gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventEdmontonDefault, 10));
+                }
 
 
                 // Add markers for each check-in location
@@ -185,9 +187,13 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
      */
     @Override
     public void onEventsLoaded(List<Event> events) {
+        Event event = events.get(0);
         attendeesList.clear();
-        attendeesList.addAll(events.get(0).getAttendees());
+        attendeesList.addAll(event.getAttendees());
         attendeeNumberView.setText(String.format(Locale.CANADA, "%d", getUniqueAttendeeCount()));
+        if(event.getMaxOccupancy() != 0) {
+            binding.progressBar.setProgress(getUniqueAttendeeCount() / event.getMaxOccupancy());
+        }
         attendeeAdapter.notifyDataSetChanged();
     }
 

@@ -25,6 +25,11 @@
 
     </style>
 
+    <style name="Theme.ProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:progressTint">#00ff00</item>
+        <item name="android:progressBackgroundTint">#ff0000</item>
+    </style>
+
     <style name="Theme.TextAppearance" parent="@style/TextAppearance.MaterialComponents.Caption">
         <item name="android:background">#00000000</item>
         <item name="android:textColor">@color/black</item>

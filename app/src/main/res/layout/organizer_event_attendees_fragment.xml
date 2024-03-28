@@ -33,6 +33,7 @@
     <LinearLayout
         android:id="@+id/attendees_count_layout"
         android:layout_width="0dp"
+        android:weightSum="2"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/attendee_map"
@@ -52,6 +53,17 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:text="##"/>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="20dp"
+            android:layout_weight="1.5"
+            style="@style/Theme.ProgressBar"
+
+            />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
