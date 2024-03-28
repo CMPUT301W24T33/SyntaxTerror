@@ -17,6 +17,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.users.CreateProfile;
 import com.example.cmput301w24t33.users.User;
@@ -29,6 +31,8 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
     private User currentUser;
     private UserRepository userRepo;
     private UserViewModel userViewModel;
+    private EventRepository eventRepo;
+    private EventViewModel eventViewModel;
 
     /**
      * Called when the activity is starting. This method is where you perform initialization such as calling NotificationManager.initialize
@@ -39,7 +43,8 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        EventRepository.initialize(this.getApplication(), FirebaseFirestore.getInstance());
+        EventViewModel.initialize(this.getApplication(), eventRepo, new MutableLiveData<>());
 
         NotificationManager.initialize(this.getApplication());
         authenticateUser();
@@ -94,7 +99,6 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(android.R.id.content, fragment);
-        //transaction.add(fragment, "CreateProfile");
         transaction.addToBackStack(null);
         transaction.commitAllowingStateLoss();
     }

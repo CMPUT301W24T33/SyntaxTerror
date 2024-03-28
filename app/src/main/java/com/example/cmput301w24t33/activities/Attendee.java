@@ -124,6 +124,9 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      * Updates the local lists of all events and signed-up events whenever the LiveData changes.
      */
     private void setupViewModel() {
+        EventViewModel.
+
+        /*
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(this, events -> {
             allEvents.clear();
@@ -132,6 +135,8 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
             updateDisplayedEvents();
         });
         eventViewModel.loadEvents();
+        */
+
     }
 
     /**

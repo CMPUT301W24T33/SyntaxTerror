@@ -15,6 +15,8 @@ package com.example.cmput301w24t33.events;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
+
+import android.app.Application;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,18 +35,33 @@ import java.util.List;
  * and providing callbacks for successful data retrieval or errors.
  */
 public class EventRepository {
+    private static EventRepository instance;
     private final FirebaseFirestore db;
     private final CollectionReference eventsCollection;
+    private Application applicaiton;
     private EventCallback eventCallback;
 
     /**
      * Constructs an EventRepository and initializes Firestore and events collection references.
      */
-    public EventRepository() {
-        db = FirebaseFirestore.getInstance();
-        eventsCollection = db.collection("events");
+    public EventRepository(Application applicaiton, FirebaseFirestore db) {
+        this.db = db;
+        this.applicaiton = applicaiton;
+        eventsCollection = this.db.collection("events");
     }
 
+    public static synchronized  void initialize(Application application, FirebaseFirestore db) {
+        if (instance == null) {
+            instance = new EventRepository(application, db);
+        }
+    }
+
+    public static synchronized EventRepository getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("Event Repository must be initialized in the Application class before use.");
+        }
+        return instance;
+    }
     /**
      * Interface defining callbacks for event data loading operations.
      */
