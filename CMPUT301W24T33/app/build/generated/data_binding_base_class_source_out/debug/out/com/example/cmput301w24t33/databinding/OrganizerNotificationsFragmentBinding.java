@@ -24,7 +24,7 @@ public final class OrganizerNotificationsFragmentBinding implements ViewBinding 
   public final RelativeLayout actionBarLayout;
 
   @NonNull
-  public final ActionbarGeneralBinding actionbar;
+  public final ActionbarGeneralOrganizerBinding actionbar;
 
   @NonNull
   public final FloatingActionButton buttonDeleteNotification;
@@ -39,7 +39,7 @@ public final class OrganizerNotificationsFragmentBinding implements ViewBinding 
   public final RelativeLayout organizerNotificationsFragment;
 
   private OrganizerNotificationsFragmentBinding(@NonNull RelativeLayout rootView,
-      @NonNull RelativeLayout actionBarLayout, @NonNull ActionbarGeneralBinding actionbar,
+      @NonNull RelativeLayout actionBarLayout, @NonNull ActionbarGeneralOrganizerBinding actionbar,
       @NonNull FloatingActionButton buttonDeleteNotification,
       @NonNull FloatingActionButton buttonNewNotification,
       @NonNull RecyclerView notificationsOrganizer,
@@ -91,7 +91,7 @@ public final class OrganizerNotificationsFragmentBinding implements ViewBinding 
       if (actionbar == null) {
         break missingId;
       }
-      ActionbarGeneralBinding binding_actionbar = ActionbarGeneralBinding.bind(actionbar);
+      ActionbarGeneralOrganizerBinding binding_actionbar = ActionbarGeneralOrganizerBinding.bind(actionbar);
 
       id = R.id.button_delete_notification;
       FloatingActionButton buttonDeleteNotification = ViewBindings.findChildViewById(rootView, id);

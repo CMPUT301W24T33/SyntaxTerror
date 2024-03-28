@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?backgroundColor"
     tools:context=".activities.Organizer">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/attendee_actionbar"
+        android:background="?attr/action_bar_attendee"
         app:title="Event Details"
         app:titleCentered="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:titleTextColor="@color/white"
-        app:navigationIcon="@drawable/ic_back_arrow">
+        app:navigationIcon="@drawable/ic_back_arrow"
+        android:theme="@style/Theme.ActionBar">
 
         <!-- Share QR Code Button -->
         <ImageButton

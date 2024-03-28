@@ -71,8 +71,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private boolean doneImageUpload = true;
     private Calendar tempStartDateTime = Calendar.getInstance();
     private Calendar tempEndDateTime = Calendar.getInstance();
-    private String address;
-    private String locationData;
+    private String locationName;
+    private String locationCoord;
+
 
 
 
@@ -152,16 +153,16 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OrganizerCreateEditEventFragmentBinding.inflate(inflater, container, false);
-        setupActionButtons();
-        setupDateTimePickers();
-        setupPlacesAutocomplete();
-
         if (getArguments() != null) {
             // Used when editing an event
             Bundle eventBundle = getArguments();
             eventToEdit = (Event) eventBundle.getSerializable("event");
             loadData();
         }
+        setupActionButtons();
+        setupDateTimePickers();
+        setupPlacesAutocomplete();
+
         return binding.getRoot();
     }
 
@@ -208,7 +209,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 public void onPlaceSelected(@NonNull Place place) {
                     LatLng latLng = place.getLatLng();
                     if (latLng != null) {
-                        locationData = latLng.latitude + "," + latLng.longitude;
+                        locationCoord = latLng.latitude + "," + latLng.longitude;
+                        locationName = (place.getName() != null && !place.getName().isEmpty()) ? place.getName() :
+                                (place.getAddress() != null && !place.getAddress().isEmpty()) ? place.getAddress() :
+                                        "Unknown Location";
                     }
                 }
                 @Override
@@ -216,6 +220,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                     Log.i("Places", "An error occurred: " + status);
                 }
             });
+        }
+        if (eventToEdit != null) {
+            autocompleteFragment.setHint(eventToEdit.getLocationName());
         }
     }
 
@@ -232,13 +239,17 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
         // Load data into relevant field
         binding.eventNameEditText.setText(eventToEdit.getName());
-        binding.eventLocationCordsText.setText(eventToEdit.getLocationData());
         binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
         binding.startTimeText.setText(startDateTime);
         binding.endTimeText.setText(endDateTime);
         binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
         binding.geoTrackingSwitch.setChecked(eventToEdit.getGeoTracking());
-
+        eventImageRef = eventToEdit.getImageRef();
+        eventImageUrl = eventToEdit.getImageUrl();
+        locationCoord = eventToEdit.getLocationCoord();
+        locationName = eventToEdit.getLocationName();
+        tempStartDateTime.setTime(eventToEdit.getStartDateTime().toDate());
+        tempEndDateTime.setTime(eventToEdit.getEndDateTIme().toDate());
         // Removes QR Code button
         binding.generateQrCodeButton.setVisibility(View.INVISIBLE);
         qrcode = eventToEdit.getCheckInQR();
@@ -269,6 +280,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             setEventEdits(eventToEdit);
             Log.d(TAG, "after set event:" + eventToEdit.getEventId());
             eventRepo.updateEvent(eventToEdit);
+
         } else {
             // Creates new event
             //mAuth = FirebaseAuth.getInstance();
@@ -287,8 +299,8 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void setEventEdits(Event event) {
         event.setName(Objects.requireNonNull(binding.eventNameEditText.getText()).toString().trim());
-        event.setAddress(address);
-        event.setLocationData(locationData);
+        event.setLocationName(locationName);
+        event.setLocationCoord(locationCoord);
         event.setEventDescription(Objects.requireNonNull(binding.eventDescriptionEditText.getText()).toString().trim());
         event.setStartDateTime(new Timestamp(tempStartDateTime.getTime()));
         event.setEndDateTIme(new Timestamp(tempEndDateTime.getTime()));

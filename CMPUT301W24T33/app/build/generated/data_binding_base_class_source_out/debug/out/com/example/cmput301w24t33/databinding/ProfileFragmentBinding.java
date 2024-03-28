@@ -4,7 +4,6 @@ package com.example.cmput301w24t33.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -58,7 +58,7 @@ public final class ProfileFragmentBinding implements ViewBinding {
   public final RelativeLayout profileBackActionbar;
 
   @NonNull
-  public final Button profileCancelButton;
+  public final AppCompatButton profileCancelButton;
 
   @NonNull
   public final RelativeLayout profileFragment;
@@ -67,7 +67,7 @@ public final class ProfileFragmentBinding implements ViewBinding {
   public final ImageView profileImage;
 
   @NonNull
-  public final Button profileSaveButton;
+  public final AppCompatButton profileSaveButton;
 
   @NonNull
   public final CardView profileView;
@@ -78,9 +78,9 @@ public final class ProfileFragmentBinding implements ViewBinding {
       @NonNull EditText firstNameEditText, @NonNull LinearLayout firstNameLayout,
       @NonNull TextView firstNameTextView, @NonNull EditText lastNameEditText,
       @NonNull LinearLayout lastNameLayout, @NonNull TextView lastNameTextView,
-      @NonNull RelativeLayout profileBackActionbar, @NonNull Button profileCancelButton,
+      @NonNull RelativeLayout profileBackActionbar, @NonNull AppCompatButton profileCancelButton,
       @NonNull RelativeLayout profileFragment, @NonNull ImageView profileImage,
-      @NonNull Button profileSaveButton, @NonNull CardView profileView) {
+      @NonNull AppCompatButton profileSaveButton, @NonNull CardView profileView) {
     this.rootView = rootView;
     this.cancelSaveLayout = cancelSaveLayout;
     this.emailEditText = emailEditText;
@@ -194,7 +194,7 @@ public final class ProfileFragmentBinding implements ViewBinding {
       }
 
       id = R.id.profile_cancel_button;
-      Button profileCancelButton = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton profileCancelButton = ViewBindings.findChildViewById(rootView, id);
       if (profileCancelButton == null) {
         break missingId;
       }
@@ -208,7 +208,7 @@ public final class ProfileFragmentBinding implements ViewBinding {
       }
 
       id = R.id.profile_save_button;
-      Button profileSaveButton = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton profileSaveButton = ViewBindings.findChildViewById(rootView, id);
       if (profileSaveButton == null) {
         break missingId;
       }

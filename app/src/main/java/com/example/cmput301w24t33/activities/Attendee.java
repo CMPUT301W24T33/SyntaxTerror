@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
@@ -84,10 +85,10 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         //authenticateUser();
         //fetchInfo(findViewById(R.id.profile_image));
         setupRecyclerView();
-        setupViewModel();
         setupActionbar();
         setOnClickListeners();
     }
+
 
     /**
      * Switches between viewing all events and events the user has signed up for.
@@ -167,6 +168,8 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
     @Override
     protected void onResume() {
         super.onResume();
+        NotificationManager.initialize(this.getApplication());
+        setupViewModel();
         Log.d(TAG, "RESUME");
         eventViewModel.loadEvents();
     }
@@ -209,7 +212,8 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      */
     private void fetchInfo(ImageView profileButton ) {
         userImageURL = currentUser.getImageUrl();
-        Picasso.get().load(userImageURL).into(profileButton);
+
+        Glide.with(this).load(userImageURL).into(profileButton);
     }
 
     /**
@@ -267,6 +271,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         userMode.setOnLongClickListener(v -> {
             // Switch to Admin activity
             Intent intent = new Intent(Attendee.this, Admin.class);
+            intent.putExtra("uId", userId);
             startActivity(intent);
             finish();
             return true;

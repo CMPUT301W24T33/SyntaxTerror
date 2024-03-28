@@ -141,6 +141,7 @@ public class UserRepository {
                         } else {
                             System.out.println("No such document");
                         }
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -221,6 +222,7 @@ public class UserRepository {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(MotionEffect.TAG, "DocumentSnapshot successfully deleted!");
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -8,6 +8,14 @@
 package com.example.cmput301w24t33.events;
 
 import android.location.Location;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.example.cmput301w24t33.users.User;
 import com.google.firebase.Timestamp;
@@ -21,7 +29,7 @@ import java.util.ArrayList;
  * Represents an event, including details such as date, time, location, and participants.
  * This class implements Serializable to allow event objects to be passed between activities or fragments.
  */
-public class Event implements Serializable {
+public class Event implements Serializable, Parcelable {
     protected SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE.LLLL.yyyy KK:mm:ss aaa z");
     private String eventId;
     private Timestamp startDateTime;
@@ -31,8 +39,8 @@ public class Event implements Serializable {
     private String eventDescription;
     private String posterQR;
     private String checkInQR;
-    private String address;
-    private String locationData;
+    private String locationCoord;
+    private String locationName;
     private boolean geoTracking;
     private boolean active;
     private int maxOccupancy;
@@ -42,6 +50,88 @@ public class Event implements Serializable {
     private ArrayList<User> signedUp = new ArrayList<>();
     private String imageRef;
     private String imageUrl;
+
+    public static final Parcelable.Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel source) {
+            Log.d("EventParcel", "");
+            return new Event(source);
+        }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
+    protected Event(Parcel src){
+        Bundle args = src.readBundle(getClass().getClassLoader());
+//        Timestamp[] timestamps = new Timestamp[0];
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            timestamps = src.readParcelableArray(ClassLoader.getSystemClassLoader(), Timestamp.class);
+//        }
+//        Log.d("Timestamps", timestamps.toString());
+//        startDateTime = timestamps[0];
+//        endDateTIme = timestamps[1];
+        Log.d("EventParcel", args.toString());
+        assert args != null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            startDateTime = args.getParcelable("StartTime", Timestamp.class);
+            endDateTIme = args.getParcelable("EndTime", Timestamp.class);
+            Log.d("Timestamp", "start: " + startDateTime.toString() + " end: " + endDateTIme.toString());
+        }
+        attendees = (ArrayList<User>) args.getSerializable("Attendees");
+        checkInLocations = (ArrayList<String>) args.getSerializable("Locations");
+        signedUp = (ArrayList<User>) args.getSerializable("SignedUp");
+        imageRef = args.getString("ImageRef");
+        imageUrl = args.getString("ImageUrl");
+        maxSignup = args.getInt("MaxSignUp");
+        maxOccupancy = args.getInt("MaxOccupancy");
+        geoTracking = args.getBoolean("GeoTracking");
+        active = args.getBoolean("Active");
+        locationName = args.getString("LocationName");
+        locationCoord = args.getString("LocationCoord");
+        checkInQR = args.getString("CheckInQR");
+        posterQR = args.getString("PosterQR");
+        eventDescription = args.getString("EventDescription");
+        organizerId = args.getString("OrganizerId");
+        name = args.getString("Name");
+        eventId = args.getString("EventId");
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+//        Timestamp[] timestamps = new Timestamp[]{startDateTime, endDateTIme};
+//        dest.writeParcelableArray(timestamps, flags);
+        Bundle args = new Bundle();
+        args.putParcelable("StartTime", startDateTime);
+        args.putParcelable("EndTime", endDateTIme);
+        args.putSerializable("Attendees", attendees);
+        args.putSerializable("Locations", checkInLocations);
+        args.putSerializable("SignedUp", signedUp);
+        args.putString("ImageRef", imageRef);
+        args.putString("ImageUrl",imageUrl);
+        args.putInt("MaxSignUp", maxSignup);
+        args.putInt("MaxOccupancy", maxOccupancy);
+        args.putBoolean("GeoTracking", geoTracking);
+        args.putBoolean("Active", active);
+        args.putString("LocationName", locationName);
+        args.putString("LocationCoord", locationCoord);
+        args.putString("CheckInQR", checkInQR);
+        args.putString("PosterQR", posterQR);
+        args.putString("EventDescription", eventDescription);
+        args.putString("OrganizerId", organizerId);
+        args.putString("Name", name);
+        args.putString("EventId", eventId);
+        dest.writeBundle(args);
+    }
+
+
 
     /**
      * Constructs a new Event with specified name, organizerId, and eventDescription.
@@ -194,32 +284,32 @@ public class Event implements Serializable {
      * Gets the address of the event location.
      * @return A string representing the event location address.
      */
-    public String getAddress() {
-        return address;
+    public String getLocationName() {
+        return locationName;
     }
 
     /**
      * Sets the address of the event location.
-     * @param address A string representing the event location address.
+     * @param locationName A string representing the event location address.
      */
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     /**
      * Gets additional location data for the event.
      * @return A string containing additional location data.
      */
-    public String getLocationData() {
-        return locationData;
+    public String getLocationCoord() {
+        return locationCoord;
     }
 
     /**
      * Sets additional location data for the event.
-     * @param locationData A string containing additional location data.
+     * @param locationCoord A string containing additional location data.
      */
-    public void setLocationData(String locationData) {
-        this.locationData = locationData;
+    public void setLocationCoord(String locationCoord) {
+        this.locationCoord = locationCoord;
     }
 
     /**

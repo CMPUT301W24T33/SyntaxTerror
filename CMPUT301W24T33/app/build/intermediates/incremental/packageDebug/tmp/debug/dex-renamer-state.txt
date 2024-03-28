@@ -1,14 +1,14 @@
-#Wed Mar 20 13:28:02 MDT 2024
-base.0=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
-base.4=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.5=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.6=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.7=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.8=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.9=C\:\\Users\\ian_m\\AndroidStudioProjects\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+#Thu Mar 21 18:36:39 MDT 2024
+base.0=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
+base.3=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+base.4=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+base.5=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.6=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+base.7=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.8=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.9=C\:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex

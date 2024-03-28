@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.helper.widget.MotionEffect;
 import androidx.core.content.ContextCompat;
@@ -29,14 +30,21 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
 import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
+import com.example.cmput301w24t33.users.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +58,7 @@ public class Organizer extends AppCompatActivity {
     private EventViewModel eventViewModel;
     private EventAdapter eventAdapter;
     private String userId;
+    private static String url;
 
     /**
      * Sets up the activity, including the RecyclerView for events, ViewModel for event data, and action bar.
@@ -62,6 +71,7 @@ public class Organizer extends AppCompatActivity {
         eventRecyclerView = findViewById(R.id.organized_events);
         organizedEvents = new ArrayList<>();
         userId = getIntent().getStringExtra("uId");
+        getProfileUrl(userId);
         setAdapter();
 
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
@@ -78,6 +88,7 @@ public class Organizer extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        NotificationManager.initialize(this.getApplication());
         Log.d(TAG, "RESUME");
         eventViewModel.loadOrganizerEvents(userId);
     }
@@ -118,7 +129,7 @@ public class Organizer extends AppCompatActivity {
     private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
-
+        Glide.with(this).load(url).into(profileButton);
         FloatingActionButton createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
@@ -160,5 +171,31 @@ public class Organizer extends AppCompatActivity {
         transaction.replace(R.id.organizer_layout, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+    public static void getProfileUrl(String Aid){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users").document(Aid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            // Retrieve your field value
+                            url = documentSnapshot.getString("imageUrl");
+                            // Do something with the field value
+                            Log.d("Firestore", "Field value: " + url);
+                        } else {
+                            Log.d("Firestore", "No such document");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("Firestore", "Failed to retrieve document: " + e);
+                    }
+                });
+
+
     }
 }

@@ -20,6 +20,9 @@ public final class AttendeeNotificationsFragmentBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
+  public final ActionbarGeneralAttendeeBinding actionBar;
+
+  @NonNull
   public final RelativeLayout attendeeNotificationsFragment;
 
   @NonNull
@@ -29,9 +32,11 @@ public final class AttendeeNotificationsFragmentBinding implements ViewBinding {
   public final RelativeLayout profileBackActionbar;
 
   private AttendeeNotificationsFragmentBinding(@NonNull RelativeLayout rootView,
+      @NonNull ActionbarGeneralAttendeeBinding actionBar,
       @NonNull RelativeLayout attendeeNotificationsFragment,
       @NonNull RecyclerView notificationsAttendee, @NonNull RelativeLayout profileBackActionbar) {
     this.rootView = rootView;
+    this.actionBar = actionBar;
     this.attendeeNotificationsFragment = attendeeNotificationsFragment;
     this.notificationsAttendee = notificationsAttendee;
     this.profileBackActionbar = profileBackActionbar;
@@ -64,6 +69,13 @@ public final class AttendeeNotificationsFragmentBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.action_bar;
+      View actionBar = ViewBindings.findChildViewById(rootView, id);
+      if (actionBar == null) {
+        break missingId;
+      }
+      ActionbarGeneralAttendeeBinding binding_actionBar = ActionbarGeneralAttendeeBinding.bind(actionBar);
+
       RelativeLayout attendeeNotificationsFragment = (RelativeLayout) rootView;
 
       id = R.id.notifications_attendee;
@@ -78,7 +90,7 @@ public final class AttendeeNotificationsFragmentBinding implements ViewBinding {
         break missingId;
       }
 
-      return new AttendeeNotificationsFragmentBinding((RelativeLayout) rootView,
+      return new AttendeeNotificationsFragmentBinding((RelativeLayout) rootView, binding_actionBar,
           attendeeNotificationsFragment, notificationsAttendee, profileBackActionbar);
     }
     String missingId = rootView.getResources().getResourceName(id);

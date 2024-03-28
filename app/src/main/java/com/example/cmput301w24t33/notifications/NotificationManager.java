@@ -61,7 +61,7 @@ public class NotificationManager {
      */
     private void dispatchNotificationUpdate(Event event, Notification notification) {
         new Handler(Looper.getMainLooper()).post(() ->
-                Toast.makeText(application, event.getName() + ": " + notification.getMessage(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(application, event.getName() + ": " + notification.getTitle(), Toast.LENGTH_SHORT).show()
         );
     }
 

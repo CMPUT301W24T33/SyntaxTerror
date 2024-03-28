@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sociable</string>
+    <string name="app_name">SyntaxTerror</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notification_dialog_title_hint">title</string>
@@ -9,6 +9,7 @@
     <string name="share_poster">Share Poster</string>
     <string name="places">AIzaSyBK94a1cQs_7HW6JGFZRu39VRILNwkB0uk</string>
     <string name="cancel">Cancel</string>
+    <string name="remove_profile_image">Remove Image</string>
     <string name="confirm">Confirm</string>
     <string name="event_description">Event Description</string>
     <string name="start_date">Start Date</string>
@@ -45,5 +46,7 @@
     <string name="e_mail">E-Mail:</string>
     <string name="save">Save</string>
     <string name="create">Create</string>
+    <string name="check_in_event">Check Into Event</string>
+    <string name="Find_poster_event">Find Event</string>
 
 </resources>

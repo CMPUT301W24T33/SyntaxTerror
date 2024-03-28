@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.cmput301w24t33.eventUnitTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-03-08T17:06:59" hostname="IANHOMEPC" time="0.004">
+<testsuite name="com.example.cmput301w24t33.eventUnitTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-03-08T17:03:08" hostname="SURFACE" time="0.002">
   <properties/>
-  <testcase name="testSettingAndGettingEventId" classname="com.example.cmput301w24t33.eventUnitTest" time="0.002"/>
-  <testcase name="testEventInstantiation" classname="com.example.cmput301w24t33.eventUnitTest" time="0.0"/>
-  <testcase name="testAttendeeManagement" classname="com.example.cmput301w24t33.eventUnitTest" time="0.001"/>
+  <testcase name="testSettingAndGettingEventId" classname="com.example.cmput301w24t33.eventUnitTest" time="0.001"/>
+  <testcase name="testEventInstantiation" classname="com.example.cmput301w24t33.eventUnitTest" time="0.001"/>
+  <testcase name="testAttendeeManagement" classname="com.example.cmput301w24t33.eventUnitTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

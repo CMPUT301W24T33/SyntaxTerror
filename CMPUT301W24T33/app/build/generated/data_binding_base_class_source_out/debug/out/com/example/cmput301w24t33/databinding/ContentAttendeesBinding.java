@@ -20,14 +20,18 @@ public final class ContentAttendeesBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final TextView checkInCount;
+
+  @NonNull
   public final TextView firstNameText;
 
   @NonNull
   public final TextView lastNameText;
 
-  private ContentAttendeesBinding(@NonNull LinearLayout rootView, @NonNull TextView firstNameText,
-      @NonNull TextView lastNameText) {
+  private ContentAttendeesBinding(@NonNull LinearLayout rootView, @NonNull TextView checkInCount,
+      @NonNull TextView firstNameText, @NonNull TextView lastNameText) {
     this.rootView = rootView;
+    this.checkInCount = checkInCount;
     this.firstNameText = firstNameText;
     this.lastNameText = lastNameText;
   }
@@ -59,6 +63,12 @@ public final class ContentAttendeesBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.check_in_count;
+      TextView checkInCount = ViewBindings.findChildViewById(rootView, id);
+      if (checkInCount == null) {
+        break missingId;
+      }
+
       id = R.id.firstNameText;
       TextView firstNameText = ViewBindings.findChildViewById(rootView, id);
       if (firstNameText == null) {
@@ -71,7 +81,8 @@ public final class ContentAttendeesBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ContentAttendeesBinding((LinearLayout) rootView, firstNameText, lastNameText);
+      return new ContentAttendeesBinding((LinearLayout) rootView, checkInCount, firstNameText,
+          lastNameText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

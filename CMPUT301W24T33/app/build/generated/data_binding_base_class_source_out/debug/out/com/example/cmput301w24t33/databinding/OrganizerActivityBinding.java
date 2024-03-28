@@ -22,7 +22,7 @@ public final class OrganizerActivityBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ActionbarAttendeeOrganizerBinding attendeeOrganizer;
+  public final ActionbarOrganizerBinding attendeeOrganizer;
 
   @NonNull
   public final FloatingActionButton buttonCreateEvent;
@@ -37,7 +37,7 @@ public final class OrganizerActivityBinding implements ViewBinding {
   public final FrameLayout organizerLayout;
 
   private OrganizerActivityBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ActionbarAttendeeOrganizerBinding attendeeOrganizer,
+      @NonNull ActionbarOrganizerBinding attendeeOrganizer,
       @NonNull FloatingActionButton buttonCreateEvent, @NonNull RecyclerView organizedEvents,
       @NonNull ConstraintLayout organizerActivity, @NonNull FrameLayout organizerLayout) {
     this.rootView = rootView;
@@ -80,7 +80,7 @@ public final class OrganizerActivityBinding implements ViewBinding {
       if (attendeeOrganizer == null) {
         break missingId;
       }
-      ActionbarAttendeeOrganizerBinding binding_attendeeOrganizer = ActionbarAttendeeOrganizerBinding.bind(attendeeOrganizer);
+      ActionbarOrganizerBinding binding_attendeeOrganizer = ActionbarOrganizerBinding.bind(attendeeOrganizer);
 
       id = R.id.button_create_event;
       FloatingActionButton buttonCreateEvent = ViewBindings.findChildViewById(rootView, id);
