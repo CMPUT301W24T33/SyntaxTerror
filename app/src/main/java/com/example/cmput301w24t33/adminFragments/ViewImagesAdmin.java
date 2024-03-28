@@ -1,7 +1,6 @@
 package com.example.cmput301w24t33.adminFragments;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -14,18 +13,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.RemovePoster;
 import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.users.UserRepository;
@@ -79,7 +76,7 @@ public class ViewImagesAdmin extends Fragment {
         RecyclerView.ViewHolder viewHolder = eventPosterRecyclerView.findViewHolderForAdapterPosition(position);
         View view = viewHolder.itemView;
         if(event.getImageUrl() != null) {   // there is an image in poster imageview, get it and pass forward
-            replaceFragment(DeletePosterAdmin.newInstance(event));
+            replaceFragment(RemovePoster.newInstance(event));
         }
         else{
             Snackbar.make(view, "Event has no poster to delete", Snackbar.LENGTH_SHORT).show();

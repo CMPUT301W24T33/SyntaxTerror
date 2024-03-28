@@ -9,12 +9,12 @@
         <item name="android:colorPrimary">@color/organizer_actionbar_day</item>
         <item name="colorSecondary">@color/secondary_day</item>
         <item name="android:textColor">@color/black</item>
-        <item name="backgroundColor">@color/white</item>
+        <item name="backgroundColor">@color/background</item>
         <item name="action_bar_attendee">@color/attendee_actionbar_day</item>
         <item name="action_bar_organizer">@color/organizer_actionbar_day</item>
 
         <item name="check_in_button_image">@drawable/check_in_img_day</item>
-        <item name="search_button_image">@drawable/ic_search_icon_day_foreground</item>
+        <item name="search_button_image">@drawable/search_icon_day</item>
         <item name="switchProfileIcon">@drawable/switch_user_mode_day</item>
         <item name="switchPersonIcon">@drawable/person_icon_day</item>
         <item name="switchHouseIcon">@drawable/house_icon_day</item>
@@ -22,9 +22,19 @@
         <item name="button_color_1">@color/button_day</item>
         <item name="button_color_2">@color/black</item>
         <item name="button_color_3">@color/button_3_day</item>
+        <item name="listColorSecondary">@color/list_color_secondary_day</item>
+
+        <item name="toolbarStyle">@style/Theme.ActionBar</item>
+        <item name="shareIcon">@drawable/share_icon_day</item>
+        <item name="backArrow">@drawable/ic_back_arrow</item>
 
     </style>
 
+    <style name="ShareDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowFrame">@color/background</item>
+        <item name="backgroundColor">@color/background</item>
+    </style>
     <style name="Theme.AttendeeProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
         <item name="android:progressBackgroundTint">@color/progress_bar_tint_background</item>
         <item name="android:progressTint">@color/progress_bar_tint</item>
@@ -38,10 +48,11 @@
     <style name="Theme.CMPUT301W24T33" parent="Base.Theme.CMPUT301W24T33" />
 
 
-    <style name="Theme.ActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.ActionBar" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">#00000000</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">35sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="CustomOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">

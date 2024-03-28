@@ -15,6 +15,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
@@ -103,6 +104,18 @@ public class ShareQRFragment extends DialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 //        listener = (ShareQRDialogListener) context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.ShareDialogTheme);
     }
 
     /**

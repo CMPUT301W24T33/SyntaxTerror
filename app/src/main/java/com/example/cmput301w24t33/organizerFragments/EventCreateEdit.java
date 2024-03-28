@@ -41,12 +41,15 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.Timestamp;
+import com.google.firebase.storage.StorageReference;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -202,6 +205,15 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         if (autocompleteFragment != null) {
             autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
+
+            //This is to give more efficient searches around Edmonton
+            RectangularBounds bounds = RectangularBounds.newInstance(
+                    new LatLng(53.396, -113.718),
+                    new LatLng(53.631, -113.323)
+            );
+
+            autocompleteFragment.setLocationBias(bounds);
+
             autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
                 @Override
                 public void onPlaceSelected(@NonNull Place place) {
@@ -303,6 +315,22 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setEndDateTIme(new Timestamp(tempEndDateTime.getTime()));
         event.setGeoTracking(binding.geoTrackingSwitch.isChecked());
         Log.d("setURL","a"+eventImageUrl);
+
+        // if event already has a poster then delete it from db before updating it
+//        Log.d("ImageURL", event.getImageUrl());
+        if (event.getImageUrl() != null){
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference fileRef = storage.getReferenceFromUrl(event.getImageUrl());
+            fileRef.delete().addOnSuccessListener(aVoid -> {
+                // File deleted successfully
+                Log.d("FirebaseStorage", "File deleted successfully");
+
+            }).addOnFailureListener(exception -> {
+                // Uh-oh, an error occurred!
+                Log.d("FirebaseStorage", "Error deleting file", exception);
+            });
+        }
+
         event.setImageUrl(eventImageUrl);
         event.setImageRef(eventImageRef);
         event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));

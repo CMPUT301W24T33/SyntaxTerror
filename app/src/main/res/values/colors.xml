@@ -2,24 +2,26 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="secondary">#FF000000</color>
-    <color name="primary">#FFFFFFFF</color>
+    <color name="secondary">#5da7a4</color>
+    <color name="primary">#e14658</color>
     <color name="onSecondary">#FFFFFFFF</color>
     <color name="onPrimary">#FF000000</color>
-    <color name="background">#FFFFFFFF</color>
+    <color name="background">#ffffdc</color>
+    <color name="background_night">#22252c</color>
 
-    <color name="attendee_actionbar_day">#f94d3f</color>
-    <color name="organizer_actionbar_day">#39e8cf</color>
+    <color name="attendee_actionbar_day">#e14658</color>
+    <color name="organizer_actionbar_day">#5da7a4</color>
     <color name="attendee_actionbar_night">#6d0523</color>
     <color name="organizer_actionbar_night">#1b4d67</color>
 
-    <color name="admin_actionbar">#C247D8</color>
+    <color name="admin_actionbar">#3f3250</color>
     <color name="going">#388E3C</color>
     <color name="not_going">#D32F2F</color>
     <color name="default_state">#747474</color>
     <color name="light_grey">#B5B5B5</color>
-    <color name="button_day">#61DC4B</color>
-    <color name="button_night">#5561DC4B</color>
+    <color name="button_day">#2196F3</color>
+    <color name="button_night">#FFC107</color>
+
 
     <color name="secondary_day">#ff9090ff</color>
     <color name="secondary_night">#1f1faf</color>
@@ -32,4 +34,6 @@
     <color name="progress_bar_tint">#00ff00</color>
     <color name="progress_bar_tint_background">#ff0000</color>
 
+    <color name="list_color_secondary_day">#efefcc</color>
+    <color name="list_color_secondary_night">#12151c</color>
 </resources>

@@ -239,8 +239,6 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
     private void setupClickListeners(@NonNull View view) {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-
-
     }
 
     /**
