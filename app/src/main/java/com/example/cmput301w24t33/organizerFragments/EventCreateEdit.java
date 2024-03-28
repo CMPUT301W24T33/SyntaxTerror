@@ -41,6 +41,7 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -204,6 +205,15 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         if (autocompleteFragment != null) {
             autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
+
+            //This is to give more efficient searches around Edmonton
+            RectangularBounds bounds = RectangularBounds.newInstance(
+                    new LatLng(53.396, -113.718),
+                    new LatLng(53.631, -113.323)
+            );
+
+            autocompleteFragment.setLocationBias(bounds);
+
             autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
                 @Override
                 public void onPlaceSelected(@NonNull Place place) {
