@@ -95,6 +95,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         setupClickListeners(view);
         setupMapView(view, savedInstanceState);
 
+
         attendeeNumberView = view.findViewById(R.id.attendees_count);
         attendeeNumberView.setText("0");
 
@@ -138,7 +139,12 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
                     LatLng eventLocation = new LatLng(latitude, longitude);
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
                     gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
-                    addCircle(eventLocation,GEOFENCE_RADIUS);
+
+                    if (selectedEvent.getGeoTracking()== true){
+                        addCircle(eventLocation,GEOFENCE_RADIUS);
+                    } else if (selectedEvent.getGeoTracking() == false) {
+                        gMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)));
+                    }
 
                 } else {
                 // Default to Edmonton if location is not Specified

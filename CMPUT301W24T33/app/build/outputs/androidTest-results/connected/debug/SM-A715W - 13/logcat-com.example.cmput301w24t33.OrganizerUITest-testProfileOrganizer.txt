@@ -1,0 +1,1255 @@
+03-08 15:13:48.657 26361 26459 I TestRunner: started: testProfileOrganizer(com.example.cmput301w24t33.OrganizerUITest)
+03-08 15:13:48.657  1472  3543 D ApplicationPolicy: getApplicationComponentState : pkg = com.samsung.android.rubin.app userId : 0
+03-08 15:13:48.669 26361 26459 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+03-08 15:13:48.674  1472  1882 I ChimeraSystemEventListener: appLaunchIntent package name is: com.example.cmput301w24t33
+03-08 15:13:48.677  1327  3508 I SurfaceFlinger: id=35542 createSurf, flag=24004, Task=3074#35542
+03-08 15:13:48.679 28030 28060 W ziparchive: Unable to open '/system_ext/framework/org.carconnectivity.android.digitalkey.timesync.dm': No such file or directory
+03-08 15:13:48.679 28030 28060 W ziparchive: Unable to open '/system_ext/framework/org.carconnectivity.android.digitalkey.timesync.dm': No such file or directory
+03-08 15:13:48.679  1327  3508 I SurfaceFlinger: id=35543 createSurf, flag=80004, ActivityRecord{222a962 u0 com.example.cmput301w24t33/.activities.Organizer} t3074}#35543
+03-08 15:13:48.684  2578  2664 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:48.684  1472  5031 I SemDvfsHyPerManager: acquire hyper - AMS_APP_LAUNCH/1472@15, type = -999
+03-08 15:13:48.684  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1106343  [1472 / 15]    HINT : AMS_APP_LAUNCH    list :
+03-08 15:13:48.685  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPULittleMinFreq] UpdateResource Request ID : 1106343    Value : 1804800
+03-08 15:13:48.685  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1106343    Value : 2208000
+03-08 15:13:48.685  1537 10313 I CameraService: onUidStateChanged: uid=10052, procState is changed. (0 -> 1)
+03-08 15:13:48.686  5044  5044 I SemDvfsHyPerManager: acquire hyper - APP_START/5044@14, type = -999
+03-08 15:13:48.687  3258  3258 I BaseActivity: removeActivityFlags, flags : 16
+03-08 15:13:48.687  3258  3258 I BaseActivity: removeActivityFlags, flags : 6
+03-08 15:13:48.687  3258  3258 I DragController: endDrag
+03-08 15:13:48.687  3258  3258 W LauncherAppWidgetHost: setShouldListenFlag, mFlags:15 flag:resume on:false isFront:false
+03-08 15:13:48.687  3258  3258 I SPayUpdater: updateSpayHandler launcher activity is paused false
+03-08 15:13:48.688  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12794225  [5044 / 14]    HINT : APP_START    list :
+03-08 15:13:48.688  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12794225    Value : 2208000
+03-08 15:13:48.693  1472  5031 D InputDispatcher: Focused application(0): ActivityRecord{222a962 u0 com.example.cmput301w24t33/.activities.Organizer} t3074}
+03-08 15:13:48.697  3258  3258 I TopTaskTracker: onTaskMovedToFront : taskId = 3074
+03-08 15:13:48.698  1472  2964 D InputTransport: Input channel constructed: '45118c8', fd=605
+03-08 15:13:48.698  1472  2964 D InputTransport: Input channel constructed: '45118c8', fd=691
+03-08 15:13:48.699  1472  2964 D InputTransport: Input channel constructed: '45118c8', fd=715
+03-08 15:13:48.699  1327  1413 I SurfaceFlinger: id=35544 createSurf, flag=80004, 45118c8 Splash Screen com.example.cmput301w24t33#35544
+03-08 15:13:48.699 28030 28030 I Rubin   : [2] e8.b.c(SourceFile:2) : Reusing the existing key
+03-08 15:13:48.700  1472  2964 D InputTransport: Input channel destroyed: '45118c8', fd=715
+03-08 15:13:48.700  1472  2391 D AS.MultiSoundManager: mForegroundUid = 10451
+03-08 15:13:48.703  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33 from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:48.707 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@bd275ff in: PRE_ON_CREATE
+03-08 15:13:48.707 26361 26361 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+03-08 15:13:48.708  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: setView = android.widget.FrameLayout@afa6d2f TM=true
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fl=81030118
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   pfl=16000010
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: performTraversals mFirst=true windowShouldResize=true viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fl=81030118
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   pfl=16000010
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:48.709  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:48.710  1472  5031 V WindowManager: Relayout Window{45118c8 u0 Splash Screen com.example.cmput301w24t33}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:48.710  1327  1413 I SurfaceFlinger: id=35545 createSurf, flag=40004, Splash Screen com.example.cmput301w24t33$_2578#35545
+03-08 15:13:48.715  1472  5031 V WindowManager: Relayout hash=45118c8, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:48.715  1472  5031 V WindowManager:   fl=81030118
+03-08 15:13:48.715  1472  5031 V WindowManager:   pfl=16000010
+03-08 15:13:48.715  1472  5031 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:48.715  1472  5031 V WindowManager:   bhv=DEFAULT
+03-08 15:13:48.715  1472  5031 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:48.715 26361 26361 I DecorView: [INFO] isPopOver=false config=true
+03-08 15:13:48.715 26361 26361 I DecorView: updateCaptionType: isFloating=false isApplication=true hasWindowDecorCaption=false this=DecorView@62b25f7[]
+03-08 15:13:48.716 26361 26361 D DecorView: setCaptionType = 0, this = DecorView@62b25f7[]
+03-08 15:13:48.716  5242  5242 I ActivityUtils: HomePackage : com.sec.android.app.launcher, resumePackageName : com.example.cmput301w24t33
+03-08 15:13:48.716  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
+03-08 15:13:48.716  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/3258/sched_low_latency with value 1
+03-08 15:13:48.716  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 3258
+03-08 15:13:48.716  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5771/sched_low_latency with value 1
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5771
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5770/sched_low_latency with value 1
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5770
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5393/sched_low_latency with value 1
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5393
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-UTIL: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-OPTSHANDLER: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:48.717  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 54]
+03-08 15:13:48.717  2578  2656 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@99d36d3[cmput301w24t33] mNativeObject= 0xb400007c52070b00 sc.mNativeObject= 0xb400007c4d12d280 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
+03-08 15:13:48.717  2578  2656 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@99d36d3[cmput301w24t33] mNativeObject= 0xb400007c52070b00 sc.mNativeObject= 0xb400007c4d12d280 format= -3 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
+03-08 15:13:48.717  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=7 res=0x3 s={true 0xb400007c4d236800} ch=true seqId=0
+03-08 15:13:48.718  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007c4d236800} hwInitialized=true
+03-08 15:13:48.718 26361 26361 I DecorView: getCurrentDensityDpi: from real metrics. densityDpi=420 msg=resources_loaded
+03-08 15:13:48.718 26361 26361 I DecorView: setWindowBackground: isPopOver=false color=ffffffff d=android.graphics.drawable.ColorDrawable@4b33ecd
+03-08 15:13:48.718  2578  2664 D OpenGLRenderer: eglCreateWindowSurface
+03-08 15:13:48.719  1472  3678 I MediaSessionMonitor: Media session stopped : diffrent pkg
+03-08 15:13:48.723  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: reportNextDraw android.view.ViewRootImpl.performTraversals:4438 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309
+03-08 15:13:48.723  1472  2964 D InputDispatcher: Focus request (0): <null> but waiting because NOT_FOCUSABLE
+03-08 15:13:48.723  1472  2964 D InputDispatcher: Focus left window (0): 25ecb59 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity
+03-08 15:13:48.723  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: Setup new sync id=0
+03-08 15:13:48.723  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: Setting syncFrameCallback
+03-08 15:13:48.723  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: registerCallbacksForSync syncBuffer=false
+03-08 15:13:48.725  2578  2712 I ViewRootImpl@99d36d3[cmput301w24t33]: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-08 15:13:48.725  2578  2712 I ViewRootImpl@99d36d3[cmput301w24t33]: Setting up sync and frameCommitCallback
+03-08 15:13:48.728  2578  2664 I BLASTBufferQueue: [ViewRootImpl@99d36d3[cmput301w24t33]#945](f:0,a:0) onFrameAvailable the first frame is available
+03-08 15:13:48.728 28030 28060 W FA-Ads  : Disabling data collection. Found google_app_id in strings.xml but Google Analytics for Firebase is missing. Remove this value or add Google Analytics for Firebase to resume data collection.
+03-08 15:13:48.728  2578  2664 I ViewRootImpl@99d36d3[cmput301w24t33]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-08 15:13:48.729  2578  2664 D OpenGLRenderer: CFMS:: SetUp Pid : 2578    Tid : 2664
+03-08 15:13:48.729  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: MSG_WINDOW_FOCUS_CHANGED 0 0
+03-08 15:13:48.730  3258  3258 I BaseActivity: removeActivityFlags, flags : 8
+03-08 15:13:48.730  2578  2664 W Parcel  : Expecting binder but got null!
+03-08 15:13:48.730  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+03-08 15:13:48.730  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+03-08 15:13:48.730  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: onSyncComplete
+03-08 15:13:48.731  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
+03-08 15:13:48.731  1244  3899 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired
+03-08 15:13:48.731  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+03-08 15:13:48.731  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c662e3700
+03-08 15:13:48.735 28030 28060 I DynamiteModule: Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:240304704
+03-08 15:13:48.735 28030 28060 I DynamiteModule: Selected remote version of com.google.android.gms.ads.dynamite, version >= 240304704
+03-08 15:13:48.744  1327  3508 I SurfaceFlinger: id=35546 createSurf, flag=24000, Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35546
+03-08 15:13:48.745 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@bd275ff in: CREATED
+03-08 15:13:48.745 26361 26361 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=com.example.cmput301w24t33.activities.Organizer@bd275ff
+03-08 15:13:48.745  1257 27994 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1115292
+03-08 15:13:48.745  1257 27994 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1115292
+03-08 15:13:48.746  1327  3508 I SurfaceFlinger: id=35547 createSurf, flag=24004, Surface(name=Task=3074)/@0x272455 - animation-leash of app_transition#35547
+03-08 15:13:48.748  1327  3508 I SurfaceFlinger: id=35548 createSurf, flag=80000, 973702d ActivityRecordInputSink com.example.cmput301w24t33/.activities.Organizer#35548
+03-08 15:13:48.748 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@bd275ff in: STARTED
+03-08 15:13:48.749 26361 26361 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=com.example.cmput301w24t33.activities.Organizer@bd275ff
+03-08 15:13:48.749   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:48.750 26361 26361 D ContentValues: RESUME
+03-08 15:13:48.751 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@bd275ff in: RESUMED
+03-08 15:13:48.751  2578  2643 D Bubbles : onLocusVisibilityChanged: LocusId[17_chars] visible=false
+03-08 15:13:48.751 26361 26361 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=com.example.cmput301w24t33.activities.Organizer@bd275ff
+03-08 15:13:48.752 26361 26361 I MSHandlerLifeCycle: check: return. pkg=com.example.cmput301w24t33 parent=null callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.ActivityThread.handleResumeActivity:5476 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176
+03-08 15:13:48.752 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@62b25f7[]
+03-08 15:13:48.754 28030 28060 W System  : ClassLoader referenced unknown path:
+03-08 15:13:48.754  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33$_2578#35545] hidden!! flag(0)
+03-08 15:13:48.756   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:48.761 26361 26463 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:48.762   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:48.764  1472  2964 D InputTransport: Input channel constructed: 'd965637', fd=715
+03-08 15:13:48.764  1472  2964 D InputTransport: Input channel constructed: 'd965637', fd=741
+03-08 15:13:48.764  1472  2964 D InputTransport: Input channel constructed: 'd965637', fd=743
+03-08 15:13:48.766  1327  1414 I SurfaceFlinger: id=35549 createSurf, flag=80004, d965637 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer#35549
+03-08 15:13:48.766   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:48.766  1472  2964 D InputTransport: Input channel destroyed: 'd965637', fd=743
+03-08 15:13:48.770 26361 26361 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:48.775 26361 26361 I ViewRootImpl@1384754[Organizer]: setView = com.android.internal.policy.DecorView@62b25f7 TM=true
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147f00 | 0100 | RGBx_8888    |  152.0    0.0 1232.0 2400.0 |    0    0 1080 2400 | Wallpaper BBQ wrapper#88
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d0662d0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.sec.android.app.launcher/com.sec[...]ivities.LauncherActivity$_3258#35533
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745ec188a0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |   76  168 1004 2232 | Splash Screen com.example.cmput301w24t33$_2578#35545
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000744614a4a0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:48.775  1327  1327 D SurfaceFlinger:
+03-08 15:13:48.776 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@62b25f7[Organizer]
+03-08 15:13:48.777  1244  3899 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+03-08 15:13:48.777  1244  3899 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+03-08 15:13:48.780 28013 28013 I FirebaseApp: Device unlocked: initializing all Firebase APIs for app [DEFAULT]
+03-08 15:13:48.796  3258 28442 I RecentModel: onTaskStackChangedBackground
+03-08 15:13:48.802  3258  3627 I RecentTasksList: loadTasksInBackground : groupTask = GroupTask{task1=[id=3049 windowingMode=1 user=0 lastActiveTime=329064735] null, task2=null, task3=null, mStagedSplitBounds=null}
+03-08 15:13:48.802  3258  3627 I RecentTasksList: loadTasksInBackground : groupTask = GroupTask{task1=[id=3073 windowingMode=1 user=0 lastActiveTime=329098562] null, task2=null, task3=null, mStagedSplitBounds=null}
+03-08 15:13:48.802  3258  3627 I RecentTasksList: loadTasksInBackground : groupTask = GroupTask{task1=[id=3074 windowingMode=1 user=0 lastActiveTime=329099410] null, task2=null, task3=null, mStagedSplitBounds=null}
+03-08 15:13:48.811 26361 26361 I ViewRootImpl@1384754[Organizer]: performTraversals params={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:48.811 26361 26361 I ViewRootImpl@1384754[Organizer]:   fl=81810100
+03-08 15:13:48.811 26361 26361 I ViewRootImpl@1384754[Organizer]:   pfl=12020040
+03-08 15:13:48.811 26361 26361 I ViewRootImpl@1384754[Organizer]:   bhv=DEFAULT
+03-08 15:13:48.811 26361 26361 I ViewRootImpl@1384754[Organizer]:   fitSides= naviIconColor=0
+03-08 15:13:48.811 26361 26361 I ViewRootImpl@1384754[Organizer]:   sfl=100000}
+03-08 15:13:48.816 28013 28013 I FirebaseInitProvider: FirebaseApp initialization successful
+03-08 15:13:48.817 28030 28047 I Rubin   : [449] com.samsung.android.rubin.controller.provider.RubinStateProvider.call(SourceFile:2) : RubinStateProvider : method = getRubinState
+03-08 15:13:48.820 26361 26361 I ViewRootImpl@1384754[Organizer]: performTraversals mFirst=true windowShouldResize=true viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:48.820 26361 26361 I ViewRootImpl@1384754[Organizer]:   fl=81810100
+03-08 15:13:48.820 26361 26361 I ViewRootImpl@1384754[Organizer]:   pfl=12020040
+03-08 15:13:48.820 26361 26361 I ViewRootImpl@1384754[Organizer]:   bhv=DEFAULT
+03-08 15:13:48.820 26361 26361 I ViewRootImpl@1384754[Organizer]:   fitSides= naviIconColor=0
+03-08 15:13:48.820 26361 26361 I ViewRootImpl@1384754[Organizer]:   sfl=100000}
+03-08 15:13:48.823 28030 28030 I Rubin   : [2] e8.b.c(SourceFile:2) : Reusing the existing key
+03-08 15:13:48.824  1472  2686 V WindowManager: Relayout Window{d965637 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:48.824  1327  3508 I SurfaceFlinger: id=35550 createSurf, flag=40004, com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35550
+03-08 15:13:48.827  1327  3508 I SurfaceFlinger: id=35551 createSurf, flag=24000, Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35551
+03-08 15:13:48.829  1327  1414 I SurfaceFlinger: id=35552 createSurf, flag=24000, Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35552
+03-08 15:13:48.831  1472  2686 V WindowManager: Relayout hash=d965637, pid=26361, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:48.831  1472  2686 V WindowManager:   fl=81810100
+03-08 15:13:48.831  1472  2686 V WindowManager:   pfl=12020040
+03-08 15:13:48.831  1472  2686 V WindowManager:   apr=LIGHT_NAVIGATION_BARS
+03-08 15:13:48.831  1472  2686 V WindowManager:   bhv=DEFAULT
+03-08 15:13:48.831  1472  2686 V WindowManager:   fitSides= naviIconColor=0
+03-08 15:13:48.831  1472  2686 V WindowManager:   sfl=100000}
+03-08 15:13:48.832  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:16, packageName: com.example.cmput301w24t33 (APPEARANCE_LIGHT_NAVIGATION_BARS ), navbarColorManagedByIme:false
+03-08 15:13:48.833  3258 28442 I TouchInteractionService: onSystemUiStateChanged, stateFlags : 131072 |allow_gesture|
+03-08 15:13:48.833  3258  3258 I RecentsAnimationDeviceState: setSystemUiFlags, stateFlags : 131072
+03-08 15:13:48.833  3258  3258 I TouchInteractionService: onSystemUiFlagsChanged, lastSysUIFlags : 0
+03-08 15:13:48.833   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:48.834 26361 26361 I ViewRootImpl@1384754[Organizer]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
+03-08 15:13:48.835 26361 26361 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@1384754[Organizer] mNativeObject= 0xb400007cfb5f7e80 sc.mNativeObject= 0xb400007c50e5d420 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
+03-08 15:13:48.835 26361 26361 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@1384754[Organizer] mNativeObject= 0xb400007cfb5f7e80 sc.mNativeObject= 0xb400007c50e5d420 format= -1 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
+03-08 15:13:48.836 26361 26361 I ViewRootImpl@1384754[Organizer]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=11 res=0x3 s={true 0xb400007c7ebc3000} ch=true seqId=0
+03-08 15:13:48.837   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:48.837 26361 26361 I ViewRootImpl@1384754[Organizer]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007c7ebc3000} hwInitialized=true
+03-08 15:13:48.838 26361 26463 D OpenGLRenderer: eglCreateWindowSurface
+03-08 15:13:48.839   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:48.839 28030 28047 I Rubin   : [449] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.841   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:48.842 26361 26361 I ViewRootImpl@1384754[Organizer]: reportNextDraw android.view.ViewRootImpl.performTraversals:4438 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309
+03-08 15:13:48.842 26361 26361 I ViewRootImpl@1384754[Organizer]: Setup new sync id=0
+03-08 15:13:48.842 26361 26361 I ViewRootImpl@1384754[Organizer]: Setting syncFrameCallback
+03-08 15:13:48.843 26361 26361 I ViewRootImpl@1384754[Organizer]: registerCallbacksForSync syncBuffer=false
+03-08 15:13:48.843 28030 28047 I Rubin   : [449] com.samsung.android.rubin.controller.provider.RubinStateProvider.call(SourceFile:16) : RubinStateProvider : watch state = -2
+03-08 15:13:48.846 28030 28047 I Rubin   : [449] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.849 28030 28047 I Rubin   : [449] com.samsung.android.rubin.controller.provider.RubinStateProvider.e(SourceFile:4) : Is alternative Agreement : true, is Rubin ID exist : false
+03-08 15:13:48.852 28013 28087 I DynamiteModule: Considering local module com.google.android.gms.measurement.dynamite:89 and remote module com.google.android.gms.measurement.dynamite:102
+03-08 15:13:48.852 28013 28087 I DynamiteModule: Selected remote version of com.google.android.gms.measurement.dynamite, version >= 102
+03-08 15:13:48.853 26361 26528 I ViewRootImpl@1384754[Organizer]: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-08 15:13:48.853 26361 26528 I ViewRootImpl@1384754[Organizer]: Setting up sync and frameCommitCallback
+03-08 15:13:48.853  3258  3258 I TaskThumbnailCache: handleResult: taskId = 3049, taskThumbnail = android.graphics.Bitmap@e99d68d
+03-08 15:13:48.854  1327  1327 I Layer   : id=35534 removedFromDrawingState Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35534 (147)
+03-08 15:13:48.854  1327  1327 I Layer   : id=35535 removedFromDrawingState Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35535 (147)
+03-08 15:13:48.854  1327  1327 I SurfaceFlinger: id=35534 Removed Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35534 (147)
+03-08 15:13:48.854  1327  1327 I SurfaceFlinger: id=35535 Removed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35535 (147)
+03-08 15:13:48.854 28013 28013 I CustomIndexesSearchProvider: onCreate
+03-08 15:13:48.855  1327  1327 I Layer   : id=35534 Destroyed Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35534
+03-08 15:13:48.855  1327  1327 I Layer   : id=35535 Destroyed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35535
+03-08 15:13:48.856 28030 28047 I Rubin   : [449] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.856  1472  2964 D InputDispatcher: Focus request (0): d965637 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer but waiting because NO_WINDOW
+03-08 15:13:48.857 28013 28013 I CustomIndexesSearchProvider: secQueryGetFingerprint : 620115100
+03-08 15:13:48.857 26361 26463 I BLASTBufferQueue: [ViewRootImpl@1384754[Organizer]#7](f:0,a:0) onFrameAvailable the first frame is available
+03-08 15:13:48.857 28030 28047 I Rubin   : [449] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.858 28030 28047 I Rubin   : [449] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.858 28030 28047 I Rubin   : [449] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.859 26361 26463 I ViewRootImpl@1384754[Organizer]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-08 15:13:48.859 28013 28087 W System  : ClassLoader referenced unknown path:
+03-08 15:13:48.860 26361 26463 D OpenGLRenderer: CFMS:: SetUp Pid : 26361    Tid : 26463
+03-08 15:13:48.860 26361 26463 W Parcel  : Expecting binder but got null!
+03-08 15:13:48.861 26361 26361 I ViewRootImpl@1384754[Organizer]: onSyncComplete
+03-08 15:13:48.862 27945 27945 I [WEATHER]RubinDataSourceImpl: {[6E099A6F08D647829A2B7E3CFA1CA20DA12453F944A27016475E0EE04A441065AB8ACC9A01C366F15CC757D63701939D573C60E5FC634B5A3CCC327C52610B5BD5E1BD533024B0130D9811C4209620A77C9AAF1C9FCEC673E608AA8218E4EF8C]}
+03-08 15:13:48.863 26361 26361 I ViewRootImpl@1384754[Organizer]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
+03-08 15:13:48.863 26361 26361 I ViewRootImpl@1384754[Organizer]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c50ecee00
+03-08 15:13:48.864 28013 28013 I NewsProvider: onCreate
+03-08 15:13:48.868 27945 27945 I RunestoneSDK: [1.3.11]Called module : V30ContextFenceInformation -> getRegisteredContextFenceList(RunestoneFenceApi.kt:4)
+03-08 15:13:48.871 28030 28047 I Rubin   : [449] com.samsung.android.rubin.datainterface.f.call(SourceFile:2) : Method : get_registered_context_fences, Calling Package - com.sec.android.daemonapp
+03-08 15:13:48.870  1472  1876 W ziparchive: Unable to open '/data/app/~~W-ddUiX8JS3WzrZIN8mU0w==/com.example.cmput301w24t33-E7e2aXhTzEvn2QLsQTpRuw==/base.dm': No such file or directory
+03-08 15:13:48.873 28030 28047 I AccessController: isAllowedPackage - com.sec.android.daemonapp is allowed to access
+03-08 15:13:48.873  3258  3258 I TaskThumbnailCache: handleResult: taskId = 3073, taskThumbnail = android.graphics.Bitmap@4ed8042
+03-08 15:13:48.874  1472  3543 I SemDvfsHyPerManager: acquire hyper - AMS_RESUME_TAIL/1472@16, type = -999
+03-08 15:13:48.874  1472  1876 I PkgPredictorService-SecIpmManagerServiceImpl: reportToNAP uid:10451 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer thisTime:195
+03-08 15:13:48.874  1472  3543 I SemDvfsHyPerManager: acquire hyper - AMS_ACT_LAZY/1472@17, type = -999
+03-08 15:13:48.875  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1107832  [1472 / 16]    HINT : AMS_RESUME_TAIL    list :
+03-08 15:13:48.877  1472  1876 I ActivityTaskManager: Displayed com.example.cmput301w24t33/.activities.Organizer: +195ms
+03-08 15:13:48.877  1327  1414 I SurfaceFlinger: id=35553 createSurf, flag=24000, Surface(name=d965637 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer)/@0xfaa681f - animation-leash of starting_reveal#35553
+03-08 15:13:48.879 28030 28047 I Rubin   : [449] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.879 28030 28047 W Rubin   : [449] com.samsung.android.rubin.datainterface.f.isProvidableState(SourceFile:2) : Rubin is disabled
+03-08 15:13:48.881 28030 28047 I Rubin   : [449] z6.d.a(SourceFile:6) : active permissions : [SMS, LOCATION, NEARBY_DEVICES, CONTACTS, CALENDAR, CALL_LOG, PHYSICAL_ACTIVITY, STORAGE]
+03-08 15:13:48.883 27945 27945 I [WEATHER]RubinDataSourceImpl: {[6E099A6F08D647829A2B7E3CFA1CA20DDA7C0F82C2703992423C816CF7CABA38573A6D1D928DAF910F5B2CAB7DEE94B9CD8B5DCDE87C35A32373C7B4A0F912E8824672A6FABAC01C62178FAF48BF6E04]}
+03-08 15:13:48.883  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1107832    Value : 1324800
+03-08 15:13:48.883 27945 27945 I [WEATHER]AppUpdateService: {[F25703819843744D7F1F976789EB79783C9198DB6E1CD68B43F5AF2328C70CB7]}
+03-08 15:13:48.883  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1109322  [1472 / 17]    HINT : AMS_ACT_LAZY    list :
+03-08 15:13:48.883 28030 28030 I Rubin   : [2] a7.c.d(SourceFile:2) : current version = 4 upgrade version = 4
+03-08 15:13:48.884  1257  1326 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPULittleMinFreq] RemoveResource Request ID : 1110813
+03-08 15:13:48.885 27945 27945 I [WEATHER]AppUpdateService: {[F25703819843744D7F1F976789EB79783F41BDA006E16CEE81AD3ABE5C2467031B0A5ABAB6DA0A6E945FF98DF4D72C2709038535A29094FB86F962FF5C87E99BDD669091519D3440337C730D674D1548D1C00979F5937307F009EFF862C46300FF7450F8C0063316B6C1C2D820C4F8C0DF3D8D236052D16B99A0FEEEFF9C2C5ADDBBED23123DA51E7D09520D7FE049AF]}
+03-08 15:13:48.885 28030 28030 I Rubin   : [2] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.885 27945 27945 I [WEATHER]FreeStatusCheckService: {[2D77D00695CB34C3942C996BF010E897E9D5DE2D112747DB273FB460D0DFFD52D9DE889B0FA1C498BA79FF64E91415DC]}
+03-08 15:13:48.886 27945 27945 I [WEATHER]FreeStatusCheckService: {[59D59D6A529801523F831777F8F19C602532FAE18742678392C5065B10A075FAD1169313C7C40AA429B4C3C52D92F107E892CC368CC227F233EF2AC2D39680486844A2C45F0793F3A774D5B1C15BF0F875DDF19F5A0A620C36D29AB3D2A15DEFFACB40758AA15334DCDF42545936D059]}
+03-08 15:13:48.887  1257  1326 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1110813
+03-08 15:13:48.887  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35550] hidden!! flag(0)
+03-08 15:13:48.887  1257  1326 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1110813
+03-08 15:13:48.890 28030 28030 I Rubin   : [2] v7.f.o(SourceFile:3) : device rubin state : false -> false
+03-08 15:13:48.890  1472  2686 D InputDispatcher: Focus entered window (0): d965637 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer
+03-08 15:13:48.890 28030 28030 I Rubin   : [2] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.891 26361 26361 I ViewRootImpl@1384754[Organizer]: MSG_WINDOW_FOCUS_CHANGED 1 0
+03-08 15:13:48.892  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:48.892  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fl=81030118
+03-08 15:13:48.892  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   pfl=16000010
+03-08 15:13:48.892  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:48.892  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:48.892 26361 26361 I ViewRootImpl@1384754[Organizer]: mThreadedRenderer.initializeIfNeeded()#2 mSurface={isValid=true 0xb400007c7ebc3000}
+03-08 15:13:48.893  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:48.893  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fl=81030118
+03-08 15:13:48.893  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   pfl=16000010
+03-08 15:13:48.893  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:48.893  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:48.893  1472  3543 V WindowManager: Relayout Window{45118c8 u0 Splash Screen com.example.cmput301w24t33}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147f00 | 0100 | RGBx_8888    |  152.0    0.0 1232.0 2400.0 |    0    0 1080 2400 | Wallpaper BBQ wrapper#88
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d0662d0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.sec.android.app.launcher/com.sec[...]ivities.LauncherActivity$_3258#35533
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d0652a0 | 0102 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |   22   48 1058 2352 | com.example.cmput301w24t33/com.examp[...]33.activities.Organizer$_26361#35550
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745ec188a0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |   22   48 1058 2352 | Splash Screen com.example.cmput301w24t33$_2578#35545
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#3533
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger: 3
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000744614a4a0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:48.894  1327  1327 D SurfaceFlinger:
+03-08 15:13:48.895 26361 26361 D InputMethodManager: startInputInner - Id : 0
+03-08 15:13:48.895 26361 26361 I InputMethodManager: startInputInner - mService.startInputOrWindowGainedFocus
+03-08 15:13:48.896  2578  2578 D SamsungLightBarControlHelper: onStatusBarAppearanceChanged() -  sbModeChanged:false, statusBarMode:MODE_TRANSPARENT, barState:SHADE, isKeyguardShowing:false, navbarColorManagedByIme:false, stackAppearancesChanged:true, (AppearanceRegion{ bounds=[0,0][1080,2400]}, ), packageName:com.example.cmput301w24t33
+03-08 15:13:48.897  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:0, packageName: com.example.cmput301w24t33, navbarColorManagedByIme:false
+03-08 15:13:48.897  1472  2964 D InputMethodManagerService: mDesktopModeManager null!
+03-08 15:13:48.897  1472  2964 V InputMethodManagerService: getDisplayIdOfInputMethodWindowToBeAdded: displayId=0
+03-08 15:13:48.897  1472  3543 V WindowManager: Relayout hash=45118c8, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
+03-08 15:13:48.897  1472  3543 V WindowManager:   fl=81030118
+03-08 15:13:48.897  1472  3543 V WindowManager:   pfl=16000010
+03-08 15:13:48.897  1472  3543 V WindowManager:   bhv=DEFAULT
+03-08 15:13:48.897  1472  3543 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:48.897  1472  2964 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+03-08 15:13:48.897  2578  2578 D SamsungLightBarControlHelper: updateNavigation(White button) isLightBar:false, hasLightBarNavigationBarFlag:false, packageName:com.example.cmput301w24t33, DirectReplying:false, NavBarColorManagerdByIme:false, ForceDarkForScrim:false, QsCustomizing:false, PanelHasWhiteBg:true
+03-08 15:13:48.898  1472  2964 D InputMethodManagerService: checkDisplayOfStartInputAndUpdateKeyboard: displayId=0, mFocusedDisplayId=0
+03-08 15:13:48.898  1472  2964 D InputTransport: Input channel constructed: 'ClientS', fd=952
+03-08 15:13:48.898  1472  2964 D InputTransport: Input channel destroyed: 'ClientS', fd=952
+03-08 15:13:48.898  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: updateBlastSurfaceIfNeeded mBlastBufferQueue=0xb400007c52070b00 isSameSurfaceControl=true
+03-08 15:13:48.898  2578  2656 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@99d36d3[cmput301w24t33] mNativeObject= 0xb400007c52070b00 sc.mNativeObject= 0xb400007c4d12ddc0 format= -3 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2898 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301
+03-08 15:13:48.898  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=5 res=0x0 s={true 0xb400007c4d236800} ch=false seqId=0
+03-08 15:13:48.899  2578  2711 I ViewRootImpl@99d36d3[cmput301w24t33]: mWNT: t=0xb400007c6640a100 mBlastBufferQueue=0xb400007c52070b00 fn= 2 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:48.899  2578  2578 D SamsungLightBarControlHelper: updateStatus(WHITE icon) NumStacks:1, StatusBarMode:MODE_TRANSPARENT, lightBarBounds:[], StatusBarState:SHADE, packageName:com.example.cmput301w24t33, isWhiteKeyguardStatusBarBySettings:true
+03-08 15:13:48.899  2578  2711 I ViewRootImpl@99d36d3[cmput301w24t33]: mWNT: t=0xb400007c6640a200 mBlastBufferQueue=0xb400007c52070b00 fn= 2 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:48.901 12908 12908 I HBD     : HoneyBoardService onFinishInput
+03-08 15:13:48.902 12908 12908 I HBD     : a IC have been unbinding,  RemoteInputConnection{idHash=#555043f}
+03-08 15:13:48.902 12908 12908 I HBD     : HoneyBoardService [PF_CL][onFinishInput]  1 ms
+03-08 15:13:48.902 12908 12908 I HBD     : HoneyBoardService [IMI] onStartInput - caller pid : 26361 , caller uid : 10451
+03-08 15:13:48.902 12908 12908 I HBD     : j updateConfigs
+03-08 15:13:48.902 12908 12908 I HBD     : j isEnabledNightMode : false
+03-08 15:13:48.902 12908 12908 I HBD     : a IC have been binding, RemoteInputConnection{idHash=#438310c}
+03-08 15:13:48.902 27945 27945 I [WEATHER]MigrateCp: {[EE6E3CC8B114EAAB1365F7B4D709B85753F27F8F573FC32A591162BC01BC9763]}
+03-08 15:13:48.902 12908 12908 I HBD     : h [EditorInputType]setPrivateImeOptionsToTable privateImeOptions ( null )
+03-08 15:13:48.902 12908 12908 I HBD     : b incognitoMode : false
+03-08 15:13:48.902 12908 12908 I HBD     : b needOff = true , isForceOff = false, isNullInputClass : true
+03-08 15:13:48.902 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:48.902 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:48.903 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:48.903  1327  1414 I SurfaceFlinger: id=35554 createSurf, flag=24004, Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35554
+03-08 15:13:48.904 27945 27945 W [WEATHER]CheckCPMatch: {[0AACE7D7FC9AEDAD084D6991E0BF48936746808AE9F5E18E29A560AB84FA3ACB43FE04F5DD41AE38690DAB6FE642AFB4EBB39DC2A80FF3199C44410D2013F90A]}
+03-08 15:13:48.907 27945 27945 I [WEATHER]CompleteCondition: {[C58C622E0FDF6CED660E23DA1D46C7E304A65D039C92809761DD488C815D4473]}
+03-08 15:13:48.907 27945 27945 I [WEATHER]ConditionManager: {[B1B36EC94B8C4F4707BE22CC98BC66F332BADB6184B583390233078DCA344F635804ACD256F54CCFD7C073E1AE2585B7]}
+03-08 15:13:48.910  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
+03-08 15:13:48.910  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   fl=81840048
+03-08 15:13:48.910  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   pfl=1b000000
+03-08 15:13:48.910  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE naviIconColor=0
+03-08 15:13:48.910  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]:   sfl=60000}
+03-08 15:13:48.910 12908 12908 I HBD     : b needOff = true , isForceOff = false, isNullInputClass : true
+03-08 15:13:48.910  2578  2712 I ViewRootImpl@99d36d3[cmput301w24t33]: mWNT: t=0xb400007c6640a800 mBlastBufferQueue=0xb400007c52070b00 fn= 3 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:48.910 12908 12908 I HBD     : b update cached prediction status : false
+03-08 15:13:48.910 12908 12908 I HBD     : h getDefaultInputRange : UNKNOWN
+03-08 15:13:48.910 12908 12908 I HBD     : a currentState : 0
+03-08 15:13:48.911 12908 12908 I HBD     : a [UpdatePolicy] [post] a: 0 cl: 65537 kit: [0/0] vt: 0 ir: 1
+03-08 15:13:48.911 12908 12908 I HBD     : a [NRIC] resetNoResponseState
+03-08 15:13:48.911 12908 12908 I HBD     : b needOff = true , isForceOff = false, isNullInputClass : true
+03-08 15:13:48.911 12908 12908 I HBD     : b update cached prediction status : false
+03-08 15:13:48.911 12908 12908 I HBD     : HoneyBoardService [PF_OP][onStartInput]  9 ms
+03-08 15:13:48.912  4938  5328 D KnoxHelper: getActivityList callingUserId: 0, target user: 0
+03-08 15:13:48.913 30756 30902 I SamsungAccount: [OpenContentProvider] query tnc
+03-08 15:13:48.913 30756 30902 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:48.915 30756 30902 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureWithEmptyId
+03-08 15:13:48.915 30756 30902 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:48.915 30756 30902 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : true
+03-08 15:13:48.915 30756 30902 I SamsungAccount: [SignatureInfoDbHelper] getSignatureResult - [][rubin.app.]
+03-08 15:13:48.915 30756 30902 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser
+03-08 15:13:48.916 30756 30902 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser - [][rubin.app.][64/3291d] => matched
+03-08 15:13:48.916 30756 30902 I SamsungAccount: [SignatureInfoDbHelper] search - matched
+03-08 15:13:48.916 30756 30902 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync(fromDb) - matched
+03-08 15:13:48.920 28030 28030 I Rubin   : [2] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:48.921  1472  3543 V WindowManager: Relayout Window{85bfa35 u0 NotificationShade}: viewVisibility=4 req=1080x2400 d0
+03-08 15:13:48.921  1327  1327 I Layer   : id=35539 removedFromDrawingState Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35539 (147)
+03-08 15:13:48.921  1327  1327 I SurfaceFlinger: id=35539 Removed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35539 (147)
+03-08 15:13:48.922  1327  1327 I Layer   : id=35539 Destroyed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35539
+03-08 15:13:48.924  1472  3543 V WindowManager: Relayout hash=85bfa35, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
+03-08 15:13:48.924  1472  3543 V WindowManager:   fl=81840048
+03-08 15:13:48.924  1472  3543 V WindowManager:   pfl=1b000000
+03-08 15:13:48.924  1472  3543 V WindowManager:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE naviIconColor=0
+03-08 15:13:48.924  1472  3543 V WindowManager:   sfl=60000}
+03-08 15:13:48.927  1244  3730 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released
+03-08 15:13:48.928 28030 28030 E Rubin   : [2] com.samsung.android.rubin.datainterface.f.lambda$call$4(SourceFile:3) : runestone modules are not started, so start runestone modules
+03-08 15:13:48.928 28030 28030 I Rubin   : [2] z7.r.y(SourceFile:1) : Enabling rubin service
+03-08 15:13:48.928  2578  2711 I ViewRootImpl@99d36d3[cmput301w24t33]: mWNT: t=0xb400007c6640a300 mBlastBufferQueue=0xb400007c52070b00 fn= 4 caller= android.view.SyncRtSurfaceTransactionApplier.applyTransaction:96 android.view.SyncRtSurfaceTransactionApplier.lambda$scheduleApply$0$android-view-SyncRtSurfaceTransactionApplier:69 android.view.SyncRtSurfaceTransactionApplier$$ExternalSyntheticLambda0.onFrameDraw:4
+03-08 15:13:48.930  1472  3543 D InputMethodManagerService: isImeSwitcherDisabledPackage : false
+03-08 15:13:48.930  2578  2578 I ViewRootImpl@1c1cd0e[NotificationShade]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)4 dur=15 res=0x0 s={false 0x0} ch=false seqId=0
+03-08 15:13:48.932 27945 27945 E [WEATHER]ActivityTransitionGmsManager: {[666EEED8C7D27883280BAFC63AFE9E9E0A72976B51874523CCEA58FFDB83D5ECCE77C2F221D415BCF5E170F1B94600CF62574AAD19CDFEDF84494674D909B314E841287597BC303429D81134B5CE1A4665D2FC4F89E4DD9F40519665CC8C96EDFA92414656C2BAE7B2CDFEB436D5BDAD]}
+03-08 15:13:48.933  2578  2578 I FaceWidgetPositionAlgorithm: getClockContainerHeight() supplier = 227, bottom margin = 0, real height = 290
+03-08 15:13:48.933  2578  2578 I ClockInfoManager: isClockFaceType: type = 9 clockFaceType = 0
+03-08 15:13:48.933  2578  2578 D FaceWidgetPositionAlgorithm: getTopMargin scale = 0.8408237, clockContainerHeight = 227, scaleMarginY = 21
+03-08 15:13:48.933  2578  2578 I FaceWidgetPositionAlgorithm: getClockContainerHeight() supplier = 227, bottom margin = 63, real height = 290
+03-08 15:13:48.933  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() height = 456 container Visibility = 8, isValid = true, mIsDozing = false, fraction = 1.0, source = 0, target = 0
+03-08 15:13:48.933 27945 27945 I [WEATHER]EssNotification: {[11D77475A16E357BFFF1109325F17E95BA795923AB7B359E52F6F8214C9FFB43]}
+03-08 15:13:48.933  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() supplier = 456
+03-08 15:13:48.935 28030 28030 I Rubin   : [2] z7.r.T(SourceFile:2) : Enabling Rubin :: FLAG - needNewId : true
+03-08 15:13:48.935 12908 12908 I InputMethodService: removeImeSurface
+03-08 15:13:48.935 12908 12908 I MSHandlerLifeCycle: check: return. pkg=com.samsung.android.honeyboard isActivity=false callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.Dialog.hide:767 android.inputmethodservice.InputMethodService.removeImeSurface:1290 android.inputmethodservice.InputMethodService.scheduleImeSurfaceRemoval:1279 android.inputmethodservice.InputMethodService.-$$Nest$mscheduleImeSurfaceRemoval:0
+03-08 15:13:48.935 12908 12908 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@df736f9[InputMethod]
+03-08 15:13:48.943 28030 28030 I Rubin   : [2] ed.c.d(SourceFile:2) : type = type_auth
+03-08 15:13:48.943 28030 28112 I Rubin   : [489] ed.a.g(SourceFile:1) : requestAccessToken(): false
+03-08 15:13:48.945 28030 28109 I Rubin   : [486] e8.b.c(SourceFile:2) : Reusing the existing key
+03-08 15:13:48.948  1537  2942 I CameraService: onUidStateChanged: uid=10052, procState is changed. (1 -> 0)
+03-08 15:13:48.949 28030 28112 I Rubin   : [489] ed.a.e(SourceFile:2) : REFRESH ACCESS TOKEN for Thread :: 489 with tid 8624431782
+03-08 15:13:48.952  2578  2664 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:48.952  2578  2664 D OpenGLRenderer: setSurface() destroyed EGLSurface
+03-08 15:13:48.952  2578  2664 D OpenGLRenderer: destroyEglSurface
+03-08 15:13:48.954  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309 alpha=0.0
+03-08 15:13:48.954  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fl=81030118
+03-08 15:13:48.954  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   pfl=16000010
+03-08 15:13:48.954  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:48.954  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:48.955  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=true mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309 alpha=0.0
+03-08 15:13:48.955  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fl=81030118
+03-08 15:13:48.955  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   pfl=16000010
+03-08 15:13:48.955  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   bhv=DEFAULT
+03-08 15:13:48.955  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]:   fitSides= naviIconColor=0}
+03-08 15:13:48.955  1472  1504 V WindowManager: Relayout Window{45118c8 u0 Splash Screen com.example.cmput301w24t33}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:48.957  1472  1504 V WindowManager: Relayout hash=45118c8, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309 alpha=0.0
+03-08 15:13:48.957  1472  1504 V WindowManager:   fl=81030118
+03-08 15:13:48.957  1472  1504 V WindowManager:   pfl=16000010
+03-08 15:13:48.957  1472  1504 V WindowManager:   bhv=DEFAULT
+03-08 15:13:48.957  1472  1504 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:48.959  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=3 res=0x2 s={false 0x0} ch=true seqId=0
+03-08 15:13:48.959  2578  2656 I ViewRootImpl@99d36d3[cmput301w24t33]: dispatchDetachedFromWindow
+03-08 15:13:48.960   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:48.960  1472  2686 D InputTransport: Input channel destroyed: '45118c8', fd=605
+03-08 15:13:48.960  1472  2686 W InputManager-JNI: Input channel object '45118c8 Splash Screen com.example.cmput301w24t33 (client)' was disposed without first being removed with the input manager!
+03-08 15:13:48.960  1472  2686 D InputTransport: Input channel destroyed: '45118c8', fd=691
+03-08 15:13:48.962  2578  2656 D InputTransport: Input channel destroyed: '45118c8', fd=184
+03-08 15:13:48.962 28030 28113 I Rubin   : [490] ed.a$a.run(SourceFile:2) : ======================doRefreshAccessTokenTask======================
+03-08 15:13:48.964   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:48.967 30756 30756 I SamsungAccount: [AIDLRequestService] OnCreate Service
+03-08 15:13:48.967 30756 30756 I SamsungAccount: [AIDLRequestService] OnBind
+03-08 15:13:48.967 30756 30756 I SamsungAccount: [AIDLRequestService] [InAIDL] Service bound
+03-08 15:13:48.968   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:48.963  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:16, packageName: com.example.cmput301w24t33 (APPEARANCE_LIGHT_NAVIGATION_BARS ), navbarColorManagedByIme:false
+03-08 15:13:48.969  2578  2578 D SamsungLightBarControlHelper: updateNavigation(Black button) isLightBar:false, hasLightBarNavigationBarFlag:true, packageName:com.example.cmput301w24t33, DirectReplying:false, NavBarColorManagerdByIme:false, ForceDarkForScrim:false, QsCustomizing:false, PanelHasWhiteBg:true
+03-08 15:13:48.969 28030 28030 I Rubin   : [2] kd.a$a.onServiceConnected(SourceFile:4) : Samsung Account AIDL : bind to Samsung Account AIDL
+03-08 15:13:48.970 28030 28030 I Rubin   : [2] kd.a.k(SourceFile:4) : REGISTER CALLBACK TO SAMSUNG ACCOUNT :: TID - 8624431782
+03-08 15:13:48.970 28030 28113 I Rubin   : [490] kd.a.j(SourceFile:6) : bind result : true
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback start
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] REG_CALLING_PACKAGE : rubin.app.
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback start. Package = rubin.app.
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [CBM] [InAIDL-CallbackManager] registerCallback
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [CBM] [InAIDL-CallbackManager] checkRegisterCallbackCondition
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getRegistrationCodeIfAlreadyRegistered
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [CBM] [InAIDL-CallbackManager]Success registerCallback
+03-08 15:13:48.970 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback end. registrationCode :Y29tLnNhbXN1bmcuYW5kcm9pZC5ydWJpbi5hcHAyNzQ= Package = rubin.app.
+03-08 15:13:48.971  1327  1327 I Layer   : id=35553 removedFromDrawingState Surface(name=d965637 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer)/@0xfaa681f - animation-leash of starting_reveal#35553 (146)
+03-08 15:13:48.972 28030 28030 I Rubin   : [2] kd.a.l(SourceFile:2) : REQUEST NEW ACCESS TOKEN :: TID - 8624431782
+03-08 15:13:48.972   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147f00 | 0100 | RGBx_8888    |  152.0    0.0 1232.0 2400.0 |    0    0 1080 2400 | Wallpaper BBQ wrapper#88
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d0662d0 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.sec.android.app.launcher/com.sec[...]ivities.LauncherActivity$_3258#35533
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000744614a270 | 0102 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    7   15 1073 2385 | com.example.cmput301w24t33/com.examp[...]33.activities.Organizer$_26361#35550
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446148210 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:48.976  1327  1327 D SurfaceFlinger:
+03-08 15:13:48.981   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:48.985   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:48.987   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:48.989 28013 28106 I FA      : App measurement initialized, version: 85000
+03-08 15:13:48.989 28013 28106 I FA      : To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
+03-08 15:13:48.989 28013 28106 I FA      : To enable faster debug mode event logging run:
+03-08 15:13:48.989 28013 28106 I FA      :   adb shell setprop debug.firebase.analytics.app com.samsung.android.app.spage
+03-08 15:13:48.995 28013 28013 I TraceUtil: beginSection : SpageApplication
+03-08 15:13:48.995 28013 28013 I SPageApplication: onCreate APP_VERSION_CODE 620115100
+03-08 15:13:48.995 28013 28013 I SPageApplication: setMainViewFactory
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: Writing exception to parcel
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: java.lang.IllegalStateException: WEATHER_WIDGET_NOT_SUPPORT_MODEL
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: 	at com.samsung.android.app.spage.news.newsprovider.NewsProvider.query(Unknown Source:119)
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: 	at android.content.ContentProvider.query(ContentProvider.java:1526)
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: 	at android.content.ContentProvider.query(ContentProvider.java:1622)
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: 	at android.content.ContentProvider$Transport.query(ContentProvider.java:290)
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:107)
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: 	at android.os.Binder.execTransactInternal(Binder.java:1316)
+03-08 15:13:48.997 28013 28028 E DatabaseUtils: 	at android.os.Binder.execTransact(Binder.java:1280)
+03-08 15:13:48.997 27945 27991 E [WEATHER]NewsRemoteDataSourceImpl: {[D82F58E66A9FA2A398595013EB63A8319A200F5B0DC5B9498AF72CBB6E239AA8F4953897FA13D2A9F1A2D8A86114C164F2D8A79800A03262759709EE9BD0D926C2982C5F74C2978B50D8514CF9408E53B4391FEFEAB2A3B0252154C7CBDFF15D]}
+03-08 15:13:49.000 28013 28013 I CommonExecutor: numOfThreads 7
+03-08 15:13:49.000 28013 28013 I CommonExecutor: startup() java.util.concurrent.ScheduledThreadPoolExecutor@ba6efef[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0]
+03-08 15:13:49.000 28013 28013 I SPageApplication: Analytics.init
+03-08 15:13:49.001 28013 28013 I LeaveServiceManager: init
+03-08 15:13:49.003   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.003 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] requestAccesstoken
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] BundleInfo = [ additional:user_id,birthday,mcc,cc,api_server_url,auth_server_url,device_physical_address_text,refresh_token,login_id,login_id_type,representative,region_mcc, ch_ba_pr_:false]
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] checkRequestCondition
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL]Start AccessTokenRunnable Thread. package = rubin.app.
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [PermissionsUtils] checkPrivilegedPhonePermissionOfCallingPackage
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [PermissionsUtils] hasPrivilegedPhonePermission : true
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.004 30756 30771 I SamsungAccount: [CBM] setCurrentRequestType :1
+03-08 15:13:49.004 30756 28117 I SamsungAccount: [AbstractProcessRunnable] [InAIDL-AbstractProcessRunnable]isAvailableRunningProcess start Package = rubin.app.
+03-08 15:13:49.006 30756 28117 I SamsungAccount: [NetworkStateUtil] == networkStateCheck == true
+03-08 15:13:49.006 30756 28117 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.006 30756 28117 I SamsungAccount: [DbManagerV2] getDataState : VALID
+03-08 15:13:49.006 30756 28117 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.006 30756 28117 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : false
+03-08 15:13:49.006 30756 28117 I SamsungAccount: [SignatureInfoDbHelper] getSignatureResult - [10/z38ai][rubin.app.]
+03-08 15:13:49.006 30756 28117 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser - [10/z38ai][rubin.app.][64/3291d] => matched
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [SignatureInfoDbHelper] search - matched
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync(fromDb) - matched
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [AbstractProcessRunnable] [InAIDL-AbstractProcessRunnable]isAvailableRunningProcess end. Package = rubin.app.
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]runProcess start. Package = rubin.app.
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [StateCheckUtil] isGoogleLinked = false
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [StateCheckUtil] isWeChatLinked = false
+03-08 15:13:49.007 30756 28117 I SamsungAccount: [AccessTokenRunnable] check_basic_profile = true needToCheckServer = false
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]isAccessTokenReusable. Package = rubin.app.
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [StateCheckUtil] isOverIntervalTime, renewTimeStamp = false
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]checkAndSetAccessToken. Package = rubin.app.
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [AccessToken] getAccessTokenInfo
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [RBIVO] getStringFormAdditionalBundleKey : expired_access_token
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [AccessTokenRunnable] expiredAccessToken is Empty. curTimeSec=1709936029, TimeGap=68937
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [AccessTokenRunnable] IsTokenReusable : true
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [AccessTokenRunnable] Accesstoken is reusable and isNeedToCheckServer is false
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.008 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [DataUtil] Not Skip Name Validation by accountMCC
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [LocalBusinessException] Not Skip Name Validation by AppId
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [OpenDBManager] getCheckListFromOpenDB
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [OpenDBManager] getTncResult
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [OpenDBManager] getTncCursor
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [OpenContentProvider] query tnc
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureWithEmptyId
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : true
+03-08 15:13:49.009 30756 28117 I SamsungAccount: [SignaturePreconditionChecker] This is internal call. So skip
+03-08 15:13:49.010 30756 28117 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.010 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.010 30756 28117 I SamsungAccount: [DataUtil] Not Skip Name Validation by accountMCC
+03-08 15:13:49.010 30756 28117 I SamsungAccount: [OpenDBManager] isRequireField
+03-08 15:13:49.010 30756 28117 I SamsungAccount: [OpenDBManager] getFieldCursor
+03-08 15:13:49.010 30756 28117 I SamsungAccount: [OpenContentProvider] query field
+03-08 15:13:49.011 30756 28117 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.011 30756 28117 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureWithEmptyId
+03-08 15:13:49.011 30756 28117 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.011 30756 28117 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : true
+03-08 15:13:49.011 30756 28117 I SamsungAccount: [SignaturePreconditionChecker] This is internal call. So skip
+03-08 15:13:49.011 27945 27945 I [WEATHER]AppUpdateService: {[F25703819843744D7F1F976789EB79788758AD5B9BF3767780DB00994DDA19BA]}
+03-08 15:13:49.014 27945 27945 I [WEATHER]AppUpdateService: {[F25703819843744D7F1F976789EB7978B61B58C647450F69DA2156D7D0972E46347CE2063E742E21A63D99E0BFD9F03D]}
+03-08 15:13:49.015 28013 28013 I DexModeMonitorUtil: No DeX for this device. ignore
+03-08 15:13:49.016   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.016 28013 28013 I SamsungAccountSignManager: addListener size:1
+03-08 15:13:49.016 28013 28013 I SamsungAccountSignManager: addListener size:2
+03-08 15:13:49.017  5242  5242 I Utils   : isCurrentUser current = 0, ownerId = 0
+03-08 15:13:49.018  5242  5242 I TrayVisibilityController: getComputedTrayVisible : keyguardState = 1
+03-08 15:13:49.018  5242  5242 I TrayVisibilityController: updateTrayVisible: State=1 visible=1 mCurrentVisible=1 specificMode=0
+03-08 15:13:49.018  5242  5242 I TrayStateController: onNotifyUpdateTray: state=0
+03-08 15:13:49.019 28013 28013 I SamsungAccountRepositoryQos: onInit
+03-08 15:13:49.019   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.019   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.020 27945 27945 I [WEATHER]WidgetModelFactoryImpl: {[88E2ECDDDA210699751991509A9424D19A78732FCCD1DC32B9F7800A075D5D17A87728A09FD5EAD1011EE3B232690005]}
+03-08 15:13:49.022 27945 27945 I [WEATHER]AbsWidgetModel: {[7CAAA0E2D3A984DAC1CE1070CCEB5B4C1D9190F1DB48E731E097A317022C2B0CB5999109CCE9F6D244B0D075B49353CBBE5B8BE02E60E34A7080B71C44314206898C47126553BB4A020886C412870FF817A94884631A48A3EF701BECF5596BBC3C4CB229345795286FE84334B4CCD6F8C15FC522B447E1B0DD72068985C261566D8BD9FE5F74931DB7B92BB5C4A50DE809F0FA02089E45A46937D752E49ECEB2F0AFA143B25381B0F8A10D4890B40F38C83EE558212EB4874028CA4E220F46421411E982DE89D05E42041E53D76704EBC9F07C21CC7B2222E5C2615955FFB449485E51AA2E2635571B83BECAC43812C463FBF32C7D46E980DEA1AF804A4E90B0C31EC391C5C4F9128B08DA48264EC036B00AC7520C7FA651A986DD51A32C0CE9395D78F4A3FAD1D3E7FB06B0422E4581]}
+03-08 15:13:49.024 27945 27975 E [WEATHER]StoreEntity: {[4D63BA3A7171858DA5D3F9375C43492DDF25E5A1AD7D8FEF26A2A3C27FCA533645F81B5C97AD32F6DE1997D8427A3FBD7EE391994595DCDB9D5908B6D97E8DA4]}
+03-08 15:13:49.027   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.028 27945 27975 I [WEATHER]AppUpdateService: {[F25703819843744D7F1F976789EB797833D5506BC44F426FC87D02A2CB5C65E7]}
+03-08 15:13:49.029   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.029 28013 28013 I SamsungAccountRepositoryImpl: Listener was added successfully
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [StateCheckUtil] Validation Process is completed true
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]AccessToken reuse. runProcess end. Package = rubin.app.
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [CBM] setCurrentRequestType :0
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]onProcessFinished. Package = rubin.app.
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]checkAccessTokenAndRefreshToken. Package = rubin.app.
+03-08 15:13:49.031 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]handleProcessSuccessResult start. Package = rubin.app.
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [RBIVO] getStringArrFromAdditionalBundleKey : additional
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]setAdditionalInfo start. Package = rubin.app.
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set user_id
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getUserID
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : USER_ID from Cache
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set birthday
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getBirthDate
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : BIRTH_DATE from Cache
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set mcc
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set cc
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getCountryCodeFromDB
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : COUNTRY_CODE from Cache
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set api_server_url
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AuthUrl] auth_server_url for region
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AuthUrl] return region server url
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set auth_server_url
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AuthUrl] auth_server_url for region
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AuthUrl] return region server url
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set device_physical_address_text
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DeviceRegistrationManager] PhoneType : 1
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.032 30756 28117 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.033  1472  1504 D ConnectivityService: requestNetwork for uid/pid:10165/28013 activeRequest: null callbackRequest: 7877 [NetworkRequest [ REQUEST id=7878, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10165 RequestorUid: 10165 RequestorPkg: com.samsung.android.app.spage UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+03-08 15:13:49.033 30756 28117 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.033 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.033 30756 28117 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.034 28013 28122 I SamsungAccountRepositoryImpl: loadAccountProfile
+03-08 15:13:49.034  1472  2376 D ConnectivityService:    accepting network in place of null
+03-08 15:13:49.034 28013 28122 I SamsungAccountRepositoryImpl: queryProfile
+03-08 15:13:49.035 30756 28117 I SamsungAccount: [DeviceManager] isTablet : false
+03-08 15:13:49.035 30756 28117 I SamsungAccount: [UserManagerUtil] Current UserHandle is = 0
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [UserManagerUtil] Current UserHandle is = 0
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set refresh_token
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set login_id
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set login_id_type
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set representative (by MinorAge pref
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [StateCheckUtil] getIsMinorAge : false
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set region mcc
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [TPMU]  SIMState     :SIM_STATE_READY
+03-08 15:13:49.036 30756 28117 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.039 30756 28117 I SamsungAccount: [TPMU] getMccFromUsim
+03-08 15:13:49.039 30756 28117 I SamsungAccount: [MccManager] saveMccToPreference Start
+03-08 15:13:49.039 30756 28117 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.039 30756 28117 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.039 30756 28117 I SamsungAccount: [MccManager] saveMccToPreference, mcc is same with previous mcc
+03-08 15:13:49.039 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]setAdditionalInfo finish. Package = rubin.app.
+03-08 15:13:49.039  1472  2366 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=7878, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10165 RequestorUid: 10165 RequestorPkg: com.samsung.android.app.spage UnderlyingNetworks: Null] ]
+03-08 15:13:49.039  1472  2366 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=7878, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10165 RequestorUid: 10165 RequestorPkg: com.samsung.android.app.spage UnderlyingNetworks: Null] ]
+03-08 15:13:49.039  1472  2366 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=7878, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10165 RequestorUid: 10165 RequestorPkg: com.samsung.android.app.spage UnderlyingNetworks: Null] ]
+03-08 15:13:49.039 28030 28047 I Rubin   : [449] kd.a.e(SourceFile:2) : RECEIVED ACCESS TOKEN :: TID - 8624431782
+03-08 15:13:49.039 28030 28047 I Rubin   : [449] kd.a.d(SourceFile:2) : UNREGISTER CALLBACK : REGISTRATION CODE - Y29tLnNhbXN1bmcuYW5kcm9pZC5ydWJpbi5hcHAyNzQ=
+03-08 15:13:49.039  1472  2376 D ConnectivityService: Rematched networks [computed 1ms] [applied 2ms] [issued 3]
+03-08 15:13:49.039  1472  2376 D ConnectivityService: NetworkReassignment :
+03-08 15:13:49.039  1472  2376 D ConnectivityService:   7878 : null → 162
+03-08 15:13:49.039 30756 28117 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] unregisterCallback start
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-07:07:38
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-08:15:35
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-08:33:20
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-08:58:20
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-09:15:44
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-09:35:24
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-10:54:30
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-11:53:48
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-12:00:40
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-15:00:47
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-15:02:02
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-15:06:19
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-15:13:45
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== rubin.app. => 03/08-15:13:49
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [CBM] [InAIDL-CallbackManager]unRegisterCallback
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [CBM] [InAIDL-CallbackManager]checkUnregisterCallbackCondition
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [CBM] [InAIDL-CallbackManager] Unregister SuccessPackage = rubin.app.
+03-08 15:13:49.040 30756 28117 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] unregisterCallback end
+03-08 15:13:49.040 28030 28047 I Rubin   : [449] kd.a.d(SourceFile:4) : UNREGISTER CALLBACK SUCCESS
+03-08 15:13:49.041 28013 28013 I NetworkErrorManager: addNetworkStateListener
+03-08 15:13:49.041  1472  2366 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=7878, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10165 RequestorUid: 10165 RequestorPkg: com.samsung.android.app.spage UnderlyingNetworks: Null] ]
+03-08 15:13:49.043 30756 30756 I SamsungAccount: [AIDLRequestService] OnDestroy Service
+03-08 15:13:49.044 27945 27945 I [WEATHER]WidgetViewDecorator: {[4724E317F1AB9F842050794DD83D8DF81D50308E27FC226AA2DC1C136BEDCB46]}
+03-08 15:13:49.046 30756 30902 I SamsungAccount: [ProfileProvider] getCallingPackage() : app.spage.
+03-08 15:13:49.046 30756 30902 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.046 30756 30902 I SamsungAccount: [TransactionManager] getLoginProvisioning : false
+03-08 15:13:49.046 30756 30902 I SamsungAccount: [TransactionManager] isSetupWizardProvisioning
+03-08 15:13:49.046 30756 30902 I SamsungAccount: [ProfilePreference] getSetupWizardProvisioningTime
+03-08 15:13:49.046 30756 30902 I SamsungAccount: [TransactionManager] setupWizard done
+03-08 15:13:49.048 28013 28125 I NetworkErrorManager: onAvailable
+03-08 15:13:49.048 27945 27945 I [WEATHER]WidgetViewDecorator: {[4724E317F1AB9F842050794DD83D8DF81D50308E27FC226AA2DC1C136BEDCB46]}
+03-08 15:13:49.048 28013 28125 I NetworkErrorManager: onNetworkRecovered
+03-08 15:13:49.049 28013 28125 I SamsungAccountNetworkState: onNetworkRecovered
+03-08 15:13:49.049 27945 27945 I [WEATHER]AppWidgetUIManager: {[1F3A2EB2D2CEB90D01A2A4085071FC6A60CBE5818AA42477D3BC4BEC40110CA7C7E00D5B7602E3C40754DD3DEFAEADC2109E353F58DB0389357B2C1346374351FDB40DB0C506EF13B9B116C222D532D86718FB3941553FAFD20DE6A6118689071E1C65845E6A74476657ECE69609361D92D0E7187F035739224FE8CB137888733383A0D7D69288F8CEB169A071784F95FC61D35C67F38A0ACEB71FBF7C61DC90F8A8A35902294D0DC0B875777FBC0832]}
+03-08 15:13:49.049 27945 27945 I AppWidgetManager: updateAppWidget() appWidgetIds = [2]
+03-08 15:13:49.050  1472  1472 D AppWidgetServiceImpl: handleNotifyUpdateAppWidget, appWidgetId = 2
+03-08 15:13:49.050 28013 28124 I SamsungAccountRepositoryImpl: updateAccountAuthIfNeeded
+03-08 15:13:49.051 28013 28125 I NetworkErrorManager: onAvailable
+03-08 15:13:49.051 28013 28125 I NetworkErrorManager: onNetworkRecovered
+03-08 15:13:49.051 28013 28125 I SamsungAccountNetworkState: onNetworkRecovered
+03-08 15:13:49.051  3258  3258 I AppWidgetHost: updateAppWidgetView, appWidgetId = 2, v = com.android.launcher3.widget.LauncherAppWidgetHostView{d7b6eef VFE....LX R....... 0,0-1002,350 #f6}[a=1.0,v=0][c(0,0-4,1),id=246]
+03-08 15:13:49.052  3258  3258 W LauncherAppWidgetHostView: updateAppWidget, widgetId : 2, mReinflateOnConfigChange : false
+03-08 15:13:49.054   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.054 28013 28130 I SamsungAccountRepositoryImpl: queryAuth
+03-08 15:13:49.055 28013 28123 I SamsungAccountRepositoryImpl: updateAccountAuthIfNeeded
+03-08 15:13:49.058   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.058   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.059 28013 28130 I SamsungAccountRepositoryImpl: getAuthData
+03-08 15:13:49.059 28013 28130 I SamsungAccountService: getAuthData
+03-08 15:13:49.062   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.064   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.071  3258  3258 W NavigableAppWidgetHostView: setResizeScaleResult() 1002/ 350 scaleToResize = 1.0(widget id = 2) d7b6eef 0,0-1002,350
+03-08 15:13:49.075   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.078 28013 28013 I NewsWidget-Controller: initialize
+03-08 15:13:49.079 28013 28013 I NewsWidget-Manager: init
+03-08 15:13:49.080   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.080   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.083 30756 30756 I SamsungAccount: [AIDLRequestService] OnCreate Service
+03-08 15:13:49.083 30756 30756 I SamsungAccount: [AIDLRequestService] OnBind
+03-08 15:13:49.083 30756 30756 I SamsungAccount: [AIDLRequestService] [InAIDL] Service bound
+03-08 15:13:49.085 28013 28122 I SamsungAccountRepositoryImpl: updateAuthIfAccountIsSameUser
+03-08 15:13:49.086 28013 28122 I SamsungAccountRepositoryImpl: same user! guid apiServerUrl can be used
+03-08 15:13:49.086 28013 28122 I SamsungAccountRepositoryImpl: checked valid guid and apiServerUrl true
+03-08 15:13:49.086 28013 28122 I SamsungAccountRepositoryImpl: updateProfile Done guid len:10
+03-08 15:13:49.086 28013 28122 I SPageApplication: Loading Samsung account data is done
+03-08 15:13:49.087 28013 28122 I SamsungAccountSignManager: handleAppData before:true current:true
+03-08 15:13:49.088 28013 28122 I SamsungAccountSignManager: handleData: no need to handle data
+03-08 15:13:49.088 28013 28122 I SamsungAccountSignManager: saveSignInState before:truecurrent:true
+03-08 15:13:49.088 28013 28122 I SamsungAccountRepositoryImpl: setSignInState true
+03-08 15:13:49.089   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.090  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: handleAppVisibility mAppVisible = true visible = false
+03-08 15:13:49.090 28013 28013 I SamsungAccountService: requestUserAgreement : onServiceConnected start
+03-08 15:13:49.092  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:49.092  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000744614a270 | 0102 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.example.cmput301w24t33/com.examp[...]33.activities.Organizer$_26361#35550
+03-08 15:13:49.092  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:49.092  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:49.092  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446149b70 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:49.092  1327  1327 D SurfaceFlinger:
+03-08 15:13:49.095  2578 21464 D WallpaperService: dispatchAppVisibility onVisibilityChanged(): false
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback start
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] REG_CALLING_PACKAGE : app.spage.
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback start. Package = app.spage.
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager] registerCallback
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager] checkRegisterCallbackCondition
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getRegistrationCodeIfAlreadyRegistered
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]Success registerCallback
+03-08 15:13:49.096 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback end. registrationCode :Y29tLnNhbXN1bmcuYW5kcm9pZC5hcHAuc3BhZ2UyNzU= Package = app.spage.
+03-08 15:13:49.098   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.098  2578  2578 D WallpaperService: reportVisibility onVisibilityChanged visible: false
+03-08 15:13:49.098  2578  2749 I ImageWallpaper[GLEngine]:  onVisibilityChanged false , 0
+03-08 15:13:49.098 28013 28124 I NewsWidget-Repository: setDisplayTipCard : true
+03-08 15:13:49.099 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] requestAccesstoken
+03-08 15:13:49.099 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] BundleInfo = [ additional:user_id,api_server_url,is_child_account,marketing_email_receive,]
+03-08 15:13:49.099 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] checkRequestCondition
+03-08 15:13:49.099 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.099 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.099 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL]Start AccessTokenRunnable Thread. package = app.spage.
+03-08 15:13:49.099 30756 30902 I SamsungAccount: [PermissionsUtils] checkPrivilegedPhonePermissionOfCallingPackage
+03-08 15:13:49.100 30756 30902 I SamsungAccount: [PermissionsUtils] hasPrivilegedPhonePermission : true
+03-08 15:13:49.100 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.100 30756 30902 I SamsungAccount: [CBM] setCurrentRequestType :1
+03-08 15:13:49.103 30756 28141 I SamsungAccount: [AbstractProcessRunnable] [InAIDL-AbstractProcessRunnable]isAvailableRunningProcess start Package = app.spage.
+03-08 15:13:49.103 27851 27851 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+03-08 15:13:49.103 27851 27851 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+03-08 15:13:49.103 30756 28141 I SamsungAccount: [NetworkStateUtil] == networkStateCheck == true
+03-08 15:13:49.103 30756 28141 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.103 30756 28141 I SamsungAccount: [DbManagerV2] getDataState : VALID
+03-08 15:13:49.103 30756 28141 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.103 30756 28141 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : false
+03-08 15:13:49.104  1327  1327 I Layer   : id=35545 removedFromDrawingState Splash Screen com.example.cmput301w24t33$_2578#35545 (146)
+03-08 15:13:49.104  1327  1327 I Layer   : id=35546 removedFromDrawingState Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35546 (146)
+03-08 15:13:49.104  1327  1327 I Layer   : id=35544 removedFromDrawingState 45118c8 Splash Screen com.example.cmput301w24t33#35544 (146)
+03-08 15:13:49.105  1327  1327 I Layer   : id=35547 removedFromDrawingState Surface(name=Task=3074)/@0x272455 - animation-leash of app_transition#35547 (146)
+03-08 15:13:49.105  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33$_2578#35545] hidden!! flag(1)
+03-08 15:13:49.105  1327  1327 I Layer   : Layer [com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35533] hidden!! flag(1)
+03-08 15:13:49.105  1327  1327 I SurfaceFlinger: id=35544 Removed 45118c8 Splash Screen com.example.cmput301w24t33#35544 (146)
+03-08 15:13:49.105  1327  1327 I SurfaceFlinger: id=35545 Removed Splash Screen com.example.cmput301w24t33$_2578#35545 (146)
+03-08 15:13:49.105  1327  1327 I SurfaceFlinger: id=35547 Removed Surface(name=Task=3074)/@0x272455 - animation-leash of app_transition#35547 (146)
+03-08 15:13:49.105  1327  1327 I SurfaceFlinger: id=35546 Removed Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35546 (146)
+03-08 15:13:49.105  1327  1327 I Layer   : id=35544 Destroyed 45118c8 Splash Screen com.example.cmput301w24t33#35544
+03-08 15:13:49.106  1327  1327 I Layer   : id=35545 Destroyed Splash Screen com.example.cmput301w24t33$_2578#35545
+03-08 15:13:49.106  1327  1327 I Layer   : id=35546 Destroyed Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35546
+03-08 15:13:49.106  1327  1327 I Layer   : id=35547 Destroyed Surface(name=Task=3074)/@0x272455 - animation-leash of app_transition#35547
+03-08 15:13:49.107 30756 28141 I SamsungAccount: [SignatureInfoDbHelper] getSignatureResult - [10/26mm5][app.spage.]
+03-08 15:13:49.107  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=true mForceNextWindowRelayout=false params=null
+03-08 15:13:49.110 30756 28141 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser
+03-08 15:13:49.114  1472  2964 V WindowManager: Relayout Window{25ecb59 u0 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:49.114   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.116  1472  2964 V WindowManager: Relayout hash=25ecb59, pid=3258, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:49.116  1472  2964 V WindowManager:   fl=81910100
+03-08 15:13:49.116  1472  2964 V WindowManager:   pfl=1e020040
+03-08 15:13:49.116  1472  2964 V WindowManager:   vsysui=1700
+03-08 15:13:49.116  1472  2964 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:49.116  1472  2964 V WindowManager:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:49.116  1472  2964 V WindowManager:   fitSides= screenDimDuration=200000 naviIconColor=0}
+03-08 15:13:49.118 26361 26361 I ViewInteraction: Performing 'single click' action on view view.getId() is <2131231185/com.example.cmput301w24t33:id/profile_image>
+03-08 15:13:49.121  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=12 res=0x2 s={false 0x0} ch=true seqId=0
+03-08 15:13:49.121  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: stopped(true) old = false
+03-08 15:13:49.121  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: WindowStopped on com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity set to true
+03-08 15:13:49.122  3258  3258 I Launcher: !@Boot_DEBUG: Launcher.onStop()
+03-08 15:13:49.122  3258  3258 I Launcher: !@Boot_EBS_D: Launcher.onStop()
+03-08 15:13:49.122  3258  3258 I BaseActivity: removeActivityFlags, flags : 17
+03-08 15:13:49.122  3258  3258 I StateManager: goToState isInState Normal
+03-08 15:13:49.122  3258  3627 I IMM_LC  : hsifw() - flag : 0
+03-08 15:13:49.122  3258  3627 I IMM_LC  : hsifw() - mService.hideSoftInput
+03-08 15:13:49.122  3258  3258 W LauncherAppWidgetHost: setShouldListenFlag, mFlags:7 flag:start on:false isFront:false
+03-08 15:13:49.123  1472  5031 I AppWidgetServiceImpl: stopListening callbacks : null
+03-08 15:13:49.123  3258  3258 W LauncherAppWidgetHost: stopListening, mFlags:2 isFront:false
+03-08 15:13:49.123  3258  3258 W Launcher.NotificationListener: removeNotificationsChangedListener
+03-08 15:13:49.123  3258  3258 I Launcher.NotificationListener: unregisterObserver, this is not notificationService!!
+03-08 15:13:49.123  3258  3258 I BadgeCountUpdaterImpl: onNotificationsChangedDisConnected
+03-08 15:13:49.124  3258  3258 I DecorView: notifyKeepScreenOnChanged: keepScreenOn=false
+03-08 15:13:49.125  1472  2964 D InputDispatcher: Inject motion (26361/10451): action=0x0, time=154421368000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:49.125  1472  2259 I InputDispatcher: Delivering touch to (2578): action: 0x4, f=0x0, d=0, '296f76f', t=0
+03-08 15:13:49.126  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x0, f=0x0, d=0, 'd965637', t=0
+03-08 15:13:49.126  3258  3258 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@159fe79[LauncherActivity]
+03-08 15:13:49.127  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -457503181 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:203 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:49.127  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -457503181 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:89 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:49.127 26361 26361 I ViewRootImpl@1384754[Organizer]: ViewPostIme pointer 0
+03-08 15:13:49.129   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.129   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.129  3258  3637 I LiveIconUpdateEventHandler: cancelMinuteChangeAlarm
+03-08 15:13:49.131   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.132  3258  3637 I LiveIconUpdateEventHandler: cancelDateChangeAlarm
+03-08 15:13:49.133   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.138  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: performTraversals params={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:49.138  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fl=81910100
+03-08 15:13:49.138  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   pfl=1e020040
+03-08 15:13:49.138  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   vsysui=1700
+03-08 15:13:49.138  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:49.138  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:49.138  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fitSides= naviIconColor=0}
+03-08 15:13:49.139  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:49.139  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fl=81910100
+03-08 15:13:49.139  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   pfl=1e020040
+03-08 15:13:49.139  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   vsysui=1700
+03-08 15:13:49.139  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:49.139  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:49.139  3258  3258 I ViewRootImpl@133027e[LauncherActivity]:   fitSides= naviIconColor=0}
+03-08 15:13:49.139  1472  2686 V WindowManager: Relayout Window{25ecb59 u0 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:49.142  1472  2686 V WindowManager: Relayout hash=25ecb59, pid=3258, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=nothing} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
+03-08 15:13:49.142  1472  2686 V WindowManager:   fl=81910100
+03-08 15:13:49.142  1472  2686 V WindowManager:   pfl=1e020040
+03-08 15:13:49.142  1472  2686 V WindowManager:   vsysui=1700
+03-08 15:13:49.142  1472  2686 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:49.142  1472  2686 V WindowManager:   bhv=SHOW_TRANSIENT_BARS_BY_SWIPE
+03-08 15:13:49.142  1472  2686 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:49.142  3258  3258 I ViewRootImpl@133027e[LauncherActivity]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=3 res=0x2 s={false 0x0} ch=false seqId=0
+03-08 15:13:49.142   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.146   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.146   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.148   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser - [10/26mm5][app.spage.][64/3291d] => matched
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [SignatureInfoDbHelper] search - matched
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync(fromDb) - matched
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [AbstractProcessRunnable] [InAIDL-AbstractProcessRunnable]isAvailableRunningProcess end. Package = app.spage.
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]runProcess start. Package = app.spage.
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [StateCheckUtil] isGoogleLinked = false
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [StateCheckUtil] isWeChatLinked = false
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [AccessTokenRunnable] check_basic_profile = true needToCheckServer = false
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.149 30756 28141 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]isAccessTokenReusable. Package = app.spage.
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [StateCheckUtil] isOverIntervalTime, renewTimeStamp = false
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]checkAndSetAccessToken. Package = app.spage.
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [AccessToken] getAccessTokenInfo
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [RBIVO] getStringFormAdditionalBundleKey : expired_access_token
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [AccessTokenRunnable] expiredAccessToken is Empty. curTimeSec=1709936029, TimeGap=48714
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [AccessTokenRunnable] IsTokenReusable : true
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [AccessTokenRunnable] Accesstoken is reusable and isNeedToCheckServer is false
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [DataUtil] Not Skip Name Validation by accountMCC
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [LocalBusinessException] Not Skip Name Validation by AppId
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [OpenDBManager] getCheckListFromOpenDB
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [OpenDBManager] getTncResult
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [OpenDBManager] getTncCursor
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [OpenContentProvider] query tnc
+03-08 15:13:49.150 30756 28141 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.151 30756 28141 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureWithEmptyId
+03-08 15:13:49.151 30756 28141 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.151 30756 28141 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : true
+03-08 15:13:49.151 30756 28141 I SamsungAccount: [SignaturePreconditionChecker] This is internal call. So skip
+03-08 15:13:49.151   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [DataUtil] Not Skip Name Validation by accountMCC
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [OpenDBManager] isRequireField
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [OpenDBManager] getFieldCursor
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [OpenContentProvider] query field
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureWithEmptyId
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : true
+03-08 15:13:49.152 30756 28141 I SamsungAccount: [SignaturePreconditionChecker] This is internal call. So skip
+03-08 15:13:49.154  1327  1327 I Layer   : id=35533 removedFromDrawingState com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35533 (142)
+03-08 15:13:49.154  1327  1327 I SurfaceFlinger: id=35533 Removed com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35533 (142)
+03-08 15:13:49.154  1327  1327 I Layer   : id=35533 Destroyed com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35533
+03-08 15:13:49.155 28013 28124 I SmpManager: isSamsungNewsUser:false
+03-08 15:13:49.160  1472  2686 D InputDispatcher: Inject motion (26361/10451): action=0x1, time=154421408000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:49.161  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x1, f=0x0, d=0, 'd965637', t=0
+03-08 15:13:49.161   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.161  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -565854462
+03-08 15:13:49.161  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -565854462
+03-08 15:13:49.163 26361 26361 I ViewRootImpl@1384754[Organizer]: ViewPostIme pointer 1
+03-08 15:13:49.165 26361 26361 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+03-08 15:13:49.165 26361 26361 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+03-08 15:13:49.165   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.165   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.167   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.169   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [StateCheckUtil] Validation Process is completed true
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]AccessToken reuse. runProcess end. Package = app.spage.
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [CBM] setCurrentRequestType :0
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]onProcessFinished. Package = app.spage.
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.172 30756 28141 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]checkAccessTokenAndRefreshToken. Package = app.spage.
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]handleProcessSuccessResult start. Package = app.spage.
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [RBIVO] getStringArrFromAdditionalBundleKey : additional
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]setAdditionalInfo start. Package = app.spage.
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set user_id
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [DbManagerV2] getUserID
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [DbManagerV2] getDataV02ForItems : USER_ID from Cache
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set api_server_url
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AuthUrl] auth_server_url for region
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AuthUrl] return region server url
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set is child account
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set marketing email receive
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]setAdditionalInfo finish. Package = app.spage.
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] unregisterCallback start
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-07:00:26
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-09:35:27
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-09:35:27
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-15:13:49
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [CBM] [InAIDL-CallbackManager]unRegisterCallback
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [CBM] [InAIDL-CallbackManager]checkUnregisterCallbackCondition
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [CBM] [InAIDL-CallbackManager] Unregister SuccessPackage = app.spage.
+03-08 15:13:49.173 30756 28141 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] unregisterCallback end
+03-08 15:13:49.175 30756 30756 I SamsungAccount: [AIDLRequestService] OnDestroy Service
+03-08 15:13:49.175 28013 28130 I SamsungAccountService: getAuthData - SuspendCoroutine finished getting auth data
+03-08 15:13:49.175 28013 28130 I SamsungAccountRepositoryImpl: updateAuthData guid is exist: 10
+03-08 15:13:49.176 28013 28130 I SamsungAccountRepositoryImpl: notifyDataUpdated isSignedIn: true
+03-08 15:13:49.176 28013 28122 I SamsungAccountRepositoryImpl: queryAuth
+03-08 15:13:49.176 28013 28130 I SamsungAccountSignManager: onAccountInformationChanged before: true current: true
+03-08 15:13:49.177 28013 28130 I SamsungAccountSignManager: changed: no need to handle data
+03-08 15:13:49.177 28013 28130 I SamsungAccountSignManager: saveSignInState before:truecurrent:true
+03-08 15:13:49.177 28013 28130 I SamsungAccountRepositoryImpl: setSignInState true
+03-08 15:13:49.179 30756 28141 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]handleProcessSuccessResult finish. Package = app.spage.
+03-08 15:13:49.179 30756 28141 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.179   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.185   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.185   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.187   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.188 28013 28122 I SamsungAccountRepositoryImpl: getAuthData
+03-08 15:13:49.189 28013 28122 I SamsungAccountService: getAuthData
+03-08 15:13:49.190   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.191 10149 10149 I dgdm    : onPause
+03-08 15:13:49.192 30756 30756 I SamsungAccount: [AIDLRequestService] OnCreate Service
+03-08 15:13:49.192 30756 30756 I SamsungAccount: [AIDLRequestService] OnBind
+03-08 15:13:49.192 30756 30756 I SamsungAccount: [AIDLRequestService] [InAIDL] Service bound
+03-08 15:13:49.197 28013 28013 I SamsungAccountService: requestUserAgreement : onServiceConnected start
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback start
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] REG_CALLING_PACKAGE : app.spage.
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback start. Package = app.spage.
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager] registerCallback
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager] checkRegisterCallbackCondition
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getRegistrationCodeIfAlreadyRegistered
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]Success registerCallback
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] registerCallback end. registrationCode :Y29tLnNhbXN1bmcuYW5kcm9pZC5hcHAuc3BhZ2UyNzY= Package = app.spage.
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] requestAccesstoken
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] BundleInfo = [ additional:user_id,api_server_url,is_child_account,marketing_email_receive,]
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] checkRequestCondition
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.198 30756 30902 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL]Start AccessTokenRunnable Thread. package = app.spage.
+03-08 15:13:49.199 30756 30902 I SamsungAccount: [PermissionsUtils] checkPrivilegedPhonePermissionOfCallingPackage
+03-08 15:13:49.199 30756 30902 I SamsungAccount: [PermissionsUtils] hasPrivilegedPhonePermission : true
+03-08 15:13:49.199 30756 30902 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.199 30756 30902 I SamsungAccount: [CBM] setCurrentRequestType :1
+03-08 15:13:49.199   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.203 30756 28146 I SamsungAccount: [AbstractProcessRunnable] [InAIDL-AbstractProcessRunnable]isAvailableRunningProcess start Package = app.spage.
+03-08 15:13:49.204 30756 28146 I SamsungAccount: [NetworkStateUtil] == networkStateCheck == true
+03-08 15:13:49.204 30756 28146 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.204 30756 28146 I SamsungAccount: [DbManagerV2] getDataState : VALID
+03-08 15:13:49.204 30756 28146 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.205 30756 28146 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : false
+03-08 15:13:49.205 30756 28146 I SamsungAccount: [SignatureInfoDbHelper] getSignatureResult - [10/26mm5][app.spage.]
+03-08 15:13:49.205 30756 28146 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser
+03-08 15:13:49.206   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.206   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.206 30756 28146 I SamsungAccount: [SignatureInfoDbHelper] searchOnUser - [10/26mm5][app.spage.][64/3291d] => matched
+03-08 15:13:49.206 30756 28146 I SamsungAccount: [SignatureInfoDbHelper] search - matched
+03-08 15:13:49.206 30756 28146 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync(fromDb) - matched
+03-08 15:13:49.206 30756 28146 I SamsungAccount: [AbstractProcessRunnable] [InAIDL-AbstractProcessRunnable]isAvailableRunningProcess end. Package = app.spage.
+03-08 15:13:49.206 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]runProcess start. Package = app.spage.
+03-08 15:13:49.206 30756 28146 I SamsungAccount: [StateCheckUtil] isGoogleLinked = false
+03-08 15:13:49.207 30756 28146 I SamsungAccount: [StateCheckUtil] isWeChatLinked = false
+03-08 15:13:49.207 30756 28146 I SamsungAccount: [AccessTokenRunnable] check_basic_profile = true needToCheckServer = false
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]isAccessTokenReusable. Package = app.spage.
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [StateCheckUtil] isOverIntervalTime, renewTimeStamp = false
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]checkAndSetAccessToken. Package = app.spage.
+03-08 15:13:49.209 30756 28146 I SamsungAccount: [AccessToken] getAccessTokenInfo
+03-08 15:13:49.210 30756 28146 I SamsungAccount: [RBIVO] getStringFormAdditionalBundleKey : expired_access_token
+03-08 15:13:49.210 30756 28146 I SamsungAccount: [AccessTokenRunnable] expiredAccessToken is Empty. curTimeSec=1709936029, TimeGap=48714
+03-08 15:13:49.210 30756 28146 I SamsungAccount: [AccessTokenRunnable] IsTokenReusable : true
+03-08 15:13:49.210 30756 28146 I SamsungAccount: [AccessTokenRunnable] Accesstoken is reusable and isNeedToCheckServer is false
+03-08 15:13:49.210 30756 28146 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.210 30756 28146 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [DataUtil] Not Skip Name Validation by accountMCC
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [LocalBusinessException] Not Skip Name Validation by AppId
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [OpenDBManager] getCheckListFromOpenDB
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [OpenDBManager] getTncResult
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [OpenDBManager] getTncCursor
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [OpenContentProvider] query tnc
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureWithEmptyId
+03-08 15:13:49.211   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : true
+03-08 15:13:49.211 30756 28146 I SamsungAccount: [SignaturePreconditionChecker] This is internal call. So skip
+03-08 15:13:49.212 30756 28146 I SamsungAccount: [DbManagerV2] getMccFromDB
+03-08 15:13:49.212 30756 28146 I SamsungAccount: [DbManagerV2] getDataV02ForItems : MCC from Cache
+03-08 15:13:49.212 30756 28146 I SamsungAccount: [DataUtil] Not Skip Name Validation by accountMCC
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [OpenDBManager] isRequireField
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [OpenDBManager] getFieldCursor
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [OpenContentProvider] query field
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureWithEmptyId
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [SignatureCheckUtil] runCheckSignatureAsync
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [SignaturePreconditionChecker] getSignatureResult - fromSesSdk : true
+03-08 15:13:49.213 30756 28146 I SamsungAccount: [SignaturePreconditionChecker] This is internal call. So skip
+03-08 15:13:49.216   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.217   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.221   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.221   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.223   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.225   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.227 30756 28146 I SamsungAccount: [StateCheckUtil] Validation Process is completed true
+03-08 15:13:49.227 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]AccessToken reuse. runProcess end. Package = app.spage.
+03-08 15:13:49.227 30756 28146 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.227 30756 28146 I SamsungAccount: [CBM] setCurrentRequestType :0
+03-08 15:13:49.227 30756 28146 I SamsungAccount: [AccountManagerUtil] isSamsungAccountSignedIn : true
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]onProcessFinished. Package = app.spage.
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [DeviceManager] salesCode : KDO
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [DeviceManager] isNewLduProdCode : false
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [CountryCodeUtil] isChinaCountryCode : false
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]checkAccessTokenAndRefreshToken. Package = app.spage.
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]handleProcessSuccessResult start. Package = app.spage.
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [RBIVO] getStringArrFromAdditionalBundleKey : additional
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]setAdditionalInfo start. Package = app.spage.
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set user_id
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [DbManagerV2] getUserID
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [DbManagerV2] getDataV02ForItems : USER_ID from Cache
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set api_server_url
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AuthUrl] auth_server_url for region
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AuthUrl] return region server url
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set is child account
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]set marketing email receive
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]setAdditionalInfo finish. Package = app.spage.
+03-08 15:13:49.228 30756 28146 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] unregisterCallback start
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-09:35:27
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-09:35:27
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-15:13:49
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [RequestHistoryManager] ==AIDL ACCTOKEN HISTORY== app.spage. => 03/08-15:13:49
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [CBM] [InAIDL-CallbackManager]unRegisterCallback
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [CBM] [InAIDL-CallbackManager]checkUnregisterCallbackCondition
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [CBM] [InAIDL-CallbackManager]getCallbackInfo
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [CBM] [InAIDL-CallbackManager] Unregister SuccessPackage = app.spage.
+03-08 15:13:49.229 30756 28146 I SamsungAccount: [AIDLInterfaceBinder] [InAIDL] unregisterCallback end
+03-08 15:13:49.230 30756 30756 I SamsungAccount: [AIDLRequestService] OnDestroy Service
+03-08 15:13:49.231 30756 28146 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]handleProcessSuccessResult finish. Package = app.spage.
+03-08 15:13:49.231 30756 28146 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.231   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.231 28013 28122 I SamsungAccountService: getAuthData - SuspendCoroutine finished getting auth data
+03-08 15:13:49.231 28013 28122 I SamsungAccountRepositoryImpl: updateAuthData guid is exist: 10
+03-08 15:13:49.232 28013 28122 I SamsungAccountRepositoryImpl: notifyDataUpdated isSignedIn: true
+03-08 15:13:49.233 28013 28133 I SamsungAccountSignManager: onAccountInformationChanged before: true current: true
+03-08 15:13:49.235 28013 28133 I SamsungAccountSignManager: changed: no need to handle data
+03-08 15:13:49.235   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.235   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.235 28013 28133 I SamsungAccountSignManager: saveSignInState before:truecurrent:true
+03-08 15:13:49.235 28013 28133 I SamsungAccountRepositoryImpl: setSignInState true
+03-08 15:13:49.237   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.239   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.240 28030 28047 I Rubin   : [449] ed.a$a$a.a(SourceFile:36) : contains REPRESENTATIVE
+03-08 15:13:49.240 28030 28047 I Rubin   : [449] ed.a$a$a.a(SourceFile:38) : representative: false
+03-08 15:13:49.247   679   679 W keymaster_tee: [WRN]begin req PARAMS: A32 B2 P64
+03-08 15:13:49.250   679   679 D keymaster_swd: keymaster_swd [WRN] (km_usage_expire_datetime_valid:223) for purpose 0 we shuldn't check KM_TAG_USAGE_EXPIRE_DATETIME
+03-08 15:13:49.250   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
+03-08 15:13:49.253   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_update() returns 0
+03-08 15:13:49.254   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_finish() returns 0
+03-08 15:13:49.255 26361 26372 W .cmput301w24t33: Cleared Reference was only reachable from finalizer (only reported once)
+03-08 15:13:49.258 28030 28047 I Rubin   : [449] ed.a$a.e(SourceFile:2) : Notifying to 1 listeners
+03-08 15:13:49.258 28030 28047 I Rubin   : [449] ed.a$a.e(SourceFile:5) : listener : z7.k@ac331f6
+03-08 15:13:49.258 28030 28047 I Rubin   : [449] ed.a$a$a.a(SourceFile:70) : ====================================================================
+03-08 15:13:49.258 28030 28047 I Rubin   : [449] ed.c.f(SourceFile:2) : finish
+03-08 15:13:49.258 30756 28117 I SamsungAccount: [AccessTokenRunnable] [InAIDL-AccessTokenRunnable]handleProcessSuccessResult finish. Package = rubin.app.
+03-08 15:13:49.258 30756 28117 I SamsungAccount: [StateCheckUtil] isChildAccount : false
+03-08 15:13:49.260 28030 28030 I Rubin   : [2] z7.f.b(SourceFile:6) : checkForUI = false isGdprAffected = false isCMSFeatureSupported = true
+03-08 15:13:49.260 28030 28030 E Rubin   : [2] z7.r.z(SourceFile:6) : Enabling :: FAILED - USER_NOT_CONSENT_TO_COLLECT_DATA
+03-08 15:13:49.261  1472  2686 D PackageManager: setEnabledSetting : userId = 0 packageName = com.samsung.android.rubin.app cmp = com.samsung.android.rubin.inferenceengine.contextanalytics.engine.loggers.CarLogger$BluetoothEventReceiver newState = 2 callingPackage = 5010/com.samsung.android.rubin.app
+03-08 15:13:49.262  1472  2686 D PackageManager: setEnabledSetting : userId = 0 packageName = com.samsung.android.rubin.app cmp = com.samsung.android.rubin.inferenceengine.contextanalytics.engine.loggers.BluetoothLogger$BluetoothEventReceiver newState = 2 callingPackage = 5010/com.samsung.android.rubin.app
+03-08 15:13:49.263  1472  2686 D PackageManager: setEnabledSetting : userId = 0 packageName = com.samsung.android.rubin.app cmp = com.samsung.android.rubin.inferenceengine.utils.GeofenceManager$GeofenceEventBroadcastReceiver newState = 2 callingPackage = 5010/com.samsung.android.rubin.app
+03-08 15:13:49.265 26361 26372 I .cmput301w24t33: NativeAlloc concurrent copying GC freed 279259(12MB) AllocSpace objects, 6(120KB) LOS objects, 49% free, 7487KB/14MB, paused 238us,87us total 157.008ms
+03-08 15:13:49.265  1472  2686 D PackageManager: setEnabledSetting : userId = 0 packageName = com.samsung.android.rubin.app cmp = com.samsung.android.rubin.inferenceengine.contextanalytics.engine.loggers.AppInstallationLogger$AppInstallationBroadcastReceiver newState = 2 callingPackage = 5010/com.samsung.android.rubin.app
+03-08 15:13:49.266 26361 26373 D InputTransport: Input channel destroyed: 'ClientS', fd=127
+03-08 15:13:49.266 26361 26373 D InputTransport: Input channel destroyed: 'ClientS', fd=185
+03-08 15:13:49.268 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:49.270 26361 26373 D InputTransport: Input channel destroyed: 'ClientS', fd=138
+03-08 15:13:49.270 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:49.272 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:49.279 26361 26373 D InputTransport: Input channel destroyed: 'ClientS', fd=143
+03-08 15:13:49.280 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:49.284 26361 26373 D InputTransport: Input channel destroyed: 'ClientS', fd=122
+03-08 15:13:49.284 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:49.288 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:49.329  7780  7798 W samsung.cmh:CMH: Reducing the number of considered missed Gc histogram windows from 153 to 100
+03-08 15:13:49.386  1257 28103 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1107832
+03-08 15:13:49.386  1257 28103 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1107832
+03-08 15:13:49.427  1472  1877 I GestureDetector: handleMessage TAP
+03-08 15:13:49.427  1472  1472 I GestureDetector: handleMessage TAP
+03-08 15:13:49.511  1257 26935 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMaxFreq] RemoveResource Request ID : 12784108
+03-08 15:13:49.511  1257 26935 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 12784108
+03-08 15:13:49.513 26361 26361 I ViewInteraction: Checking 'MatchesViewAssertion{viewMatcher=(view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() to return non-empty rectangle)}' assertion on view view.getId() is <2131231184/com.example.cmput301w24t33:id/profile_fragment>
+03-08 15:13:49.516 26361 26361 I ViewInteraction: Performing 'single click' action on view view.getId() is <2131230827/com.example.cmput301w24t33:id/back_arrow_img>
+03-08 15:13:49.518  1472  3543 D InputDispatcher: Inject motion (26361/10451): action=0x0, time=154421766000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:49.519  1472  2259 I InputDispatcher: Delivering touch to (2578): action: 0x4, f=0x0, d=0, '296f76f', t=0
+03-08 15:13:49.519  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x0, f=0x0, d=0, 'd965637', t=0
+03-08 15:13:49.519  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -118730370 caller: com.android.server.wm.SystemGesturesPointerEventListener.onPointerEvent:203 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:49.520  1472  1877 I GestureDetector: obtain mCurrentDownEvent. id: -118730370 caller: com.android.server.wm.SystemPerformancePointerEventListener.onPointerEvent:89 com.android.server.wm.PointerEventDispatcher.onInputEvent:53 android.view.InputEventReceiver.dispatchInputEvent:285
+03-08 15:13:49.520 26361 26361 I ViewRootImpl@1384754[Organizer]: ViewPostIme pointer 0
+03-08 15:13:49.525 10149 10149 I dgdm    : onStop
+03-08 15:13:49.558  1472  3543 D InputDispatcher: Inject motion (26361/10451): action=0x1, time=154421806000000, f=0x0, d=0 dsdx=1.000000 dtdx=0.000000
+03-08 15:13:49.558  1472  2259 I InputDispatcher: Delivering touch to (26361): action: 0x1, f=0x0, d=0, 'd965637', t=0
+03-08 15:13:49.559 26361 26361 I ViewRootImpl@1384754[Organizer]: ViewPostIme pointer 1
+03-08 15:13:49.560  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -835702165
+03-08 15:13:49.561  1472  1877 I GestureDetector: obtain mCurrentMotionEventRaw. action: 1 id: -835702165
+03-08 15:13:49.746  1257 27997 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMaxFreq] RemoveResource Request ID : 12789166
+03-08 15:13:49.746  1257 27997 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 12789166
+03-08 15:13:49.795 26361 26361 I ViewInteraction: Checking 'MatchesViewAssertion{viewMatcher=(view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() to return non-empty rectangle)}' assertion on view view.getId() is <2131231154/com.example.cmput301w24t33:id/organizer_activity>
+03-08 15:13:49.800  1472  1882 I ChimeraSystemEventListener: appLaunchIntent package name is: com.example.cmput301w24t33.test
+03-08 15:13:49.803  1327  1414 I SurfaceFlinger: id=35555 createSurf, flag=24004, Task=3075#35555
+03-08 15:13:49.804  1472  3404 I SemDvfsHyPerManager: acquire hyper - AMS_APP_SWITCH/1472@18, type = -999
+03-08 15:13:49.805  5044  5044 I SemDvfsHyPerManager: acquire hyper - APP_START_SHORT/5044@12, type = -999
+03-08 15:13:49.806  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1110813  [1472 / 18]    HINT : AMS_APP_SWITCH    list :
+03-08 15:13:49.806  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPULittleMinFreq] UpdateResource Request ID : 1110813    Value : 1804800
+03-08 15:13:49.809  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1110813    Value : 2208000
+03-08 15:13:49.809  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12784108  [5044 / 12]    HINT : APP_START    list : [TIMEOUT / 1500]
+03-08 15:13:49.810  1327  1414 I SurfaceFlinger: id=35556 createSurf, flag=80004, ActivityRecord{a024e53 u0 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} t3075}#35556
+03-08 15:13:49.810  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12784108    Value : 2208000
+03-08 15:13:49.817  1472  3543 I SemDvfsHyPerManager: acquire hyper - AMS_APP_LAUNCH/1472@15, type = -999
+03-08 15:13:49.817  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 1106343  [1472 / 15]    HINT : AMS_APP_LAUNCH    list :
+03-08 15:13:49.817  2578  2664 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:49.817  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPULittleMinFreq] UpdateResource Request ID : 1106343    Value : 1804800
+03-08 15:13:49.818  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMinFreq] UpdateResource Request ID : 1106343    Value : 2208000
+03-08 15:13:49.818  1537  9581 I CameraService: onUidStateChanged: uid=10052, procState is changed. (0 -> 1)
+03-08 15:13:49.818  5044  5044 I SemDvfsHyPerManager: acquire hyper - APP_START/5044@14, type = -999
+03-08 15:13:49.819  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12794225  [5044 / 14]    HINT : APP_START    list :
+03-08 15:13:49.819  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12794225    Value : 2208000
+03-08 15:13:49.820  1472  1877 I GestureDetector: handleMessage TAP
+03-08 15:13:49.820  1472  1472 I GestureDetector: handleMessage TAP
+03-08 15:13:49.820  1472  3543 D InputTransport: Input channel constructed: '84cd39a', fd=605
+03-08 15:13:49.820  1472  3543 D InputTransport: Input channel constructed: '84cd39a', fd=691
+03-08 15:13:49.820  1472  3543 D InputTransport: Input channel constructed: '84cd39a', fd=756
+03-08 15:13:49.821  1327  1413 I SurfaceFlinger: id=35557 createSurf, flag=80004, 84cd39a Splash Screen com.example.cmput301w24t33.test#35557
+03-08 15:13:49.822 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@bd275ff in: PAUSED
+03-08 15:13:49.822  1472  3543 D InputTransport: Input channel destroyed: '84cd39a', fd=756
+03-08 15:13:49.822  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33.test from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:49.824  2578  2656 I ViewRootImpl@5d91672[test]: setView = android.widget.FrameLayout@e9e27be TM=true
+03-08 15:13:49.825 26361 26361 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=com.example.cmput301w24t33.activities.Organizer@bd275ff
+03-08 15:13:49.825  3258  3258 I TopTaskTracker: onTaskMovedToFront : taskId = 3075
+03-08 15:13:49.826  2578  2656 I ViewRootImpl@5d91672[test]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT
+03-08 15:13:49.826  2578  2656 I ViewRootImpl@5d91672[test]:   fl=81030118
+03-08 15:13:49.826  2578  2656 I ViewRootImpl@5d91672[test]:   pfl=16000010
+03-08 15:13:49.826  2578  2656 I ViewRootImpl@5d91672[test]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:49.826  2578  2656 I ViewRootImpl@5d91672[test]:   bhv=DEFAULT
+03-08 15:13:49.826  2578  2656 I ViewRootImpl@5d91672[test]:   fitSides= naviIconColor=0}
+03-08 15:13:49.828  2578  2656 I ViewRootImpl@5d91672[test]: performTraversals mFirst=true windowShouldResize=true viewVisibilityChanged=false mForceNextWindowRelayout=false params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT
+03-08 15:13:49.828  2578  2656 I ViewRootImpl@5d91672[test]:   fl=81030118
+03-08 15:13:49.828  2578  2656 I ViewRootImpl@5d91672[test]:   pfl=16000010
+03-08 15:13:49.828  2578  2656 I ViewRootImpl@5d91672[test]:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:49.828  2578  2656 I ViewRootImpl@5d91672[test]:   bhv=DEFAULT
+03-08 15:13:49.828  2578  2656 I ViewRootImpl@5d91672[test]:   fitSides= naviIconColor=0}
+03-08 15:13:49.828  1472  3440 I AS.AudioService: uid:10333is using audio
+03-08 15:13:49.831  1472  2686 D InputDispatcher: Focused application(0): ActivityRecord{a024e53 u0 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} t3075}
+03-08 15:13:49.838  1472  5031 V WindowManager: Relayout Window{84cd39a u0 Splash Screen com.example.cmput301w24t33.test}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:49.838  1327  1413 I SurfaceFlinger: id=35558 createSurf, flag=40004, Splash Screen com.example.cmput301w24t33.test$_2578#35558
+03-08 15:13:49.841  1472  5031 V WindowManager: Relayout hash=84cd39a, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT
+03-08 15:13:49.841  1472  5031 V WindowManager:   fl=81030118
+03-08 15:13:49.841  1472  5031 V WindowManager:   pfl=16000010
+03-08 15:13:49.841  1472  5031 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
+03-08 15:13:49.841  1472  5031 V WindowManager:   bhv=DEFAULT
+03-08 15:13:49.841  1472  5031 V WindowManager:   fitSides= naviIconColor=0}
+03-08 15:13:49.842  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33.test from=android.view.ViewRootImpl.relayoutWindow:9802
+03-08 15:13:49.844  1472  2391 D AS.MultiSoundManager: mForegroundUid = 10453
+03-08 15:13:49.846  2578  2656 I ViewRootImpl@5d91672[test]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
+03-08 15:13:49.846  2578  2656 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@5d91672[test] mNativeObject= 0xb400007c52070b00 sc.mNativeObject= 0xb400007c4d3c7ae0 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
+03-08 15:13:49.846  2578  2656 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@5d91672[test] mNativeObject= 0xb400007c52070b00 sc.mNativeObject= 0xb400007c4d3c7ae0 format= -3 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
+03-08 15:13:49.846  2578  2656 I ViewRootImpl@5d91672[test]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=17 res=0x3 s={true 0xb400007c49a66800} ch=true seqId=0
+03-08 15:13:49.847  2578  2656 I ViewRootImpl@5d91672[test]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007c49a66800} hwInitialized=true
+03-08 15:13:49.847  2578  2664 D OpenGLRenderer: eglCreateWindowSurface
+03-08 15:13:49.847  2578  2656 I ViewRootImpl@5d91672[test]: reportNextDraw android.view.ViewRootImpl.performTraversals:4438 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309
+03-08 15:13:49.847  2578  2656 I ViewRootImpl@5d91672[test]: Setup new sync id=0
+03-08 15:13:49.847  2578  2656 I ViewRootImpl@5d91672[test]: Setting syncFrameCallback
+03-08 15:13:49.847  2578  2656 I ViewRootImpl@5d91672[test]: registerCallbacksForSync syncBuffer=false
+03-08 15:13:49.848  2578  2712 I ViewRootImpl@5d91672[test]: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-08 15:13:49.848  2578  2712 I ViewRootImpl@5d91672[test]: Setting up sync and frameCommitCallback
+03-08 15:13:49.851  2578  2664 I BLASTBufferQueue: [ViewRootImpl@5d91672[test]#946](f:0,a:0) onFrameAvailable the first frame is available
+03-08 15:13:49.852  2578  2664 I ViewRootImpl@5d91672[test]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-08 15:13:49.853  2578  2664 D OpenGLRenderer: CFMS:: SetUp Pid : 2578    Tid : 2664
+03-08 15:13:49.853  2578  2664 W Parcel  : Expecting binder but got null!
+03-08 15:13:49.853  2578  2656 I ViewRootImpl@5d91672[test]: onSyncComplete
+03-08 15:13:49.853  2578  2656 I ViewRootImpl@5d91672[test]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
+03-08 15:13:49.853  2578  2656 I ViewRootImpl@5d91672[test]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c662e3a00
+03-08 15:13:49.855  1472  1504 D InputDispatcher: Focus request (0): <null> but waiting because NOT_FOCUSABLE
+03-08 15:13:49.855  1472  1504 D InputDispatcher: Focus left window (0): d965637 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer
+03-08 15:13:49.858 26361 26361 I ViewRootImpl@1384754[Organizer]: handleAppVisibility mAppVisible = true visible = false
+03-08 15:13:49.858 26361 26361 I ViewRootImpl@1384754[Organizer]: MSG_WINDOW_FOCUS_CHANGED 0 0
+03-08 15:13:49.867  1327  1327 I Layer   : id=35559 Destroyed Screenshot Parent#35559
+03-08 15:13:49.872 26361 26463 D OpenGLRenderer: setSurface called with nullptr
+03-08 15:13:49.872 26361 26463 D OpenGLRenderer: setSurface() destroyed EGLSurface
+03-08 15:13:49.872 26361 26463 D OpenGLRenderer: destroyEglSurface
+03-08 15:13:49.874  1327  1413 I SurfaceFlinger: id=35560 createSurf, flag=80000, 141be42 ActivityRecordInputSink com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity#35560
+03-08 15:13:49.875 26361 26361 I ViewRootImpl@1384754[Organizer]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=true mForceNextWindowRelayout=false params=null
+03-08 15:13:49.881 27916 27916 I DecorView: [INFO] isPopOver=false config=true
+03-08 15:13:49.881 27916 27916 I DecorView: updateCaptionType: isFloating=false isApplication=true hasWindowDecorCaption=false this=DecorView@ce0e427[]
+03-08 15:13:49.881 27916 27916 D DecorView: setCaptionType = 0, this = DecorView@ce0e427[]
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/3258/sched_low_latency with value 1
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 3258
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5771/sched_low_latency with value 1
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5771
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5770/sched_low_latency with value 1
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5770
+03-08 15:13:49.881  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:49.882  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/5393/sched_low_latency with value 1
+03-08 15:13:49.882  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 5393
+03-08 15:13:49.882  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 52]
+03-08 15:13:49.882  1273  1344 E ANDR-PERF-UTIL: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:49.882  1273  1344 E ANDR-PERF-OPTSHANDLER: Failed to read /proc/sys/kernel/walt_low_latency_task_threshold
+03-08 15:13:49.882  1273  1344 E ANDR-PERF-RESOURCEQS: Failed to apply optimization [3, 54]
+03-08 15:13:49.884  1472  2686 V WindowManager: Relayout Window{d965637 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:49.884 27916 27916 I DecorView: getCurrentDensityDpi: from real metrics. densityDpi=420 msg=resources_loaded
+03-08 15:13:49.884 27916 27916 I DecorView: setWindowBackground: isPopOver=false color=ffffffff d=android.graphics.drawable.ColorDrawable@407207d
+03-08 15:13:49.886  1472  2686 V WindowManager: Relayout hash=d965637, pid=26361, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=resize forwardNavigation} ty=BASE_APPLICATION wanim=0x1030309
+03-08 15:13:49.886  1472  2686 V WindowManager:   fl=81810100
+03-08 15:13:49.886  1472  2686 V WindowManager:   pfl=12020040
+03-08 15:13:49.886  1472  2686 V WindowManager:   apr=LIGHT_NAVIGATION_BARS
+03-08 15:13:49.886  1472  2686 V WindowManager:   bhv=DEFAULT
+03-08 15:13:49.886  1472  2686 V WindowManager:   fitSides= naviIconColor=0
+03-08 15:13:49.886  1472  2686 V WindowManager:   sfl=100000}
+03-08 15:13:49.887  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33.test$_2578#35558] hidden!! flag(0)
+03-08 15:13:49.887  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35550] hidden!! flag(1)
+03-08 15:13:49.888  5242  5242 I ActivityUtils: HomePackage : com.sec.android.app.launcher, resumePackageName : com.example.cmput301w24t33.test
+03-08 15:13:49.889 27916 27916 I MSHandlerLifeCycle: check: return. pkg=com.example.cmput301w24t33.test parent=null callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.ActivityThread.handleResumeActivity:5476 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176
+03-08 15:13:49.889 27916 27916 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@ce0e427[]
+03-08 15:13:49.893  1472  3678 I MediaSessionMonitor: Media session stopped : diffrent pkg
+03-08 15:13:49.893  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
+03-08 15:13:49.893  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d065e00 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | Splash Screen com.example.cmput301w24t33.test$_2578#35558
+03-08 15:13:49.893  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
+03-08 15:13:49.893  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
+03-08 15:13:49.893  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446148210 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
+03-08 15:13:49.893  1327  1327 D SurfaceFlinger:
+03-08 15:13:49.895  3258  3637 I QuickstepModelDelegate: Widget predictions updated
+03-08 15:13:49.896 27916 27939 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-08 15:13:49.898 26361 26361 I ViewRootImpl@1384754[Organizer]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)8 dur=22 res=0x2 s={false 0x0} ch=true seqId=0
+03-08 15:13:49.900  1472  3543 D InputTransport: Input channel constructed: '40759f0', fd=756
+03-08 15:13:49.900  1472  3543 D InputTransport: Input channel constructed: '40759f0', fd=952
+03-08 15:13:49.900  1472  3543 D InputTransport: Input channel constructed: '40759f0', fd=966
+03-08 15:13:49.900  1327  1413 I SurfaceFlinger: id=35561 createSurf, flag=80004, 40759f0 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity#35561
+03-08 15:13:49.901  1472  3543 D InputTransport: Input channel destroyed: '40759f0', fd=966
+03-08 15:13:49.904 27916 27916 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:49.906 27916 27916 I ViewRootImpl@8f2ec40[InstrumentationActivityInvoker$EmptyActivity]: setView = com.android.internal.policy.DecorView@ce0e427 TM=true
+03-08 15:13:49.907 27916 27916 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@ce0e427[InstrumentationActivityInvoker$EmptyActivity]
+03-08 15:13:49.908 26361 26361 I ViewRootImpl@1384754[Organizer]: stopped(true) old = false
+03-08 15:13:49.908 26361 26361 I ViewRootImpl@1384754[Organizer]: WindowStopped on com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer set to true
+03-08 15:13:49.909 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@bd275ff in: STOPPED
+03-08 15:13:49.910 26361 26361 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=com.example.cmput301w24t33.activities.Organizer@bd275ff
+03-08 15:13:49.911 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@62b25f7[Organizer]
+03-08 15:13:49.912 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@bd275ff in: DESTROYED
+03-08 15:13:49.912 26361 26361 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+03-08 15:13:49.913 26361 26459 I TestRunner: finished: testProfileOrganizer(com.example.cmput301w24t33.OrganizerUITest)

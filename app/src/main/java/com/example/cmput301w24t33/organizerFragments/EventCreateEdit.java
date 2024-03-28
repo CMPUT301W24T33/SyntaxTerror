@@ -244,7 +244,12 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         binding.endTimeText.setText(endDateTime);
         binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
         binding.geoTrackingSwitch.setChecked(eventToEdit.getGeoTracking());
-
+        eventImageRef = eventToEdit.getImageRef();
+        eventImageUrl = eventToEdit.getImageUrl();
+        locationCoord = eventToEdit.getLocationCoord();
+        locationName = eventToEdit.getLocationName();
+        tempStartDateTime.setTime(eventToEdit.getStartDateTime().toDate());
+        tempEndDateTime.setTime(eventToEdit.getEndDateTIme().toDate());
         // Removes QR Code button
         binding.generateQrCodeButton.setVisibility(View.INVISIBLE);
         qrcode = eventToEdit.getCheckInQR();
@@ -275,6 +280,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             setEventEdits(eventToEdit);
             Log.d(TAG, "after set event:" + eventToEdit.getEventId());
             eventRepo.updateEvent(eventToEdit);
+
         } else {
             // Creates new event
             //mAuth = FirebaseAuth.getInstance();

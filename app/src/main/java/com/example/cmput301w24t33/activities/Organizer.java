@@ -35,6 +35,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
 import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
@@ -87,6 +88,7 @@ public class Organizer extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        NotificationManager.initialize(this.getApplication());
         Log.d(TAG, "RESUME");
         eventViewModel.loadOrganizerEvents(userId);
     }

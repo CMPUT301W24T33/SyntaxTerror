@@ -75,85 +75,61 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:paddingTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/home_icon_img"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:srcCompat="?switchHouseIcon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/poppins_family"
-                        android:text="Home"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.03" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="111dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="vertical"
                     android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/check_in_img"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="90dp"
+                        android:layout_height="65dp"
                         android:src="?attr/check_in_button_image" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_family"
-                        android:text="QR"
-                        android:textSize="12sp" />
+                        android:text="@string/check_in_event"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.03" />
+                    android:layout_weight="0.10" />
 
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="111dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="vertical"
                     android:gravity="center"
+                    android:orientation="vertical"
                     android:paddingTop="10dp">
 
                     <ImageView
                         android:id="@+id/find_event_img"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="?attr/search_button_image"/>
+                        android:layout_width="90dp"
+                        android:layout_height="65dp"
+                        android:src="?attr/search_button_image" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+
                         android:fontFamily="@font/poppins_family"
-                        android:text="Find"
-                        android:textSize="12sp" />
+                        android:text="Find Event"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <Space
@@ -161,30 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.03" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:paddingTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/profile_icon_img"
-                        app:srcCompat="?switchPersonIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_family"
-                        android:layout_marginTop="4dp"
-                        android:text="Profile"
-                        android:textSize="12sp" />
-                </LinearLayout>
             </LinearLayout>
-
 
 
         </LinearLayout>
