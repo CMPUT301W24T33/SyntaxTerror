@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/general_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="?attr/action_bar_attendee">
+        <ImageButton
+            android:id="@+id/back_arrow_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ic_back_arrow"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/back_button" />
+
+        <TextView
+            android:id="@+id/general_actionbar_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_toStartOf="@id/profile_button"
+            android:layout_toEndOf="@id/back_arrow_img"
+            android:background="@null"
+            android:clickable="false"
+            android:text=""
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_button"
+            android:layout_width="50dp"
+            app:cardCornerRadius="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true">
+            <ImageView
+                android:id="@+id/profile_image"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/test_profile"
+                android:contentDescription="@string/profile_picture"/>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

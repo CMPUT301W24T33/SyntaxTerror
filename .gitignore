@@ -1,23 +1,33 @@
+# Gradle files
+.gradle/
+build/
 
-CMPUT301W24T33/.idea/
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS Files
+*.log
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+
+# IntelliJ
+*.iml
 .idea/
-CMPUT301W24T33/.idea/misc.xml
-.gradle/8.2/executionHistory/executionHistory.bin
-.gradle/8.2/executionHistory/executionHistory.lock
-.gradle/8.2/fileHashes/fileHashes.bin
-.gradle/8.2/fileHashes/fileHashes.lock
-.gradle/8.2/fileHashes/resourceHashesCache.bin
-.gradle/buildOutputCleanup/buildOutputCleanup.lock
-.gradle/buildOutputCleanup/outputFiles.bin
-.gradle/config.properties
-.gradle/file-system.probe
-local.properties
-.gradle/8.2/executionHistory/executionHistory.bin
-.gradle/8.2/executionHistory/executionHistory.lock
-.gradle/8.2/fileHashes/fileHashes.bin
-.gradle/8.2/fileHashes/fileHashes.lock
-.gradle/8.2/fileHashes/resourceHashesCache.bin
-.gradle/buildOutputCleanup/buildOutputCleanup.lock
-.gradle/config.properties
-.gradle/file-system.probe
-local.properties
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Android Profiling
+*.hprof
