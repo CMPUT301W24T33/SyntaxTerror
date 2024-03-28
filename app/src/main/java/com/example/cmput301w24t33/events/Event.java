@@ -80,7 +80,11 @@ public class Event implements Serializable, Parcelable {
             Log.d("Timestamp", "start: " + startDateTime.toString() + " end: " + endDateTIme.toString());
         }
         attendees = (ArrayList<User>) args.getSerializable("Attendees");
-        checkInLocations = (ArrayList<String>) args.getSerializable("Locations");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            checkInLocations = args.getSerializable("Locations", (ArrayList.class));
+        }
+
         signedUp = (ArrayList<User>) args.getSerializable("SignedUp");
         imageRef = args.getString("ImageRef");
         imageUrl = args.getString("ImageUrl");

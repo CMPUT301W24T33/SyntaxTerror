@@ -24,7 +24,7 @@ import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AppInitialization extends AppCompatActivity {
+public class AppInitialization extends AppCompatActivity implements CreateProfile.OnUserCreatedListener {
 
     private User currentUser;
     private UserRepository userRepo;
@@ -93,9 +93,15 @@ public class AppInitialization extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.attendee_layout, fragment);
+        transaction.replace(android.R.id.content, fragment);
+        //transaction.add(fragment, "CreateProfile");
         transaction.addToBackStack(null);
         transaction.commitAllowingStateLoss();
     }
 
+    @Override
+    public void onUserCreated(User user) {
+        userViewModel.setUser(user);
+        currentUser = user;
+    }
 }
