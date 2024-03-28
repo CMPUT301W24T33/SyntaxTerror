@@ -307,7 +307,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         Log.d("setURL","a"+eventImageUrl);
 
         // if event already has a poster then delete it from db before updating it
-        Log.d("ImageURL", event.getImageUrl());
+//        Log.d("ImageURL", event.getImageUrl());
         if (event.getImageUrl() != null){
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference fileRef = storage.getReferenceFromUrl(event.getImageUrl());
