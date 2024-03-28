@@ -170,6 +170,7 @@ public class CreateProfile extends Fragment {
                         String userId = getAndroidId();
                         Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
                         User newUser = new User(userId, fName, lName, email, false, result.first,result.second);
+                        Log.d("Image Ref", newUser.getImageRef());
                         userRepo.setUser(newUser);
 
                         mListener.onUserCreated(newUser);

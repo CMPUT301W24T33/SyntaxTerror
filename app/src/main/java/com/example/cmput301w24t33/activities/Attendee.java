@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -53,7 +54,7 @@ import java.util.Set;
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
-public class Attendee extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
+public class Attendee extends AppCompatActivity implements CreateProfile.OnUserCreatedListener, Profile.OnImageUpdatedListener{
     private EventAdapter eventAdapter;
     private boolean viewingAllEvents = false;
     private AttendeeActivityBinding binding;
@@ -67,6 +68,12 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
     private ArrayList<Event> allEvents = new ArrayList<>();
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
 
+    @Override
+    public void onImageUpdated(String imageUrl) {
+        ImageView profileButton = findViewById(R.id.profile_image);
+        Glide.with(this).load(imageUrl).into(profileButton);
+        // Optionally, update the currentUser's imageUrl if you are keeping a reference
+    }
     /**
      * Initializes the activity, setting up Firebase, RecyclerView for events, and listeners.
      * @param savedInstanceState Contains data from onSaveInstanceState(Bundle) if the activity is re-initialized.
@@ -169,6 +176,8 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         setupViewModel();
         Log.d(TAG, "RESUME");
         eventViewModel.loadEvents();
+
+        Glide.with(this).load(userImageURL).into((ImageView) findViewById(R.id.profile_image));
     }
 
     /**
@@ -229,8 +238,15 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         ImageView profileButton = findViewById(R.id.profile_image);
 
         profileButton.setOnClickListener(v -> {
+            // When you are showing the Profile fragment from the Attendee activity
+            Profile profileFragment = Profile.newInstance(currentUser); // Assuming you have a method like this
+            profileFragment.setOnImageUpdatedListener(this); // 'this' refers to the Attendee activity
+            // Now add or replace the fragment as you normally would
+
             replaceFragment(Profile.newInstance(currentUser));
+
         });
+
         binding.switchEventsButton.setOnClickListener(v -> switchEventView());
 
         ImageView checkInButton = findViewById(R.id.check_in_img);

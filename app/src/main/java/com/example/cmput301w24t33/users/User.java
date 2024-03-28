@@ -186,8 +186,8 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getImageRef(String imageRef) {
-        return this.imageRef;
+    public String getImageRef() {
+        return imageRef;
     }
 
     public void setImageRef(String imageRef) {

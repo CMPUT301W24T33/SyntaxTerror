@@ -47,6 +47,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -78,6 +79,18 @@ public class Profile extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
+
+    // Define the interface
+    public interface OnImageUpdatedListener {
+        void onImageUpdated(String imageUrl);
+    }
+
+    private OnImageUpdatedListener imageUpdatedListener;
+
+    // Method to set the listener
+    public void setOnImageUpdatedListener(OnImageUpdatedListener listener) {
+        this.imageUpdatedListener = listener;
+    }
     /**
      * Fetches the user's information from Firestore and updates the UI accordingly.
      * If the user has a saved image URL, it uses Picasso to load the image into the profile image view.
@@ -95,8 +108,9 @@ public class Profile extends Fragment {
                             fName = documentSnapshot.getString("firstName");
                             lName = documentSnapshot.getString("lastName");
                             imageUrl = documentSnapshot.getString("imageUrl");
+                            imageRef = documentSnapshot.getString("imageRef");
 
-                            // Now that we have the data, we can log it
+
                             addFnameEditText.setText(fName);
                             addEmailEditText.setText(email);
                             addLnameEditText.setText(lName);
@@ -290,8 +304,78 @@ public class Profile extends Fragment {
         // Remove image button listener
         Button removeImageButton = view.findViewById(R.id.remove_profile_img_button);
         removeImageButton.setOnClickListener(v -> {
+
+            // Get a reference to the storage service
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+
+            // Create a storage reference from our app
+            StorageReference storageRef = storage.getReference();
+
+             // Get a reference to the file you want to delete
+            StorageReference fileRef = storageRef.child("gs://syntax-terror-f783b.appspot.com/images/"+imageRef);
+            fileRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    // File deleted successfully
+                    Log.d("FirebaseStorage", "File deleted successfully");
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Uh-oh, an error occurred!
+                    Log.d("FirebaseStorage", "Error deleting file", exception);
+                }
+            });
+            fileRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    // File deleted successfully
+                    Log.d("FirebaseStorage", "File deleted successfully");
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Uh-oh, an error occurred!
+                    Log.d("FirebaseStorage", "Error deleting file", exception);
+                }
+            });
             // logic for removing an image here
             // can change button later to different location if needed
+            byte[] hash = IdenticonGenerator.generateHash(fName);
+            Bitmap identicon = IdenticonGenerator.generateIdenticonBitmap(hash);
+            try {
+                // Creates a file in the app's cache directory
+                File identiconFile = new File(getContext().getCacheDir(), "userIdenticon.jpg");
+
+                // Convert bitmap to byte array and write to the file
+                try (FileOutputStream outputStream = new FileOutputStream(identiconFile)) {
+                    identicon.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+                }
+                // Set the ImageView to the identicon Bitmap
+                ImageHandler.uploadFile(Uri.fromFile(new File("/data/user/0/com.example.cmput301w24t33/cache/userIdenticon.jpg")), storage, new ImageHandler.UploadCallback() {
+                    @Override
+                    public void onSuccess(Pair<String, String> result) {
+                        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+                        Glide.with(getContext()).load(identiconFile).into(profileImageView);
+                        imageRef = result.second;
+                        imageUrl = result.first;
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        // Handle the failure case here
+                        Log.d("Upload Failure", e.toString());
+                    }
+                });
+
+                // TODO: Do something with the file if needed, such as uploading it to a server
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(getContext(), "Error saving userIdenticon", Toast.LENGTH_SHORT).show();
+            }
         });
 
     }
@@ -343,10 +427,17 @@ public class Profile extends Fragment {
         profileToEdit.setFirstName(addFnameEditText.getText().toString());
         profileToEdit.setLastName(addLnameEditText.getText().toString());
         profileToEdit.setEmail(addEmailEditText.getText().toString());
-        profileToEdit.getImageRef(imageRef);
+        profileToEdit.setImageRef(imageRef);
+        Log.d("ProfileRef: ",profileToEdit.getImageRef());
         profileToEdit.setImageUrl(imageUrl);
 
         userRepo.updateUser(profileToEdit);
+
+        // Inside your saveProfile method or wherever you are saving the profile information
+        if(imageUpdatedListener != null) {
+            imageUpdatedListener.onImageUpdated(imageUrl); // imageUrl is the new or updated image URL
+
+        }
 
         // Navigate back
         getParentFragmentManager().popBackStack();

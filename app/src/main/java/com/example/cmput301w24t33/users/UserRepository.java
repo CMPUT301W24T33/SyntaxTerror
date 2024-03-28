@@ -186,6 +186,7 @@ public class UserRepository {
      */
     public void setUser(User user) {
         String docId = user.getUserId();
+
         userCollection.document(docId).set(user)
                 .addOnSuccessListener(documentReference -> {
                     Log.d(TAG, "Create User Document success: " + user.getUserId());
