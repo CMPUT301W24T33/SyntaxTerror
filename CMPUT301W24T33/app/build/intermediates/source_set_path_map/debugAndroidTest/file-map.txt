@@ -1,0 +1,6 @@
+com.example.cmput301w24t33.test.app-annotation-experimental-1.3.0-0 C:\Users\ian_m\.gradle\caches\transforms-3\1b356d15278a3a118aa936f50673245c\transformed\annotation-experimental-1.3.0\res
+com.example.cmput301w24t33.test.app-core-1.5.0-1 C:\Users\ian_m\.gradle\caches\transforms-3\a934b44ab01bbad7318835e83f034a9e\transformed\core-1.5.0\res
+com.example.cmput301w24t33.test.app-androidTest-2 C:\Users\ian_m\AndroidStudio-301\project\SyntaxTerror\CMPUT301W24T33\app\build\generated\res\resValues\androidTest\debug
+com.example.cmput301w24t33.test.app-mergeDebugAndroidTestResources-3 C:\Users\ian_m\AndroidStudio-301\project\SyntaxTerror\CMPUT301W24T33\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.cmput301w24t33.test.app-mergeDebugAndroidTestResources-4 C:\Users\ian_m\AndroidStudio-301\project\SyntaxTerror\CMPUT301W24T33\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.cmput301w24t33.test.app-merged_res-5 C:\Users\ian_m\AndroidStudio-301\project\SyntaxTerror\CMPUT301W24T33\app\build\intermediates\merged_res\debugAndroidTest
