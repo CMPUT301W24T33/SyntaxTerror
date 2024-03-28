@@ -9,7 +9,7 @@
         <item name="android:colorPrimary">@color/organizer_actionbar_day</item>
         <item name="colorSecondary">@color/secondary_day</item>
         <item name="android:textColor">@color/black</item>
-        <item name="backgroundColor">@color/white</item>
+        <item name="backgroundColor">@color/background</item>
         <item name="action_bar_attendee">@color/attendee_actionbar_day</item>
         <item name="action_bar_organizer">@color/organizer_actionbar_day</item>
 
