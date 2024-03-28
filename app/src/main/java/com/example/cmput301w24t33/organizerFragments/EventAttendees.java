@@ -9,18 +9,14 @@ package com.example.cmput301w24t33.organizerFragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,8 +32,6 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,11 +89,12 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
             selectedEvent = (Event) getArguments().getSerializable("event");
         }
 
-        //String address = selectedEvent.getAddress();
+        //String address = selectedEvent.getLocationName();
 
         setupActionBar(view);
         setupClickListeners(view);
         setupMapView(view, savedInstanceState);
+
 
         attendeeNumberView = view.findViewById(R.id.attendees_count);
         attendeeNumberView.setText("0");
@@ -133,7 +128,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         mapView.getMapAsync(googleMap -> {
             gMap = googleMap;
             if (selectedEvent != null) {
-                String locationData = selectedEvent.getLocationData();
+                String locationData = selectedEvent.getLocationCoord();
                 // We are parsing that string from Location Data
                 if (locationData != null && !locationData.isEmpty()) {
                     String[] parts = locationData.split(",");
@@ -144,7 +139,12 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
                     LatLng eventLocation = new LatLng(latitude, longitude);
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
                     gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
-                    addCircle(eventLocation,GEOFENCE_RADIUS);
+
+                    if (selectedEvent.getGeoTracking()== true){
+                        addCircle(eventLocation,GEOFENCE_RADIUS);
+                    } else if (selectedEvent.getGeoTracking() == false) {
+                        gMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)));
+                    }
 
                 } else {
                 // Default to Edmonton if location is not Specified
@@ -163,16 +163,21 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         });
     }
 
-    private void addCircle(LatLng latLng,float radius){
+    /**
+     * Adds a circle to the Google Map centered at the given latitude and longitude.
+     * @param latLng The center point of the circle on the map, specified as a LatLng object containing latitude and longitude.
+     * @param radius The radius of the circle in meters.
+     */
+    private void addCircle(LatLng latLng, float radius){
         CircleOptions circleOptions = new CircleOptions();
         circleOptions.center(latLng);
         circleOptions.radius(radius);
-        circleOptions.strokeColor(Color.argb(255,255,0,0));
-        circleOptions.fillColor(Color.argb(64,255,0,0));
+        circleOptions.strokeColor(Color.argb(255, 0, 128, 128));
+        circleOptions.fillColor(Color.argb(64, 0, 128, 128));
         circleOptions.strokeWidth(4);
         gMap.addCircle(circleOptions);
-
     }
+
 
     /**
      * Fills out Recycler view with loaded event's attendees

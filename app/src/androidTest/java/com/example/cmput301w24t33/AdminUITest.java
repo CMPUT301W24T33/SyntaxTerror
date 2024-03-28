@@ -28,8 +28,7 @@ public class AdminUITest {
     @Test
     public void testAdminViewEvent(){
         // press button go to admin events
-        onView(withId(R.id.event_arrow_button)).perform(click());
-        // check if on organizer activity
+        onView(withId(R.id.browse_events_button)).perform(click());
         onView(withId(R.id.admin_events_layout)).check(matches(isDisplayed()));
         // press button to switch back to attendee
         onView(withId(R.id.view_events_back_button)).perform(click());
@@ -40,11 +39,23 @@ public class AdminUITest {
     @Test
     public void testAdminViewProfiles(){
         // press button go to admin profiles
-        onView(withId(R.id.profile_arrow_button)).perform(click());
+        onView(withId(R.id.browse_profiles_button)).perform(click());
         // check if on organizer activity
         onView(withId(R.id.admin_view_profiles_fragment)).check(matches(isDisplayed()));
         // press button to switch back to attendee
         onView(withId(R.id.view_profiles_back_button)).perform(click());
+        // check if on attendee view
+        onView(withId(R.id.admin_activity)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testAdminViewImages(){
+        // press button go to admin events
+        onView(withId(R.id.browse_events_button)).perform(click());
+        // check if on organizer activity
+        onView(withId(R.id.admin_events_layout)).check(matches(isDisplayed()));
+        // press button to switch back to attendee
+        onView(withId(R.id.view_events_back_button)).perform(click());
         // check if on attendee view
         onView(withId(R.id.admin_activity)).check(matches(isDisplayed()));
     }

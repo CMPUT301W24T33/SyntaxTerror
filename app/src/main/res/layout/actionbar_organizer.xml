@@ -12,10 +12,12 @@
         android:background="?attr/action_bar_organizer">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/profile_button"
             android:layout_width="50dp"
             app:cardCornerRadius="150dp"
             android:layout_height="50dp"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentEnd="true">
+
             <ImageView
                 android:id="@+id/profile_image"
                 android:clickable="true"
@@ -23,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/test_profile"
-                >
+                android:focusable="true">
             </ImageView>
         </androidx.cardview.widget.CardView>
 

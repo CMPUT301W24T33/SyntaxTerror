@@ -4,7 +4,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -17,16 +16,12 @@ import androidx.core.content.ContextCompat;
 
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
-import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.firestore.GeoPoint;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class QRCheckIn implements QRScanner.ScanResultsListener {
     private Context context;
@@ -98,7 +93,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
                 // Retrieves Current Location
 
                 fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null).addOnSuccessListener((Activity) context, location -> {
-                    if (location != null) {
+                    if (location != null && GeofenceArea(event.getLocationCoord(), location)) {
                         // Logic to handle location object
                         event.addAttendee(currentUser, location);
                         EventRepository eventRepo = new EventRepository();
@@ -106,7 +101,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
                         checkInSuccessfulToast.show();
 
                     } else {
-                        checkInFailedToast.show();
+                        Toast.makeText(context, "Not close enough to the event location; Check In Failed", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener((Activity) context, e -> {
                     Log.d("Location", "Could not retrieve new location: " + e.getMessage());
@@ -130,38 +125,6 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
             Log.d("CheckIn", "Max occupancy reached for event: " + event.getName());
             Toast.makeText(context, "Max Occupancy for this event has been reached", Toast.LENGTH_SHORT).show();
             return false; // Stop the check-in process
-        }
-
-        if (event.getGeoTracking()) {
-            // GeoTracking is enabled, fetch the current location
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return true; // what --> come back to this
-            }
-
-            fusedLocationProvider.getCurrentLocation(new CurrentLocationRequest.Builder().build(), null)
-                    .addOnSuccessListener((Activity) context, location -> {
-                        // If location is not null and is near GeofenceArea
-                        if (location != null && GeofenceArea(event.getLocationData(), location)) {
-                            // User is within geofence radius, proceed with check-in
-                            Toast.makeText(context, "Welcome to event!", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "Location is good!");
-                        } else {
-                            Toast.makeText(context, "Not close enough to the event location.", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener((Activity) context, e -> {
-                        // Handle failure to get location
-                        Toast.makeText(context, "Failed to retrieve location.", Toast.LENGTH_SHORT).show();
-                    });
-        } else {
-            // GeoTracking is disabled, proceed without location validation
-            return true;
         }
         return true;
     }
@@ -188,7 +151,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
 //            return false;
 //        } else if (event.getGeoTracking()) {
 //            Log.d("CheckIn", "Not close enough to event: " +event.getName());
-////            String[] latLong = event.getLocationData().split(",");
+////            String[] latLong = event.getLocationCoord().split(",");
 ////            int lat = Integer.parseInt(latLong[0]);
 ////            int lon = Integer.parseInt(latLong[1]);
 //            return true; //this needs to check if the user is within range to check into the event

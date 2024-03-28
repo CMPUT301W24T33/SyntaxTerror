@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="admin_actionbar">#C247D8</color>
+    <color name="attendee_actionbar_day">#f94d3f</color>
+    <color name="attendee_actionbar_night">#6d0523</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="button_3_day">#afb00af0</color>
+    <color name="button_3_night">#9f8000b0</color>
+    <color name="button_day">#61DC4B</color>
+    <color name="button_night">#5561DC4B</color>
+    <color name="default_state">#747474</color>
+    <color name="going">#388E3C</color>
+    <color name="ic_search_icon_background">#3DDC84</color>
+    <color name="ic_search_icon_night_background">#3DDC84</color>
+    <color name="light_grey">#B5B5B5</color>
+    <color name="not_going">#D32F2F</color>
+    <color name="onPrimary">#FF000000</color>
+    <color name="onSecondary">#FFFFFFFF</color>
+    <color name="organizer_actionbar_day">#39e8cf</color>
+    <color name="organizer_actionbar_night">#1b4d67</color>
+    <color name="primary">#FFFFFFFF</color>
+    <color name="secondary">#FF000000</color>
+    <color name="secondary_day">#ff9090ff</color>
+    <color name="secondary_night">#1f1faf</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="_123_event_street_city_country">event_location_example\n</string>
+    <string name="app_name">CMPUT301W24T33</string>
+    <string name="april_20_2024_from_10_00_am_to_3_00_pm">event_time_example</string>
+    <string name="back_button">Back Button</string>
+    <string name="cancel">Cancel</string>
+    <string name="checked_in">Checked-In</string>
+    <string name="choose_qr_code">Choose QR Code</string>
+    <string name="confirm">Confirm</string>
+    <string name="create">Create</string>
+    <string name="create_new_qr_code_default">Create New QR Code (default)</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="description">Description</string>
+    <string name="e_mail">E-Mail:</string>
+    <string name="edit_event">Edit Event</string>
+    <string name="enable_geo_tracking">Enable Geo Tracking:</string>
+    <string name="end_date">End Date</string>
+    <string name="end_time">End Time</string>
+    <string name="event_description">Event Description</string>
+    <string name="event_poster">Event Poster</string>
+    <string name="firebase_database_url" translatable="false">https://syntax-terror-f783b-default-rtdb.firebaseio.com</string>
+    <string name="first_name">First Name:</string>
+    <string name="gcm_defaultSenderId" translatable="false">1087289880922</string>
+    <string name="google_api_key" translatable="false">AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs</string>
+    <string name="google_app_id" translatable="false">1:1087289880922:android:9aad77801068ca53288363</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs</string>
+    <string name="google_storage_bucket" translatable="false">syntax-terror-f783b.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="last_name">Last Name:</string>
+    <string name="location">Location</string>
+    <string name="manage_notifications">Manage Notifications</string>
+    <string name="max_attendees">Max Attendees:</string>
+    <string name="notification_dialog_message_hint">message</string>
+    <string name="notification_dialog_title_hint">title</string>
+    <string name="optional">Optional</string>
+    <string name="places">AIzaSyBK94a1cQs_7HW6JGFZRu39VRILNwkB0uk</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="project_id" translatable="false">syntax-terror-f783b</string>
+    <string name="reuse_existing_qr_code">Reuse Existing QR Code</string>
+    <string name="sample_event_name">Sample Event Name</string>
+    <string name="save">Save</string>
+    <string name="select_qr_code">Select QR Code</string>
+    <string name="selected_event">Selected Event:</string>
+    <string name="share_check_in_code">Share Check In Code</string>
+    <string name="share_event_page">Share Event Page</string>
+    <string name="share_poster">Share Poster</string>
+    <string name="share_qr_code">Share QR code</string>
+    <string name="signed_up">Signed-up</string>
+    <string name="start_date">Start Date</string>
+    <string name="start_time">Start Time</string>
+    <string name="this_is_a_detailed_description_of_the_event_including_all_relevant_information_attendees_need_to_know">event_desc_example</string>
+    <string name="upload_poster">Upload Poster</string>
+    <style name="Base.Theme.CMPUT301W24T33" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        
+        <item name="colorAccent">@color/organizer_actionbar_day</item>
+        <item name="android:colorPrimary">@color/organizer_actionbar_day</item>
+        <item name="colorSecondary">@color/secondary_day</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="backgroundColor">@color/white</item>
+        <item name="action_bar_attendee">@color/attendee_actionbar_day</item>
+        <item name="action_bar_organizer">@color/organizer_actionbar_day</item>
+        <item name="check_in_button_image">@drawable/check_in_img_day</item>
+        <item name="search_button_image">@drawable/ic_search_icon_day_foreground</item>
+        <item name="button_color_1">@color/button_day</item>
+        <item name="button_color_2">@color/black</item>
+        <item name="button_color_3">@color/button_3_day</item>
+        <item name="switchProfileIcon">@drawable/baseline_switch_account_40</item>
+        <item name="snackbarStyle">@style/Theme.SnackBarStyle</item>
+    </style>
+    <style name="CustomOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        
+        <item name="backgroundTint">@color/white</item>
+
+        
+        <item name="strokeColor">@color/black</item>
+
+        
+        <item name="strokeWidth">1dp</item>
+
+        
+        <item name="android:textColor">@color/black</item>
+
+        
+        <item name="iconTint">@color/black</item>
+
+        
+        <item name="rippleColor">@color/light_grey</item>
+
+        
+        <item name="android:elevation">0dp</item> 
+
+        
+        <item name="iconPadding">8dp</item>
+
+        
+        <item name="iconSize">24dp</item>
+
+        
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+    </style>
+    <style name="MyShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+    <style name="ProfileText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="Theme.ActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:background">#00000000</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+    <style name="Theme.CMPUT301W24T33" parent="Base.Theme.CMPUT301W24T33"/>
+    <style name="Theme.TextAppearance" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:background">#00000000</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <declare-styleable name="action_bar_attrs">
+        <attr format="color" name="action_bar_attendee"/>
+        <attr format="color" name="action_bar_organizer"/>
+        <attr format="reference" name="switchProfileIcon"/>
+    </declare-styleable>
+    <declare-styleable name="button_attrs">
+        <attr format="color" name="button_color_1"/>
+        <attr format="color" name="button_color_2"/>
+        <attr format="color" name="button_color_3"/>
+        <attr format="reference" name="check_in_button_image"/>
+        <attr format="reference" name="search_button_image"/>
+    </declare-styleable>
+</resources>

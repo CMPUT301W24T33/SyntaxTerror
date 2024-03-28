@@ -7,11 +7,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.Event;
-import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class EventPosterAdapter extends RecyclerView.Adapter<EventPosterAdapter.
     private final ArrayList<Event> eventsArrayList;
     private final EventPosterAdapter.AdapterEventClickListener eventClickListener;
 
+    private final Fragment fragment;
+
     /**
      * Constructs an adapter for displaying events in a RecyclerView.
      * This adapter is responsible for converting event objects into viewable elements
@@ -31,9 +34,10 @@ public class EventPosterAdapter extends RecyclerView.Adapter<EventPosterAdapter.
      * @param eventsArrayList The dataset of Event objects to be displayed.
      * @param eventClickListener An interface callback for handling clicks on each event item.
      */
-    public EventPosterAdapter(ArrayList<Event> eventsArrayList, EventPosterAdapter.AdapterEventClickListener eventClickListener) {
+    public EventPosterAdapter(ArrayList<Event> eventsArrayList, EventPosterAdapter.AdapterEventClickListener eventClickListener, Fragment fragment) {
         this.eventsArrayList = eventsArrayList;
         this.eventClickListener = eventClickListener;
+        this.fragment = fragment;
     }
 
     /**
@@ -61,7 +65,7 @@ public class EventPosterAdapter extends RecyclerView.Adapter<EventPosterAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Event event = eventsArrayList.get(position);
-        holder.bind(event, eventClickListener);
+        holder.bind(event, eventClickListener,fragment);
     }
 
     /**
@@ -106,14 +110,14 @@ public class EventPosterAdapter extends RecyclerView.Adapter<EventPosterAdapter.
          * @param event The event object to bind to the view.
          * @param listener The listener to handle click events on this view.
          */
-        void bind(final Event event, final AdapterEventClickListener listener) {
+        void bind(final Event event, final AdapterEventClickListener listener,Fragment fragment) {
             eventText.setText(event.getName());
             String posterURL = event.getImageUrl();
             if (posterURL != null) {
-                Picasso.get().load(posterURL).into(eventPoster);
+                Glide.with(fragment).load(event.getImageUrl()).into(eventPoster);
             }
             else{
-                Picasso.get().cancelRequest(eventPoster);
+                Glide.with(fragment).clear(eventPoster);
                 eventPoster.setImageResource(R.drawable.no_image);
             }
             itemView.setOnClickListener(v -> {
