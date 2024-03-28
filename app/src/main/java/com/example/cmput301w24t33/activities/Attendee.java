@@ -47,6 +47,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -66,6 +67,8 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
     private EventViewModel eventViewModel;
     private ArrayList<Event> allEvents = new ArrayList<>();
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
+    private ArrayList<Event> organizedEvents = new ArrayList<>();
+
 
     /**
      * Initializes the activity, setting up Firebase, RecyclerView for events, and listeners.
@@ -146,6 +149,9 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
             }
             if (event.getAttendees().contains(currentUser)) {
                 notificationTrackedEvents.add(event.getEventId());
+            }
+            if (Objects.equals(event.getOrganizerId(), currentUser.getUserId())) {
+                NotificationManager.getInstance().trackAttendeeUpdatesForEvent(event.getEventId());
             }
         }
         NotificationManager.getInstance().trackMultipleEventsNotifications(notificationTrackedEvents);
