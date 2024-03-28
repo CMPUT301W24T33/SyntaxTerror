@@ -19,7 +19,7 @@
     <color name="default_state">#747474</color>
     <color name="light_grey">#B5B5B5</color>
     <color name="button_day">#2196F3</color>
-    <color name="button_night">#FFC107</color> 
+    <color name="button_night">#FFC107</color>
 
 
     <color name="secondary_day">#ff9090ff</color>
