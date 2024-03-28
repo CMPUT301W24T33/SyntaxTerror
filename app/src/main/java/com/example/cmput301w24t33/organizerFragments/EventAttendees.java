@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -185,9 +186,15 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
      */
     @Override
     public void onEventsLoaded(List<Event> events) {
+        ProgressBar progressBar = getView().findViewById(R.id.attendee_progress_bar);
+        Event event = events.get(0);
         attendeesList.clear();
-        attendeesList.addAll(events.get(0).getAttendees());
+        attendeesList.addAll(event.getAttendees());
         attendeeNumberView.setText(String.format(Locale.CANADA, "%d", getUniqueAttendeeCount()));
+        if(event.getMaxOccupancy()!=0){
+            int progress = (int) (((float) getUniqueAttendeeCount()) / ((float) event.getMaxOccupancy() )* 100); // why?
+            progressBar.setProgress(progress);
+        }
         attendeeAdapter.notifyDataSetChanged();
     }
 

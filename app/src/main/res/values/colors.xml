@@ -29,4 +29,7 @@
 
     <color name="transparent">#00000000</color>
 
+    <color name="progress_bar_tint">#00ff00</color>
+    <color name="progress_bar_tint_background">#ff0000</color>
+
 </resources>
