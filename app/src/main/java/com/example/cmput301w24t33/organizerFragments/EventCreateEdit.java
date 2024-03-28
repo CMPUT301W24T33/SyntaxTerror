@@ -36,6 +36,7 @@ import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBi
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
@@ -75,9 +76,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private Calendar tempEndDateTime = Calendar.getInstance();
     private String locationName;
     private String locationCoord;
-
-
-
 
     private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -292,7 +290,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             setEventEdits(newEvent);
             eventRepo.createEvent(newEvent);
         }
-
     }
 
     /**
@@ -327,7 +324,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setImageUrl(eventImageUrl);
         event.setImageRef(eventImageRef);
         event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
-
 
         // when no QR code is being reused
         if (qrcode == null) {
@@ -381,21 +377,18 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 requireContext(),
                 (view, year, monthOfYear, dayOfMonth) -> {
                     Calendar chosenDate = (Calendar) initialCalendar.clone();
-                    chosenDate.set(year, monthOfYear, dayOfMonth, chosenDate.get(Calendar.HOUR_OF_DAY), chosenDate.get(Calendar.MINUTE));
+                    chosenDate.set(year, monthOfYear, dayOfMonth);
                     if (isStart) {
                         tempStartDateTime.set(year, monthOfYear, dayOfMonth);
-                        showTimePickerDialog(true);
                     } else {
                         tempEndDateTime.set(year, monthOfYear, dayOfMonth);
-                        showTimePickerDialog(false);
                     }
+                    showTimePickerDialog(isStart);
                 },
                 initialCalendar.get(Calendar.YEAR),
                 initialCalendar.get(Calendar.MONTH),
                 initialCalendar.get(Calendar.DAY_OF_MONTH)
         );
-
-        datePickerDialog.getDatePicker().setMinDate(isStart ? System.currentTimeMillis() - 1000 : tempStartDateTime.getTimeInMillis());
         datePickerDialog.show();
     }
 
@@ -406,8 +399,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * @param isStart A boolean flag indicating whether the start time (true) or the end time (false) is being set.
      */
     private void showTimePickerDialog(boolean isStart) {
-        final Calendar now = Calendar.getInstance();
-
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 getContext(),
                 (view, hourOfDay, minuteOfHour) -> {
@@ -415,28 +406,20 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                     chosenDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                     chosenDateTime.set(Calendar.MINUTE, minuteOfHour);
                     if (isStart) {
-                        if (chosenDateTime.before(now)) {
-                            Toast.makeText(getContext(), "Start time cannot be in the past.", Toast.LENGTH_LONG).show();
-                        } else {
-                            tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                            tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
-                        }
+                        tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
                     } else {
-                        if (chosenDateTime.before(tempStartDateTime) && isSameDay(chosenDateTime, tempStartDateTime)) {
-                            Toast.makeText(getContext(), "End time must be after start time on the same day.", Toast.LENGTH_LONG).show();
-                            Calendar fallbackEndTime = (Calendar) tempStartDateTime.clone();
-                            fallbackEndTime.add(Calendar.MINUTE, 1);
-                            tempEndDateTime.set(Calendar.HOUR_OF_DAY, fallbackEndTime.get(Calendar.HOUR_OF_DAY));
-                            tempEndDateTime.set(Calendar.MINUTE, fallbackEndTime.get(Calendar.MINUTE));
-                        } else {
-                            tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                            tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
+                        if (chosenDateTime.before(tempStartDateTime)) {
+                            Toast.makeText(getContext(), "End time must be after start time.", Toast.LENGTH_LONG).show();
+                            return;
                         }
+                        tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
                     }
                     updateDateTimeUI(isStart);
                 },
-                now.get(Calendar.HOUR_OF_DAY),
-                now.get(Calendar.MINUTE),
+                tempStartDateTime.get(Calendar.HOUR_OF_DAY),
+                tempStartDateTime.get(Calendar.MINUTE),
                 DateFormat.is24HourFormat(getContext())
         );
 

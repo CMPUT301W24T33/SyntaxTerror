@@ -137,7 +137,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         String endDateTimeStr = dateFormat.format(event.getEndDateTIme().toDate());
         String eventDateTime = startDateTimeStr + " - " + endDateTimeStr;
 
-        binding.eventNameTextView.setText(event.getEventDescription());
+        binding.eventNameTextView.setText(event.getName());
         binding.eventLocationTextView.setText(event.getLocationName());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
