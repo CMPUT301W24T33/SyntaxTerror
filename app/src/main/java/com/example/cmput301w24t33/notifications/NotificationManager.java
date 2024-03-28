@@ -132,8 +132,12 @@ public class NotificationManager {
      * @param maxOccupancy         The maximum occupancy for the event.
      */
     private void handleAttendeeUpdate(Event event, int currentAttendeeCount, int maxOccupancy) {
-        if (maxOccupancy > 0) {
-            if (currentAttendeeCount == maxOccupancy / 2) {
+        if (maxOccupancy == 0 && currentAttendeeCount == 0) {
+                showToast(event.getName() + " is full.");
+        } else if (maxOccupancy == 1 && currentAttendeeCount == 1) {
+                showToast(event.getName() + " is full.");
+        } else {
+            if (currentAttendeeCount == maxOccupancy / 2 && currentAttendeeCount != 0) {
                 showToast(event.getName() + " is half full.");
             } else if (currentAttendeeCount == maxOccupancy) {
                 showToast(event.getName() + " is full.");

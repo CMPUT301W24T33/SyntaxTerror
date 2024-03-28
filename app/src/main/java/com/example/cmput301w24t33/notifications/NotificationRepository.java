@@ -191,6 +191,10 @@ public class NotificationRepository {
      * @param listener  An implementation of AttendeeUpdateListener to handle attendee updates.
      */
     public void trackAttendeeCount(String eventId, AttendeeUpdateListener listener) {
+        if (activeAttendeeListeners.containsKey(eventId)) {
+            Log.d(TAG, "Listener already exists for eventId: " + eventId);
+            return;
+        }
         ListenerRegistration registration = db.collection("events").document(eventId)
                 .addSnapshotListener((snapshot, e) -> {
                     if (e != null) {
@@ -208,6 +212,7 @@ public class NotificationRepository {
                 });
         activeAttendeeListeners.put(eventId, registration);
     }
+
 
 }
 

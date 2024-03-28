@@ -67,8 +67,6 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
     private EventViewModel eventViewModel;
     private ArrayList<Event> allEvents = new ArrayList<>();
     private ArrayList<Event> signedUpEvents = new ArrayList<>();
-    private ArrayList<Event> organizedEvents = new ArrayList<>();
-
 
     /**
      * Initializes the activity, setting up Firebase, RecyclerView for events, and listeners.
@@ -150,7 +148,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
             if (event.getAttendees().contains(currentUser)) {
                 notificationTrackedEvents.add(event.getEventId());
             }
-            if (Objects.equals(event.getOrganizerId(), currentUser.getUserId())) {
+            if (Objects.equals(event.getOrganizerId(), userId)) {
                 NotificationManager.getInstance().trackAttendeeUpdatesForEvent(event.getEventId());
             }
         }

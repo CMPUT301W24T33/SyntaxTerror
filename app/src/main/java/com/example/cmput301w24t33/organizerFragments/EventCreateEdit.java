@@ -287,9 +287,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
             newEvent.setOrganizerId(userId);
             setEventEdits(newEvent);
             eventRepo.createEvent(newEvent);
-            NotificationManager.getInstance().trackAttendeeUpdatesForEvent(newEvent.getEventId());
         }
-
     }
 
     /**
