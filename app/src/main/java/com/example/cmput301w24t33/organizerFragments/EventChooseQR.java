@@ -25,6 +25,7 @@ import com.example.cmput301w24t33.databinding.OrganizerChooseQrFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -164,7 +165,12 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
     public void onEventsLoaded(List<Event> events) {
 
         Log.d("EventCallback", "Events loaded: "+ (events.size()>0 ? events.get(0).getName():""));
-        this.eventList = (ArrayList<Event>) events;
+        eventList = new ArrayList<>();
+        for(Event event: events){
+            if (event.getEndDateTIme().compareTo(Timestamp.now()) < 0){
+                eventList.add(event);
+            }
+        }
         eventAdapter = new EventAdapter(eventList, this);
         eventView.setLayoutManager(new LinearLayoutManager(getContext()));
         eventView.setHasFixedSize(true);

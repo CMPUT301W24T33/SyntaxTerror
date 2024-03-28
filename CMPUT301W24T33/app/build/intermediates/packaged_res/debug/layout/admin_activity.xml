@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/admin_activity"
-    android:background="#F4EFEF"
+    android:background="?backgroundColor"
     android:layout_height="match_parent"
     tools:context=".activities.Organizer">
 
@@ -22,7 +22,7 @@
                 android:id="@+id/actionbar_general"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <include layout="@layout/actionbar_general">
+                <include layout="@layout/actionbar_general_attendee">
                 </include>
             </RelativeLayout>
 

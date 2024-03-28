@@ -69,7 +69,6 @@ public class NotificationsAttendee extends Fragment {
     private void setupActionBar() {
         binding.actionBar.generalActionbarTextview.setText("Notifications");
         binding.actionBar.backArrowImg.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-        binding.actionBar.profileImage.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
     /**

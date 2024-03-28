@@ -68,7 +68,7 @@ public class DeleteEventAdmin extends Fragment {
         String endDateTimeStr = dateFormat.format(eventToDelete.getEndDateTIme().toDate());
 
         binding.eventNameTextView.setText(eventToDelete.getName());
-        binding.eventLocationTextView.setText(eventToDelete.getAddress());
+        binding.eventLocationTextView.setText(eventToDelete.getLocationName());
         binding.eventDescriptionTextView.setText(eventToDelete.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(startDateTimeStr + " - " + endDateTimeStr);
     }

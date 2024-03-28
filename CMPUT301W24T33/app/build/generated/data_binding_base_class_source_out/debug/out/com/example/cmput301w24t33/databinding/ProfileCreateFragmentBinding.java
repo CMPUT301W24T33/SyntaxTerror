@@ -4,7 +4,6 @@ package com.example.cmput301w24t33.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -64,7 +64,7 @@ public final class ProfileCreateFragmentBinding implements ViewBinding {
   public final ImageView profileImage;
 
   @NonNull
-  public final Button profileSaveButton;
+  public final AppCompatButton profileSaveButton;
 
   @NonNull
   public final CardView profileView;
@@ -76,7 +76,7 @@ public final class ProfileCreateFragmentBinding implements ViewBinding {
       @NonNull TextView firstNameTextView, @NonNull EditText lastNameEditText,
       @NonNull LinearLayout lastNameLayout, @NonNull TextView lastNameTextView,
       @NonNull RelativeLayout profileBackActionbar, @NonNull RelativeLayout profileFragment,
-      @NonNull ImageView profileImage, @NonNull Button profileSaveButton,
+      @NonNull ImageView profileImage, @NonNull AppCompatButton profileSaveButton,
       @NonNull CardView profileView) {
     this.rootView = rootView;
     this.createLayout = createLayout;
@@ -198,7 +198,7 @@ public final class ProfileCreateFragmentBinding implements ViewBinding {
       }
 
       id = R.id.profile_save_button;
-      Button profileSaveButton = ViewBindings.findChildViewById(rootView, id);
+      AppCompatButton profileSaveButton = ViewBindings.findChildViewById(rootView, id);
       if (profileSaveButton == null) {
         break missingId;
       }

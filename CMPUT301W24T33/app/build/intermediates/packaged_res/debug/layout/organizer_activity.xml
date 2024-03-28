@@ -6,6 +6,7 @@
     android:id="@+id/organizer_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?backgroundColor"
     tools:context=".activities.Organizer">
 
     <FrameLayout
@@ -19,7 +20,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/actionbar_attendee_organizer"
+            <include layout="@layout/actionbar_organizer"
                 android:id="@+id/attendee_organizer"/>
 
 
@@ -37,7 +38,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                android:backgroundTint="#47D04E"
+                android:backgroundTint="?attr/button_color_1"
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@android:drawable/ic_input_add"

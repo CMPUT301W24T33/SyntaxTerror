@@ -19,11 +19,32 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <RelativeLayout
-                android:id="@+id/actionbar_general"
+                android:id="@+id/organizer_attendee_actionbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <include layout="@layout/actionbar_general_attendee">
-                </include>
+                android:layout_height="50dp"
+                android:background="?attr/action_bar_attendee">
+
+
+                <ImageButton
+                    android:id="@+id/button_user_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="?switchProfileIcon"
+                    android:background="@color/transparent"
+                    android:layout_marginStart="5dp"
+                    android:contentDescription="TODO" />
+
+                <TextView
+                    android:id="@+id/attendee_organizer_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:clickable="false"
+                    android:textAlignment="center"
+                    android:textSize="35sp"
+                    android:textStyle="bold"/>
+
             </RelativeLayout>
 
             <RelativeLayout

@@ -119,7 +119,6 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
      */
     private void setupClickListeners() {
         binding.actionbar.backArrowImg.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-        binding.actionbar.profileImage.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
     /**

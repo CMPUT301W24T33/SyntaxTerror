@@ -9,18 +9,15 @@ package com.example.cmput301w24t33.organizerFragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,8 +33,6 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,11 +90,12 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
             selectedEvent = (Event) getArguments().getSerializable("event");
         }
 
-        //String address = selectedEvent.getAddress();
+        //String address = selectedEvent.getLocationName();
 
         setupActionBar(view);
         setupClickListeners(view);
         setupMapView(view, savedInstanceState);
+
 
         attendeeNumberView = view.findViewById(R.id.attendees_count);
         attendeeNumberView.setText("0");
@@ -133,7 +129,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         mapView.getMapAsync(googleMap -> {
             gMap = googleMap;
             if (selectedEvent != null) {
-                String locationData = selectedEvent.getLocationData();
+                String locationData = selectedEvent.getLocationCoord();
                 // We are parsing that string from Location Data
                 if (locationData != null && !locationData.isEmpty()) {
                     String[] parts = locationData.split(",");
@@ -144,7 +140,12 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
                     LatLng eventLocation = new LatLng(latitude, longitude);
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
                     gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
-                    addCircle(eventLocation,GEOFENCE_RADIUS);
+
+                    if (selectedEvent.getGeoTracking()== true){
+                        addCircle(eventLocation,GEOFENCE_RADIUS);
+                    } else if (selectedEvent.getGeoTracking() == false) {
+                        gMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)));
+                    }
 
                 } else {
                 // Default to Edmonton if location is not Specified
@@ -185,9 +186,15 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
      */
     @Override
     public void onEventsLoaded(List<Event> events) {
+        ProgressBar progressBar = getView().findViewById(R.id.attendee_progress_bar);
+        Event event = events.get(0);
         attendeesList.clear();
-        attendeesList.addAll(events.get(0).getAttendees());
+        attendeesList.addAll(event.getAttendees());
         attendeeNumberView.setText(String.format(Locale.CANADA, "%d", getUniqueAttendeeCount()));
+        if(event.getMaxOccupancy()!=0){
+            int progress = (int) (((float) getUniqueAttendeeCount()) / ((float) event.getMaxOccupancy() )* 100); // why?
+            progressBar.setProgress(progress);
+        }
         attendeeAdapter.notifyDataSetChanged();
     }
 
