@@ -50,8 +50,10 @@ public class NotificationRepository {
      * receive the event, current attendee count, and maximum occupancy whenever the attendee list of an event changes.
      */
     public interface AttendeeUpdateListener {
-        void onAttendeeCountUpdate(Event event, int currentAttendeeCount, int maxOccupancy);
+        void onAttendeeCountUpdate(Event event, int currentAttendeeCount, int maxOccupancy, Map<String, Boolean> milestones);
     }
+
+
 
     /**
      * Interface for handling the fetch result of notifications. Implementations of this interface will receive a list of fetched notifications.
@@ -195,6 +197,7 @@ public class NotificationRepository {
             Log.d(TAG, "Listener already exists for eventId: " + eventId);
             return;
         }
+
         ListenerRegistration registration = db.collection("events").document(eventId)
                 .addSnapshotListener((snapshot, e) -> {
                     if (e != null) {
@@ -206,13 +209,19 @@ public class NotificationRepository {
                         if (event != null) {
                             int currentAttendeeCount = event.getAttendees() != null ? event.getAttendees().size() : 0;
                             int maxOccupancy = event.getMaxOccupancy();
-                            listener.onAttendeeCountUpdate(event, currentAttendeeCount, maxOccupancy);
+                            Map<String, Boolean> milestones = event.getMilestones(); // Assume getMilestones method exists
+                            listener.onAttendeeCountUpdate(event, currentAttendeeCount, maxOccupancy, milestones);
                         }
                     }
                 });
         activeAttendeeListeners.put(eventId, registration);
     }
 
-
+    public void updateEventMilestone(String eventId, String milestoneKey, boolean value) {
+        db.collection("events").document(eventId)
+                .update("milestones." + milestoneKey, value)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "Milestone updated: " + milestoneKey))
+                .addOnFailureListener(e -> Log.e(TAG, "Failed to update milestone", e));
+    }
 }
 
