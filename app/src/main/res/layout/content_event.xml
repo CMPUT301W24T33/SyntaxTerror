@@ -13,10 +13,10 @@
         <ImageView
             android:id="@+id/event_poster_image_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/image_background_rounded"
+            android:foreground="@drawable/no_image_foreground"
             android:src="@drawable/no_image"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

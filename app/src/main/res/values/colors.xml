@@ -13,6 +13,9 @@
     <color name="gradient_2_day">#5F758E</color>
     <color name="gradient_3_day">#383961</color>
 
+    <color name="no_image_gradient_1">#af3B1F2B</color>
+    <color name="no_image_gradient_2">#af383961</color>
+
     <color name="attendee_actionbar_day">#DB162F</color>
     <color name="organizer_actionbar_day">#5F758E</color>
     <color name="attendee_actionbar_night">#6d0523</color>
