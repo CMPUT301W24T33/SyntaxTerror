@@ -17,7 +17,13 @@
         <attr name="search_button_image" format="reference"/>
         <attr name="switchPersonIcon" format="reference"/>
         <attr name="switchHouseIcon" format="reference"/>
+        <attr name="shareIcon" format="reference"/>
+        <attr name="backArrow" format="reference"/>
+    </declare-styleable>
 
+    <declare-styleable name="color_attrs">
+        <attr name="listColorSecondary" format="color"/>
+        <attr name="listColorPrimary" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="action_bar_attrs">

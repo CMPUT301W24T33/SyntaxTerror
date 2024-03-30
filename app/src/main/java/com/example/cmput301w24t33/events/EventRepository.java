@@ -17,6 +17,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -166,6 +167,7 @@ public class EventRepository {
                             .update("eventId", documentId)
                             .addOnSuccessListener(aVoid -> Log.d(TAG, "eventId added to document: " + documentId))
                             .addOnFailureListener(e -> Log.e(TAG, "Failed to add eventId", e));
+                    NotificationManager.getInstance().trackAttendeeUpdatesForEvent(event.getEventId());
                 })
                 .addOnFailureListener(e -> Log.w(TAG, "Create document failed", e));
     }

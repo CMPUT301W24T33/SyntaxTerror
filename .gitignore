@@ -32,3 +32,10 @@ google-services.json
 
 # Android Profiling
 *.hprof
+.gradle/8.2/executionHistory/executionHistory.bin
+.gradle/8.2/executionHistory/executionHistory.lock
+.gradle/8.2/fileHashes/fileHashes.bin
+.gradle/8.2/fileHashes/fileHashes.lock
+.gradle/file-system.probe
+.gradle/8.2/fileHashes/resourceHashesCache.bin
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
