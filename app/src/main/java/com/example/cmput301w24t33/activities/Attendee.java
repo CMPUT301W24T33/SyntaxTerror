@@ -10,9 +10,11 @@ package com.example.cmput301w24t33.activities;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -78,6 +80,13 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         binding = AttendeeActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Set up Background Animation
+        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
+        animation.setEnterFadeDuration(10);
+        animation.setExitFadeDuration(5000);
+        animation.start();
+
+
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
@@ -85,6 +94,19 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         setupRecyclerView();
         setupActionbar();
         setOnClickListeners();
+    }
+
+    /**
+     * Handles actions to be taken when the activity resumes, including user authorization and events loading.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NotificationManager.initialize(this.getApplication());
+        setupViewModel();
+        setupActionbar();
+        Log.d(TAG, "RESUME");
+        eventViewModel.loadEvents();
     }
 
 
@@ -161,18 +183,6 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
     private void setupActionbar() {
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Attend Events");
-    }
-
-    /**
-     * Handles actions to be taken when the activity resumes, including user authorization and events loading.
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        NotificationManager.initialize(this.getApplication());
-        setupViewModel();
-        Log.d(TAG, "RESUME");
-        eventViewModel.loadEvents();
     }
 
     /**

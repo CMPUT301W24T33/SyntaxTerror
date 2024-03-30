@@ -11,6 +11,7 @@ package com.example.cmput301w24t33.activities;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.OrganizerActivityBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
@@ -55,6 +57,7 @@ import java.util.List;
 public class Organizer extends AppCompatActivity {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
+    private OrganizerActivityBinding binding;
     private EventViewModel eventViewModel;
     private EventAdapter eventAdapter;
     private String userId;
@@ -67,12 +70,19 @@ public class Organizer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = OrganizerActivityBinding.inflate(getLayoutInflater());
         setContentView(R.layout.organizer_activity);
         eventRecyclerView = findViewById(R.id.organized_events);
         organizedEvents = new ArrayList<>();
         userId = getIntent().getStringExtra("uId");
         getProfileUrl(userId);
         setAdapter();
+
+        // set up background animation
+        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
+        animation.setEnterFadeDuration(100);
+        animation.setExitFadeDuration(5000);
+        animation.start();
 
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(this, this::updateUI);
