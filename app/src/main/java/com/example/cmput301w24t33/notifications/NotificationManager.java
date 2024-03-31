@@ -3,6 +3,7 @@ package com.example.cmput301w24t33.notifications;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 import com.example.cmput301w24t33.events.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -134,7 +135,8 @@ public class NotificationManager {
      */
     private void handleAttendeeUpdate(Event event, int currentAttendeeCount, int maxOccupancy, Map<String, Boolean> milestones) {
         if (maxOccupancy > 0) {
-            if (currentAttendeeCount == maxOccupancy / 2 && !Boolean.TRUE.equals(milestones.get("half"))) {
+            if (currentAttendeeCount == maxOccupancy / 2 && maxOccupancy > 1 && !Boolean.TRUE.equals(milestones.get("half"))) {
+                Log.d("HALF FULL", String.valueOf(currentAttendeeCount));
                 showToast(event.getName() + " is half full.");
                 repository.updateEventMilestone(event.getEventId(), "half", true);
             } else if (currentAttendeeCount == maxOccupancy && !Boolean.TRUE.equals(milestones.get("full"))) {

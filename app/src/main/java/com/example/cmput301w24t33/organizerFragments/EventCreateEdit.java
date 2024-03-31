@@ -333,12 +333,15 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
         event.setImageUrl(eventImageUrl);
         event.setImageRef(eventImageRef);
-        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
+        Log.d("OCCUPANCY1", String.valueOf(Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))));
+        Log.d("OCCUPANCY2", String.valueOf(event.getMaxOccupancy()));
         if (event.getMaxOccupancy() != Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))) {
-            NotificationManager.getInstance().updateEventMilestone(event.getEventId(), "half", false);
-            NotificationManager.getInstance().updateEventMilestone(event.getEventId(), "full", false);
+            Log.d("OCCUPANCY3", "MADE IT INSIDE IF STATEMENT");
+            event.setMilestones("half", false);
+            event.setMilestones("full", false);
         }
+        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
         // when no QR code is being reused
         if (qrcode == null) {

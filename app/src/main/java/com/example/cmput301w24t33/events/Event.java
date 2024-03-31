@@ -472,7 +472,7 @@ public class Event implements Serializable, Parcelable {
         return milestones;
     }
 
-    public void setMilestones(Map<String, Boolean> milestones) {
-        this.milestones = milestones;
+    public void setMilestones(String milestoneName, Boolean value) {
+        this.milestones.put(milestoneName, value);
     }
 }

@@ -241,14 +241,12 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
-    /**
-     * Replaces the current fragment with another fragment.
-     * @param fragment The fragment to replace the current fragment with.
-     */
-    private void replaceFragment(Fragment fragment) {
-        getParentFragmentManager().beginTransaction()
-                .replace(R.id.organizer_layout, fragment)
-                .addToBackStack(null)
-                .commit();
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (eventRepository != null) {
+            eventRepository.removeEventAttendeeViewListener();
+        }
     }
+
 }

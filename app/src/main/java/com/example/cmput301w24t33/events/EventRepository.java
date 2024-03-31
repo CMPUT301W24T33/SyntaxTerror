@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class EventRepository {
     private final FirebaseFirestore db;
     private final CollectionReference eventsCollection;
     private EventCallback eventCallback;
+    private ListenerRegistration eventAttendeeViewListener;
 
     /**
      * Constructs an EventRepository and initializes Firestore and events collection references.
@@ -125,7 +127,7 @@ public class EventRepository {
     }
 
     public void setEventByCheckedInSnapshotListener(String eventId){
-        eventsCollection.whereEqualTo("eventId", eventId)
+        eventAttendeeViewListener = eventsCollection.whereEqualTo("eventId", eventId)
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {
                     if (e != null) {
                         eventCallback.onFailure(e);
@@ -139,6 +141,18 @@ public class EventRepository {
                     eventCallback.onEventsLoaded(events);
                 });
     }
+
+    /**
+     * Removes the event attendee view listener if it exists.
+     */
+    public void removeEventAttendeeViewListener() {
+        if (eventAttendeeViewListener != null) {
+            eventAttendeeViewListener.remove();
+            eventAttendeeViewListener = null;
+            Log.d(TAG, "Event attendee view listener removed successfully");
+        }
+    }
+
     /**
      * Updates an existing event document in Firestore with new data from an Event object.
      *
