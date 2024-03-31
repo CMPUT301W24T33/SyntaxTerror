@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<testsuite name="com.example.cmput301w24t33.AdminUITest" tests="11" failures="0" errors="0" skipped="0" time="16.628" timestamp="2024-03-08T22:13:57" hostname="localhost">
+<testsuite name="com.example.cmput301w24t33.AdminActivityUITest" tests="11" failures="0" errors="0" skipped="0" time="16.628" timestamp="2024-03-08T22:13:57" hostname="localhost">
   <properties>
     <property name="device" value="SM-A715W - 13" />
     <property name="flavor" value="" />
     <property name="project" value=":app" />
   </properties>
-  <testcase name="testAdminViewEvent" classname="com.example.cmput301w24t33.AdminUITest" time="2.487" />
-  <testcase name="testAdminViewProfiles" classname="com.example.cmput301w24t33.AdminUITest" time="1.869" />
-  <testcase name="testProfileAttendee" classname="com.example.cmput301w24t33.AttendeeUITest" time="1.727" />
-  <testcase name="testAttendeeOrganizerSwitch" classname="com.example.cmput301w24t33.AttendeeUITest" time="2.051" />
+  <testcase name="testAdminViewEvent" classname="com.example.cmput301w24t33.AdminActivityUITest" time="2.487" />
+  <testcase name="testAdminViewProfiles" classname="com.example.cmput301w24t33.AdminActivityUITest" time="1.869" />
+  <testcase name="testProfileAttendee" classname="com.example.cmput301w24t33.AttendeeActivityUITest" time="1.727" />
+  <testcase name="testAttendeeOrganizerSwitch" classname="com.example.cmput301w24t33.AttendeeActivityUITest" time="2.051" />
   <testcase name="useAppContext" classname="com.example.cmput301w24t33.ExampleInstrumentedTest" time="0.005" />
-  <testcase name="testProfileOrganizer" classname="com.example.cmput301w24t33.OrganizerUITest" time="1.256" />
-  <testcase name="testOrganizerAttendeeSwitch" classname="com.example.cmput301w24t33.OrganizerUITest" time="1.688" />
-  <testcase name="testOrganizerCreateEventFragment" classname="com.example.cmput301w24t33.OrganizerUITest" time="1.628" />
+  <testcase name="testProfileOrganizer" classname="com.example.cmput301w24t33.OrganizerActivityUITest" time="1.256" />
+  <testcase name="testOrganizerAttendeeSwitch" classname="com.example.cmput301w24t33.OrganizerActivityUITest" time="1.688" />
+  <testcase name="testOrganizerCreateEventFragment" classname="com.example.cmput301w24t33.OrganizerActivityUITest" time="1.628" />
   <testcase name="testQRCodeConstructor" classname="com.example.cmput301w24t33.QRCodeTest" time="0.634" />
   <testcase name="testGetBitmap" classname="com.example.cmput301w24t33.QRCodeTest" time="0.453" />
   <testcase name="testGetQrCode" classname="com.example.cmput301w24t33.QRCodeTest" time="0.394" />

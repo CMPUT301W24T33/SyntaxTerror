@@ -8,15 +8,18 @@
 
 package com.example.cmput301w24t33.events;
 
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ import java.util.List;
  * This class is responsible for converting each Event object into a UI element and defining the interactions with them.
  */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
+    public static final int DESCRIPTION_LENGTH = 40;
     private final ArrayList<Event> eventsArrayList;
     private final AdapterEventClickListener eventClickListener;
 
@@ -99,10 +103,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
      */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView eventText;
+        TextView eventDetailsText;
+        ImageView eventPoster;
 
         public MyViewHolder(@NonNull View itemView, AdapterEventClickListener listener) {
             super(itemView);
             eventText = itemView.findViewById(R.id.event_text);
+            eventDetailsText = itemView.findViewById(R.id.event_description);
+            eventPoster = itemView.findViewById(R.id.event_poster_image_view);
         }
 
         /**
@@ -113,6 +121,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
          */
         void bind(final Event event, final AdapterEventClickListener listener) {
             Log.d("EventBinding", "Event: " + event.getName());
+            if(event.getImageUrl() != null) {
+                Glide.with(itemView).load(event.getImageUrl()).into(eventPoster);
+                eventPoster.setForeground(null);
+                eventPoster.setClipToOutline(true);
+            } else {
+                Glide.with(itemView).clear(eventPoster);
+                eventPoster.setImageResource(R.drawable.no_image);
+            }
             eventText.setText(event.getName());
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
@@ -120,6 +136,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                     listener.onEventClickListener(event, position);
                 }
             });
+            String eventDesc = event.getEventDescription();
+            if(eventDesc.contains("\n")) {
+                eventDesc = event.getEventDescription().split("\n")[0];
+            } if (eventDesc.length() > DESCRIPTION_LENGTH) {
+                eventDesc = eventDesc.substring(0,DESCRIPTION_LENGTH) + ". . .";
+            }
+            eventDetailsText.setText(eventDesc);
         }
     }
 

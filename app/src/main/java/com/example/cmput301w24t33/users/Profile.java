@@ -14,7 +14,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -39,22 +38,16 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.activities.Attendee;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * A fragment class for displaying and editing the profile of a user.

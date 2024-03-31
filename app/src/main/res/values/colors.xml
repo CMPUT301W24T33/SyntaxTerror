@@ -6,21 +6,29 @@
     <color name="primary">#e14658</color>
     <color name="onSecondary">#FFFFFFFF</color>
     <color name="onPrimary">#FF000000</color>
-    <color name="background">#ffffdc</color>
+    <color name="background">#efefef</color>
     <color name="background_night">#22252c</color>
 
-    <color name="attendee_actionbar_day">#e14658</color>
-    <color name="organizer_actionbar_day">#5da7a4</color>
+    <color name="gradient_1_day">#3B1F2B</color>
+    <color name="gradient_2_day">#5F758E</color>
+    <color name="gradient_3_day">#383961</color>
+
+    <color name="no_image_gradient_1">#af3B1F2B</color>
+    <color name="no_image_gradient_2">#af383961</color>
+
+    <color name="attendee_actionbar_day">#DB162F</color>
+    <color name="organizer_actionbar_day">#5F758E</color>
     <color name="attendee_actionbar_night">#6d0523</color>
     <color name="organizer_actionbar_night">#1b4d67</color>
 
+    <color name="event_details_day">#5F758E</color>
     <color name="admin_actionbar">#3f3250</color>
     <color name="going">#388E3C</color>
     <color name="not_going">#D32F2F</color>
     <color name="default_state">#747474</color>
     <color name="light_grey">#B5B5B5</color>
     <color name="button_day">#2196F3</color>
-    <color name="button_night">#FFC107</color>
+    <color name="button_night">#182825</color>
 
 
     <color name="secondary_day">#ff9090ff</color>

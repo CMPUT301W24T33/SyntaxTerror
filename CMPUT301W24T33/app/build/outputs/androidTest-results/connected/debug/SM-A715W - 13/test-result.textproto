@@ -24,7 +24,7 @@ test_result {
       namespace: "android"
     }
     source_path {
-      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AdminUITest-testAdminViewEvent.txt"
+      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AdminActivityUITest-testAdminViewEvent.txt"
     }
   }
   output_artifact {
@@ -76,7 +76,7 @@ test_result {
       namespace: "android"
     }
     source_path {
-      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AdminUITest-testAdminViewProfiles.txt"
+      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AdminActivityUITest-testAdminViewProfiles.txt"
     }
   }
   output_artifact {
@@ -128,7 +128,7 @@ test_result {
       namespace: "android"
     }
     source_path {
-      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AttendeeUITest-testProfileAttendee.txt"
+      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AttendeeActivityUITest-testProfileAttendee.txt"
     }
   }
   output_artifact {
@@ -180,7 +180,7 @@ test_result {
       namespace: "android"
     }
     source_path {
-      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AttendeeUITest-testAttendeeOrganizerSwitch.txt"
+      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.AttendeeActivityUITest-testAttendeeOrganizerSwitch.txt"
     }
   }
   output_artifact {
@@ -284,7 +284,7 @@ test_result {
       namespace: "android"
     }
     source_path {
-      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.OrganizerUITest-testProfileOrganizer.txt"
+      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.OrganizerActivityUITest-testProfileOrganizer.txt"
     }
   }
   output_artifact {
@@ -336,7 +336,7 @@ test_result {
       namespace: "android"
     }
     source_path {
-      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.OrganizerUITest-testOrganizerAttendeeSwitch.txt"
+      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.OrganizerActivityUITest-testOrganizerAttendeeSwitch.txt"
     }
   }
   output_artifact {
@@ -388,7 +388,7 @@ test_result {
       namespace: "android"
     }
     source_path {
-      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.OrganizerUITest-testOrganizerCreateEventFragment.txt"
+      path: "C:\\Users\\reece\\CMPUT301\\project\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\SM-A715W - 13\\logcat-com.example.cmput301w24t33.OrganizerActivityUITest-testOrganizerCreateEventFragment.txt"
     }
   }
   output_artifact {

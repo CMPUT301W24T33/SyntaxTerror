@@ -1,13 +1,13 @@
 03-08 15:13:53.652 26361 26459 I TestRunner: started: testQRCodeConstructor(com.example.cmput301w24t33.QRCodeTest)
 03-08 15:13:53.652  1327  1327 I Layer   : id=35646 removedFromDrawingState Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35646 (143)
-03-08 15:13:53.652  1327  1327 I SurfaceFlinger: id=35642 Removed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642 (143)
-03-08 15:13:53.652  1327  1327 I SurfaceFlinger: id=35641 Removed 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer#35641 (143)
+03-08 15:13:53.652  1327  1327 I SurfaceFlinger: id=35642 Removed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity$_26361#35642 (143)
+03-08 15:13:53.652  1327  1327 I SurfaceFlinger: id=35641 Removed 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity#35641 (143)
 03-08 15:13:53.652  1327  1327 I SurfaceFlinger: id=35646 Removed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35646 (143)
 03-08 15:13:53.653  1327  1327 I Layer   : id=35643 Destroyed Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35643
 03-08 15:13:53.653  1327  1327 I Layer   : id=35644 Destroyed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35644
 03-08 15:13:53.653  1327  1327 I Layer   : id=35562 Destroyed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35562
-03-08 15:13:53.653  1327  1327 I Layer   : id=35641 Destroyed 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer#35641
-03-08 15:13:53.654  1327  1327 I Layer   : id=35642 Destroyed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642
+03-08 15:13:53.653  1327  1327 I Layer   : id=35641 Destroyed 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity#35641
+03-08 15:13:53.654  1327  1327 I Layer   : id=35642 Destroyed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity$_26361#35642
 03-08 15:13:53.654  1327  1327 I Layer   : id=35646 Destroyed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35646
 03-08 15:13:53.658  1327  1327 I Layer   : id=35658 Destroyed Screenshot Parent#35658
 03-08 15:13:53.666  1327  3508 I SurfaceFlinger: id=35659 createSurf, flag=24004, Task=3077#35659
