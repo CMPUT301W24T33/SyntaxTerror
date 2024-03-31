@@ -301,6 +301,12 @@ public class Profile extends Fragment {
         EditText editLastName = view.findViewById(R.id.last_name_edit_text);
         EditText editEmail = view.findViewById(R.id.email_edit_text);
         */
+
+        if (profile == null) {
+            Log.e(TAG, "User object is null. Cannot load data.");
+            return; // Exit if profile is null
+        }
+
         addFnameEditText.setText(profile.getFirstName());
         addLnameEditText.setText(profile.getLastName());
         addEmailEditText.setText(profile.getEmail());

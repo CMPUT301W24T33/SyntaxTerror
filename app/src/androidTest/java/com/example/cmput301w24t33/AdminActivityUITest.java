@@ -35,6 +35,7 @@ public class AdminActivityUITest {
         onView(withId(R.id.admin_activity)).check(matches(isDisplayed()));
     }
 
+
     @Test
     public void testAdminViewProfiles(){
         // press button go to admin profiles
@@ -58,4 +59,5 @@ public class AdminActivityUITest {
         // check if on attendee view
         onView(withId(R.id.admin_activity)).check(matches(isDisplayed()));
     }
+
 }
