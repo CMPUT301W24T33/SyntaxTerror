@@ -14,7 +14,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -30,8 +29,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
+import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
@@ -46,7 +45,6 @@ import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.button.MaterialButton;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -58,7 +56,7 @@ import java.util.Set;
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
-public class Attendee extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
+public class AttendeeActivity extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
     private EventAdapter eventAdapter;
     private boolean viewingAllEvents = false;
     private AttendeeActivityBinding binding;
@@ -221,7 +219,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      */
     public void authenticateUser() {
         userId = getAndroidId();
-        Log.d(TAG, "Attendee Android ID: " + userId);
+        Log.d(TAG, "AttendeeActivity Android ID: " + userId);
 
         //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
@@ -294,16 +292,16 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
-            // Switch to Organizer activity
-            Intent intent = new Intent(Attendee.this, Organizer.class);
+            // Switch to OrganizerActivity activity
+            Intent intent = new Intent(AttendeeActivity.this, OrganizerActivity.class);
             intent.putExtra("uId", userId);
             startActivity(intent);
             finish();
         });
 
         userMode.setOnLongClickListener(v -> {
-            // Switch to Admin activity
-            Intent intent = new Intent(Attendee.this, Admin.class);
+            // Switch to AdminActivity activity
+            Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
             intent.putExtra("uId", userId);
             startActivity(intent);
             finish();

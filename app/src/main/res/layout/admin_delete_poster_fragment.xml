@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?backgroundColor"
-    tools:context=".activities.Organizer">
+    tools:context=".activities.OrganizerActivity">
 
     <RelativeLayout
         android:id="@+id/edit_event_actionbar"

@@ -25,7 +25,7 @@ public class eventUnitTest {
     public void testEventInstantiation() {
         assertNotNull("Event object should not be null", event);
         assertEquals("Name should match initial value", initialName, event.getName());
-        assertEquals("Organizer ID should match initial value", initialOrganizerId, event.getOrganizerId());
+        assertEquals("OrganizerActivity ID should match initial value", initialOrganizerId, event.getOrganizerId());
         assertEquals("Description should match initial value", initialDescription, event.getEventDescription());
     }
 

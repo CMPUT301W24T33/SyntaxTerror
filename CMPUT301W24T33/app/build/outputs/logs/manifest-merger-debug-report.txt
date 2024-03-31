@@ -268,19 +268,19 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:37:17-77
 	android:name
 		ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:37:27-74
-activity#com.example.cmput301w24t33.activities.Admin
+activity#com.example.cmput301w24t33.activities.AdminActivity
 ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:40:9-42:40
 	android:exported
 		ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:42:13-37
 	android:name
 		ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:41:13-45
-activity#com.example.cmput301w24t33.activities.Attendee
+activity#com.example.cmput301w24t33.activities.AttendeeActivity
 ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:43:9-45:40
 	android:exported
 		ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:45:13-37
 	android:name
 		ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:44:13-48
-activity#com.example.cmput301w24t33.activities.Organizer
+activity#com.example.cmput301w24t33.activities.OrganizerActivity
 ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:46:9-48:40
 	android:exported
 		ADDED from C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:48:13-37
