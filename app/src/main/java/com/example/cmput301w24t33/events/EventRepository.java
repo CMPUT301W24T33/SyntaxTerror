@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class EventRepository {
     private final FirebaseFirestore db;
     private final CollectionReference eventsCollection;
     private EventCallback eventCallback;
+    private ListenerRegistration eventListener;
 
     /**
      * Constructs an EventRepository and initializes Firestore and events collection references.
@@ -103,42 +105,48 @@ public class EventRepository {
                     eventCallback.onEventsLoaded(events);
                 });
     }
+
     /**
-     * Registers a listener for real-time updates to events a specific user has signed up for.
+     * Sets a listener for real-time updates to a single event by its ID.
+     * This method can be used by any fragment to observe changes to the event's data.
      *
-     * @param userId The ID of the organizer to filter events by.
+     * @param eventId The ID of the event to observe.
      */
-    public void setEventBySignUpSnapshotListener(String userId) {
-        eventsCollection.whereArrayContains("signedUp", userId)
-                .addSnapshotListener((queryDocumentSnapshots, e) -> {
+    public void setEventListener(String eventId) {
+        if (eventListener != null) {
+            eventListener.remove();
+        }
+        eventListener = eventsCollection.document(eventId)
+                .addSnapshotListener((documentSnapshot, e) -> {
                     if (e != null) {
+                        Log.w(TAG, "Listen failed.", e);
                         eventCallback.onFailure(e);
                         return;
                     }
-                    List<Event> events = new ArrayList<>();
-                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                        Event event = doc.toObject(Event.class);
+
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        List<Event> events = new ArrayList<>();
+                        Event event = documentSnapshot.toObject(Event.class);
                         events.add(event);
+                        eventCallback.onEventsLoaded(events);
+                    } else {
+                        Log.d(TAG, "Current data: null");
+                        eventCallback.onFailure(new Exception("Document does not exist"));
                     }
-                    eventCallback.onEventsLoaded(events);
                 });
     }
 
-    public void setEventByCheckedInSnapshotListener(String eventId){
-        eventsCollection.whereEqualTo("eventId", eventId)
-                .addSnapshotListener((queryDocumentSnapshots, e) -> {
-                    if (e != null) {
-                        eventCallback.onFailure(e);
-                        return;
-                    }
-                    List<Event> events = new ArrayList<>();
-                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                        Event event = doc.toObject(Event.class);
-                        events.add(event);
-                    }
-                    eventCallback.onEventsLoaded(events);
-                });
+    /**
+     * Removes the single event listener if it exists.
+     */
+    public void removeEventListener() {
+        if (eventListener != null) {
+            eventListener.remove();
+            eventListener = null;
+            Log.d(TAG, "Single event listener removed successfully");
+        }
     }
+
     /**
      * Updates an existing event document in Firestore with new data from an Event object.
      *

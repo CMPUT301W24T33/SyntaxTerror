@@ -3,11 +3,13 @@ package com.example.cmput301w24t33.notifications;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 import com.example.cmput301w24t33.events.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentReference;
 
+import java.util.Map;
 import java.util.Set;
 
 public class NotificationManager {
@@ -131,18 +133,28 @@ public class NotificationManager {
      * @param currentAttendeeCount The current count of attendees.
      * @param maxOccupancy         The maximum occupancy for the event.
      */
-    private void handleAttendeeUpdate(Event event, int currentAttendeeCount, int maxOccupancy) {
-        if (maxOccupancy == 0 && currentAttendeeCount == 0) {
-                showToast(event.getName() + " is full.");
-        } else if (maxOccupancy == 1 && currentAttendeeCount == 1) {
-                showToast(event.getName() + " is full.");
-        } else {
-            if (currentAttendeeCount == maxOccupancy / 2 && currentAttendeeCount != 0) {
+    private void handleAttendeeUpdate(Event event, int currentAttendeeCount, int maxOccupancy, Map<String, Boolean> milestones) {
+        if (maxOccupancy > 0) {
+            if (currentAttendeeCount == maxOccupancy / 2 && maxOccupancy > 1 && !Boolean.TRUE.equals(milestones.get("half"))) {
+                Log.d("HALF FULL", String.valueOf(currentAttendeeCount));
                 showToast(event.getName() + " is half full.");
-            } else if (currentAttendeeCount == maxOccupancy) {
+                repository.updateEventMilestone(event.getEventId(), "half", true);
+            } else if (currentAttendeeCount == maxOccupancy && !Boolean.TRUE.equals(milestones.get("full"))) {
                 showToast(event.getName() + " is full.");
+                repository.updateEventMilestone(event.getEventId(), "full", true);
             }
         }
+    }
+
+    /**
+     * Updates the milestone status for a given event.
+     *
+     * @param eventId The ID of the event for which the milestone status is to be updated.
+     * @param milestoneKey The key of the milestone to update (e.g., "half" or "full").
+     * @param value The new value for the milestone (true or false).
+     */
+    public void updateEventMilestone(String eventId, String milestoneKey, boolean value) {
+        repository.updateEventMilestone(eventId, milestoneKey, value);
     }
 
     /**
