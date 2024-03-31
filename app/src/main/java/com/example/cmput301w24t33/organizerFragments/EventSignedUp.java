@@ -19,16 +19,24 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.Event;
+import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.databinding.OrganizerEventSignedUpFragmentBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class EventSignedUp extends Fragment {
+public class EventSignedUp extends Fragment implements EventRepository.EventCallback {
     private OrganizerEventSignedUpFragmentBinding binding;
-    public static EventSignedUp newInstance(ArrayList<User> signedUpList) {
+    private EventRepository eventRepository;
+    private AttendeeAdapter adapter;
+    private ArrayList<User> signedUpList = new ArrayList<>();
+    private String eventId;
+
+    public static EventSignedUp newInstance(Event event) {
         Bundle args = new Bundle();
-        args.putSerializable("signedUpList", signedUpList);
+        args.putSerializable("event", event);
         EventSignedUp frag = new EventSignedUp();
         frag.setArguments(args);
         return frag;
@@ -36,18 +44,42 @@ public class EventSignedUp extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OrganizerEventSignedUpFragmentBinding.inflate(inflater, container, false);
+        eventRepository = new EventRepository();
+        eventRepository.setEventCallback(this);
+        if (getArguments() != null) {
+            Event event = (Event) getArguments().getSerializable("event");
+            if (event != null) {
+                eventId = event.getEventId();
+                eventRepository.setEventListener(eventId);
+            }
+        }
         setupActionBar();
         setupEventSignUpsRecyclerView();
         return binding.getRoot();
     }
+
     private void setupEventSignUpsRecyclerView() {
-        assert getArguments() != null;
-        ArrayList<User> signedUpList = (ArrayList<User>) getArguments().getSerializable("signedUpList");
         binding.eventSignupsList.setLayoutManager(new LinearLayoutManager(getContext()));
-        AttendeeAdapter adapter = new AttendeeAdapter(signedUpList, false);
+        adapter = new AttendeeAdapter(signedUpList, false);
         binding.eventSignupsList.setAdapter(adapter);
-        binding.signedupCount.setText(String.valueOf(signedUpList.size()));
     }
+
+    @Override
+    public void onEventsLoaded(List<Event> events) {
+        if (!events.isEmpty()) {
+            Event event = events.get(0);
+            signedUpList.clear();
+            signedUpList.addAll(event.getSignedUp());
+            adapter.notifyDataSetChanged();
+            binding.signedupCount.setText(String.valueOf(signedUpList.size()));
+        }
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        e.printStackTrace();
+    }
+
     private void setupActionBar() {
         TextView actionBarText = binding.actionbar.findViewById(R.id.back_actionbar_textview);
         actionBarText.setText("Signed Up");
@@ -58,6 +90,9 @@ public class EventSignedUp extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if (eventRepository != null) {
+            eventRepository.removeEventListener();
+        }
         binding = null;
     }
 }
