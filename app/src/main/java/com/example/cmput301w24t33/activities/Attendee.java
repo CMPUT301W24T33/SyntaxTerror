@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -115,10 +117,30 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      * Updates the UI to reflect the current view state.
      */
     private void switchEventView() {
-        viewingAllEvents = !viewingAllEvents;
-        updateDisplayedEvents();
-        binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+        // Recycler View Animations
+        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+
+        binding.eventrecyclerview.startAnimation(fadeOut);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                viewingAllEvents = !viewingAllEvents;
+                updateDisplayedEvents();
+                binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+                binding.eventrecyclerview.startAnimation(fadeIn);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+        });
     }
+
 
     /**
      * Updates the RecyclerView to display either all events or only the events the user has signed up for,
