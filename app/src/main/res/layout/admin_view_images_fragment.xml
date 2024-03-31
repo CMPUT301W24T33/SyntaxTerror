@@ -7,7 +7,7 @@
     android:background="?backgroundColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.Attendee">
+    tools:context=".activities.AttendeeActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

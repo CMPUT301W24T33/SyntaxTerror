@@ -10,7 +10,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import com.example.cmput301w24t33.activities.Attendee;
+import com.example.cmput301w24t33.activities.AttendeeActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,10 +19,10 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 // Tests limited as no DB connectivity for RecyclerView population
-public class AttendeeUITest {
+public class AttendeeActivityUITest {
     @Rule
-    public ActivityScenarioRule<Attendee> scenario = new
-            ActivityScenarioRule<Attendee>(Attendee.class);
+    public ActivityScenarioRule<AttendeeActivity> scenario = new
+            ActivityScenarioRule<AttendeeActivity>(AttendeeActivity.class);
     @Test
     public void testProfileAttendee(){
         // Click on profile button

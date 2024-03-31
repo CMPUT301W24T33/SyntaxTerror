@@ -12,7 +12,6 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -36,7 +34,7 @@ import com.example.cmput301w24t33.notifications.NotificationManager;
 /**
  * Represents the administrative area of the application, allowing navigation between administrative functionalities such as viewing events and profiles.
  */
-public class Admin extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity {
 
     String userId;
     /**
@@ -87,8 +85,8 @@ public class Admin extends AppCompatActivity {
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnLongClickListener(v -> {
-            // Switch to Organizer activity
-            Intent intent = new Intent(Admin.this, Attendee.class);
+            // Switch to OrganizerActivity activity
+            Intent intent = new Intent(AdminActivity.this, AttendeeActivity.class);
             startActivity(intent);
             finish();
             return true;
@@ -108,13 +106,13 @@ public class Admin extends AppCompatActivity {
     }
 
     /**
-     * Sets up the custom ActionBar for the Admin activity with specific visual styles and visibility settings.
+     * Sets up the custom ActionBar for the AdminActivity activity with specific visual styles and visibility settings.
      * @param view The current view that contains the ActionBar elements.
      */
     public void setupActionBar(View view) {
         // Setting the action bar text
         TextView actionBarText = view.findViewById(R.id.attendee_organizer_textview);
-        actionBarText.setText("Admin");
+        actionBarText.setText("AdminActivity");
 
         // Changing the background color of the action bar
         RelativeLayout generalActionbar = view.findViewById(R.id.organizer_attendee_actionbar);

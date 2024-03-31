@@ -68,13 +68,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.cmput301w24t33.activities.Admin"
+            android:name="com.example.cmput301w24t33.activities.AdminActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cmput301w24t33.activities.Attendee"
+            android:name="com.example.cmput301w24t33.activities.AttendeeActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cmput301w24t33.activities.Organizer"
+            android:name="com.example.cmput301w24t33.activities.OrganizerActivity"
             android:exported="false" />
         <activity android:name="com.example.cmput301w24t33.activities.AnonymousAuthActivity" />
 

@@ -7,7 +7,7 @@
     android:id="@+id/admin_activity"
     android:background="?backgroundColor"
     android:layout_height="match_parent"
-    tools:context=".activities.Organizer">
+    tools:context=".activities.OrganizerActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

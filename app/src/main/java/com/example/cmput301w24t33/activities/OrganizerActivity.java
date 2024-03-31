@@ -22,8 +22,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.helper.widget.MotionEffect;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,7 +39,6 @@ import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
 import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
-import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -54,7 +51,7 @@ import java.util.List;
 /**
  * Activity for the event organizer, managing the creation, editing, and viewing of events.
  */
-public class Organizer extends AppCompatActivity {
+public class OrganizerActivity extends AppCompatActivity {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
     private OrganizerActivityBinding binding;
@@ -145,13 +142,13 @@ public class Organizer extends AppCompatActivity {
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
-            Intent intent = new Intent(Organizer.this, Attendee.class);
+            Intent intent = new Intent(OrganizerActivity.this, AttendeeActivity.class);
             startActivity(intent);
             finish();
         });
 
         userMode.setOnLongClickListener(v -> {
-            Intent intent = new Intent(Organizer.this, Admin.class);
+            Intent intent = new Intent(OrganizerActivity.this, AdminActivity.class);
             startActivity(intent);
             finish();
             return true;
