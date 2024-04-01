@@ -273,7 +273,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Saves the event to the database. Updates the event if it's being edited, or creates a new event otherwise.
      */
     private void saveEvent() {
-        eventRepo = new EventRepository();
+        eventRepo = EventRepository.getInstance();
         // Checks if Event is being edited to prevent creating new Event with updated information
         if (eventToEdit != null) {
             // Edits existing event

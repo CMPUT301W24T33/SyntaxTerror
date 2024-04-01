@@ -44,12 +44,11 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
         super.onCreate(savedInstanceState);
 
         EventRepository.initialize(this.getApplication(), FirebaseFirestore.getInstance());
+        eventRepo = EventRepository.getInstance();
         EventViewModel.initialize(this.getApplication(), eventRepo, new MutableLiveData<>());
 
         NotificationManager.initialize(this.getApplication());
         authenticateUser();
-        //launchApp();
-        //finish();
     }
 
     /**
@@ -65,7 +64,6 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
         String userId = getAndroidId();
         userRepo = new UserRepository(FirebaseFirestore.getInstance());
         userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
-        //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userViewModel.getUser(userId).observe(this, user -> {
             if (user != null) {
                 // User has a profile
@@ -73,12 +71,10 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
                 currentUser = user;
                 launchApp();
                 finish();
-                //fetchInfo(findViewById(R.id.profile_image));
             } else {
                 // New User
                 replaceFragment(new CreateProfile());
             }
-            //setupViewModel();
         });
     }
 

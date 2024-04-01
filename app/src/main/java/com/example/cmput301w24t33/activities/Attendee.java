@@ -82,6 +82,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
 
         currentUser = (User) getIntent().getSerializableExtra("user");
         Log.w("HECK", currentUser.getFirstName());
+        Log.w("PIC", currentUser.getImageUrl());
         //authenticateUser();
         //fetchInfo(findViewById(R.id.profile_image));
         setupRecyclerView();
@@ -124,7 +125,14 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      * Updates the local lists of all events and signed-up events whenever the LiveData changes.
      */
     private void setupViewModel() {
-        EventViewModel.
+        eventViewModel = EventViewModel.getInstance();
+        eventViewModel.getEventsLiveData().observe(this, events -> {
+            allEvents.clear();
+            allEvents.addAll(events);
+            eventListsFilter(events);
+            updateDisplayedEvents();
+        });
+        eventViewModel.loadEvents();
 
         /*
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
@@ -164,6 +172,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      */
     private void setupActionbar() {
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
+        fetchInfo(findViewById(R.id.profile_image));
         actionBarText.setText("Attend Events");
     }
 
@@ -268,7 +277,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         userMode.setOnClickListener(v -> {
             // Switch to Organizer activity
             Intent intent = new Intent(Attendee.this, Organizer.class);
-            intent.putExtra("uId", userId);
+            intent.putExtra("user", currentUser);
             startActivity(intent);
             finish();
         });

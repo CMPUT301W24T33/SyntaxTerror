@@ -54,7 +54,7 @@ public class DeletePosterAdmin extends Fragment {
         }
         loadData();
         setupActionBar();
-        eventRepo = new EventRepository();
+        eventRepo = EventRepository.getInstance();
         setupActionButtons();
         return binding.getRoot();
     }
