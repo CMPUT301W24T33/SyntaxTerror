@@ -39,7 +39,6 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.google.android.material.snackbar.Snackbar;
-
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -277,10 +276,9 @@ public class Profile extends Fragment {
         // Save button listener
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
-            if(validInput(view)){
-                // Save profile logic
-                saveProfile();
-            }
+
+            // Save profile logic
+            saveProfile();
         });
 
         // Remove image button listener
@@ -290,27 +288,6 @@ public class Profile extends Fragment {
             // can change button later to different location if needed
         });
 
-    }
-    /**
-     * Checks if user input is valid. Produces a snackbar if input is not valid explaining reason
-     *
-     * @param view The current view where the form fields are located.
-     */
-    private boolean validInput(View view) {
-        // User first name is empty
-        if(addFnameEditText.getText().toString().trim().isEmpty()){
-            Snackbar.make(view, "First Name cannot be empty", Snackbar.LENGTH_SHORT).show();
-            return false;
-        }
-        else if (addLnameEditText.getText().toString().trim().isEmpty()){
-            Snackbar.make(view, "Last Name cannot be empty", Snackbar.LENGTH_SHORT).show();
-            return false;
-        }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            Snackbar.make(view, "Email must be in form of an email", Snackbar.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
     }
 
     /**
@@ -359,8 +336,7 @@ public class Profile extends Fragment {
         email = addEmailEditText.getText().toString().trim();
 
         // Validate inputs
-        // Moved to validateInput function, no idea what the remain regex is for so left it
-        if (fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*")) {
+        if (fName.isEmpty() || lName.isEmpty() || fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
             return;
         }
