@@ -276,9 +276,10 @@ public class Profile extends Fragment {
         // Save button listener
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
-
-            // Save profile logic
-            saveProfile();
+            if(validInput(view)){
+                // Save profile logic
+                saveProfile();
+            }
         });
 
         // Remove image button listener
@@ -288,6 +289,28 @@ public class Profile extends Fragment {
             // can change button later to different location if needed
         });
 
+    }
+
+    /**
+     * Checks if user input is valid. Produces a snackbar if input is not valid explaining reason
+     *
+     * @param view The current view where the form fields are located.
+     */
+    private boolean validInput(View view) {
+        // User first name is empty
+        if(addFnameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(view, "First Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (addLnameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(view, "Last Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(addEmailEditText.getText().toString().trim()).matches()){
+            Snackbar.make(view, "Email must be in form of an email", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -335,11 +358,12 @@ public class Profile extends Fragment {
         lName = addLnameEditText.getText().toString().trim();
         email = addEmailEditText.getText().toString().trim();
 
-        // Validate inputs
-        if (fName.isEmpty() || lName.isEmpty() || fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        // not sure what this regex is validating. left this in just incase
+        if (fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*")) {
             Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
             return;
         }
+
         profileToEdit.setFirstName(addFnameEditText.getText().toString());
         profileToEdit.setLastName(addLnameEditText.getText().toString());
         profileToEdit.setEmail(addEmailEditText.getText().toString());
