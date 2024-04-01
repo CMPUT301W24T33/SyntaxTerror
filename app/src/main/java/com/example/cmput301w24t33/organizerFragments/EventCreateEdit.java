@@ -73,44 +73,51 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private boolean doneImageUpload = true;
     private Calendar tempStartDateTime = Calendar.getInstance();
     private Calendar tempEndDateTime = Calendar.getInstance();
+
     private String locationName;
     private String locationCoord;
 
+    private ActivityResultLauncher<Intent> launcher = defineLauncher();
 
+    /**
+     * Initializes the activity result launcher for handling the result of the image selection intent.
+     * If an image is successfully selected, it converts the image URI to a Bitmap, sets it to the profile image view,
+     * and uploads the image to Firebase Storage.
+     */
+    private ActivityResultLauncher<Intent> defineLauncher() {
+        return registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == Activity.RESULT_OK
+                            && result.getData() != null) {
+                        storage = FirebaseStorage.getInstance();
+                        Uri photoUri = result.getData().getData();
+                        Log.d("returned url",photoUri.toString());
 
-
-    private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if(result.getResultCode() == Activity.RESULT_OK
-                        && result.getData() != null) {
-                    storage = FirebaseStorage.getInstance();
-                    Uri photoUri = result.getData().getData();
-                    Log.d("returned url",photoUri.toString());
-
-                    ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
-                        @Override
-                        public void onSuccess(Pair<String, String> result) {
-                            // Handle the success case here
-                            // For example, store the result.first as the image URL and result.second as the image name
-                            Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
-                            eventImageRef = result.second;
-                            eventImageUrl = result.first;
-                            doneImageUpload = true;
-                        }
-                        @Override
-                        public void onFailure(Exception e) {
-                            // Handle the failure case here
-                            Log.d("Upload Failure", e.toString());
-                        }
-                    });
+                        ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
+                            @Override
+                            public void onSuccess(Pair<String, String> result) {
+                                // Handle the success case here
+                                // For example, store the result.first as the image URL and result.second as the image name
+                                Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                                eventImageRef = result.second;
+                                eventImageUrl = result.first;
+                                doneImageUpload = true;
+                            }
+                            @Override
+                            public void onFailure(Exception e) {
+                                // Handle the failure case here
+                                Log.d("Upload Failure", e.toString());
+                            }
+                        });
+                    }
+                    // result code shows activity cancelled, happens when back button pressed
+                    else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        doneImageUpload = true;
+                    }
                 }
-                // result code shows activity cancelled, happens when back button pressed
-                else if (result.getResultCode() == Activity.RESULT_CANCELED) {
-                    doneImageUpload = true;
-                }
-            }
-    );
+        );
+    }
 
 
     /**
@@ -263,8 +270,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private void onConfirm() {
         if (doneImageUpload) {
             saveEvent();
-            Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
-            getParentFragmentManager().popBackStack();
         }
         else{
             Snackbar.make(binding.getRoot(), "Uploading Poster", Snackbar.LENGTH_SHORT).show();
@@ -275,24 +280,58 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Saves the event to the database. Updates the event if it's being edited, or creates a new event otherwise.
      */
     private void saveEvent() {
-        eventRepo = new EventRepository();
-        // Checks if Event is being edited to prevent creating new Event with updated information
-        if (eventToEdit != null) {
-            // Edits existing event
-            setEventEdits(eventToEdit);
-            Log.d(TAG, "after set event:" + eventToEdit.getEventId());
-            eventRepo.updateEvent(eventToEdit);
-
-        } else {
-            // Creates new event
-            //mAuth = FirebaseAuth.getInstance();
-            String userId = getAndroidId();
-            Event newEvent = new Event();
-            newEvent.setOrganizerId(userId);
-            setEventEdits(newEvent);
-            eventRepo.createEvent(newEvent);
+        if (validInput()){
+            eventRepo = new EventRepository();
+            // Checks if Event is being edited to prevent creating new Event with updated information
+            if (eventToEdit != null) {
+                // Edits existing event
+                setEventEdits(eventToEdit);
+                Log.d(TAG, "after set event:" + eventToEdit.getEventId());
+                eventRepo.updateEvent(eventToEdit);
+                Snackbar.make(binding.getRoot(), "Event Changed", Snackbar.LENGTH_SHORT).show();
+            } else {
+                // Creates new event
+                //mAuth = FirebaseAuth.getInstance();
+                String userId = getAndroidId();
+                Event newEvent = new Event();
+                newEvent.setOrganizerId(userId);
+                setEventEdits(newEvent);
+                eventRepo.createEvent(newEvent);
+                Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
+            }
+            getParentFragmentManager().popBackStack();
         }
-
+    }
+    /**
+     * Checks if user input is valid, produces a snackbar if input is not valid explaining reason
+     */
+    private boolean validInput() {
+        // Event Name editview is empty
+        if(binding.eventNameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(binding.getRoot(), "Event Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        // Event description editview is empty
+        else if(binding.eventDescriptionEditText.getText().toString().trim().isEmpty()) {
+            Snackbar.make(binding.getRoot(), "Event Description cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        // geoTracking is checked but no location is selected
+        else if((locationCoord == null || locationName == null) && binding.geoTrackingSwitch.isChecked()){
+            Snackbar.make(binding.getRoot(), "Geo-Tracking is on, please choose a location", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        // start time not set
+        else if(tempStartDateTime == null){
+            Snackbar.make(binding.getRoot(), "Please choose event start time", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(tempEndDateTime == null){
+            Snackbar.make(binding.getRoot(), "Please choose event end time", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        Log.d("End time", tempEndDateTime.getTime().toString());
+        return true;
     }
 
     /**
@@ -310,7 +349,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         Log.d("setURL","a"+eventImageUrl);
 
         // if event already has a poster then delete it from db before updating it
-        Log.d("ImageURL", event.getImageUrl());
         if (event.getImageUrl() != null){
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference fileRef = storage.getReferenceFromUrl(event.getImageUrl());
