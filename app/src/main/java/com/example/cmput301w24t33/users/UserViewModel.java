@@ -9,6 +9,7 @@
 package com.example.cmput301w24t33.users;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.app.Application;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -23,37 +24,32 @@ import java.util.List;
  * It holds user data and communicates with the UserRepository for data operations.
  */
 public class UserViewModel extends ViewModel {
+    private static UserViewModel instance;
     private UserRepository userRepo;
     private MutableLiveData<List<User>> userLiveData;
     private MutableLiveData<User> liveUser;
-    private User user;
+    private Application application;
 
-    /**
-     * Constructor initializes the UserRepository, user LiveData, and a User object.
-     * Also sets up the callback interface for user data operations.
-     */
-    public UserViewModel() {
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
-        userLiveData = new MutableLiveData<>();
-        liveUser = new MutableLiveData<>();
-        user = new User();
+
+    public UserViewModel (Application application, UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser) {
+        this.application = application;
+        this.userRepo = myRepo;
+        this.userLiveData = userList;
+        this.liveUser = singleUser;
         setUserCallback(userRepo);
     }
 
-    public UserViewModel (UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser, User newUser) {
-        userRepo = myRepo;
-        userLiveData = userList;
-        liveUser = singleUser;
-        user = newUser;
-        setUserCallback(userRepo);
+    public static synchronized  void initialize(Application application, UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser) {
+        if (instance == null) {
+            instance = new UserViewModel(application, myRepo, userList, singleUser);
+        }
     }
 
-    public void init(UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser, User newUser) {
-        userRepo = myRepo;
-        userLiveData = userList;
-        liveUser = singleUser;
-        user = newUser;
-        setUserCallback(userRepo);
+    public static synchronized UserViewModel getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("UserViewModel must be initialized in the Application class before use.");
+        }
+        return instance;
     }
 
     /**

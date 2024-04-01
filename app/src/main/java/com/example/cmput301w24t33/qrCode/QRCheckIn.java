@@ -27,6 +27,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
     private Context context;
     private ArrayList<Event> events;
     private FusedLocationProviderClient fusedLocationProvider;
+    private EventRepository eventRepo;
     private User currentUser;
     private float GEOFENCE_RADIUS = 100;
 
@@ -55,6 +56,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient((Activity) context);
         this.currentUser = currentUser;
         this.events = events;
+        eventRepo = EventRepository.getInstance();
     }
 
     /**
@@ -96,7 +98,6 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
                     if (location != null && GeofenceArea(event.getLocationCoord(), location)) {
                         // Logic to handle location object
                         event.addAttendee(currentUser, location);
-                        EventRepository eventRepo = new EventRepository();
                         eventRepo.updateEvent(event);
                         checkInSuccessfulToast.show();
 
@@ -113,7 +114,6 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
             }
         } else { // geoTracking dissabled
             event.addAttendee(currentUser, null);
-            EventRepository eventRepo = new EventRepository();
             eventRepo.updateEvent(event);
             checkInSuccessfulToast.show();
         }

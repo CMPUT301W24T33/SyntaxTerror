@@ -54,7 +54,7 @@ import nl.dionsegijn.konfetti.xml.KonfettiView;
  * user information such as first name, last name, and email, validating each
  * before creating a new User instance.
  */
-public class CreateProfile extends Fragment {
+public class    CreateProfile extends Fragment {
     private OnUserCreatedListener mListener;
     private UserRepository userRepo;
     private EditText addFnameEditText;
@@ -75,8 +75,8 @@ public class CreateProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
-        
+        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userRepo = UserRepository.getInstance();
     }
 
     /**

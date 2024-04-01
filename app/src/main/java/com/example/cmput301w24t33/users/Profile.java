@@ -225,8 +225,8 @@ public class Profile extends Fragment {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         setupClickListeners(view);
         setupActionBar(view);
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
-
+        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userRepo = UserRepository.getInstance();
         if (getArguments() != null) {
             Bundle userBundle = getArguments();
             profileToEdit = (User) userBundle.getSerializable("user");
@@ -351,8 +351,8 @@ public class Profile extends Fragment {
      * Saves the profile after validating the input data and updates the user data in the database.
      */
     private void saveProfile() {
-
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userRepo = UserRepository.getInstance();
         // Extract text from EditTexts
         fName = addFnameEditText.getText().toString().trim();
         lName = addLnameEditText.getText().toString().trim();

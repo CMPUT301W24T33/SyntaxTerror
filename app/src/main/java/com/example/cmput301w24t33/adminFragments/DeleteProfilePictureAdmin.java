@@ -61,7 +61,9 @@ public class DeleteProfilePictureAdmin extends Fragment {
         }
         loadData();
         setupActionBar();
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+
+        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userRepo = UserRepository.getInstance();
         setupActionButtons();
         return binding.getRoot();
     }

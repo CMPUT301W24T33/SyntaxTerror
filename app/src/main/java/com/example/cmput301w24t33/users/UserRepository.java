@@ -13,11 +13,13 @@ package com.example.cmput301w24t33.users;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Application;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.MotionEffect;
 
+import com.example.cmput301w24t33.events.EventRepository;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -35,6 +37,7 @@ import java.util.List;
  */
 public class UserRepository {
     private static  UserRepository instance;
+    private Application application;
     private final FirebaseFirestore db;
     private final CollectionReference userCollection;
     private UserCallback userCallback;
@@ -42,9 +45,23 @@ public class UserRepository {
     /**
      * Constructor for UserRepository. Initializes connection to Firestore and the users collection.
      */
-    public UserRepository(FirebaseFirestore targetDB) {
+    public UserRepository(Application application, FirebaseFirestore targetDB) {
         db = targetDB;
+        this.application = application;
         userCollection = db.collection("users");
+    }
+
+    public static synchronized  void initialize(Application application, FirebaseFirestore db) {
+        if (instance == null) {
+            instance = new UserRepository(application, db);
+        }
+    }
+
+    public static synchronized UserRepository getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("User Repository must be initialized in the Application class before use.");
+        }
+        return instance;
     }
 
 

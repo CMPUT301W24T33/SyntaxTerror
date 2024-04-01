@@ -45,7 +45,8 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
     private ArrayList<User> attendeesList = new ArrayList<>();
     private AttendeeAdapter attendeeAdapter;
     private TextView attendeeNumberView;
-    private final EventRepository eventRepository = new EventRepository();
+    private final EventRepository eventRepository = EventRepository.getInstance();
+    private String eventId;
     private MapView mapView;
     private Event selectedEvent;
     private GoogleMap gMap;

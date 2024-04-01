@@ -290,7 +290,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      */
     private void saveEvent() {
         if (validInput()) {
-            eventRepo = new EventRepository();
+            eventRepo = EventRepository.getInstance();
             // Checks if Event is being edited to prevent creating new Event with updated information
             if (eventToEdit != null) {
                 // Edits existing event
@@ -298,6 +298,9 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 Log.d(TAG, "after set event:" + eventToEdit.getEventId());
                 eventRepo.updateEvent(eventToEdit);
                 Snackbar.make(binding.getRoot(), "Event Changed", Snackbar.LENGTH_SHORT).show();
+
+        // Checks if Event is being edited to prevent creating new Event with updated information
+
 
             } else {
                 // Creates new event

@@ -9,11 +9,14 @@ package com.example.cmput301w24t33.events;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.app.Application;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.cmput301w24t33.notifications.NotificationManager;
 
 import java.util.List;
 
@@ -22,16 +25,35 @@ import java.util.List;
  * This class encapsulates the data for the events to survive configuration changes such as screen rotations.
  */
 public class EventViewModel extends ViewModel {
-    private final EventRepository eventRepo;
-    private final MutableLiveData<List<Event>> eventsLiveData;
+    private static EventViewModel instance;
+    private EventRepository eventRepo;
+    private MutableLiveData<List<Event>> eventsLiveData;
+    private Application application;
+
 
     /**
-     * Constructor for EventViewModel. Initializes the EventRepository and sets up the event callback.
+     *
+     * @param eventRepo
+     * @param eventsLiveData
      */
-    public EventViewModel() {
-        eventRepo = new EventRepository();
-        eventsLiveData = new MutableLiveData<>();
+    private EventViewModel (Application application, EventRepository eventRepo, MutableLiveData<List<Event>> eventsLiveData) {
+        this.eventRepo = eventRepo;
+        this.eventsLiveData = eventsLiveData;
+        this.application = application;
         setEventCallback(eventRepo);
+    }
+
+    public static synchronized void initialize(Application application, EventRepository eventRepo, MutableLiveData<List<Event>> eventsLiveData) {
+        if (instance == null) {
+            instance = new EventViewModel(application, eventRepo, eventsLiveData);
+        }
+    }
+
+    public static synchronized EventViewModel getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("EventViewModel must be initialized in the Application class before use");
+        }
+        return instance;
     }
 
     /**

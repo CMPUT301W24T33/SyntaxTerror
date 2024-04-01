@@ -55,7 +55,7 @@ public class EventRemovePoster extends Fragment {
         }
         loadData();
         setupActionBar();
-        eventRepo = new EventRepository();
+        eventRepo = EventRepository.getInstance();
         setupActionButtons();
         return binding.getRoot();
     }

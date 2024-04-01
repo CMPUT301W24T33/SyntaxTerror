@@ -50,6 +50,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+
 import java.util.Set;
 
 
@@ -90,7 +91,11 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
-        authenticateUser();
+        currentUser = (User) getIntent().getSerializableExtra("user");
+        Log.w("HECK", currentUser.getFirstName());
+        Log.w("PIC", currentUser.getImageUrl());
+        //authenticateUser();
+        //fetchInfo(findViewById(R.id.profile_image));
         setupRecyclerView();
         setupActionbar();
         setOnClickListeners();
@@ -164,7 +169,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
      * Updates the local lists of all events and signed-up events whenever the LiveData changes.
      */
     private void setupViewModel() {
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        eventViewModel = EventViewModel.getInstance();
         eventViewModel.getEventsLiveData().observe(this, events -> {
             allEvents.clear();
             allEvents.addAll(events);
@@ -172,6 +177,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             updateDisplayedEvents();
         });
         eventViewModel.loadEvents();
+
     }
 
     /**
@@ -202,6 +208,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
      */
     private void setupActionbar() {
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
+        fetchInfo(findViewById(R.id.profile_image));
         actionBarText.setText("Attend Events");
     }
 
@@ -294,7 +301,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         userMode.setOnClickListener(v -> {
             // Switch to OrganizerActivity activity
             Intent intent = new Intent(AttendeeActivity.this, OrganizerActivity.class);
-            intent.putExtra("uId", userId);
+            intent.putExtra("user", currentUser);
             startActivity(intent);
             finish();
         });

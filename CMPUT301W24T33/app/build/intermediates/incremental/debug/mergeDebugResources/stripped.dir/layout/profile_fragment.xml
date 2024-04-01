@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4EFEF"
+    android:clickable="true"
+    android:elevation="2dp"
+    android:focusable="true"
+    tools:context=".users.Profile">
+
+    <RelativeLayout
+        android:id="@+id/profile_back_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/actionbar_editprofile" />
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_view"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/profile_back_actionbar"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="150dp">
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test_profile" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/first_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_view"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/first_name_text_view"
+            style="@style/ProfileText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name:"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/first_name_edit_text"
+            style="@style/ProfileText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/last_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/first_name_layout"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/last_name_text_view"
+            style="@style/ProfileText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name:"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/last_name_edit_text"
+            style="@style/ProfileText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/last_name_layout"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/email_text_view"
+            style="@style/ProfileText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-Mail:"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/email_edit_text"
+            style="@style/ProfileText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cancel_save_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/profile_cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="3dp"
+            android:text="Cancel"
+            android:textColor="@color/black" />
+        <Button
+            android:id="@+id/profile_save_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="3dp"
+            android:text="Save"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</RelativeLayout>

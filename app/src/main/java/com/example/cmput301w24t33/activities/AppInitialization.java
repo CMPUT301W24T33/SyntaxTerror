@@ -1,12 +1,39 @@
 package com.example.cmput301w24t33.activities;
 
+import static android.content.ContentValues.TAG;
+
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.cmput301w24t33.notifications.NotificationManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
 
-public class AppInitialization extends AppCompatActivity {
+import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.events.EventViewModel;
+import com.example.cmput301w24t33.notifications.NotificationManager;
+import com.example.cmput301w24t33.users.CreateProfile;
+import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
+import com.example.cmput301w24t33.users.UserViewModel;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+public class AppInitialization extends AppCompatActivity implements CreateProfile.OnUserCreatedListener {
+
+    private User currentUser;
+    private UserRepository userRepo;
+    private UserViewModel userViewModel;
+    private EventRepository eventRepo;
+    private EventViewModel eventViewModel;
 
     /**
      * Called when the activity is starting. This method is where you perform initialization such as calling NotificationManager.initialize
@@ -17,10 +44,18 @@ public class AppInitialization extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        NotificationManager.initialize(this.getApplication());
+        UserRepository.initialize(this.getApplication(), FirebaseFirestore.getInstance());
+        userRepo = UserRepository.getInstance();
+        UserViewModel.initialize(this.getApplication(), userRepo, new MutableLiveData<>(), new MutableLiveData<>());
+        userViewModel = UserViewModel.getInstance();
 
-        launchApp();
-        finish();
+        EventRepository.initialize(this.getApplication(), FirebaseFirestore.getInstance());
+        eventRepo = EventRepository.getInstance();
+        EventViewModel.initialize(this.getApplication(), eventRepo, new MutableLiveData<>());
+        eventViewModel = EventViewModel.getInstance();
+
+        NotificationManager.initialize(this.getApplication());
+        authenticateUser();
     }
 
     /**
@@ -28,6 +63,50 @@ public class AppInitialization extends AppCompatActivity {
      */
     private void launchApp() {
         Intent intent = new Intent(AppInitialization.this, AttendeeActivity.class);
+        intent.putExtra("user", currentUser);
         startActivity(intent);
+    }
+
+    private void authenticateUser() {
+        String userId = getAndroidId();
+        userViewModel.getUser(userId).observe(this, user -> {
+            if (user != null) {
+                // User has a profile
+                Log.d(TAG, "User Authenticated: " + user.getUserId());
+                currentUser = user;
+                launchApp();
+                finish();
+            } else {
+                // New User
+                replaceFragment(new CreateProfile());
+            }
+        });
+    }
+
+    /**
+     * Retrieves the unique Android ID for the device. This ID is used to identify the user's device uniquely.
+     * @return A string representing the Android ID of the device.
+     */
+    public String getAndroidId() {
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        return androidId;
+    }
+
+    /**
+     * Replaces the current fragment with a new one.
+     * @param fragment The new fragment to display.
+     */
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(android.R.id.content, fragment);
+        transaction.addToBackStack(null);
+        transaction.commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onUserCreated(User user) {
+        userViewModel.setUser(user);
+        currentUser = user;
     }
 }

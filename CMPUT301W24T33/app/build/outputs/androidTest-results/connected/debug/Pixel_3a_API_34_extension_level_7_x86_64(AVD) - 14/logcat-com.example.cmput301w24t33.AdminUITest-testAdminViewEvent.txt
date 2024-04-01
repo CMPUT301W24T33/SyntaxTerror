@@ -1,0 +1,1091 @@
+03-08 10:10:59.838  4448  4554 I TestRunner: started: testAdminViewEvent(com.example.cmput301w24t33.AdminUITest)
+03-08 10:10:59.851   793   793 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+03-08 10:10:59.871  1835  2734 I Icing   : Removing corpus key com.google.android.deskclock-internal.3p:Alarm_cross_device for package com.google.android.deskclock
+03-08 10:10:59.889  4448  4554 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+03-08 10:10:59.901   355  4563 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10129 0}
+03-08 10:10:59.902   489   791 D BufferPoolAccessor2.0: bufferpool2 0x71b769102bf8 : 0(0 size) total buffers - 0(0 size) used buffers - 93/97 (recycle/alloc) - 4/96 (fetch/transfer)
+03-08 10:10:59.902   478  4285 D BufferPoolAccessor2.0: bufferpool2 0x7e39daf4b9a8 : 0(0 size) total buffers - 0(0 size) used buffers - 93/101 (recycle/alloc) - 15/198 (fetch/transfer)
+03-08 10:10:59.902   478  4285 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 1
+03-08 10:10:59.902   489   791 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 1
+03-08 10:10:59.908   355  4564 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+03-08 10:10:59.909   355  4564 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x707670c9c390
+03-08 10:10:59.909   355  4564 I resolv  : doQuery: rcode=0, ancount=1, return value=61
+03-08 10:10:59.910   355  4565 I resolv  : res_nmkquery: (QUERY, IN, A)
+03-08 10:10:59.910   355  4565 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x707670c9bf10
+03-08 10:10:59.911   355  4565 I resolv  : doQuery: rcode=0, ancount=1, return value=49
+03-08 10:10:59.914  2434  4562 D TrafficStats: tagSocket(145) with statsTag=0xffffffff, statsUid=-1
+03-08 10:10:59.917   793   793 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+03-08 10:10:59.930  2434  2445 I .apps.messaging: Background concurrent copying GC freed 129004(6666KB) AllocSpace objects, 36(1460KB) LOS objects, 49% free, 9238KB/18MB, paused 528us,495us total 114.948ms
+03-08 10:10:59.940  3125  4545 D TrafficStats: tagSocket(223) with statsTag=0x401, statsUid=10126
+03-08 10:10:59.957  1124  4304 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+03-08 10:10:59.957  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.960  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.961  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.962  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.963  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.964  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.966  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.966  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.968  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.969  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.970  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.971  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.971  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:10:59.983  1835  2734 I native  : I0000 00:00:1709917859.982485    2734 flash-index.cc:1535] Flash index sort hb 197 prefix-hits 379 -> 379 at 63.877ms
+03-08 10:10:59.996  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.015   569  2286 I RemoteProvisionSysSvc: getRegistration(android.hardware.security.keymint.IRemotelyProvisionedComponent/default)
+03-08 10:11:00.033   956  1243 D DhcpClient: Received packet: 02:15:b2:00:00:00 OFFER, ip /10.0.2.16, mask /255.255.255.0, DNS servers: /10.0.2.3 , gateways [/10.0.2.2], lease time 86400, domain null
+03-08 10:11:00.033  2434  2532 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@54179ab} with executor MoreExecutors.directExecutor()
+03-08 10:11:00.033  2434  2532 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ccdw.b(PG:2)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at cnpz.b(PG:3)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ctdz.run(PG:6)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ctdd.execute(PG:1)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ctbc.o(PG:1)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ctbc.b(PG:5)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at cteg.r(PG:2)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at cnsl.k(PG:1)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ccdy.a(PG:15)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at atyv.a(PG:2)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at cbeo.o(PG:3)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at cbeb.a(PG:1)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at cnpq.a(PG:3)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ctbg.d(PG:2)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ctbi.run(PG:9)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at ctfm.run(PG:4)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at bxfd.run(PG:1)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at bxef.run(PG:2)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.033  2434  2532 E ctbc    : 	at bxfj.run(PG:5)
+03-08 10:11:00.034  2434  2532 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@31ddba1} with executor MoreExecutors.directExecutor()
+03-08 10:11:00.034  2434  2532 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ccdw.b(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cnpz.b(PG:3)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctdz.run(PG:6)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctdd.execute(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbc.o(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbc.b(PG:5)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cteg.r(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cnsl.k(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ccdy.a(PG:15)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at atyv.a(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cbeo.o(PG:3)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cbeb.a(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cnpq.a(PG:3)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbg.d(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbi.run(PG:9)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctfm.run(PG:4)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at bxfd.run(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at bxef.run(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at bxfj.run(PG:5)
+03-08 10:11:00.034  2434  2532 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@f1c0587} with executor MoreExecutors.directExecutor()
+03-08 10:11:00.034  2434  2532 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ccdw.b(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cnpz.b(PG:3)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctdz.run(PG:6)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctdd.execute(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbc.o(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbc.b(PG:5)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cteg.r(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cnsl.k(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ccdy.a(PG:15)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at atyv.a(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cbeo.o(PG:3)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cbeb.a(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at cnpq.a(PG:3)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbg.d(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctbi.run(PG:9)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at ctfm.run(PG:4)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at bxfd.run(PG:1)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at bxef.run(PG:2)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.034  2434  2532 E ctbc    : 	at bxfj.run(PG:5)
+03-08 10:11:00.035  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.035  3125  3986 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (3677) at void bytk.e()(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3) waiters=0 in void bytk.b(byps) for 206ms
+03-08 10:11:00.036   956  1243 D DhcpClient: Received packet: 02:15:b2:00:00:00 ACK: your new IP /10.0.2.16, netmask /255.255.255.0, gateways [/10.0.2.2] DNS servers: /10.0.2.3 , lease time 86400
+03-08 10:11:00.037  2434  2532 E MDD     : FileGroupManager: Trying to add expired group webref-model-local-index.
+03-08 10:11:00.051   569   655 W system_server: Long monitor contention with owner binder:569_14 (2005) at int com.android.server.job.JobSchedulerService.getUidProcState(int)(JobSchedulerService.java:2305) waiters=0 in void com.android.server.job.controllers.BackgroundJobsController$1.updateJobsForUid(int, boolean) for 287ms
+03-08 10:11:00.052  1124  4304 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='android.permission.BIND_CALL_STREAMING_SERVICE', mQueryFlags=0, mMetaData=[]}
+03-08 10:11:00.052  1124  4304 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+03-08 10:11:00.052   569  2283 W system_server: Long monitor contention with owner binder:569_14 (2005) at int com.android.server.job.JobSchedulerService.getUidProcState(int)(JobSchedulerService.java:2305) waiters=2 in void com.android.server.job.JobServiceContext.doJobFinished(com.android.server.job.JobServiceContext$JobCallback, int, boolean) for 249ms
+03-08 10:11:00.053  1124  4304 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+03-08 10:11:00.053  2434  2532 W MDD     : MDDManager class cbkc
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: cbkc
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at cbqx.a(PG:90)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at cnpq.a(PG:3)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at ctbg.d(PG:2)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at ctbi.run(PG:9)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at ctfm.run(PG:4)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at bxfd.run(PG:1)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at bxef.run(PG:2)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.055  2434  2532 E PhFileGroupPop: 	at bxfj.run(PG:5)
+03-08 10:11:00.062  2434  2532 D PhFileGroupPop: Added file groups smart_actions_grammars
+03-08 10:11:00.066  2434  2532 D PhFileGroupPop: Added file groups smart_actions_ml_models
+03-08 10:11:00.070  2434  2532 D PhFileGroupPop: Added file groups text_classifier
+03-08 10:11:00.100  2434  2532 D PhFileGroupPop: Added file groups smart_actions_emotive_models
+03-08 10:11:00.198  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.data.service.START pkg=com.google.android.gms }
+03-08 10:11:00.212  3125  3961 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+03-08 10:11:00.215  2434  2532 D PhFileGroupPop: Added file groups smarts_expressive_content_scoped_v1
+03-08 10:11:00.222  2434  2532 D PhFileGroupPop: Added file groups smart_actions_sensitive_classifier_models
+03-08 10:11:00.229  2434  2532 D PhFileGroupPop: Added file groups scripted_reply
+03-08 10:11:00.236  2434  2532 D PhFileGroupPop: Added file groups multitask_experiment
+03-08 10:11:00.237  2434  2532 D PhFileGroupPop: Added file groups spam_verdict_enforcement_policy_config
+03-08 10:11:00.239  2434  2532 D PhFileGroupPop: Added file groups smart_suggestion_reranker_models
+03-08 10:11:00.242  2434  2532 D PhFileGroupPop: Added file groups supersort_us_grammars
+03-08 10:11:00.256  2434  2532 D PhFileGroupPop: Added file groups nudge
+03-08 10:11:00.261   569   569 I RegistrationProxy: onServiceConnected: com.android.rkpdapp.service.RemoteProvisioningService
+03-08 10:11:00.264  2434  2532 D PhFileGroupPop: Added file groups calendar_appointment_grammar
+03-08 10:11:00.265  2434  2532 D PhFileGroupPop: Added file groups birthday_suggestion
+03-08 10:11:00.266  2664  3289 D CompatibilityChangeReporter: Compat change id reported: 263076149; UID 10151; state: DISABLED
+03-08 10:11:00.266  2434  2532 D PhFileGroupPop: Added file groups birthday_grammars
+03-08 10:11:00.285  2434  2532 D PhFileGroupPop: Added file groups animated_emoji
+03-08 10:11:00.286   569  2282 I RegistrationProxy: IGetRegistrationCallback.onSuccess
+03-08 10:11:00.301  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.303  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.303  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.305  2434  4571 D TrafficStats: tagSocket(149) with statsTag=0xffffffff, statsUid=-1
+03-08 10:11:00.306  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.307  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.307  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.309  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.309  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.309  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.310  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.310  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.310  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.311  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.311  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.313  2434  2532 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@689150} with executor MoreExecutors.directExecutor()
+03-08 10:11:00.313  2434  2532 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ccdw.b(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnpz.b(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctdz.run(PG:6)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctdd.execute(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbc.o(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbc.b(PG:5)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cteg.r(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnsl.k(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ccdy.a(PG:15)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at atyv.a(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cbeo.o(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cbeb.a(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnpq.a(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbg.d(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbi.run(PG:9)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctfm.run(PG:4)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxfd.run(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxef.run(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxfj.run(PG:5)
+03-08 10:11:00.313  2434  2532 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@ac9d04e} with executor MoreExecutors.directExecutor()
+03-08 10:11:00.313  2434  2532 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ccdw.b(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnpz.b(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctdz.run(PG:6)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctdd.execute(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbc.o(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbc.b(PG:5)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cteg.r(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnsl.k(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ccdy.a(PG:15)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at atyv.a(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cbeo.o(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cbeb.a(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnpq.a(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbg.d(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbi.run(PG:9)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctfm.run(PG:4)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxfd.run(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxef.run(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxfj.run(PG:5)
+03-08 10:11:00.313  2434  2532 E ctbc    : RuntimeException while executing runnable ctdz{cnpz@54d727c} with executor MoreExecutors.directExecutor()
+03-08 10:11:00.313  2434  2532 E ctbc    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cayk.b' on a null object reference in method 'void ccdw.b(java.lang.Object)'
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ccdw.b(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnpz.b(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctdz.run(PG:6)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctdd.execute(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbc.o(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbc.b(PG:5)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cteg.r(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnsl.k(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ccdy.a(PG:15)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at atyv.a(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cbeo.o(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cbeb.a(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at cnpq.a(PG:3)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbg.d(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctbi.run(PG:9)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at ctfm.run(PG:4)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxfd.run(PG:1)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxef.run(PG:2)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.313  2434  2532 E ctbc    : 	at bxfj.run(PG:5)
+03-08 10:11:00.318  2664  3332 I LPAutoUpdateSynclet: #sync
+03-08 10:11:00.339  2664  3289 I VoiceLanguageHelper: #initializeLanguages
+03-08 10:11:00.346  2664  3333 I LPDownloadSettingsState: Defaulting LP download condition to WIFI_ONLY as user has not edited settings.
+03-08 10:11:00.348  2664  3333 I DefaultLPManager: #getAvailablePackages
+03-08 10:11:00.349  2664  3333 I evk     : #getDownloadableLanguagePacks
+03-08 10:11:00.361  2664  3333 W SystemLPSourceImpl: #getAvailablePackages: Note there is not reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+03-08 10:11:00.371  2664  3333 I DefaultLPManager: #getInstalledPackages
+03-08 10:11:00.376  2664  3333 I evk     : #getInstalledPackages
+03-08 10:11:00.377  2664  3333 I DefaultLPManager: #getInstalledPackages
+03-08 10:11:00.378  2664  3333 I evk     : #getInstalledPackages
+03-08 10:11:00.379  2664  3333 I DefaultLPManager: #getRequestedPackages
+03-08 10:11:00.388  2664  3333 I ZipLPPopulator: #addNewFileGroups
+03-08 10:11:00.391  2664  3333 I evk     : #getDownloadableLanguagePacks
+03-08 10:11:00.395  2664  3332 I LPRequestState: [ZipfileRequests] #resolveDesiredLanguagePacks
+03-08 10:11:00.396  2664  3333 W SystemLPSourceImpl: #getRequestedPackages: There is not reason to call this method, as the result is always empty.
+03-08 10:11:00.396  2664  3333 I DefaultLPManager: #getAvailablePackages
+03-08 10:11:00.397  2664  3333 I evk     : #getDownloadableLanguagePacks
+03-08 10:11:00.401  2664  3333 W SystemLPSourceImpl: #getAvailablePackages: Note there is not reason to call this method, as getInstalledPackages() returns the same LanguagePacks for this impl.
+03-08 10:11:00.411  2664  3332 I LPRequestState: [ManagerRequests] #resolveDesiredLanguagePacks
+03-08 10:11:00.313  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.419  2434  2532 E MDD     : FileGroupManager: Trying to add expired group webref-model-local-index.
+03-08 10:11:00.419  2434  2532 W MDD     : MDDManager class cbkc
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: Failed to add file group
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: cbkc
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at cbqx.a(PG:90)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at cnpq.a(PG:3)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at ctbg.d(PG:2)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at ctbi.run(PG:9)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at ctfm.run(PG:4)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at bxfd.run(PG:1)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at bxef.run(PG:2)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.419  2434  2532 E PhFileGroupPop: 	at bxfj.run(PG:5)
+03-08 10:11:00.450  2664  3332 I LPDownloadSettingsState: Defaulting LP download condition to WIFI_ONLY as user has not edited settings.
+03-08 10:11:00.455  2434  2532 D PhFileGroupPop: Added file groups smart_actions_grammars
+03-08 10:11:00.457  2434  2532 D PhFileGroupPop: Added file groups smart_actions_ml_models
+03-08 10:11:00.482   793   888 D EGL_emulation: app_time_stats: avg=5228.33ms min=5228.33ms max=5228.33ms count=1
+03-08 10:11:00.498   569   625 W system_server: Long monitor contention with owner binder:569_6 (926) at void com.android.server.power.PowerManagerService.acquireWakeLockInternal(android.os.IBinder, int, int, java.lang.String, java.lang.String, android.os.WorkSource, java.lang.String, int, int, android.os.IWakeLockCallback)(PowerManagerService.java:1633) waiters=1 in void com.android.server.power.PowerManagerService.handleSandman(int) for 151ms
+03-08 10:11:00.507  2434  2532 D PhFileGroupPop: Added file groups text_classifier
+03-08 10:11:00.518  2664  3146 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=249d8ce5-73bd-4c55-97b6-e47b6f90df4e, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker, TikTokWorker#com.google.apps.tiktok.sync.impl.workmanager.SyncWorker } ]
+03-08 10:11:00.522  2434  2532 D PhFileGroupPop: Added file groups smart_actions_emotive_models
+03-08 10:11:00.545  2434  2532 D PhFileGroupPop: Added file groups smarts_expressive_content_scoped_v1
+03-08 10:11:00.554  2434  2532 D PhFileGroupPop: Added file groups smart_actions_sensitive_classifier_models
+03-08 10:11:00.561  2434  2532 D PhFileGroupPop: Added file groups scripted_reply
+03-08 10:11:00.563  2434  2532 D PhFileGroupPop: Added file groups multitask_experiment
+03-08 10:11:00.574  2434  2532 D PhFileGroupPop: Added file groups spam_verdict_enforcement_policy_config
+03-08 10:11:00.579  2434  2532 D PhFileGroupPop: Added file groups smart_suggestion_reranker_models
+03-08 10:11:00.581  2434  2532 D PhFileGroupPop: Added file groups supersort_us_grammars
+03-08 10:11:00.582  2434  2532 D PhFileGroupPop: Added file groups nudge
+03-08 10:11:00.582  1711  1875 I AiAiEcho: Predicting[0]:
+03-08 10:11:00.583  1711  1875 I AiAiEcho: EchoTargets:
+03-08 10:11:00.583  1711  1875 I AiAiEcho: Filtered by AiAi flag check:
+03-08 10:11:00.583  2434  2532 D PhFileGroupPop: Added file groups calendar_appointment_grammar
+03-08 10:11:00.589  1711  1875 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata:
+03-08 10:11:00.592  2434  2532 D PhFileGroupPop: Added file groups birthday_suggestion
+03-08 10:11:00.598  1711  1875 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+03-08 10:11:00.602   793   793 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+03-08 10:11:00.604  2434  2532 D PhFileGroupPop: Added file groups birthday_grammars
+03-08 10:11:00.621   569  1965 W system_server: Long monitor contention with owner binder:569_E (1895) at int com.android.server.wm.ActivityStarter.execute()(ActivityStarter.java:786) waiters=0 in int com.android.server.wm.ActivityTaskManagerService$LocalService.getTaskToShowPermissionDialogOn(java.lang.String, int) for 431ms
+03-08 10:11:00.621   569   597 W system_server: Long monitor contention with owner binder:569_E (1895) at int com.android.server.wm.ActivityStarter.execute()(ActivityStarter.java:786) waiters=1 in void com.android.server.wm.RootWindowContainer$RankTaskLayersRunnable.run() for 253ms
+03-08 10:11:00.621  2434  2532 D PhFileGroupPop: Added file groups animated_emoji
+03-08 10:11:00.626  2434  4575 D TrafficStats: tagSocket(152) with statsTag=0xffffffff, statsUid=-1
+03-08 10:11:00.633  2434  2532 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=016a1355-34f3-4a83-9a74-9be3f475b49b, tags={ com.google.android.libraries.mdi.download.workmanager.workers.PeriodicWorker, MDD.CELLULAR.CHARGING.PERIODIC.TASK } ]
+03-08 10:11:00.654   413   413 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+03-08 10:11:00.667   793   846 D SplashScreenView: Build android.window.SplashScreenView{9ce0a95 V.E...... ......ID 0,0-0,0}
+03-08 10:11:00.667   793   846 D SplashScreenView: Icon: view: null drawable: null size: 0
+03-08 10:11:00.667   793   846 D SplashScreenView: Branding: view: android.view.View{83217aa G.ED..... ......I. 0,0-0,0 #10204ef android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+03-08 10:11:00.675  1835  3588 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+03-08 10:11:00.700  3125  4192 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+03-08 10:11:00.712  3125  3986 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.accountstate.GcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 125 [CONTEXT service_id=218 ]
+03-08 10:11:00.716  3125  3986 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.accountstate.GcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 126 [CONTEXT service_id=218 ]
+03-08 10:11:00.732  3125  3986 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.accountstate.GcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 1926 uptime_millis: 1926 exec_start_elapsed_seconds: 126 [CONTEXT service_id=218 ]
+03-08 10:11:00.740  1835  3992 I NamespaceManager: Package com.android.refreshratecontrol name not found! Using module version.
+03-08 10:11:00.742  1835  3992 I NamespaceManager: Package com.google.oslo name not found! Using module version.
+03-08 10:11:00.745  1835  3992 I NamespaceManager: Package com.android.media name not found! Using module version.
+03-08 10:11:00.746  1835  3992 I NamespaceManager: Package com.android.media.swcodec name not found! Using module version.
+03-08 10:11:00.748  1835  3992 I NamespaceManager: Package com.android.neuralnetworks name not found! Using module version.
+03-08 10:11:00.753  1835  4337 W gle.android.gms: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.GmsIntentOperationChimeraService-Executor] idle (2744) at android.content.IContentProvider android.app.ActivityThread.acquireProvider(android.content.Context, java.lang.String, int, boolean)(ActivityThread.java:7330) waiters=1 in android.content.IContentProvider android.app.ActivityThread.acquireProvider(android.content.Context, java.lang.String, int, boolean) for 468ms
+03-08 10:11:00.753  1835  3992 I NamespaceManager: Package com.android.media name not found! Using module version.
+03-08 10:11:00.755   793   888 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-08 10:11:00.795  3125  3961 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x45000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+03-08 10:11:00.819  1835  3992 I NamespaceManager: Package 1 name not found! Using module version.
+03-08 10:11:00.831  3125  3375 W GLSUser : [AppCertManager] Exception while requesting key:
+03-08 10:11:00.831  3125  3375 W GLSUser : java.util.concurrent.ExecutionException: avvw: Parse Proto Exception.
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dlnv.s(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dlnv.get(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at oub.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at otz.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):8)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at otv.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at otx.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at otx.b(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at abxk.r(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at abxw.e(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at abxw.g(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at cyeg.a(:com.google.android.gms@231818047@23.18.18 (190800-535401451):27)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at czpd.call(:com.google.android.gms@231818047@23.18.18 (190800-535401451):78)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at aced.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):6)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at aced.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at acjn.run(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:00.831  3125  3375 W GLSUser : Caused by: avvw: Parse Proto Exception.
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):5)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at avxk.onSucceeded(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at jf.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at ie.run(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):4)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	... 6 more
+03-08 10:11:00.831  3125  3375 W GLSUser : Caused by: dzfz: Protocol message contained an invalid tag (zero).
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzdb.k(:com.google.android.gms@231818047@23.18.18 (190800-535401451):13)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzha.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):47)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzha.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):45)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzfd.A(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzex.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzcx.d(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzcx.c(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at dzcx.n(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at avwn.h(:com.google.android.gms@231818047@23.18.18 (190800-535401451):7)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	at avwn.f(:com.google.android.gms@231818047@23.18.18 (190800-535401451):1)
+03-08 10:11:00.831  3125  3375 W GLSUser : 	... 9 more
+03-08 10:11:00.841  3125  3375 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+03-08 10:11:00.858  4448  4580 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+03-08 10:11:00.862  4448  4580 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+03-08 10:11:00.867  1130  1918 D EGL_emulation: app_time_stats: avg=2162.52ms min=461.28ms max=3863.76ms count=2
+03-08 10:11:00.872  4448  4580 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+03-08 10:11:00.929  2664  2855 W evl     : The metadata proto for [en-US, 3008] is depending on the legacy SupportedDomainIds list. Please migrate to the DomainToRecognizer map.
+03-08 10:11:00.930  3125  3986 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.accountstate.GcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 3028 uptime_millis: 3028 exec_start_elapsed_seconds: 125 [CONTEXT service_id=218 ]
+03-08 10:11:00.932  2664  3289 W evl     : The metadata proto for [en-US, 3008] is depending on the legacy SupportedDomainIds list. Please migrate to the DomainToRecognizer map.
+03-08 10:11:00.936  2664  3332 I LanguagePackMaintenance: Background downloading 0 packs, for an ideal set of 1 total packs
+03-08 10:11:00.936  2664  3332 I LanguagePackMaintenance: Background downloading packs []
+03-08 10:11:00.937  2664  3332 I LanguagePackMaintenance: Ideal set: [en-US_v3008]
+03-08 10:11:00.939  2664  3333 I LPRequestState: [ManagerRequests] #resolveUnusedLanguagePacks
+03-08 10:11:00.939  2664  3333 I LPRequestState: [ManagerRequests] #resolveDesiredLanguagePacks
+03-08 10:11:00.954  4448  4448 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+03-08 10:11:00.983  1835  3992 I NamespaceManager: Package rkpd name not found! Using module version.
+03-08 10:11:00.993  4448  4448 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@46272f7 in: PRE_ON_CREATE
+03-08 10:11:00.995  4448  4448 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+03-08 10:11:01.030  1835  2734 I Icing   : Removing corpus key com.google.android.deskclock-internal.3p:Stopwatch_cross_device for package com.google.android.deskclock
+03-08 10:11:01.040  1835  3992 I NamespaceManager: Package android.companion name not found! Using module version.
+03-08 10:11:01.064   569  1216 I RemoteProvisionSysSvc: Fetching key 10126 for client 245644623
+03-08 10:11:01.065   569  1216 I RegistrationProxy: getKeyAsync operation started with callback 11951324
+03-08 10:11:01.065  3967  4014 I RkpdRegistrationBinder: Key requested for : android.hardware.security.keymint.IRemotelyProvisionedComponent/default, clientUid: 1017, keyId: 10126, callback: 216416409
+03-08 10:11:01.081  3967  4014 I RkpdRegistrationBinder: No key assigned, looking for an available key with expiry of 2024-03-11T17:11:01.079651Z
+03-08 10:11:01.083  3967  4014 I RkpdRegistrationBinder: No key assigned, looking for an available key with expiry of 2024-03-08T18:11:01.069698Z
+03-08 10:11:01.085   569   582 I system_server: Background young concurrent copying GC freed 629021(23MB) AllocSpace objects, 37(716KB) LOS objects, 43% free, 28MB/50MB, paused 7.222ms,11.235ms total 756.140ms
+03-08 10:11:01.086  3967  4014 I RkpdRegistrationBinder: No keys are available, kicking off provisioning
+03-08 10:11:01.087  3967  4014 V RkpdServerInterface: Requesting data from server. Attempt 1
+03-08 10:11:01.096   569  1216 I RegistrationProxy: Provisioning required before keys are available for android.security.rkp.service.RegistrationProxy$2@b65cdc
+03-08 10:11:01.109  1835  2297 I GmscoreIpa: Using regular flags by method 2 [CONTEXT service_id=255 ]
+03-08 10:11:01.139  2664  3333 I ZipLPPopulator: Updated file group for group 'langpack-domain_en-US_3008_zipfile' from location: https://dl.google.com/android/voice/soda/en-US/v3008/soda-en-US-v3008.zip
+03-08 10:11:01.139  2664  3333 I evk     : #getPendingPackages
+03-08 10:11:01.145  2664  3333 I LPRequestState: [ManagerRequests] #resolveUnusedLanguagePacks
+03-08 10:11:01.146  2664  3333 I LPRequestState: [ManagerRequests] #resolveDesiredLanguagePacks
+03-08 10:11:01.148  2664  3332 I DefaultLPManager: #calculateRolledBackPacks
+03-08 10:11:01.150  2664  3332 I LanguagePackMaintenance: Background deleting 0 stale packs:
+03-08 10:11:01.151  2664  3332 I LanguagePackMaintenance: Background LanguagePack updates finished successfully
+03-08 10:11:01.172  3967  4014 V RkpdServerInterface: Network request completed successfully.
+03-08 10:11:01.175  3967  4014 I RkpdKeyPoolStats: PoolStats{keysInUse=0, idealTotalSignedKeys=12, keysToGenerate=12, keysUnassigned=0}
+03-08 10:11:01.175  3967  4014 I RkpdProvisioner: Requested number of keys for provisioning: 12
+03-08 10:11:01.194  3967  4014 W RkpdSystemInterface: HAL returned a batch size that's too small (20), defaulting to 20
+03-08 10:11:01.202  1835  1835 W gle.android.gms: Long monitor contention with owner GoogleApiHandler (2326) at boolean abnp.d(abno, android.content.ServiceConnection, java.lang.String, java.util.concurrent.Executor)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):15) waiters=0 in boolean abnr.handleMessage(android.os.Message) for 109ms
+03-08 10:11:01.204  1835  3992 I NamespaceManager: Package com.google.android.aicore name not found! Using module version.
+03-08 10:11:01.215   569  2004 W system_server: Long monitor contention with owner binder:569_2 (587) at boolean com.android.server.job.JobSchedulerService.isBatteryCharging()(JobSchedulerService.java:4964) waiters=0 in int com.android.server.job.JobSchedulerService.scheduleAsPackage(android.app.job.JobInfo, android.app.job.JobWorkItem, int, java.lang.String, int, java.lang.String, java.lang.String) for 639ms
+03-08 10:11:01.215  3967  4014 I RkpdServerInterface: request_id: 944a92a9-2494-45ac-bae4-06c210d3fc55
+03-08 10:11:01.216  3967  4014 V RkpdServerInterface: Requesting data from server. Attempt 1
+03-08 10:11:01.225   569   655 W system_server: Long monitor contention with owner binder:569_2 (587) at boolean com.android.server.job.JobSchedulerService.isBatteryCharging()(JobSchedulerService.java:4964) waiters=1 in void com.android.server.job.controllers.QuotaController$TempAllowlistTracker.onAppAdded(int) for 620ms
+03-08 10:11:01.230   569  1990 W system_server: Long monitor contention with owner binder:569_2 (587) at boolean com.android.server.job.JobSchedulerService.isBatteryCharging()(JobSchedulerService.java:4964) waiters=4 in int com.android.server.job.JobSchedulerService.scheduleAsPackage(android.app.job.JobInfo, android.app.job.JobWorkItem, int, java.lang.String, int, java.lang.String, java.lang.String) for 583ms
+03-08 10:11:01.233   569  1171 W system_server: Long monitor contention with owner binder:569_2 (587) at boolean com.android.server.job.JobSchedulerService.isBatteryCharging()(JobSchedulerService.java:4964) waiters=2 in void com.android.server.job.JobServiceContext.doJobFinished(com.android.server.job.JobServiceContext$JobCallback, int, boolean) for 598ms
+03-08 10:11:01.288   793   888 D EGL_emulation: app_time_stats: avg=52413.45ms min=52413.45ms max=52413.45ms count=1
+03-08 10:11:01.298   569  4589 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+03-08 10:11:01.301   569  4589 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface: Server connection failed for url: https://remoteprovisioning.googleapis.com/v1:signCertificates?challenge=AAABjh8L-9YBILStY8-0K0NBIgOnvOBcKpO-t0k=&request_id=944a92a9-2494-45ac-bae4-06c210d3fc55, response code: 400
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface: Repeated failure count: 1
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface: {
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface:   "error": {
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface:     "code": 400,
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface:     "message": "Invalid request payload: Error encountered with CBOR data\nRequestId: 944a92a9-2494-45ac-bae4-06c210d3fc55",
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface:     "status": "INVALID_ARGUMENT"
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface:   }
+03-08 10:11:01.301  3967  4014 E RkpdServerInterface: }
+03-08 10:11:01.302  4448  4448 W .cmput301w24t33: Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (unsupported, reflection, allowed)
+03-08 10:11:01.303  4448  4448 W .cmput301w24t33: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (unsupported, reflection, allowed)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: RKPD failed to provision keys
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: com.android.rkpdapp.RkpdException: HTTP error status encountered: 400
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.interfaces.ServerInterface.requestData(ServerInterface.java:341)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.interfaces.ServerInterface.connectAndGetData(ServerInterface.java:287)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.interfaces.ServerInterface.requestSignedCertificates(ServerInterface.java:121)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.provisioner.Provisioner.batchProvision(Provisioner.java:157)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.provisioner.Provisioner.fetchCertificates(Provisioner.java:136)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.provisioner.Provisioner.provisionKeys(Provisioner.java:89)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.service.RegistrationBinder.fetchGeekAndProvisionKeys(RegistrationBinder.java:151)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.service.RegistrationBinder.getKeyWorker(RegistrationBinder.java:117)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.service.RegistrationBinder.getKeyThreadWorker(RegistrationBinder.java:235)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.service.RegistrationBinder.lambda$getKey$3(RegistrationBinder.java:223)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.service.RegistrationBinder.$r8$lambda$TliFA5y2_wUzHwCyn77kum7XL5E(RegistrationBinder.java:0)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at com.android.rkpdapp.service.RegistrationBinder$$ExternalSyntheticLambda9.run(R8$$SyntheticClass:0)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 10:11:01.313  3967  4014 E RkpdRegistrationBinder: 	at java.lang.Thread.run(Thread.java:1012)
+03-08 10:11:01.314   569   569 E RemoteProvisionSysSvc: RKP error fetching key for client 245644623: ERROR_UNKNOWN: HTTP error status encountered: 400
+03-08 10:11:01.354  3125  3375 W .gms.persistent: Long monitor contention with owner main (3125) at boolean abnr.handleMessage(android.os.Message)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):16) waiters=0 in void abnp.e(abno, android.content.ServiceConnection) for 496ms
+03-08 10:11:01.369   569   655 W system_server: Long monitor contention with owner binder:569_A (1171) at boolean com.android.server.job.JobSchedulerService.isBatteryCharging()(JobSchedulerService.java:4964) waiters=1 in void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message) for 119ms
+03-08 10:11:01.385   569  4589 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+03-08 10:11:01.421  2434  2532 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=8e6873c8-09ad-4a50-97cf-66a0eaa50a2c, tags={ com.google.android.libraries.mdi.download.workmanager.workers.PeriodicWorker, MDD.WIFI.CHARGING.PERIODIC.TASK } ]
+03-08 10:11:01.465  3125  3986 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (3677) at void bytb.o(int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4) waiters=0 in void bysy.a(bypy, int, dhap) for 534ms
+03-08 10:11:01.492   793   888 D EGL_emulation: app_time_stats: avg=201.85ms min=17.62ms max=897.60ms count=5
+03-08 10:11:01.521  1835  1835 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.mdm.LogFmdEnabledBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+03-08 10:11:01.521  1835  1835 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.mdm.LogFmdEnabledBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+03-08 10:11:01.542   355  4592 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10126 0}
+03-08 10:11:01.550   355  4594 I resolv  : res_nmkquery: (QUERY, IN, A)
+03-08 10:11:01.560   355  4594 I resolv  : res_nsend: used send_dg 157 terrno: 0
+03-08 10:11:01.560   355  4593 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+03-08 10:11:01.560   355  4594 I resolv  : doQuery: rcode=0, ancount=7, return value=157
+03-08 10:11:01.567   355  4593 I resolv  : res_nsend: used send_dg 157 terrno: 0
+03-08 10:11:01.567   355  4593 I resolv  : doQuery: rcode=0, ancount=4, return value=157
+03-08 10:11:01.586  3125  3359 D TrafficStats: tagSocket(225) with statsTag=0x24000609, statsUid=10121
+03-08 10:11:01.589  4380  4596 D ProfileInstaller: Installing profile for com.google.android.configupdater
+03-08 10:11:01.598  4448  4448 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10192; state: ENABLED
+03-08 10:11:01.706  2434  2590 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@16007e7
+03-08 10:11:01.765  4448  4448 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@46272f7 in: CREATED
+03-08 10:11:01.766  4448  4448 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=com.example.cmput301w24t33.activities.Admin@46272f7
+03-08 10:11:01.786  4448  4448 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@46272f7 in: STARTED
+03-08 10:11:01.787  3125  3359 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+03-08 10:11:01.787  4448  4448 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=com.example.cmput301w24t33.activities.Admin@46272f7
+03-08 10:11:01.790  3125  3359 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+03-08 10:11:01.790  3125  3359 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:01.811  4448  4448 D ContentValues: ADMIN RESUME
+03-08 10:11:01.811   569  4589 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+03-08 10:11:01.812  4448  4448 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@46272f7 in: RESUMED
+03-08 10:11:01.812   569  4589 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+03-08 10:11:01.812  4448  4448 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=com.example.cmput301w24t33.activities.Admin@46272f7
+03-08 10:11:01.822  4448  4448 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10192; state: DISABLED
+03-08 10:11:01.824  3604  3717 W SystemServiceRegistry: No service published for: persistent_data_block
+03-08 10:11:01.833  4448  4448 W OpenGLRenderer: Unknown dataspace 0
+03-08 10:11:01.846  1971  1971 I BgTaskExecutorImpl: Starting NONEXCLUSIVE background task TRIGGER_CONDITION_RESET.
+03-08 10:11:01.876   569  2286 W system_server: Long monitor contention with owner android.bg (605) at void com.android.server.am.AppProfiler.collectPssInBackground()(AppProfiler.java:733) waiters=0 in boolean com.android.server.am.OomAdjuster.applyOomAdjLSP(com.android.server.am.ProcessRecord, boolean, long, long, int) for 142ms
+03-08 10:11:01.897  1971  1971 I BgTaskExecutorImpl: Starting EXCLUSIVE background task UPDATE_NOTIFICATIONS.
+03-08 10:11:01.920  3125  3359 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+03-08 10:11:01.925  3125  3359 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):2)
+03-08 10:11:01.926  3125  3359 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@231818047@23.18.18 (190800-535401451):0)
+03-08 10:11:01.942   413   436 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10192 pid=0
+03-08 10:11:01.942   413   436 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10192 => denied (412 us)
+03-08 10:11:01.943   413   436 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10192 pid=0
+03-08 10:11:01.943   413   436 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10192 => denied (876 us)
+03-08 10:11:01.943   413   436 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10192 pid=0
+03-08 10:11:01.943   413   436 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10192 => denied (397 us)
+03-08 10:11:01.945   413   568 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10192 pid=4448
+03-08 10:11:01.945   413   568 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10192 => denied (3324 us)
+03-08 10:11:01.960  4448  4576 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+03-08 10:11:01.960  4448  4576 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+03-08 10:11:01.969  1103  1103 D BootBroadcastReceiver: refresh periodic job from action=com.android.settings.battery.action.PERIODIC_JOB_RECHECK
+03-08 10:11:01.980  1700  1700 W MediaProvider: WorkProfileOwnerApps cache is empty
+03-08 10:11:02.057  1835  1835 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.credential.manager.service.operations.checkup.OnDeviceCheckupTaskBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+03-08 10:11:02.057  1835  1835 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.credential.manager.service.operations.checkup.OnDeviceCheckupTaskBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+03-08 10:11:02.069   157   157 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+03-08 10:11:02.070  4448  4576 I Gralloc4: mapper 4.x is not supported
+03-08 10:11:02.121   793   793 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+03-08 10:11:02.134  4448  4576 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-08 10:11:02.136   793   793 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+03-08 10:11:02.138   793   793 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+03-08 10:11:02.143   793   793 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+03-08 10:11:02.148   793   793 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+03-08 10:11:02.222  1835  2734 I Icing   : Usage reports ok 1, Failed Usage reports 0, indexed 0, rejected 0
+03-08 10:11:02.248  1971  1971 I BgTaskExecutorImpl: Starting EXCLUSIVE background task GELLER_OPA_REFRESH_TASK.
+03-08 10:11:02.255  1103  1103 D PeriodicJobManager: schedule next alarm job at Mar 08, 2024, 11:00:00
+03-08 10:11:02.256   569  2282 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10192 pid=0
+03-08 10:11:02.257   569  2282 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10192 => denied (1415 us)
+03-08 10:11:02.258   569  2282 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10192 pid=0
+03-08 10:11:02.259   569  2282 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10192 => denied (281 us)
+03-08 10:11:02.259   569  2282 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10192 pid=0
+03-08 10:11:02.259   569  2282 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10192 => denied (337 us)
+03-08 10:11:02.287  3125  4324 I NearbyDiscovery: FastPairScanner: isScreenOn=true, scanWithScreenOff=false, isLocationEnabled=true, disableLocationRequirement=true, isDiscoveryScanningEnabled=true, during24GhzWifiWarmingUpPeriod=false [CONTEXT service_id=265 ]
+03-08 10:11:02.288  3125  4324 D BluetoothAdapter: isLeEnabled(): ON
+03-08 10:11:02.291  3125  4324 I NearbyDiscovery: FastPairScanner: eventType=INTERNAL_DOWNGRADE_SCAN, intReq=true, scanning=true, scanAllowed=true, bleEnabled=true, bleScanAvailable=false, lockScanRate=false, startScanningByLowPowerMode=false [CONTEXT service_id=265 ]
+03-08 10:11:02.297  3125  4324 I NearbyDiscovery: FastPairScanner: Stopping scan [CONTEXT service_id=265 ]
+03-08 10:11:02.297   569   594 W ziparchive: Unable to open '/data/app/~~-ZQDh_ej0yOCMvH8Aun0ig==/com.example.cmput301w24t33-2nDa2-hhDMhHHKxFbXujfg==/base.dm': No such file or directory
+03-08 10:11:02.298  3125  4324 D BluetoothAdapter: isLeEnabled(): ON
+03-08 10:11:02.322  1277  4559 D BtGatt.GattService: stopScan() - queue size =1
+03-08 10:11:02.330   569   594 I ActivityTaskManager: Displayed com.example.cmput301w24t33/.activities.Admin for user 0: +2s123ms
+03-08 10:11:02.349   569  2282 I ImeTracker: com.example.cmput301w24t33:f763cb53: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+03-08 10:11:02.351   569  2282 I ImeTracker: com.example.cmput301w24t33:f763cb53: onCancelled at PHASE_SERVER_SHOULD_HIDE
+03-08 10:11:02.361  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:02.362  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:02.390  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.icing.LIGHTWEIGHT_INDEX_SERVICE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+03-08 10:11:02.397  1277  1422 D BtGatt.ScanManager: handling stopping scan  [ScanClient scanModeApp 2 scanModeUsed 2 [appScanStats com.google.uid.shared:10126]]
+03-08 10:11:02.397  1277  1422 D BtGatt.ScanManager: stop gattClientScanNative
+03-08 10:11:02.397  1277  1422 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+03-08 10:11:02.398  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+03-08 10:11:02.398  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+03-08 10:11:02.400  1277  1422 D BtGatt.ScanManager: configureRegularScanParams() - queue=0
+03-08 10:11:02.400  4448  4554 W FileTestStorage: Output properties is not supported.
+03-08 10:11:02.401  1277  1422 D BtGatt.ScanManager: configureRegularScanParams() - queue empty, scan stopped
+03-08 10:11:02.409  3125  4192 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+03-08 10:11:02.416  1277  4559 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+03-08 10:11:02.416  1277  4559 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+03-08 10:11:02.417  1542  1542 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227
+03-08 10:11:02.418  1130  2125 D OneSearchSuggestProvider: Shut down the binder channel
+03-08 10:11:02.427  1277  1433 D BtGatt.GattService: unregisterScanner() - scannerId=1
+03-08 10:11:02.427  1277  1433 I bt_stack: [INFO:le_scanning_manager.cc(162)] Unregister in shim layer, scanner_id:1
+03-08 10:11:02.445  4448  4554 I Tracing : Tracer added: class androidx.test.platform.tracing.AndroidXTracer
+03-08 10:11:02.449  1130  1160 I IPCThreadState: oneway function results for code 2 on binder at 0x76d39b7ecf20 will be dropped but finished with status UNKNOWN_TRANSACTION
+03-08 10:11:02.462  1542  1542 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+03-08 10:11:02.466  1542  1542 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=com.example.cmput301w24t33 fieldId=0 fieldName=null extras=null}, false)
+03-08 10:11:02.467  1542  1542 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+03-08 10:11:02.473  1542  1542 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+03-08 10:11:02.498  4448  4554 D CompatibilityChangeReporter: Compat change id reported: 247079863; UID 10192; state: ENABLED
+03-08 10:11:02.499  1835  1853 I gle.android.gms: Background young concurrent copying GC freed 76010(3630KB) AllocSpace objects, 124(4628KB) LOS objects, 44% free, 10MB/18MB, paused 64.866ms,193us total 180.646ms
+03-08 10:11:02.504   793   888 D EGL_emulation: app_time_stats: avg=121.44ms min=3.16ms max=864.43ms count=8
+03-08 10:11:02.512  4448  4554 D EventInjectionStrategy: Creating injection strategy with input manager.
+03-08 10:11:02.513  4448  4554 W .cmput301w24t33: Accessing hidden method Landroid/hardware/input/InputManager;->getInstance()Landroid/hardware/input/InputManager; (unsupported, reflection, allowed)
+03-08 10:11:02.513  4448  4554 W .cmput301w24t33: Accessing hidden method Landroid/hardware/input/InputManager;->injectInputEvent(Landroid/view/InputEvent;I)Z (unsupported, reflection, allowed)
+03-08 10:11:02.514  4448  4554 W .cmput301w24t33: Accessing hidden field Landroid/hardware/input/InputManager;->INJECT_INPUT_EVENT_MODE_WAIT_FOR_FINISH:I (unsupported, reflection, allowed)
+03-08 10:11:02.543  3125  3608 I FontLog : Received query Noto Color Emoji Compat, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+03-08 10:11:02.545  3125  3608 I FontLog : Query [emojicompat-emoji-font] resolved to {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} [CONTEXT service_id=132 ]
+03-08 10:11:02.554  4448  4554 W .cmput301w24t33: Accessing hidden method Landroid/view/ViewConfiguration;->getDoubleTapMinTime()I (unsupported, reflection, allowed)
+03-08 10:11:02.565  3125  4324 I NearbyDiscovery: FastPairScanner: isScreenOn=true, scanWithScreenOff=false, isLocationEnabled=true, disableLocationRequirement=true, isDiscoveryScanningEnabled=true, during24GhzWifiWarmingUpPeriod=false [CONTEXT service_id=265 ]
+03-08 10:11:02.566  1971  1979 I earchbox:search: JIT allocated 73KB for compiled code of java.lang.Object com.google.android.apps.gsa.binaries.velvet.app.ok.d()
+03-08 10:11:02.575  3125  3608 I FontLog : Fetch {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+03-08 10:11:02.578   793   845 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@9d1bb11
+03-08 10:11:02.583   569   587 W InputManager-JNI: Input channel object '7f81a9f Splash Screen com.example.cmput301w24t33 (client)' was disposed without first being removed with the input manager!
+03-08 10:11:02.586  3125  3608 I FontLog : Pulling font file for id = 7, cache size = 7 [CONTEXT service_id=132 ]
+03-08 10:11:02.593  4448  4448 W .cmput301w24t33: Accessing hidden method Landroid/os/MessageQueue;->next()Landroid/os/Message; (unsupported, reflection, allowed)
+03-08 10:11:02.600  4448  4448 W .cmput301w24t33: Accessing hidden field Landroid/os/MessageQueue;->mMessages:Landroid/os/Message; (unsupported, reflection, allowed)
+03-08 10:11:02.601  4448  4448 W .cmput301w24t33: Accessing hidden method Landroid/os/Message;->recycleUnchecked()V (unsupported, reflection, allowed)
+03-08 10:11:02.607  1130  1210 I ImeTracker: com.google.android.apps.nexuslauncher:e6eafdd3: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+03-08 10:11:02.610  1130  1210 I ImeTracker: com.google.android.apps.nexuslauncher:e6eafdd3: onFailed at PHASE_CLIENT_VIEW_SERVED
+03-08 10:11:02.615  3125  4324 I NearbyDiscovery: FastPairScanner: Start scanning internally in LOW_POWER_SCANNING [CONTEXT service_id=265 ]
+03-08 10:11:02.616  4448  4448 W .cmput301w24t33: Accessing hidden method Landroid/view/WindowManagerGlobal;->getInstance()Landroid/view/WindowManagerGlobal; (unsupported, reflection, allowed)
+03-08 10:11:02.617  4448  4448 W .cmput301w24t33: Accessing hidden field Landroid/view/WindowManagerGlobal;->mViews:Ljava/util/ArrayList; (unsupported, reflection, allowed)
+03-08 10:11:02.617  4448  4448 W .cmput301w24t33: Accessing hidden field Landroid/view/WindowManagerGlobal;->mParams:Ljava/util/ArrayList; (unsupported, reflection, allowed)
+03-08 10:11:02.629  4448  4448 I ViewInteraction: Performing 'single click' action on view view.getId() is <2131230949/com.example.cmput301w24t33:id/event_arrow_button>
+03-08 10:11:02.635  3125  4324 D BluetoothAdapter: isLeEnabled(): ON
+03-08 10:11:02.637  1277  1433 D BtGatt.GattService: registerScanner() - UUID=df44f32c-320a-48c7-aed5-ee8e66a0f5d0
+03-08 10:11:02.642  1277  1433 I bt_stack: [INFO:le_scanning_manager.cc(155)] RegisterScanner in shim layer
+03-08 10:11:02.645  1971  2191 I A       : Attempting to cache the data for corpora [21, 36].
+03-08 10:11:02.646  1277  1392 D BtGatt.GattService: onScannerRegistered() - UUID=df44f32c-320a-48c7-aed5-ee8e66a0f5d0, scannerId=1, status=0
+03-08 10:11:02.646  3125  3608 D BluetoothLeScanner: onScannerRegistered() - status=0 scannerId=1 mScannerId=0
+03-08 10:11:02.653  3125  3196 I FontLog : Pulling font file for id = 7, cache size = 7 [CONTEXT service_id=132 ]
+03-08 10:11:02.662   793   888 D EGL_emulation: app_time_stats: avg=271.01ms min=6.72ms max=1250.64ms count=5
+03-08 10:11:02.666  1277  1433 D BtGatt.GattService: start scan with filters
+03-08 10:11:02.668  1277  1433 D BtGatt.GattService: enforcePrivilegedPermissionIfNeeded([BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=null, mServiceDataUuid=0000fff6-0000-1000-8000-00805f9b34fb, mServiceData=[0], mServiceDataMask=[0], mManufacturerId=-1, mManufacturerData=null, mManufacturerDataMask=null, mAdvertisingDataType=-1, mAdvertisingData=null, mAdvertisingDataMask=null, mTransportBlockFilter=null], BluetoothLeScanFilter [mDeviceName=null, mDeviceAddress=null, mUuid=null, mUuidMask=null, mServiceSolicitationUuid=null, mServiceSolicitationUuidMask=null, mServiceDataUuid=0000fe2c-0000-1000-8000-00805f9b34fb, mServiceData=[0], mServiceDataMask=[0], mManufacturerId=-1, mManufacturerData=null, mManufacturerDataMask=null, mAdvertisingDataType=-1, mAdvertisingData=null, mAdvertisingDataMask=null, mTransportBlockFilter=null]])
+03-08 10:11:02.681  1277  1433 D BtGatt.ScanManager: startScan()  [ScanClient scanModeApp 1 scanModeUsed 1 [appScanStats com.google.uid.shared:10126]]
+03-08 10:11:02.685  1130  1130 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=1010.5, y[0]=570.5, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=BUTTON_PRIMARY, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=134645, downTime=134645, deviceId=-1, source=0x1002, displayId=0, eventId=-733585490 }
+03-08 10:11:02.683  1277  1422 D BtGatt.ScanManager: handling starting scan
+03-08 10:11:02.688  1277  1422 D BtGatt.ScanManager: start gattClientScanNative from startRegularScan()
+03-08 10:11:02.697  1277  1422 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+03-08 10:11:02.697  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+03-08 10:11:02.698  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+03-08 10:11:02.698  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+03-08 10:11:02.699  1277  1422 D BtGatt.ScanManager: configureRegularScanParams() - queue=1
+03-08 10:11:02.703  1277  1433 D ActivityAttributionService: notifyActivityAttributionInfo UID=1002 packageName=com.google.android.bluetooth deviceAddress=no_active_device_address
+03-08 10:11:02.704  1277  1433 I bt_btif : packages/modules/Bluetooth/system/btif/src/bluetooth.cc:829 get_profile_interface: get_profile_interface: id = activity_attribution
+03-08 10:11:02.721  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:02.728  3125  4324 I NearbyDiscovery: FastPairScanner: Starting LOW_POWER_SCANNING scanning [CONTEXT service_id=265 ]
+03-08 10:11:02.764  1130  1130 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=1010.5, y[0]=570.5, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=BUTTON_PRIMARY, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=134747, downTime=134645, deviceId=-1, source=0x1002, displayId=0, eventId=-485206176 }
+03-08 10:11:02.777  1277  1422 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer stopped
+03-08 10:11:02.778  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:193 unregister_client: Client unregistered
+03-08 10:11:02.778  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:197 unregister_client: Cancelled address rotation alarm
+03-08 10:11:02.787  1277  1422 D BtGatt.ScanManager: Start gattClientScanNative with old scanMode -2147483648 new scanMode 1 ( in MS: 730 / 183, in scan unit: 1168 / 292 ) [ScanClient scanModeApp 1 scanModeUsed 1 [appScanStats com.google.uid.shared:10126]]
+03-08 10:11:02.788  1277  1422 I bt_stack: [INFO:le_scanning_manager.cc(346)] SetScanParameters in shim layer
+03-08 10:11:02.794  1277  1392 D BtGatt.GattService: onScanParamSetupCompleted : 0
+03-08 10:11:02.795  1277  1422 I bt_stack: [INFO:le_scanning_manager.cc(168)] Scan in shim layer started
+03-08 10:11:02.795  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_scanning_manager.cc:588 stop_scan: Scanning already stopped, return!
+03-08 10:11:02.796  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:175 register_client: Scheduled address rotation for first client registered
+03-08 10:11:02.796  1277  1364 I bluetooth: packages/modules/Bluetooth/system/gd/hci/le_address_manager.cc:178 register_client: Client registered
+03-08 10:11:02.803  1277  1422 D BtGatt.ScanManager: apply scan timeout (600000)to scannerId 1
+03-08 10:11:02.810  4448  4448 W WindowOnBackDispatcher: OnBackInvokedCallback is not enabled for the application.
+03-08 10:11:02.810  4448  4448 W WindowOnBackDispatcher: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+03-08 10:11:02.932   401   444 W AudioFlinger: createTrack_l(): mismatch between requested flags (00000004) and output flags (00000002)
+03-08 10:11:02.945   401   444 D AF::TrackHandle: OpPlayAudio: track:56 usage:13 not muted
+03-08 10:11:03.080   401  2600 D audioserver: FGS Logger Transaction failed
+03-08 10:11:03.080   401  2600 D audioserver: -129
+03-08 10:11:03.128  4448  4448 D CompatibilityChangeReporter: Compat change id reported: 3400644; UID 10192; state: ENABLED
+03-08 10:11:03.137  1777  1777 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_REMOVED dat=package: flg=0x4000010 (has extras) }
+03-08 10:11:03.149  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START pkg=com.google.android.gms }
+03-08 10:11:03.150  1777  1777 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 (has extras) }
+03-08 10:11:03.151  1777  1777 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_REPLACED dat=package: flg=0x4000010 (has extras) }
+03-08 10:11:03.151  1777  1777 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 (has extras) }
+03-08 10:11:03.151  1777  1777 I GsaVoiceInteractionSrv: Handling ACTION_STOP_HOTWORD
+03-08 10:11:03.174   401   526 D AudioFlinger: mixer(0x7fc32e5ed930) throttle end: throttle time(33)
+03-08 10:11:03.222  3125  3854 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:03.273  1777  2306 E HwDetectorWithState: a: 3
+03-08 10:11:03.283   401   526 D audioserver: FGS Logger Transaction failed
+03-08 10:11:03.283   401   526 D audioserver: -129
+03-08 10:11:03.346  2748  4617 W DynamiteModule: Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+03-08 10:11:03.381  3125  3375 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.mdm.LogFmdEnabledBoundService started execution. cause:5 exec_start_elapsed_seconds: 133 [CONTEXT service_id=218 ]
+03-08 10:11:03.417  3125  3854 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:03.569   569   605 W system_server: Long monitor contention with owner appscheduling.default (655) at void com.android.server.am.OomAdjuster.updateOomAdjInnerLSP(int, com.android.server.am.ProcessRecord, java.util.ArrayList, com.android.server.am.ActiveUids, boolean, boolean)(OomAdjuster.java:1077) waiters=0 in void com.android.server.am.ProcessProfileRecord.addPss(long, long, long, boolean, int, long) for 186ms
+03-08 10:11:03.578   569  3073 W system_server: Long monitor contention with owner android.bg (605) at void com.android.server.am.AppProfiler.collectPssInBackground()(AppProfiler.java:733) waiters=0 in boolean com.android.server.am.OomAdjuster.applyOomAdjLSP(com.android.server.am.ProcessRecord, boolean, long, long, int) for 187ms
+03-08 10:11:03.668   793   888 D EGL_emulation: app_time_stats: avg=17.04ms min=1.29ms max=123.33ms count=36
+03-08 10:11:03.802   569  2008 W system_server: Long monitor contention with owner binder:569_20 (3073) at int com.android.server.job.JobSchedulerService.getUidProcState(int)(JobSchedulerService.java:2305) waiters=0 in java.util.List com.android.server.job.JobSchedulerService.getPendingJobsInNamespace(int, java.lang.String) for 447ms
+03-08 10:11:03.803   569  2283 W system_server: Long monitor contention with owner binder:569_20 (3073) at int com.android.server.job.JobSchedulerService.getUidProcState(int)(JobSchedulerService.java:2305) waiters=1 in boolean com.android.server.job.JobServiceContext.doCompleteWork(com.android.server.job.JobServiceContext$JobCallback, int, int) for 437ms
+03-08 10:11:03.805   569   655 W system_server: Long monitor contention with owner binder:569_20 (3073) at int com.android.server.job.JobSchedulerService.getUidProcState(int)(JobSchedulerService.java:2305) waiters=2 in void com.android.server.job.controllers.ConnectivityController$CcHandler.handleMessage(android.os.Message) for 413ms
+03-08 10:11:03.809  3125  3608 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+03-08 10:11:03.821  4448  4625 W DynamiteModule: Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+03-08 10:11:03.823  2748  4617 W ProviderInstaller: Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+03-08 10:11:03.829  1835  1835 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.findmydevice.spot.service.management.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+03-08 10:11:03.930  1835  1835 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.findmydevice.spot.service.locationreport.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+03-08 10:11:03.950  3125  3608 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+03-08 10:11:03.982  4448  4625 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:0 and remote module com.google.android.gms.providerinstaller.dynamite:0
+03-08 10:11:03.985  4448  4625 W ProviderInstaller: Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+03-08 10:11:03.990   569  1164 D ConnectivityService: requestNetwork for uid/pid:10192/4448 activeRequest: null callbackRequest: 147 [NetworkRequest [ REQUEST id=148, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+03-08 10:11:03.998   569   719 D ConnectivityService: NetReassign [148 : null → 101] [c 0] [a 5] [i 2]
+03-08 10:11:03.999   569   712 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=148, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:03.999   569   712 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=148, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:04.000   569   712 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=148, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:04.001   569   712 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=148, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:04.021  3125  3359 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.credential.manager.service.operations.checkup.OnDeviceCheckupTaskBoundService started execution. cause:5 exec_start_elapsed_seconds: 133 [CONTEXT service_id=218 ]
+03-08 10:11:04.023  2748  4617 D nativeloader: Configuring clns-8 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+03-08 10:11:04.054  2748  4617 D nativeloader: Configuring clns-9 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+03-08 10:11:04.055  2748  4617 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+03-08 10:11:04.055  2748  4617 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+03-08 10:11:04.090  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:04.090  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:04.094  4448  4625 D nativeloader: Configuring clns-10 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+03-08 10:11:04.097  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:04.104  1835  2297 W gle.android.gms: Long monitor contention with owner lowpool[4] (3088) at cvdh cvdh.a(android.content.ContentResolver, android.net.Uri, java.lang.Runnable)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3) waiters=2 in cvdh cvdh.a(android.content.ContentResolver, android.net.Uri, java.lang.Runnable) for 176ms
+03-08 10:11:04.108  4547  4547 I AidlLazyServiceRegistrar: Process has 1 (of 1 available) client(s) in use after notification android.hardware.drm.IDrmFactory/clearkey has clients: 1
+03-08 10:11:04.111  4547  4547 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification android.hardware.drm.IDrmFactory/clearkey has clients: 0
+03-08 10:11:04.111  4547  4547 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+03-08 10:11:04.114  4547  4547 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+03-08 10:11:04.115  2748  4617 D nativeloader: Configuring product-clns-10 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64:/product/lib64:/system/product/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms:/product/lib64:/system/product/lib64
+03-08 10:11:04.122  1835  2734 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+03-08 10:11:04.174  2748  4617 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+03-08 10:11:04.200  4448  4625 D nativeloader: Configuring clns-11 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+03-08 10:11:04.202  4448  4625 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+03-08 10:11:04.203  4448  4625 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+03-08 10:11:04.212  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:04.213  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:04.252  4448  4625 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.android.tethering.connectivity_native.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libselinux.so:libsync.so:libvndksupport.so:libvulkan.so
+03-08 10:11:04.256  4448  4625 D nativeloader: Configuring product-clns-12 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64:/product/lib64:/system/product/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms:/product/lib64:/system/product/lib64
+03-08 10:11:04.283  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:04.323  4448  4625 D nativeloader: InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:android.hardware.graphics.common@1.0.so:android.hardware.graphics.common@1.1.so:android.hardware.graphics.common@1.2.so:android.hardware.graphics.composer3-V1-ndk.so:android.hardware.graphics.mapper@2.0.so:android.hardware.graphics.mapper@2.1.so:android.hardware.graphics.mapper@3.0.so:android.hardware.graphics.mapper@4.0.so:android.hardware.renderscript@1.0.so:android.hidl.memory.token@1.0.so:android.hidl.memory@1.0-impl.so:android.hidl.memory@1.0.so:android.hidl.safe_union@1.0.so:libRSCpuRef.so:libRSDriver.so:libRS_internal.so:libbase.so:libbcinfo.so:libblas.so:libc++.so:libcompiler_rt.so:libcutils.so:libdmabufheap.so:libgralloctypes.so:libhardware.so:libhidlbase.so:libhidlmemory.so:libion.so:libjsoncpp.so:liblzma.so:libprocessgroup.so:libunwindstack.so:libutils.so:libutilscallstack.so:libz.so
+03-08 10:11:04.332  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.semanticlocation.service.START_ODLH pkg=com.google.android.gms }
+03-08 10:11:04.392  4448  4625 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+03-08 10:11:04.402  1835  2297 W ChimeraUtils: Module com.google.android.gms.credential_manager missing resource null(0)
+03-08 10:11:04.406  4448  4625 W .cmput301w24t33: Accessing hidden method Ljava/security/spec/ECParameterSpec;->getCurveName()Ljava/lang/String; (unsupported, reflection, allowed)
+03-08 10:11:04.417  2748  4617 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+03-08 10:11:04.429  1835  1835 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.checkin.START pkg=com.google.android.gms }
+03-08 10:11:04.443  1835  1835 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.credential.manager.service.zeroparty.checkup.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+03-08 10:11:04.443  1835  1835 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.credential.manager.service.zeroparty.checkup.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+03-08 10:11:04.471  1835  2209 I Icing   : IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=null serviceId=30
+03-08 10:11:04.473  1835  2734 I Icing   : Indexing done com.google.android.gms-apps
+03-08 10:11:04.480  3125  3986 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.mdm.LogFmdEnabledBoundService finished executing. cause:5 result: 1 elapsed_millis: 3014 uptime_millis: 3014 exec_start_elapsed_seconds: 133 [CONTEXT service_id=218 ]
+03-08 10:11:04.523  2748  2976 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+03-08 10:11:04.523  2748  2976 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000002/DynamiteLoader.dm': No such file or directory
+03-08 10:11:04.543  1835  1835 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.mdm.LogFmdEnabledBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+03-08 10:11:04.548  1124  1124 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.example.cmput301w24t33, current user: UserHandle{0}, packageChangeEvent: UPDATE, intent user: UserHandle{0}
+03-08 10:11:04.553  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.pseudonymous.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+03-08 10:11:04.586  1835  2734 I Icing   : Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0
+03-08 10:11:04.586  1711  1711 I AiAiLocation: Location change notification received from provider
+03-08 10:11:04.594  3125  4324 I NearbyDiscovery: FastPairHandler: Received action android.net.conn.CONNECTIVITY_CHANGE [CONTEXT service_id=265 ]
+03-08 10:11:04.596  1711  1711 I AiAiLocation: Location changed past travel threshold, updating current location
+03-08 10:11:04.598  3125  4324 I NearbyDiscovery: FastPairHandler: Received action android.net.wifi.STATE_CHANGE [CONTEXT service_id=265 ]
+03-08 10:11:04.601  1711  2202 I AiAiTextClassifier: Location changed, triggering sync of Webref model
+03-08 10:11:04.604  1711  2202 I AiAiTextClassifier: Syncing webref with url: https://gstatic.com/webref-ondevice/aiai/19071200_pir/2/en-us/superpacks_manifest.zip, version 19071200
+03-08 10:11:04.608  1711  2202 I SP.Model.AiAi: Setting manifest to https://gstatic.com/webref-ondevice/aiai/19071200_pir/2/en-us/superpacks_manifest.zip.19071200 and syncing
+03-08 10:11:04.635  1711  2121 I SP.AiAi : Registering webref-2-en-us.19071200, url: https://gstatic.com/webref-ondevice/aiai/19071200_pir/2/en-us/superpacks_manifest.zip, constraints: m:C:u:l, flags: *, requested: 19071200, current: -1
+03-08 10:11:04.686  1711  2121 I SP.AiAi : Scheduling job with delay of 0s for {W:C:I:l, bg}, 1 candidates
+03-08 10:11:04.746  4448  4625 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+03-08 10:11:04.797  2748  2976 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+03-08 10:11:04.797  2748  2976 W ziparchive: Unable to open '/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.dm': No such file or directory
+03-08 10:11:04.854  1971  1971 I BgTaskExecutorImpl: Starting PERIODIC background task NGA_READ_ONLY_LOGS_BASED_TOP_CONTACTS_NGA_PUSH.
+03-08 10:11:04.857  1711  2121 I SP.AiAi : Scheduling job with delay of 0s for {m:C:u:l, bg}, 1 candidates
+03-08 10:11:04.894  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+03-08 10:11:04.928  2748  2976 D nativeloader: Configuring clns-11 for other apk . target_sdk_version=34, uses_libraries=ALL, library_path=/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.apk!/lib/x86_64:/data/user_de/0/com.google.android.gms/app_chimera/m/00000001/CronetDynamite.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand
+03-08 10:11:04.955  3125  4604 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:04.957  2748  2976 I cr_CronetLibraryLoader: Cronet version: 113.0.5672.51, arch: x86_64
+03-08 10:11:04.957  3125  4604 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:04.981   569  2008 D ConnectivityService: requestNetwork for uid/pid:10192/4448 activeRequest: null callbackRequest: 149 [NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+03-08 10:11:04.983   569  1335 W system_server: Long monitor contention with owner appscheduling.default (655) at void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message)(JobSchedulerService.java:3305) waiters=1 in void com.android.server.job.JobServiceContext.doCallback(com.android.server.job.JobServiceContext$JobCallback, boolean, java.lang.String) for 126ms
+03-08 10:11:04.984   569  2286 W system_server: Long monitor contention with owner appscheduling.default (655) at void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message)(JobSchedulerService.java:3305) waiters=2 in int com.android.server.job.JobSchedulerService.scheduleAsPackage(android.app.job.JobInfo, android.app.job.JobWorkItem, int, java.lang.String, int, java.lang.String, java.lang.String) for 125ms
+03-08 10:11:04.984   569   712 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:04.985   569   712 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:04.986   569   719 D ConnectivityService: NetReassign [150 : null → 101] [c 1] [a 1] [i 3]
+03-08 10:11:04.986   569   712 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:04.987   569   712 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=150, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.cmput301w24t33 UnderlyingNetworks: Null] ]
+03-08 10:11:05.024   569  2004 D ConnectivityService: requestNetwork for uid/pid:10152/2748 activeRequest: null callbackRequest: 151 [NetworkRequest [ REQUEST id=152, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10152 RequestorUid: 10152 RequestorPkg: com.google.android.contacts UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+03-08 10:11:05.028   569   712 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=152, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10152 RequestorUid: 10152 RequestorPkg: com.google.android.contacts UnderlyingNetworks: Null] ]
+03-08 10:11:05.029   569   712 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=152, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10152 RequestorUid: 10152 RequestorPkg: com.google.android.contacts UnderlyingNetworks: Null] ]
+03-08 10:11:05.029   569   712 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=152, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10152 RequestorUid: 10152 RequestorPkg: com.google.android.contacts UnderlyingNetworks: Null] ]
+03-08 10:11:05.031   569   712 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=152, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10152 RequestorUid: 10152 RequestorPkg: com.google.android.contacts UnderlyingNetworks: Null] ]
+03-08 10:11:05.033   569   719 D ConnectivityService: NetReassign [152 : null → 101] [c 1] [a 0] [i 2]
+03-08 10:11:05.059   569   719 D ConnectivityService: NetReassign [no changes] [c 1] [a 0] [i 12]
+03-08 10:11:05.068  4448  4448 I ViewInteraction: Checking 'MatchesViewAssertion{viewMatcher=(view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() to return non-empty rectangle)}' assertion on view view.getId() is <2131230797/com.example.cmput301w24t33:id/admin_events_layout>
+03-08 10:11:05.073  4448  4448 I ViewInteraction: Performing 'single click' action on view view.getId() is <2131231335/com.example.cmput301w24t33:id/view_events_back_button>
+03-08 10:11:05.078  1835  3088 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+03-08 10:11:05.082  1130  1130 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=54.5, y[0]=134.5, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=BUTTON_PRIMARY, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=137074, downTime=137074, deviceId=-1, source=0x1002, displayId=0, eventId=-1009549168 }
+03-08 10:11:05.090  1835  3088 I Icing   : Indexing done com.google.android.gms-apps
+03-08 10:11:05.100  3125  3961 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x5000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+03-08 10:11:05.112  3125  3986 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.credential.manager.service.operations.checkup.OnDeviceCheckupTaskBoundService finished executing. cause:5 result: 1 elapsed_millis: 3163 uptime_millis: 3163 exec_start_elapsed_seconds: 133 [CONTEXT service_id=218 ]
+03-08 10:11:05.129  4448  4576 D EGL_emulation: app_time_stats: avg=343.33ms min=1.45ms max=1413.13ms count=8
+03-08 10:11:05.162  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.164  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.167  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.169  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.172  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.174  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.177  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.180  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.182  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.186  1971  1971 I BgTaskExecutorImpl: Starting PERIODIC background task RESTORE_SPEAKER_MODEL.
+03-08 10:11:05.188  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.191  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.195  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.200  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.200  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.201  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.202  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.206  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.207  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.208  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.217  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.218  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.218  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.219  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.220  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.220  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.220   355  4657 I resolv  : GetAddrInfoHandler::run: {101 101 101 983141 10192 0}
+03-08 10:11:05.221   355  4658 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+03-08 10:11:05.221  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.224   355  4659 I resolv  : res_nmkquery: (QUERY, IN, A)
+03-08 10:11:05.226  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.227  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.228   355  4658 I resolv  : res_nsend: used send_dg 70 terrno: 0
+03-08 10:11:05.229   355  4658 I resolv  : doQuery: rcode=0, ancount=1, return value=70
+03-08 10:11:05.235  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.236  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.236  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.237   355  4659 I resolv  : res_nsend: used send_dg 58 terrno: 0
+03-08 10:11:05.238   355  4659 I resolv  : doQuery: rcode=0, ancount=1, return value=58
+03-08 10:11:05.241  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.242  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.242  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.244  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.250  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.253  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.253  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.255  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.256  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.262  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.265  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.267  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.269  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.274  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.277  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.280  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.282  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.286  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.288  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.291  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.294  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.295  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.296  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.302  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.304  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.307  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.311  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.314  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.317  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.319  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.323  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.325  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.327  1835  1835 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.credential.manager.service.operations.checkup.OnDeviceCheckupTaskBoundService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalBoundBrokerService }
+03-08 10:11:05.329  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.331  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.336  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.338  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.341  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.345  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.348  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.353  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.355  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.357  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.358  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.359  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.360  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.364  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.364   355  4661 I resolv  : GetAddrInfoHandler::run: {101 101 101 983141 10152 0}
+03-08 10:11:05.367  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.368  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.370  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.373  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.374  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.375  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.376   355  4663 I resolv  : res_nmkquery: (QUERY, IN, A)
+03-08 10:11:05.377   355  4663 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x707790c9f630
+03-08 10:11:05.377   355  4663 I resolv  : doQuery: rcode=0, ancount=9, return value=193
+03-08 10:11:05.379   355  4662 I resolv  : res_nmkquery: (QUERY, IN, AAAA)
+03-08 10:11:05.380   355  4662 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x707790c9ccf0
+03-08 10:11:05.383   355  4662 I resolv  : doQuery: rcode=0, ancount=4, return value=161
+03-08 10:11:05.389  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.390  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.391  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.397  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.398  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.399  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.399  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.400  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.401  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.409  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.409  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:05.419  1835  1835 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.people.contactssync.service.START pkg=com.google.android.gms }
+03-08 10:11:05.455   569  2282 W system_server: Long monitor contention with owner binder:569_2 (587) at boolean com.android.server.job.JobSchedulerService.isBatteryCharging()(JobSchedulerService.java:4964) waiters=0 in boolean com.android.server.job.JobSchedulerService.cancelJob(int, java.lang.String, int, int, int) for 271ms
+03-08 10:11:05.473   569   655 W system_server: Long monitor contention with owner binder:569_2 (587) at boolean com.android.server.job.JobSchedulerService.isBatteryCharging()(JobSchedulerService.java:4964) waiters=3 in void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message) for 103ms
+03-08 10:11:05.483  4448  4448 W MotionEvents: Overslept and turned a tap into a long press
+03-08 10:11:05.501   793   793 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+03-08 10:11:05.504  4448  4667 D ProfileInstaller: Installing profile for com.example.cmput301w24t33
+03-08 10:11:05.506  3125  3961 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+03-08 10:11:05.530   401  2600 D audioserver: FGS Logger Transaction failed
+03-08 10:11:05.530   401  2600 D audioserver: -129
+03-08 10:11:05.530  1130  1130 D TaplEvents: TIS / TouchInteractionService.onInputEvent: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=54.5, y[0]=134.5, toolType[0]=TOOL_TYPE_UNKNOWN, buttonState=BUTTON_PRIMARY, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=137483, downTime=137074, deviceId=-1, source=0x1002, displayId=0, eventId=-932090049 }
+03-08 10:11:05.569  4448  4668 D TrafficStats: tagSocket(113) with statsTag=0xffffffff, statsUid=-1
+03-08 10:11:05.598  4448  4668 W .cmput301w24t33: Accessing hidden field Ljava/net/Socket;->impl:Ljava/net/SocketImpl; (unsupported, reflection, allowed)
+03-08 10:11:05.605  3125  3986 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.common.systemhealthutils.restart.GmsRestartGmsService started execution. cause:5 exec_start_elapsed_seconds: 136 [CONTEXT service_id=218 ]
+03-08 10:11:05.623  1971  1971 I BgTaskExecutorImpl: Starting PERIODIC background task GELLER_PKG_REFRESH_TASK.
+03-08 10:11:05.632  4448  4448 I ViewInteraction: Checking 'MatchesViewAssertion{viewMatcher=(view has effective visibility <VISIBLE> and view.getGlobalVisibleRect() to return non-empty rectangle)}' assertion on view view.getId() is <2131230795/com.example.cmput301w24t33:id/admin_activity>
+03-08 10:11:05.633  1711  2121 I SP.AiAi : Scheduling: download registered, 0 started, 0 paused, 2 scheduled, 2 pending: manifests:spelling_correction-22110320 * {W:C:I:l, bg}, manifests:webref-2-en-us-19071200 * {m:C:u:l, bg}
+03-08 10:11:05.689  1971  2951 I A       : Using proto config with mendel
+03-08 10:11:05.693  1971  2951 I A       : Using proto config with mendel
+03-08 10:11:05.695  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:05.699  1971  2191 I A       : Attempting to cache the data for corpora [].
+03-08 10:11:05.708   793   846 D SplashScreenView: Build android.window.SplashScreenView{acce9ae V.E...... ......ID 0,0-0,0}
+03-08 10:11:05.708   793   846 D SplashScreenView: Icon: view: null drawable: null size: 0
+03-08 10:11:05.708   793   846 D SplashScreenView: Branding: view: android.view.View{306b34f G.ED..... ......I. 0,0-0,0 #10204ef android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+03-08 10:11:05.716  1971  2622 I A       : Canceling restore - user account is null
+03-08 10:11:05.745  4448  4448 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@46272f7 in: PAUSED
+03-08 10:11:05.749  4448  4448 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=com.example.cmput301w24t33.activities.Admin@46272f7
+03-08 10:11:05.754   401   526 D audioserver: FGS Logger Transaction failed
+03-08 10:11:05.754   401   526 D audioserver: -129
+03-08 10:11:05.771  3125  3359 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.common.systemhealthutils.restart.GmsRestartGmsService finished executing. cause:5 result: 1 elapsed_millis: 1041 uptime_millis: 1041 exec_start_elapsed_seconds: 136 [CONTEXT service_id=218 ]
+03-08 10:11:05.773  3125  3854 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:05.790  4448  4668 W .cmput301w24t33: Accessing hidden method Ljava/security/spec/ECParameterSpec;->setCurveName(Ljava/lang/String;)V (unsupported, reflection, allowed)
+03-08 10:11:05.801  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+03-08 10:11:05.806   793   888 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-08 10:11:05.846  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:05.872   413   413 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+03-08 10:11:05.895   569  2282 W system_server: Long monitor contention with owner binder:569_9 (1164) at com.android.server.pm.Computer com.android.server.pm.PackageManagerService.snapshotComputer(boolean)(PackageManagerService.java:1195) waiters=5 in com.android.server.pm.Computer com.android.server.pm.PackageManagerService.snapshotComputer(boolean) for 110ms
+03-08 10:11:05.902  3125  3854 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:05.942   793   888 D EGL_emulation: app_time_stats: avg=859.32ms min=13.44ms max=3378.77ms count=4
+03-08 10:11:05.971   356   356 D Zygote  : Forked child process 4676
+03-08 10:11:06.030  4676  4676 I t301w24t33.test: Late-enabling -Xcheck:jni
+03-08 10:11:06.049  1124  1124 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.example.cmput301w24t33.test, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+03-08 10:11:06.080   569   655 W system_server: Long monitor contention with owner binder:569_9 (1164) at void com.android.server.job.controllers.QuotaController$Timer.stopTrackingJob(com.android.server.job.controllers.JobStatus)(QuotaController.java:2172) waiters=0 in void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message) for 345ms
+03-08 10:11:06.137  1835  4670 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent(): android.intent.action.PACKAGE_ADDED
+03-08 10:11:06.147  4676  4676 I t301w24t33.test: Using CollectorTypeCC GC.
+03-08 10:11:06.191   793   888 D EGL_emulation: app_time_stats: avg=145.91ms min=3.31ms max=1984.24ms count=16
+03-08 10:11:06.210  4676  4676 W t301w24t33.test: Unexpected CPU variant for x86: x86_64.
+03-08 10:11:06.210  4676  4676 W t301w24t33.test: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+03-08 10:11:06.235  1835  1835 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+03-08 10:11:06.235  1835  1835 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+03-08 10:11:06.285   432   443 I adbd    : jdwp connection from 4676
+03-08 10:11:06.290  1835  3411 W SQLiteLog: (28) double-quoted string literal: "com.example.cmput301w24t33"
+03-08 10:11:06.309  3125  3125 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.workaccount.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+03-08 10:11:06.311  2434  2724 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@16007e7
+03-08 10:11:06.315  2434  2724 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@16007e7
+03-08 10:11:06.327  3125  3959 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_REMOVED [CONTEXT service_id=17 ]
+03-08 10:11:06.335  3125  3125 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.gmscompliance.sync.BackgroundSyncGmsTaskService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService }
+03-08 10:11:06.335  3125  3125 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.gmscompliance.sync.BackgroundSyncGmsTaskService.ACTION_TASK_READY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentInternalBoundBrokerService }
+03-08 10:11:06.374   356   356 D Zygote  : Forked child process 4691
+03-08 10:11:06.381  3476  3476 W rules.WifiRx: FenceState currentState is not true
+03-08 10:11:06.398  3125  3961 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) com.example.cmput301w24t33
+03-08 10:11:06.398  1971  1971 I BgTaskExecutorImpl: Starting PERIODIC background task TNG_VOICE_SEARCH_SYNC.
+03-08 10:11:06.422  1835  1835 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+03-08 10:11:06.448  3125  4412 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService started execution. cause:5 exec_start_elapsed_seconds: 137 [CONTEXT service_id=218 ]
+03-08 10:11:06.451  4691  4691 I ackageinstaller: Using CollectorTypeCC GC.
+03-08 10:11:06.454  4691  4691 W ackageinstaller: Unexpected CPU variant for x86: x86_64.
+03-08 10:11:06.454  4691  4691 W ackageinstaller: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+03-08 10:11:06.477  4691  4691 E ackageinstaller: Not starting debugger since process cannot load the jdwp agent.
+03-08 10:11:06.491  3125  4420 I ConsentLogging: [LogsUploader] User did not optin for usage reporting.
+03-08 10:11:06.532  3125  4420 I ConsentLogging: [LogsUploader] User did not optin for usage reporting.
+03-08 10:11:06.589  3125  3961 I ProximityAuth: [MessageProcessorManager] MessageProcessorManager instantiated for user UserHandle{0}
+03-08 10:11:06.625  4676  4676 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10193; state: ENABLED
+03-08 10:11:06.625  4676  4676 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10193; state: ENABLED
+03-08 10:11:06.626   569  4708 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+03-08 10:11:06.640   569  4708 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+03-08 10:11:06.645  4676  4676 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+03-08 10:11:06.653  4676  4676 D nativeloader: Configuring clns-6 for other apk /system/framework/android.test.mock.jar. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~_Nd37Na8zgIwkyPPilJqIA==/com.example.cmput301w24t33.test-SUf_2jLyVD0G9Sa48ISbjg==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.cmput301w24t33.test
+03-08 10:11:06.661  4676  4676 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+03-08 10:11:06.666  4676  4676 D nativeloader: Configuring clns-7 for other apk /system/framework/android.test.runner.jar. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~_Nd37Na8zgIwkyPPilJqIA==/com.example.cmput301w24t33.test-SUf_2jLyVD0G9Sa48ISbjg==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.cmput301w24t33.test
+03-08 10:11:06.668  4676  4676 W ziparchive: Unable to open '/data/app/~~_Nd37Na8zgIwkyPPilJqIA==/com.example.cmput301w24t33.test-SUf_2jLyVD0G9Sa48ISbjg==/base.dm': No such file or directory
+03-08 10:11:06.668  4676  4676 W ziparchive: Unable to open '/data/app/~~_Nd37Na8zgIwkyPPilJqIA==/com.example.cmput301w24t33.test-SUf_2jLyVD0G9Sa48ISbjg==/base.dm': No such file or directory
+03-08 10:11:06.686  4676  4676 D nativeloader: Configuring clns-8 for other apk /data/app/~~_Nd37Na8zgIwkyPPilJqIA==/com.example.cmput301w24t33.test-SUf_2jLyVD0G9Sa48ISbjg==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~_Nd37Na8zgIwkyPPilJqIA==/com.example.cmput301w24t33.test-SUf_2jLyVD0G9Sa48ISbjg==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.cmput301w24t33.test
+03-08 10:11:06.739  1835  4671 W gle.android.gms: Long monitor contention with owner [com.google.android.gms.chimera.container.intentoperation.GmsIntentOperationChimeraService-Executor] idle (3992) at void hjm.run()(:com.google.android.gms@231818047@23.18.18 (190800-535401451):3) waiters=0 in void hjm.run() for 158ms
+03-08 10:11:06.741   569   569 W system_server: Long monitor contention with owner appscheduling.default (655) at void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message)(JobSchedulerService.java:3305) waiters=0 in void com.android.server.job.JobServiceContext.onServiceConnected(android.content.ComponentName, android.os.IBinder) for 295ms
+03-08 10:11:06.741   569  1164 W system_server: Long monitor contention with owner appscheduling.default (655) at void com.android.server.job.JobSchedulerService$JobHandler.handleMessage(android.os.Message)(JobSchedulerService.java:3305) waiters=1 in void com.android.server.job.JobServiceContext.doCallback(com.android.server.job.JobServiceContext$JobCallback, boolean, java.lang.String) for 341ms
+03-08 10:11:06.744  1971  1971 I BgTaskExecutorImpl: Starting PERIODIC background task GELLER_PKG_ENTITIES_REFRESH_TASK.
+03-08 10:11:06.755  1971  1971 I BgTaskExecutorImpl: Starting PERIODIC background task NGA_PRIORITY_DOWNLOAD_TASK.
+03-08 10:11:06.767  4691  4691 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10083; state: ENABLED
+03-08 10:11:06.767  4691  4691 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10083; state: ENABLED
+03-08 10:11:06.786  4676  4676 V GraphicsEnvironment: Currently set values for:
+03-08 10:11:06.786  4676  4676 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+03-08 10:11:06.787  4676  4676 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+03-08 10:11:06.792  4676  4676 V GraphicsEnvironment: ANGLE GameManagerService for com.example.cmput301w24t33.test: false
+03-08 10:11:06.792  4676  4676 V GraphicsEnvironment: com.example.cmput301w24t33.test is not listed in per-application setting
+03-08 10:11:06.792  4676  4676 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+03-08 10:11:06.830  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.831  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.865  1971  2951 I TngVoiceSearchSync: Syncing TNG:VoiceSearch
+03-08 10:11:06.887  4676  4714 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+03-08 10:11:06.898  4676  4714 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+03-08 10:11:06.900  4691  4691 D nativeloader: Configuring clns-shared-6 for other apk /system/priv-app/GooglePackageInstaller/GooglePackageInstaller.apk. target_sdk_version=34, uses_libraries=, library_path=/system/priv-app/GooglePackageInstaller/lib/x86_64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user_de/0/com.google.android.packageinstaller:/system/priv-app/GooglePackageInstaller:/system/lib64:/system_ext/lib64
+03-08 10:11:06.902  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.903  4676  4714 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+03-08 10:11:06.915  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:06.916  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:06.918  3125  4420 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.auth.account.be.legacy.AuthCronService finished executing. cause:5 result: 1 elapsed_millis: 1229 uptime_millis: 1229 exec_start_elapsed_seconds: 137 [CONTEXT service_id=218 ]
+03-08 10:11:06.935  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.937  4691  4691 V GraphicsEnvironment: Currently set values for:
+03-08 10:11:06.937  4691  4691 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+03-08 10:11:06.937  4691  4691 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+03-08 10:11:06.939  4691  4691 V GraphicsEnvironment: ANGLE GameManagerService for com.google.android.packageinstaller: false
+03-08 10:11:06.939  4691  4691 V GraphicsEnvironment: com.google.android.packageinstaller is not listed in per-application setting
+03-08 10:11:06.940  4691  4691 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+03-08 10:11:06.943  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.944  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.945  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.946  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.949  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.949  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.962  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.963  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.965  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.966  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.966  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.967  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.973  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.975  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.976  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.978  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.979  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.979  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.983  1971  2622 I A       : No accounts found for [PKG_ENTITIES], not syncing anything.
+03-08 10:11:06.985  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.986  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.986  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.995  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.998  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:06.999  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.000  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.012  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.013  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.020  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.027  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.027  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for organizer found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.031  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.032  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.035  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.035  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.061  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.062  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.078  3125  3125 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+03-08 10:11:07.079  3125  3125 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+03-08 10:11:07.083  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.093  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.095  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.096  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.113  1971  1971 W TaskServiceHelper: Not enough time has passed between starts of two 180 periodic tasks.
+03-08 10:11:07.118  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.119  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.121  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.123  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.125  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.126  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.128  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.129  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.131  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.132  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.135  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.136  4676  4676 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10193; state: DISABLED
+03-08 10:11:07.136  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.138  4676  4676 W OpenGLRenderer: Unknown dataspace 0
+03-08 10:11:07.141  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.142  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.146  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.147  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.148  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.149  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.150  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.151  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.151  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.152  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.158  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.159  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.160  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.160  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.161  3125  4604 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:07.166  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.166  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.177  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.178  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.179  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.181  1835  3992 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent(): android.intent.action.PACKAGE_ADDED
+03-08 10:11:07.184  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.185  3125  4604 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+03-08 10:11:07.191  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.192  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.195   413   685 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10193 pid=4676
+03-08 10:11:07.196   413   685 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10193 => denied (514 us)
+03-08 10:11:07.196  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.197  3125  4420 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.gmscompliance.sync.BackgroundSyncGmsTaskService started execution. cause:5 exec_start_elapsed_seconds: 138 [CONTEXT service_id=218 ]
+03-08 10:11:07.197   413   437 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10193 pid=0
+03-08 10:11:07.197   413   437 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10193 => denied (3583 us)
+03-08 10:11:07.197   413   437 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10193 pid=0
+03-08 10:11:07.197   413   437 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10193 => denied (165 us)
+03-08 10:11:07.197   413   437 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10193 pid=0
+03-08 10:11:07.198   413   437 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10193 => denied (465 us)
+03-08 10:11:07.198  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.199   413   685 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10193 pid=4676
+03-08 10:11:07.199   413   685 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10193 => denied (3628 us)
+03-08 10:11:07.202  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.202  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.208  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.209  4676  4712 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+03-08 10:11:07.210  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.210  4676  4712 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+03-08 10:11:07.211  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.214  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.217  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.217  1835  4673 I BlockstoreStorage: Clearing Blockstore Data for package com.example.cmput301w24t33.test [CONTEXT service_id=258 ]
+03-08 10:11:07.218  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.219  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.222   793   888 D EGL_emulation: app_time_stats: avg=6.78ms min=1.40ms max=31.73ms count=60
+03-08 10:11:07.228  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.235  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.236  1835  2734 I BlockstoreStorage: Keyless data not found or its IsLastInstallationData = false. [CONTEXT service_id=258 ]
+03-08 10:11:07.243  1971  2951 W SearchServiceCore: Abort, client detached.
+03-08 10:11:07.261  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.262  1835  1835 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+03-08 10:11:07.263  1835  1835 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+03-08 10:11:07.268  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for startDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.270  4448  4448 W Firestore: (24.10.2) [CustomClassMapper]: No setter/field for endDateTime found on class com.example.cmput301w24t33.events.Event
+03-08 10:11:07.293  4448  4448 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@46272f7 in: STOPPED
+03-08 10:11:07.293  3125  4701 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) com.example.cmput301w24t33.test
+03-08 10:11:07.293  4448  4448 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=com.example.cmput301w24t33.activities.Admin@46272f7
+03-08 10:11:07.297  3125  3961 I FontLog : Package com.example.cmput301w24t33.test has no metadata [CONTEXT service_id=132 ]
+03-08 10:11:07.298  3125  3961 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+03-08 10:11:07.305   157   157 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+03-08 10:11:07.306  4676  4712 I Gralloc4: mapper 4.x is not supported
+03-08 10:11:07.311  3125  3960 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+03-08 10:11:07.311  1835  3992 I Dck     : doesDeviceHaveSupportedWirelessCapabilities: wccSysProp:0, wccMendel:3, deviceWccOverride:false [CONTEXT service_id=289 ]
+03-08 10:11:07.316  1835  3992 I Dck     : isDckModuleEligible: isAtLeastR:true, hasWccSupport:false, downloadAllowed:false [CONTEXT service_id=289 ]
+03-08 10:11:07.316  1835  3992 W Dck     : Dck module not eligible for asynchronous downloading [CONTEXT service_id=289 ]
+03-08 10:11:07.323  4448  4448 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@46272f7 in: DESTROYED
+03-08 10:11:07.329  4448  4448 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+03-08 10:11:07.337  4448  4554 I TestRunner: finished: testAdminViewEvent(com.example.cmput301w24t33.AdminUITest)

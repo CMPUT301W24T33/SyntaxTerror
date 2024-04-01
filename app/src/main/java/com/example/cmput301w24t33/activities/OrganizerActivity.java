@@ -34,11 +34,13 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerActivityBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
+import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
 import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
+import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -58,6 +60,7 @@ public class OrganizerActivity extends AppCompatActivity {
     private EventViewModel eventViewModel;
     private EventAdapter eventAdapter;
     private String userId;
+    private User currentUser;
     private static String url;
 
     /**
@@ -71,7 +74,9 @@ public class OrganizerActivity extends AppCompatActivity {
         setContentView(R.layout.organizer_activity);
         eventRecyclerView = findViewById(R.id.organized_events);
         organizedEvents = new ArrayList<>();
-        userId = getIntent().getStringExtra("uId");
+
+        currentUser = (User) getIntent().getSerializableExtra("user");
+        userId = currentUser.getUserId();
         getProfileUrl(userId);
         setAdapter();
 
@@ -81,7 +86,7 @@ public class OrganizerActivity extends AppCompatActivity {
         animation.setExitFadeDuration(5000);
         animation.start();
 
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        eventViewModel = EventViewModel.getInstance();
         eventViewModel.getEventsLiveData().observe(this, this::updateUI);
 
         View view = findViewById(R.id.organizer_activity);
@@ -143,6 +148,7 @@ public class OrganizerActivity extends AppCompatActivity {
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(OrganizerActivity.this, AttendeeActivity.class);
+            intent.putExtra("user", currentUser);
             startActivity(intent);
             finish();
         });
@@ -187,9 +193,7 @@ public class OrganizerActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            // Retrieve your field value
                             url = documentSnapshot.getString("imageUrl");
-                            // Do something with the field value
                             Log.d("Firestore", "Field value: " + url);
                         } else {
                             Log.d("Firestore", "No such document");

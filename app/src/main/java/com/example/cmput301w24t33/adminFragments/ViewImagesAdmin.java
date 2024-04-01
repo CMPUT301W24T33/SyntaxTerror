@@ -47,7 +47,7 @@ public class ViewImagesAdmin extends Fragment {
     private EventViewModel eventViewModel;
     private View inflatedView;
     private boolean showEventPosters = true;
-    private UserRepository userRepo;
+
 
     public ViewImagesAdmin() {
         // Required empty public constructor
@@ -59,6 +59,8 @@ public class ViewImagesAdmin extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.admin_view_images_fragment, container, false);
         inflatedView = view;
+        userViewModel = UserViewModel.getInstance();
+        eventViewModel = EventViewModel.getInstance();
         setupActionBar(view);
         setupClickListeners(view);
         displayEvents(view);
@@ -204,12 +206,13 @@ public class ViewImagesAdmin extends Fragment {
         userImageRecyclerView = view.findViewById(R.id.user_image_recyclerview);
         setAdapter();
 
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        //eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(getViewLifecycleOwner(), this::updateEventUI);
 
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
-        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
         //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        //userViewModel = UserViewModel.getInstance();
         userViewModel.getUsersLiveData().observe(getViewLifecycleOwner(), this::updateUserUI);
     }
     /**

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.users.UserRepository;
@@ -67,7 +69,7 @@ public class DeleteProfileAdmin extends Fragment {
         }
         Log.w("No profile to delete", "sad");
 
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        userRepo = UserRepository.getInstance();
         setupActionBar(view);
         setupClickListeners(view);
         return view;
@@ -115,8 +117,11 @@ public class DeleteProfileAdmin extends Fragment {
         EditText firstName = view.findViewById(R.id.first_name_edit_text);
         EditText lastName = view.findViewById(R.id.last_name_edit_text);
         EditText email = view.findViewById(R.id.email_edit_text);
+        ImageView profileImage = view.findViewById(R.id.profile_image);
         firstName.setText(profileToDelete.getFirstName());
         lastName.setText(profileToDelete.getLastName());
         email.setText(profileToDelete.getEmail());
+        Glide.with(this).load(profileToDelete.getImageUrl()).into(profileImage);
+
     }
 }

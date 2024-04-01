@@ -47,7 +47,7 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
     private TextView selectedEventView;
     private Event selectedEvent;
     private ChooseQRFragmentListener listener;
-    private EventRepository eventRepo = new EventRepository();
+    private EventRepository eventRepo = EventRepository.getInstance();
 
     /**
      * Interface for communication with fragments or activities that host this fragment.

@@ -45,6 +45,7 @@ import java.util.Locale;
  */
 public class EventDetailsAttendee extends Fragment implements ShareQRFragment.ShareQRDialogListener, Serializable {
     private AttendeeEventFragmentBinding binding;
+    private EventRepository eventRepo;
     private Event event;
     private User user;
 
@@ -166,7 +167,7 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
                 event.getSignedUp().remove(user);
             }
         }
-        EventRepository eventRepo = new EventRepository();
+        eventRepo = EventRepository.getInstance();
         eventRepo.updateEvent(event);
     }
 

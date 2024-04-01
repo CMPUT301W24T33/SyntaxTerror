@@ -1,0 +1,120 @@
+# 2024-03-08T17:11:15.018Z:
+test_suite_meta_data {
+  scheduled_test_case_count: 2
+}
+test_status: PASSED
+test_result {
+  test_case {
+    test_class: "AdminUITest"
+    test_package: "com.example.cmput301w24t33"
+    test_method: "testAdminViewEvent"
+    start_time {
+      seconds: 1709917861
+      nanos: 733000000
+    }
+    end_time {
+      seconds: 1709917869
+      nanos: 230000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\logcat-com.example.cmput301w24t33.AdminUITest-testAdminViewEvent.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\cpuinfo"
+    }
+  }
+}
+test_result {
+  test_case {
+    test_class: "AdminUITest"
+    test_package: "com.example.cmput301w24t33"
+    test_method: "testAdminViewProfiles"
+    start_time {
+      seconds: 1709917869
+      nanos: 547000000
+    }
+    end_time {
+      seconds: 1709917872
+      nanos: 586000000
+    }
+  }
+  test_status: PASSED
+  output_artifact {
+    label {
+      label: "logcat"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\logcat-com.example.cmput301w24t33.AdminUITest-testAdminViewProfiles.txt"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\device-info.pb"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.meminfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\meminfo"
+    }
+  }
+  output_artifact {
+    label {
+      label: "device-info.cpuinfo"
+      namespace: "android"
+    }
+    source_path {
+      path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\cpuinfo"
+    }
+  }
+}
+output_artifact {
+  label {
+    label: "test-results.log"
+    namespace: "com.google.testing.platform.runtime.android.driver.AndroidInstrumentationDriver"
+  }
+  source_path {
+    path: "C:\\Users\\ian_m\\AndroidStudio-301\\project\\SyntaxTerror\\CMPUT301W24T33\\app\\build\\outputs\\androidTest-results\\connected\\debug\\Pixel_3a_API_34_extension_level_7_x86_64(AVD) - 14\\testlog\\test-results.log"
+  }
+  type: TEST_DATA
+  mime_type: "text/plain"
+}

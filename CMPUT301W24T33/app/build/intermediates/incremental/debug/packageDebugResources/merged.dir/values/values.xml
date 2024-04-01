@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="admin_actionbar">#C247D8</color>
+    <color name="attendee_actionbar">#F35F5F</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="default_state">#747474</color>
+    <color name="going">#388E3C</color>
+    <color name="ic_search_icon_background">#3DDC84</color>
+    <color name="light_grey">#B5B5B5</color>
+    <color name="not_going">#D32F2F</color>
+    <color name="onPrimary">#FF000000</color>
+    <color name="onSecondary">#FFFFFFFF</color>
+    <color name="organizer_actionbar">#61DC4B</color>
+    <color name="primary">#FFFFFFFF</color>
+    <color name="secondary">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">CMPUT301W24T33</string>
+    <string name="firebase_database_url" translatable="false">https://syntax-terror-f783b-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1087289880922</string>
+    <string name="google_api_key" translatable="false">AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs</string>
+    <string name="google_app_id" translatable="false">1:1087289880922:android:9aad77801068ca53288363</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDsWhUeIUwYO4BNS04d3b_zbF_l_tWqcQs</string>
+    <string name="google_storage_bucket" translatable="false">syntax-terror-f783b.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notification_dialog_message_hint">message</string>
+    <string name="notification_dialog_title_hint">title</string>
+    <string name="places">AIzaSyBK94a1cQs_7HW6JGFZRu39VRILNwkB0uk</string>
+    <string name="project_id" translatable="false">syntax-terror-f783b</string>
+    <string name="share_check_in_code">Share Check In Code</string>
+    <string name="share_event_page">Share Event Page</string>
+    <string name="share_poster">Share Poster</string>
+    <style name="Base.Theme.CMPUT301W24T33" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="CustomOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        
+        <item name="backgroundTint">@color/white</item>
+
+        
+        <item name="strokeColor">@color/black</item>
+
+        
+        <item name="strokeWidth">1dp</item>
+
+        
+        <item name="android:textColor">@color/black</item>
+
+        
+        <item name="iconTint">@color/black</item>
+
+        
+        <item name="rippleColor">@color/light_grey</item>
+
+        
+        <item name="android:elevation">0dp</item> 
+
+        
+        <item name="iconPadding">8dp</item>
+
+        
+        <item name="iconSize">24dp</item>
+
+        
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+    </style>
+    <style name="MyShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+    <style name="ProfileText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="Theme.CMPUT301W24T33" parent="Base.Theme.CMPUT301W24T33"/>
+</resources>
