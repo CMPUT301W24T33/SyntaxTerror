@@ -68,8 +68,6 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
 
     private void authenticateUser() {
         String userId = getAndroidId();
-        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
-        //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
         userViewModel.getUser(userId).observe(this, user -> {
             if (user != null) {
                 // User has a profile

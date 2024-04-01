@@ -29,7 +29,6 @@ public class UserViewModel extends ViewModel {
     private MutableLiveData<List<User>> userLiveData;
     private MutableLiveData<User> liveUser;
     private Application application;
-    private User user;
 
 
     public UserViewModel (Application application, UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser) {
