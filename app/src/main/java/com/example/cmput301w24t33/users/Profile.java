@@ -38,7 +38,6 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.activities.Attendee;
 import com.google.android.material.snackbar.Snackbar;
 
 import com.google.firebase.firestore.FirebaseFirestore;
