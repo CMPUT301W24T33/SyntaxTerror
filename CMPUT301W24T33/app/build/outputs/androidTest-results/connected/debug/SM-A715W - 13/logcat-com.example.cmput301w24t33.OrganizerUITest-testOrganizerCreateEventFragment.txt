@@ -1,4 +1,4 @@
-03-08 15:13:52.026 26361 26459 I TestRunner: started: testOrganizerCreateEventFragment(com.example.cmput301w24t33.OrganizerUITest)
+03-08 15:13:52.026 26361 26459 I TestRunner: started: testOrganizerCreateEventFragment(com.example.cmput301w24t33.OrganizerActivityUITest)
 03-08 15:13:52.038 26361 26459 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
 03-08 15:13:52.041  1472  1882 I ChimeraSystemEventListener: appLaunchIntent package name is: com.example.cmput301w24t33
 03-08 15:13:52.043  1472  3404 I SemDvfsHyPerManager: acquire hyper - AMS_APP_SWITCH/1472@18, type = -999
@@ -55,7 +55,7 @@
 03-08 15:13:52.078  1472  5215 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
 03-08 15:13:52.078  1472  5215 V WindowManager:   bhv=DEFAULT
 03-08 15:13:52.078  1472  5215 V WindowManager:   fitSides= naviIconColor=0}
-03-08 15:13:52.078 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: PRE_ON_CREATE
+03-08 15:13:52.078 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.OrganizerActivity@fe82730 in: PRE_ON_CREATE
 03-08 15:13:52.078 26361 26361 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
 03-08 15:13:52.078  2578  2656 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=Splash Screen com.example.cmput301w24t33 from=android.view.ViewRootImpl.relayoutWindow:9802
 03-08 15:13:52.080  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
@@ -92,13 +92,13 @@
 03-08 15:13:52.105  1327  3508 I SurfaceFlinger: id=35640 createSurf, flag=80000, 3937ad7 ActivityRecordInputSink com.example.cmput301w24t33/.activities.Organizer#35640
 03-08 15:13:52.108  2578  2643 D Bubbles : onLocusVisibilityChanged: LocusId[17_chars] visible=false
 03-08 15:13:52.118  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33$_2578#35637] hidden!! flag(0)
-03-08 15:13:52.119 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: CREATED
-03-08 15:13:52.120 26361 26361 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
-03-08 15:13:52.122 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: STARTED
-03-08 15:13:52.123 26361 26361 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:52.119 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.OrganizerActivity@fe82730 in: CREATED
+03-08 15:13:52.120 26361 26361 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=com.example.cmput301w24t33.activities.OrganizerActivity@fe82730
+03-08 15:13:52.122 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.OrganizerActivity@fe82730 in: STARTED
+03-08 15:13:52.123 26361 26361 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=com.example.cmput301w24t33.activities.OrganizerActivity@fe82730
 03-08 15:13:52.124 26361 26361 D ContentValues: RESUME
-03-08 15:13:52.124 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: RESUMED
-03-08 15:13:52.125 26361 26361 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:52.124 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.OrganizerActivity@fe82730 in: RESUMED
+03-08 15:13:52.125 26361 26361 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=com.example.cmput301w24t33.activities.OrganizerActivity@fe82730
 03-08 15:13:52.126 26361 26361 I MSHandlerLifeCycle: check: return. pkg=com.example.cmput301w24t33 parent=null callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.ActivityThread.handleResumeActivity:5476 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176
 03-08 15:13:52.126 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@89dac48[]
 03-08 15:13:52.128  1257 28348 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1115292
@@ -107,9 +107,9 @@
 03-08 15:13:52.130  1472  5162 D InputTransport: Input channel constructed: '5257faf', fd=605
 03-08 15:13:52.130  1472  5162 D InputTransport: Input channel constructed: '5257faf', fd=741
 03-08 15:13:52.131  1472  5162 D InputTransport: Input channel constructed: '5257faf', fd=756
-03-08 15:13:52.131  1327  3508 I SurfaceFlinger: id=35641 createSurf, flag=80004, 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer#35641
+03-08 15:13:52.131  1327  3508 I SurfaceFlinger: id=35641 createSurf, flag=80004, 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity#35641
 03-08 15:13:52.132  1472  5162 D InputTransport: Input channel destroyed: '5257faf', fd=756
-03-08 15:13:52.134 26361 26361 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:52.134 26361 26361 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity from=android.view.ViewRootImpl.setView:1732
 03-08 15:13:52.136 26361 26361 I ViewRootImpl@841c411[Organizer]: setView = com.android.internal.policy.DecorView@89dac48 TM=true
 03-08 15:13:52.137 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@89dac48[Organizer]
 03-08 15:13:52.139  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
@@ -132,8 +132,8 @@
 03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   bhv=DEFAULT
 03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   fitSides= naviIconColor=0
 03-08 15:13:52.152 26361 26361 I ViewRootImpl@841c411[Organizer]:   sfl=100000}
-03-08 15:13:52.153  1472  3543 V WindowManager: Relayout Window{5257faf u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer}: viewVisibility=0 req=1080x2400 d0
-03-08 15:13:52.153  1327  2296 I SurfaceFlinger: id=35642 createSurf, flag=40004, com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642
+03-08 15:13:52.153  1472  3543 V WindowManager: Relayout Window{5257faf u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:52.153  1327  2296 I SurfaceFlinger: id=35642 createSurf, flag=40004, com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity$_26361#35642
 03-08 15:13:52.156  1327  2296 I SurfaceFlinger: id=35643 createSurf, flag=24000, Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35643
 03-08 15:13:52.156  1327  2296 I SurfaceFlinger: id=35644 createSurf, flag=24000, Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35644
 03-08 15:13:52.157  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:16, packageName: com.example.cmput301w24t33 (APPEARANCE_LIGHT_NAVIGATION_BARS ), navbarColorManagedByIme:false
@@ -177,10 +177,10 @@
 03-08 15:13:52.186  1327  1327 I Layer   : id=35627 Destroyed Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35627
 03-08 15:13:52.186  1327  1327 I Layer   : id=35628 Destroyed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35628
 03-08 15:13:52.187  1472  1876 W ziparchive: Unable to open '/data/app/~~W-ddUiX8JS3WzrZIN8mU0w==/com.example.cmput301w24t33-E7e2aXhTzEvn2QLsQTpRuw==/base.dm': No such file or directory
-03-08 15:13:52.188  1472  2910 D InputDispatcher: Focus request (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer but waiting because NO_WINDOW
+03-08 15:13:52.188  1472  2910 D InputDispatcher: Focus request (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity but waiting because NO_WINDOW
 03-08 15:13:52.189  3258  3258 I TaskThumbnailCache: handleResult: taskId = 3075, taskThumbnail = android.graphics.Bitmap@4c8c957
-03-08 15:13:52.190  1327  2100 I SurfaceFlinger: id=35645 createSurf, flag=24000, Surface(name=5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer)/@0x5a80543 - animation-leash of starting_reveal#35645
-03-08 15:13:52.190  1472  1876 I PkgPredictorService-SecIpmManagerServiceImpl: reportToNAP uid:10451 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer thisTime:145
+03-08 15:13:52.190  1327  2100 I SurfaceFlinger: id=35645 createSurf, flag=24000, Surface(name=5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity)/@0x5a80543 - animation-leash of starting_reveal#35645
+03-08 15:13:52.190  1472  1876 I PkgPredictorService-SecIpmManagerServiceImpl: reportToNAP uid:10451 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity thisTime:145
 03-08 15:13:52.192  1472  5162 I SemDvfsHyPerManager: acquire hyper - AMS_RESUME_TAIL/1472@16, type = -999
 03-08 15:13:52.192  1472  1876 I ActivityTaskManager: Displayed com.example.cmput301w24t33/.activities.Organizer: +145ms
 03-08 15:13:52.192  1472  5162 I SemDvfsHyPerManager: acquire hyper - AMS_ACT_LAZY/1472@17, type = -999
@@ -190,7 +190,7 @@
 03-08 15:13:52.194  1257  1326 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPULittleMinFreq] RemoveResource Request ID : 1110813
 03-08 15:13:52.196  1257  1326 I HYPER-HAL: [ResourceManager.cpp]removeResource(): [CPUMinFreq] RemoveResource Request ID : 1110813
 03-08 15:13:52.196  1257  1326 I HYPER-HAL: [RequestManager.cpp]releaseLocked(): Released ID : 1110813
-03-08 15:13:52.201  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642] hidden!! flag(0)
+03-08 15:13:52.201  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity$_26361#35642] hidden!! flag(0)
 03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]: performTraversals params={(0,0)(fillxfill) sim={adjust=pan} ty=APPLICATION_STARTING fmt=TRANSLUCENT wanim=0x1030309
 03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fl=81030118
 03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   pfl=16000010
@@ -202,7 +202,7 @@
 03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   bhv=DEFAULT
 03-08 15:13:52.202  2578  2656 I ViewRootImpl@2a6f9ff[cmput301w24t33]:   fitSides= naviIconColor=0}
 03-08 15:13:52.203  1472  3335 V WindowManager: Relayout Window{fbcedcf u0 Splash Screen com.example.cmput301w24t33}: viewVisibility=0 req=1080x2400 d0
-03-08 15:13:52.203  1472  3543 D InputDispatcher: Focus entered window (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer
+03-08 15:13:52.203  1472  3543 D InputDispatcher: Focus entered window (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity
 03-08 15:13:52.204 26361 26361 I ViewRootImpl@841c411[Organizer]: MSG_WINDOW_FOCUS_CHANGED 1 0
 03-08 15:13:52.204  2578  2578 D SamsungLightBarControlHelper: onStatusBarAppearanceChanged() -  sbModeChanged:false, statusBarMode:MODE_TRANSPARENT, barState:SHADE, isKeyguardShowing:false, navbarColorManagedByIme:false, stackAppearancesChanged:true, (AppearanceRegion{ bounds=[0,0][1080,2400]}, ), packageName:com.example.cmput301w24t33
 03-08 15:13:52.204  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:0, packageName: com.example.cmput301w24t33, navbarColorManagedByIme:false
@@ -321,7 +321,7 @@
 03-08 15:13:52.262  1472  3543 W InputManager-JNI: Input channel object 'fbcedcf Splash Screen com.example.cmput301w24t33 (client)' was disposed without first being removed with the input manager!
 03-08 15:13:52.263  1472  3543 D InputTransport: Input channel destroyed: 'fbcedcf', fd=715
 03-08 15:13:52.264  2578  2656 D InputTransport: Input channel destroyed: 'fbcedcf', fd=203
-03-08 15:13:52.268  1327  1327 I Layer   : id=35645 removedFromDrawingState Surface(name=5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer)/@0x5a80543 - animation-leash of starting_reveal#35645 (138)
+03-08 15:13:52.268  1327  1327 I Layer   : id=35645 removedFromDrawingState Surface(name=5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity)/@0x5a80543 - animation-leash of starting_reveal#35645 (138)
 03-08 15:13:52.274  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
 03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147f00 | 0100 | RGBx_8888    |  152.0    0.0 1232.0 2400.0 |    0    0 1080 2400 | Wallpaper BBQ wrapper#88
 03-08 15:13:52.274  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007445801300 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | com.sec.android.app.launcher/com.sec[...]ivities.LauncherActivity$_3258#35626
@@ -525,8 +525,8 @@
 03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   bhv=DEFAULT
 03-08 15:13:53.537  2578  2656 I ViewRootImpl@4f860ef[test]:   fitSides= naviIconColor=0}
 03-08 15:13:53.537  1472  3440 I AS.AudioService: uid:10333is using audio
-03-08 15:13:53.538 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: PAUSED
-03-08 15:13:53.539 26361 26361 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:53.538 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.OrganizerActivity@fe82730 in: PAUSED
+03-08 15:13:53.539 26361 26361 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=com.example.cmput301w24t33.activities.OrganizerActivity@fe82730
 03-08 15:13:53.543  1472  5162 D InputDispatcher: Focused application(0): ActivityRecord{b67d19b u0 com.example.cmput301w24t33.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} t3078}
 03-08 15:13:53.549  1472  3335 V WindowManager: Relayout Window{ec0bc02 u0 Splash Screen com.example.cmput301w24t33.test}: viewVisibility=0 req=1080x2400 d0
 03-08 15:13:53.549  1327  2100 I SurfaceFlinger: id=35650 createSurf, flag=40004, Splash Screen com.example.cmput301w24t33.test$_2578#35650
@@ -561,7 +561,7 @@
 03-08 15:13:53.566 27916 27916 I DecorView: [INFO] isPopOver=false config=true
 03-08 15:13:53.567 27916 27916 I DecorView: updateCaptionType: isFloating=false isApplication=true hasWindowDecorCaption=false this=DecorView@28f4522[]
 03-08 15:13:53.567 27916 27916 D DecorView: setCaptionType = 0, this = DecorView@28f4522[]
-03-08 15:13:53.569  1472  6022 D InputDispatcher: Focus left window (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer
+03-08 15:13:53.569  1472  6022 D InputDispatcher: Focus left window (0): 5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity
 03-08 15:13:53.570 26361 26361 I ViewRootImpl@841c411[Organizer]: MSG_WINDOW_FOCUS_CHANGED 0 0
 03-08 15:13:53.570  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/3258/sched_low_latency with value 1
 03-08 15:13:53.570  1273  1344 E ANDR-PERF-OPTSHANDLER: can't set low latency for tid 3258
@@ -596,7 +596,7 @@
 03-08 15:13:53.597 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: setView = com.android.internal.policy.DecorView@28f4522 TM=true
 03-08 15:13:53.598 27916 27916 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@28f4522[InstrumentationActivityInvoker$EmptyActivity]
 03-08 15:13:53.600  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33.test$_2578#35650] hidden!! flag(0)
-03-08 15:13:53.600  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer$_26361#35642] hidden!! flag(1)
+03-08 15:13:53.600  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity$_26361#35642] hidden!! flag(1)
 03-08 15:13:53.603 26361 26463 D OpenGLRenderer: setSurface called with nullptr
 03-08 15:13:53.603 26361 26463 D OpenGLRenderer: setSurface() destroyed EGLSurface
 03-08 15:13:53.603 26361 26463 D OpenGLRenderer: destroyEglSurface
@@ -607,7 +607,7 @@
 03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   fitSides= naviIconColor=0
 03-08 15:13:53.605 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]:   sfl=100000}
 03-08 15:13:53.605 26361 26361 I ViewRootImpl@841c411[Organizer]: performTraversals mFirst=false windowShouldResize=false viewVisibilityChanged=true mForceNextWindowRelayout=false params=null
-03-08 15:13:53.605  1472  3543 V WindowManager: Relayout Window{5257faf u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:53.605  1472  3543 V WindowManager: Relayout Window{5257faf u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity}: viewVisibility=8 req=1080x2400 d0
 03-08 15:13:53.606  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
 03-08 15:13:53.606  1327  1327 D SurfaceFlinger:      DEVICE | 0xb40000745d065b60 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | Splash Screen com.example.cmput301w24t33.test$_2578#35650
 03-08 15:13:53.606  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147170 | 0100 | RGBA_8888    |    0.0    0.0 1080.0   91.0 |    0    0 1080   91 | StatusBar$_2578#95
@@ -654,7 +654,7 @@
 03-08 15:13:53.622  1472  3543 V WindowManager: Relayout Window{85bfa35 u0 NotificationShade}: viewVisibility=4 req=1080x2400 d0
 03-08 15:13:53.623 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Relayout returned: old=(0,0,1080,2400) new=(0,0,1080,2400) req=(1080,2400)0 dur=12 res=0x3 s={true 0xb400007cfb5e6800} ch=true seqId=0
 03-08 15:13:53.625 26361 26361 I ViewRootImpl@841c411[Organizer]: stopped(true) old = false
-03-08 15:13:53.625 26361 26361 I ViewRootImpl@841c411[Organizer]: WindowStopped on com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer set to true
+03-08 15:13:53.625 26361 26361 I ViewRootImpl@841c411[Organizer]: WindowStopped on com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity set to true
 03-08 15:13:53.625 27916 27939 D OpenGLRenderer: eglCreateWindowSurface
 03-08 15:13:53.625 27916 27916 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007cfb5e6800} hwInitialized=true
 03-08 15:13:53.625  1472  3543 V WindowManager: Relayout hash=85bfa35, pid=2578, syncId=-1: mAttrs={(0,0)(fillxfill) gr=TOP CENTER_VERTICAL sim={adjust=resize} layoutInDisplayCutoutMode=always ty=NOTIFICATION_SHADE fmt=TRANSLUCENT
@@ -675,13 +675,13 @@
 03-08 15:13:53.628  2578  2578 I FaceWidgetPositionAlgorithm: getClockContainerHeight() supplier = 227, bottom margin = 63, real height = 290
 03-08 15:13:53.628  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() height = 456 container Visibility = 8, isValid = true, mIsDozing = false, fraction = 1.0, source = 0, target = 0
 03-08 15:13:53.628  2578  2578 I FaceWidgetPositionAlgorithm: getMediaContainerHeight() supplier = 456
-03-08 15:13:53.631 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: STOPPED
-03-08 15:13:53.631 26361 26361 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=com.example.cmput301w24t33.activities.Organizer@fe82730
+03-08 15:13:53.631 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.OrganizerActivity@fe82730 in: STOPPED
+03-08 15:13:53.631 26361 26361 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=com.example.cmput301w24t33.activities.OrganizerActivity@fe82730
 03-08 15:13:53.632 27916 27943 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Received frameDrawingCallback syncResult=0 frameNum=1.
 03-08 15:13:53.632 27916 27943 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Setting up sync and frameCommitCallback
 03-08 15:13:53.633 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@89dac48[Organizer]
 03-08 15:13:53.634 27916 27939 I BLASTBufferQueue: [ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]#2](f:0,a:0) onFrameAvailable the first frame is available
-03-08 15:13:53.635 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Organizer@fe82730 in: DESTROYED
+03-08 15:13:53.635 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.OrganizerActivity@fe82730 in: DESTROYED
 03-08 15:13:53.635  1327  1327 I Layer   : id=35643 removedFromDrawingState Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35643 (142)
 03-08 15:13:53.635 27916 27939 I ViewRootImpl@5a1a00f[InstrumentationActivityInvoker$EmptyActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
 03-08 15:13:53.635 26361 26361 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
@@ -691,7 +691,7 @@
 03-08 15:13:53.638 26361 26463 D OpenGLRenderer: setSurface called with nullptr
 03-08 15:13:53.638 26361 26361 I ViewRootImpl@841c411[Organizer]: dispatchDetachedFromWindow
 03-08 15:13:53.639  1472  3543 D InputTransport: Input channel destroyed: '5257faf', fd=605
-03-08 15:13:53.639  1472  3543 W InputManager-JNI: Input channel object '5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Organizer (client)' was disposed without first being removed with the input manager!
+03-08 15:13:53.639  1472  3543 W InputManager-JNI: Input channel object '5257faf com.example.cmput301w24t33/com.example.cmput301w24t33.activities.OrganizerActivity (client)' was disposed without first being removed with the input manager!
 03-08 15:13:53.639  1472  3543 D InputTransport: Input channel destroyed: '5257faf', fd=741
 03-08 15:13:53.640 27916 27939 D OpenGLRenderer: CFMS:: SetUp Pid : 27916    Tid : 27939
 03-08 15:13:53.640 27916 27939 W Parcel  : Expecting binder but got null!
@@ -706,4 +706,4 @@
 03-08 15:13:53.645 12908 12908 I InputMethodService: removeImeSurface
 03-08 15:13:53.646 12908 12908 I MSHandlerLifeCycle: check: return. pkg=com.samsung.android.honeyboard isActivity=false callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.Dialog.hide:767 android.inputmethodservice.InputMethodService.removeImeSurface:1290 android.inputmethodservice.InputMethodService.scheduleImeSurfaceRemoval:1279 android.inputmethodservice.InputMethodService.-$$Nest$mscheduleImeSurfaceRemoval:0
 03-08 15:13:53.646 12908 12908 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@df736f9[InputMethod]
-03-08 15:13:53.647 26361 26459 I TestRunner: finished: testOrganizerCreateEventFragment(com.example.cmput301w24t33.OrganizerUITest)
+03-08 15:13:53.647 26361 26459 I TestRunner: finished: testOrganizerCreateEventFragment(com.example.cmput301w24t33.OrganizerActivityUITest)

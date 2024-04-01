@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -20,12 +19,11 @@ import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.notifications.Notification;
 import com.example.cmput301w24t33.notifications.NotificationAdapter;
 import com.example.cmput301w24t33.notifications.NotificationManager;
-import com.example.cmput301w24t33.users.Profile;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.List;
 
 
-public class NotificationsOrganizer extends Fragment implements NotificationAdapter.OnNotificationListener {
+public class EventNotifications extends Fragment implements NotificationAdapter.OnNotificationListener {
 
     private OrganizerNotificationsFragmentBinding binding;
     private NotificationAdapter adapter;
@@ -33,12 +31,12 @@ public class NotificationsOrganizer extends Fragment implements NotificationAdap
     private int selectedNotificationPosition = -1;
 
     /**
-     * Initializes a new instance of the NotificationsOrganizer fragment with the specified event data.
+     * Initializes a new instance of the EventNotifications fragment with the specified event data.
      * @param event The event for which notifications are being organized.
-     * @return Returns a new instance of NotificationsOrganizer with event data bundled.
+     * @return Returns a new instance of EventNotifications with event data bundled.
      */
-    public static NotificationsOrganizer newInstance(Event event) {
-        NotificationsOrganizer fragment = new NotificationsOrganizer();
+    public static EventNotifications newInstance(Event event) {
+        EventNotifications fragment = new EventNotifications();
         Bundle args = new Bundle();
         args.putSerializable("event", event);
         fragment.setArguments(args);

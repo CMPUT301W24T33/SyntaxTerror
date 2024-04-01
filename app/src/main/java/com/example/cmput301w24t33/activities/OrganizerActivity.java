@@ -11,6 +11,7 @@ package com.example.cmput301w24t33.activities;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,8 +22,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.helper.widget.MotionEffect;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -32,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.databinding.OrganizerActivityBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
@@ -39,7 +39,6 @@ import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.organizerFragments.EventCreateEdit;
 import com.example.cmput301w24t33.organizerFragments.EventDetails;
 import com.example.cmput301w24t33.users.Profile;
-import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -52,9 +51,10 @@ import java.util.List;
 /**
  * Activity for the event organizer, managing the creation, editing, and viewing of events.
  */
-public class Organizer extends AppCompatActivity {
+public class OrganizerActivity extends AppCompatActivity {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
+    private OrganizerActivityBinding binding;
     private EventViewModel eventViewModel;
     private EventAdapter eventAdapter;
     private String userId;
@@ -67,12 +67,19 @@ public class Organizer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = OrganizerActivityBinding.inflate(getLayoutInflater());
         setContentView(R.layout.organizer_activity);
         eventRecyclerView = findViewById(R.id.organized_events);
         organizedEvents = new ArrayList<>();
         userId = getIntent().getStringExtra("uId");
         getProfileUrl(userId);
         setAdapter();
+
+        // set up background animation
+        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
+        animation.setEnterFadeDuration(100);
+        animation.setExitFadeDuration(5000);
+        animation.start();
 
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(this, this::updateUI);
@@ -135,13 +142,13 @@ public class Organizer extends AppCompatActivity {
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
-            Intent intent = new Intent(Organizer.this, Attendee.class);
+            Intent intent = new Intent(OrganizerActivity.this, AttendeeActivity.class);
             startActivity(intent);
             finish();
         });
 
         userMode.setOnLongClickListener(v -> {
-            Intent intent = new Intent(Organizer.this, Admin.class);
+            Intent intent = new Intent(OrganizerActivity.this, AdminActivity.class);
             startActivity(intent);
             finish();
             return true;

@@ -3,11 +3,13 @@ package com.example.cmput301w24t33.notifications;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 import com.example.cmput301w24t33.events.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentReference;
 
+import java.util.Map;
 import java.util.Set;
 
 public class NotificationManager {
@@ -42,14 +44,32 @@ public class NotificationManager {
         return instance;
     }
 
+    /**
+     * Begins tracking notifications for multiple events.
+     * Listeners are added to each event ID provided, which will trigger updates upon changes.
+     *
+     * @param eventIds A set of event IDs to track for notifications.
+     */
     public void trackMultipleEventsNotifications(Set<String> eventIds) {
         repository.addEventListeners(eventIds);
     }
 
+    /**
+     * Starts tracking notifications for a single event.
+     * A listener is added to the specified event ID to monitor for notification updates.
+     *
+     * @param eventId The ID of the event to track.
+     */
     public void trackEventNotification(String eventId) {
         repository.addEventListener(eventId);
     }
 
+    /**
+     * Stops tracking notifications for a specific event.
+     * The listener for the given event ID is removed to cease receiving updates.
+     *
+     * @param eventId The ID of the event to stop tracking.
+     */
     public void stopTrackingEventNotification(String eventId) {
         repository.removeEventListener(eventId);
     }
@@ -93,6 +113,59 @@ public class NotificationManager {
      */
     public void fetchNotificationsForEvent(String eventId, NotificationRepository.NotificationsFetchListener listener) {
         repository.fetchNotificationsForEvent(eventId, listener);
+    }
+
+    /**
+     * Initiates monitoring of attendee count updates for an event.
+     * This sets up a listener that will trigger a callback method when attendee data changes.
+     *
+     * @param eventId The ID of the event to monitor for attendee count updates.
+     */
+    public void trackAttendeeUpdatesForEvent(String eventId) {
+        repository.trackAttendeeCount(eventId, this::handleAttendeeUpdate);
+    }
+
+    /**
+     * Handles updates to the attendee count for an event.
+     * It determines if certain occupancy thresholds are met and triggers a toast notification if so.
+     *
+     * @param event                The event for which the attendee count is updated.
+     * @param currentAttendeeCount The current count of attendees.
+     * @param maxOccupancy         The maximum occupancy for the event.
+     */
+    private void handleAttendeeUpdate(Event event, int currentAttendeeCount, int maxOccupancy, Map<String, Boolean> milestones) {
+        if (maxOccupancy > 0) {
+            if (currentAttendeeCount == maxOccupancy / 2 && maxOccupancy > 1 && !Boolean.TRUE.equals(milestones.get("half"))) {
+                Log.d("HALF FULL", String.valueOf(currentAttendeeCount));
+                showToast(event.getName() + " is half full.");
+                repository.updateEventMilestone(event.getEventId(), "half", true);
+            } else if (currentAttendeeCount == maxOccupancy && !Boolean.TRUE.equals(milestones.get("full"))) {
+                showToast(event.getName() + " is full.");
+                repository.updateEventMilestone(event.getEventId(), "full", true);
+            }
+        }
+    }
+
+    /**
+     * Updates the milestone status for a given event.
+     *
+     * @param eventId The ID of the event for which the milestone status is to be updated.
+     * @param milestoneKey The key of the milestone to update (e.g., "half" or "full").
+     * @param value The new value for the milestone (true or false).
+     */
+    public void updateEventMilestone(String eventId, String milestoneKey, boolean value) {
+        repository.updateEventMilestone(eventId, milestoneKey, value);
+    }
+
+    /**
+     * Displays a toast message on the UI thread.
+     *
+     * @param message The text message to be shown in the toast.
+     */
+    private void showToast(String message) {
+        new Handler(Looper.getMainLooper()).post(() ->
+                Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
+        );
     }
 }
 

@@ -15,6 +15,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
@@ -58,7 +59,7 @@ public class ShareQRFragment extends DialogFragment {
         //      same QR code for both. It would be better (and easier) to just have 3 separate QR
         //      codes for all fields. To do this you need to:
         //          1: Add an event qr code to this class (use eventId)
-        //          2: Update the find event functionality in Attendee to query for event ID instead of check In code
+        //          2: Update the find event functionality in AttendeeActivity to query for event ID instead of check In code
         View view = LayoutInflater.from(getContext()).inflate(R.layout.organizer_share_qr_fragment, null);
 
         // gets data from bundle
@@ -103,6 +104,18 @@ public class ShareQRFragment extends DialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 //        listener = (ShareQRDialogListener) context;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.ShareDialogTheme);
     }
 
     /**

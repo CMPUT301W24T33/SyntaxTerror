@@ -10,8 +10,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import com.example.cmput301w24t33.activities.Admin;
-import com.example.cmput301w24t33.activities.Attendee;
+import com.example.cmput301w24t33.activities.AdminActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,10 +19,10 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 // Tests limited as no DB connectivity for RecyclerView population
-public class AdminUITest {
+public class AdminActivityUITest {
     @Rule
-    public ActivityScenarioRule<Admin> scenario = new
-            ActivityScenarioRule<Admin>(Admin.class);
+    public ActivityScenarioRule<AdminActivity> scenario = new
+            ActivityScenarioRule<AdminActivity>(AdminActivity.class);
 
     @Test
     public void testAdminViewEvent(){
@@ -35,6 +34,7 @@ public class AdminUITest {
         // check if on attendee view
         onView(withId(R.id.admin_activity)).check(matches(isDisplayed()));
     }
+
 
     @Test
     public void testAdminViewProfiles(){
@@ -59,4 +59,5 @@ public class AdminUITest {
         // check if on attendee view
         onView(withId(R.id.admin_activity)).check(matches(isDisplayed()));
     }
+
 }

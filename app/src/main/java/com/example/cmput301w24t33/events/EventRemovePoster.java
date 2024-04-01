@@ -2,7 +2,6 @@ package com.example.cmput301w24t33.events;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -14,13 +13,11 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AdminDeletePosterFragmentBinding;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 
-public class RemovePoster extends Fragment {
+public class EventRemovePoster extends Fragment {
 
     private EventRepository eventRepo;
     private AdminDeletePosterFragmentBinding binding;
@@ -28,7 +25,7 @@ public class RemovePoster extends Fragment {
 
 
 
-    public RemovePoster() {
+    public EventRemovePoster() {
         // Required empty public constructor
     }
 
@@ -39,8 +36,8 @@ public class RemovePoster extends Fragment {
      * @param event The event to remove image from.
      * @return A new instance of DeleteEventAdmin.
      */
-    public static RemovePoster newInstance(Event event) {
-        RemovePoster fragment = new RemovePoster();
+    public static EventRemovePoster newInstance(Event event) {
+        EventRemovePoster fragment = new EventRemovePoster();
         Bundle args = new Bundle();
         args.putSerializable("event", event);
         fragment.setArguments(args);

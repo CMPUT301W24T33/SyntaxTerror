@@ -1,4 +1,4 @@
-03-08 15:13:39.881 26361 26459 I TestRunner: started: testAdminViewEvent(com.example.cmput301w24t33.AdminUITest)
+03-08 15:13:39.881 26361 26459 I TestRunner: started: testAdminViewEvent(com.example.cmput301w24t33.AdminActivityUITest)
 03-08 15:13:39.895 26361 26459 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
 03-08 15:13:39.903   603   603 I lmkd    : cached 2, sandbox(not0) 0
 03-08 15:13:39.905   603   603 I lmkd    : Reclaim 'com.samsung.android.app.appsedge' (25702), uid 10056, oom_score_adj 975, state 19 to free 82656kB rss, 24832kb swap
@@ -117,7 +117,7 @@
 03-08 15:13:39.997  2578  2656 I ViewRootImpl@3225436[cmput301w24t33]: onSyncComplete
 03-08 15:13:39.998  2578  2656 I ViewRootImpl@3225436[cmput301w24t33]: setupSync seqId=0 mSyncId=0 fn=1 caller=android.view.ViewRootImpl$$ExternalSyntheticLambda11.accept:6 android.window.SurfaceSyncer.lambda$setupSync$1$android-window-SurfaceSyncer:128 android.window.SurfaceSyncer$$ExternalSyntheticLambda1.accept:8 android.window.SurfaceSyncer$SyncSet.checkIfSyncIsComplete:382 android.window.SurfaceSyncer$SyncSet.markSyncReady:359 android.window.SurfaceSyncer.markSyncReady:151 android.view.ViewRootImpl.performTraversals:4503
 03-08 15:13:39.998  2578  2656 I ViewRootImpl@3225436[cmput301w24t33]: reportDrawFinished seqId=0 mSyncId=-1 fn=1 mSurfaceChangedTransaction=0xb400007c82084200
-03-08 15:13:40.000 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@4aaf27f in: PRE_ON_CREATE
+03-08 15:13:40.000 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.AdminActivity@4aaf27f in: PRE_ON_CREATE
 03-08 15:13:40.001 26361 26361 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
 03-08 15:13:40.008  1327  2296 I SurfaceFlinger: id=35364 createSurf, flag=24000, Surface(name=Task=1)/@0x464f238 - animation-leash of app_transition#35364
 03-08 15:13:40.009  1327  1414 I SurfaceFlinger: id=35365 createSurf, flag=24004, Surface(name=Task=3066)/@0x4d1ea2b - animation-leash of app_transition#35365
@@ -187,17 +187,17 @@
 03-08 15:13:40.119  1472  2284 D OpenGLRenderer: RenderThread::setGrContext()
 03-08 15:13:40.128 12908 12908 I HBD     : HoneyBoardService onTrimMemory 5
 03-08 15:13:40.136  1472  2020 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 26302 in 0ms
-03-08 15:13:40.139 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@4aaf27f in: CREATED
-03-08 15:13:40.140 26361 26361 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=com.example.cmput301w24t33.activities.Admin@4aaf27f
+03-08 15:13:40.139 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.AdminActivity@4aaf27f in: CREATED
+03-08 15:13:40.140 26361 26361 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=com.example.cmput301w24t33.activities.AdminActivity@4aaf27f
 03-08 15:13:40.140  7780  7780 I CMHApplication: [#CMH#] Block to verify, Change Trim Memory Level: 60
 03-08 15:13:40.140 24964 24964 I [AUTHFW][PASS]AuthFwApp: otlv80
 03-08 15:13:40.140  1180  1180 D Zygote  : Forked child process 26486
 03-08 15:13:40.142  1180  1180 I Zygote  : Process 26302 exited due to signal 9 (Killed)
-03-08 15:13:40.145 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@4aaf27f in: STARTED
-03-08 15:13:40.145 26361 26361 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=com.example.cmput301w24t33.activities.Admin@4aaf27f
+03-08 15:13:40.145 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.AdminActivity@4aaf27f in: STARTED
+03-08 15:13:40.145 26361 26361 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=com.example.cmput301w24t33.activities.AdminActivity@4aaf27f
 03-08 15:13:40.148 26361 26361 D ContentValues: ADMIN RESUME
-03-08 15:13:40.149 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@4aaf27f in: RESUMED
-03-08 15:13:40.149 26361 26361 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=com.example.cmput301w24t33.activities.Admin@4aaf27f
+03-08 15:13:40.149 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.AdminActivity@4aaf27f in: RESUMED
+03-08 15:13:40.149 26361 26361 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=com.example.cmput301w24t33.activities.AdminActivity@4aaf27f
 03-08 15:13:40.150 26361 26361 I MSHandlerLifeCycle: check: return. pkg=com.example.cmput301w24t33 parent=null callers=com.android.internal.policy.DecorView.setVisibility:4412 android.app.ActivityThread.handleResumeActivity:5476 android.app.servertransaction.ResumeActivityItem.execute:54 android.app.servertransaction.ActivityTransactionItem.execute:45 android.app.servertransaction.TransactionExecutor.executeLifecycleState:176
 03-08 15:13:40.151 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@38d2349[]
 03-08 15:13:40.161 26361 26463 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
@@ -218,9 +218,9 @@
 03-08 15:13:40.167  1472  5017 D InputTransport: Input channel constructed: '18176f7', fd=953
 03-08 15:13:40.167  1472  5017 D InputTransport: Input channel constructed: '18176f7', fd=977
 03-08 15:13:40.167  1472  5017 D InputTransport: Input channel constructed: '18176f7', fd=982
-03-08 15:13:40.168  1327  3508 I SurfaceFlinger: id=35367 createSurf, flag=80004, 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin#35367
+03-08 15:13:40.168  1327  3508 I SurfaceFlinger: id=35367 createSurf, flag=80004, 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity#35367
 03-08 15:13:40.170  1472  5017 D InputTransport: Input channel destroyed: '18176f7', fd=982
-03-08 15:13:40.172 26361 26361 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin from=android.view.ViewRootImpl.setView:1732
+03-08 15:13:40.172 26361 26361 D InsetsController: onStateChanged: InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2400), mDisplayCutout=DisplayCutout{insets=Rect(0, 91 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(503, 0 - 577, 91), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2400 physicalDisplayWidth=1080 physicalDisplayHeight=2400 density={2.625} cutoutSpec={M 0,0 H -14.0952380952381 V 34.66666666666667 H 14.0952380952381 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=84, center=Point(84, 84)}, RoundedCorner{position=TopRight, radius=84, center=Point(996, 84)}, RoundedCorner{position=BottomRight, radius=84, center=Point(996, 2316)}, RoundedCorner{position=BottomLeft, radius=84, center=Point(84, 2316)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2400), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(964, 0 - 1080, 91) rotation=0}, mSources= { InsetsSource: {mType=ITYPE_STATUS_BAR, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_NAVIGATION_BAR, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_GESTURES, mFrame=[0,0][0,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_GESTURES, mFrame=[1080,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_MANDATORY_GESTURES, mFrame=[0,0][1080,123], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_MANDATORY_GESTURES, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_LEFT_DISPLAY_CUTOUT, mFrame=[0,0][-100000,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_DISPLAY_CUTOUT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_RIGHT_DISPLAY_CUTOUT, mFrame=[100000,0][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_DISPLAY_CUTOUT, mFrame=[0,100000][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_TOP_TAPPABLE_ELEMENT, mFrame=[0,0][1080,91], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_BOTTOM_TAPPABLE_ELEMENT, mFrame=[0,2274][1080,2400], mVisible=true, mInsetsRoundedCornerFrame=false}, InsetsSource: {mType=ITYPE_IME, mFrame=[0,0][0,0], mVisibleFrame=[0,1409][1080,2400], mVisible=false, mInsetsRoundedCornerFrame=false} } host=com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity from=android.view.ViewRootImpl.setView:1732
 03-08 15:13:40.175 26361 26361 I ViewRootImpl@311210d[Admin]: setView = com.android.internal.policy.DecorView@38d2349 TM=true
 03-08 15:13:40.180 26361 26361 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@38d2349[Admin]
 03-08 15:13:40.180 26486 26486 I oid.samsungpass: Using CollectorTypeCC GC.
@@ -240,8 +240,8 @@
 03-08 15:13:40.208 26361 26361 I ViewRootImpl@311210d[Admin]:   bhv=DEFAULT
 03-08 15:13:40.208 26361 26361 I ViewRootImpl@311210d[Admin]:   fitSides= naviIconColor=0
 03-08 15:13:40.208 26361 26361 I ViewRootImpl@311210d[Admin]:   sfl=100000}
-03-08 15:13:40.209  1472  5215 V WindowManager: Relayout Window{18176f7 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin}: viewVisibility=0 req=1080x2400 d0
-03-08 15:13:40.209  1327  1414 I SurfaceFlinger: id=35368 createSurf, flag=40004, com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368
+03-08 15:13:40.209  1472  5215 V WindowManager: Relayout Window{18176f7 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:40.209  1327  1414 I SurfaceFlinger: id=35368 createSurf, flag=40004, com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368
 03-08 15:13:40.213  1327  1414 I SurfaceFlinger: id=35369 createSurf, flag=24000, Surface(name=c9f16ce StatusBar)/@0xc28a9d9 - animation-leash of insets_animation#35369
 03-08 15:13:40.214  1327  1414 I SurfaceFlinger: id=35370 createSurf, flag=24000, Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35370
 03-08 15:13:40.216  2578  2578 D NavigationBar: onSystemBarAttributesChanged() -  displayId:0, appearance:16, packageName: com.example.cmput301w24t33 (APPEARANCE_LIGHT_NAVIGATION_BARS ), navbarColorManagedByIme:false
@@ -299,7 +299,7 @@
 03-08 15:13:40.245  1327  1327 I Layer   : id=35353 Destroyed Surface(name=296f76f NavigationBar0)/@0x8bb6395 - animation-leash of insets_animation#35353
 03-08 15:13:40.246   603   603 I lmkd    : Reclaim 'com.samsung.android.app.routines:RoutineUIProcess' (25889), uid 10052, oom_score_adj 955, state 19 to free 100212kB rss, 24872kb swap
 03-08 15:13:40.246   603   603 I lmkd    : Reclaimed 125084kB at oom_score_adj 850
-03-08 15:13:40.246  1472  5215 D InputDispatcher: Focus request (0): 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin but waiting because NO_WINDOW
+03-08 15:13:40.246  1472  5215 D InputDispatcher: Focus request (0): 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity but waiting because NO_WINDOW
 03-08 15:13:40.252  5242  5242 I Utils   : isCurrentUser current = 0, ownerId = 0
 03-08 15:13:40.253  5242  5242 I TrayVisibilityController: getComputedTrayVisible : keyguardState = 1
 03-08 15:13:40.253  5242  5242 I TrayVisibilityController: updateTrayVisible: State=1 visible=1 mCurrentVisible=1 specificMode=0
@@ -356,15 +356,15 @@
 03-08 15:13:40.394  1327  1327 I Layer   : id=35360 removedFromDrawingState Task=3066#35360 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35361 removedFromDrawingState ActivityRecord{68828a4 u0 com.example.cmput301w24t33/.activities.Admin} t3066}#35361 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35366 removedFromDrawingState 4023b37 ActivityRecordInputSink com.example.cmput301w24t33/.activities.Admin#35366 (134)
-03-08 15:13:40.394  1327  1327 I Layer   : id=35367 removedFromDrawingState 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin#35367 (134)
-03-08 15:13:40.394  1327  1327 I Layer   : id=35368 removedFromDrawingState com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368 (134)
+03-08 15:13:40.394  1327  1327 I Layer   : id=35367 removedFromDrawingState 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity#35367 (134)
+03-08 15:13:40.394  1327  1327 I Layer   : id=35368 removedFromDrawingState com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35362 removedFromDrawingState b6cc904 Splash Screen com.example.cmput301w24t33#35362 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35363 removedFromDrawingState Splash Screen com.example.cmput301w24t33$_2578#35363 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35360 addToCurrentState Task=3066#35360 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35361 addToCurrentState ActivityRecord{68828a4 u0 com.example.cmput301w24t33/.activities.Admin} t3066}#35361 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35366 addToCurrentState 4023b37 ActivityRecordInputSink com.example.cmput301w24t33/.activities.Admin#35366 (134)
-03-08 15:13:40.394  1327  1327 I Layer   : id=35367 addToCurrentState 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin#35367 (134)
-03-08 15:13:40.394  1327  1327 I Layer   : id=35368 addToCurrentState com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368 (134)
+03-08 15:13:40.394  1327  1327 I Layer   : id=35367 addToCurrentState 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity#35367 (134)
+03-08 15:13:40.394  1327  1327 I Layer   : id=35368 addToCurrentState com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35362 addToCurrentState b6cc904 Splash Screen com.example.cmput301w24t33#35362 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : id=35363 addToCurrentState Splash Screen com.example.cmput301w24t33$_2578#35363 (134)
 03-08 15:13:40.394  1327  1327 I Layer   : Layer [com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity$_3258#35351] hidden!! flag(1)
@@ -401,7 +401,7 @@
 03-08 15:13:40.416 26361 26459 I Tracing : Tracer added: class androidx.test.platform.tracing.AndroidXTracer
 03-08 15:13:40.419  1472  1876 W ziparchive: Unable to open '/data/app/~~W-ddUiX8JS3WzrZIN8mU0w==/com.example.cmput301w24t33-E7e2aXhTzEvn2QLsQTpRuw==/base.dm': No such file or directory
 03-08 15:13:40.420  1472  3480 V WindowManager: Relayout Window{25ecb59 u0 com.sec.android.app.launcher/com.sec.android.app.launcher.activities.LauncherActivity}: viewVisibility=8 req=1080x2400 d0
-03-08 15:13:40.422  1472  1876 I PkgPredictorService-SecIpmManagerServiceImpl: reportToNAP uid:10451 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin thisTime:512
+03-08 15:13:40.422  1472  1876 I PkgPredictorService-SecIpmManagerServiceImpl: reportToNAP uid:10451 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity thisTime:512
 03-08 15:13:40.423 10149 10149 I dgdm    : onPause
 03-08 15:13:40.423 26361 26459 D EventInjectionStrategy: Creating injection strategy with input manager.
 03-08 15:13:40.424  1472  3480 V WindowManager: Relayout hash=25ecb59, pid=3258, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=nothing forwardNavigation} layoutInDisplayCutoutMode=shortEdges ty=BASE_APPLICATION fmt=TRANSPARENT wanim=0x10302f4
@@ -424,7 +424,7 @@
 03-08 15:13:40.426  3258  3258 I StateManager: goToState isInState Normal
 03-08 15:13:40.427  3258  3258 W LauncherAppWidgetHost: setShouldListenFlag, mFlags:7 flag:start on:false isFront:false
 03-08 15:13:40.427  1472  5215 I AppWidgetServiceImpl: stopListening callbacks : null
-03-08 15:13:40.427  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368] hidden!! flag(0)
+03-08 15:13:40.427  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368] hidden!! flag(0)
 03-08 15:13:40.427  3258  3258 W LauncherAppWidgetHost: stopListening, mFlags:2 isFront:false
 03-08 15:13:40.427  3258  3258 W Launcher.NotificationListener: removeNotificationsChangedListener
 03-08 15:13:40.427  3258  3258 I Launcher.NotificationListener: unregisterObserver, this is not notificationService!!
@@ -439,9 +439,9 @@
 03-08 15:13:40.431  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446147bf0 | 0100 | RGBA_8888    |    0.0    0.0   67.0  515.0 |    0  301   67  816 | com.samsung.android.app.cocktailbars[...]rvice.CocktailBarService$_5242#35333
 03-08 15:13:40.431  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446148210 | 0100 | RGBA_8888    |    0.0    0.0 1080.0  126.0 |    0 2274 1080 2400 | NavigationBar0$_2578#89
 03-08 15:13:40.431  1327  1327 D SurfaceFlinger:
-03-08 15:13:40.434  1327  3508 I SurfaceFlinger: id=35371 createSurf, flag=24000, Surface(name=18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin)/@0x8f4f73 - animation-leash of starting_reveal#35371
+03-08 15:13:40.434  1327  3508 I SurfaceFlinger: id=35371 createSurf, flag=24000, Surface(name=18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity)/@0x8f4f73 - animation-leash of starting_reveal#35371
 03-08 15:13:40.436   679   679 D keymaster_swd: keymaster_swd [WRN] (swd_run_cb:257) swd_begin() returns 0
-03-08 15:13:40.436  1472  3480 D InputDispatcher: Focus entered window (0): 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin
+03-08 15:13:40.436  1472  3480 D InputDispatcher: Focus entered window (0): 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity
 03-08 15:13:40.438  3258  3637 I LiveIconUpdateEventHandler: cancelMinuteChangeAlarm
 03-08 15:13:40.439  3258  3637 I LiveIconUpdateEventHandler: cancelDateChangeAlarm
 03-08 15:13:40.440 26361 26361 I ViewRootImpl@311210d[Admin]: MSG_WINDOW_FOCUS_CHANGED 1 0
@@ -650,7 +650,7 @@
 03-08 15:13:40.544 26554 26554 D nativeloader: Configuring clns-4 for other apk /data/app/~~UnVQJefbMBJhtsnL3j7xrQ==/com.brave.browser-PnHgPB-Y5hHmZU45T0KiUw==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~UnVQJefbMBJhtsnL3j7xrQ==/com.brave.browser-PnHgPB-Y5hHmZU45T0KiUw==/lib/arm64:/data/app/~~UnVQJefbMBJhtsnL3j7xrQ==/com.brave.browser-PnHgPB-Y5hHmZU45T0KiUw==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.brave.browser
 03-08 15:13:40.545  1327  1327 I Layer   : id=35362 removedFromDrawingState b6cc904 Splash Screen com.example.cmput301w24t33#35362 (132)
 03-08 15:13:40.545  1327  1327 I Layer   : id=35363 removedFromDrawingState Splash Screen com.example.cmput301w24t33$_2578#35363 (132)
-03-08 15:13:40.545  1327  1327 I Layer   : id=35371 removedFromDrawingState Surface(name=18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin)/@0x8f4f73 - animation-leash of starting_reveal#35371 (132)
+03-08 15:13:40.545  1327  1327 I Layer   : id=35371 removedFromDrawingState Surface(name=18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity)/@0x8f4f73 - animation-leash of starting_reveal#35371 (132)
 03-08 15:13:40.545  1327  1327 I Layer   : id=35363 removedFromDrawingState Splash Screen com.example.cmput301w24t33$_2578#35363 (132)
 03-08 15:13:40.545  1327  1327 I SurfaceFlinger: id=35362 Removed b6cc904 Splash Screen com.example.cmput301w24t33#35362 (132)
 03-08 15:13:40.545  1327  1327 I SurfaceFlinger: id=35363 Removed Splash Screen com.example.cmput301w24t33$_2578#35363 (132)
@@ -834,7 +834,7 @@
 03-08 15:13:40.808 26361 26361 I ViewRootImpl@311210d[Admin]:   bhv=DEFAULT
 03-08 15:13:40.808 26361 26361 I ViewRootImpl@311210d[Admin]:   fitSides= naviIconColor=0
 03-08 15:13:40.808 26361 26361 I ViewRootImpl@311210d[Admin]:   sfl=100000}
-03-08 15:13:40.809  1472  3480 V WindowManager: Relayout Window{18176f7 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin}: viewVisibility=0 req=1080x2400 d0
+03-08 15:13:40.809  1472  3480 V WindowManager: Relayout Window{18176f7 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity}: viewVisibility=0 req=1080x2400 d0
 03-08 15:13:40.812  1472  3480 V WindowManager: Relayout hash=18176f7, pid=26361, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=resize} ty=BASE_APPLICATION wanim=0x1030309
 03-08 15:13:40.812  1472  3480 V WindowManager:   fl=81810100
 03-08 15:13:40.812  1472  3480 V WindowManager:   pfl=12020040
@@ -1317,8 +1317,8 @@
 03-08 15:13:41.950 26898 26898 D NetworkSecurityConfig: No Network Security Config specified, using platform default
 03-08 15:13:41.951  1257  1326 I HYPER-HAL: [RequestManager.cpp]acquire(): Acquired ID : 12794225  [5044 / 14]    HINT : APP_START    list :
 03-08 15:13:41.951  1257  1326 I HYPER-HAL: [ResourceManager.cpp]updateResource(): [CPUMaxFreq] UpdateResource Request ID : 12794225    Value : 2208000
-03-08 15:13:41.955 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@4aaf27f in: PAUSED
-03-08 15:13:41.956 26361 26361 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=com.example.cmput301w24t33.activities.Admin@4aaf27f
+03-08 15:13:41.955 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.AdminActivity@4aaf27f in: PAUSED
+03-08 15:13:41.956 26361 26361 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=com.example.cmput301w24t33.activities.AdminActivity@4aaf27f
 03-08 15:13:41.957  2578  2664 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
 03-08 15:13:41.960  3258  3258 I TopTaskTracker: onTaskMovedToFront : taskId = 3067
 03-08 15:13:41.966  1472  3440 I AS.AudioService: uid:10333is using audio
@@ -1352,7 +1352,7 @@
 03-08 15:13:41.994  1472  5031 V WindowManager:   apr=LIGHT_STATUS_BARS LIGHT_NAVIGATION_BARS
 03-08 15:13:41.994  1472  5031 V WindowManager:   bhv=DEFAULT
 03-08 15:13:41.994  1472  5031 V WindowManager:   fitSides= naviIconColor=0}
-03-08 15:13:41.995  1472  1503 D InputDispatcher: Focus left window (0): 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin
+03-08 15:13:41.995  1472  1503 D InputDispatcher: Focus left window (0): 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity
 03-08 15:13:41.996  2578  2656 I ViewRootImpl@8a64a32[test]: updateBlastSurfaceIfNeeded mBlastBufferQueue=null isSameSurfaceControl=false
 03-08 15:13:41.997  2578  2656 I BLASTBufferQueue: new BLASTBufferQueue, mName= ViewRootImpl@8a64a32[test] mNativeObject= 0xb400007ce2105680 sc.mNativeObject= 0xb400007c52e5a440 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885 android.view.Choreographer$CallbackRecord.run:1301 android.view.Choreographer$CallbackRecord.run:1309 android.view.Choreographer.doCallbacks:923 android.view.Choreographer.doFrame:852 android.view.Choreographer$FrameDisplayEventReceiver.run:1283
 03-08 15:13:41.997  2578  2656 I BLASTBufferQueue: update, w= 1080 h= 2400 mName = ViewRootImpl@8a64a32[test] mNativeObject= 0xb400007ce2105680 sc.mNativeObject= 0xb400007c52e5a440 format= -3 caller= android.graphics.BLASTBufferQueue.<init>:84 android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:2909 android.view.ViewRootImpl.relayoutWindow:9847 android.view.ViewRootImpl.performTraversals:3884 android.view.ViewRootImpl.doTraversal:3116 android.view.ViewRootImpl$TraversalRunnable.run:10885
@@ -1389,7 +1389,7 @@
 03-08 15:13:42.040   603   603 I lmkd    : Reclaim 'com.samsung.android.authfw' (26607), uid 5278, oom_score_adj 905, state 19 to free 87876kB rss, 24832kb swap
 03-08 15:13:42.040   603   603 I lmkd    : Reclaimed 112708kB at oom_score_adj 850
 03-08 15:13:42.042  1327  1327 I Layer   : Layer [Splash Screen com.example.cmput301w24t33.test$_2578#35376] hidden!! flag(0)
-03-08 15:13:42.043  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368] hidden!! flag(1)
+03-08 15:13:42.043  1327  1327 I Layer   : Layer [com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368] hidden!! flag(1)
 03-08 15:13:42.046   603   603 W lmkd    : Failed to open /proc/26652/oom_score_adj; errno=2: process 26652 might have been killed
 03-08 15:13:42.048  1327  1327 D SurfaceFlinger: Display 4630947232161729153 HWC layers:
 03-08 15:13:42.048  1327  1327 D SurfaceFlinger:      DEVICE | 0xb400007446149860 | 0100 | RGBA_8888    |    0.0    0.0 1080.0 2400.0 |    0    0 1080 2400 | Splash Screen com.example.cmput301w24t33.test$_2578#35376
@@ -1408,11 +1408,11 @@
 03-08 15:13:42.078 26952 26952 I t301w24t33.test: Using CollectorTypeCC GC.
 03-08 15:13:42.094 26361 26361 I ViewRootImpl@311210d[Admin]: handleAppVisibility mAppVisible = true visible = false
 03-08 15:13:42.096 26361 26361 I ViewRootImpl@311210d[Admin]: stopped(true) old = false
-03-08 15:13:42.096 26361 26361 I ViewRootImpl@311210d[Admin]: WindowStopped on com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin set to true
+03-08 15:13:42.096 26361 26361 I ViewRootImpl@311210d[Admin]: WindowStopped on com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity set to true
 03-08 15:13:42.097 26934 26934 D nativeloader: Configuring clns-4 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~qZfaCzdmQBABvXnJ95C3mA==/com.android.vending-p7X2hj1wUbHKwH1yuQ8RDA==/lib/arm64:/data/app/~~qZfaCzdmQBABvXnJ95C3mA==/com.android.vending-p7X2hj1wUbHKwH1yuQ8RDA==/base.apk!/lib/arm64-v8a:/data/app/~~qZfaCzdmQBABvXnJ95C3mA==/com.android.vending-p7X2hj1wUbHKwH1yuQ8RDA==/split_config.arm64_v8a.apk!/lib/arm64-v8a:/data/app/~~qZfaCzdmQBABvXnJ95C3mA==/com.android.vending-p7X2hj1wUbHKwH1yuQ8RDA==/split_config.en.apk!/lib/arm64-v8a:/data/app/~~qZfaCzdmQBABvXnJ95C3mA==/com.android.vending-p7X2hj1wUbHKwH1yuQ8RDA==/split_phonesky_data_loader.apk!/lib/arm64-v8a:/data/app/~~qZfaCzdmQBABvXnJ95C3mA==/com.android.vending-p7X2hj1wUbHKwH1yuQ8RDA==/split_phonesky_data_loader.config.arm64_v8a.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.android.vending
 03-08 15:13:42.097 26934 26934 D nativeloader: Extending system_exposed_libraries: libhumantracking.arcsoft.so:libPortraitDistortionCorrection.arcsoft.so:libPortraitDistortionCorrectionCali.arcsoft.so:libface_landmark.arcsoft.so:libFacialStickerEngine.arcsoft.so:libveengine.arcsoft.so:liblow_light_hdr.arcsoft.so:libhigh_dynamic_range.arcsoft.so:libFacialAttributeDetection.arcsoft.so:libBeauty_v4.camera.samsung.so:libexifa.camera.samsung.so:libjpega.camera.samsung.so:libOpenCv.camera.samsung.so:libImageScreener.camera.samsung.so:libMyFilter.camera.samsung.so:libtensorflowLite.myfilter.camera.samsung.so:libtensorflowlite_inference_api.myfilter.camera.samsung.so:libEventFinder.camera.samsung.so:libSmartScan.camera.samsung.so:libRectify.camera.samsung.so:libDocRectifyWrapper.camera.samsung.so:libUltraWideDistortionCorrection.camera.samsung.so:libWideDistortionCorrection.camera.samsung.so:libHpr_RecGAE_cvFeature_v1.0.camera.samsung.so:libHprFace_GAE_api.camera.samsung.so:libFace_Landmark_API.camera.samsung.so:libHprFace_GAE_jni.camera.samsung.so:libFacialBase
-03-08 15:13:42.099 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@4aaf27f in: STOPPED
-03-08 15:13:42.101 26361 26361 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=com.example.cmput301w24t33.activities.Admin@4aaf27f
+03-08 15:13:42.099 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.AdminActivity@4aaf27f in: STOPPED
+03-08 15:13:42.101 26361 26361 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=com.example.cmput301w24t33.activities.AdminActivity@4aaf27f
 03-08 15:13:42.101 30985 30990 I adbd    : jdwp connection from 26952
 03-08 15:13:42.104   604   614 I servicemanager: 'com.samsung.android.pass.IPassService' died
 03-08 15:13:42.106   603   603 I lmkd    : cached 2, sandbox(not0) 0
@@ -1433,7 +1433,7 @@
 03-08 15:13:42.132 26361 26361 I ViewRootImpl@311210d[Admin]:   bhv=DEFAULT
 03-08 15:13:42.132 26361 26361 I ViewRootImpl@311210d[Admin]:   fitSides= naviIconColor=0
 03-08 15:13:42.132 26361 26361 I ViewRootImpl@311210d[Admin]:   sfl=100000}
-03-08 15:13:42.133  1472  2682 V WindowManager: Relayout Window{18176f7 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin}: viewVisibility=8 req=1080x2400 d0
+03-08 15:13:42.133  1472  2682 V WindowManager: Relayout Window{18176f7 u0 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity}: viewVisibility=8 req=1080x2400 d0
 03-08 15:13:42.135  1472  2682 V WindowManager: Relayout hash=18176f7, pid=26361, syncId=-1: mAttrs={(0,0)(fillxfill) sim={adjust=pan} ty=BASE_APPLICATION wanim=0x1030309
 03-08 15:13:42.135  1472  2682 V WindowManager:   fl=81810100
 03-08 15:13:42.135  1472  2682 V WindowManager:   pfl=12020040
@@ -1467,7 +1467,7 @@
 03-08 15:13:42.166  1180  1180 I Zygote  : Process 26697 exited due to signal 9 (Killed)
 03-08 15:13:42.168  1472  2391 D AS.MultiSoundManager: mForegroundUid = 10453
 03-08 15:13:42.175   603   603 I lmkd    : cached 2, sandbox(not0) 0
-03-08 15:13:42.176  1327  1327 I Layer   : id=35368 removedFromDrawingState com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368 (135)
+03-08 15:13:42.176  1327  1327 I Layer   : id=35368 removedFromDrawingState com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368 (135)
 03-08 15:13:42.178 26952 26952 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
 03-08 15:13:42.179  1472  3678 I MediaSessionMonitor: Media session stopped : diffrent pkg
 03-08 15:13:42.181  5242  5242 I ActivityUtils: HomePackage : com.sec.android.app.launcher, resumePackageName : com.example.cmput301w24t33.test
@@ -1475,12 +1475,12 @@
 03-08 15:13:42.182 26952 26952 D nativeloader: Extending system_exposed_libraries: libhumantracking.arcsoft.so:libPortraitDistortionCorrection.arcsoft.so:libPortraitDistortionCorrectionCali.arcsoft.so:libface_landmark.arcsoft.so:libFacialStickerEngine.arcsoft.so:libveengine.arcsoft.so:liblow_light_hdr.arcsoft.so:libhigh_dynamic_range.arcsoft.so:libFacialAttributeDetection.arcsoft.so:libBeauty_v4.camera.samsung.so:libexifa.camera.samsung.so:libjpega.camera.samsung.so:libOpenCv.camera.samsung.so:libImageScreener.camera.samsung.so:libMyFilter.camera.samsung.so:libtensorflowLite.myfilter.camera.samsung.so:libtensorflowlite_inference_api.myfilter.camera.samsung.so:libEventFinder.camera.samsung.so:libSmartScan.camera.samsung.so:libRectify.camera.samsung.so:libDocRectifyWrapper.camera.samsung.so:libUltraWideDistortionCorrection.camera.samsung.so:libWideDistortionCorrection.camera.samsung.so:libHpr_RecGAE_cvFeature_v1.0.camera.samsung.so:libHprFace_GAE_api.camera.samsung.so:libFace_Landmark_API.camera.samsung.so:libHprFace_GAE_jni.camera.samsung.so:libFacialBase
 03-08 15:13:42.184 26952 26952 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
 03-08 15:13:42.185   603   603 I lmkd    : cached 3, sandbox(not0) 0
-03-08 15:13:42.186  1327  2296 I SurfaceFlinger: id=35368 Removed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368 (135)
+03-08 15:13:42.186  1327  2296 I SurfaceFlinger: id=35368 Removed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368 (135)
 03-08 15:13:42.188 26952 26952 D nativeloader: Configuring clns-5 for other apk /system/framework/android.test.runner.jar. target_sdk_version=34, uses_libraries=ALL, library_path=/data/app/~~5YYnvnDDujNmeUExSm1Obg==/com.example.cmput301w24t33.test-SwK-uf5IpLknilFLzbt1hg==/lib/arm64, permitted_path=/data:/mnt/expand:/data/user/0/com.example.cmput301w24t33.test
 03-08 15:13:42.188 26952 26952 D nativeloader: Extending system_exposed_libraries: libhumantracking.arcsoft.so:libPortraitDistortionCorrection.arcsoft.so:libPortraitDistortionCorrectionCali.arcsoft.so:libface_landmark.arcsoft.so:libFacialStickerEngine.arcsoft.so:libveengine.arcsoft.so:liblow_light_hdr.arcsoft.so:libhigh_dynamic_range.arcsoft.so:libFacialAttributeDetection.arcsoft.so:libBeauty_v4.camera.samsung.so:libexifa.camera.samsung.so:libjpega.camera.samsung.so:libOpenCv.camera.samsung.so:libImageScreener.camera.samsung.so:libMyFilter.camera.samsung.so:libtensorflowLite.myfilter.camera.samsung.so:libtensorflowlite_inference_api.myfilter.camera.samsung.so:libEventFinder.camera.samsung.so:libSmartScan.camera.samsung.so:libRectify.camera.samsung.so:libDocRectifyWrapper.camera.samsung.so:libUltraWideDistortionCorrection.camera.samsung.so:libWideDistortionCorrection.camera.samsung.so:libHpr_RecGAE_cvFeature_v1.0.camera.samsung.so:libHprFace_GAE_api.camera.samsung.so:libFace_Landmark_API.camera.samsung.so:libHprFace_GAE_jni.camera.samsung.so:libFacialBase
 03-08 15:13:42.190 26952 26952 W ziparchive: Unable to open '/data/app/~~5YYnvnDDujNmeUExSm1Obg==/com.example.cmput301w24t33.test-SwK-uf5IpLknilFLzbt1hg==/base.dm': No such file or directory
 03-08 15:13:42.190 26952 26952 W ziparchive: Unable to open '/data/app/~~5YYnvnDDujNmeUExSm1Obg==/com.example.cmput301w24t33.test-SwK-uf5IpLknilFLzbt1hg==/base.dm': No such file or directory
-03-08 15:13:42.194  1327  1327 I Layer   : id=35368 Destroyed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin$_26361#35368
+03-08 15:13:42.194  1327  1327 I Layer   : id=35368 Destroyed com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity$_26361#35368
 03-08 15:13:42.196   603   603 I lmkd    : cached 3, sandbox(not0) 0
 03-08 15:13:42.201 26934 26934 I Finsky:background: [2] agsk.bB(289): Finished reading experiment flags from file [0tGUNCGIkbk4o6-fQ335kUYSKwVj4lusnHT-A5Dsy08] numFlags=1597.
 03-08 15:13:42.201  1273  1344 E ANDR-PERF-UTIL: Failed to update node /proc/3258/sched_low_latency with value 1
@@ -1576,7 +1576,7 @@
 03-08 15:13:42.362 26952 26952 I MSHandlerLifeCycle: removeMultiSplitHandler: no exist. decor=DecorView@7508899[]
 03-08 15:13:42.365 27004 27004 I .filterprovider: Using CollectorTypeCC GC.
 03-08 15:13:42.368   603   603 I lmkd    : cached 3, sandbox(not0) 0
-03-08 15:13:42.369 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.Admin@4aaf27f in: DESTROYED
+03-08 15:13:42.369 26361 26361 D LifecycleMonitor: Lifecycle status change: com.example.cmput301w24t33.activities.AdminActivity@4aaf27f in: DESTROYED
 03-08 15:13:42.369 26361 26361 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
 03-08 15:13:42.371 27004 27004 E .filterprovider: Not starting debugger since process cannot load the jdwp agent.
 03-08 15:13:42.372 26934 27006 I Finsky:background: [460] ohp.i(6): getDownloads()
@@ -1590,19 +1590,19 @@
 03-08 15:13:42.414 26361 26463 D OpenGLRenderer: setSurface called with nullptr
 03-08 15:13:42.414 26361 26361 I ViewRootImpl@311210d[Admin]: dispatchDetachedFromWindow
 03-08 15:13:42.415  1472  2910 D InputTransport: Input channel destroyed: '18176f7', fd=953
-03-08 15:13:42.415  1472  2910 W InputManager-JNI: Input channel object '18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin (client)' was disposed without first being removed with the input manager!
+03-08 15:13:42.415  1472  2910 W InputManager-JNI: Input channel object '18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity (client)' was disposed without first being removed with the input manager!
 03-08 15:13:42.415  1472  2910 D InputTransport: Input channel destroyed: '18176f7', fd=977
 03-08 15:13:42.416  1327  2296 I SurfaceFlinger: id=35379 createSurf, flag=24004, Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35379
 03-08 15:13:42.417 26952 26996 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
 03-08 15:13:42.419 27004 27004 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 1000; state: ENABLED
 03-08 15:13:42.423 27851 21078 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
 03-08 15:13:42.424 26361 26361 D InputTransport: Input channel destroyed: '18176f7', fd=106
-03-08 15:13:42.427  1327  1327 I Layer   : id=35367 removedFromDrawingState 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin#35367 (135)
+03-08 15:13:42.427  1327  1327 I Layer   : id=35367 removedFromDrawingState 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity#35367 (135)
 03-08 15:13:42.427  1327  1327 I Layer   : id=35372 removedFromDrawingState Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35372 (135)
-03-08 15:13:42.427  1327  1327 I SurfaceFlinger: id=35367 Removed 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin#35367 (135)
+03-08 15:13:42.427  1327  1327 I SurfaceFlinger: id=35367 Removed 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity#35367 (135)
 03-08 15:13:42.427  1327  2100 I SurfaceFlinger: id=35300 Removed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35300 (135)
 03-08 15:13:42.427  1327  1327 I SurfaceFlinger: id=35372 Removed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35372 (135)
 03-08 15:13:42.428  1327  1327 I Layer   : id=35300 Destroyed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35300
-03-08 15:13:42.428  1327  1327 I Layer   : id=35367 Destroyed 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.Admin#35367
+03-08 15:13:42.428  1327  1327 I Layer   : id=35367 Destroyed 18176f7 com.example.cmput301w24t33/com.example.cmput301w24t33.activities.AdminActivity#35367
 03-08 15:13:42.428  1327  1327 I Layer   : id=35372 Destroyed Surface(name=a2c6971 InputMethod)/@0x3034fd7 - animation-leash of insets_animation#35372
-03-08 15:13:42.428 26361 26459 I TestRunner: finished: testAdminViewEvent(com.example.cmput301w24t33.AdminUITest)
+03-08 15:13:42.428 26361 26459 I TestRunner: finished: testAdminViewEvent(com.example.cmput301w24t33.AdminActivityUITest)

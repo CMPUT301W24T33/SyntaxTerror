@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?backgroundColor"
-    tools:context=".activities.Organizer">
+    tools:context=".activities.OrganizerActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -17,8 +17,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:navigationIcon="@drawable/ic_back_arrow"
-        android:theme="@style/Theme.ActionBar">
+        app:navigationIcon="?backArrow"
+        android:theme="@style/Theme.ActionBar"
+        style="@style/Theme.ActionBar">
 
         <!-- Share QR Code Button -->
         <ImageButton
@@ -28,7 +29,7 @@
             android:layout_gravity="end"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/share_qr_code"
-            android:src="@drawable/ic_share"
+            android:src="?shareIcon"
             android:scaleType="centerInside"
             android:adjustViewBounds="true"
             app:layout_constraintTop_toTopOf="parent"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SyntaxTerror</string>
+    <string name="app_name">Sociables</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notification_dialog_title_hint">title</string>
@@ -48,5 +48,7 @@
     <string name="create">Create</string>
     <string name="check_in_event">Check Into Event</string>
     <string name="Find_poster_event">Find Event</string>
+    <string name="find_event">Find Event</string>
+    <string name="check_into_event">Check into Event</string>
 
 </resources>

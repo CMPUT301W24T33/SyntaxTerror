@@ -28,7 +28,7 @@ import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
-import com.example.cmput301w24t33.events.RemovePoster;
+import com.example.cmput301w24t33.events.EventRemovePoster;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.google.android.material.snackbar.Snackbar;
@@ -93,23 +93,22 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      * @param event The event object used to populate action button functions.
      */
     public void setupActionButtons(Event event) {
-        // ADD METHOD TO SHARE QR CODE
-        binding.shareQrCodeButton.setOnClickListener(v -> {});
-
         // Navigation back to the previous fragment
         binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         // Navigation to the event attendees fragment
-        binding.checkInsButton.setOnClickListener(v -> replaceFragment(EventAttendees.newInstance(event)));
+        binding.checkInsButton.setOnClickListener(v -> replaceFragment(EventCheckedIn.newInstance(event)));
 
         // Navigation to the event sign ups fragment
-        binding.signUpsButton.setOnClickListener(v -> replaceFragment(EventSignedUp.newInstance(event.getSignedUp())));
+        binding.signUpsButton.setOnClickListener(v -> replaceFragment(EventSignedUp.newInstance(event)));
 
         // Navigation to the notifications organizer fragment
-        binding.notificationsButton.setOnClickListener(v -> replaceFragment(NotificationsOrganizer.newInstance(event)));
+        binding.notificationsButton.setOnClickListener(v -> replaceFragment(EventNotifications.newInstance(event)));
 
         // Navigation to the event edit fragment
         binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
+
+        // Share QR Code
         binding.shareQrCodeButton.setOnClickListener(v -> {
             ShareQRFragment
                     .newInstance(event,this)
@@ -118,7 +117,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         });
         binding.eventPosterImageView.setOnClickListener(v -> {
             if(event.getImageUrl() != null) {   // there is an image in poster imageview, get it and pass forward
-                replaceFragment(RemovePoster.newInstance(event));
+                replaceFragment(EventRemovePoster.newInstance(event));
             }
             else{
                 Snackbar.make(binding.getRoot(), "Event has no poster to remove", Snackbar.LENGTH_SHORT).show();
@@ -137,7 +136,7 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         String endDateTimeStr = dateFormat.format(event.getEndDateTIme().toDate());
         String eventDateTime = startDateTimeStr + " - " + endDateTimeStr;
 
-        binding.eventNameTextView.setText(event.getEventDescription());
+        binding.eventNameTextView.setText(event.getName());
         binding.eventLocationTextView.setText(event.getLocationName());
         binding.eventDescriptionTextView.setText(event.getEventDescription());
         binding.eventStartEndDateTimeTextView.setText(eventDateTime);
