@@ -73,11 +73,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private String eventImageUrl;
     // set to false if entering image select from gallery activity, turns true if upload or exit
     private boolean doneImageUpload = true;
-    private Calendar tempStartDateTime = Calendar.getInstance();
-    private Calendar tempEndDateTime = Calendar.getInstance();
+    private Calendar tempStartDateTime = null;
+    private Calendar tempEndDateTime = null;
     private String locationName;
     private String locationCoord;
-
     private ActivityResultLauncher<Intent> launcher = defineLauncher();
 
     /**
@@ -254,6 +253,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 dateTimeFormat.format(eventToEdit.getStartDateTime().toDate()) : "";
         String endDateTime = eventToEdit.getEndDateTIme() != null ?
                 dateTimeFormat.format(eventToEdit.getEndDateTIme().toDate()) : "";
+        tempStartDateTime = Calendar.getInstance();
+        tempEndDateTime = Calendar.getInstance();
+        tempStartDateTime.setTime(eventToEdit.getStartDateTime().toDate());
+        tempEndDateTime.setTime(eventToEdit.getEndDateTIme().toDate());
 
         // Load data into relevant field
         binding.eventNameEditText.setText(eventToEdit.getName());
@@ -266,8 +269,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         eventImageUrl = eventToEdit.getImageUrl();
         locationCoord = eventToEdit.getLocationCoord();
         locationName = eventToEdit.getLocationName();
-        tempStartDateTime.setTime(eventToEdit.getStartDateTime().toDate());
-        tempEndDateTime.setTime(eventToEdit.getEndDateTIme().toDate());
         // Removes QR Code button
         binding.generateQrCodeButton.setVisibility(View.INVISIBLE);
         qrcode = eventToEdit.getCheckInQR();
@@ -342,6 +343,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         }
         else if(tempEndDateTime == null){
             Snackbar.make(binding.getRoot(), "Please choose event end time", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(!tempEndDateTime.after(tempStartDateTime)) {
+            Snackbar.make(binding.getRoot(), "End time must be after start time.", Snackbar.LENGTH_LONG).show();
             return false;
         }
         Log.d("End time", tempEndDateTime.getTime().toString());
@@ -436,6 +441,13 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * @param isStart A boolean flag indicating whether the start date (true) or the end date (false) is being set.
      */
     private void showDatePickerDialog(boolean isStart) {
+        if (isStart && tempStartDateTime == null) {
+            tempStartDateTime = Calendar.getInstance();
+        }
+        // Only initialize tempEndDateTime if isStart is false
+        if (!isStart && tempEndDateTime == null) {
+            tempEndDateTime = Calendar.getInstance();
+        }
         final Calendar initialCalendar = isStart ? tempStartDateTime : tempEndDateTime;
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 requireContext(),
@@ -466,24 +478,17 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 getContext(),
                 (view, hourOfDay, minuteOfHour) -> {
-                    Calendar chosenDateTime = (Calendar) (isStart ? tempStartDateTime.clone() : tempEndDateTime.clone());
-                    chosenDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                    chosenDateTime.set(Calendar.MINUTE, minuteOfHour);
                     if (isStart) {
                         tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
                     } else {
-                        if (chosenDateTime.before(tempStartDateTime)) {
-                            Toast.makeText(getContext(), "End time must be after start time.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
                         tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
                     }
                     updateDateTimeUI(isStart);
                 },
-                tempStartDateTime.get(Calendar.HOUR_OF_DAY),
-                tempStartDateTime.get(Calendar.MINUTE),
+                isStart ? tempStartDateTime.get(Calendar.HOUR_OF_DAY) : tempEndDateTime.get(Calendar.HOUR_OF_DAY),
+                isStart ? tempStartDateTime.get(Calendar.MINUTE) : tempEndDateTime.get(Calendar.MINUTE),
                 DateFormat.is24HourFormat(getContext())
         );
 
