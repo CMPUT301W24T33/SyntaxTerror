@@ -126,19 +126,19 @@
 69        </activity>
 70        <activity
 70-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:40:9-42:40
-71            android:name="com.example.cmput301w24t33.activities.Admin"
+71            android:name="com.example.cmput301w24t33.activities.AdminActivity"
 71-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:41:13-45
 72            android:exported="false" />
 72-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:42:13-37
 73        <activity
 73-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:43:9-45:40
-74            android:name="com.example.cmput301w24t33.activities.Attendee"
+74            android:name="com.example.cmput301w24t33.activities.AttendeeActivity"
 74-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:44:13-48
 75            android:exported="false" />
 75-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:45:13-37
 76        <activity
 76-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:46:9-48:40
-77            android:name="com.example.cmput301w24t33.activities.Organizer"
+77            android:name="com.example.cmput301w24t33.activities.OrganizerActivity"
 77-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:47:13-49
 78            android:exported="false" />
 78-->C:\Users\reece\CMPUT301\project\CMPUT301W24T33\app\src\main\AndroidManifest.xml:48:13-37

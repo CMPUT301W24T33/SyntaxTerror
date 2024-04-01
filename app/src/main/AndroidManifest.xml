@@ -16,9 +16,6 @@
         android:maxSdkVersion="34" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
-
-
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -40,13 +37,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.Admin"
+            android:name=".activities.AdminActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.Attendee"
+            android:name=".activities.AttendeeActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.Organizer"
+            android:name=".activities.OrganizerActivity"
             android:exported="false" />
         <activity android:name=".activities.AnonymousAuthActivity" />
 

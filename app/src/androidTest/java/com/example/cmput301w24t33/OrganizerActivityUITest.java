@@ -1,18 +1,15 @@
 package com.example.cmput301w24t33;
 
-import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 
 import androidx.test.espresso.action.ViewActions;
@@ -20,23 +17,20 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import com.example.cmput301w24t33.activities.Attendee;
-import com.example.cmput301w24t33.activities.Organizer;
+import com.example.cmput301w24t33.activities.OrganizerActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.concurrent.TimeUnit;
-
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 // Tests limited as no DB connectivity for RecyclerView population
-public class OrganizerUITest {
+public class OrganizerActivityUITest {
 
     @Rule
-    public ActivityScenarioRule<Organizer> scenario = new
-            ActivityScenarioRule<Organizer>(Organizer.class);
+    public ActivityScenarioRule<OrganizerActivity> scenario = new
+            ActivityScenarioRule<OrganizerActivity>(OrganizerActivity.class);
 
     @Test
     public void testOrganizerCreateEventFragment() {

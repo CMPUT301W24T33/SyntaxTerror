@@ -14,7 +14,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -39,22 +38,17 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.activities.Attendee;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * A fragment class for displaying and editing the profile of a user.
@@ -282,9 +276,10 @@ public class Profile extends Fragment {
         // Save button listener
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
-
-            // Save profile logic
-            saveProfile();
+            if(validInput(view)){
+                // Save profile logic
+                saveProfile();
+            }
         });
 
         // Remove image button listener
@@ -294,6 +289,28 @@ public class Profile extends Fragment {
             // can change button later to different location if needed
         });
 
+    }
+
+    /**
+     * Checks if user input is valid. Produces a snackbar if input is not valid explaining reason
+     *
+     * @param view The current view where the form fields are located.
+     */
+    private boolean validInput(View view) {
+        // User first name is empty
+        if(addFnameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(view, "First Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (addLnameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(view, "Last Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(addEmailEditText.getText().toString().trim()).matches()){
+            Snackbar.make(view, "Email must be in form of an email", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -308,6 +325,12 @@ public class Profile extends Fragment {
         EditText editLastName = view.findViewById(R.id.last_name_edit_text);
         EditText editEmail = view.findViewById(R.id.email_edit_text);
         */
+
+        if (profile == null) {
+            Log.e(TAG, "User object is null. Cannot load data.");
+            return; // Exit if profile is null
+        }
+
         addFnameEditText.setText(profile.getFirstName());
         addLnameEditText.setText(profile.getLastName());
         addEmailEditText.setText(profile.getEmail());
@@ -335,11 +358,12 @@ public class Profile extends Fragment {
         lName = addLnameEditText.getText().toString().trim();
         email = addEmailEditText.getText().toString().trim();
 
-        // Validate inputs
-        if (fName.isEmpty() || lName.isEmpty() || fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        // not sure what this regex is validating. left this in just incase
+        if (fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*")) {
             Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
             return;
         }
+
         profileToEdit.setFirstName(addFnameEditText.getText().toString());
         profileToEdit.setLastName(addLnameEditText.getText().toString());
         profileToEdit.setEmail(addEmailEditText.getText().toString());

@@ -9,7 +9,7 @@
     android:clickable="true"
     android:elevation="2dp"
     android:focusable="true"
-    tools:context=".organizerFragments.NotificationsOrganizer">
+    tools:context=".organizerFragments.EventNotifications">
 
     <RelativeLayout
         android:id="@+id/general_actionbar"

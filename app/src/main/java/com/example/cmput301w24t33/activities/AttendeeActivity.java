@@ -10,9 +10,12 @@ package com.example.cmput301w24t33.activities;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,8 +29,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.attendeeFragments.EventDetailsAttendee;
+import com.example.cmput301w24t33.databinding.AttendeeActivityBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;
@@ -42,18 +45,19 @@ import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.button.MaterialButton;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+
 import java.util.Set;
 
 
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
-public class Attendee extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
+public class AttendeeActivity extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
     private EventAdapter eventAdapter;
     private boolean viewingAllEvents = false;
     private AttendeeActivityBinding binding;
@@ -77,6 +81,13 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         binding = AttendeeActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Set up Background Animation
+        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
+        animation.setEnterFadeDuration(10);
+        animation.setExitFadeDuration(5000);
+        animation.start();
+
+
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
@@ -90,16 +101,49 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         setOnClickListeners();
     }
 
+    /**
+     * Handles actions to be taken when the activity resumes, including user authorization and events loading.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NotificationManager.initialize(this.getApplication());
+        setupViewModel();
+        setupActionbar();
+        Log.d(TAG, "RESUME");
+        eventViewModel.loadEvents();
+    }
+
 
     /**
      * Switches between viewing all events and events the user has signed up for.
      * Updates the UI to reflect the current view state.
      */
     private void switchEventView() {
-        viewingAllEvents = !viewingAllEvents;
-        updateDisplayedEvents();
-        binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+        // Recycler View Animations
+        Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+        Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+
+        binding.eventrecyclerview.startAnimation(fadeOut);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                viewingAllEvents = !viewingAllEvents;
+                updateDisplayedEvents();
+                binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+                binding.eventrecyclerview.startAnimation(fadeIn);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+        });
     }
+
 
     /**
      * Updates the RecyclerView to display either all events or only the events the user has signed up for,
@@ -134,17 +178,6 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         });
         eventViewModel.loadEvents();
 
-        /*
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        eventViewModel.getEventsLiveData().observe(this, events -> {
-            allEvents.clear();
-            allEvents.addAll(events);
-            eventListsFilter(events);
-            updateDisplayedEvents();
-        });
-        eventViewModel.loadEvents();
-        */
-
     }
 
     /**
@@ -163,6 +196,9 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
             if (event.getAttendees().contains(currentUser)) {
                 notificationTrackedEvents.add(event.getEventId());
             }
+            if (Objects.equals(event.getOrganizerId(), userId)) {
+                NotificationManager.getInstance().trackAttendeeUpdatesForEvent(event.getEventId());
+            }
         }
         NotificationManager.getInstance().trackMultipleEventsNotifications(notificationTrackedEvents);
     }
@@ -174,18 +210,6 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         fetchInfo(findViewById(R.id.profile_image));
         actionBarText.setText("Attend Events");
-    }
-
-    /**
-     * Handles actions to be taken when the activity resumes, including user authorization and events loading.
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        NotificationManager.initialize(this.getApplication());
-        setupViewModel();
-        Log.d(TAG, "RESUME");
-        eventViewModel.loadEvents();
     }
 
     /**
@@ -202,7 +226,7 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
      */
     public void authenticateUser() {
         userId = getAndroidId();
-        Log.d(TAG, "Attendee Android ID: " + userId);
+        Log.d(TAG, "AttendeeActivity Android ID: " + userId);
 
         //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
@@ -275,16 +299,16 @@ public class Attendee extends AppCompatActivity implements CreateProfile.OnUserC
 
         ImageButton userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
-            // Switch to Organizer activity
-            Intent intent = new Intent(Attendee.this, Organizer.class);
+            // Switch to OrganizerActivity activity
+            Intent intent = new Intent(AttendeeActivity.this, OrganizerActivity.class);
             intent.putExtra("user", currentUser);
             startActivity(intent);
             finish();
         });
 
         userMode.setOnLongClickListener(v -> {
-            // Switch to Admin activity
-            Intent intent = new Intent(Attendee.this, Admin.class);
+            // Switch to AdminActivity activity
+            Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
             intent.putExtra("uId", userId);
             startActivity(intent);
             finish();

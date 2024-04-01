@@ -27,6 +27,8 @@ public class NotificationRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private NotificationUpdateListener updateListener;
     private Map<String, ListenerRegistration> activeListeners = new HashMap<>();
+    private Map<String, ListenerRegistration> activeAttendeeListeners = new HashMap<>();
+
 
     /**
      * Constructs a NotificationRepository with a specific update listener. This repository manages notifications and their updates.
@@ -42,6 +44,16 @@ public class NotificationRepository {
     public interface NotificationUpdateListener {
         void onNotificationUpdate(Event event, Notification notification);
     }
+
+    /**
+     * Interface defining the callback for attendee count updates. Implementations of this interface
+     * receive the event, current attendee count, and maximum occupancy whenever the attendee list of an event changes.
+     */
+    public interface AttendeeUpdateListener {
+        void onAttendeeCountUpdate(Event event, int currentAttendeeCount, int maxOccupancy, Map<String, Boolean> milestones);
+    }
+
+
 
     /**
      * Interface for handling the fetch result of notifications. Implementations of this interface will receive a list of fetched notifications.
@@ -88,10 +100,22 @@ public class NotificationRepository {
         activeListeners.put(eventId, listener);
     }
 
+    /**
+     * Registers listeners for a batch of events to track their notifications. Each event ID in the set
+     * will have a listener added that triggers on notification updates.
+     *
+     * @param eventIds  A set of event IDs for which to add notification listeners.
+     */
     public void addEventListeners(@NonNull Set<String> eventIds) {
         eventIds.forEach(this::addEventListener);
     }
 
+    /**
+     * Removes the listener associated with a specific event. This stops further notification updates
+     * for that event from being received.
+     *
+     * @param eventId  The ID of the event for which the listener should be removed.
+     */
     public void removeEventListener(String eventId) {
         ListenerRegistration registration = activeListeners.remove(eventId);
         if (registration != null) {
@@ -160,5 +184,44 @@ public class NotificationRepository {
                 });
     }
 
+    /**
+     * Sets up a real-time listener for updates to an event's attendee count. When the attendee list changes,
+     * the provided listener's onAttendeeCountUpdate method is called with the current attendee count and
+     * maximum occupancy.
+     *
+     * @param eventId   The ID of the event to monitor.
+     * @param listener  An implementation of AttendeeUpdateListener to handle attendee updates.
+     */
+    public void trackAttendeeCount(String eventId, AttendeeUpdateListener listener) {
+        if (activeAttendeeListeners.containsKey(eventId)) {
+            Log.d(TAG, "Listener already exists for eventId: " + eventId);
+            return;
+        }
+
+        ListenerRegistration registration = db.collection("events").document(eventId)
+                .addSnapshotListener((snapshot, e) -> {
+                    if (e != null) {
+                        Log.w(TAG, "Listen failed.", e);
+                        return;
+                    }
+                    if (snapshot != null && snapshot.exists()) {
+                        Event event = snapshot.toObject(Event.class);
+                        if (event != null) {
+                            int currentAttendeeCount = event.getAttendees() != null ? event.getAttendees().size() : 0;
+                            int maxOccupancy = event.getMaxOccupancy();
+                            Map<String, Boolean> milestones = event.getMilestones(); // Assume getMilestones method exists
+                            listener.onAttendeeCountUpdate(event, currentAttendeeCount, maxOccupancy, milestones);
+                        }
+                    }
+                });
+        activeAttendeeListeners.put(eventId, registration);
+    }
+
+    public void updateEventMilestone(String eventId, String milestoneKey, boolean value) {
+        db.collection("events").document(eventId)
+                .update("milestones." + milestoneKey, value)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "Milestone updated: " + milestoneKey))
+                .addOnFailureListener(e -> Log.e(TAG, "Failed to update milestone", e));
+    }
 }
 

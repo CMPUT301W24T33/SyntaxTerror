@@ -36,16 +36,20 @@ import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBi
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
+import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.Timestamp;
+import com.google.firebase.storage.StorageReference;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -74,42 +78,47 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private String locationName;
     private String locationCoord;
 
+    private ActivityResultLauncher<Intent> launcher = defineLauncher();
 
+    /**
+     * Initializes the activity result launcher for handling the result of the image selection intent.
+     * If an image is successfully selected, it converts the image URI to a Bitmap, sets it to the profile image view,
+     * and uploads the image to Firebase Storage.
+     */
+    private ActivityResultLauncher<Intent> defineLauncher() {
+        return registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == Activity.RESULT_OK
+                            && result.getData() != null) {
+                        storage = FirebaseStorage.getInstance();
+                        Uri photoUri = result.getData().getData();
+                        Log.d("returned url",photoUri.toString());
 
-
-    private ActivityResultLauncher<Intent> launcher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if(result.getResultCode() == Activity.RESULT_OK
-                        && result.getData() != null) {
-                    storage = FirebaseStorage.getInstance();
-                    Uri photoUri = result.getData().getData();
-                    Log.d("returned url",photoUri.toString());
-
-                    ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
-                        @Override
-                        public void onSuccess(Pair<String, String> result) {
-                            // Handle the success case here
-                            // For example, store the result.first as the image URL and result.second as the image name
-                            Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
-                            eventImageRef = result.second;
-                            eventImageUrl = result.first;
-                            doneImageUpload = true;
-                        }
-                        @Override
-                        public void onFailure(Exception e) {
-                            // Handle the failure case here
-                            Log.d("Upload Failure", e.toString());
-                        }
-                    });
+                        ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
+                            @Override
+                            public void onSuccess(Pair<String, String> result) {
+                                // Handle the success case here
+                                // For example, store the result.first as the image URL and result.second as the image name
+                                Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                                eventImageRef = result.second;
+                                eventImageUrl = result.first;
+                                doneImageUpload = true;
+                            }
+                            @Override
+                            public void onFailure(Exception e) {
+                                // Handle the failure case here
+                                Log.d("Upload Failure", e.toString());
+                            }
+                        });
+                    }
+                    // result code shows activity cancelled, happens when back button pressed
+                    else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        doneImageUpload = true;
+                    }
                 }
-                // result code shows activity cancelled, happens when back button pressed
-                else if (result.getResultCode() == Activity.RESULT_CANCELED) {
-                    doneImageUpload = true;
-                }
-            }
-    );
-
+        );
+    }
 
     /**
      * Creates a new instance of the EventCreateEdit fragment with an optional event to edit.
@@ -204,6 +213,15 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         if (autocompleteFragment != null) {
             autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
+
+            //This is to give more efficient searches around Edmonton
+            RectangularBounds bounds = RectangularBounds.newInstance(
+                    new LatLng(53.396, -113.718),
+                    new LatLng(53.631, -113.323)
+            );
+
+            autocompleteFragment.setLocationBias(bounds);
+
             autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
                 @Override
                 public void onPlaceSelected(@NonNull Place place) {
@@ -261,8 +279,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
     private void onConfirm() {
         if (doneImageUpload) {
             saveEvent();
-            Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
-            getParentFragmentManager().popBackStack();
         }
         else{
             Snackbar.make(binding.getRoot(), "Uploading Poster", Snackbar.LENGTH_SHORT).show();
@@ -273,24 +289,63 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * Saves the event to the database. Updates the event if it's being edited, or creates a new event otherwise.
      */
     private void saveEvent() {
-        eventRepo = EventRepository.getInstance();
+        if (validInput()) {
+            eventRepo = EventRepository.getInstance();
+            // Checks if Event is being edited to prevent creating new Event with updated information
+            if (eventToEdit != null) {
+                // Edits existing event
+                setEventEdits(eventToEdit);
+                Log.d(TAG, "after set event:" + eventToEdit.getEventId());
+                eventRepo.updateEvent(eventToEdit);
+                Snackbar.make(binding.getRoot(), "Event Changed", Snackbar.LENGTH_SHORT).show();
+
         // Checks if Event is being edited to prevent creating new Event with updated information
-        if (eventToEdit != null) {
-            // Edits existing event
-            setEventEdits(eventToEdit);
-            Log.d(TAG, "after set event:" + eventToEdit.getEventId());
-            eventRepo.updateEvent(eventToEdit);
 
-        } else {
-            // Creates new event
-            //mAuth = FirebaseAuth.getInstance();
-            String userId = getAndroidId();
-            Event newEvent = new Event();
-            newEvent.setOrganizerId(userId);
-            setEventEdits(newEvent);
-            eventRepo.createEvent(newEvent);
+
+            } else {
+                // Creates new event
+                //mAuth = FirebaseAuth.getInstance();
+                String userId = getAndroidId();
+                Event newEvent = new Event();
+                newEvent.setOrganizerId(userId);
+                setEventEdits(newEvent);
+                eventRepo.createEvent(newEvent);
+                Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
+            }
+            getParentFragmentManager().popBackStack();
         }
+    }
 
+    /**
+     * Checks if user input is valid, produces a snackbar if input is not valid explaining reason
+     */
+    private boolean validInput() {
+        // Event Name editview is empty
+        if(binding.eventNameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(binding.getRoot(), "Event Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        // Event description editview is empty
+        else if(binding.eventDescriptionEditText.getText().toString().trim().isEmpty()) {
+            Snackbar.make(binding.getRoot(), "Event Description cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        // geoTracking is checked but no location is selected
+        else if((locationCoord == null || locationName == null) && binding.geoTrackingSwitch.isChecked()){
+            Snackbar.make(binding.getRoot(), "Geo-Tracking is on, please choose a location", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        // start time not set
+        else if(tempStartDateTime == null){
+            Snackbar.make(binding.getRoot(), "Please choose event start time", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(tempEndDateTime == null){
+            Snackbar.make(binding.getRoot(), "Please choose event end time", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        Log.d("End time", tempEndDateTime.getTime().toString());
+        return true;
     }
 
     /**
@@ -306,10 +361,33 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         event.setEndDateTIme(new Timestamp(tempEndDateTime.getTime()));
         event.setGeoTracking(binding.geoTrackingSwitch.isChecked());
         Log.d("setURL","a"+eventImageUrl);
+
+        // if event already has a poster then delete it from db before updating it
+//        Log.d("ImageURL", event.getImageUrl());
+        if (event.getImageUrl() != null){
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference fileRef = storage.getReferenceFromUrl(event.getImageUrl());
+            fileRef.delete().addOnSuccessListener(aVoid -> {
+                // File deleted successfully
+                Log.d("FirebaseStorage", "File deleted successfully");
+
+            }).addOnFailureListener(exception -> {
+                // Uh-oh, an error occurred!
+                Log.d("FirebaseStorage", "Error deleting file", exception);
+            });
+        }
+
         event.setImageUrl(eventImageUrl);
         event.setImageRef(eventImageRef);
-        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
+        Log.d("OCCUPANCY1", String.valueOf(Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))));
+        Log.d("OCCUPANCY2", String.valueOf(event.getMaxOccupancy()));
+        if (event.getMaxOccupancy() != Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))) {
+            Log.d("OCCUPANCY3", "MADE IT INSIDE IF STATEMENT");
+            event.setMilestones("half", false);
+            event.setMilestones("full", false);
+        }
+        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
 
         // when no QR code is being reused
         if (qrcode == null) {
@@ -363,21 +441,18 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 requireContext(),
                 (view, year, monthOfYear, dayOfMonth) -> {
                     Calendar chosenDate = (Calendar) initialCalendar.clone();
-                    chosenDate.set(year, monthOfYear, dayOfMonth, chosenDate.get(Calendar.HOUR_OF_DAY), chosenDate.get(Calendar.MINUTE));
+                    chosenDate.set(year, monthOfYear, dayOfMonth);
                     if (isStart) {
                         tempStartDateTime.set(year, monthOfYear, dayOfMonth);
-                        showTimePickerDialog(true);
                     } else {
                         tempEndDateTime.set(year, monthOfYear, dayOfMonth);
-                        showTimePickerDialog(false);
                     }
+                    showTimePickerDialog(isStart);
                 },
                 initialCalendar.get(Calendar.YEAR),
                 initialCalendar.get(Calendar.MONTH),
                 initialCalendar.get(Calendar.DAY_OF_MONTH)
         );
-
-        datePickerDialog.getDatePicker().setMinDate(isStart ? System.currentTimeMillis() - 1000 : tempStartDateTime.getTimeInMillis());
         datePickerDialog.show();
     }
 
@@ -388,8 +463,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
      * @param isStart A boolean flag indicating whether the start time (true) or the end time (false) is being set.
      */
     private void showTimePickerDialog(boolean isStart) {
-        final Calendar now = Calendar.getInstance();
-
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 getContext(),
                 (view, hourOfDay, minuteOfHour) -> {
@@ -397,28 +470,20 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                     chosenDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                     chosenDateTime.set(Calendar.MINUTE, minuteOfHour);
                     if (isStart) {
-                        if (chosenDateTime.before(now)) {
-                            Toast.makeText(getContext(), "Start time cannot be in the past.", Toast.LENGTH_LONG).show();
-                        } else {
-                            tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                            tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
-                        }
+                        tempStartDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        tempStartDateTime.set(Calendar.MINUTE, minuteOfHour);
                     } else {
-                        if (chosenDateTime.before(tempStartDateTime) && isSameDay(chosenDateTime, tempStartDateTime)) {
-                            Toast.makeText(getContext(), "End time must be after start time on the same day.", Toast.LENGTH_LONG).show();
-                            Calendar fallbackEndTime = (Calendar) tempStartDateTime.clone();
-                            fallbackEndTime.add(Calendar.MINUTE, 1);
-                            tempEndDateTime.set(Calendar.HOUR_OF_DAY, fallbackEndTime.get(Calendar.HOUR_OF_DAY));
-                            tempEndDateTime.set(Calendar.MINUTE, fallbackEndTime.get(Calendar.MINUTE));
-                        } else {
-                            tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                            tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
+                        if (chosenDateTime.before(tempStartDateTime)) {
+                            Toast.makeText(getContext(), "End time must be after start time.", Toast.LENGTH_LONG).show();
+                            return;
                         }
+                        tempEndDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        tempEndDateTime.set(Calendar.MINUTE, minuteOfHour);
                     }
                     updateDateTimeUI(isStart);
                 },
-                now.get(Calendar.HOUR_OF_DAY),
-                now.get(Calendar.MINUTE),
+                tempStartDateTime.get(Calendar.HOUR_OF_DAY),
+                tempStartDateTime.get(Calendar.MINUTE),
                 DateFormat.is24HourFormat(getContext())
         );
 

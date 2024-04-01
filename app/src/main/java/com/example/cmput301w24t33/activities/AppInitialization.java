@@ -2,6 +2,7 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -61,7 +62,7 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
      * Launches the main activity of the application.
      */
     private void launchApp() {
-        Intent intent = new Intent(AppInitialization.this, Attendee.class);
+        Intent intent = new Intent(AppInitialization.this, AttendeeActivity.class);
         intent.putExtra("user", currentUser);
         startActivity(intent);
     }

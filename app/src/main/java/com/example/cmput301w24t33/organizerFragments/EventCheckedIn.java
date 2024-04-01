@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -25,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
-import com.example.cmput301w24t33.users.Profile;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,7 +39,7 @@ import java.util.Locale;
 /**
  * A Fragment to display event attendees and a map view location.
  */
-public class EventAttendees extends Fragment implements EventRepository.EventCallback {
+public class EventCheckedIn extends Fragment implements EventRepository.EventCallback {
 
     private RecyclerView attendeesRecyclerView;
     private ArrayList<User> attendeesList = new ArrayList<>();
@@ -57,17 +55,17 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
     /**
      * Required empty public constructor
      */
-    public EventAttendees() {
+    public EventCheckedIn() {
     }
 
     /**
-     * Creates a new instance of EventAttendees.
-     * @return A new instance of fragment EventAttendees.
+     * Creates a new instance of EventCheckedIn.
+     * @return A new instance of fragment EventCheckedIn.
      */
-    public static EventAttendees newInstance(Event event) {
+    public static EventCheckedIn newInstance(Event event) {
         Bundle args = new Bundle();
         args.putSerializable("event", event);
-        EventAttendees frag = new EventAttendees();
+        EventCheckedIn frag = new EventCheckedIn();
         frag.setArguments(args);
         return frag;
     }
@@ -115,7 +113,7 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
         attendeesRecyclerView.setAdapter(attendeeAdapter);
 
         eventRepository.setEventCallback(this);
-        eventRepository.setEventByCheckedInSnapshotListener(selectedEvent.getEventId());
+        eventRepository.setEventListener(selectedEvent.getEventId());
     }
 
     /**
@@ -239,19 +237,14 @@ public class EventAttendees extends Fragment implements EventRepository.EventCal
     private void setupClickListeners(@NonNull View view) {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-
-        ImageView profileButton = view.findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
     }
 
-    /**
-     * Replaces the current fragment with another fragment.
-     * @param fragment The fragment to replace the current fragment with.
-     */
-    private void replaceFragment(Fragment fragment) {
-        getParentFragmentManager().beginTransaction()
-                .replace(R.id.organizer_layout, fragment)
-                .addToBackStack(null)
-                .commit();
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (eventRepository != null) {
+            eventRepository.removeEventListener();
+        }
     }
+
 }

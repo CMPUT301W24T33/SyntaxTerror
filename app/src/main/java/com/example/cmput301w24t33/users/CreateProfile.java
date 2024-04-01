@@ -8,14 +8,10 @@
 
 package com.example.cmput301w24t33.users;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.Pair;
@@ -31,19 +27,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
-import com.example.cmput301w24t33.activities.Attendee;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
@@ -128,6 +119,28 @@ public class    CreateProfile extends Fragment {
     }
 
     /**
+     * Checks if user input is valid. Produces a snackbar if input is not valid explaining reason
+     *
+     * @param view The current view where the form fields are located.
+     */
+    private boolean validInput(View view) {
+        // User first name is empty
+        if(addFnameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(view, "First Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (addLnameEditText.getText().toString().trim().isEmpty()){
+            Snackbar.make(view, "Last Name cannot be empty", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(addEmailEditText.getText().toString().trim()).matches()){
+            Snackbar.make(view, "Must be in form of an email", Snackbar.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Initializes click listeners for the create profile screen, including
      * logic for creating a new user profile.
      *
@@ -145,10 +158,18 @@ public class    CreateProfile extends Fragment {
             lName = addLnameEditText.getText().toString().trim();
             email = addEmailEditText.getText().toString().trim();
 
-            if (fName.isEmpty() || lName.isEmpty() || fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+
+            // not sure what this regex is validating. left this in just incase
+            if (fName.matches(".*\\d+.*") || lName.matches(".*\\d+.*")) {
                 Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
                 return;
             }
+
+            // input validation
+            if (!validInput(view)){
+                return;
+            }
+
             //Create User's Deterministic Identicon
             byte[] hash = IdenticonGenerator.generateHash(fName);
             Bitmap identicon = IdenticonGenerator.generateIdenticonBitmap(hash);

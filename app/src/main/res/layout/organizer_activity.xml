@@ -6,45 +6,63 @@
     android:id="@+id/organizer_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?backgroundColor"
-    tools:context=".activities.Organizer">
+    android:background="@drawable/background_gradient_animation"
+    tools:context=".activities.OrganizerActivity">
 
     <FrameLayout
         android:id="@+id/organizer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/actionbar_organizer"
-                android:id="@+id/attendee_organizer"/>
-
+            <include
+                android:id="@+id/attendee_organizer"
+                layout="@layout/actionbar_organizer" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/organized_events"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/attendee_organizer"/>
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/button_create_event"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="?attr/button_color_1"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@android:drawable/ic_input_add"
-                android:contentDescription="create event" />
-        </RelativeLayout>
+                android:background="@drawable/bottom_nav_organizer"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="16dp">
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/button_create_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/button_color_1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@android:drawable/ic_input_add"
+                    app:layout_constraintBottom_toTopOf="@+id/text_organize_event"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/text_organize_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Organize Event"
+                    android:textAppearance="?attr/textAppearanceBody1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -9,6 +9,11 @@
         <item name="cornerSize">4dp</item>
     </style>
 
+    <style name="EventDetails" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100dp</item>
+    </style>
+
     <declare-styleable name="button_attrs">
         <attr name="button_color_1" format="color"/>
         <attr name="button_color_2" format="color"/>
@@ -17,7 +22,17 @@
         <attr name="search_button_image" format="reference"/>
         <attr name="switchPersonIcon" format="reference"/>
         <attr name="switchHouseIcon" format="reference"/>
+        <attr name="shareIcon" format="reference"/>
+        <attr name="backArrow" format="reference"/>
+    </declare-styleable>
 
+    <declare-styleable name="color_attrs">
+        <attr name="listColorSecondary" format="color"/>
+        <attr name="listColorPrimary" format="color"/>
+        <attr name="eventDetailsBackground" format="color"/>
+        <attr name="gradient_start" format="color"/>
+        <attr name="gradient_center" format="color"/>
+        <attr name="gradient_end" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="action_bar_attrs">

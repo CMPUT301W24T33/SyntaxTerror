@@ -20,10 +20,13 @@ import androidx.annotation.NonNull;
 import com.example.cmput301w24t33.users.User;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.ListenerRegistration;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents an event, including details such as date, time, location, and participants.
@@ -50,6 +53,7 @@ public class Event implements Serializable, Parcelable {
     private ArrayList<User> signedUp = new ArrayList<>();
     private String imageRef;
     private String imageUrl;
+    private Map<String, Boolean> milestones = new HashMap<>();
 
     public static final Parcelable.Creator<Event> CREATOR = new Creator<Event>() {
         @Override
@@ -100,6 +104,8 @@ public class Event implements Serializable, Parcelable {
         organizerId = args.getString("OrganizerId");
         name = args.getString("Name");
         eventId = args.getString("EventId");
+        milestones.put("half", args.getBoolean("MilestoneHalf"));
+        milestones.put("full", args.getBoolean("MilestoneFull"));
     }
 
 
@@ -132,6 +138,8 @@ public class Event implements Serializable, Parcelable {
         args.putString("OrganizerId", organizerId);
         args.putString("Name", name);
         args.putString("EventId", eventId);
+        args.putBoolean("MilestoneHalf", milestones.get("half"));
+        args.putBoolean("MilestoneFull", milestones.get("full"));
         dest.writeBundle(args);
     }
 
@@ -151,6 +159,8 @@ public class Event implements Serializable, Parcelable {
         this.geoTracking = false;
         this.imageRef = "";
         this.imageUrl = "";
+        this.milestones.put("half", false);
+        this.milestones.put("full", false);
     }
 
     public Event() {
@@ -460,5 +470,13 @@ public class Event implements Serializable, Parcelable {
             geoPointLocations.add(new GeoPoint(lat,lon));
         }
         return geoPointLocations;
+    }
+
+    public Map<String, Boolean> getMilestones() {
+        return milestones;
+    }
+
+    public void setMilestones(String milestoneName, Boolean value) {
+        this.milestones.put(milestoneName, value);
     }
 }
