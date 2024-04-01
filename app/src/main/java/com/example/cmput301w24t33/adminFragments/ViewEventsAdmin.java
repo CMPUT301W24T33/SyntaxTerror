@@ -56,6 +56,7 @@ public class ViewEventsAdmin extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_view_events_fragment, container, false);
+        eventViewModel = EventViewModel.getInstance();
         setupActionBar(view);
         setupClickListeners(view);
         displayEvents(view);
@@ -116,7 +117,6 @@ public class ViewEventsAdmin extends Fragment {
         eventList = new ArrayList<>();
         setAdapter();
 
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEventsLiveData().observe(getViewLifecycleOwner(), this::updateUI);
     }
 

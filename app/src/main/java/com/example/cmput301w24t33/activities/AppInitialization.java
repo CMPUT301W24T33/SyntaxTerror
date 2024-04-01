@@ -43,9 +43,15 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        UserRepository.initialize(this.getApplication(), FirebaseFirestore.getInstance());
+        userRepo = UserRepository.getInstance();
+        UserViewModel.initialize(this.getApplication(), userRepo, new MutableLiveData<>(), new MutableLiveData<>());
+        userViewModel = UserViewModel.getInstance();
+
         EventRepository.initialize(this.getApplication(), FirebaseFirestore.getInstance());
         eventRepo = EventRepository.getInstance();
         EventViewModel.initialize(this.getApplication(), eventRepo, new MutableLiveData<>());
+        eventViewModel = EventViewModel.getInstance();
 
         NotificationManager.initialize(this.getApplication());
         authenticateUser();
@@ -62,8 +68,8 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
 
     private void authenticateUser() {
         String userId = getAndroidId();
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
-        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
         userViewModel.getUser(userId).observe(this, user -> {
             if (user != null) {
                 // User has a profile

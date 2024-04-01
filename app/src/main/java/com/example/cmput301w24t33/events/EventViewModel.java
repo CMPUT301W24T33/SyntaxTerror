@@ -30,14 +30,6 @@ public class EventViewModel extends ViewModel {
     private MutableLiveData<List<Event>> eventsLiveData;
     private Application application;
 
-    /**
-     * Constructor for EventViewModel. Initializes the EventRepository and sets up the event callback.
-     */
-    public EventViewModel() {
-        //eventRepo = new EventRepository();
-        //eventsLiveData = new MutableLiveData<>();
-        //setEventCallback(eventRepo);
-    }
 
     /**
      *

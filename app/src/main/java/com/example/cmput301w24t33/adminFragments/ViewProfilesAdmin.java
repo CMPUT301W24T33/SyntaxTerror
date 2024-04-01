@@ -104,10 +104,11 @@ public class ViewProfilesAdmin extends Fragment implements UserAdapter.OnUserLis
         userRecyclerView = view.findViewById(R.id.profiles_admin);
         userList = new ArrayList<>();
         setAdapter();
-        userRepo = new UserRepository(FirebaseFirestore.getInstance());
+        //userRepo = new UserRepository(FirebaseFirestore.getInstance());
 
-        userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
+        //userViewModel = new UserViewModel(userRepo, new MutableLiveData<>(), new MutableLiveData<>(), new User());
         //userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        userViewModel = UserViewModel.getInstance();
         userViewModel.getUsersLiveData().observe(getViewLifecycleOwner(), this::updateUI);
     }
 
