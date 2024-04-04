@@ -29,7 +29,15 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import java.util.List;
-
+/**
+ * Tests for {@link AdminActivity} to verify the display and functionality of the admin interface.
+ * These tests simulate user interactions with the AdminActivity UI and verify the visibility
+ * and behavior of UI components. The tests operate within an isolated environment with mock data
+ * for {@link EventRepository} and {@link UserRepository} to ensure reliability and speed.
+ * <p>
+ * Note: Tests are conducted without actual database connectivity, focusing on UI and ViewModel
+ * interaction.
+ */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 // Tests limited as no DB connectivity for RecyclerView population
@@ -38,6 +46,12 @@ public class AdminActivityUITest {
     public ActivityScenarioRule<AdminActivity> scenario = new
             ActivityScenarioRule<AdminActivity>(AdminActivity.class);
 
+    /**
+     * Sets up the testing environment before each test execution. Initializes {@link EventViewModel}
+     * and {@link UserViewModel} with mocked repositories and LiveData to simulate a controlled
+     * test scenario. This method ensures that each test starts with a consistent and isolated
+     * environment.
+     */
     @Before
     public void setUp() {
         // Get the application context
@@ -55,6 +69,11 @@ public class AdminActivityUITest {
         UserViewModel.initialize(application,mockProfileRepo,testProfile,testSingleUser);
     }
 
+    /**
+     * Verifies that the main admin layout and its components are displayed as expected. This test
+     * checks the visibility of various UI elements in {@link AdminActivity}, including button layouts
+     * and the action bar, ensuring that the initial state of the admin interface is correct.
+     */
     @Test
     public void testAdminDisplay(){
         //Checks if Admin Layout is displayed
@@ -79,6 +98,11 @@ public class AdminActivityUITest {
 
     }
 
+    /**
+     * Tests the display of the events view within the admin interface. It simulates a click on the
+     * "Browse Events" button and verifies that the events list and related UI components are displayed
+     * correctly. This test ensures that the admin can view the events as intended.
+     */
     @Test
     public void testAdminViewEventsDisplay(){
         //Button from Admin view to event fragment
@@ -98,6 +122,11 @@ public class AdminActivityUITest {
 
     }
 
+    /**
+     * Tests the display of the profiles view within the admin interface. It simulates a click on the
+     * "Browse Profiles" button and verifies that the profiles list and related UI components are displayed
+     * correctly. This test ensures that the admin can view user profiles as intended.
+     */
     @Test
     public void testAdminViewProfileDisplay(){
         //Button from Admin view to Profile fragment
@@ -116,6 +145,11 @@ public class AdminActivityUITest {
 
     }
 
+    /**
+     * Tests the display of the event images view within the admin interface. It simulates a click on the
+     * "Browse Images" button and verifies that the event images layout and its components are displayed
+     * correctly. This test ensures that the admin can view event images as intended.
+     */
     @Test
     public void testAdminViewEventImageDisplay(){
         //Button from Admin view to Image fragment
@@ -128,6 +162,12 @@ public class AdminActivityUITest {
         onView(withId(R.id.event_poster_recyclerview)).check(matches(isDisplayed()));
 
     }
+
+    /**
+     * Tests the functionality of switching between event images and user images within the image view
+     * of the admin interface. It verifies that the correct layouts are displayed after toggling the view
+     * type and that the layout returns to the initial state upon toggling again.
+     */
     @Test
     public void testAdminViewUserImageDisplayUser(){
         //Button from Admin view to Image fragment
@@ -147,7 +187,11 @@ public class AdminActivityUITest {
 
     }
 
-
+    /**
+     * Tests the back button functionality from various admin views. It verifies that navigating back from
+     * event, profile, and image views returns the user to the correct initial admin layout, ensuring
+     * the navigation within the admin interface works as intended.
+     */
     @Test
     public void testAdminEventBackButton(){
         //Tests Admin fragments and if layout is correct
