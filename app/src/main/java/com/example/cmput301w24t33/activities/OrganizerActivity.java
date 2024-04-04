@@ -142,7 +142,7 @@ public class OrganizerActivity extends AppCompatActivity {
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
         Glide.with(this).load(url).into(profileButton);
-        FloatingActionButton createEvent = findViewById(R.id.button_create_event);
+        ImageView createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
         ImageButton userMode = findViewById(R.id.button_user_mode);

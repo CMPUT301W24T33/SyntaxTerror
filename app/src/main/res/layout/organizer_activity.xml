@@ -31,32 +31,17 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:background="@drawable/bottom_nav_organizer"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                <ImageView
                     android:id="@+id/button_create_event"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="?attr/button_color_1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:src="@android:drawable/ic_input_add"
-                    app:layout_constraintBottom_toTopOf="@+id/text_organize_event"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <TextView
-                    android:id="@+id/text_organize_event"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Organize Event"
-                    android:textAppearance="?attr/textAppearanceBody1"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="?new_event_image"/>
 
             </LinearLayout>
 

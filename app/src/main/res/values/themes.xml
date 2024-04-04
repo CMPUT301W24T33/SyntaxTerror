@@ -17,11 +17,14 @@
 
         <item name="eventDetailsBackground">@color/event_details_day</item>
 
+        <item name="navBarColor">@color/nav_bar_color_day</item>
+
         <item name="gradient_start">@color/gradient_1_day</item>
         <item name="gradient_center">@color/gradient_2_day</item>
         <item name="gradient_end">@color/gradient_3_day</item>
 
-        <item name="check_in_button_image">@drawable/check_in_img_day</item>
+        <item name="check_in_button_image">@drawable/qr_code_scanner_45_day</item>
+        <item name="new_event_image">@drawable/new_event_day</item>
         <item name="search_button_image">@drawable/search_icon_day</item>
         <item name="switchProfileIcon">@drawable/switch_user_mode_day</item>
         <item name="switchPersonIcon">@drawable/person_icon_day</item>
@@ -33,7 +36,7 @@
         <item name="listColorSecondary">@color/list_color_secondary_day</item>
 
         <item name="toolbarStyle">@style/Theme.ActionBar</item>
-        <item name="shareIcon">@drawable/share_icon_day</item>
+        <item name="shareIcon">@drawable/ic_share</item>
         <item name="backArrow">@drawable/ic_back_arrow</item>
 
     </style>
