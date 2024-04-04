@@ -38,6 +38,8 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.activities.AttendeeActivity;
+import com.example.cmput301w24t33.activities.OrganizerActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
@@ -49,6 +51,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * A fragment class for displaying and editing the profile of a user.
@@ -363,7 +366,7 @@ public class Profile extends Fragment {
             Toast.makeText(getContext(), "Please enter valid information", Toast.LENGTH_LONG).show();
             return;
         }
-
+        Log.d("profile test", String.valueOf(Objects.isNull(profileToEdit)));
         profileToEdit.setFirstName(addFnameEditText.getText().toString());
         profileToEdit.setLastName(addLnameEditText.getText().toString());
         profileToEdit.setEmail(addEmailEditText.getText().toString());
@@ -371,7 +374,7 @@ public class Profile extends Fragment {
         profileToEdit.setImageUrl(imageUrl);
 
         userRepo.updateUser(profileToEdit);
-
+        updateActivityProfileImage();
         // Navigate back
         getParentFragmentManager().popBackStack();
     }
@@ -383,5 +386,18 @@ public class Profile extends Fragment {
      */
     private String getAndroidId() {
         return Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
+
+    /**
+     * Updates the profile image in the activity that called the profile fragment
+     */
+    private void updateActivityProfileImage(){
+        // Update profile image in activity that called profile fragment
+        if(getActivity() instanceof AttendeeActivity) {
+            ((AttendeeActivity) getActivity()).updatePicture();
+        }
+        else{
+            ((OrganizerActivity)getActivity()).updatePicture();
+        }
     }
 }
