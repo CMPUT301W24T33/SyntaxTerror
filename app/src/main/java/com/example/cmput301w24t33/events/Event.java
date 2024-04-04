@@ -138,8 +138,8 @@ public class Event implements Serializable, Parcelable {
         args.putString("OrganizerId", organizerId);
         args.putString("Name", name);
         args.putString("EventId", eventId);
-        args.putBoolean("MilestoneHalf", milestones.get("half"));
-        args.putBoolean("MilestoneFull", milestones.get("full"));
+        args.putBoolean("MilestoneHalf", Boolean.TRUE.equals(milestones.get("half")));
+        args.putBoolean("MilestoneFull", Boolean.TRUE.equals(milestones.get("full")));
         dest.writeBundle(args);
     }
 

@@ -30,6 +30,8 @@ import com.example.cmput301w24t33.adminFragments.ViewEventsAdmin;
 import com.example.cmput301w24t33.adminFragments.ViewImagesAdmin;
 import com.example.cmput301w24t33.adminFragments.ViewProfilesAdmin;
 import com.example.cmput301w24t33.notifications.NotificationManager;
+import com.example.cmput301w24t33.users.User;
+import com.example.cmput301w24t33.users.UserRepository;
 
 /**
  * Represents the administrative area of the application, allowing navigation between administrative functionalities such as viewing events and profiles.
@@ -37,6 +39,7 @@ import com.example.cmput301w24t33.notifications.NotificationManager;
 public class AdminActivity extends AppCompatActivity {
 
     String userId;
+    User user;
     /**
      * Called when the activity is starting. Initializes the activity, view components, and event listeners.
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle). Otherwise it is null.
@@ -45,6 +48,7 @@ public class AdminActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userId = getIntent().getStringExtra("uId");
+        user = (User) getIntent().getSerializableExtra("user");
         setContentView(R.layout.admin_activity);
         View view = findViewById(R.id.admin_activity);
         setupActionBar(view);
@@ -87,6 +91,7 @@ public class AdminActivity extends AppCompatActivity {
         userMode.setOnLongClickListener(v -> {
             // Switch to OrganizerActivity activity
             Intent intent = new Intent(AdminActivity.this, AttendeeActivity.class);
+            intent.putExtra("user", user);
             startActivity(intent);
             finish();
             return true;

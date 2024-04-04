@@ -8,6 +8,8 @@
 
 package com.example.cmput301w24t33.events;
 
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -128,6 +132,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             } else {
                 Glide.with(itemView).clear(eventPoster);
                 eventPoster.setImageResource(R.drawable.no_image);
+//                eventPoster.setForeground(ContextCompat.getDrawable(null,R.drawable.no_image_foreground));
             }
             eventText.setText(event.getName());
             itemView.setOnClickListener(v -> {
