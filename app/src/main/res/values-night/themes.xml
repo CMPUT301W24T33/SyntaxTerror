@@ -8,6 +8,7 @@
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="colorAccent">@color/organizer_actionbar_day</item>
         <item name="backgroundColor">@color/background_night</item>
+        <item name="background">@drawable/background_gradient_animation</item>
         <item name="android:colorPrimary">@color/organizer_actionbar_day</item>
         <item name="colorSecondary">@color/secondary_night</item>
         <item name="android:textColor">@color/white</item>
@@ -15,7 +16,7 @@
         <item name="action_bar_organizer">@color/organizer_actionbar_night</item>
 
 
-        <item name="eventDetailsBackground">@color/event_details_day</item>
+        <item name="eventDetailsBackground">@color/event_details_night</item>
 
         <item name="gradient_start">@color/gradient_1_day</item>
         <item name="gradient_center">@color/gradient_2_day</item>

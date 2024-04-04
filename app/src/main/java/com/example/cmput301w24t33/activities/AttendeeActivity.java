@@ -310,6 +310,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             // Switch to AdminActivity activity
             Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
             intent.putExtra("uId", userId);
+            intent.putExtra("user", currentUser);
             startActivity(intent);
             finish();
             return true;
