@@ -8,8 +8,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,11 +23,9 @@ import com.example.cmput301w24t33.events.EventRemovePoster;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
-import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +104,7 @@ public class ViewImagesAdmin extends Fragment {
         ImageButton backButton = view.findViewById(R.id.back_arrow_img);
         backButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
-        MaterialButton switchRecyclerviewButton = view.findViewById(R.id.switch_imagetype_button);
+        MaterialButton switchRecyclerviewButton = view.findViewById(R.id.switch_image_type_button);
         switchRecyclerviewButton.setOnClickListener(v -> {
             ChangeRecyclerview();
         });
@@ -120,7 +116,7 @@ public class ViewImagesAdmin extends Fragment {
      */
     private void ChangeRecyclerview() {
         showEventPosters = !showEventPosters;
-        TextView button = inflatedView.findViewById(R.id.switch_imagetype_button);
+        TextView button = inflatedView.findViewById(R.id.switch_image_type_button);
         button.setText((showEventPosters) ? "Browse User Images" : "Browse Event Posters");
         // set event recyclerview visibility
         eventPosterRecyclerView.setVisibility((showEventPosters) ? View.VISIBLE:View.GONE);
