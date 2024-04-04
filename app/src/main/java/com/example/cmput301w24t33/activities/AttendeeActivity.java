@@ -133,7 +133,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             public void onAnimationEnd(Animation animation) {
                 viewingAllEvents = !viewingAllEvents;
                 updateDisplayedEvents();
-                binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+//                binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
                 binding.eventrecyclerview.startAnimation(fadeIn);
             }
 
@@ -282,7 +282,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             qrScanner.scanQRCode(this);
            });
 
-        MaterialButton switchEventsButton = findViewById(R.id.switch_events_button);
+        ImageView switchEventsButton = findViewById(R.id.switch_events_button);
 
         switchEventsButton.setOnClickListener(v -> {
             switchEventView();
@@ -310,6 +310,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             // Switch to AdminActivity activity
             Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
             intent.putExtra("uId", userId);
+            intent.putExtra("user", currentUser);
             startActivity(intent);
             finish();
             return true;

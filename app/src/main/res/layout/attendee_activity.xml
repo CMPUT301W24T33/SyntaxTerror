@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/attendee_activity"
-    android:background="@drawable/background_gradient_animation"
+    android:background="?background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.AttendeeActivity">
@@ -20,26 +20,26 @@
 
             <include layout="@layout/actionbar_attendee" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8sp"
-                android:layout_marginStart="48dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginTop="8sp">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginBottom="8sp"-->
+<!--                android:layout_marginStart="48dp"-->
+<!--                android:layout_marginEnd="48dp"-->
+<!--                android:layout_marginTop="8sp">-->
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/switch_events_button"
-                    style="@style/CustomOutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Browse All Events"
-                    app:icon="@drawable/ic_event_list"
-                    app:iconGravity="textStart"
-                    app:iconPadding="8dp" />
-            </LinearLayout>
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:id="@+id/switch_events_button"-->
+<!--                    style="@style/CustomOutlinedButton"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Browse All Events"-->
+<!--                    app:icon="@drawable/ic_event_list"-->
+<!--                    app:iconGravity="textStart"-->
+<!--                    app:iconPadding="8dp" />-->
+<!--            </LinearLayout>-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventrecyclerview"
@@ -59,59 +59,36 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:paddingStart="50dp"
-                android:paddingEnd="50dp"
+                android:layout_height="50dp"
+                android:weightSum="3"
                 android:background="@drawable/bottom_nav_attendee"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/switch_events_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_event_list"/>
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/check_in_img"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:paddingTop="1dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:src="?attr/check_in_button_image" />
 
-                    <ImageView
-                        android:id="@+id/check_in_img"
-                        android:layout_width="90dp"
-                        android:layout_height="65dp"
-                        android:src="?attr/check_in_button_image" />
-
-                    <TextView
-                        android:id="@+id/text_check_in"
-                        android:layout_width="wrap_content"
-                        android:paddingBottom="5dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_family"
-                        android:text="@string/check_into_event"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="18dp"
+                <ImageView
+                    android:id="@+id/find_event_img"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:paddingTop="1dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:src="?attr/search_button_image" />
 
-                    <ImageView
-                        android:id="@+id/find_event_img"
-                        android:layout_width="90dp"
-                        android:layout_height="65dp"
-                        android:src="?attr/search_button_image" />
-
-                    <TextView
-                        android:id="@+id/text_find_event"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_family"
-                        android:text="@string/find_event"
-                        android:textSize="15sp" />
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
