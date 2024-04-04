@@ -51,6 +51,7 @@ public class UserRepository {
         userCollection = db.collection("users");
     }
 
+
     public static synchronized  void initialize(Application application, FirebaseFirestore db) {
         if (instance == null) {
             instance = new UserRepository(application, db);

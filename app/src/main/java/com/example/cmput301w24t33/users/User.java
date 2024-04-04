@@ -84,7 +84,7 @@ public class User implements Serializable {
      * @return A string representing the user's unique ID.
      */
     public String getUserId() {
-        return userId;
+        return this.userId;
     }
 
     /**
