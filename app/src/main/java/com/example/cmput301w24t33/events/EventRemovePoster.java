@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,9 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.activities.AdminActivity;
+import com.example.cmput301w24t33.activities.AttendeeActivity;
+import com.example.cmput301w24t33.activities.OrganizerActivity;
 import com.example.cmput301w24t33.databinding.AdminDeletePosterFragmentBinding;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -61,7 +65,16 @@ public class EventRemovePoster extends Fragment {
     }
 
     private void setupActionBar() {
-        int color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
+        int color;
+        // called by organizer, change color to organizer color
+        if(getActivity() instanceof OrganizerActivity) {
+            // TODO : fix this comply with day/night colors
+            color = ContextCompat.getColor(getContext(), R.color.organizer_actionbar_day);
+        }
+        // called by admin, switch color to admin actionbar
+        else {
+            color = ContextCompat.getColor(getContext(), R.color.admin_actionbar);
+        }
         binding.editEventActionbar.setBackgroundColor(color);
         binding.backActionbarTextview.setText("Delete Poster");
     }

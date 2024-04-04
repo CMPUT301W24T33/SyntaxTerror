@@ -12,6 +12,7 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerActivityBinding;
 import com.example.cmput301w24t33.events.Event;
@@ -141,7 +143,6 @@ public class OrganizerActivity extends AppCompatActivity {
     private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
         profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
-        Glide.with(this).load(url).into(profileButton);
         ImageView createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
@@ -172,6 +173,7 @@ public class OrganizerActivity extends AppCompatActivity {
 //        attendeeOrganizerActionbar.setBackgroundColor(color);
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Organize Events");
+        Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
 
     }
 
@@ -209,5 +211,8 @@ public class OrganizerActivity extends AppCompatActivity {
                 });
 
 
+    }
+    public void updatePicture(){
+        Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
     }
 }
