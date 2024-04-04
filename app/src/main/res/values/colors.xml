@@ -13,6 +13,9 @@
     <color name="gradient_2_day">#5F758E</color>
     <color name="gradient_3_day">#383961</color>
 
+    <color name="event_list_background_day">#5f9a8e</color>
+    <color name="event_list_background_night">#0f4a3e</color>
+
     <color name="no_image_gradient_1">#af3B1F2B</color>
     <color name="no_image_gradient_2">#af383961</color>
 
@@ -22,6 +25,7 @@
     <color name="organizer_actionbar_night">#1b4d67</color>
 
     <color name="event_details_day">#5F758E</color>
+    <color name="event_details_night">#0f4a3e</color>
     <color name="admin_actionbar">#3f3250</color>
     <color name="going">#388E3C</color>
     <color name="not_going">#D32F2F</color>

@@ -155,6 +155,7 @@ public class OrganizerActivity extends AppCompatActivity {
 
         userMode.setOnLongClickListener(v -> {
             Intent intent = new Intent(OrganizerActivity.this, AdminActivity.class);
+            intent.putExtra("user", currentUser);
             startActivity(intent);
             finish();
             return true;

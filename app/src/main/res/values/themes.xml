@@ -14,6 +14,7 @@
         <item name="action_bar_attendee">@color/attendee_actionbar_day</item>
         <item name="action_bar_organizer">@color/organizer_actionbar_day</item>
 
+
         <item name="eventDetailsBackground">@color/event_details_day</item>
 
         <item name="gradient_start">@color/gradient_1_day</item>

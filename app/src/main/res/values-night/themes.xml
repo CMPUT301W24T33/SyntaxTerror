@@ -16,7 +16,7 @@
         <item name="action_bar_organizer">@color/organizer_actionbar_night</item>
 
 
-        <item name="eventDetailsBackground">@color/event_details_day</item>
+        <item name="eventDetailsBackground">@color/event_details_night</item>
 
         <item name="gradient_start">@color/gradient_1_day</item>
         <item name="gradient_center">@color/gradient_2_day</item>
