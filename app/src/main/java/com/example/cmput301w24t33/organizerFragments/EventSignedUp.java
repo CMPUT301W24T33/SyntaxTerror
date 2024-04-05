@@ -45,7 +45,7 @@ public class EventSignedUp extends Fragment implements EventRepository.EventCall
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OrganizerEventSignedUpFragmentBinding.inflate(inflater, container, false);
         eventRepository = EventRepository.getInstance();
-        //eventRepository.setEventCallback(this);
+        eventRepository.setEventCallback(this);
         if (getArguments() != null) {
             Event event = (Event) getArguments().getSerializable("event");
             if (event != null) {
