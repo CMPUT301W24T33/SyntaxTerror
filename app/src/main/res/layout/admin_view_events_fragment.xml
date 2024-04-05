@@ -14,6 +14,7 @@
         android:id="@+id/admin_events_layout">
 
         <LinearLayout
+            android:id="@+id/admin_view_event_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -23,27 +24,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/attendee_actionbar_day">
+
                 <ImageButton
                     android:id="@+id/view_events_back_button"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
                     android:background="?selectableItemBackgroundBorderless"
                     android:scaleType="centerInside"
-                    app:srcCompat="@drawable/ic_back_arrow"
-                    android:layout_alignParentLeft="true"/>
+                    app:srcCompat="@drawable/ic_back_arrow" />
 
                 <TextView
                     android:id="@+id/general_actionbar_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:text=""
                     android:background="@null"
                     android:clickable="false"
+                    android:text=""
                     android:textSize="35dp"
-                    android:textStyle="bold">
-                </TextView>
+                    android:textStyle="bold"></TextView>
 
             </RelativeLayout>
 
