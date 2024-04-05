@@ -168,16 +168,19 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
      * Initializes the ViewModel and sets up an observer for the events LiveData.
      * Updates the local lists of all events and signed-up events whenever the LiveData changes.
      */
-    private void setupViewModel() {
-        eventViewModel = EventViewModel.getInstance();
-        eventViewModel.getEventsLiveData().observe(this, events -> {
-            allEvents.clear();
-            allEvents.addAll(events);
-            eventListsFilter(events);
-            updateDisplayedEvents();
-        });
-        eventViewModel.loadEvents();
-
+    public void setupViewModel() {
+        try {
+            eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel");
+        } catch (NullPointerException e) {
+            eventViewModel = EventViewModel.getInstance();
+            eventViewModel.getEventsLiveData().observe(this, events -> {
+                allEvents.clear();
+                allEvents.addAll(events);
+                eventListsFilter(events);
+                updateDisplayedEvents();
+            });
+            eventViewModel.loadEvents();
+        }
     }
 
     /**

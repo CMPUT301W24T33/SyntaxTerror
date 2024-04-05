@@ -17,11 +17,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import com.example.cmput301w24t33.activities.AttendeeActivity;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -32,6 +34,7 @@ public class AttendeeActivityUITest {
     static {
         intent = new Intent(ApplicationProvider.getApplicationContext(), AttendeeActivity.class);
         intent.putExtra("user",new User("","","","",true,"",""));
+        intent.putExtra("eventViewModel", Mockito.mock(EventViewModel.class));
     }
     @Rule
     public ActivityScenarioRule<AttendeeActivity> scenario = new
