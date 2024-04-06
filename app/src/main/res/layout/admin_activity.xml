@@ -74,8 +74,8 @@
                     android:layout_marginBottom="20sp"
                     android:backgroundTint="@color/admin_actionbar"
                     android:text=" Browse Events"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"></Button>
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -98,8 +98,8 @@
                     android:layout_marginBottom="20sp"
                     android:backgroundTint="@color/admin_actionbar"
                     android:text=" Browse Profiles"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"></Button>
+                    android:textColor="@color/white"
+                    android:textSize="20dp"/>
 
             </RelativeLayout>
 
@@ -122,8 +122,8 @@
                     android:layout_marginBottom="20sp"
                     android:backgroundTint="@color/admin_actionbar"
                     android:text=" Browse Images"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"></Button>
+                    android:textColor="@color/white"
+                    android:textSize="20dp"/>
 
             </RelativeLayout>
         </LinearLayout>

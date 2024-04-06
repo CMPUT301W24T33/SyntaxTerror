@@ -23,6 +23,7 @@
         <attr name="new_event_image" format="reference"/>
         <attr name="switchPersonIcon" format="reference"/>
         <attr name="switchHouseIcon" format="reference"/>
+        <attr name="eventListIcon" format="reference"/>
         <attr name="shareIcon" format="reference"/>
         <attr name="backArrow" format="reference"/>
     </declare-styleable>

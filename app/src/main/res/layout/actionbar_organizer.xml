@@ -13,6 +13,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/profile_button"
+            android:backgroundTint="@color/transparent"
             android:layout_width="50dp"
             app:cardCornerRadius="150dp"
             android:layout_height="50dp"
@@ -22,9 +23,8 @@
                 android:id="@+id/profile_image"
                 android:clickable="true"
                 android:scaleType="centerCrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/test_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:focusable="true">
             </ImageView>
         </androidx.cardview.widget.CardView>
