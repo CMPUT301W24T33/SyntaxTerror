@@ -90,7 +90,6 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         animation.start();
 
         setupViewModel();
-        eventViewModel = EventViewModel.getInstance();
 
 
         View view = findViewById(R.id.organizer_activity);
@@ -105,7 +104,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel"); // for testing
         if (eventViewModel == null) { // should be null
             eventViewModel = EventViewModel.getInstance();
-            eventViewModel.getEventsLiveData().observe(this, this::onChanged);
+            eventViewModel.getEventsLiveData().observe(this, this);
             eventViewModel.loadEvents();
         }
     }
@@ -119,8 +118,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         super.onResume();
         NotificationManager.initialize(this.getApplication());
         Log.d(TAG, "Organizer RESUME");
-        eventViewModel.restoreEventCallback();
-        eventViewModel.getEventsLiveData().observe(this, this);
+        setupViewModel();
         eventViewModel.loadOrganizerEvents(userId);
     }
 
