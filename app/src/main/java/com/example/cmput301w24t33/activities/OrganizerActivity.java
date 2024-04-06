@@ -95,6 +95,9 @@ public class OrganizerActivity extends AppCompatActivity {
         setOnClickListeners();
     }
 
+    /**
+     * Sets up the ViewModel for managing event data. It observes changes in event data and updates the UI accordingly.
+     */
     public void setupViewModel() {
         try {
             eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel");
@@ -103,6 +106,7 @@ public class OrganizerActivity extends AppCompatActivity {
             eventViewModel.getEventsLiveData().observe(this, this::updateUI);
             eventViewModel.loadEvents();
         }
+
     }
 
 
@@ -198,6 +202,12 @@ public class OrganizerActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+    /**
+     * Retrieves the profile image URL for the current user from Firestore.
+     *
+     * @param Aid The unique identifier for the user whose profile URL is being retrieved.
+     */
     public static void getProfileUrl(String Aid){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users").document(Aid)
@@ -220,7 +230,9 @@ public class OrganizerActivity extends AppCompatActivity {
                     }
                 });
 
-
+    /**
+     * Updates the profile image view with the current user's image using Glide.
+     */
     }
     public void updatePicture(){
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
