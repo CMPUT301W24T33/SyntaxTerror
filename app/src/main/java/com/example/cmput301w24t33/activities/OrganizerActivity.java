@@ -150,7 +150,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         ImageView createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
-        ImageButton userMode = findViewById(R.id.button_user_mode);
+        ImageView userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(OrganizerActivity.this, AttendeeActivity.class);
             intent.putExtra("user", currentUser);

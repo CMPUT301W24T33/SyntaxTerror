@@ -64,20 +64,18 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/button_user_mode"
                         android:layout_width="match_parent"
                         android:layout_height="42dp"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="7dp"
                         app:srcCompat="?switchProfileIcon"
-                        android:layout_gravity="center"
-                        android:background="@color/transparent"
-                        android:layout_marginStart="5dp"
                         android:contentDescription="TODO" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:textAlignment="center"
                         android:text="@string/switch_profile_attendee"/>
                 </LinearLayout>

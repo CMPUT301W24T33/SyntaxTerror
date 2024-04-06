@@ -302,7 +302,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
 
         });
 
-        ImageButton userMode = findViewById(R.id.button_user_mode);
+        ImageView userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             // Switch to OrganizerActivity activity
             Intent intent = new Intent(AttendeeActivity.this, OrganizerActivity.class);

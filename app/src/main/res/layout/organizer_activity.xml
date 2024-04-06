@@ -29,20 +29,55 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:background="@drawable/bottom_nav_organizer"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="2">
 
-                <ImageView
-                    android:id="@+id/button_create_event"
+                <LinearLayout
+                    android:id="@+id/user_mode_lin_layout"
+                    android:orientation="vertical"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="?new_event_image"/>
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/button_user_mode"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="7dp"
+                        app:srcCompat="?switchProfileIcon"
+                        android:contentDescription="TODO" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="@string/switch_profile_organizer"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/button_create_event"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:src="?new_event_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="New Event"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
