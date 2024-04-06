@@ -134,7 +134,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             public void onAnimationEnd(Animation animation) {
                 viewingAllEvents = !viewingAllEvents;
                 updateDisplayedEvents();
-//                binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+                binding.browseEventsText.setText(viewingAllEvents ? "Browse Your" : "Browse All");
                 binding.eventrecyclerview.startAnimation(fadeIn);
             }
 
@@ -277,7 +277,6 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         profileButton.setOnClickListener(v -> {
             replaceFragment(Profile.newInstance(currentUser));
         });
-        binding.switchEventsButton.setOnClickListener(v -> switchEventView());
 
         ImageView checkInButton = findViewById(R.id.check_in_img);
 
