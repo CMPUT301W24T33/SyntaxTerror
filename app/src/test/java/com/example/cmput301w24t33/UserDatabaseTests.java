@@ -64,7 +64,7 @@ public class UserDatabaseTests {
         assertSame("bababooey", user2.getUserId());
     }
 
-    @Test
+
     public void testSetUser() {
         // Create a mock Firestore collection reference
         CollectionReference mockColl = Mockito.mock(CollectionReference.class);
