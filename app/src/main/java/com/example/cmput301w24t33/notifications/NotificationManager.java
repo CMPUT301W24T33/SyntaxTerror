@@ -1,5 +1,7 @@
 package com.example.cmput301w24t33.notifications;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
@@ -122,7 +124,11 @@ public class NotificationManager {
      * @param eventId The ID of the event to monitor for attendee count updates.
      */
     public void trackAttendeeUpdatesForEvent(String eventId) {
-        repository.trackAttendeeCount(eventId, this::handleAttendeeUpdate);
+        if (eventId != null) {
+            repository.trackAttendeeCount(eventId, this::handleAttendeeUpdate);
+        } else {
+            Log.e(TAG, "Event ID is null. Cannot track attendee updates.");
+        }
     }
 
     /**
