@@ -50,5 +50,7 @@
     <string name="Find_poster_event">Find Event</string>
     <string name="find_event">Find Event</string>
     <string name="check_into_event">Check into Event</string>
+    <string name="switch_profile_organizer">Switch to Attendee</string>
+    <string name="switch_profile_attendee">Switch to Organizer</string>
 
 </resources>

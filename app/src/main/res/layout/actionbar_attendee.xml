@@ -29,22 +29,35 @@
             </ImageView>
         </androidx.cardview.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/button_user_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="?switchProfileIcon"
-            android:background="@color/transparent"
-            android:layout_marginStart="5dp"
-            android:contentDescription="TODO" />
+        <LinearLayout
+            android:id="@+id/user_mode_lin_layout"
+            android:orientation="horizontal"
+            android:layout_width="106dp"
+            android:layout_height="match_parent">
+            <ImageButton
+                android:id="@+id/button_user_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="?switchProfileIcon"
+                android:layout_gravity="center"
+                android:background="@color/transparent"
+                android:layout_marginStart="5dp"
+                android:contentDescription="TODO" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:text="@string/switch_profile_attendee"/>
+        </LinearLayout>
         <TextView
             android:id="@+id/attendee_organizer_textview"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:layout_toStartOf="@id/profile_button"
-            android:layout_toEndOf="@id/button_user_mode"
+            android:layout_toEndOf="@id/user_mode_lin_layout"
             android:background="@null"
             android:clickable="false"
             android:textAlignment="center"
