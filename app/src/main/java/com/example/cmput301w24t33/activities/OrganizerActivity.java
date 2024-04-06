@@ -83,11 +83,11 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         getProfileUrl(userId);
         setAdapter();
 
-        // set up background animation
-        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-        animation.setEnterFadeDuration(100);
-        animation.setExitFadeDuration(5000);
-        animation.start();
+//        // set up background animation
+//        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
+//        animation.setEnterFadeDuration(100);
+//        animation.setExitFadeDuration(5000);
+//        animation.start();
 
         eventViewModel = EventViewModel.getInstance();
 
