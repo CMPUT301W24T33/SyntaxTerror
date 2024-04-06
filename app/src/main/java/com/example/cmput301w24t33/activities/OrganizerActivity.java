@@ -102,14 +102,12 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
      * Sets up the ViewModel for managing event data. It observes changes in event data and updates the UI accordingly.
      */
     public void setupViewModel() {
-        try {
-            eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel");
-        } catch (NullPointerException e) {
+        eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel"); // for testing
+        if (eventViewModel == null) { // should be null
             eventViewModel = EventViewModel.getInstance();
             eventViewModel.getEventsLiveData().observe(this, this::onChanged);
             eventViewModel.loadEvents();
         }
-
     }
 
 

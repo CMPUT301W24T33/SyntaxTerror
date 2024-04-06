@@ -170,9 +170,8 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
      * Updates the local lists of all events and signed-up events whenever the LiveData changes.
      */
     public void setupViewModel() {
-        try {
-            eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel");
-        } catch (NullPointerException e) {
+        eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel"); // for testing
+        if(eventViewModel == null) { // should be null
             eventViewModel = EventViewModel.getInstance();
             eventViewModel.getEventsLiveData().observe(this, events -> {
                 allEvents.clear();
@@ -182,6 +181,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             });
             eventViewModel.loadEvents();
         }
+
     }
 
     @Override
