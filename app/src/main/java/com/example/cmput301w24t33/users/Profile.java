@@ -38,8 +38,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
-import com.example.cmput301w24t33.activities.AttendeeActivity;
-import com.example.cmput301w24t33.activities.OrganizerActivity;
+import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
@@ -71,7 +70,7 @@ public class Profile extends Fragment {
     private String imageRef;
     private String imageUrl;
     private User profileToEdit;
-
+    private boolean doneImageUpload = true;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -124,6 +123,8 @@ public class Profile extends Fragment {
                                             Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
                                             imageRef = result.second;
                                             imageUrl = result.first;
+                                            doneImageUpload = true;
+                                            Snackbar.make(getView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
                                         }
 
                                         @Override
@@ -184,6 +185,8 @@ public class Profile extends Fragment {
                             // Handle the success case here
                             // For example, store the result.first as the image URL and result.second as the image name
                             Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                            doneImageUpload = true;
+                            Snackbar.make(getView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
                             imageRef = result.second;
                             imageUrl = result.first;
                         }
@@ -270,6 +273,7 @@ public class Profile extends Fragment {
         // Profile image listener
         ImageView profileImage = view.findViewById(R.id.profile_image);
         profileImage.setOnClickListener(v -> {
+            doneImageUpload  = false;
             selectImage();
         });
         // Cancel button listener
@@ -279,9 +283,12 @@ public class Profile extends Fragment {
         // Save button listener
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
-            if(validInput(view)){
+            if (doneImageUpload && validInput(view)){
                 // Save profile logic
                 saveProfile();
+            }
+            else{
+                Snackbar.make(v, "Upload Not Complete", Snackbar.LENGTH_SHORT).show();
             }
         });
 

@@ -94,30 +94,32 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                         Uri photoUri = result.getData().getData();
                         Log.d("returned url",photoUri.toString());
 
-                        ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
-                            @Override
-                            public void onSuccess(Pair<String, String> result) {
-                                // Handle the success case here
-                                // For example, store the result.first as the image URL and result.second as the image name
-                                Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
-                                eventImageRef = result.second;
-                                eventImageUrl = result.first;
-                                doneImageUpload = true;
-                            }
-                            @Override
-                            public void onFailure(Exception e) {
-                                // Handle the failure case here
-                                Log.d("Upload Failure", e.toString());
-                            }
-                        });
-                    }
-                    // result code shows activity cancelled, happens when back button pressed
-                    else if (result.getResultCode() == Activity.RESULT_CANCELED) {
-                        doneImageUpload = true;
-                    }
+                    ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
+                        @Override
+                        public void onSuccess(Pair<String, String> result) {
+                            // Handle the success case here
+                            // For example, store the result.first as the image URL and result.second as the image name
+                            Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                            eventImageRef = result.second;
+                            eventImageUrl = result.first;
+                            Snackbar.make(binding.getRoot(), "Upload Complete", Snackbar.LENGTH_SHORT).show();
+                            doneImageUpload = true;
+
+                        }
+                        @Override
+                        public void onFailure(Exception e) {
+                            // Handle the failure case here
+                            Log.d("Upload Failure", e.toString());
+                        }
+                    });
                 }
-        );
-    }
+                // result code shows activity cancelled, happens when back button pressed
+                else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                    doneImageUpload = true;
+                }
+            }
+    );
+
 
     /**
      * Creates a new instance of the EventCreateEdit fragment with an optional event to edit.
