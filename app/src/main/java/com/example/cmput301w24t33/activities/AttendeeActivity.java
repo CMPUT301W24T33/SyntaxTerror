@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -57,7 +58,7 @@ import java.util.Set;
 /**
  * Activity class for attendee users, managing event display, user authentication, and profile interaction.
  */
-public class AttendeeActivity extends AppCompatActivity implements CreateProfile.OnUserCreatedListener{
+public class AttendeeActivity extends AppCompatActivity implements CreateProfile.OnUserCreatedListener, Observer<List<Event>> {
     private EventAdapter eventAdapter;
     private boolean viewingAllEvents = false;
     private AttendeeActivityBinding binding;
@@ -110,7 +111,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         NotificationManager.initialize(this.getApplication());
         setupViewModel();
         setupActionbar();
-        Log.d(TAG, "RESUME");
+        Log.d(TAG, "Attendee RESUME");
         eventViewModel.loadEvents();
     }
 
@@ -168,6 +169,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
      * Initializes the ViewModel and sets up an observer for the events LiveData.
      * Updates the local lists of all events and signed-up events whenever the LiveData changes.
      */
+
     public void setupViewModel() {
         try {
             eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel");
@@ -181,8 +183,17 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             });
             eventViewModel.loadEvents();
         }
+
     }
 
+    @Override
+    public void onChanged(List<Event> events) {
+        allEvents.clear();
+        allEvents.addAll(events);
+        eventListsFilter(events);
+        updateDisplayedEvents();
+
+    }
     /**
      * Filters the list of all events to find events that the user has signed up for.
      * Updates the local list of signed-up events.
@@ -305,6 +316,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             // Switch to OrganizerActivity activity
             Intent intent = new Intent(AttendeeActivity.this, OrganizerActivity.class);
             intent.putExtra("user", currentUser);
+            eventViewModel.getEventsLiveData().removeObserver(this);
             startActivity(intent);
             finish();
         });

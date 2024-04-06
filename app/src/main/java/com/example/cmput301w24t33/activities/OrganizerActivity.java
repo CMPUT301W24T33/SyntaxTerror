@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,7 +56,7 @@ import java.util.List;
 /**
  * Activity for the event organizer, managing the creation, editing, and viewing of events.
  */
-public class OrganizerActivity extends AppCompatActivity {
+public class OrganizerActivity extends AppCompatActivity implements Observer<List<Event>> {
     private ArrayList<Event> organizedEvents;
     private RecyclerView eventRecyclerView;
     private OrganizerActivityBinding binding;
@@ -89,6 +90,8 @@ public class OrganizerActivity extends AppCompatActivity {
         animation.start();
 
         setupViewModel();
+        eventViewModel = EventViewModel.getInstance();
+
 
         View view = findViewById(R.id.organizer_activity);
         setupActionBar(view);
@@ -103,7 +106,7 @@ public class OrganizerActivity extends AppCompatActivity {
             eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel");
         } catch (NullPointerException e) {
             eventViewModel = EventViewModel.getInstance();
-            eventViewModel.getEventsLiveData().observe(this, this::updateUI);
+            eventViewModel.getEventsLiveData().observe(this, this::onChanged);
             eventViewModel.loadEvents();
         }
 
@@ -117,7 +120,9 @@ public class OrganizerActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         NotificationManager.initialize(this.getApplication());
-        Log.d(TAG, "RESUME");
+        Log.d(TAG, "Organizer RESUME");
+        eventViewModel.restoreEventCallback();
+        eventViewModel.getEventsLiveData().observe(this, this);
         eventViewModel.loadOrganizerEvents(userId);
     }
 
@@ -125,7 +130,9 @@ public class OrganizerActivity extends AppCompatActivity {
      * Updates the UI with a list of events.
      * @param events List of Event objects to be displayed.
      */
-    private void updateUI(List<Event> events) {
+    @Override
+    public void onChanged(List<Event> events) {
+        Log.d("EventsLoaded", events.toString());
         eventAdapter.setEvents(events);
     }
 
@@ -164,6 +171,7 @@ public class OrganizerActivity extends AppCompatActivity {
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(OrganizerActivity.this, AttendeeActivity.class);
             intent.putExtra("user", currentUser);
+            eventViewModel.getEventsLiveData().removeObserver(this);
             startActivity(intent);
             finish();
         });

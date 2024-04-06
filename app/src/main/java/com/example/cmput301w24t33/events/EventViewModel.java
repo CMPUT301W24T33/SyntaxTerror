@@ -77,6 +77,10 @@ public class EventViewModel extends ViewModel implements Serializable {
         });
     }
 
+    public void restoreEventCallback(){
+        setEventCallback(eventRepo);
+    }
+
     /**
      * Initiates loading of all events from the Firestore database.
      * The loaded events are observed by the LiveData within this ViewModel.

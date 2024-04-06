@@ -49,6 +49,7 @@ public class OrganizerActivityUITest {
     @Test
     public void testUIOrganizerDisplay() {
         //Checking if layout is displayed with its components
+        onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
         onView(withId(R.id.organizer_layout)).check(matches(isDisplayed()));
         onView(withId(R.id.attendee_organizer)).check(matches(isDisplayed()));
         onView(withId(R.id.organized_events)).check(matches(isDisplayed()));
@@ -58,12 +59,6 @@ public class OrganizerActivityUITest {
     }
     @Test
     public void testOrganizerCreateEventFragment() {
-        // Testing out if cancelling event works
-        onView(withId(R.id.button_create_event)).perform(click());
-        // scroll to cancel
-        onView(withText("Cancel")).perform(ViewActions.scrollTo());
-        // click cancel
-        onView(withId(R.id.cancel_button)).perform(click());
         // check if on organizer activity
         onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
 
@@ -74,6 +69,19 @@ public class OrganizerActivityUITest {
         onView(withId(R.id.max_attendees_edit_text)).perform(replaceText("2"),closeSoftKeyboard());
         onView(withText("Confirm")).perform(ViewActions.scrollTo());
         onView(withId(R.id.confirm_button)).perform(click());
+
+    }
+
+    @Test
+    public void testOrganizerEventCancelButton(){
+        // Checks if on organizer activity
+        onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
+        // Press create event
+        onView(withId(R.id.button_create_event)).perform(click());
+        // Scrolls to cancel
+        onView(withText("Cancel")).perform(ViewActions.scrollTo());
+        // Click cancel
+        onView(withId(R.id.cancel_button)).perform(click());
 
     }
 

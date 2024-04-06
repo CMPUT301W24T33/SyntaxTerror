@@ -7,8 +7,11 @@
 
 package com.example.cmput301w24t33.organizerFragments;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -184,16 +187,21 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
      */
     @Override
     public void onEventsLoaded(List<Event> events) {
-        ProgressBar progressBar = getView().findViewById(R.id.attendee_progress_bar);
-        Event event = events.get(0);
-        attendeesList.clear();
-        attendeesList.addAll(event.getAttendees());
-        attendeeNumberView.setText(String.format(Locale.CANADA, "%d", getUniqueAttendeeCount()));
-        if(event.getMaxOccupancy()!=0){
-            int progress = (int) (((float) getUniqueAttendeeCount()) / ((float) event.getMaxOccupancy() )* 100); // why?
-            progressBar.setProgress(progress);
+        View view = getView();
+        if (view != null) {
+            ProgressBar progressBar = getView().findViewById(R.id.attendee_progress_bar);
+            Event event = events.get(0);
+            attendeesList.clear();
+            attendeesList.addAll(event.getAttendees());
+            attendeeNumberView.setText(String.format(Locale.CANADA, "%d", getUniqueAttendeeCount()));
+            if (event.getMaxOccupancy() != 0) {
+                int progress = (int) (((float) getUniqueAttendeeCount()) / ((float) event.getMaxOccupancy()) * 100); // why?
+                progressBar.setProgress(progress);
+            }
+            attendeeAdapter.notifyDataSetChanged();
+        } else {
+            Log.e(TAG, "VIEW IS NUUULLLL");
         }
-        attendeeAdapter.notifyDataSetChanged();
     }
 
     /**
