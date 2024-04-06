@@ -29,14 +29,10 @@
             </ImageView>
         </androidx.cardview.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/button_user_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="?switchProfileIcon"
-            android:background="@color/transparent"
-            android:layout_marginStart="5dp"
-            android:contentDescription="TODO" />
+        <FrameLayout
+            android:id="@+id/space_frame"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"/>
 
         <TextView
             android:id="@+id/attendee_organizer_textview"
@@ -44,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:layout_toStartOf="@id/profile_button"
-            android:layout_toEndOf="@id/button_user_mode"
+            android:layout_toEndOf="@id/space_frame"
             android:background="@null"
             android:clickable="false"
             android:textAlignment="center"

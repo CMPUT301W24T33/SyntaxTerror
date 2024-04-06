@@ -9,9 +9,9 @@
     <color name="background">#efefef</color>
     <color name="background_night">#22252c</color>
 
-    <color name="gradient_1_day">#3B1F2B</color>
+    <color name="gradient_1_day">#f1faee</color>
     <color name="gradient_2_day">#5F758E</color>
-    <color name="gradient_3_day">#383961</color>
+    <color name="gradient_3_day">#a8dadc</color>
 
     <color name="event_list_background_day">#5f9a8e</color>
     <color name="event_list_background_night">#0f4a3e</color>

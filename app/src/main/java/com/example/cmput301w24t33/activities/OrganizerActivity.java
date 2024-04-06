@@ -83,11 +83,11 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         getProfileUrl(userId);
         setAdapter();
 
-        // set up background animation
-        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-        animation.setEnterFadeDuration(100);
-        animation.setExitFadeDuration(5000);
-        animation.start();
+//        // set up background animation
+//        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
+//        animation.setEnterFadeDuration(100);
+//        animation.setExitFadeDuration(5000);
+//        animation.start();
 
         eventViewModel = EventViewModel.getInstance();
 
@@ -150,7 +150,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         ImageView createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
-        ImageButton userMode = findViewById(R.id.button_user_mode);
+        ImageView userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(OrganizerActivity.this, AttendeeActivity.class);
             intent.putExtra("user", currentUser);

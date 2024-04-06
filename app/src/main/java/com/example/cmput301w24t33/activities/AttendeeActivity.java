@@ -82,11 +82,11 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         binding = AttendeeActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Set up Background Animation
-        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-        animation.setEnterFadeDuration(10);
-        animation.setExitFadeDuration(5000);
-        animation.start();
+//        // Set up Background Animation
+//        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
+//        animation.setEnterFadeDuration(10);
+//        animation.setExitFadeDuration(5000);
+//        animation.start();
 
 
         fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
@@ -302,7 +302,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
 
         });
 
-        ImageButton userMode = findViewById(R.id.button_user_mode);
+        ImageView userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             // Switch to OrganizerActivity activity
             Intent intent = new Intent(AttendeeActivity.this, OrganizerActivity.class);
