@@ -61,6 +61,13 @@ public class AttendeeActivityUITest {
         onView(withId(R.id.find_event_img)).perform(click());
 
     }
+    @Test
+    public void testUIAttendeeSwitchEventButton() {
+        //Checks if switching events view button
+        onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.bottom_nav)).check(matches(isDisplayed()));
+        onView(withId(R.id.switch_events_button)).perform(click());
+        onView(withId(R.id.eventrecyclerview)).check(matches(isDisplayed()));}
 
     @Test
     public void testProfileAttendee(){
