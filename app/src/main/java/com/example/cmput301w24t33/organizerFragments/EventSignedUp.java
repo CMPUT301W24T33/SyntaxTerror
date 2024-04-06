@@ -7,6 +7,7 @@
 package com.example.cmput301w24t33.organizerFragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventSignedUp extends Fragment implements EventRepository.EventCallback {
+    private static final String TAG = "butts";
     private OrganizerEventSignedUpFragmentBinding binding;
     private EventRepository eventRepository;
     private AttendeeAdapter adapter;
@@ -45,7 +47,7 @@ public class EventSignedUp extends Fragment implements EventRepository.EventCall
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = OrganizerEventSignedUpFragmentBinding.inflate(inflater, container, false);
         eventRepository = EventRepository.getInstance();
-        //eventRepository.setEventCallback(this);
+        eventRepository.setEventCallback(this);
         if (getArguments() != null) {
             Event event = (Event) getArguments().getSerializable("event");
             if (event != null) {
@@ -71,7 +73,11 @@ public class EventSignedUp extends Fragment implements EventRepository.EventCall
             signedUpList.clear();
             signedUpList.addAll(event.getSignedUp());
             adapter.notifyDataSetChanged();
-            binding.signedupCount.setText(String.valueOf(signedUpList.size()));
+            if (binding != null) {
+                binding.signedupCount.setText(String.valueOf(signedUpList.size()));
+            } else {
+                Log.e(TAG, "Binding is null. Cannot update UI.");
+            }
         }
     }
 

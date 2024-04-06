@@ -9,11 +9,15 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
+import android.content.Intent;
+
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import com.example.cmput301w24t33.activities.AttendeeActivity;
+import com.example.cmput301w24t33.users.User;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -23,9 +27,15 @@ import org.junit.runner.RunWith;
 @LargeTest
 // Tests limited as no DB connectivity for RecyclerView population
 public class AttendeeActivityUITest {
+
+    static Intent intent;
+    static {
+        intent = new Intent(ApplicationProvider.getApplicationContext(), AttendeeActivity.class);
+        intent.putExtra("user",new User("","","","",true,"",""));
+    }
     @Rule
     public ActivityScenarioRule<AttendeeActivity> scenario = new
-            ActivityScenarioRule<AttendeeActivity>(AttendeeActivity.class);
+            ActivityScenarioRule<AttendeeActivity>(intent);
 
     @Test
     public void testUIAttendeeDisplay() {
