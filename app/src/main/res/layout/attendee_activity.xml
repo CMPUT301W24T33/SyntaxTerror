@@ -21,7 +21,8 @@
             <include
                 layout="@layout/actionbar_attendee"
                 android:layout_width="390dp"
-                android:layout_height="32dp" />
+                android:layout_height="32dp"
+                android:id="@+id/attendee_top_nav"/>
 
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
@@ -61,6 +62,7 @@
                 android:layout_gravity="bottom" />
 
             <LinearLayout
+                android:id="@+id/bottom_nav"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:weightSum="3"
