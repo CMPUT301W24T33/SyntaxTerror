@@ -173,12 +173,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel"); // for testing
         if(eventViewModel == null) { // should be null
             eventViewModel = EventViewModel.getInstance();
-            eventViewModel.getEventsLiveData().observe(this, events -> {
-                allEvents.clear();
-                allEvents.addAll(events);
-                eventListsFilter(events);
-                updateDisplayedEvents();
-            });
+            eventViewModel.getEventsLiveData().observe(this, this);
             eventViewModel.loadEvents();
         }
 
