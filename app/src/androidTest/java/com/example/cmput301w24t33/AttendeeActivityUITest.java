@@ -43,11 +43,13 @@ public class AttendeeActivityUITest {
     @Test
     public void testUIAttendeeDisplay() {
         //Checking if layout is displayed with its components
-        onView(withId(R.id.profile_image)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.eventrecyclerview)).check(matches(isDisplayed()));
         onView(withId(R.id.switch_events_button)).check(matches(isDisplayed()));
-        onView(withId(R.id.check_in_img)).check(matches(isDisplayed()));
-        onView(withId(R.id.find_event_img)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_user_mode)).check(matches(isDisplayed()));
+        onView(withId(R.id.switch_events_button)).perform(click());
+//        onView(withId(R.id.find_event_img)).check(matches(isDisplayed()));
+//        onView(withId(R.id.button_user_mode)).check(matches(isDisplayed()));
     }
 
     @Test

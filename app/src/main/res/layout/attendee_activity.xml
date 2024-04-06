@@ -18,7 +18,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/actionbar_attendee" />
+            <include
+                layout="@layout/actionbar_attendee"
+                android:layout_width="390dp"
+                android:layout_height="32dp" />
 
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->

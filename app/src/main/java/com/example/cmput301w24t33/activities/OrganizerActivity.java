@@ -88,13 +88,23 @@ public class OrganizerActivity extends AppCompatActivity {
         animation.setExitFadeDuration(5000);
         animation.start();
 
-        eventViewModel = EventViewModel.getInstance();
-        eventViewModel.getEventsLiveData().observe(this, this::updateUI);
+        setupViewModel();
 
         View view = findViewById(R.id.organizer_activity);
         setupActionBar(view);
         setOnClickListeners();
     }
+
+    public void setupViewModel() {
+        try {
+            eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel");
+        } catch (NullPointerException e) {
+            eventViewModel = EventViewModel.getInstance();
+            eventViewModel.getEventsLiveData().observe(this, this::updateUI);
+            eventViewModel.loadEvents();
+        }
+    }
+
 
     /**
      * Loads and displays events organized by the current user upon resuming the activity.
