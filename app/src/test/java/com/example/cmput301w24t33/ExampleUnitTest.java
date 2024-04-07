@@ -1,6 +1,6 @@
 package com.example.cmput301w24t33;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import static org.junit.Assert.*;
 

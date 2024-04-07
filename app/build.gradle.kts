@@ -68,11 +68,11 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-database:20.3.1")
     implementation("com.google.android.libraries.places:places:3.4.0")
-    testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testImplementation("org.testng:testng:6.9.6")
+    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.3.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.3.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     testImplementation ("org.mockito:mockito-core:5.11.0") // use the latest version
     androidTestImplementation ("org.mockito:mockito-android:5.11.0") // use the latest version for Android tests
