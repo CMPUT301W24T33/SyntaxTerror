@@ -33,7 +33,7 @@
     <color name="nav_bar_color_night">#ef050505</color>
 
     <color name="event_details_day">#5F758E</color>
-    <color name="event_details_night">#0f4a3e</color>
+    <color name="event_details_night">#1b4d67</color>
     <color name="admin_actionbar">#390040</color>
     <color name="going">#388E3C</color>
     <color name="not_going">#D32F2F</color>

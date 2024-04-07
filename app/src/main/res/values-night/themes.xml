@@ -18,6 +18,8 @@
 
         <item name="eventDetailsBackground">@color/event_details_night</item>
 
+        <item name="eventOutline">@color/white</item>
+
         <item name="navBarColor">@color/nav_bar_color_night</item>
 
         <item name="gradient_start">@color/gradient_1_night</item>

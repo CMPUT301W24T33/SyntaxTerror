@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -121,7 +123,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
 
     private boolean validateCheckIn(Event event) {
         //Checks for max attendees at event
-        if (event.getMaxOccupancy() == event.getAttendees().size() && event.getMaxOccupancy() != 0) { // max occupancy reached
+        if (event.getMaxOccupancy() == event.getAttendees().size() && event.getMaxOccupancy() >= 0) { // max occupancy reached
             Log.d("CheckIn", "Max occupancy reached for event: " + event.getName());
             Toast.makeText(context, "Max Occupancy for this event has been reached", Toast.LENGTH_SHORT).show();
             return false; // Stop the check-in process

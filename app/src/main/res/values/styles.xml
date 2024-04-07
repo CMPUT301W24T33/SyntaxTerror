@@ -36,6 +36,7 @@
         <attr name="gradient_center" format="color"/>
         <attr name="gradient_end" format="color"/>
         <attr name="navBarColor" format="color"/>
+        <attr name="eventOutline" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="action_bar_attrs">
