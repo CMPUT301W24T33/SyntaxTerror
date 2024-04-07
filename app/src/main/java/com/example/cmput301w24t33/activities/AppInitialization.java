@@ -67,6 +67,9 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
         startActivity(intent);
     }
 
+    /**
+     * Authenticates the user based on the device's Android ID, checking if a user profile already exists or initiating profile creation if not.
+     */
     private void authenticateUser() {
         String userId = getAndroidId();
         userViewModel.getUser(userId).observe(this, user -> {
@@ -104,6 +107,10 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
         transaction.commitAllowingStateLoss();
     }
 
+    /**
+     * Handles results of user creation
+     * @param user user that has been created
+     */
     @Override
     public void onUserCreated(User user) {
         userViewModel.setUser(user);

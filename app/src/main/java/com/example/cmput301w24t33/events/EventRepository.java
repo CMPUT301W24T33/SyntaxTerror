@@ -53,12 +53,21 @@ public class EventRepository {
         eventsCollection = this.db.collection("events");
     }
 
+    /**
+     * Initializes event repository
+     * @param application Application attached to repo
+     * @param db database containing Events
+     */
     public static synchronized  void initialize(Application application, FirebaseFirestore db) {
         if (instance == null) {
             instance = new EventRepository(application, db);
         }
     }
 
+    /**
+     * Retrieves the instance of this class
+     * @return EventRepository instance
+     */
     public static synchronized EventRepository getInstance() {
         if (instance == null) {
             throw new IllegalStateException("Event Repository must be initialized in the Application class before use.");
@@ -197,6 +206,10 @@ public class EventRepository {
                 .addOnFailureListener(e -> Log.w(TAG, "Create document failed", e));
     }
 
+    /**
+     * deletes an event from the repository
+     * @param event event to be deleted
+     */
     public void deleteEvent(Event event) {
         eventsCollection.document(event.getEventId())
                 .delete()

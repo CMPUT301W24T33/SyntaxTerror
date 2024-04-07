@@ -11,8 +11,19 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.encoder.ByteMatrix;
 import com.google.zxing.qrcode.encoder.QRCode;
 
-public class QRGenerator {
+/**
+ * Generates QR code from a string. This class is no longer used
+ */
+public class QRGenerator { // this class ain't used
     QRCodeWriter writer = new QRCodeWriter();
+
+    /**
+     * generates a QR code
+     * @param args string to convert to QR code
+     * @param width width of qr code
+     * @param height height of qr code
+     * @return new QR code
+     */
     public QRCode generate(String args, int width, int height){
         QRCode qrCode = new QRCode();
         BitMatrix bitMatrix;
@@ -35,6 +46,11 @@ public class QRGenerator {
         return qrCode;
     }
 
+    /**
+     * retrieves the bitmap of a QR code
+     * @param qrCode QR code whose bitmap is to be retrieved
+     * @return bitmap of QR code
+     */
     public Bitmap bitmap(QRCode qrCode){
         ByteMatrix byteMatrix = qrCode.getMatrix();
         int width = byteMatrix.getWidth();

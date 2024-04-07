@@ -31,6 +31,13 @@ public class UserViewModel extends ViewModel {
     private Application application;
 
 
+    /**
+     * Creates new UserViewModel
+     * @param application Application associated with this
+     * @param myRepo UserRepository containing users
+     * @param userList List of users
+     * @param singleUser Single user
+     */
     public UserViewModel (Application application, UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser) {
         this.application = application;
         this.userRepo = myRepo;
@@ -39,12 +46,23 @@ public class UserViewModel extends ViewModel {
         setUserCallback(userRepo);
     }
 
+    /**
+     * Initializes static UserViewModel
+     * @param application Application associated with this
+     * @param myRepo UserRepository containing users
+     * @param userList List of Users
+     * @param singleUser Single User
+     */
     public static synchronized  void initialize(Application application, UserRepository myRepo, MutableLiveData<List<User>> userList, MutableLiveData<User> singleUser) {
         if (instance == null) {
             instance = new UserViewModel(application, myRepo, userList, singleUser);
         }
     }
 
+    /**
+     * Retrieves static instance of UserViewModel
+     * @return static instance of UserViewModel
+     */
     public static synchronized UserViewModel getInstance() {
         if (instance == null) {
             throw new IllegalStateException("UserViewModel must be initialized in the Application class before use.");
@@ -115,6 +133,11 @@ public class UserViewModel extends ViewModel {
      */
     public LiveData<List<User>> getUsersLiveData() {return userLiveData;}
 
+    /**
+     * Retrieves user from UserRepository
+     * @param userId Id of user to be retrieved
+     * @return LiveData of user that has been retrieved
+     */
     public LiveData<User> getUser(String userId) {
         userRepo.getUser(userId);
         Log.d(TAG, " GET USER LiveData single user: " + liveUser.getValue());

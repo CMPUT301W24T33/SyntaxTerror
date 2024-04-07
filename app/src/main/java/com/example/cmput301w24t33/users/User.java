@@ -186,18 +186,35 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    /**
+     * gets the user's profile image reference
+     * @param imageRef image reference
+     * @return image reference
+     */
     public String getImageRef(String imageRef) {
         return this.imageRef;
     }
 
+    /**
+     * Sets the user's profile image reference
+     * @param imageRef profile image reference
+     */
     public void setImageRef(String imageRef) {
         this.imageRef = imageRef;
     }
 
+    /**
+     * Gets the user's profile image url
+     * @return image url
+     */
     public String getImageUrl() {
         return imageUrl;
     }
 
+    /**
+     * Sets the user's profile image url
+     * @param imageUrl image url
+     */
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }

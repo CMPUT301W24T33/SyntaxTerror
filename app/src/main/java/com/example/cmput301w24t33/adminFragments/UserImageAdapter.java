@@ -15,6 +15,9 @@ import com.example.cmput301w24t33.users.User;
 
 import java.util.List;
 
+/**
+ * Adapter class for displaying user profile pictures in a RecyclerView
+ */
 public class UserImageAdapter extends RecyclerView.Adapter<UserImageAdapter.ViewHolder>{
 
     private final List<User> users;
@@ -24,6 +27,10 @@ public class UserImageAdapter extends RecyclerView.Adapter<UserImageAdapter.View
      * Interface for handling click events on users.
      */
     public interface OnUserListener {
+        /**
+         * Handles user click
+         * @param position list position index
+         */
         void onUserClick(int position);
     }
 
