@@ -31,6 +31,7 @@
         <item name="button_color_2">@color/white</item>
         <item name="button_color_3">@color/button_3_night</item>
         <item name="listColorSecondary">@color/list_color_secondary_night</item>
+        <item name="placesTextColor">@color/white</item>
 
         <item name="check_in_button_image">@drawable/qr_code_scanner_45_night</item>
         <item name="new_event_image">@drawable/new_event_night</item>

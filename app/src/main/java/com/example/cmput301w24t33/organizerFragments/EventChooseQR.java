@@ -25,6 +25,7 @@ import com.example.cmput301w24t33.databinding.OrganizerChooseQrFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -133,6 +134,7 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
                     eventRepo.updateEvent(selectedEvent);
                 }
             }
+            EventViewModel.getInstance().restoreEventCallback();
             getParentFragmentManager().popBackStack();
         });
 
