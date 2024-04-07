@@ -31,7 +31,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
     private FusedLocationProviderClient fusedLocationProvider;
     private EventRepository eventRepo;
     private User currentUser;
-    private float GEOFENCE_RADIUS = 100;
+    private float GEOFENCE_RADIUS = 1000;
 
     @Override
     public void onScanResult(QRCode qrCode) {
@@ -45,6 +45,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
                 return;
             }
         }
+        Toast.makeText(context,"Invalid QR Code",Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -141,24 +142,3 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
         return results[0] < GEOFENCE_RADIUS;
     }
 }
-
-
-
-
-//    private boolean validateCheckIn(Event event){
-//        // TODO: Validate user is within check in radius of event
-//        if (event.getMaxOccupancy() == event.getAttendees().size() && event.getMaxOccupancy() != 0) { // max occupancy reached
-//            Log.d("CheckIn", "Max occupancy reached for event: " +event.getName());
-//            Toast.makeText(context,"Max Occupancy for this event has been reached",Toast.LENGTH_SHORT).show();
-//            return false;
-//        } else if (event.getGeoTracking()) {
-//            Log.d("CheckIn", "Not close enough to event: " +event.getName());
-////            String[] latLong = event.getLocationCoord().split(",");
-////            int lat = Integer.parseInt(latLong[0]);
-////            int lon = Integer.parseInt(latLong[1]);
-//            return true; //this needs to check if the user is within range to check into the event
-//        }
-//        Log.d("CheckIn", "Valid Check In");
-//        return true;
-//    }
-//}
