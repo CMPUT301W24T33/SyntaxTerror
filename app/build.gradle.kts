@@ -9,6 +9,9 @@ plugins {
 android {
     namespace = "com.example.cmput301w24t33"
     compileSdk = 34
+    tasks.withType<Test>{
+        useJUnitPlatform()
+    }
 
     defaultConfig {
         applicationId = "com.example.cmput301w24t33"
@@ -49,12 +52,15 @@ android {
     }
 
 
+
 }
 
 
 
 dependencies {
-
+    testImplementation(kotlin("test-junit5"))
+    testImplementation(platform("org.junit:junit-bom:5.7.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -69,6 +75,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database:20.3.1")
     implementation("com.google.android.libraries.places:places:3.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    androidTestImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testImplementation("org.testng:testng:6.9.6")
     testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.3.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -80,5 +87,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("nl.dionsegijn:konfetti-compose:2.0.4")
     implementation("nl.dionsegijn:konfetti-xml:2.0.4")
+    testImplementation ("org.robolectric:robolectric:4.6.1")
 
 }

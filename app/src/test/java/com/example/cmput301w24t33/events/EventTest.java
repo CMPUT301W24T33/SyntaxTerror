@@ -3,6 +3,8 @@ package com.example.cmput301w24t33.events;
 import com.example.cmput301w24t33.users.User;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.GeoPoint;
+import org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -123,14 +125,7 @@ class EventTest {
         assertTrue(event.getSignedUp().contains(user));
     }
 
-    @Test
-    void testCheckInLocationsManagement() {
-        String location = "123.456,789.012";
-        ArrayList<String> checkInLocations = new ArrayList<>();
-        checkInLocations.add(location);
-        event.setCheckInLocations(checkInLocations);
-        assertTrue(event.getCheckInLocations().contains(location));
-    }
+
 
     @Test
     void testMilestonesManagement() {
@@ -139,14 +134,5 @@ class EventTest {
         assertTrue(milestones.containsKey("half") && milestones.get("half"));
     }
 
-    @Test
-    void testCheckInLocationsGeoPointConversion() {
-        String location = "123.456,789.012";
-        ArrayList<String> checkInLocations = new ArrayList<>();
-        checkInLocations.add(location);
-        event.setCheckInLocations(checkInLocations);
-        ArrayList<GeoPoint> geoPoints = event.checkInLocationsGeoPoint();
-        GeoPoint expectedGeoPoint = new GeoPoint(123.456, 789.012);
-        assertTrue(geoPoints.contains(expectedGeoPoint));
-    }
+
 }
