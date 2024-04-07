@@ -159,13 +159,15 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
             finish();
         });
 
-        userMode.setOnLongClickListener(v -> {
-            Intent intent = new Intent(OrganizerActivity.this, AdminActivity.class);
-            intent.putExtra("user", currentUser);
-            startActivity(intent);
-            finish();
-            return true;
-        });
+        if(currentUser.getAdminview()) {
+            userMode.setOnLongClickListener(v -> {
+                Intent intent = new Intent(OrganizerActivity.this, AdminActivity.class);
+                intent.putExtra("user", currentUser);
+                startActivity(intent);
+                finish();
+                return true;
+            });
+        }
     }
 
     /**
