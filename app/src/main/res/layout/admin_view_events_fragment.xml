@@ -33,7 +33,7 @@
                     android:layout_centerInParent="true"
                     android:background="?selectableItemBackgroundBorderless"
                     android:scaleType="centerInside"
-                    app:srcCompat="@drawable/ic_back_arrow" />
+                    app:srcCompat="?backArrow" />
 
                 <TextView
                     android:id="@+id/general_actionbar_textview"

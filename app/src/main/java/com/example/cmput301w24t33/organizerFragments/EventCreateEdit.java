@@ -263,7 +263,10 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         binding.eventDescriptionEditText.setText(eventToEdit.getEventDescription());
         binding.startTimeText.setText(startDateTime);
         binding.endTimeText.setText(endDateTime);
-        binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
+        int maxOccupancy = eventToEdit.getMaxOccupancy();
+        if(maxOccupancy>=0) {
+            binding.maxAttendeesEditText.setText(String.valueOf(eventToEdit.getMaxOccupancy()));
+        }
         binding.geoTrackingSwitch.setChecked(eventToEdit.getGeoTracking());
         eventImageRef = eventToEdit.getImageRef();
         eventImageUrl = eventToEdit.getImageUrl();
@@ -384,16 +387,23 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
 
         event.setImageUrl(eventImageUrl);
         event.setImageRef(eventImageRef);
+        try {
+            Log.d("OCCUPANCY1", String.valueOf(Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))));
+            Log.d("OCCUPANCY2", String.valueOf(event.getMaxOccupancy()));
 
-        Log.d("OCCUPANCY1", String.valueOf(Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))));
-        Log.d("OCCUPANCY2", String.valueOf(event.getMaxOccupancy()));
-        if (event.getMaxOccupancy() != Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))) {
-            Log.d("OCCUPANCY3", "MADE IT INSIDE IF STATEMENT");
+            if (event.getMaxOccupancy() != Integer.parseInt(String.valueOf(binding.maxAttendeesEditText.getText()))) {
+                Log.d("OCCUPANCY3", "MADE IT INSIDE IF STATEMENT");
+                event.setMilestones("half", false);
+                event.setMilestones("full", false);
+        } } catch (NumberFormatException e) { // no max attendees
             event.setMilestones("half", false);
             event.setMilestones("full", false);
         }
-        event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
-
+        try {
+            event.setMaxOccupancy(Integer.parseInt(Objects.requireNonNull(binding.maxAttendeesEditText.getText()).toString().trim()));
+        } catch (NumberFormatException e) {
+            event.setMaxOccupancy(-1);
+        }
         // when no QR code is being reused
         if (qrcode == null) {
             // create new uuid for qrcode

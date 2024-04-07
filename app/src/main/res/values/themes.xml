@@ -10,12 +10,14 @@
         <item name="colorSecondary">@color/secondary_day</item>
         <item name="android:textColor">@color/black</item>
         <item name="backgroundColor">@color/background</item>
-        <item name="background">@drawable/background_gradient_animation</item>
+        <item name="background">@drawable/background_gradient_day</item>
         <item name="action_bar_attendee">@color/attendee_actionbar_day</item>
         <item name="action_bar_organizer">@color/organizer_actionbar_day</item>
 
 
         <item name="eventDetailsBackground">@color/event_details_day</item>
+
+        <item name="eventOutline">@color/black</item>
 
         <item name="navBarColor">@color/nav_bar_color_day</item>
 
@@ -27,6 +29,7 @@
         <item name="new_event_image">@drawable/new_event_day</item>
         <item name="search_button_image">@drawable/search_icon_day</item>
         <item name="switchProfileIcon">@drawable/switch_user_mode_day</item>
+        <item name="eventListIcon">@drawable/ic_event_list</item>
         <item name="switchPersonIcon">@drawable/person_icon_day</item>
         <item name="switchHouseIcon">@drawable/house_icon_day</item>
 
