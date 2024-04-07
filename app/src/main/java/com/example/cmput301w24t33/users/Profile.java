@@ -130,7 +130,7 @@ public class Profile extends Fragment {
                                             imageRef = result.second;
                                             imageUrl = result.first;
                                             doneImageUpload = true;
-                                            Snackbar.make(getView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
+                                            Snackbar.make(profileImageView.getRootView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
                                         }
 
                                         @Override
@@ -177,12 +177,7 @@ public class Profile extends Fragment {
                         && result.getData() != null) {
 
                     Uri photoUri = result.getData().getData();
-                    try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), photoUri);
-                        profileImageView.setImageBitmap(bitmap);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    Glide.with(getContext()).load(photoUri).into(profileImageView);
                     Log.d("returned url",photoUri.toString());
 
                     ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
@@ -193,7 +188,7 @@ public class Profile extends Fragment {
                             Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
                             doneImageUpload = true;
                             UserRemoved = false;
-                            Snackbar.make(getView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
+                            Snackbar.make(profileImageView.getRootView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
                             imageRef = result.second;
                             imageUrl = result.first;
                         }
@@ -303,7 +298,7 @@ public class Profile extends Fragment {
                 saveProfile();
             }
             else if (doneImageUpload && UserRemoved && validInput(view)) {
-                Snackbar.make(getView(), "Uploading Image", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(profileImageView.getRootView(), "Uploading Image", Snackbar.LENGTH_SHORT).show();
                 fileRef = storage.getReferenceFromUrl(imageUrl);
                 fileRef.delete().addOnSuccessListener(aVoid -> {
                     // File deleted successfully
