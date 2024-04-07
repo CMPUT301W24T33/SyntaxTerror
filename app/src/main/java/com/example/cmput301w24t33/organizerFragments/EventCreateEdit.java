@@ -103,6 +103,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                                 eventImageRef = result.second;
                                 eventImageUrl = result.first;
                                 doneImageUpload = true;
+                                Snackbar.make(getView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
                             }
                             @Override
                             public void onFailure(Exception e) {
@@ -303,7 +304,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 eventRepo.updateEvent(eventToEdit);
                 Snackbar.make(binding.getRoot(), "Event Changed", Snackbar.LENGTH_SHORT).show();
 
-        // Checks if Event is being edited to prevent creating new Event with updated information
+                // Checks if Event is being edited to prevent creating new Event with updated information
 
 
             } else {
