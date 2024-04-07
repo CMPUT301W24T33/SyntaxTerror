@@ -15,7 +15,7 @@
         android:id="@+id/profile_back_actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/actionbar_editprofile" />
+        <include layout="@layout/actionbar_editprofile_organizer" />
     </RelativeLayout>
 
     <androidx.cardview.widget.CardView
