@@ -65,7 +65,6 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
     private User currentUser;
     private String userId;
     private String userImageURL;
-    private FusedLocationProviderClient fusedLocationProvider;
     private QRScanner qrScanner;
     private UserViewModel userViewModel;
     private EventViewModel eventViewModel;
@@ -82,14 +81,6 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         binding = AttendeeActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        // Set up Background Animation
-//        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-//        animation.setEnterFadeDuration(10);
-//        animation.setExitFadeDuration(5000);
-//        animation.start();
-
-
-        fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
         currentUser = (User) getIntent().getSerializableExtra("user");
@@ -311,15 +302,17 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             finish();
         });
 
-        userMode.setOnLongClickListener(v -> {
-            // Switch to AdminActivity activity
-            Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
-            intent.putExtra("uId", userId);
-            intent.putExtra("user", currentUser);
-            startActivity(intent);
-            finish();
-            return true;
-        });
+        if(currentUser.getAdminview()) {
+            userMode.setOnLongClickListener(v -> {
+                // Switch to AdminActivity activity
+                Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
+                intent.putExtra("uId", userId);
+                intent.putExtra("user", currentUser);
+                startActivity(intent);
+                finish();
+                return true;
+            });
+        }
     }
 
     /**
