@@ -316,7 +316,12 @@ public class Profile extends Fragment {
                         Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
                         imageRef = result.second;
                         imageUrl = result.first;
-                        saveProfile();
+                        try {
+                            saveProfile();
+                        } catch (NullPointerException e) { // fragment canceled
+                            Log.d("Profile", "Profile edit canceled");
+                            e.printStackTrace();
+                        }
 
 
                     }
