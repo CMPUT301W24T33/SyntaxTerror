@@ -14,7 +14,11 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -24,17 +28,20 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
 import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.google.android.gms.common.api.Status;
@@ -103,7 +110,11 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                                 eventImageRef = result.second;
                                 eventImageUrl = result.first;
                                 doneImageUpload = true;
-                                Snackbar.make(getView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
+                                try {
+                                    Snackbar.make(getView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
+                                } catch (IllegalArgumentException e) {
+                                    Log.d("Upload","upload canceled");
+                                }
                             }
                             @Override
                             public void onFailure(Exception e) {
@@ -175,6 +186,17 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
         return binding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        EditText searchView = view.findViewById(com.google.android.libraries.places.R.id.places_autocomplete_search_input);
+        try (TypedArray t = requireContext().getTheme().obtainStyledAttributes(R.styleable.color_attrs)){
+            ColorStateList c = t.getColorStateList(R.styleable.color_attrs_placesTextColor);
+            searchView.setTextColor(c);
+        }
+    }
+
     /**
      * Cleans up resources associated with the view hierarchy. This is called when the view previously created by onCreateView has been detached.
      */
@@ -213,7 +235,6 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         if (autocompleteFragment != null) {
             autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
-
             //This is to give more efficient searches around Edmonton
             RectangularBounds bounds = RectangularBounds.newInstance(
                     new LatLng(53.396, -113.718),
