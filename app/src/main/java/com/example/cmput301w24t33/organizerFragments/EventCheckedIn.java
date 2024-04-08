@@ -53,7 +53,7 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
     private MapView mapView;
     private Event selectedEvent;
     private GoogleMap gMap;
-    private float GEOFENCE_RADIUS = 100;
+    private float GEOFENCE_RADIUS = 300;
 
     /**
      * Required empty public constructor

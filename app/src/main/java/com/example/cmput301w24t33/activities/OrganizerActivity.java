@@ -82,6 +82,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         userId = currentUser.getUserId();
         getProfileUrl(userId);
         setAdapter();
+        setupViewModel();
 
         eventViewModel = EventViewModel.getInstance();
 
@@ -91,6 +92,19 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
     }
 
     /**
+     * Sets up the ViewModel for managing event data. It observes changes in event data and updates the UI accordingly.
+     */
+    public void setupViewModel() {
+        eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel"); // for testing
+        if (eventViewModel == null) { // should be null
+            eventViewModel = EventViewModel.getInstance();
+            eventViewModel.getEventsLiveData().observe(this, this);
+            eventViewModel.loadEvents();
+        }
+    }
+
+
+    /**
      * Loads and displays events organized by the current user upon resuming the activity.
      */
     @Override
@@ -98,8 +112,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         super.onResume();
         NotificationManager.initialize(this.getApplication());
         Log.d(TAG, "Organizer RESUME");
-        eventViewModel.restoreEventCallback();
-        eventViewModel.getEventsLiveData().observe(this, this);
+        setupViewModel();
         eventViewModel.loadOrganizerEvents(userId);
     }
 
@@ -213,7 +226,9 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
                     }
                 });
 
-
+    /**
+     * Updates the profile image view with the current user's image using Glide.
+     */
     }
     public void updatePicture(){
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));

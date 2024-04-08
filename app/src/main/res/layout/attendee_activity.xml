@@ -18,7 +18,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/actionbar_attendee" />
+            <include
+                layout="@layout/actionbar_attendee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/attendee_top_nav"/>
 
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
@@ -52,6 +56,7 @@
                 android:visibility="visible" />
 
             <LinearLayout
+                android:id="@+id/bottom_nav"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:weightSum="4"

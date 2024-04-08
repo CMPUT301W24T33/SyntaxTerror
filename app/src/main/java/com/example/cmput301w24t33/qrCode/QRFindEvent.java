@@ -12,6 +12,9 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 
 import java.util.ArrayList;
 
+/**
+ * Finds event in the app and brings user to event page
+ */
 public class QRFindEvent implements QRScanner.ScanResultsListener{
     private Context context;
     private ArrayList<Event> events;

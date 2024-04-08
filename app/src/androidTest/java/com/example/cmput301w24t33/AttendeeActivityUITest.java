@@ -17,11 +17,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import com.example.cmput301w24t33.activities.AttendeeActivity;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -32,6 +34,7 @@ public class AttendeeActivityUITest {
     static {
         intent = new Intent(ApplicationProvider.getApplicationContext(), AttendeeActivity.class);
         intent.putExtra("user",new User("","","","",true,"",""));
+        intent.putExtra("eventViewModel", Mockito.mock(EventViewModel.class));
     }
     @Rule
     public ActivityScenarioRule<AttendeeActivity> scenario = new
@@ -40,12 +43,31 @@ public class AttendeeActivityUITest {
     @Test
     public void testUIAttendeeDisplay() {
         //Checking if layout is displayed with its components
-        onView(withId(R.id.profile_image)).check(matches(isDisplayed()));
-        onView(withId(R.id.switch_events_button)).check(matches(isDisplayed()));
+        onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.attendee_top_nav)).check(matches(isDisplayed()));
+        onView(withId(R.id.bottom_nav)).check(matches(isDisplayed()));
         onView(withId(R.id.check_in_img)).check(matches(isDisplayed()));
         onView(withId(R.id.find_event_img)).check(matches(isDisplayed()));
-        onView(withId(R.id.button_user_mode)).check(matches(isDisplayed()));
+        onView(withId(R.id.eventrecyclerview)).check(matches(isDisplayed()));
+        onView(withId(R.id.switch_events_button)).check(matches(isDisplayed()));
+
     }
+
+    @Test
+    public void testUIAttendeeFindEvent() {
+        //Checks if find_event button works
+        onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.bottom_nav)).check(matches(isDisplayed()));
+        onView(withId(R.id.find_event_img)).perform(click());
+
+    }
+    @Test
+    public void testUIAttendeeSwitchEventButton() {
+        //Checks if switching events view button
+        onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.bottom_nav)).check(matches(isDisplayed()));
+        onView(withId(R.id.switch_events_button)).perform(click());
+        onView(withId(R.id.eventrecyclerview)).check(matches(isDisplayed()));}
 
     @Test
     public void testProfileAttendee(){
@@ -78,8 +100,6 @@ public class AttendeeActivityUITest {
         // check if on attendee view
         onView(withId(R.id.attendee_activity)).check(matches(isDisplayed()));
     }
-
-
 
 
 }
