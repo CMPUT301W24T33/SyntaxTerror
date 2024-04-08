@@ -8,6 +8,8 @@
     <string name="share_check_in_code">Share Check In Code</string>
     <string name="share_poster">Share Poster</string>
     <string name="places">AIzaSyBK94a1cQs_7HW6JGFZRu39VRILNwkB0uk</string>
+    <string name="browse_all_events">Browse All</string>
+    <string name="check_in">Check In</string>
     <string name="cancel">Cancel</string>
     <string name="remove_profile_image">Remove Image</string>
     <string name="confirm">Confirm</string>
@@ -19,6 +21,7 @@
     <string name="max_attendees">Max Attendees:</string>
     <string name="start_text">Start:</string>
     <string name="end_text">End:</string>
+    <string name="new_event">New Event</string>
     <string name="optional">Optional</string>
     <string name="enable_geo_tracking">Enable Geo Tracking:</string>
     <string name="upload_poster">Upload Poster</string>

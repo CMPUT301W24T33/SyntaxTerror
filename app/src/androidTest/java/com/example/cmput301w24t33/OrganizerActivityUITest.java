@@ -83,6 +83,9 @@ public class OrganizerActivityUITest {
         onView(withId(R.id.organized_events)).check(matches(isDisplayed()));
         onView(withId(R.id.bottom_nav_organizer)).check(matches(isDisplayed()));
         onView(withId(R.id.button_create_event)).check(matches(isDisplayed()));
+        //Checks text layout
+        onView(withText("To Attendee")).check(matches(isDisplayed()));
+        onView(withText("New Event")).check(matches(isDisplayed()));
 
     }
 
@@ -137,6 +140,7 @@ public class OrganizerActivityUITest {
         onView(withId(R.id.geo_tracking_switch)).check(matches(isDisplayed()));
 
         //Checks Upload Poster Button
+        onView(withText("Confirm")).perform(ViewActions.scrollTo());
         onView(withText("UPLOAD POSTER")).check(matches(isDisplayed()));
         onView(withId(R.id.upload_poster_button)).check(matches(isDisplayed()));
 
@@ -147,6 +151,7 @@ public class OrganizerActivityUITest {
         //Checks cancel and confirm buttons
         onView(withText("CANCEL")).check(matches(isDisplayed()));
         onView(withText("CONFIRM")).check(matches(isDisplayed()));
+
 
     }
 

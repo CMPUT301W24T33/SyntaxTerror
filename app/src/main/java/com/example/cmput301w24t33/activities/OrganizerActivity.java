@@ -84,8 +84,6 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         setAdapter();
         setupViewModel();
 
-        eventViewModel = EventViewModel.getInstance();
-
         View view = findViewById(R.id.organizer_activity);
         setupActionBar(view);
         setOnClickListeners();
