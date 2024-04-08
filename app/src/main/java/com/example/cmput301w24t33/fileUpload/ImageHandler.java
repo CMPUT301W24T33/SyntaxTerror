@@ -26,8 +26,20 @@ import java.util.UUID;
  */
 public class ImageHandler {
 
+    /**
+     * Handles image results
+     */
     public interface UploadCallback {
+        /**
+         * Handles image upload success
+         * @param result upload result
+         */
         void onSuccess(Pair<String, String> result);
+
+        /**
+         * Handles image upload failure
+         * @param e upload exception
+         */
         void onFailure(Exception e);
     }
 

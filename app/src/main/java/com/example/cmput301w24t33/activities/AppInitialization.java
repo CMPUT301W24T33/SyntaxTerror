@@ -22,6 +22,9 @@ import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Activity which initializes the app and all its static classes
+ */
 public class AppInitialization extends AppCompatActivity implements CreateProfile.OnUserCreatedListener {
 
     private User currentUser;

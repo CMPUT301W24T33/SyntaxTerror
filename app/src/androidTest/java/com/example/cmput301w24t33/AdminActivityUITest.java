@@ -5,6 +5,9 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
+import static org.mockito.ArgumentMatchers.any;
 
 import android.app.Application;
 
@@ -13,6 +16,7 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.cmput301w24t33.activities.AdminActivity;
 import com.example.cmput301w24t33.events.Event;
@@ -28,6 +32,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 /**
  * Tests for {@link AdminActivity} to verify the display and functionality of the admin interface.
@@ -52,6 +58,7 @@ public class AdminActivityUITest {
      * test scenario. This method ensures that each test starts with a consistent and isolated
      * environment.
      */
+
     @Before
     public void setUp() {
         // Get the application context
@@ -60,13 +67,31 @@ public class AdminActivityUITest {
         UserRepository mockProfileRepo = Mockito.mock(UserRepository.class);
 
         // Creating a MutableLiveData instance for testing
-        MutableLiveData<List<Event>> testEvent = new MutableLiveData<>();
-        MutableLiveData<List<com.example.cmput301w24t33.users.User>> testProfile = new MutableLiveData<>();
-        MutableLiveData<User> testSingleUser = new MutableLiveData<>();
+        MutableLiveData<List<Event>> testEventLiveData = new MutableLiveData<>();
+        MutableLiveData<List<User>> testProfileLiveData = new MutableLiveData<>();
+        MutableLiveData<User> testSingleUserLiveData = new MutableLiveData<>();
 
-        // Initialize the EventViewModel with the mock components
-        EventViewModel.initialize(application, mockEventRepo, testEvent);
-        UserViewModel.initialize(application,mockProfileRepo,testProfile,testSingleUser);
+        // Creating Mock Events
+        List<Event> mockEvents = new ArrayList<>();
+        mockEvents.add(new Event("Test Event 1", "University Campus", "This is the first test event."));
+        mockEvents.add(new Event("Test Event 2", "Downtown", "This is the second test event."));
+        mockEvents.add(new Event("Test Event 3", "Local Park", "This is the third test event."));
+
+        // Creating Mock Users
+        List<User> mockUsers = new ArrayList<>();
+        mockUsers.add(new User("000","John","Deer","JohnDeer@gmail.com",true,"",""));
+        mockUsers.add(new User("111","Mock","Test","MockTest@gmail.com",true,"",""));
+        mockUsers.add(new User("222","Yes","No","YesNo@gmail.com",true,"",""));
+
+        // Use runOnMainSync to update LiveData on the main thread
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(() -> {
+            testEventLiveData.setValue(mockEvents);
+            testProfileLiveData.setValue(mockUsers);
+        });
+
+        // Initialize ViewModels with mock repositories and LiveData
+        EventViewModel.initialize(application, mockEventRepo, testEventLiveData);
+        UserViewModel.initialize(application, mockProfileRepo, testProfileLiveData, testSingleUserLiveData);
     }
 
     /**
@@ -97,6 +122,7 @@ public class AdminActivityUITest {
         onView(withId(R.id.image_background)).check(matches(isDisplayed()));
 
     }
+
 
     /**
      * Tests the display of the events view within the admin interface. It simulates a click on the

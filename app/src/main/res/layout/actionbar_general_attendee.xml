@@ -27,8 +27,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:layout_toStartOf="@id/space_frame"
-            android:layout_toEndOf="@id/back_arrow_img"
             android:background="@null"
             android:clickable="false"
             android:text=""

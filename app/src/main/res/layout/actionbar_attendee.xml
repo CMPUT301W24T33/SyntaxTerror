@@ -21,12 +21,13 @@
 
             <ImageView
                 android:id="@+id/profile_image"
-                android:clickable="true"
-                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:focusable="true">
-            </ImageView>
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test_profile"></ImageView>
+
         </androidx.cardview.widget.CardView>
 
         <FrameLayout

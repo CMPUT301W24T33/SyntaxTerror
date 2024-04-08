@@ -44,9 +44,7 @@ public class Notification {
     }
 
     /**
-     * Sets the ID of the notification.
-     *
-     * @return The notification title.
+     * Sets the ID of the notification..
      */
     public void setId(String id) {
         this.id = id;

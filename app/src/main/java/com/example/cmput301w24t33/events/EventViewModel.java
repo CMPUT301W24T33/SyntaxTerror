@@ -16,13 +16,14 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.cmput301w24t33.notifications.NotificationManager;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * ViewModel class for managing UI-related data in a lifecycle-conscious way.
  * This class encapsulates the data for the events to survive configuration changes such as screen rotations.
  */
-public class EventViewModel extends ViewModel {
+public class EventViewModel extends ViewModel implements Serializable {
     private static EventViewModel instance;
     private EventRepository eventRepo;
     private MutableLiveData<List<Event>> eventsLiveData;

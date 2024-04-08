@@ -90,7 +90,7 @@ public class Profile extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
+                        if (documentSnapshot.exists()&& isAdded()) {
                             email = documentSnapshot.getString("email");
                             fName = documentSnapshot.getString("firstName");
                             lName = documentSnapshot.getString("lastName");
@@ -100,6 +100,7 @@ public class Profile extends Fragment {
                             addFnameEditText.setText(fName);
                             addEmailEditText.setText(email);
                             addLnameEditText.setText(lName);
+
                             if (imageUrl != "") {
                                 Glide.with(getContext()).load(imageUrl).into(profileImageView);
                             }

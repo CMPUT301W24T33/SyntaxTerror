@@ -31,6 +31,7 @@
 
 
             <LinearLayout
+                android:id="@+id/bottom_nav_organizer"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/bottom_nav_organizer"
@@ -76,7 +77,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:text="New Event"/>
+                        android:text="@string/new_event"/>
                 </LinearLayout>
             </LinearLayout>
 
