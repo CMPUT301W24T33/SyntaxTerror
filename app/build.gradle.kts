@@ -73,7 +73,6 @@ android {
 
 
 dependencies {
-    implementation(files("C:\\Users\\reece\\AppData\\Local\\Android\\Sdk\\platforms\\android-34\\android.jar"))
     testImplementation(kotlin("test-junit5"))
     testImplementation(platform("org.junit:junit-bom:5.7.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
