@@ -262,20 +262,4 @@ public class AttendeeActivityUITest {
     }
 
 
-    /**
-     * Verifies the functionality of switching between Attendee and Organizer modes within the application.
-     */
-//    @Test
-//    public void testAttendeeOrganizerSwitch(){
-//        // press button to switch to organizer
-//        onView(withId(R.id.button_user_mode)).perform(click());
-//        // check if on organizer activity
-//        onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
-//        // press button to switch back to attendee
-//        onView(withId(R.id.button_user_mode)).perform(click());
-//        // check if on attendee view
-//        onView(withId(R.id.attendee_activity)).check(matches(isDisplayed()));
-//    }
-
-
 }
