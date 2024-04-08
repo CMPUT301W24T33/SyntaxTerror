@@ -15,11 +15,20 @@ import com.example.cmput301w24t33.events.EventRepository;
 import java.util.Locale;
 import java.text.SimpleDateFormat;
 
+/**
+ * Fragment for the Admin to delete existing events
+ */
 public class DeleteEventAdmin extends Fragment {
     private AdminDeleteEventFragmentBinding binding;
     private Event eventToDelete;
     private EventRepository eventRepo;
 
+
+    /**
+     * Creates a new Instance of DeleteEventAdmin fragment
+     * @param event event to be deleted
+     * @return new DeleteEventAdmin fragment
+     */
     public static DeleteEventAdmin newInstance(Event event) {
         DeleteEventAdmin fragment = new DeleteEventAdmin();
         Bundle args = new Bundle();
@@ -28,6 +37,18 @@ public class DeleteEventAdmin extends Fragment {
         return fragment;
     }
 
+    /**
+     * Called when view is created
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = AdminDeleteEventFragmentBinding.inflate(inflater, container, false);
@@ -47,6 +68,9 @@ public class DeleteEventAdmin extends Fragment {
         binding.actionBarTextview.setText("Delete Event");
     }
 
+    /**
+     *
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();

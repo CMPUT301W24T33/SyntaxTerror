@@ -9,9 +9,14 @@
     <color name="background">#efefef</color>
     <color name="background_night">#22252c</color>
 
-    <color name="gradient_1_day">#3B1F2B</color>
+    <color name="gradient_1_day">#f1faee</color>
     <color name="gradient_2_day">#5F758E</color>
-    <color name="gradient_3_day">#383961</color>
+    <color name="gradient_3_day">#a8dadc</color>
+
+    <color name="gradient_1_night">#38a3a5</color>
+    <color name="gradient_2_night">#57cc99</color>
+    <color name="gradient_3_night">#22577a</color>
+
 
     <color name="event_list_background_day">#5f9a8e</color>
     <color name="event_list_background_night">#0f4a3e</color>
@@ -28,8 +33,8 @@
     <color name="nav_bar_color_night">#ef050505</color>
 
     <color name="event_details_day">#5F758E</color>
-    <color name="event_details_night">#0f4a3e</color>
-    <color name="admin_actionbar">#3f3250</color>
+    <color name="event_details_night">#1b4d67</color>
+    <color name="admin_actionbar">#390040</color>
     <color name="going">#388E3C</color>
     <color name="not_going">#D32F2F</color>
     <color name="default_state">#747474</color>

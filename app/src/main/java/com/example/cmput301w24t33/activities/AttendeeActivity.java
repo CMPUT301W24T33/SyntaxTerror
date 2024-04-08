@@ -65,7 +65,6 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
     private User currentUser;
     private String userId;
     private String userImageURL;
-    private FusedLocationProviderClient fusedLocationProvider;
     private QRScanner qrScanner;
     private UserViewModel userViewModel;
     private EventViewModel eventViewModel;
@@ -82,14 +81,6 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         binding = AttendeeActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Set up Background Animation
-        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-        animation.setEnterFadeDuration(10);
-        animation.setExitFadeDuration(5000);
-        animation.start();
-
-
-        fusedLocationProvider = LocationServices.getFusedLocationProviderClient(this);
         userId = getAndroidId();
 
         currentUser = (User) getIntent().getSerializableExtra("user");
@@ -134,7 +125,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             public void onAnimationEnd(Animation animation) {
                 viewingAllEvents = !viewingAllEvents;
                 updateDisplayedEvents();
-//                binding.switchEventsButton.setText(viewingAllEvents ? "Browse Your Events" : "Browse All Events");
+                binding.browseEventsText.setText(viewingAllEvents ? "Browse Your" : "Browse All");
                 binding.eventrecyclerview.startAnimation(fadeIn);
             }
 
@@ -279,7 +270,6 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         profileButton.setOnClickListener(v -> {
             replaceFragment(Profile.newInstance(currentUser));
         });
-        binding.switchEventsButton.setOnClickListener(v -> switchEventView());
 
         ImageView checkInButton = findViewById(R.id.check_in_img);
 
@@ -304,7 +294,7 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
 
         });
 
-        ImageButton userMode = findViewById(R.id.button_user_mode);
+        ImageView userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             // Switch to OrganizerActivity activity
             Intent intent = new Intent(AttendeeActivity.this, OrganizerActivity.class);
@@ -314,15 +304,17 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
             finish();
         });
 
-        userMode.setOnLongClickListener(v -> {
-            // Switch to AdminActivity activity
-            Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
-            intent.putExtra("uId", userId);
-            intent.putExtra("user", currentUser);
-            startActivity(intent);
-            finish();
-            return true;
-        });
+        if(currentUser.getAdminview()) {
+            userMode.setOnLongClickListener(v -> {
+                // Switch to AdminActivity activity
+                Intent intent = new Intent(AttendeeActivity.this, AdminActivity.class);
+                intent.putExtra("uId", userId);
+                intent.putExtra("user", currentUser);
+                startActivity(intent);
+                finish();
+                return true;
+            });
+        }
     }
 
     /**
@@ -356,6 +348,9 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         fetchInfo(findViewById(R.id.profile_image));
     }
 
+    /**
+     * Updates profile picture image view with user's profile picture
+     */
     public void updatePicture(){
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
     }

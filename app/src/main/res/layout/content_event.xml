@@ -8,7 +8,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/event_details_rounded"
-            android:backgroundTint="?backgroundColor"
             style="@style/EventDetails"
             android:padding="1dp"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,23 +22,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-                <ImageView
-                    android:id="@+id/event_poster_image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/image_background_rounded"
-                    android:src="@drawable/no_image"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/event_details"/>
+
 
                 <LinearLayout
                     android:id="@+id/event_details"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/event_poster_image_view"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
@@ -48,12 +38,23 @@
                         android:text="Event Name"
                         android:padding="2dp"
                         android:textSize="30sp"
+                        android:textAlignment="center"
                         app:layout_constraintTop_toBottomOf="@id/event_poster_image_view"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/event_poster_image_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/image_background_rounded"
+                        android:src="@drawable/no_image"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/event_details"/>
 
                     <TextView
                         android:layout_width="match_parent"

@@ -82,15 +82,9 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         userId = currentUser.getUserId();
         getProfileUrl(userId);
         setAdapter();
-
-        // set up background animation
-        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-        animation.setEnterFadeDuration(100);
-        animation.setExitFadeDuration(5000);
-        animation.start();
-
         setupViewModel();
 
+        eventViewModel = EventViewModel.getInstance();
 
         View view = findViewById(R.id.organizer_activity);
         setupActionBar(view);
@@ -163,7 +157,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         ImageView createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
-        ImageButton userMode = findViewById(R.id.button_user_mode);
+        ImageView userMode = findViewById(R.id.button_user_mode);
         userMode.setOnClickListener(v -> {
             Intent intent = new Intent(OrganizerActivity.this, AttendeeActivity.class);
             intent.putExtra("user", currentUser);
@@ -172,13 +166,15 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
             finish();
         });
 
-        userMode.setOnLongClickListener(v -> {
-            Intent intent = new Intent(OrganizerActivity.this, AdminActivity.class);
-            intent.putExtra("user", currentUser);
-            startActivity(intent);
-            finish();
-            return true;
-        });
+        if(currentUser.getAdminview()) {
+            userMode.setOnLongClickListener(v -> {
+                Intent intent = new Intent(OrganizerActivity.this, AdminActivity.class);
+                intent.putExtra("user", currentUser);
+                startActivity(intent);
+                finish();
+                return true;
+            });
+        }
     }
 
     /**
@@ -186,9 +182,6 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
      * @param view The current view that includes the action bar.
      */
     private void setupActionBar(View view) {
-        RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
-//        int color = ContextCompat.getColor(this, R.color.organizer_actionbar_day);
-//        attendeeOrganizerActionbar.setBackgroundColor(color);
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Organize Events");
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
@@ -208,9 +201,8 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
     }
 
     /**
-     * Retrieves the profile image URL for the current user from Firestore.
-     *
-     * @param Aid The unique identifier for the user whose profile URL is being retrieved.
+     * Retrieves the profile image url of the current user
+     * @param Aid android Id
      */
     public static void getProfileUrl(String Aid){
         FirebaseFirestore db = FirebaseFirestore.getInstance();

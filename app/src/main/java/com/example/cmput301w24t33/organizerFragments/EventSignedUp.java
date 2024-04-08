@@ -28,6 +28,9 @@ import com.example.cmput301w24t33.databinding.OrganizerEventSignedUpFragmentBind
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A fragment class to display the list of Signed Up users to an event
+ */
 public class EventSignedUp extends Fragment implements EventRepository.EventCallback {
     private static final String TAG = "butts";
     private OrganizerEventSignedUpFragmentBinding binding;
@@ -36,6 +39,11 @@ public class EventSignedUp extends Fragment implements EventRepository.EventCall
     private ArrayList<User> signedUpList = new ArrayList<>();
     private String eventId;
 
+    /**
+     * Creates a new instance of this class
+     * @param event event whose signed up list is to be viewed
+     * @return new EventSignedUp instance
+     */
     public static EventSignedUp newInstance(Event event) {
         Bundle args = new Bundle();
         args.putSerializable("event", event);

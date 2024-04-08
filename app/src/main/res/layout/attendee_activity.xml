@@ -55,44 +55,110 @@
                 android:layout_marginTop="3sp"
                 android:visibility="visible" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                android:layout_gravity="bottom" />
-
             <LinearLayout
                 android:id="@+id/bottom_nav"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:weightSum="3"
+                android:layout_height="60dp"
+                android:weightSum="4"
                 android:background="@drawable/bottom_nav_attendee"
                 android:orientation="horizontal">
 
+                <LinearLayout
+                    android:id="@+id/user_mode_lin_layout"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/button_user_mode"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="7dp"
+                        app:srcCompat="?switchProfileIcon"
+                        android:contentDescription="TODO" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="@string/switch_profile_attendee"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
                 <ImageView
                     android:id="@+id/switch_events_button"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
                     android:paddingTop="7dp"
                     android:paddingBottom="7dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_event_list"/>
+                    android:src="?eventListIcon"/>
 
-                <ImageView
-                    android:id="@+id/check_in_img"
+                    <TextView
+                        android:id="@+id/browse_events_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Browse All"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="?attr/check_in_button_image" />
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/check_in_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:src="?check_in_button_image"/>
 
-                <ImageView
-                    android:id="@+id/find_event_img"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Check In"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
-                    android:src="?attr/search_button_image" />
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/find_event_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:src="?search_button_image"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Find Event"/>
+                </LinearLayout>
+<!--                <ImageView-->
+<!--                    android:id="@+id/check_in_img"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:src="?attr/check_in_button_image" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/find_event_img"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:paddingTop="7dp"-->
+<!--                    android:paddingBottom="7dp"-->
+<!--                    android:src="?attr/search_button_image" />-->
 
             </LinearLayout>
         </LinearLayout>

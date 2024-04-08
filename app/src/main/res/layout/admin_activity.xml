@@ -37,7 +37,7 @@
                     android:id="@+id/button_user_mode"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    app:srcCompat="?switchProfileIcon"
+                    app:srcCompat="@drawable/switch_user_mode_night"
                     android:background="@color/transparent"
                     android:layout_marginStart="5dp"
                     android:contentDescription="TODO" />
@@ -49,9 +49,10 @@
                     android:layout_centerInParent="true"
                     android:background="@null"
                     android:clickable="false"
+                    android:textColor="@color/white"
                     android:textAlignment="center"
                     android:textSize="35sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -74,8 +75,8 @@
                     android:layout_marginBottom="20sp"
                     android:backgroundTint="@color/admin_actionbar"
                     android:text=" Browse Events"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"></Button>
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 
@@ -98,8 +99,8 @@
                     android:layout_marginBottom="20sp"
                     android:backgroundTint="@color/admin_actionbar"
                     android:text=" Browse Profiles"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"></Button>
+                    android:textColor="@color/white"
+                    android:textSize="20dp"/>
 
             </RelativeLayout>
 
@@ -122,8 +123,8 @@
                     android:layout_marginBottom="20sp"
                     android:backgroundTint="@color/admin_actionbar"
                     android:text=" Browse Images"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"></Button>
+                    android:textColor="@color/white"
+                    android:textSize="20dp"/>
 
             </RelativeLayout>
         </LinearLayout>

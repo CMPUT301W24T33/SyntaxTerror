@@ -72,7 +72,8 @@
                 android:layout_width="383dp"
                 android:layout_height="34dp"
                 android:layout_marginTop="8dp"
-                tools:ignore="MissingClass" />
+                tools:ignore="MissingClass">
+            </fragment>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/event_location_cords_layout"
@@ -235,8 +236,7 @@
                             android:id="@+id/max_attendees_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:text="0"/>
+                            android:inputType="number" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 

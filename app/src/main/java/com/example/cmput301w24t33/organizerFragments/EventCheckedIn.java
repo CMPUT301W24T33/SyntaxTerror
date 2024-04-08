@@ -194,9 +194,13 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
             attendeesList.clear();
             attendeesList.addAll(event.getAttendees());
             attendeeNumberView.setText(String.format(Locale.CANADA, "%d", getUniqueAttendeeCount()));
-            if (event.getMaxOccupancy() != 0) {
+            if (event.getMaxOccupancy() > 0) {
+                progressBar.setVisibility(View.VISIBLE);
                 int progress = (int) (((float) getUniqueAttendeeCount()) / ((float) event.getMaxOccupancy()) * 100); // why?
                 progressBar.setProgress(progress);
+            } else if (event.getMaxOccupancy() == 0) {
+                progressBar.setVisibility(View.VISIBLE);
+                progressBar.setProgress(100);
             }
             attendeeAdapter.notifyDataSetChanged();
         } else {

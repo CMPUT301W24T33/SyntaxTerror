@@ -13,7 +13,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +21,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
+/**
+ * Hosts and manages notification repository
+ */
 public class NotificationRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private NotificationUpdateListener updateListener;
@@ -217,7 +218,14 @@ public class NotificationRepository {
         activeAttendeeListeners.put(eventId, registration);
     }
 
+    /**
+     * Updates event milestones after they've been reached
+     * @param eventId event whose milestones are being updated
+     * @param milestoneKey determines which milestone is being updated
+     * @param value whether milestone has been reached or not
+     */
     public void updateEventMilestone(String eventId, String milestoneKey, boolean value) {
+        // this could be replaced with EventRepository class instead
         db.collection("events").document(eventId)
                 .update("milestones." + milestoneKey, value)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "Milestone updated: " + milestoneKey))

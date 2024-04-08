@@ -31,8 +31,6 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
     private final ArrayList<User> attendeesList;
     private boolean countFlag = true;
 
-//    private final ArrayList<User> attendeesList;
-
     /**
      * Constructs an AttendeeAdapter with a list of User objects representing attendees.
      * @param attendeesList The list of attendees to be displayed.
@@ -42,6 +40,11 @@ public class AttendeeAdapter extends RecyclerView.Adapter<AttendeeAdapter.MyView
 
     }
 
+    /**
+     * Constructs and AttendeeAdapter with a list of User objects representing attendees.
+     * @param attendeesList The list of attendees to be displayed
+     * @param countFlag a flag determining if the count should be displayed next to the attendee
+     */
     public AttendeeAdapter(ArrayList<User> attendeesList, boolean countFlag){
         this.attendeesList = attendeesList;
         this.countFlag = countFlag;

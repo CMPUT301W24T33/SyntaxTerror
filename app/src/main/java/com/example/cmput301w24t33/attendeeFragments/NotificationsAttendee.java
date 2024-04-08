@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -67,8 +71,8 @@ public class NotificationsAttendee extends Fragment {
      * Sets up the action bar for the fragment.
      */
     private void setupActionBar() {
-        binding.actionBar.generalActionbarTextview.setText("Notifications");
-        binding.actionBar.backArrowImg.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+        ((TextView) binding.getRoot().findViewById(R.id.general_actionbar_textview)).setText("Notifications");
+        ((ImageButton) binding.getRoot().findViewById(R.id.back_arrow_img)).setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
     /**

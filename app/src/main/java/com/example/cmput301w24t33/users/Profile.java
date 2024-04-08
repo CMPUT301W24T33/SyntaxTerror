@@ -40,6 +40,7 @@ import com.bumptech.glide.Glide;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.activities.AttendeeActivity;
 import com.example.cmput301w24t33.activities.OrganizerActivity;
+import com.example.cmput301w24t33.databinding.OrganizerCreateEditEventFragmentBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.example.cmput301w24t33.fileUpload.ImageHandler;
@@ -47,8 +48,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Objects;
@@ -71,9 +74,11 @@ public class Profile extends Fragment {
     private String imageRef;
     private String imageUrl;
     private User profileToEdit;
-
+    private boolean UserRemoved = false;
+    private boolean doneImageUpload = true;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference fileRef;
 
     /**
      * Fetches the user's information from Firestore and updates the UI accordingly.
@@ -124,6 +129,8 @@ public class Profile extends Fragment {
                                             Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
                                             imageRef = result.second;
                                             imageUrl = result.first;
+                                            doneImageUpload = true;
+                                            Snackbar.make(profileImageView.getRootView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
                                         }
 
                                         @Override
@@ -170,12 +177,7 @@ public class Profile extends Fragment {
                         && result.getData() != null) {
 
                     Uri photoUri = result.getData().getData();
-                    try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), photoUri);
-                        profileImageView.setImageBitmap(bitmap);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    Glide.with(getContext()).load(photoUri).into(profileImageView);
                     Log.d("returned url",photoUri.toString());
 
                     ImageHandler.uploadFile(photoUri, storage, new ImageHandler.UploadCallback() {
@@ -184,6 +186,9 @@ public class Profile extends Fragment {
                             // Handle the success case here
                             // For example, store the result.first as the image URL and result.second as the image name
                             Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                            doneImageUpload = true;
+                            UserRemoved = false;
+                            Snackbar.make(profileImageView.getRootView(), "Upload Completed", Snackbar.LENGTH_SHORT).show();
                             imageRef = result.second;
                             imageUrl = result.first;
                         }
@@ -194,6 +199,13 @@ public class Profile extends Fragment {
                             Log.d("Upload Failure", e.toString());
                         }
                     });
+                }
+                else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                    doneImageUpload = true;
+                    if(UserRemoved){
+                       UserRemoved = true;
+                    }
+
                 }
             }
     );
@@ -270,7 +282,9 @@ public class Profile extends Fragment {
         // Profile image listener
         ImageView profileImage = view.findViewById(R.id.profile_image);
         profileImage.setOnClickListener(v -> {
+            doneImageUpload  = false;
             selectImage();
+
         });
         // Cancel button listener
         Button cancelButton = view.findViewById(R.id.profile_cancel_button);
@@ -279,17 +293,76 @@ public class Profile extends Fragment {
         // Save button listener
         Button saveButton = view.findViewById(R.id.profile_save_button);
         saveButton.setOnClickListener(v -> {
-            if(validInput(view)){
+            if (doneImageUpload && validInput(view) && !UserRemoved){
                 // Save profile logic
                 saveProfile();
             }
+            else if (doneImageUpload && UserRemoved && validInput(view)) {
+                Snackbar.make(profileImageView.getRootView(), "Uploading Image", Snackbar.LENGTH_SHORT).show();
+                fileRef = storage.getReferenceFromUrl(imageUrl);
+                fileRef.delete().addOnSuccessListener(aVoid -> {
+                    // File deleted successfully
+                    Log.d("FirebaseStorage", "File deleted successfully");
+
+                }).addOnFailureListener(exception -> {
+                    // Uh-oh, an error occurred!
+                    Log.d("FirebaseStorage", "Error deleting file", exception);
+                });
+                ImageHandler.uploadFile(Uri.fromFile(new File("/data/user/0/com.example.cmput301w24t33/cache/userIdenticon.jpg")), storage, new ImageHandler.UploadCallback() {
+                    @Override
+                    public void onSuccess(Pair<String, String> result) {
+                        // Handle the success case here
+                        // For example, store the result.first as the image URL and result.second as the image name
+                        Log.d("Upload Success", "URL: " + result.first + ", Name: " + result.second);
+                        imageRef = result.second;
+                        imageUrl = result.first;
+                        try {
+                            saveProfile();
+                        } catch (NullPointerException e) { // fragment canceled
+                            Log.d("Profile", "Profile edit canceled");
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+                        // Handle the failure case here
+                        Log.d("Upload Failure", e.toString());
+                    }
+                });
+
+
+            }
+
+            else{
+                Snackbar.make(v, "Upload Not Complete", Snackbar.LENGTH_SHORT).show();
+            }
+
         });
 
         // Remove image button listener
         Button removeImageButton = view.findViewById(R.id.remove_profile_img_button);
         removeImageButton.setOnClickListener(v -> {
-            // logic for removing an image here
-            // can change button later to different location if needed
+            byte[] hash = IdenticonGenerator.generateHash(fName);
+            Bitmap identicon = IdenticonGenerator.generateIdenticonBitmap(hash);
+            try {
+                // Creates a file in the app's cache directory
+                File identiconFile = new File(getContext().getCacheDir(), "userIdenticon.jpg");
+                Glide.with(getContext()).clear(profileImageView);
+                Glide.with(getContext()).load(identiconFile).into(profileImageView);
+
+                // Convert bitmap to byte array and write to the file
+                try (FileOutputStream outputStream = new FileOutputStream(identiconFile)) {
+                    identicon.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+                }
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            UserRemoved = true;
+            doneImageUpload  = true;
         });
 
     }

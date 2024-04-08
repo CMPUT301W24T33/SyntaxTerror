@@ -13,6 +13,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/profile_button"
+            android:backgroundTint="@color/transparent"
             android:layout_width="50dp"
             app:cardCornerRadius="150dp"
             android:layout_height="50dp"
@@ -22,31 +23,30 @@
                 android:id="@+id/profile_image"
                 android:clickable="true"
                 android:scaleType="centerCrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/test_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:focusable="true">
             </ImageView>
         </androidx.cardview.widget.CardView>
 
-        <ImageButton
-            android:id="@+id/button_user_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="?switchProfileIcon"
-            android:background="@color/transparent"
-            android:layout_marginLeft="5dp"/>
+        <FrameLayout
+            android:id="@+id/space_frame"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"/>
 
         <TextView
             android:id="@+id/attendee_organizer_textview"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
+            android:layout_toStartOf="@id/profile_button"
+            android:layout_toEndOf="@id/space_frame"
             android:background="@null"
             android:clickable="false"
             android:text=""
-            android:textSize="35dp"
-            android:textStyle="bold"></TextView>
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 

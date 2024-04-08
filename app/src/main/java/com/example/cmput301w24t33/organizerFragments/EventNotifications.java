@@ -22,7 +22,10 @@ import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.List;
 
-
+/**
+ * A fragment class to display the notifications of an event within the application.
+ * It allows the organizer to view notifications and create new notifications
+ */
 public class EventNotifications extends Fragment implements NotificationAdapter.OnNotificationListener {
 
     private OrganizerNotificationsFragmentBinding binding;

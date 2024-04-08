@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,16 +21,20 @@ import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.location.CurrentLocationRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+/**
+ * Manages event Check-ins
+ */
 public class QRCheckIn implements QRScanner.ScanResultsListener {
     private Context context;
     private ArrayList<Event> events;
     private FusedLocationProviderClient fusedLocationProvider;
     private EventRepository eventRepo;
     private User currentUser;
-    private float GEOFENCE_RADIUS = 100;
+    private float GEOFENCE_RADIUS = 1000;
 
     @Override
     public void onScanResult(QRCode qrCode) {
@@ -43,6 +48,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
                 return;
             }
         }
+        Toast.makeText(context,"Invalid QR Code",Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -65,16 +71,6 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
      * @param event event to be checked into
      */
     private void checkIn(Event event) {
-        // TODO: Determine if event has GeoTracking enabled
-        //  1: If GeoTracking is enabled
-        //      1.1: nothing needed
-        //  2: If GeoTethering is enabled
-        //      2.1: prevent user from checking if they are not within some fixed distance of event
-        //      2.2: what should this fixed distance be?
-        //  3: If GeoTracking is disabled
-        //      3.1: Don't store user's location (just set it to null?)
-        //  4: Explain to user why location is being asked for
-        //      4.1: Note that location is only required if the organizer has geo-tethering on
         Toast checkInFailedToast = new Toast(context);
         checkInFailedToast
                 .setText("Check In Failed: Please Try Again");
@@ -121,7 +117,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
 
     private boolean validateCheckIn(Event event) {
         //Checks for max attendees at event
-        if (event.getMaxOccupancy() == event.getAttendees().size() && event.getMaxOccupancy() != 0) { // max occupancy reached
+        if (event.getMaxOccupancy() == event.getAttendees().size() && event.getMaxOccupancy() >= 0) { // max occupancy reached
             Log.d("CheckIn", "Max occupancy reached for event: " + event.getName());
             Toast.makeText(context, "Max Occupancy for this event has been reached", Toast.LENGTH_SHORT).show();
             return false; // Stop the check-in process
@@ -139,24 +135,3 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
         return results[0] < GEOFENCE_RADIUS;
     }
 }
-
-
-
-
-//    private boolean validateCheckIn(Event event){
-//        // TODO: Validate user is within check in radius of event
-//        if (event.getMaxOccupancy() == event.getAttendees().size() && event.getMaxOccupancy() != 0) { // max occupancy reached
-//            Log.d("CheckIn", "Max occupancy reached for event: " +event.getName());
-//            Toast.makeText(context,"Max Occupancy for this event has been reached",Toast.LENGTH_SHORT).show();
-//            return false;
-//        } else if (event.getGeoTracking()) {
-//            Log.d("CheckIn", "Not close enough to event: " +event.getName());
-////            String[] latLong = event.getLocationCoord().split(",");
-////            int lat = Integer.parseInt(latLong[0]);
-////            int lon = Integer.parseInt(latLong[1]);
-//            return true; //this needs to check if the user is within range to check into the event
-//        }
-//        Log.d("CheckIn", "Valid Check In");
-//        return true;
-//    }
-//}

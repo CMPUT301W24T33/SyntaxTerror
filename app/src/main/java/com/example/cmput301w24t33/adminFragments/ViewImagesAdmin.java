@@ -30,7 +30,11 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * A fragment class for administrators to view and manage images.
+ * It displays a list of event images or user profile images and allows administrators to select an
+ * image for deletion.
+ */
 public class ViewImagesAdmin extends Fragment {
 
     private RecyclerView eventPosterRecyclerView;

@@ -55,11 +55,6 @@ public class ShareQRFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        // TODO: Sharing events whose check in code has been reused will cause issues if we use the
-        //      same QR code for both. It would be better (and easier) to just have 3 separate QR
-        //      codes for all fields. To do this you need to:
-        //          1: Add an event qr code to this class (use eventId)
-        //          2: Update the find event functionality in AttendeeActivity to query for event ID instead of check In code
         View view = LayoutInflater.from(getContext()).inflate(R.layout.organizer_share_qr_fragment, null);
 
         // gets data from bundle
