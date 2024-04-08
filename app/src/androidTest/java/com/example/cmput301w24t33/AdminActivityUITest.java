@@ -58,7 +58,6 @@ public class AdminActivityUITest {
      * test scenario. This method ensures that each test starts with a consistent and isolated
      * environment.
      */
-    public List<Event> mockEvents = new ArrayList<>();
 
     @Before
     public void setUp() {
@@ -73,6 +72,7 @@ public class AdminActivityUITest {
         MutableLiveData<User> testSingleUserLiveData = new MutableLiveData<>();
 
         // Creating Mock Events
+        List<Event> mockEvents = new ArrayList<>();
         mockEvents.add(new Event("Test Event 1", "University Campus", "This is the first test event."));
         mockEvents.add(new Event("Test Event 2", "Downtown", "This is the second test event."));
         mockEvents.add(new Event("Test Event 3", "Local Park", "This is the third test event."));

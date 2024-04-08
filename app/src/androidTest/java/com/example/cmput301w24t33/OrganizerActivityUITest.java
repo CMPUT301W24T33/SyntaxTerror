@@ -24,6 +24,7 @@ import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.example.cmput301w24t33.activities.AttendeeActivity;
 import com.example.cmput301w24t33.activities.OrganizerActivity;
@@ -33,6 +34,10 @@ import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -41,6 +46,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,18 +79,24 @@ public class OrganizerActivityUITest {
      */
     @Before
     public void setUp() {
-        // Get the application context
-        Application application = ApplicationProvider.getApplicationContext();
-        EventRepository mockEventRepo = Mockito.mock(EventRepository.class);
+        FirebaseFirestore mockDb = Mockito.mock(FirebaseFirestore.class);
+        CollectionReference mockCollection = Mockito.mock(CollectionReference.class);
+        DocumentReference mockDocumentRef = Mockito.mock(DocumentReference.class);
+        Task<Void> mockTask = Mockito.mock(Task.class);
 
-        // Creating a MutableLiveData instance for testing
-        MutableLiveData<List<Event>> testEvent = new MutableLiveData<>();
+        // Mock the document() call to return a mock DocumentReference
+        Mockito.when(mockDb.collection("users")).thenReturn(mockCollection);
+        Mockito.when(mockCollection.document(Mockito.anyString())).thenReturn(mockDocumentRef);
 
-        // Initialize the EventViewModel with the mock components
-        EventViewModel.initialize(application, mockEventRepo, testEvent);
+        // Mock the set() call to return a mock Task
+        Mockito.when(mockDocumentRef.set(Mockito.any())).thenReturn(mockTask);
 
-        Event mockEvent = new Event("Current Event","0000", "university days");
+        //Mock the Task to return itself on addOnSuccessListener and addOnFailureListener
+        Mockito.when(mockTask.addOnSuccessListener(Mockito.any())).thenReturn(mockTask);
+        Mockito.when(mockTask.addOnFailureListener(Mockito.any())).thenReturn(mockTask);
 
+        Application mockApplication = Mockito.mock(Application.class);
+        UserRepository.initialize(mockApplication, mockDb);
     }
 
     @Rule
@@ -106,6 +118,50 @@ public class OrganizerActivityUITest {
         //Checks text layout
         onView(withText("To Attendee")).check(matches(isDisplayed()));
         onView(withText("New Event")).check(matches(isDisplayed()));
+
+    }
+
+    /**
+     * Tests if profile layout for user still is accessible
+     */
+    @Test
+    public void testOrganizerProfileDisplayFragment(){
+        // Click on profile button
+        onView(withId(R.id.profile_image)).perform(click());
+
+        //Checks if profile fragment is displayed
+        onView(withId(R.id.profile_fragment)).check(matches(isDisplayed()));
+        onView(withId(R.id.profile_view)).check(matches(isDisplayed()));
+
+        //Checks email layout
+        onView(withId(R.id.email_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.email_text_view)).check(matches(isDisplayed()));
+        onView(withId(R.id.email_edit_text)).check(matches(isDisplayed()));
+
+        //Checks first name layout
+        onView(withId(R.id.first_name_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.first_name_text_view)).check(matches(isDisplayed()));
+        onView(withId(R.id.first_name_edit_text)).check(matches(isDisplayed()));
+
+        //Checks last name layout
+        onView(withId(R.id.last_name_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.last_name_text_view)).check(matches(isDisplayed()));
+        onView(withId(R.id.last_name_edit_text)).check(matches(isDisplayed()));
+
+        //Checks button layout
+        onView(withId(R.id.cancel_save_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.profile_cancel_button)).check(matches(isDisplayed()));
+        onView(withId(R.id.remove_profile_img_button)).check(matches(isDisplayed()));
+        onView(withId(R.id.profile_save_button)).check(matches(isDisplayed()));
+
+        //Checks Texts are displayed correctly
+        onView(withText("First Name:")).check(matches(isDisplayed()));
+        onView(withText("Last Name:")).check(matches(isDisplayed()));
+        onView(withText("E-Mail:")).check(matches(isDisplayed()));
+
+        onView(withText("CANCEL")).check(matches(isDisplayed()));
+        onView(withText("REMOVE IMAGE")).check(matches(isDisplayed()));
+        onView(withText("SAVE")).check(matches(isDisplayed()));
 
     }
 
@@ -177,21 +233,6 @@ public class OrganizerActivityUITest {
 
 
     }
-
-     //Firestore error after config implementation "androidx.test.espresso:espresso-contrib:3.5.1"
-
-//    @Test
-//    public void testOrganizerCreateEventDateAndTime(){
-//        onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
-//        onView(withId(R.id.button_create_event)).perform(click());
-//
-//        onView(withId(R.id.start_time_text)).perform(click());
-//
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-//                .inRoot(isDialog()) // <— Makes sure this is in the dialog
-//                .perform(PickerActions.setDate(1999, 2010, 7));
-//        onView(withId(android.R.id.button1)).inRoot(isDialog()).perform(click());
-//    }
 
     /**
      * Verifies the event creation workflow in the OrganizerActivity.
@@ -266,29 +307,5 @@ public class OrganizerActivityUITest {
 
     }
 
-
-//    @Test
-//    public void testOrganizerAttendeeSwitch(){
-//        // press button to switch to organizer
-//        onView(withId(R.id.button_user_mode)).perform(click());
-//        // check if on organizer activity
-//        onView(withId(R.id.attendee_activity)).check(matches(isDisplayed()));
-//        // press button to switch back to attendee
-//        onView(withId(R.id.button_user_mode)).perform(click());
-//        // check if on attendee view
-//        onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
-//    }
-//
-//    @Test
-//    public void testProfileOrganizer(){
-//        // Click on profile button
-//        onView(withId(R.id.profile_image)).perform(click());
-//        // check if id of entire fragment xml exists
-//        onView(withId(R.id.profile_fragment)).check(matches(isDisplayed()));
-//        // click on back arrow
-//        onView(withId(R.id.back_arrow_img)).perform(click());
-//        // check if attendee activity is displayed
-//        onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
-//    }
 
 }

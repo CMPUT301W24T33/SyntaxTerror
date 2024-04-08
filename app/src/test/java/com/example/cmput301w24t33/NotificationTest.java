@@ -11,10 +11,13 @@ import com.google.firebase.Timestamp;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for the Notification class.
+ * Provides unit tests for the {@link Notification} class to verify its functionality.
+ * <p>
+ * Tests focus on validating the correct initialization and modification of notification
+ * properties, such as title and message, as well as the automatic generation of a timestamp.
  */
 public class NotificationTest {
-
+    
     @Test
     public void testConstructor() {
         Notification notification = new Notification("Test Title", "Test Message");
@@ -32,6 +35,12 @@ public class NotificationTest {
         assertEquals("New Title", notification.getTitle());
     }
 
+    /**
+     * Tests setting a new message on a {@link Notification} object.
+     * <p>
+     * Verifies that the message of a Notification can be successfully updated after instantiation
+     * and that the updated message is correctly returned by the getter method.
+     */
     @Test
     public void testSetMessage() {
         Notification notification = new Notification("Test Title", "Test Message");
