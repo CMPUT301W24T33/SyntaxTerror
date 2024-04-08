@@ -148,7 +148,9 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
      */
     private void setOnClickListeners() {
         ImageView profileButton = findViewById(R.id.profile_image);
-        profileButton.setOnClickListener(v -> replaceFragment(new Profile()));
+        profileButton.setOnClickListener(v -> {
+            replaceFragment(Profile.newInstance(currentUser));
+        });
         ImageView createEvent = findViewById(R.id.button_create_event);
         createEvent.setOnClickListener(v -> replaceFragment(new EventCreateEdit()));
 
