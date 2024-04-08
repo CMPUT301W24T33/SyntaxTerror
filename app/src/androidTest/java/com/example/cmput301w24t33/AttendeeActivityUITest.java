@@ -255,6 +255,5 @@ public class AttendeeActivityUITest {
         onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
     }
 
-
-
+    
 }
