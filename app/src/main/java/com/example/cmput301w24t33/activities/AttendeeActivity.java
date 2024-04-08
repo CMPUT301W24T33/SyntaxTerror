@@ -44,6 +44,7 @@ import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -185,15 +186,19 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         signedUpEvents.clear();
         Set<String> notificationTrackedEvents = new HashSet<>();
         for (Event event : events) {
-            if (event.getSignedUp().contains(currentUser)) {
-                signedUpEvents.add(event);
-                notificationTrackedEvents.add(event.getEventId());
-            }
-            if (event.getAttendees().contains(currentUser)) {
-                notificationTrackedEvents.add(event.getEventId());
-            }
-            if (Objects.equals(event.getOrganizerId(), userId)) {
-                NotificationManager.getInstance().trackAttendeeUpdatesForEvent(event.getEventId());
+            if (event.getEndDateTIme().compareTo(Timestamp.now()) < 0) {
+                allEvents.remove(event);
+            } else {
+                if (event.getSignedUp().contains(currentUser)) {
+                    signedUpEvents.add(event);
+                    notificationTrackedEvents.add(event.getEventId());
+                }
+                if (event.getAttendees().contains(currentUser)) {
+                    notificationTrackedEvents.add(event.getEventId());
+                }
+                if (Objects.equals(event.getOrganizerId(), userId)) {
+                    NotificationManager.getInstance().trackAttendeeUpdatesForEvent(event.getEventId());
+                }
             }
         }
         NotificationManager.getInstance().trackMultipleEventsNotifications(notificationTrackedEvents);

@@ -44,6 +44,7 @@ import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -117,8 +118,14 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
      */
     @Override
     public void onChanged(List<Event> events) {
+        List<Event> organizerEvents = new ArrayList<>();
         Log.d("EventsLoaded", events.toString());
-        eventAdapter.setEvents(events);
+        for (Event event : events) {
+            if (event.getEndDateTIme().compareTo(Timestamp.now()) >= 0) {
+                organizerEvents.add(event);
+            }
+        }
+        eventAdapter.setEvents(organizerEvents);
     }
 
     /**
