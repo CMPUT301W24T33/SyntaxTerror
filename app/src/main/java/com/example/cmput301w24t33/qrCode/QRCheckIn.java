@@ -42,6 +42,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
             Log.d("CheckIn", "Event: " + event.getName());
             if (event.getCheckInQR() != null && event.getCheckInQR().equals(qrCode.getQrCode())) {
                 if (!validateCheckIn(event)) { // invalid check in
+                    Toast.makeText(context, "Cannot Check Into Event",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 checkIn(event);

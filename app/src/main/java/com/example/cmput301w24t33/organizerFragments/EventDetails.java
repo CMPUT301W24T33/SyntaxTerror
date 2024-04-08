@@ -27,9 +27,11 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRemovePoster;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
@@ -92,7 +94,10 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      */
     public void setupActionButtons(Event event) {
         // Navigation back to the previous fragment
-        binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
+        binding.toolbar.setNavigationOnClickListener(v -> {
+            EventViewModel.getInstance().restoreEventCallback();
+            getParentFragmentManager().popBackStack();
+        });
 
         // Navigation to the event attendees fragment
         binding.checkInsButton.setOnClickListener(v -> replaceFragment(EventCheckedIn.newInstance(event)));
@@ -104,8 +109,13 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
         binding.notificationsButton.setOnClickListener(v -> replaceFragment(EventNotifications.newInstance(event)));
 
         // Navigation to the event edit fragment
-        binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
-
+        if(event.getStartDateTime().compareTo(Timestamp.now()) > 0) {
+            binding.editEventButton.setOnClickListener(v -> replaceFragment(EventCreateEdit.newInstance(event)));
+        } else {
+            binding.editEventButton.setOnClickListener(v -> {
+                Snackbar.make(requireView(),"Cannot Edit Event After It Has Started", Snackbar.LENGTH_SHORT).show();
+            });
+        }
         // Share QR Code
         binding.shareQrCodeButton.setOnClickListener(v -> {
             ShareQRFragment

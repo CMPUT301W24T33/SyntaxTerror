@@ -335,6 +335,7 @@ public class EventCreateEdit extends Fragment implements EventChooseQR.ChooseQRF
                 eventRepo.createEvent(newEvent);
                 Snackbar.make(binding.getRoot(), "Event Created", Snackbar.LENGTH_SHORT).show();
             }
+            EventViewModel.getInstance().restoreEventCallback();
             getParentFragmentManager().popBackStack();
         }
     }

@@ -53,6 +53,16 @@ public class Event implements Serializable, Parcelable {
     private String imageUrl;
     private Map<String, Boolean> milestones = new HashMap<>();
 
+    public int getStability() {
+        return stability;
+    }
+
+    public void setStability(int stability) {
+        this.stability = stability;
+    }
+
+    private int stability;
+
     public static final Parcelable.Creator<Event> CREATOR = new Creator<Event>() {
         @Override
         public Event createFromParcel(Parcel source) {
