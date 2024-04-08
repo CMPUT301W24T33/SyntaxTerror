@@ -18,6 +18,9 @@ import com.example.cmput301w24t33.events.Event;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adapter class for displaying Event Posters in a RecyclerView
+ */
 public class EventPosterAdapter extends RecyclerView.Adapter<EventPosterAdapter.MyViewHolder>{
 
 

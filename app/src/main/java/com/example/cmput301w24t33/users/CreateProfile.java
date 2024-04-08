@@ -98,9 +98,13 @@ public class    CreateProfile extends Fragment {
     }
 
     /**
-     *
+     * interface for handling user creation results
      */
     public interface OnUserCreatedListener {
+        /**
+         * Handles user creation results
+         * @param user user that has been created
+         */
         void onUserCreated(User user);
     }
 
@@ -234,6 +238,9 @@ public class    CreateProfile extends Fragment {
 
     }
     //Action for Konfetti
+    /**
+     * Creates confetti on user creation
+     */
     public void explode() {
         // Existing Konfetti logic
         EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);

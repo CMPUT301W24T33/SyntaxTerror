@@ -346,6 +346,9 @@ public class AttendeeActivity extends AppCompatActivity implements CreateProfile
         fetchInfo(findViewById(R.id.profile_image));
     }
 
+    /**
+     * Updates profile picture image view with user's profile picture
+     */
     public void updatePicture(){
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
     }

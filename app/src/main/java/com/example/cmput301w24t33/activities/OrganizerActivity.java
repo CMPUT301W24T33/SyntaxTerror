@@ -83,12 +83,6 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         getProfileUrl(userId);
         setAdapter();
 
-//        // set up background animation
-//        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-//        animation.setEnterFadeDuration(100);
-//        animation.setExitFadeDuration(5000);
-//        animation.start();
-
         eventViewModel = EventViewModel.getInstance();
 
         View view = findViewById(R.id.organizer_activity);
@@ -175,9 +169,6 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
      * @param view The current view that includes the action bar.
      */
     private void setupActionBar(View view) {
-        RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
-//        int color = ContextCompat.getColor(this, R.color.organizer_actionbar_day);
-//        attendeeOrganizerActionbar.setBackgroundColor(color);
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Organize Events");
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
@@ -195,6 +186,11 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+    /**
+     * Retrieves the profile image url of the current user
+     * @param Aid android Id
+     */
     public static void getProfileUrl(String Aid){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users").document(Aid)

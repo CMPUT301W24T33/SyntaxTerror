@@ -62,6 +62,10 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
     }
 
 
+    /**
+     * Constructor which creates a new EventChooseQR fragment
+     * @param userId organizer ID
+     */
     public EventChooseQR(String userId){
         this.userId = userId;
         Log.d("ChoseQR", "organizer id: "+userId);
@@ -191,6 +195,11 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
     }
 
 
+    /**
+     * Handles event click results
+     * @param event The event associated with the clicked item.
+     * @param position The position of the clicked item in the dataset.
+     */
     @Override
     public void onEventClickListener(Event event, int position) {
         selectedEvent = event;

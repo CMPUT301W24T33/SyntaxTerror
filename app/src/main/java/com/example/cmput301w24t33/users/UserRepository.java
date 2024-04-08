@@ -52,12 +52,21 @@ public class UserRepository {
     }
 
 
+    /**
+     * Initializes user repository
+     * @param application Application associated with this
+     * @param db database containing users
+     */
     public static synchronized  void initialize(Application application, FirebaseFirestore db) {
         if (instance == null) {
             instance = new UserRepository(application, db);
         }
     }
 
+    /**
+     * Retrieves the static instance of this
+     * @return static instance of UserRepository
+     */
     public static synchronized UserRepository getInstance() {
         if (instance == null) {
             throw new IllegalStateException("User Repository must be initialized in the Application class before use.");

@@ -32,9 +32,9 @@ public class EventViewModel extends ViewModel {
 
 
     /**
-     *
-     * @param eventRepo
-     * @param eventsLiveData
+     * Creates singleton ViewModel
+     * @param eventRepo event repository instance
+     * @param eventsLiveData live data
      */
     private EventViewModel (Application application, EventRepository eventRepo, MutableLiveData<List<Event>> eventsLiveData) {
         this.eventRepo = eventRepo;
@@ -43,12 +43,22 @@ public class EventViewModel extends ViewModel {
         setEventCallback(eventRepo);
     }
 
+    /**
+     * Initializes the EventViewModel
+     * @param application Application associated with this instance
+     * @param eventRepo Event repository
+     * @param eventsLiveData
+     */
     public static synchronized void initialize(Application application, EventRepository eventRepo, MutableLiveData<List<Event>> eventsLiveData) {
         if (instance == null) {
             instance = new EventViewModel(application, eventRepo, eventsLiveData);
         }
     }
 
+    /**
+     * Retrieves the instance of EventViewModel
+     * @return EventViewModel instance
+     */
     public static synchronized EventViewModel getInstance() {
         if (instance == null) {
             throw new IllegalStateException("EventViewModel must be initialized in the Application class before use");
@@ -76,6 +86,9 @@ public class EventViewModel extends ViewModel {
         });
     }
 
+    /**
+     * Restores event callback to default
+     */
     public void restoreEventCallback(){
         setEventCallback(eventRepo);
     }

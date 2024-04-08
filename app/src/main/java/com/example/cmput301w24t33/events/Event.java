@@ -67,17 +67,14 @@ public class Event implements Serializable, Parcelable {
             return new Event[size];
         }
     };
+
+    /**
+     * Constructor for event parceling
+     * @param src parcel source
+     */
     protected Event(Parcel src){
         Bundle args = src.readBundle(getClass().getClassLoader());
-//        Timestamp[] timestamps = new Timestamp[0];
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//            timestamps = src.readParcelableArray(ClassLoader.getSystemClassLoader(), Timestamp.class);
-//        }
-//        Log.d("Timestamps", timestamps.toString());
-//        startDateTime = timestamps[0];
-//        endDateTIme = timestamps[1];
         Log.d("EventParcel", args.toString());
-        assert args != null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             startDateTime = args.getParcelable("StartTime", Timestamp.class);
             endDateTIme = args.getParcelable("EndTime", Timestamp.class);
@@ -116,8 +113,6 @@ public class Event implements Serializable, Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-//        Timestamp[] timestamps = new Timestamp[]{startDateTime, endDateTIme};
-//        dest.writeParcelableArray(timestamps, flags);
         Bundle args = new Bundle();
         args.putParcelable("StartTime", startDateTime);
         args.putParcelable("EndTime", endDateTIme);
@@ -163,6 +158,9 @@ public class Event implements Serializable, Parcelable {
         this.milestones.put("full", false);
     }
 
+    /**
+     * Empty Constructor
+     */
     public Event() {
     }
 

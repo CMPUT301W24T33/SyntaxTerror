@@ -1,6 +1,7 @@
 package com.example.cmput301w24t33.qrCode;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -17,16 +18,26 @@ public class QRFindEvent implements QRScanner.ScanResultsListener{
     private FusedLocationProviderClient fusedLocationProvider;
     private User currentUser;
 
+    /**
+     * Handles scan result and directs user to event details page (if successful)
+     * @param qrCode scanned QR code
+     */
     @Override
     public void onScanResult(QRCode qrCode) {
         for(Event event: events){
             if (event.getCheckInQR().equals(qrCode.getQrCode())){
-                ((AttendeeActivity)context).onFindEventResult(event);
+                ((AttendeeActivity) context).onFindEventResult(event);
                 return;
             }
         }
+        Toast.makeText(context,"Invalid QR Code", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Creates new instance of QRFindEvent class
+     * @param context calling context
+     * @param events list of events
+     */
     public QRFindEvent(@NonNull Context context, @NonNull ArrayList<Event> events){
         this.context = context;
         this.events = events;
