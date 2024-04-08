@@ -104,7 +104,7 @@ public class EventSignedUp extends Fragment implements EventRepository.EventCall
     public void onDestroyView() {
         super.onDestroyView();
         if (eventRepository != null) {
-            eventRepository.removeEventListener();
+            eventRepository.removeAllListeners();
         }
         binding = null;
     }
