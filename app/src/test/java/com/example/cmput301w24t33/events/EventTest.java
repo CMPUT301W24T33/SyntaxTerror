@@ -14,6 +14,12 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for the {@link Event} class.
+ * This class provides unit tests to verify the correct behavior of
+ * the event's properties and their management methods, ensuring that
+ * event data is handled correctly throughout its lifecycle.
+ */
 class EventTest {
 
     private Event event;
@@ -30,6 +36,11 @@ class EventTest {
     private final Timestamp startDateTime = new Timestamp(1, 4);
     private final Timestamp endDateTIme = new Timestamp(21, 4);
 
+    /**
+     * Sets up the test environment for each test method.
+     * Initializes a new {@link Event} instance and sets its properties
+     * to predefined values.
+     */
     @BeforeEach
     void setUp() {
         event = new Event();
@@ -45,8 +56,12 @@ class EventTest {
         event.setLocationCoord(locationCoord);
         event.setStartDateTime(startDateTime);
         event.setEndDateTIme(endDateTIme);
+
     }
 
+    /**
+     * Tests the retrieval of the event's ID.
+     */
     @Test
     void testEventId() {
         assertEquals(eventId, event.getEventId());
@@ -107,6 +122,11 @@ class EventTest {
         assertEquals(endDateTIme, event.getEndDateTIme());
     }
 
+    /**
+     * Tests the management and retrieval of event attendees.
+     * Verifies that attendees added to the event are correctly
+     * returned by the getter method.
+     */
     @Test
     void testAttendeesManagement() {
         User user = new User();
@@ -116,6 +136,11 @@ class EventTest {
         assertTrue(event.getAttendees().contains(user));
     }
 
+    /**
+     * Tests the management and retrieval of users signed up for the event.
+     * Verifies that users added to the event's signed-up list are correctly
+     * returned by the getter method.
+     */
     @Test
     void testSignedUpManagement() {
         User user = new User();
@@ -126,7 +151,11 @@ class EventTest {
     }
 
 
-
+    /**
+     * Tests the management and retrieval of event milestones.
+     * Verifies that milestones added to the event are correctly
+     * managed and queried.
+     */
     @Test
     void testMilestonesManagement() {
         event.setMilestones("half", true);
