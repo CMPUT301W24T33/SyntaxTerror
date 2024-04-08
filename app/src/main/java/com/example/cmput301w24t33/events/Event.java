@@ -1,9 +1,7 @@
 // Purpose:
 // Represents a scheduled event, storing details such as date, time, location, and
 // participants, with functionalities for managing event properties and attendee lists.
-//
-// Issues: None
-//
+
 
 package com.example.cmput301w24t33.events;
 

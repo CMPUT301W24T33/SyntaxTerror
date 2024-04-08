@@ -1,9 +1,7 @@
 // Purpose:
 // Shows a list of attendees and how many their are for an event and a map view indicating a location
 // of attendees when they check in.
-//
-// Issues: Have a way to pin sign in locations on map
-//
+
 
 package com.example.cmput301w24t33.organizerFragments;
 

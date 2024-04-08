@@ -2,9 +2,7 @@
 // Responsible for providing the functionality for creating a new user profile, including input
 // validation for the user's name and email and preparing the new user data for database insertion.
 // Only called once when a new android id is used and persists until user fills in profile info
-//
-// Issues: None
-//
+
 
 package com.example.cmput301w24t33.users;
 

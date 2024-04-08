@@ -1,9 +1,7 @@
 // Purpose:
 // Facilitates the display of attendees in a list using a RecyclerView to efficiently manage and p
 // resent a dynamic list of User objects representing attendees.
-//
-// Issues: Make the attendees list look better
-//
+
 
 package com.example.cmput301w24t33.organizerFragments;
 

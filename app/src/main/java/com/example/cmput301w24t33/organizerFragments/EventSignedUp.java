@@ -1,8 +1,7 @@
 // Purpose:
 //
 //
-// Issues:
-//
+
 
 package com.example.cmput301w24t33.organizerFragments;
 
