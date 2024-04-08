@@ -1,2 +1,0 @@
-03-08 15:13:54.287 26361 26459 I TestRunner: started: testGetBitmap(com.example.cmput301w24t33.QRCodeTest)
-03-08 15:13:54.740 26361 26459 I TestRunner: finished: testGetBitmap(com.example.cmput301w24t33.QRCodeTest)
