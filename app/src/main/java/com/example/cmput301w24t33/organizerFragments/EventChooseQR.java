@@ -178,7 +178,7 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
         Log.d("EventCallback", "Events loaded: "+ (events.size()>0 ? events.get(0).getName():""));
         eventList = new ArrayList<>();
         for(Event event: events){
-            if (event.getEndDateTIme().compareTo(Timestamp.now()) < 0){
+            if (event.getEndDateTIme().compareTo(Timestamp.now()) < 0 && event.getCheckInQR() != null){
                 eventList.add(event);
             }
         }
