@@ -27,6 +27,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -45,6 +46,11 @@ android {
         // "sdk.dir" is ignored by default.
         ignoreList.add("keyToIgnore") // Ignore the key "keyToIgnore"
         ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
+    }
+
+    packagingOptions{
+        exclude("META-INF/LICENSE-notice.md")
+        exclude("META-INF/LICENSE.md")
     }
 
     viewBinding {
