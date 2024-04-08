@@ -95,6 +95,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
                     if (location != null && GeofenceArea(event.getLocationCoord(), location)) {
                         // Logic to handle location object
                         event.addAttendee(currentUser, location);
+                        event.getSignedUp().add(currentUser);
                         eventRepo.updateEvent(event);
                         checkInSuccessfulToast.show();
 
@@ -111,6 +112,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
             }
         } else { // geoTracking dissabled
             event.addAttendee(currentUser, null);
+            event.getSignedUp().add(currentUser);
             eventRepo.updateEvent(event);
             checkInSuccessfulToast.show();
         }

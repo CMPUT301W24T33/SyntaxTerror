@@ -127,6 +127,7 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(googleMap -> {
             gMap = googleMap;
+            gMap.clear();
             if (selectedEvent != null) {
                 String locationData = selectedEvent.getLocationCoord();
                 // We are parsing that string from Location Data
@@ -153,6 +154,7 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
             }
                 // Add markers for each check-in location
                 for(String checkInPoint : selectedEvent.getCheckInLocations()) {
+                    Log.d("CheckInLocation","Checked int: " + checkInPoint);
                     double lat = Double.parseDouble(checkInPoint.split(",")[0]);
                     double lon = Double.parseDouble(checkInPoint.split(",")[1]);
                     gMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)));
