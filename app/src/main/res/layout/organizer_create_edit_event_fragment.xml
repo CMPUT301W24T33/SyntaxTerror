@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?backgroundColor"
+    android:id="@+id/organizer_create_event_activity"
     tools:context=".activities.OrganizerActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -115,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:id="@+id/date_time_container"
                 android:orientation="vertical">
 
                 <TextView
@@ -134,7 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:text="Start:"
+                        android:text="@string/start_text"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -167,7 +169,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:text="End:"
+                        android:text="@string/end_text"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -206,6 +208,7 @@
 
                 <!-- Maximum Number of Attendees -->
                 <LinearLayout
+                    android:id="@+id/max_attendees_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -239,6 +242,7 @@
 
                 <!-- Geolocation Tracking Toggle -->
                 <LinearLayout
+                    android:id="@+id/geo_tracking_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"

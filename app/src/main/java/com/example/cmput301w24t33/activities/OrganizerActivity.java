@@ -1,10 +1,7 @@
 // Purpose:
 // Supports event organizers by enabling event creation, editing, and detail viewing, alongside
 // user mode switching for enhanced application navigation.
-//
-// Issues: None
-//
-//
+
 
 package com.example.cmput301w24t33.activities;
 
@@ -82,19 +79,25 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         userId = currentUser.getUserId();
         getProfileUrl(userId);
         setAdapter();
-
-//        // set up background animation
-//        AnimationDrawable animation = (AnimationDrawable) binding.getRoot().getBackground();
-//        animation.setEnterFadeDuration(100);
-//        animation.setExitFadeDuration(5000);
-//        animation.start();
-
-        eventViewModel = EventViewModel.getInstance();
+        setupViewModel();
 
         View view = findViewById(R.id.organizer_activity);
         setupActionBar(view);
         setOnClickListeners();
     }
+
+    /**
+     * Sets up the ViewModel for managing event data. It observes changes in event data and updates the UI accordingly.
+     */
+    public void setupViewModel() {
+        eventViewModel = (EventViewModel) getIntent().getExtras().get("eventViewModel"); // for testing
+        if (eventViewModel == null) { // should be null
+            eventViewModel = EventViewModel.getInstance();
+            eventViewModel.getEventsLiveData().observe(this, this);
+            eventViewModel.loadEvents();
+        }
+    }
+
 
     /**
      * Loads and displays events organized by the current user upon resuming the activity.
@@ -104,8 +107,7 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         super.onResume();
         NotificationManager.initialize(this.getApplication());
         Log.d(TAG, "Organizer RESUME");
-        eventViewModel.restoreEventCallback();
-        eventViewModel.getEventsLiveData().observe(this, this);
+        setupViewModel();
         eventViewModel.loadOrganizerEvents(userId);
     }
 
@@ -175,9 +177,6 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
      * @param view The current view that includes the action bar.
      */
     private void setupActionBar(View view) {
-        RelativeLayout attendeeOrganizerActionbar = view.findViewById(R.id.organizer_attendee_actionbar);
-//        int color = ContextCompat.getColor(this, R.color.organizer_actionbar_day);
-//        attendeeOrganizerActionbar.setBackgroundColor(color);
         TextView actionBarText = findViewById(R.id.attendee_organizer_textview);
         actionBarText.setText("Organize Events");
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));
@@ -195,6 +194,11 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
+    /**
+     * Retrieves the profile image url of the current user
+     * @param Aid android Id
+     */
     public static void getProfileUrl(String Aid){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users").document(Aid)
@@ -217,7 +221,9 @@ public class OrganizerActivity extends AppCompatActivity implements Observer<Lis
                     }
                 });
 
-
+    /**
+     * Updates the profile image view with the current user's image using Glide.
+     */
     }
     public void updatePicture(){
         Glide.with(this).load(currentUser.getImageUrl()).into((ImageView) findViewById(R.id.profile_image));

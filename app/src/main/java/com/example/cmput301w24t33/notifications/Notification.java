@@ -1,9 +1,7 @@
 // Purpose:
 // Represents a notification entity in an application, containing details such as title, message,
 // and timestamp, facilitating storage and retrieval of notification information.
-//
-// Issues: None
-//
+
 
 package com.example.cmput301w24t33.notifications;
 
@@ -46,9 +44,7 @@ public class Notification {
     }
 
     /**
-     * Sets the ID of the notification.
-     *
-     * @return The notification title.
+     * Sets the ID of the notification..
      */
     public void setId(String id) {
         this.id = id;

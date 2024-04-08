@@ -1,9 +1,7 @@
 // Purpose:
 // Manages anonymous user authentication using Firebase, offering a pathway for users to later
 // link the anonymous account with email credentials.
-//
-// Issues:
-//
+
 
 package com.example.cmput301w24t33.activities;
 

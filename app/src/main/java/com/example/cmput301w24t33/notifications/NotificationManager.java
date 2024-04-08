@@ -14,6 +14,9 @@ import com.google.firebase.firestore.DocumentReference;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Manages notifications across the app
+ */
 public class NotificationManager {
     private static NotificationManager instance;
     private Application application;

@@ -2,13 +2,7 @@
 // The EventRepository class manages the retrieval and updates of Event data from Firebase Firestore.
 // It is responsible for querying Firestore for event data, listening for real-time updates, and
 // providing callbacks for successful data retrieval or errors.
-//
-// Issues: Create method to allow events to be deleted
-//         Create method to populate a users events they have signed up to attend
-//         Create method that limits number of attendees to an event on optional limit
-//         Create method to obtain poster for event
-//         Create method to obtain an organizer users reusable qr codes from events already over
-//
+
 
 package com.example.cmput301w24t33.events;
 
@@ -53,12 +47,21 @@ public class EventRepository {
         eventsCollection = this.db.collection("events");
     }
 
+    /**
+     * Initializes event repository
+     * @param application Application attached to repo
+     * @param db database containing Events
+     */
     public static synchronized  void initialize(Application application, FirebaseFirestore db) {
         if (instance == null) {
             instance = new EventRepository(application, db);
         }
     }
 
+    /**
+     * Retrieves the instance of this class
+     * @return EventRepository instance
+     */
     public static synchronized EventRepository getInstance() {
         if (instance == null) {
             throw new IllegalStateException("Event Repository must be initialized in the Application class before use.");
@@ -197,6 +200,10 @@ public class EventRepository {
                 .addOnFailureListener(e -> Log.w(TAG, "Create document failed", e));
     }
 
+    /**
+     * deletes an event from the repository
+     * @param event event to be deleted
+     */
     public void deleteEvent(Event event) {
         eventsCollection.document(event.getEventId())
                 .delete()

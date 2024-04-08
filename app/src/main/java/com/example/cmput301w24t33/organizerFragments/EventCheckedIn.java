@@ -1,9 +1,7 @@
 // Purpose:
 // Shows a list of attendees and how many their are for an event and a map view indicating a location
 // of attendees when they check in.
-//
-// Issues: Have a way to pin sign in locations on map
-//
+
 
 package com.example.cmput301w24t33.organizerFragments;
 
@@ -53,7 +51,7 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
     private MapView mapView;
     private Event selectedEvent;
     private GoogleMap gMap;
-    private float GEOFENCE_RADIUS = 100;
+    private float GEOFENCE_RADIUS = 300;
 
     /**
      * Required empty public constructor

@@ -1,9 +1,7 @@
 // Purpose:
 // Manages UI-related data for events, ensuring persistence through lifecycle changes and
 // facilitating interaction between the UI and the EventRepository.
-//
-// Issues:
-//
+
 
 package com.example.cmput301w24t33.events;
 
@@ -18,13 +16,14 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.cmput301w24t33.notifications.NotificationManager;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * ViewModel class for managing UI-related data in a lifecycle-conscious way.
  * This class encapsulates the data for the events to survive configuration changes such as screen rotations.
  */
-public class EventViewModel extends ViewModel {
+public class EventViewModel extends ViewModel implements Serializable {
     private static EventViewModel instance;
     private EventRepository eventRepo;
     private MutableLiveData<List<Event>> eventsLiveData;
@@ -32,9 +31,9 @@ public class EventViewModel extends ViewModel {
 
 
     /**
-     *
-     * @param eventRepo
-     * @param eventsLiveData
+     * Creates singleton ViewModel
+     * @param eventRepo event repository instance
+     * @param eventsLiveData live data
      */
     private EventViewModel (Application application, EventRepository eventRepo, MutableLiveData<List<Event>> eventsLiveData) {
         this.eventRepo = eventRepo;
@@ -43,12 +42,22 @@ public class EventViewModel extends ViewModel {
         setEventCallback(eventRepo);
     }
 
+    /**
+     * Initializes the EventViewModel
+     * @param application Application associated with this instance
+     * @param eventRepo Event repository
+     * @param eventsLiveData
+     */
     public static synchronized void initialize(Application application, EventRepository eventRepo, MutableLiveData<List<Event>> eventsLiveData) {
         if (instance == null) {
             instance = new EventViewModel(application, eventRepo, eventsLiveData);
         }
     }
 
+    /**
+     * Retrieves the instance of EventViewModel
+     * @return EventViewModel instance
+     */
     public static synchronized EventViewModel getInstance() {
         if (instance == null) {
             throw new IllegalStateException("EventViewModel must be initialized in the Application class before use");
@@ -76,6 +85,9 @@ public class EventViewModel extends ViewModel {
         });
     }
 
+    /**
+     * Restores event callback to default
+     */
     public void restoreEventCallback(){
         setEventCallback(eventRepo);
     }

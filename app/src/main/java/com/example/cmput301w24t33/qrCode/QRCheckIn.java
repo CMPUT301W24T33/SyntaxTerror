@@ -25,6 +25,9 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+/**
+ * Manages event Check-ins
+ */
 public class QRCheckIn implements QRScanner.ScanResultsListener {
     private Context context;
     private ArrayList<Event> events;

@@ -26,10 +26,29 @@ import java.util.UUID;
  */
 public class ImageHandler {
 
+    /**
+     * Handles image results
+     */
     public interface UploadCallback {
+        /**
+         * Handles image upload success
+         * @param result upload result
+         */
         void onSuccess(Pair<String, String> result);
+
+        /**
+         * Handles image upload failure
+         * @param e upload exception
+         */
         void onFailure(Exception e);
     }
+
+    /**
+     * Uploads a file to the database
+     * @param filepath path to file on local device
+     * @param storage database that hosts file storage
+     * @param callback listener to upload completion
+     */
     public static void uploadFile(Uri filepath, FirebaseStorage storage, UploadCallback callback) {
         String generatedString = UUID.randomUUID().toString();
         StorageReference storageRef = storage.getReference();
@@ -51,6 +70,13 @@ public class ImageHandler {
         });
     }
 
+    /**
+     * updates event picture
+     * @param eventID ID of event to update
+     * @param imageRef remote image reference
+     * @param URL remote image url
+     * @param database database hosting image upload
+     */
     public static void updateAddEventPicture(String eventID, String imageRef, String URL, FirebaseDatabase database) {
         DatabaseReference eventsRef = database.getReference("events").child(eventID);
         Map<String, Object> updates = new HashMap<>();
@@ -122,7 +148,4 @@ public class ImageHandler {
 
         eventsRef.updateChildren(updates);
     }
-
-
-
 }

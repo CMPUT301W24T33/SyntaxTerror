@@ -5,7 +5,7 @@
     android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?backgroundColor"
     android:orientation="vertical"
     tools:context=".activities.OrganizerActivity">
 
@@ -13,7 +13,7 @@
         android:id="@+id/actionbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/attendee_actionbar_day">
+        android:background="@color/admin_actionbar">
 
         <ImageButton
             android:id="@+id/back_arrow_img"
@@ -23,13 +23,14 @@
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_back_arrow" />
+            app:srcCompat="@drawable/ic_back_arrow_night" />
         <TextView
             android:id="@+id/action_bar_textview"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:text=""
+            android:textColor="@color/white"
             android:background="@null"
             android:clickable="false"
             android:textSize="35dp"

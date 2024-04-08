@@ -3,6 +3,7 @@ com.example.cmput301w24t33.activities
 com.example.cmput301w24t33.adminFragments
 com.example.cmput301w24t33.attendeeFragments
 com.example.cmput301w24t33.events
+com.example.cmput301w24t33.fileUpload
 com.example.cmput301w24t33.notifications
 com.example.cmput301w24t33.organizerFragments
 com.example.cmput301w24t33.qrCode

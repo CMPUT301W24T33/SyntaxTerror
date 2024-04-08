@@ -2,11 +2,8 @@ package com.example.cmput301w24t33.activities;
 
 import static android.content.ContentValues.TAG;
 
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -15,9 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.EventRepository;
 import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.notifications.NotificationManager;
@@ -27,6 +22,9 @@ import com.example.cmput301w24t33.users.UserRepository;
 import com.example.cmput301w24t33.users.UserViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Activity which initializes the app and all its static classes
+ */
 public class AppInitialization extends AppCompatActivity implements CreateProfile.OnUserCreatedListener {
 
     private User currentUser;
@@ -67,6 +65,9 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
         startActivity(intent);
     }
 
+    /**
+     * Authenticates the user based on the device's Android ID, checking if a user profile already exists or initiating profile creation if not.
+     */
     private void authenticateUser() {
         String userId = getAndroidId();
         userViewModel.getUser(userId).observe(this, user -> {
@@ -104,6 +105,10 @@ public class AppInitialization extends AppCompatActivity implements CreateProfil
         transaction.commitAllowingStateLoss();
     }
 
+    /**
+     * Handles results of user creation
+     * @param user user that has been created
+     */
     @Override
     public void onUserCreated(User user) {
         userViewModel.setUser(user);

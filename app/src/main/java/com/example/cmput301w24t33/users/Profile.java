@@ -2,9 +2,7 @@
 // Facilitates the viewing and editing of user profile details, including name and email, with
 // validation checks to ensure that the data entered is appropriate. It provides an interface for
 // users to interact with their profile.
-//
-// Issues: Fill in user profile info when navigating to this fragment
-//
+
 
 package com.example.cmput301w24t33.users;
 
@@ -92,7 +90,7 @@ public class Profile extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
+                        if (documentSnapshot.exists()&& isAdded()) {
                             email = documentSnapshot.getString("email");
                             fName = documentSnapshot.getString("firstName");
                             lName = documentSnapshot.getString("lastName");
@@ -102,6 +100,7 @@ public class Profile extends Fragment {
                             addFnameEditText.setText(fName);
                             addEmailEditText.setText(email);
                             addLnameEditText.setText(lName);
+
                             if (imageUrl != "") {
                                 Glide.with(getContext()).load(imageUrl).into(profileImageView);
                             }

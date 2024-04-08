@@ -20,18 +20,14 @@ import com.example.cmput301w24t33.databinding.AdminDeletePosterFragmentBinding;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-
+/**
+ * Remove Event Poster fragment allows admin to remove an event poster
+ */
 public class EventRemovePoster extends Fragment {
 
     private EventRepository eventRepo;
     private AdminDeletePosterFragmentBinding binding;
     private Event eventToRemovePoster;
-
-
-
-    public EventRemovePoster() {
-        // Required empty public constructor
-    }
 
     /**
      * Factory method to create a new instance of DeleteEventAdmin fragment
