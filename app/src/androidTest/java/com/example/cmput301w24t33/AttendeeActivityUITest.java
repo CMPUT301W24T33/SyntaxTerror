@@ -8,6 +8,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import android.content.Intent;
 
@@ -50,6 +51,10 @@ public class AttendeeActivityUITest {
         onView(withId(R.id.find_event_img)).check(matches(isDisplayed()));
         onView(withId(R.id.eventrecyclerview)).check(matches(isDisplayed()));
         onView(withId(R.id.switch_events_button)).check(matches(isDisplayed()));
+        onView(withText("To Organizer")).check(matches(isDisplayed()));
+        onView(withText("Browse All")).check(matches(isDisplayed()));
+        onView(withText("Check In")).check(matches(isDisplayed()));
+        onView(withText("Find Event")).check(matches(isDisplayed()));
 
     }
 
