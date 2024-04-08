@@ -193,6 +193,10 @@ public class OrganizerActivityUITest {
 //        onView(withId(android.R.id.button1)).inRoot(isDialog()).perform(click());
 //    }
 
+    /**
+     * Verifies the event creation workflow in the OrganizerActivity.
+     * It simulates typing in the event details and submitting the form.
+     */
     @Test
     public void testOrganizerCreateEventFragment() {
         // check if on organizer activity
@@ -208,6 +212,10 @@ public class OrganizerActivityUITest {
 
     }
 
+    /**
+     * Tests the functionality of the cancel button within the event creation form.
+     * It ensures that pressing the cancel button navigates the user away from the event creation form.
+     */
     @Test
     public void testOrganizerEventCancelButton(){
         // Checks if on organizer activity
@@ -221,6 +229,10 @@ public class OrganizerActivityUITest {
 
     }
 
+    /**
+     * Verifies the functionality of the geolocation switch within the event creation form.
+     * It simulates toggling the geolocation feature for a new event.
+     */
     @Test
     public void testOrganizerEventGeoLocationSwitch(){
         // Checks if on organizer activity
@@ -235,6 +247,10 @@ public class OrganizerActivityUITest {
 
     }
 
+    /**
+     * Tests the ability to set a maximum number of attendees for an event.
+     * It simulates entering a number for the maximum attendees and submitting the form.
+     */
     @Test
     public void testOrganizerEventMaxAttendees(){
         // Checks if on organizer activity
