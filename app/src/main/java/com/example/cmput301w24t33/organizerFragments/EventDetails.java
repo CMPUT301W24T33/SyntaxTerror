@@ -27,6 +27,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.OrganizerEventDetailsFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRemovePoster;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
 import com.google.android.material.snackbar.Snackbar;
@@ -93,7 +94,10 @@ public class EventDetails extends Fragment implements ShareQRFragment.ShareQRDia
      */
     public void setupActionButtons(Event event) {
         // Navigation back to the previous fragment
-        binding.toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
+        binding.toolbar.setNavigationOnClickListener(v -> {
+            EventViewModel.getInstance().restoreEventCallback();
+            getParentFragmentManager().popBackStack();
+        });
 
         // Navigation to the event attendees fragment
         binding.checkInsButton.setOnClickListener(v -> replaceFragment(EventCheckedIn.newInstance(event)));
