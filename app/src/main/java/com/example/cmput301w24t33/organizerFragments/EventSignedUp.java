@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
 import com.example.cmput301w24t33.databinding.OrganizerEventSignedUpFragmentBinding;
 
@@ -65,6 +66,12 @@ public class EventSignedUp extends Fragment implements EventRepository.EventCall
         setupActionBar();
         setupEventSignUpsRecyclerView();
         return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventViewModel.getInstance().restoreEventCallback();
     }
 
     private void setupEventSignUpsRecyclerView() {

@@ -29,6 +29,7 @@ import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.databinding.AttendeeEventFragmentBinding;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.notifications.NotificationManager;
 import com.example.cmput301w24t33.qrCode.QRCode;
 import com.example.cmput301w24t33.qrCode.ShareQRFragment;
@@ -85,13 +86,13 @@ public class EventDetailsAttendee extends Fragment implements ShareQRFragment.Sh
         }
         return binding.getRoot();
     }
-
     /**
      * Cleans up the resources associated with the fragment, particularly nullifying the view binding to avoid memory leaks.
      */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        EventViewModel.getInstance().restoreEventCallback();
         binding = null;
     }
 

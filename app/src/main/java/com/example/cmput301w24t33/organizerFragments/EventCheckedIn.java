@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cmput301w24t33.R;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventRepository;
+import com.example.cmput301w24t33.events.EventViewModel;
 import com.example.cmput301w24t33.users.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -115,6 +116,12 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
 
         eventRepository.setEventCallback(this);
         eventRepository.setEventListener(selectedEvent.getEventId());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventViewModel.getInstance().restoreEventCallback();
     }
 
     /**
