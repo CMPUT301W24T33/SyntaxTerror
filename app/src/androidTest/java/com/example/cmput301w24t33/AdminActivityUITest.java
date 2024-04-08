@@ -207,6 +207,11 @@ public class AdminActivityUITest {
 
     }
 
+    /**
+     * Tests the display of the profiles view within the admin interface. It simulates a click on the
+     * "Browse Profiles" button and verifies that the Event list are displayed
+     * correctly. This test ensures that the admin can view user Events as intended.
+     */
     @Test
     public void testAdminViewAddEvent(){
         //Button from Admin view to event fragment
