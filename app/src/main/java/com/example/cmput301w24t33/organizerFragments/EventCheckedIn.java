@@ -253,7 +253,7 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
     public void onDestroyView() {
         super.onDestroyView();
         if (eventRepository != null) {
-            eventRepository.removeEventListener();
+            eventRepository.removeAllListeners();
         }
     }
 
