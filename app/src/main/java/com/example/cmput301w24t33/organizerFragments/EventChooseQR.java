@@ -99,6 +99,12 @@ public class EventChooseQR extends Fragment implements EventRepository.EventCall
         return inflater.inflate(R.layout.organizer_choose_qr_fragment, container, false);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventViewModel.getInstance().restoreEventCallback();
+    }
+
     /**
      * Called immediately after onCreateView(LayoutInflater, ViewGroup, Bundle) has returned, but before any saved state has been restored into the view.
      * This method is used to finalize the fragment's UI initialization by setting up RecyclerView for event selection and the onClickListeners for UI interaction.
