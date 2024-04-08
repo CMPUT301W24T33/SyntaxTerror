@@ -14,7 +14,7 @@
         android:id="@+id/profile_back_actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/actionbar_editprofile">
+        <include layout="@layout/actionbar_editprofile_admin">
         </include>
     </RelativeLayout>
 
@@ -122,7 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Delete"
-            android:textColor="@color/black"
+            android:textColor="@color/onSecondary"
+            android:backgroundTint="@color/secondary"
             android:layout_weight="1"
             android:layout_marginEnd="3dp"
             >
