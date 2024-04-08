@@ -226,17 +226,11 @@ public class AttendeeActivityUITest {
         onView(withId(R.id.profile_fragment)).check(matches(isDisplayed()));
         onView(withId(R.id.profile_view)).check(matches(isDisplayed()));
 
-        //Checks first name input text
-        onView(withId(R.id.first_name_edit_text)).perform(replaceText("John"),closeSoftKeyboard());
-        onView(withId(R.id.profile_save_button)).perform(click());
-
-        //Checks last name input text
-        onView(withId(R.id.last_name_edit_text)).perform(replaceText("Deer"),closeSoftKeyboard());
-        onView(withId(R.id.profile_save_button)).perform(click());
-
-        //Checks email input text
-        onView(withId(R.id.email_edit_text)).perform(replaceText("JD@Gmail.com"),closeSoftKeyboard());
-        onView(withId(R.id.profile_save_button)).perform(click());
+        //Checks input text
+        onView(withId(R.id.first_name_edit_text)).perform(replaceText("Nice"),closeSoftKeyboard());
+        onView(withId(R.id.last_name_edit_text)).perform(replaceText("Test"),closeSoftKeyboard());
+        onView(withId(R.id.email_edit_text)).perform(replaceText("NT@Gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.profile_cancel_button)).perform(click());
 
         //Checks if on attendee layout
         onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
@@ -261,21 +255,6 @@ public class AttendeeActivityUITest {
         onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
     }
 
-
-    /**
-     * Verifies the functionality of switching between Attendee and Organizer modes within the application.
-     */
-//    @Test
-//    public void testAttendeeOrganizerSwitch(){
-//        // press button to switch to organizer
-//        onView(withId(R.id.button_user_mode)).perform(click());
-//        // check if on organizer activity
-//        onView(withId(R.id.organizer_activity)).check(matches(isDisplayed()));
-//        // press button to switch back to attendee
-//        onView(withId(R.id.button_user_mode)).perform(click());
-//        // check if on attendee view
-//        onView(withId(R.id.attendee_activity)).check(matches(isDisplayed()));
-//    }
 
 
 }
