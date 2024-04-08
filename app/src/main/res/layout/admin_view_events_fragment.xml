@@ -33,7 +33,7 @@
                     android:layout_centerInParent="true"
                     android:background="?selectableItemBackgroundBorderless"
                     android:scaleType="centerInside"
-                    app:srcCompat="?backArrow" />
+                    app:srcCompat="@drawable/ic_back_arrow_night" />
 
                 <TextView
                     android:id="@+id/general_actionbar_textview"
@@ -43,8 +43,9 @@
                     android:background="@null"
                     android:clickable="false"
                     android:text=""
-                    android:textSize="35dp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="35sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
 
             </RelativeLayout>
 

@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:id="@+id/admin_image_view">
 
-            <include layout="@layout/actionbar_editprofile" />
+            <include layout="@layout/actionbar_editprofile_admin" />
 
 
             <LinearLayout
