@@ -71,8 +71,8 @@ public class OrganizerActivityUITest {
     }
 
     @Rule
-    public ActivityScenarioRule<AttendeeActivity> scenario = new
-            ActivityScenarioRule<AttendeeActivity>(intent);
+    public ActivityScenarioRule<OrganizerActivity> scenario = new
+            ActivityScenarioRule<OrganizerActivity>(intent);
 
     @Test
     public void testUIOrganizerLayoutDisplay() {
