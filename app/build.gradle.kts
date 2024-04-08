@@ -49,6 +49,12 @@ android {
     }
 
 
+
+
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 
@@ -68,13 +74,16 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-database:20.3.1")
     implementation("com.google.android.libraries.places:places:3.4.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.2")
+    //testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    //testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     testImplementation ("org.mockito:mockito-core:5.11.0") // use the latest version
+    testImplementation("org.robolectric:robolectric:4.7.3")
     androidTestImplementation ("org.mockito:mockito-android:5.11.0") // use the latest version for Android tests
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation("com.github.bumptech.glide:glide:4.16.0")

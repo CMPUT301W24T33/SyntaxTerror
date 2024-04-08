@@ -207,7 +207,7 @@ public class UserRepository {
         userCollection.document(docId).set(user)
                 .addOnSuccessListener(documentReference -> {
                     Log.d(TAG, "Create User Document success: " + user.getUserId());
-                    //userCallback.onUsersLoaded(user);
+                    userCallback.onUsersLoaded(user);
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Create User Document failed", e);
