@@ -43,17 +43,34 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
+/**
+ * Tests for {@link OrganizerActivity} to verify the display and functionality of the organizer interface.
+ * These tests simulate user interactions with the OrganizerActivity UI and verify the visibility
+ * and behavior of UI components. The tests operate within an isolated environment with mock data
+ * for {@link EventRepository} to ensure reliability and speed.
+ *
+ * <p>Note: Tests are conducted without actual database connectivity, focusing on UI and ViewModel
+ * interaction.
+ */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 // Tests limited as no DB connectivity for RecyclerView population
 public class OrganizerActivityUITest {
 
+    /**
+     * Prepares the intent for launching the {@link OrganizerActivity} with a mock user and EventViewModel.
+     */
     static Intent intent;
     static {
         intent = new Intent(ApplicationProvider.getApplicationContext(), OrganizerActivity.class);
         intent.putExtra("user",new User("1","","","",true,"",""));
         intent.putExtra("eventViewModel", Mockito.mock(EventViewModel.class));}
 
+    /**
+     * Sets up the testing environment before each test execution. Initializes {@link EventViewModel}
+     * with mocked repositories and LiveData to simulate a controlled test scenario.
+     * This method ensures that each test starts with a consistent and isolated environment.
+     */
     @Before
     public void setUp() {
         // Get the application context
@@ -71,9 +88,12 @@ public class OrganizerActivityUITest {
     }
 
     @Rule
-    public ActivityScenarioRule<AttendeeActivity> scenario = new
-            ActivityScenarioRule<AttendeeActivity>(intent);
+    public ActivityScenarioRule<OrganizerActivity> scenario = new
+            ActivityScenarioRule<OrganizerActivity>(intent);
 
+    /**
+     * Verifies that the main organizer layout and its components are displayed as expected.
+     */
     @Test
     public void testUIOrganizerLayoutDisplay() {
         //Checking if layout is displayed with its components
@@ -89,6 +109,9 @@ public class OrganizerActivityUITest {
 
     }
 
+    /**
+     * Tests the visibility and functionality of the organizer's event creation layout.
+     */
     @Test
     public void testUIOrganizerCreateEventLayoutDisplay() {
         //Checks if layout is organizer activity
@@ -170,6 +193,10 @@ public class OrganizerActivityUITest {
 //        onView(withId(android.R.id.button1)).inRoot(isDialog()).perform(click());
 //    }
 
+    /**
+     * Verifies the event creation workflow in the OrganizerActivity.
+     * It simulates typing in the event details and submitting the form.
+     */
     @Test
     public void testOrganizerCreateEventFragment() {
         // check if on organizer activity
@@ -178,7 +205,6 @@ public class OrganizerActivityUITest {
         //Tests Event Creation
         onView(withId(R.id.button_create_event)).perform(click());
         onView(withId(R.id.event_name_edit_text)).perform(typeText("Uni Days!"), closeSoftKeyboard());
-        onView(withId(R.id.event_location_cords_text)).perform(typeText("53.5232, 113.5263"), closeSoftKeyboard());
         onView(withId(R.id.event_description_edit_text)).perform(typeText("University of Alberta Exam Days"), closeSoftKeyboard());
         onView(withId(R.id.max_attendees_edit_text)).perform(replaceText("2"),closeSoftKeyboard());
         onView(withText("Confirm")).perform(ViewActions.scrollTo());
@@ -186,6 +212,10 @@ public class OrganizerActivityUITest {
 
     }
 
+    /**
+     * Tests the functionality of the cancel button within the event creation form.
+     * It ensures that pressing the cancel button navigates the user away from the event creation form.
+     */
     @Test
     public void testOrganizerEventCancelButton(){
         // Checks if on organizer activity
@@ -199,6 +229,10 @@ public class OrganizerActivityUITest {
 
     }
 
+    /**
+     * Verifies the functionality of the geolocation switch within the event creation form.
+     * It simulates toggling the geolocation feature for a new event.
+     */
     @Test
     public void testOrganizerEventGeoLocationSwitch(){
         // Checks if on organizer activity
@@ -213,6 +247,10 @@ public class OrganizerActivityUITest {
 
     }
 
+    /**
+     * Tests the ability to set a maximum number of attendees for an event.
+     * It simulates entering a number for the maximum attendees and submitting the form.
+     */
     @Test
     public void testOrganizerEventMaxAttendees(){
         // Checks if on organizer activity
