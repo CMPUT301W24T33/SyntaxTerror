@@ -142,9 +142,9 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLocation, 15));
                     gMap.addMarker(new MarkerOptions().position(eventLocation).title("Event"));
 
-                    if (selectedEvent.getGeoTracking()== true){
+                    if (selectedEvent.getGeoTracking()){
                         addCircle(eventLocation,GEOFENCE_RADIUS);
-                    } else if (selectedEvent.getGeoTracking() == false) {
+                    } else {
                         gMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)));
                     }
 
@@ -153,8 +153,6 @@ public class EventCheckedIn extends Fragment implements EventRepository.EventCal
                 LatLng eventEdmontonDefault = new LatLng(53.5461, -113.4938);
                 gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventEdmontonDefault, 10));
             }
-
-
                 // Add markers for each check-in location
                 for(String checkInPoint : selectedEvent.getCheckInLocations()) {
                     double lat = Double.parseDouble(checkInPoint.split(",")[0]);

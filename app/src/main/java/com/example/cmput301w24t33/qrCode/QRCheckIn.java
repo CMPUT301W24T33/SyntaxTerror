@@ -39,6 +39,7 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
             Log.d("CheckIn", "Event: " + event.getName());
             if (event.getCheckInQR() != null && event.getCheckInQR().equals(qrCode.getQrCode())) {
                 if (!validateCheckIn(event)) { // invalid check in
+                    Toast.makeText(context, "Cannot Check Into Event",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 checkIn(event);
@@ -68,16 +69,6 @@ public class QRCheckIn implements QRScanner.ScanResultsListener {
      * @param event event to be checked into
      */
     private void checkIn(Event event) {
-        // TODO: Determine if event has GeoTracking enabled
-        //  1: If GeoTracking is enabled
-        //      1.1: nothing needed
-        //  2: If GeoTethering is enabled
-        //      2.1: prevent user from checking if they are not within some fixed distance of event
-        //      2.2: what should this fixed distance be?
-        //  3: If GeoTracking is disabled
-        //      3.1: Don't store user's location (just set it to null?)
-        //  4: Explain to user why location is being asked for
-        //      4.1: Note that location is only required if the organizer has geo-tethering on
         Toast checkInFailedToast = new Toast(context);
         checkInFailedToast
                 .setText("Check In Failed: Please Try Again");
