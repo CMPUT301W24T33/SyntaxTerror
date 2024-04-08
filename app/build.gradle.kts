@@ -29,8 +29,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     secrets {
         // Optionally specify a different file name containing your secrets.
@@ -58,7 +58,6 @@ android {
 
 
 dependencies {
-    implementation(files("C:\\Users\\reece\\AppData\\Local\\Android\\Sdk\\platforms\\android-34\\android.jar"))
     testImplementation(kotlin("test-junit5"))
     testImplementation(platform("org.junit:junit-bom:5.7.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
