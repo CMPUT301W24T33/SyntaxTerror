@@ -101,8 +101,8 @@
                         android:id="@+id/browse_events_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:text="Browse All"/>
+                        android:text="@string/browse_all_events"
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -110,19 +110,20 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_weight="1">
+
                     <ImageView
                         android:id="@+id/check_in_img"
                         android:layout_width="match_parent"
-                        android:layout_height="42dp"
+                        android:layout_height="41dp"
                         android:paddingTop="7dp"
                         android:paddingBottom="7dp"
-                        android:src="?check_in_button_image"/>
+                        android:src="?check_in_button_image" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:text="Check In"/>
+                        android:text="@string/check_in"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -142,7 +143,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:text="Find Event"/>
+                        android:text="@string/find_event"/>
                 </LinearLayout>
 <!--                <ImageView-->
 <!--                    android:id="@+id/check_in_img"-->
