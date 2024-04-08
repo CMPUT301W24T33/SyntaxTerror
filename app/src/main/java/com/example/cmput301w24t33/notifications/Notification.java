@@ -1,9 +1,7 @@
 // Purpose:
 // Represents a notification entity in an application, containing details such as title, message,
 // and timestamp, facilitating storage and retrieval of notification information.
-//
-// Issues: None
-//
+
 
 package com.example.cmput301w24t33.notifications;
 

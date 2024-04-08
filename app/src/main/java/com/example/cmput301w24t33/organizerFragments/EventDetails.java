@@ -2,9 +2,7 @@
 // Displays an events details offering the organizer functionality to manage the event further by
 // navigating to different fragments for actions like editing event details, checking in attendees,
 // and sending notifications.
-//
-// Issues: populate with a poster image
-//
+
 
 package com.example.cmput301w24t33.organizerFragments;
 

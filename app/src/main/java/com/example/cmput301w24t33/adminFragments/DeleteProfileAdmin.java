@@ -1,8 +1,6 @@
 // Purpose:
 // Provides an interface for administrators to view and delete user profiles.
 //
-// Issues:
-// deletion logic not implemented
 
 package com.example.cmput301w24t33.adminFragments;
 

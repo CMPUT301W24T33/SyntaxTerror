@@ -1,8 +1,7 @@
 // Purpose:
 // Provides an interface for administrators to view events and select individual events to open a
 // more detailed view.
-//
-// Issues: None
+
 
 package com.example.cmput301w24t33.adminFragments;
 
@@ -26,6 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmput301w24t33.R;
+import com.example.cmput301w24t33.adminFragments.DeleteEventAdmin;
 import com.example.cmput301w24t33.events.Event;
 import com.example.cmput301w24t33.events.EventAdapter;
 import com.example.cmput301w24t33.events.EventViewModel;

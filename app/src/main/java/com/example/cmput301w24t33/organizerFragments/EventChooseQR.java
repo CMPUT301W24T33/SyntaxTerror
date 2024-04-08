@@ -1,8 +1,7 @@
 // Purpose:
 // Provides an interface for selecting an existing event to generate or reuse a QR code
 //
-// Issues: Populate the recyclerview with reusable qr codes
-//
+
 
 package com.example.cmput301w24t33.organizerFragments;
 

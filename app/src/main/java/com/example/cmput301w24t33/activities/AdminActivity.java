@@ -2,9 +2,7 @@
 // Facilitates administrative tasks within the application, offering a user interface for
 // managing events and profiles. It provides navigation options for admins to access various
 // administrative functionalities.
-//
-// Issues: Implement image deletion fragment
-//
+
 
 package com.example.cmput301w24t33.activities;
 

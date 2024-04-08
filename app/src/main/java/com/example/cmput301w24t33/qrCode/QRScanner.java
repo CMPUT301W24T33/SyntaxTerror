@@ -1,9 +1,7 @@
 // Purpose: (NOT USED)
 // facilitates the scanning of QR codes using ML Kit's barcode scanning functionality and stores the
 // scanned contents for further processing
-//
-// Issues: None
-//
+
 
 
 package com.example.cmput301w24t33.qrCode;
