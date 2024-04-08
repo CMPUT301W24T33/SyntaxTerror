@@ -178,7 +178,7 @@ public class OrganizerActivityUITest {
 
     }
 
-    // Firestore error after config implementation "androidx.test.espresso:espresso-contrib:3.5.1"
+     //Firestore error after config implementation "androidx.test.espresso:espresso-contrib:3.5.1"
 
 //    @Test
 //    public void testOrganizerCreateEventDateAndTime(){

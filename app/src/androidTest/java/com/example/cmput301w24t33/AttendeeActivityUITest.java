@@ -215,6 +215,34 @@ public class AttendeeActivityUITest {
     }
 
     /**
+     *  Tests the profile view within the AttendeeActivity, to see input validation
+     */
+    @Test
+    public void testProfileTextInput(){
+        // Click on profile button
+        onView(withId(R.id.profile_image)).perform(click());
+
+        //Checks if profile fragment is displayed
+        onView(withId(R.id.profile_fragment)).check(matches(isDisplayed()));
+        onView(withId(R.id.profile_view)).check(matches(isDisplayed()));
+
+        //Checks first name input text
+        onView(withId(R.id.first_name_edit_text)).perform(replaceText("John"),closeSoftKeyboard());
+        onView(withId(R.id.profile_save_button)).perform(click());
+
+        //Checks last name input text
+        onView(withId(R.id.last_name_edit_text)).perform(replaceText("Deer"),closeSoftKeyboard());
+        onView(withId(R.id.profile_save_button)).perform(click());
+
+        //Checks email input text
+        onView(withId(R.id.email_edit_text)).perform(replaceText("JD@Gmail.com"),closeSoftKeyboard());
+        onView(withId(R.id.profile_save_button)).perform(click());
+
+        //Checks if on attendee layout
+        onView(withId(R.id.attendee_layout)).check(matches(isDisplayed()));
+    }
+
+    /**
      *  Tests the profile view within the AttendeeActivity, to see if save button works or not
      */
     @Test

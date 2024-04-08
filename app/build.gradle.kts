@@ -102,6 +102,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.3.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    //androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1") // Internal error in Cloud Firestore // we use firebase-bom lastest
     testImplementation ("org.mockito:mockito-core:5.11.0") // use the latest version
     androidTestImplementation ("org.mockito:mockito-android:5.11.0") // use the latest version for Android tests
     implementation ("com.squareup.picasso:picasso:2.71828")

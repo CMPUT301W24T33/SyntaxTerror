@@ -7,6 +7,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
 
 import android.app.Application;
@@ -33,7 +34,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 /**
  * Tests for {@link AdminActivity} to verify the display and functionality of the admin interface.
@@ -58,6 +58,7 @@ public class AdminActivityUITest {
      * test scenario. This method ensures that each test starts with a consistent and isolated
      * environment.
      */
+    public List<Event> mockEvents = new ArrayList<>();
 
     @Before
     public void setUp() {
@@ -72,7 +73,6 @@ public class AdminActivityUITest {
         MutableLiveData<User> testSingleUserLiveData = new MutableLiveData<>();
 
         // Creating Mock Events
-        List<Event> mockEvents = new ArrayList<>();
         mockEvents.add(new Event("Test Event 1", "University Campus", "This is the first test event."));
         mockEvents.add(new Event("Test Event 2", "Downtown", "This is the second test event."));
         mockEvents.add(new Event("Test Event 3", "Local Park", "This is the third test event."));
@@ -93,6 +93,7 @@ public class AdminActivityUITest {
         EventViewModel.initialize(application, mockEventRepo, testEventLiveData);
         UserViewModel.initialize(application, mockProfileRepo, testProfileLiveData, testSingleUserLiveData);
     }
+
 
     /**
      * Verifies that the main admin layout and its components are displayed as expected. This test
@@ -126,17 +127,47 @@ public class AdminActivityUITest {
 
     /**
      * Tests the display of the events view within the admin interface. It simulates a click on the
-     * "Browse Events" button and verifies that the events list and related UI components are displayed
+     * "Browse Events" button and verifies that the events layout and UI components are displayed
      * correctly. This test ensures that the admin can view the events as intended.
      */
     @Test
-    public void testAdminViewEventsDisplay(){
+    public void testAdminViewEventsLayoutDisplay(){
         //Button from Admin view to event fragment
         onView(withId(R.id.browse_events_button)).perform(click());
 
         //Checks Admin events fragment is display
         onView(withId(R.id.admin_events_layout)).check(matches(isDisplayed()));
         onView(withId(R.id.general_actionbar)).check(matches(isDisplayed()));
+        onView(withText("Test Event 1")).check(matches(isDisplayed()));
+
+        //Checks list of events are displayed
+        onView(withId(R.id.event_recyclerview)).check(matches(isDisplayed()));
+        onView(withId(R.id.admin_view_event_fragment)).check(matches(isDisplayed()));
+
+        //Checks if top ActionBar is displayed
+        onView(withId(R.id.general_actionbar_textview)).check(matches(isDisplayed()));
+        onView(withId(R.id.view_events_back_button)).check(matches(isDisplayed()));
+
+    }
+
+    /**
+     * Tests the display of the events view within the admin interface. It simulates a click on the
+     * "Browse Events" button and verifies that the events list are displayed
+     * correctly. This test ensures that the admin can view the events as intended.
+     */
+    @Test
+    public void testAdminViewEventsAreDisplayed(){
+        //Button from Admin view to event fragment
+        onView(withId(R.id.browse_events_button)).perform(click());
+
+        //Checks Admin events fragment is display
+        onView(withId(R.id.admin_events_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.general_actionbar)).check(matches(isDisplayed()));
+
+        //Checks Events are displayed
+        onView(withText("Test Event 1")).check(matches(isDisplayed()));
+        onView(withText("Test Event 2")).check(matches(isDisplayed()));
+        onView(withText("Test Event 3")).check(matches(isDisplayed()));
 
         //Checks list of events are displayed
         onView(withId(R.id.event_recyclerview)).check(matches(isDisplayed()));
@@ -150,11 +181,60 @@ public class AdminActivityUITest {
 
     /**
      * Tests the display of the profiles view within the admin interface. It simulates a click on the
-     * "Browse Profiles" button and verifies that the profiles list and related UI components are displayed
+     * "Browse Profiles" button and verifies that the profiles list are displayed
      * correctly. This test ensures that the admin can view user profiles as intended.
      */
     @Test
-    public void testAdminViewProfileDisplay(){
+    public void testAdminViewProfileUsersDisplay(){
+        //Button from Admin view to Profile fragment
+        onView(withId(R.id.browse_profiles_button)).perform(click());
+
+        //Checks Admin profile fragment is displayed
+        onView(withId(R.id.admin_view_profiles_fragment)).check(matches(isDisplayed()));
+
+        //Checks Users are displayed
+        onView(withText("John")).check(matches(isDisplayed()));
+        onView(withText("Mock")).check(matches(isDisplayed()));
+        onView(withText("Yes")).check(matches(isDisplayed()));
+
+        //Checks list of profiles are displayed
+        onView(withId(R.id.profiles_admin)).check(matches(isDisplayed()));
+
+        //Checks if top ActionBar is displayed
+        onView(withId(R.id.general_actionbar)).check(matches(isDisplayed()));
+        onView(withId(R.id.general_actionbar_textview)).check(matches(isDisplayed()));
+        onView(withId(R.id.view_profiles_back_button)).check(matches(isDisplayed()));
+
+    }
+
+    @Test
+    public void testAdminViewAddEvent(){
+        //Button from Admin view to event fragment
+        onView(withId(R.id.browse_events_button)).perform(click());
+
+        //Checks Admin events fragment is display
+        onView(withId(R.id.admin_events_layout)).check(matches(isDisplayed()));
+        onView(withId(R.id.general_actionbar)).check(matches(isDisplayed()));
+
+        onView(withText("Test Event 1")).check(matches(isDisplayed()));
+
+        //Checks list of events are displayed
+        onView(withId(R.id.event_recyclerview)).check(matches(isDisplayed()));
+        onView(withId(R.id.admin_view_event_fragment)).check(matches(isDisplayed()));
+
+        //Checks if top ActionBar is displayed
+        onView(withId(R.id.general_actionbar_textview)).check(matches(isDisplayed()));
+        onView(withId(R.id.view_events_back_button)).check(matches(isDisplayed()));
+
+    }
+
+    /**
+     * Tests the display of the profiles view within the admin interface. It simulates a click on the
+     * "Browse Profiles" button and verifies that profile layout and related UI components are displayed
+     * correctly. This test ensures that the admin can view user profiles as intended.
+     */
+    @Test
+    public void testAdminViewProfileLayoutDisplay(){
         //Button from Admin view to Profile fragment
         onView(withId(R.id.browse_profiles_button)).perform(click());
 
